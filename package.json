@@ -5,11 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name ui-library src/main.js",
+    "build-lib": "vue-cli-service build --target lib --name ui-library src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.4.4",
+    "tailwindcss": "^1.1.4",
     "vue": "^2.6.10"
   },
   "devDependencies": {
