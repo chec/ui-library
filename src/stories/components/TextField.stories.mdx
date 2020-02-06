@@ -10,7 +10,7 @@ import TextField from '../../components/TextField.vue';
 
 <Props of={TextField} />
 
-# Defaults
+# Default
 
 <Preview>
   <Story name="Defaults">
@@ -20,7 +20,47 @@ import TextField from '../../components/TextField.vue';
       },
       template: `
         <div class="py-16 flex justify-center">
-          <TextField />
+          <TextField
+            placeholder="Text Field Placeholder"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+# Disabled
+
+<Preview>
+  <Story name="Disabled">
+    {{
+      components: {
+        TextField
+      },
+      template: `
+        <div class="py-16 flex justify-center">
+          <TextField
+            placeholder="Text Field Placeholder"
+            :disabled="true"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+# Error
+
+<Preview>
+  <Story name="Error">
+    {{
+      components: {
+        TextField
+      },
+      template: `
+        <div class="py-16 flex justify-center">
+          <TextField
+            placeholder="Text Field Placeholder"
+            :error="true"
+          />
         </div>`,
     }}
   </Story>

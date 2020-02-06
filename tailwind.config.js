@@ -22,6 +22,7 @@ module.exports = {
       'primary-blue': '#2C7EA1',
       'purple-300': '#A686D8',
       'red-300': '#E78091',
+      'red-200': '#EFA9B5',
       'orange-300': '#FAAF78',
       'green-300': '#50D29C',
       'blue-300': '#5ED2F0',
