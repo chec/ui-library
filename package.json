@@ -2,6 +2,7 @@
   "name": "ui-library",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/ui-library.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -30,6 +31,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
+    "storybook-addon-vue-info": "^1.4.1",
     "tailwindcss-plugins": "^0.3.0",
     "vue-cli-plugin-storybook": "^1.2.0",
     "vue-template-compiler": "^2.6.10"

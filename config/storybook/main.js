@@ -19,6 +19,7 @@ module.exports = {
     },
     '@storybook/addon-knobs',
     '@storybook/addon-links',
-    '@storybook/addon-notes'
+    '@storybook/addon-notes',
+    'storybook-addon-vue-info/lib/register'
   ]
 }
