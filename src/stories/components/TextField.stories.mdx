@@ -15,6 +15,11 @@ import TextField from '../../components/TextField.vue';
 <Preview>
   <Story name="Defaults">
     {{
+      props: {
+        inputValue: {
+          default: text('Input Value', 'Text Field')
+        },
+      },
       components: {
         TextField
       },
@@ -22,6 +27,7 @@ import TextField from '../../components/TextField.vue';
         <div class="py-16 flex justify-center">
           <TextField
             placeholder="Text Field Placeholder"
+            v-model="inputValue"
           />
         </div>`,
     }}
@@ -52,6 +58,11 @@ import TextField from '../../components/TextField.vue';
 <Preview>
   <Story name="Error">
     {{
+      props: {
+        inputValue: {
+          default: text('Input Value', 'Text Field')
+        },
+      },
       components: {
         TextField
       },
@@ -60,6 +71,7 @@ import TextField from '../../components/TextField.vue';
           <TextField
             placeholder="Text Field Placeholder"
             :error="true"
+            v-model="inputValue"
           />
         </div>`,
     }}
