@@ -1,11 +1,25 @@
 # ui-library
 
 ## Project setup
+
+```
+git clone https://github.com/chec/ui-library.git
+```
+
+```
+cd ui-library
+```
+
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Start the component explorer on port 6006:
+```
+yarn storybook:serve
+```
+
+### Run the frontend app proper on port 8080:
 ```
 yarn run serve
 ```
