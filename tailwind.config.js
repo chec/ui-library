@@ -27,9 +27,11 @@ module.exports = {
       'blue-300': '#5ED2F0',
       'gray-900': '#283341',
       'gray-700': '#41556C',
-      'gray-500': '#7187A5',
+      'gray-500': '#41556C',
+      'gray-400': '#7187A5',
       'gray-300': '#D3E0F1',
-      'gray-100': '#F1F6FC',
+      'gray-200': '#F1F6FC',
+      'gray-100': '#F8FAFD',
       white: '#FFFFFF',
     },
     borderRadius: {
