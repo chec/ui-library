@@ -59,10 +59,11 @@ module.exports = {
       white: '#FFFFFF',
     },
     borderRadius: {
-      sm: '3px',
-      default: '6px',
-      lg: '12px',
-      full: '9999px',
+      sm: '0.25rem',
+      default: '0.375rem',
+      md: '0.5rem',
+      lg: '0.75rem',
+      full: '9999px'
     },
     fontSize: {
       xs: '.75rem',

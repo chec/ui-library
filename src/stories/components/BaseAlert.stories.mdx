@@ -1,0 +1,116 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info'
+import BaseAlert from '../../components/BaseAlert.vue';
+
+<Meta title="Components|Alert" component={BaseAlert} />
+
+# Alert
+
+<Props of={BaseAlert} />
+
+# Default Alert
+
+<Preview>
+  <Story name="Defaults">
+    {{
+      components: {
+        BaseAlert
+      },
+      props: {
+        close: {
+          default: false
+        }
+      },
+      template: `
+        <div class="flex justify-center m-16">
+          <BaseAlert v-if="!close" class="w-full max-w-lg" @close-alert="close = true"/>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# Successful Alert
+
+<Preview>
+  <Story name="Success">
+    {{
+      components: {
+        BaseAlert
+      },
+      props: {
+        close: {
+          default: false
+        }
+      },
+      template: `
+        <div class="flex justify-center m-16">
+          <BaseAlert v-if="!close" class="w-full max-w-lg" variant="success" @close-alert="close = true"/>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# Error Alert
+
+<Preview>
+  <Story name="Error">
+    {{
+      components: {
+        BaseAlert
+      },
+      props: {
+        close: {
+          default: false
+        }
+      },
+      template: `
+        <div class="flex justify-center m-16">
+          <BaseAlert v-if="!close" class="w-full max-w-lg" variant="error" @close-alert="close = true"/>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# Warning Alert
+
+<Preview>
+  <Story name="Warning">
+    {{
+      components: {
+        BaseAlert
+      },
+      props: {
+        close: {
+          default: false
+        }
+      },
+      template: `
+        <div class="flex justify-center m-16">
+          <BaseAlert v-if="!close" class="w-full max-w-lg" variant="warning" @close-alert="close = true"/>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# Informational Alert
+
+<Preview>
+  <Story name="Info">
+    {{
+      components: {
+        BaseAlert
+      },
+      props: {
+        close: {
+          default: false
+        }
+      },
+      template: `
+        <div class="flex justify-center m-16">
+          <BaseAlert v-if="!close" class="w-full max-w-lg" variant="info" @close-alert="close = true"/>
+        </div>`
+    }}
+  </Story>
+</Preview>
