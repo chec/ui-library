@@ -4,7 +4,7 @@ import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs
 import { withInfo } from 'storybook-addon-vue-info'
 import BaseButton from '../../components/BaseButton.vue';
 
-<Meta title="Components|Button" component={BaseButton} />
+<Meta title="Form fields/Button" component={BaseButton} />
 
 # Button
 
@@ -15,7 +15,6 @@ A multi-functional button that handles external links, internal links and generi
 Todo list
 </summary>
 
-- Make the rounded variant
 - Support Vue router
 
 </details>
@@ -41,12 +40,12 @@ This is a simple button with some text in it.
   </Story>
 </Preview>
 
-# Primary, large
+# States and sizes
 
 This is a button modified using the Colour and Variant props.
 
 <Preview>
-  <Story name="Primary, large" decorators={[withKnobs()]}>
+  <Story name="States and sizes" decorators={[withKnobs()]}>
     {{
       components: {
         BaseButton
@@ -57,11 +56,14 @@ This is a button modified using the Colour and Variant props.
         },
         variant: {
           default: select('Variant', ['large', 'small', 'round'], 'large')
-        }
+        },
+        disabled: {
+          default: select('Disabled', [true, false], false)
+        },
       },
       template: `
         <div class="py-16 flex justify-center">
-          <base-button :colour="colour" :variant="variant">
+          <base-button :colour="colour" :variant="variant" :disabled="disabled">
             Bigger, amazing
           </base-button>
         </div>`,

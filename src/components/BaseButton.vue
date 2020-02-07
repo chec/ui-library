@@ -69,6 +69,9 @@ export default {
     const tag = this.type === 'link' ? 'a' : 'button';
     return createElement(tag, {
       class: this.classNames,
+      domProps: {
+        disabled: this.disabled,
+      },
     }, this.$slots.default);
   },
 };
@@ -86,6 +89,9 @@ export default {
     }
     &-large {
       @apply py-4 px-8 rounded text-lg;
+    }
+    &-round {
+      @apply py-2 px-4 rounded-full text-xs;
     }
   }
   &--colour {

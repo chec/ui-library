@@ -4,7 +4,7 @@ import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs
 import { withInfo } from 'storybook-addon-vue-info'
 import TextField from '../../components/TextField.vue';
 
-<Meta title="Components|Text Field" component={TextField} />
+<Meta title="Form fields/Text field" component={TextField} />
 
 # Text Field
 
@@ -73,6 +73,30 @@ import TextField from '../../components/TextField.vue';
             placeholder="Text Field Placeholder"
             variant="error"
             v-model="inputValue"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+# Password
+
+<Preview>
+  <Story name="Password">
+    {{
+      props: {
+        inputValue: {
+          default: text('Input Value', 'Text Field')
+        },
+      },
+      components: {
+        TextField
+      },
+      template: `
+        <div class="py-16 flex justify-center">
+          <TextField
+            placeholder="Enter your password"
+            type="password"
           />
         </div>`,
     }}

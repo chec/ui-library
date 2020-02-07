@@ -1,12 +1,13 @@
 <template>
   <input
     class="input"
+    type="text"
     :value="value"
     :placeholder="placeholder"
     :disabled="this.variant === 'disabled'"
     :class="classNames"
     @input="onInput"
-    />
+  />
 </template>
 <script>
 export default {
