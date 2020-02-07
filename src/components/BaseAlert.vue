@@ -1,7 +1,15 @@
 <template>
   <div class="alert" :class="classObject">
     <div class="alert__content-container">
-      <p class="alert__tag">tag</p>
+      <p v-if="tagText" class="alert__tag">
+        {{tagText}}
+      </p>
+      <slot>
+        <p v-if="alertText" class="alert__text">
+          {{alertText}}
+        </p>
+      </slot>
+    </div>
     <div class="alert__close-icon">
       <SvgCloseIcon @click="onClose" />
     </div>
@@ -14,20 +22,45 @@ export default {
   components: {
     SvgCloseIcon
   },
-  props: ['alertText', 'tagText', 'variant'],
-  computed: {
-    classObject: function () {
-      return {
-        'alert--success': this.variant === 'success',
-        'alert--error': this.variant === 'error',
-        'alert--warning': this.variant === 'warning',
-        'alert--info': this.variant === 'info'
+  props: {
+    /**
+     * The text to alert.
+     */
+    alertText: {
+      type: String,
+      required: true,
+    },
+    /**
+     * The text for the tag.
+     */
+    tagText: {
+      type: String,
+    },
+    /**
+     * The style variant for the alert. One of "default", "success", "error", "warning", "info". Default is "default"
+     */
+    variant: {
+      type: String,
+      required: true,
+      default: 'default',
+      validator: function (value) {
+        return ['default', 'success', 'error', 'warning', 'info'].includes(value);
       }
     }
   },
+  computed: {
+    classObject() {
+      return this.variant !== 'default' && `alert--${this.variant}`;
+    }
+  },
   methods: {
-    onClose() {
-      this.$emit('close-alert')
+    onClose($event) {
+      /**
+       * Emitted when the 'close' icon is clicked.
+       * @event close-alert
+       * @type {$event}
+       */
+      this.$emit('close-alert', $event)
     }
   }
 };
@@ -39,7 +72,7 @@ export default {
     @apply flex items-center;
   }
   &__tag {
-    @apply mr-4 py-1 px-3 bg-primary-blue rounded-full text-xs text-white capitalize;
+    @apply mr-4 py-1 px-3 bg-primary-blue rounded-full text-xs text-white;
   }
   &__text {
     @apply font-bold text-primary-blue text-sm;
