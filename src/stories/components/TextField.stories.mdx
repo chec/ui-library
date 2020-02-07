@@ -46,7 +46,7 @@ import TextField from '../../components/TextField.vue';
         <div class="py-16 flex justify-center">
           <TextField
             placeholder="Text Field Placeholder"
-            :disabled="true"
+            variant="disabled"
           />
         </div>`,
     }}
@@ -69,8 +69,9 @@ import TextField from '../../components/TextField.vue';
       template: `
         <div class="py-16 flex justify-center">
           <TextField
+            class="w-full max-w-sm"
             placeholder="Text Field Placeholder"
-            :error="true"
+            variant="error"
             v-model="inputValue"
           />
         </div>`,
