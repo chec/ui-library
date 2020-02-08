@@ -1,0 +1,27 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { withInfo } from 'storybook-addon-vue-info';
+import BaseBreadcrumbs from '../../components/BaseBreadcrumbs.vue';
+
+<Meta title="Components/BaseBreadcrumbs" component={BaseBreadcrumbs} />
+
+# Breadcrumbs
+
+<Props of={BaseBreadcrumbs} />
+
+# Default:
+
+Set to iterate breadcrumbs based on `this.$route.matched`; works well with  a global `vue-router` installation.
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        BaseBreadcrumbs
+      },
+      template: `
+        <div class="py-16 flex justify-center">
+          <BaseBreadcrumbs />
+        </div>`
+    }}
+  </Story>
+</Preview>
