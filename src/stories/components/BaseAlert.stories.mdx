@@ -1,0 +1,145 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info'
+import BaseAlert from '../../components/BaseAlert.vue';
+
+<Meta title="Components|Alert" component={BaseAlert} />
+
+# Alert
+
+<Props of={BaseAlert} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        BaseAlert
+      },
+      data() {
+        return {
+          closed: false,
+        };
+      },
+      methods: {
+        close() {
+          setTimeout(() => this.closed = false, 3000);
+          this.closed = true;
+          return action('Alert closed!')();
+        }
+      },
+      props: {
+        variant: {
+          default: select('Variant', ['default', 'success', 'error', 'warning', 'info']),
+        },
+        alertText: {
+          default: text('Text to Alert', 'An alert!'),
+        },
+        tagText: {
+          default: text('Test within tag', 'Yay')
+        }
+      },
+      template: `
+        <div class="mx-auto max-w-lg pt-6">
+          <BaseAlert
+            v-if="!closed"
+            :variant="variant"
+            @close-alert="close()"
+            :alertText="alertText"
+            :tagText="tagText"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# Variants:
+
+<Preview>
+  <Story name="Variants">
+    {{
+      components: {
+        BaseAlert
+      },
+      data() {
+        return {
+          variants: ['default', 'success', 'error', 'warning', 'info'],
+          closed: [],
+        };
+      },
+      methods: {
+        close(variant) {
+          if (!this.isClosed(variant)) {
+            this.closed.push(variant);
+            setTimeout(() => {
+              this.closed.splice(this.closed.indexOf(variant), 1);
+            }, 3000)
+          }
+        },
+        isClosed(variant) {
+          return this.closed.includes(variant);
+        },
+        content(variant) {
+          return `${variant.substring(0, 1).toUpperCase()}${variant.substring(1)} variant`;
+        }
+      },
+      template: `
+        <div class="mx-auto max-w-lg">
+          <BaseAlert
+            v-for="variant in variants"
+            v-if="!isClosed(variant)"
+            class="mb-2"
+            :variant="variant"
+            @close-alert="close(variant)"
+            :alertText="content(variant)"
+            :tagText="variant"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# Format alert text using a default slot:
+
+<Preview>
+  <Story name="Formatted alert text">
+    {{
+      components: {
+        BaseAlert
+      },
+      data() {
+        return {
+          closed: false,
+        };
+      },
+      methods: {
+        close() {
+          setTimeout(() => this.closed = false, 3000);
+          this.closed = true;
+          return action('Alert closed!')();
+        }
+      },
+      props: {
+        variant: {
+          default: select('Variant', ['default', 'success', 'error', 'warning', 'info']),
+        },
+        tagText: {
+          default: text('Test within tag', 'Yay')
+        }
+      },
+      template: `
+        <div class="mx-auto max-w-lg pt-6">
+          <BaseAlert
+            v-if="!closed"
+            :variant="variant"
+            @close-alert="close()"
+            :tagText="tagText"
+          >
+            <p class="font-bold text-red-200 text-xs italic">
+              Formatted alert text.
+            </p>
+          </BaseAlert>
+        </div>`
+    }}
+  </Story>
+</Preview>
