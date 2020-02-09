@@ -1,5 +1,5 @@
 {
-  "name": "ui-library",
+  "name": "@chec/ui-library",
   "version": "0.1.0",
   "private": true,
   "main": "dist/ui-library.common.js",

@@ -39,7 +39,8 @@ export default {
     classNames() {
       return {
         'opacity-50 input--disabled': this.variant === 'disabled',
-        'input--error': this.variant === 'error'
+        'input--error': this.variant === 'error',
+        'input--empty': this.value === '',
       }
     }
   },
@@ -70,7 +71,8 @@ export default {
       @apply border-gray-300;
     };
   };
-  &--error {
+  &--error,
+  &:not(.input--empty):invalid {
     @apply border-red-300;
     &:hover,
     &:focus,

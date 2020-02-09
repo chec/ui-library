@@ -8,7 +8,7 @@ export default {
     type: {
       type: String,
       validate(type) {
-        return ['link', 'button', 'route'].includes(type);
+        return ['link', 'button', 'submit', 'route'].includes(type);
       },
       default: 'button',
     },

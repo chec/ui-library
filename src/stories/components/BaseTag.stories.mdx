@@ -1,0 +1,56 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { text, select } from '@storybook/addon-knobs';
+import Tag from '../../components/BaseTag';
+
+<Meta title="Components/Tag" component={Tag} />
+
+# Tag
+
+<Props of={Tag} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        Tag,
+      },
+      props: {
+        variant: {
+          default: select('Variant', ['default', 'success', 'error', 'warning', 'info']),
+        },
+        tagText: {
+          default: text('Text within tag', 'Yay')
+        },
+      },
+      template: `
+        <div class="mx-auto max-w-lg pt-6">
+          <Tag :variant="variant">{{ tagText }}</Tag>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# Variants
+
+<Preview>
+  <Story name="Variants">
+    {{
+      components: {
+        Tag,
+      },
+      data() {
+        return {
+          variants: ['default', 'success', 'error', 'warning', 'info'],
+        };
+      },
+      template: `
+        <div class="mx-auto max-w-lg pt-6">
+          <Tag
+            v-for="variant in variants"
+            class="mb-2"
+            :variant="variant"
+          >{{ variant }}</Tag>
+        </div>`
+    }}
+  </Story>
+</Preview>
