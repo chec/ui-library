@@ -1,9 +1,9 @@
 <template>
   <div class="alert" :class="classObject">
     <div class="alert__content-container">
-      <p v-if="tagText" class="alert__tag">
+      <BaseTag v-if="tagText" :variant="variant">
         {{tagText}}
-      </p>
+      </BaseTag>
       <slot>
         <p v-if="alertText" class="alert__text">
           {{alertText}}
@@ -17,9 +17,11 @@
 </template>
 <script>
 import SvgCloseIcon from './../assets/svgs/close-icon.svg';
+import BaseTag from './BaseTag';
 export default {
   name: 'TextField',
   components: {
+    BaseTag,
     SvgCloseIcon
   },
   props: {
@@ -41,7 +43,6 @@ export default {
      */
     variant: {
       type: String,
-      required: true,
       default: 'default',
       validator: function (value) {
         return ['default', 'success', 'error', 'warning', 'info'].includes(value);
@@ -71,9 +72,6 @@ export default {
   &__content-container {
     @apply flex items-center;
   }
-  &__tag {
-    @apply mr-4 py-1 px-3 bg-primary-blue rounded-full text-xs text-white;
-  }
   &__text {
     @apply font-bold text-primary-blue text-sm;
   }
@@ -82,36 +80,24 @@ export default {
   }
   &--success {
     @apply bg-green-100;
-    .alert__tag {
-      @apply bg-green-600;
-    }
     .alert__text {
       @apply text-green-600;
     }
   }
   &--error {
     @apply bg-red-100;
-    .alert__tag {
-      @apply bg-red-600;
-    }
     .alert__text {
       @apply text-red-600;
     }
   }
   &--warning {
     @apply bg-orange-100;
-    .alert__tag {
-      @apply bg-orange-600;
-    }
     .alert__text {
       @apply text-orange-600;
     }
   }
   &--info {
     @apply bg-purple-100;
-    .alert__tag {
-      @apply bg-purple-600;
-    }
     .alert__text {
       @apply text-purple-600;
     }

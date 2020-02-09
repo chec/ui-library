@@ -2,7 +2,7 @@ import Components from './components';
 import config from './../tailwind.config.js';
 import SvgIcons from './assets/svgs'
 
-module.exports = {
+export default {
   config,
   ...Components,
   icons: {
