@@ -5,7 +5,7 @@
 </template>
 <style lang="scss">
 .tag {
-  @apply mr-4 py-1 px-3 bg-primary-blue rounded-full text-xs text-white;
+  @apply mr-2 py-1 px-3 bg-primary-blue rounded-full text-xs text-white;
 
   &--success {
     @apply bg-green-600;
