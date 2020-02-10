@@ -11,26 +11,27 @@
   </nav>
 </template>
 <script>
-import SvgRightArrow from './../assets/svgs/right-arrow.svg';
+import SvgRightArrow from '../assets/svgs/right-arrow.svg';
+
 export default {
   name: 'BaseBreadcrumbs',
   components: {
-    SvgRightArrow
+    SvgRightArrow,
   },
   computed: {
     crumbs() {
       const crumbs = [];
       if (!this.$route) {
-        throw new Error("Could not locate this.$route from within <BaseBreadcrumbs>")
+        throw new Error('Could not locate this.$route from within <BaseBreadcrumbs>');
       }
       this.$route.matched.forEach((route) => {
         if (route.meta && route.meta.breadcrumb) {
           crumbs.push(route);
         }
-      })
-      return crumbs
-    }
-  }
+      });
+      return crumbs;
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
