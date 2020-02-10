@@ -1,11 +1,12 @@
-import Components from './components';
-import config from '../tailwind.config';
 import SvgIcons from './assets/svgs';
 
-export default {
-  config,
-  ...Components,
-  icons: {
-    ...SvgIcons,
-  },
+import BaseButton from './components/BaseButton.vue';
+import TextField from './components/TextField.vue';
+import BaseTag from './components/BaseTag.vue';
+
+export {
+  BaseButton,
+  TextField,
+  BaseTag,
+  SvgIcons as Icons,
 };

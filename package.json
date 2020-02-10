@@ -2,7 +2,7 @@
   "name": "@chec/ui-library",
   "version": "0.1.0",
   "private": true,
-  "main": "src/index.js",
+  "main": "dist/ui-library.common.js",
   "scripts": {
     "lint": "vue-cli-service lint",
     "lint:fix": "vue-cli-service lint --fix",
