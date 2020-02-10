@@ -33,9 +33,9 @@ export default {
     variant: {
       type: String,
       default: 'default',
-      validator: function (value) {
+      validator(value) {
         return ['default', 'success', 'error', 'warning', 'info'].includes(value);
-      }
+      },
     },
   },
   computed: {
@@ -46,7 +46,7 @@ export default {
      */
     classObject() {
       return this.variant === 'default' ? '' : `tag--${this.variant}`;
-    }
+    },
   },
 };
 </script>

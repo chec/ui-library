@@ -3,5 +3,5 @@ import TextField from './components/TextField.vue';
 
 export default {
   BaseButton,
-  TextField
-}
+  TextField,
+};

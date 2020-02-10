@@ -18,22 +18,23 @@ export default {
      */
     variant: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
-     * The value the v-model directive utilizes, see https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
+     * The value the v-model directive utilizes
+     * @see https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
      */
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The value used for the inner `<input>`'s placeholder html attribute
      */
     placeholder: {
       type: String,
-      default: 'Text Field'
-    }
+      default: 'Text Field',
+    },
   },
   computed: {
     classNames() {
@@ -41,8 +42,8 @@ export default {
         'opacity-50 input--disabled': this.variant === 'disabled',
         'input--error': this.variant === 'error',
         'input--empty': this.value === '',
-      }
-    }
+      };
+    },
   },
   methods: {
     onInput($event) {
@@ -51,9 +52,9 @@ export default {
        * @event input
        * @type {$event.target.value}
        */
-      this.$emit('input', $event.target.value)
-    }
-  }
+      this.$emit('input', $event.target.value);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
