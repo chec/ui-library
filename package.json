@@ -4,8 +4,6 @@
   "private": true,
   "main": "dist/ui-library.common.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lint:fix": "vue-cli-service lint --fix",
     "build-lib": "vue-cli-service build --target lib --name ui-library src/index.js",
