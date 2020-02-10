@@ -10,6 +10,9 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+
+    // Change line length from 100 -> 120 to have consistency with PHP
+    'max-len': ['error', 120],
   },
   parserOptions: {
     parser: 'babel-eslint',

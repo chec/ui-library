@@ -16,13 +16,14 @@
   </div>
 </template>
 <script>
-import SvgCloseIcon from './../assets/svgs/close-icon.svg';
-import BaseTag from './BaseTag';
+import SvgCloseIcon from '../assets/svgs/close-icon.svg';
+import BaseTag from './BaseTag.vue';
+
 export default {
   name: 'TextField',
   components: {
     BaseTag,
-    SvgCloseIcon
+    SvgCloseIcon,
   },
   props: {
     /**
@@ -44,15 +45,15 @@ export default {
     variant: {
       type: String,
       default: 'default',
-      validator: function (value) {
+      validator(value) {
         return ['default', 'success', 'error', 'warning', 'info'].includes(value);
-      }
-    }
+      },
+    },
   },
   computed: {
     classObject() {
       return this.variant !== 'default' && `alert--${this.variant}`;
-    }
+    },
   },
   methods: {
     onClose($event) {
@@ -61,9 +62,9 @@ export default {
        * @event close-alert
        * @type {$event}
        */
-      this.$emit('close-alert', $event)
-    }
-  }
+      this.$emit('close-alert', $event);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
