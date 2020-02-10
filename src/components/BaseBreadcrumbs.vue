@@ -3,7 +3,7 @@
     <ul v-if="crumbs.length" class="breadcrumb">
       <li v-for="(crumb, i) in crumbs" :key="i">
         {{crumb.meta.breadcrumb}}
-        <div class="breadcrumb__right-arrow">
+        <div v-if="(i + 1) !== crumbs.length" class="breadcrumb__right-arrow">
           <SvgRightArrow />
         </div>
       </li>
@@ -19,13 +19,13 @@ export default {
   },
   computed: {
     crumbs() {
-      let crumbs = [];
+      const crumbs = [];
       if (!this.$route) {
         throw new Error("Could not locate this.$route from within <BaseBreadcrumbs>")
       }
       this.$route.matched.forEach((route) => {
         if (route.meta && route.meta.breadcrumb) {
-          crumbs = [...crumbs, route]
+          crumbs.push(route);
         }
       })
       return crumbs
@@ -41,6 +41,9 @@ export default {
   }
   li {
     @apply flex items-center pr-3;
+    &:last-child {
+      @apply font-bold;
+    }
   }
 }
 </style>

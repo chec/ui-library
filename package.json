@@ -34,7 +34,10 @@
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
     "storybook-addon-vue-info": "^1.4.1",
+    "storybook-vue-router": "^1.0.7",
+    "tailwindcss-plugins": "^0.3.0",
     "vue-cli-plugin-storybook": "^1.2.0",
+    "vue-router": "^3.1.5",
     "vue-svg-loader": "^0.15.0",
     "vue-template-compiler": "^2.6.10"
   },
