@@ -1,7 +1,7 @@
 <template>
     <div
         class="radio-btn"
-        :class="{ 'is-active' : isChecked, 'is-disabled' : disabled }"
+        :class="{ 'active' : isChecked, 'disabled' : disabled }"
     >
         <input
             type="radio"
@@ -15,7 +15,7 @@
         />
         <label :for="value" class="radio-btn__container">
             <div class="radio-btn__content">
-                <!-- @slot Custom label markup (bind 'label' string, 'isChecked' boolean, 'disabled' boolean -->
+                <!--  Custom label slot (bind 'label' string, 'isChecked' boolean, 'disabled' boolean -->
                 <slot name="label" v-bind="{ label, isChecked, disabled }">
                 <div v-if="label" class="radio-btn__label">{{ label }}</div>
                 </slot>
@@ -72,3 +72,36 @@ export default {
 }
 
 </script>
+
+<style lang="scss">
+
+.radio-btn {
+    display: flex;
+    font-size: 16px;
+
+    &.active{
+        color: 1px solid red;
+    }
+
+    &__input{
+        // position: absolute;
+        // opacity: 0;
+    }
+
+    &__container {
+        flex: 1;
+        display: flex;
+        cursor: pointer;
+    }
+
+    &__content {
+        flex: 1;
+    }
+
+    &__label {
+        display: flex;
+        font-size: 15px;
+    }
+}
+
+</style>

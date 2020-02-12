@@ -21,6 +21,17 @@ import RadioButton from '../../components/RadioButton.vue';
         label: {
           default: text("label", "Option 1", "Props")
         },
+        disabled: {
+            default: boolean("disabled", false, "Props")
+        },
+        required: {
+            default: boolean("required", false, "Props")
+        }
+      },
+      data(){
+          return {
+              checked: ""
+          };
       },
       
       template: `
@@ -33,6 +44,7 @@ import RadioButton from '../../components/RadioButton.vue';
             :required="required"
             v-model="checked"
           />
+          
         </div>`,
     }}
   </Story>
