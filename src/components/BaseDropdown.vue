@@ -1,6 +1,7 @@
 <template>
   <div class="dropdown">
     <div class="dropdown__control"
+      :class="{ 'dropdown__control--open': showDropdown}"
       tabindex="0"
       @click="onControlClick"
       @keyup.enter="onControlClick"
@@ -64,12 +65,18 @@ export default {
       > span {
         @apply flex items-center justify-between w-full font-lato p-4 text-sm text-gray-500;
       }
+      &--open {
+        @apply border border-gray-500;
+      }
     }
     &__menu {
       @apply w-full bg-white border border-gray-300 rounded-sm;
     }
     &__option {
       @apply font-lato text-sm text-gray-600 px-4 py-3;
+      &:not(:last-child) {
+        @apply border-b border-gray-200;
+      }
     }
     &__down-arrow {
       @apply flex flex-col justify-center w-5 h-5 fill-current text-gray-600;
