@@ -38,31 +38,5 @@ import RadioButton from '../../components/RadioButton.vue';
   </Story>
 </Preview>
 
-# Radio Group
 
-<Preview>
-  <Story name="radio-group">
-    {{
-      props: {
-        label: {
-          default: text('Label', 'Label')
-        },
-      },
-      components: {
-        RadioButton
-      },
-      template: `
-        <div class="py-16 flex justify-center">
-          <RadioButton
-            label="Label"
-            v-model="selected"
-          />
-         <RadioButton
-            label="Label"
-            v-model="selected"
-          />
-        </div>`,
-    }}
-  </Story>
-</Preview>
 
