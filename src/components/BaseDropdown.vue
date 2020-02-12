@@ -14,9 +14,12 @@
       </span>
     </div>
     <div v-if="showDropdown" class="dropdown__menu">
-      <div v-for="(option, i) in options" :key="i" class="dropdown__option">
-        <span>{{option}}</span>
-      </div>
+      <BaseDropdownOption
+        v-for="([optionKey, optionValue], i) in options"
+        :key="i"
+        :optionKey="optionKey"
+        :optionValue="optionValue"
+      />
     </div>
   </div>
 </template>
@@ -24,10 +27,13 @@
 <script>
 import SvgDownArrow from '../assets/svgs/down-arrow.svg';
 
+import BaseDropdownOption from './BaseDropdownOption.vue';
+
 export default {
   name: 'BaseDropdown',
   components: {
     SvgDownArrow,
+    BaseDropdownOption,
   },
   props: {
     /**
