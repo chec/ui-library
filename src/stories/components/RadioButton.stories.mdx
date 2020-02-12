@@ -1,0 +1,68 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info';
+import RadioButton from '../../components/RadioButton.vue';
+
+<Meta title="Form fields/Radio button" component={ RadioButton } />
+
+
+# Radio button
+
+<Props of ={ RadioButton } />
+
+<Preview>
+  <Story name="default">
+    {{
+    components: {
+        RadioButton
+      },
+      props: {
+        label: {
+          default: text("label", "Option 1", "Props")
+        },
+      },
+      
+      template: `
+        <div class="py-16 flex justify-center">
+          <RadioButton
+            :label="label"
+            :name="name"
+            :value="value"
+            :disabled="disabled"
+            :required="required"
+            v-model="checked"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+# Radio Group
+
+<Preview>
+  <Story name="radio-group">
+    {{
+      props: {
+        label: {
+          default: text('Label', 'Label')
+        },
+      },
+      components: {
+        RadioButton
+      },
+      template: `
+        <div class="py-16 flex justify-center">
+          <RadioButton
+            label="Label"
+            v-model="selected"
+          />
+         <RadioButton
+            label="Label"
+            v-model="selected"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
