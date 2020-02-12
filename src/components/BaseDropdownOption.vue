@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown-option" @click="$emit('option-selected', optionKey, optionValue)">
+  <div class="dropdown-option" @click="emitOptionsSelectedEvent" @keyup.enter="emitOptionsSelectedEvent" tabindex="0">
     <slot>
       <span>{{optionValue}}</span>
     </slot>
@@ -23,12 +23,27 @@ export default {
       type: String,
     },
   },
+  methods: {
+    emitOptionsSelectedEvent() {
+      this.$emit('option-selected', {
+        key: this.optionKey,
+        value: this.optionValue,
+      });
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
   .dropdown-option {
-    @apply font-lato text-sm text-gray-600 px-4 py-3;
+    @apply font-lato text-sm text-gray-600 px-4 py-3 outline-none cursor-pointer;
+    &:hover {
+      @apply bg-gray-100;
+    }
+    &:focus,
+    &:active {
+      @apply bg-gray-100;
+    };
     &:not(:last-child) {
       @apply border-b border-gray-200;
     }

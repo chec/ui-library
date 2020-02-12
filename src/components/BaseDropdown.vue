@@ -3,9 +3,9 @@
     <div class="dropdown__control"
       :class="{ 'dropdown__control--open': showDropdown}"
       tabindex="0"
-      @click="onControlClick"
-      @keyup.enter="onControlClick"
-      @keyup.down="onControlClick">
+      @click="toggleDropdown"
+      @keyup.enter="toggleDropdown"
+      @keyup.down="toggleDropdown">
       <span>
         Dropdown
         <div class="dropdown__down-arrow">
@@ -50,11 +50,20 @@ export default {
     };
   },
   methods: {
-    onControlClick() {
+    toggleDropdown() {
       this.showDropdown = !this.showDropdown;
     },
-    onOptionSelect(optionKey, optionValue) {
-      this.$emit('option-selected', optionKey, optionValue);
+    onOptionSelect(event) {
+      this.toggleDropdown();
+      /**
+      * Emitted when an inner `<BaseDropdownOption>`'s `option-selected` event is emitted.
+      * @event option-selected
+      * @type {object}
+      * @property {String} - key - the key of the option
+      * @property {string} - value - the value of the option, by default is
+      * used as display text in `<BaseDropdownOption>`
+      */
+      this.$emit('option-selected', event);
     },
   },
 };
