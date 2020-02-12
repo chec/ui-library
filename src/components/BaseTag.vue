@@ -1,5 +1,8 @@
 <template>
-  <span class="tag" :class="this.classObject">
+  <span
+    class="tag"
+    :class="this.classObject"
+  >
     <slot />
   </span>
 </template>

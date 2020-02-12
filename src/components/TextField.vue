@@ -7,7 +7,7 @@
     :disabled="this.variant === 'disabled'"
     :class="classNames"
     @input="onInput"
-  />
+  >
 </template>
 <script>
 export default {

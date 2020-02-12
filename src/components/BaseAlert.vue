@@ -1,12 +1,21 @@
 <template>
-  <div class="alert" :class="classObject">
+  <div
+    class="alert"
+    :class="classObject"
+  >
     <div class="alert__content-container">
-      <BaseTag v-if="tagText" :variant="variant">
-        {{tagText}}
+      <BaseTag
+        v-if="tagText"
+        :variant="variant"
+      >
+        {{ tagText }}
       </BaseTag>
       <slot>
-        <p v-if="alertText" class="alert__text">
-          {{alertText}}
+        <p
+          v-if="alertText"
+          class="alert__text"
+        >
+          {{ alertText }}
         </p>
       </slot>
     </div>

@@ -1,9 +1,18 @@
 <template>
   <nav>
-    <ul v-if="crumbs.length" class="breadcrumb">
-      <li v-for="(crumb, i) in crumbs" :key="i">
-        {{crumb.meta.breadcrumb}}
-        <div v-if="(i + 1) !== crumbs.length" class="breadcrumb__right-arrow">
+    <ul
+      v-if="crumbs.length"
+      class="breadcrumb"
+    >
+      <li
+        v-for="(crumb, i) in crumbs"
+        :key="i"
+      >
+        {{ crumb.meta.breadcrumb }}
+        <div
+          v-if="(i + 1) !== crumbs.length"
+          class="breadcrumb__right-arrow"
+        >
           <SvgRightArrow />
         </div>
       </li>
