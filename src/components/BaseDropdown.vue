@@ -19,6 +19,7 @@
         :key="i"
         :optionKey="optionKey"
         :optionValue="optionValue"
+        @option-selected="onOptionSelect"
       />
     </div>
   </div>
@@ -51,6 +52,9 @@ export default {
   methods: {
     onControlClick() {
       this.showDropdown = !this.showDropdown;
+    },
+    onOptionSelect(optionKey, optionValue) {
+      this.$emit('option-selected', optionKey, optionValue);
     },
   },
 };
