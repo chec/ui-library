@@ -17,7 +17,7 @@
         </div>
       </span>
     </div>
-    <div v-if="showDropdown" class="dropdown__menu">
+    <BasePopover v-if="showDropdown">
       <BaseDropdownOption
         v-for="({value, label}, i) in options"
         :key="i"
@@ -26,7 +26,7 @@
       >
         {{label}}
       </BaseDropdownOption>
-    </div>
+    </BasePopover>
   </div>
 </template>
 
@@ -34,12 +34,14 @@
 import SvgDownArrow from '../assets/svgs/down-arrow.svg';
 
 import BaseDropdownOption from './BaseDropdownOption.vue';
+import BasePopover from './BasePopover.vue';
 
 export default {
   name: 'BaseDropdown',
   components: {
     SvgDownArrow,
     BaseDropdownOption,
+    BasePopover,
   },
   props: {
     /**
@@ -119,9 +121,6 @@ export default {
       &--open {
         @apply border border-gray-500;
       }
-    }
-    &__menu {
-      @apply w-full bg-white border border-gray-300 rounded-sm;
     }
     &__option {
       @apply font-lato text-sm text-gray-600 px-4 py-3;
