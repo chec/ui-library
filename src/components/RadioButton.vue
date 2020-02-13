@@ -81,10 +81,11 @@ export default {
     font-size: 16px;
     cursor: pointer;
     position: relative;
+    width: 111px;
 
-    &.active {
-        background-color: #fff;
-    }
+    // &.active {
+    //     background-color: #fff;
+    // }
 
     // Hides browser's default radio style
     &__input{
@@ -124,6 +125,7 @@ export default {
 
     &__label {
         @apply flex font-lato text-sm text-gray-600;
+        padding-left: 24px;
     }
 }
 

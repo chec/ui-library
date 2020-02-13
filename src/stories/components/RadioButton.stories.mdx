@@ -18,6 +18,42 @@ import RadioButton from '../../components/RadioButton.vue';
         RadioButton
       },
       props: {
+        disabled: {
+            default: boolean("Disable", false, "Props")
+        },
+        required: {
+            default: boolean("Require", false, "Props")
+        }
+      },
+      data(){
+          return {
+              checked: false,
+          };
+      },
+      
+      template: `
+        <div class="py-16 flex justify-center bg-gray-100">
+          <RadioButton
+            :name="name"
+            :value="value"
+            :disabled="disabled"
+            :required="required"
+            v-model="checked"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+# Radio button with label
+
+<Preview>
+  <Story name="label">
+    {{
+    components: {
+        RadioButton
+      },
+      props: {
         label: {
           default: text("Label", "Option 1", "Props")
         },
@@ -30,7 +66,7 @@ import RadioButton from '../../components/RadioButton.vue';
       },
       data(){
           return {
-              checked: ""
+              checked: false
           };
       },
       
@@ -44,11 +80,63 @@ import RadioButton from '../../components/RadioButton.vue';
             :required="required"
             v-model="checked"
           />
-          
         </div>`,
     }}
   </Story>
 </Preview>
 
+# Radio button group
 
-
+<Preview>
+  <Story name="radio group">
+    {{
+    components: {
+        RadioButton
+      },
+      props: {
+        label: {
+          default: text("Label", "Option 1", "Props")
+        },
+        disabled: {
+            default: boolean("Disable", false, "Props")
+        },
+        required: {
+            default: boolean("Require", false, "Props")
+        }
+      },
+      data(){
+          return {
+              checked: false
+          };
+      },
+      
+      template: `
+        <div class="py-16 flex justify-center bg-gray-100">
+          <RadioButton
+            label="Option A"
+            :name="name"
+            value="a"
+            :disabled="disabled"
+            :required="required"
+            v-model="checked"
+          />
+          <RadioButton
+            label="Option B"
+            :name="name"
+            value="b"
+            :disabled="disabled"
+            :required="required"
+            v-model="checked"
+          />
+          <RadioButton
+            label="Option C"
+            :name="name"
+            value="c"
+            :disabled="disabled"
+            :required="required"
+            v-model="checked"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
