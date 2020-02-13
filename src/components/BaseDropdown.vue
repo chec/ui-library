@@ -7,7 +7,11 @@
       @keyup.enter="toggleDropdown"
       @keyup.down="toggleDropdown">
       <span>
-        Dropdown
+        {{
+          value ?
+          optionsByValue[value].label :
+          "Dropdown"
+        }}
         <div class="dropdown__down-arrow">
           <SvgDownArrow />
         </div>
@@ -15,12 +19,12 @@
     </div>
     <div v-if="showDropdown" class="dropdown__menu">
       <BaseDropdownOption
-        v-for="([optionKey, optionValue], i) in options"
+        v-for="({value, label}, i) in options"
         :key="i"
-        :value="optionKey"
+        :value="value"
         @option-selected="onOptionSelect"
       >
-        {{optionValue}}
+        {{label}}
       </BaseDropdownOption>
     </div>
   </div>
@@ -38,6 +42,12 @@ export default {
     BaseDropdownOption,
   },
   props: {
+    /**
+     * The current value of selected option for the dropdown
+     */
+    value: {
+      type: String,
+    },
     /**
      * The options for the dropdown
      */
@@ -76,7 +86,16 @@ export default {
       * @type {String}
       * @property {String} - key - the value of the option
       */
-      this.$emit('option-selected', event);
+      this.$emit('input', event);
+    },
+  },
+  computed: {
+    optionsByValue() {
+      return this.options.reduce((newObj, currentOption) => {
+        const optionsByValue = newObj;
+        optionsByValue[currentOption.value] = currentOption;
+        return optionsByValue;
+      }, {});
     },
   },
 };

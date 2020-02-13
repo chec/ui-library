@@ -16,12 +16,17 @@ import BaseDropdown from '../../components/BaseDropdown.vue';
       components: {
         BaseDropdown
       },
+      data() {
+        return {
+          option: "optionKey1",
+        }
+      },
       methods: {
         onOptionSelect: action('option-selected'),
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
-          <BaseDropdown class="max-w-2xl" @option-selected="onOptionSelect" :options="[['optionKey', 'Option Value'], ['optionKey2', 'Option Value 2']]"/>
+          <BaseDropdown class="max-w-2xl" v-model="option" @input="onOptionSelect" :options="[{value: 'optionKey1', label: 'Option Value 1'}, {value: 'optionKey2', label: 'Option Value 2'}]"/>
         </div>`
     }}
   </Story>
