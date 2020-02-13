@@ -9,7 +9,7 @@ import RadioButton from '../../components/RadioButton.vue';
 
 # Radio button
 
-<Props of ={RadioButton} />
+<Props of ={ RadioButton } />
 
 <Preview>
   <Story name="default">
@@ -42,7 +42,7 @@ import RadioButton from '../../components/RadioButton.vue';
             :value="value"
             :disabled="disabled"
             :required="required"
-            :checked= false
+            v-model="checked"
           />
           
         </div>`,

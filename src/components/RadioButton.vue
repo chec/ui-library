@@ -89,7 +89,7 @@ export default {
     // Hides browser's default radio style
     &__input{
         position: absolute;
-        opacity: 0;
+        // opacity: 0;
         padding: 10px;
         z-index: 2;
         margin: 0;
@@ -115,6 +115,7 @@ export default {
         display: flex;
         cursor: pointer;
         padding: 10px;
+        background: transparent;
     }
 
     &__content {
