@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown">
+  <div class="dropdown" ref="dropdown-el">
     <div class="dropdown__control"
       :class="{ 'dropdown__control--open': showDropdown}"
       tabindex="0"
@@ -17,10 +17,11 @@
       <BaseDropdownOption
         v-for="([optionKey, optionValue], i) in options"
         :key="i"
-        :optionKey="optionKey"
-        :optionValue="optionValue"
+        :value="optionKey"
         @option-selected="onOptionSelect"
-      />
+      >
+        {{optionValue}}
+      </BaseDropdownOption>
     </div>
   </div>
 </template>
@@ -49,19 +50,31 @@ export default {
       showDropdown: false,
     };
   },
+  created() {
+    // add event listener to listen to outside click events
+    window.addEventListener('click', this.onOutsideClick);
+  },
+  beforeDestroy() {
+    // remove event listeners
+    window.removeEventListener('click', this.onOutsideClick);
+  },
   methods: {
     toggleDropdown() {
       this.showDropdown = !this.showDropdown;
     },
+    onOutsideClick(e) {
+      if (!this.$refs['dropdown-el'].contains(e.target) && this.showDropdown) {
+        this.toggleDropdown();
+      }
+    },
     onOptionSelect(event) {
+      // toggle the dropdown
       this.toggleDropdown();
       /**
       * Emitted when an inner `<BaseDropdownOption>`'s `option-selected` event is emitted.
       * @event option-selected
-      * @type {object}
-      * @property {String} - key - the key of the option
-      * @property {string} - value - the value of the option, by default is
-      * used as display text in `<BaseDropdownOption>`
+      * @type {String}
+      * @property {String} - key - the value of the option
       */
       this.$emit('option-selected', event);
     },
@@ -80,7 +93,7 @@ export default {
       &:focus,
       &:active {
         @apply border border-gray-500;
-      };
+      }
       > span {
         @apply flex items-center justify-between w-full font-lato p-4 text-sm text-gray-500;
       }

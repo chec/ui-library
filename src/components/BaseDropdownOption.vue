@@ -1,7 +1,6 @@
 <template>
   <div class="dropdown-option" @click="emitOptionsSelectedEvent" @keyup.enter="emitOptionsSelectedEvent" tabindex="0">
     <slot>
-      <span>{{optionValue}}</span>
     </slot>
   </div>
 </template>
@@ -11,24 +10,16 @@ export default {
   name: 'BaseDropdownOption',
   props: {
     /**
-     * The option key
+     *
+     * option's value
      */
-    optionKey: {
-      type: String,
-    },
-    /**
-     * The option value
-     */
-    optionValue: {
+    value: {
       type: String,
     },
   },
   methods: {
     emitOptionsSelectedEvent() {
-      this.$emit('option-selected', {
-        key: this.optionKey,
-        value: this.optionValue,
-      });
+      this.$emit('option-selected', this.value);
     },
   },
 };
