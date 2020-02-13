@@ -9,7 +9,7 @@ import RadioButton from '../../components/RadioButton.vue';
 
 # Radio button
 
-<Props of ={ RadioButton } />
+<Props of ={RadioButton} />
 
 <Preview>
   <Story name="default">
@@ -19,13 +19,13 @@ import RadioButton from '../../components/RadioButton.vue';
       },
       props: {
         label: {
-          default: text("label", "Option 1", "Props")
+          default: text("Label", "Option 1", "Props")
         },
         disabled: {
-            default: boolean("disabled", false, "Props")
+            default: boolean("Disable", false, "Props")
         },
         required: {
-            default: boolean("required", false, "Props")
+            default: boolean("Require", false, "Props")
         }
       },
       data(){
@@ -35,14 +35,14 @@ import RadioButton from '../../components/RadioButton.vue';
       },
       
       template: `
-        <div class="py-16 flex justify-center">
+        <div class="py-16 flex justify-center bg-gray-100">
           <RadioButton
             :label="label"
             :name="name"
             :value="value"
             :disabled="disabled"
             :required="required"
-            v-model="checked"
+            :checked= false
           />
           
         </div>`,
