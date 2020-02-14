@@ -20,7 +20,7 @@ import SvgCloseIcon from '../assets/svgs/close-icon.svg';
 import BaseTag from './BaseTag.vue';
 
 export default {
-  name: 'TextField',
+  name: 'BaseAlert',
   components: {
     BaseTag,
     SvgCloseIcon,
