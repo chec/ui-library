@@ -78,36 +78,57 @@ export default {
 
 .radio-btn {
     display: flex;
-    font-size: 16px;
+    // font-size: 16px;
     cursor: pointer;
     position: relative;
-    width: 111px;
-
-    // &.active {
-    //     background-color: #fff;
-    // }
+    padding: 10px;
 
     // Hides browser's default radio style
     &__input{
-        position: absolute;
-        // opacity: 0;
-        padding: 10px;
-        z-index: 2;
+        // padding: 10px;
+        // z-index: 2;
+        @apply bg-white border border-gray-400;
         margin: 0;
-        width: 100%;
-        height: 100%;
+        width: 16px;
+        height: 16px;
+        -webkit-appearance: none;
+        border-radius: 50px;
+        display: inline-block;
+        position: relative;
 
         &:focus {
-            outline: none;
+            @apply outline-none;
+        }
+
+        &:hover{
+          cursor: pointer;
+          @apply bg-white border border-gray-500;
+        }
+
+        &:active{
+          @apply bg-gray-300 border border-gray-600;
+        }
+
+        &:disabled{
+          @apply bg-white border border-gray-400;
         }
     }
 
-    &:hover{
-        @apply border-gray-500;
+    &__input:checked:after {
+        @apply bg-gray-500;
+        content: '';
+        width: 8px;
+        height: 8px;
+        top: 3px;
+        left: 3px;
+        border-radius: 50px;
+        position: absolute;
+        text-shadow: 0px;
+        // font-size: 20px;
     }
 
-    &:active{
-        @apply border-gray-600 bg-gray-300;
+    &__input:checked{
+      @apply bg-white border border-gray-500;
     }
 
 
@@ -115,18 +136,18 @@ export default {
         flex: 1;
         display: flex;
         cursor: pointer;
-        padding: 10px;
         background: transparent;
     }
 
-    &__content {
-        flex: 1;
-    }
+    // &__content {
+    //     flex: 1;
+    // }
 
     &__label {
         @apply flex font-lato text-sm text-gray-600;
         padding-left: 24px;
     }
+
 }
 
 </style>

@@ -95,7 +95,7 @@ import RadioButton from '../../components/RadioButton.vue';
       },
       props: {
         label: {
-          default: text("Label", "Option 1", "Props")
+          default: text("Label", "Option", "Props")
         },
         disabled: {
             default: boolean("Disable", false, "Props")
@@ -112,8 +112,9 @@ import RadioButton from '../../components/RadioButton.vue';
       
       template: `
         <div class="py-16 flex justify-center bg-gray-100">
+        <ul>
           <RadioButton
-            label="Option A"
+            :label="label"
             :name="name"
             value="a"
             :disabled="disabled"
@@ -121,7 +122,7 @@ import RadioButton from '../../components/RadioButton.vue';
             v-model="checked"
           />
           <RadioButton
-            label="Option B"
+            label="Option 2"
             :name="name"
             value="b"
             :disabled="disabled"
@@ -129,13 +130,22 @@ import RadioButton from '../../components/RadioButton.vue';
             v-model="checked"
           />
           <RadioButton
-            label="Option C"
+            label="Option 3"
             :name="name"
             value="c"
             :disabled="disabled"
             :required="required"
             v-model="checked"
           />
+          <RadioButton
+            label="Disabled"
+            :name="name"
+            value="d"
+            disabled="disabled"
+            :required="required"
+            v-model="checked"
+          />
+          <ul>
         </div>`,
     }}
   </Story>
