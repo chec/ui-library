@@ -2,6 +2,11 @@ import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import BaseDropdown from '../../components/BaseDropdown.vue';
 import BaseOption from '../../components/BaseOption.vue';
+const defaultOptions = [
+  { value: '', label: 'Select an option' },
+  { value: 'optionKey1', label: 'Option Value 2' },
+  { value: 'optionKey2', label: 'Option Value 3' }
+];
 
 <Meta title="Components/BaseDropdown" component={BaseDropdown} />
 
@@ -21,11 +26,8 @@ import BaseOption from '../../components/BaseOption.vue';
       data() {
         return {
           option: "",
-          options: [{value: '', label: 'Select an option'}, { value: 'optionKey1', label: 'Option Value 3'}, {value: 'optionKey2', label: 'Option Value 2'}],
+          options: defaultOptions,
         }
-      },
-      methods: {
-        onOptionSelect: action('option-selected'),
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
@@ -51,11 +53,8 @@ import BaseOption from '../../components/BaseOption.vue';
       data() {
         return {
           option: "",
-          options: [{value: '', label: 'Select an option'}, { value: 'optionKey1', label: 'Option Value 3'}, {value: 'optionKey2', label: 'Option Value 2'}],
+          options: defaultOptions,
         }
-      },
-      methods: {
-        onOptionSelect: action('option-selected'),
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
@@ -65,6 +64,36 @@ import BaseOption from '../../components/BaseOption.vue';
             v-model="option"
             :options="options"
             />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# In context:
+
+<Preview>
+  <Story name="In context">
+    {{
+      components: {
+        BaseDropdown,
+        BaseOption,
+      },
+      data() {
+        return {
+          option: "",
+          options: defaultOptions,
+        }
+      },
+      template: `
+        <div class="p-16 bg-gray-100 text-center">
+          <div>Some content</div>
+          <BaseDropdown
+            class="max-w-md mx-auto"
+            placeholder="Example Dropdown Placeholder"
+            v-model="option"
+            :options="options"
+            />
+            <div>Some more content</div>
         </div>`
     }}
   </Story>
