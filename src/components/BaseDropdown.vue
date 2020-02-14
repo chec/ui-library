@@ -4,13 +4,11 @@
       :class="{ 'dropdown__control--open': showDropdown}"
       tabindex="0"
       @click="toggleDropdown"
-      @keyup.enter="toggleDropdown"
-      @keyup.down="toggleDropdown">
+      @keyup.space="toggleDropdown"
+      @keyup.up="toggleDropdown">
       <span>
         {{
-          value ?
-          optionsByValue[value].label :
-          (placeholder || optionsByValue[value].label)
+          placeholderOrValue
         }}
         <div class="dropdown__down-arrow">
           <SvgDownArrow />
@@ -19,10 +17,10 @@
     </div>
     <BasePopover v-if="showDropdown">
       <BaseOption
-        v-for="({value, label}, i) in options"
-        :key="i"
+        v-for="({value, label}) in options"
+        :key="value"
         :value="value"
-        @option-selected="onOptionSelect"
+        @option-selected="(optionValue) => { onOptionSelect(optionValue, label) }"
         :disabled="!value"
       >
         {{label}}
@@ -66,6 +64,7 @@ export default {
   },
   data() {
     return {
+      selectedOption: {},
       showDropdown: false,
     };
   },
@@ -86,19 +85,26 @@ export default {
         this.toggleDropdown();
       }
     },
-    onOptionSelect(event) {
+    onOptionSelect(value, label) {
+      // set selectedOption
+      this.selectedOption = { value, label };
       // toggle the dropdown
       this.toggleDropdown();
       /**
-      * Emitted when an inner `<BaseOption>`'s `option-selected` event is emitted.
+      * Emitted when an option is selected.
       * @event input
       * @type {String}
       * @property {String} - key - the value of the option
       */
-      this.$emit('input', event);
+      this.$emit('input', value);
     },
   },
   computed: {
+    placeholderOrValue() {
+      return this.value
+        ? this.selectedOption.label
+        : (this.placeholder || this.optionsByValue[this.value].label);
+    },
     optionsByValue() {
       return this.options.reduce((newObj, currentOption) => {
         const optionsByValue = newObj;
@@ -112,7 +118,7 @@ export default {
 
 <style lang="scss" scoped>
   .dropdown {
-    @apply w-full;
+    @apply relative w-full;
     &__control {
       @apply w-full bg-white shadow-sm rounded-sm outline-none transition-all ease-in duration-200 cursor-pointer;
       &:hover {
