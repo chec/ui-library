@@ -5,5 +5,5 @@ import downArrow from './down-arrow.svg';
 export default {
   closeIcon,
   rightArrow,
-  downArrow
+  downArrow,
 };
