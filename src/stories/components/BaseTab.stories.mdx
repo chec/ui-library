@@ -16,14 +16,18 @@ import BaseTab from '../../components/BaseTab.vue';
         BaseTab
       },
       props: {
-        isDisabled: {
+        disabled: {
           default: boolean('Disable Button', false)
+        },
+        active: {
+          default: boolean('Set as Active', false)
         },
       },
       template: `
         <div class="flex justify-center mx-auto max-w-lg py-6 bg-gray-100">
           <BaseTab
-            :disabled="isDisabled"
+            :disabled="disabled"
+            :active="active"
             tabText="Tab Label"
           />
         </div>`
