@@ -1,5 +1,10 @@
 <template>
-  <div class="dropdown-option" @click="emitOptionsSelectedEvent" @keyup.enter="emitOptionsSelectedEvent" tabindex="0">
+  <div
+    class="dropdown-option"
+    :class="{'dropdown-option--disabled': disabled }"
+    @click="emitOptionsSelectedEvent"
+    @keyup.enter="emitOptionsSelectedEvent"
+    tabindex="0">
     <slot>
     </slot>
   </div>
@@ -15,6 +20,13 @@ export default {
      */
     value: {
       type: String,
+    },
+    /**
+     *
+     * disables option
+     */
+    disabled: {
+      type: Boolean,
     },
   },
   methods: {
@@ -34,9 +46,12 @@ export default {
     &:focus,
     &:active {
       @apply bg-gray-100;
-    };
+    }
     &:not(:last-child) {
       @apply border-b border-gray-200;
+    }
+    &--disabled {
+      @apply opacity-50;
     }
   }
 </style>

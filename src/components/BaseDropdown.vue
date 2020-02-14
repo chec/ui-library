@@ -23,6 +23,7 @@
         :key="i"
         :value="value"
         @option-selected="onOptionSelect"
+        :disabled="!value"
       >
         {{label}}
       </BaseDropdownOption>
