@@ -1,6 +1,7 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import BaseDropdown from '../../components/BaseDropdown.vue';
+import BaseDropdownOption from '../../components/BaseDropdownOption.vue';
 
 <Meta title="Components/BaseDropdown" component={BaseDropdown} />
 
@@ -14,11 +15,13 @@ import BaseDropdown from '../../components/BaseDropdown.vue';
   <Story name="Default">
     {{
       components: {
-        BaseDropdown
+        BaseDropdown,
+        BaseDropdownOption,
       },
       data() {
         return {
-          option: "optionKey1",
+          option: "",
+          options: [{value: 'optionKey1', label: 'Option Value 3'}, {value: 'optionKey2', label: 'Option Value 2'}],
         }
       },
       methods: {
@@ -26,7 +29,12 @@ import BaseDropdown from '../../components/BaseDropdown.vue';
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
-          <BaseDropdown class="max-w-2xl" v-model="option" @input="onOptionSelect" :options="[{value: 'optionKey1', label: 'Option Value 1'}, {value: 'optionKey2', label: 'Option Value 2'}]"/>
+          <BaseDropdown
+            class="max-w-2xl"
+            placeholder="Example Dropdown"
+            v-model="option"
+            :options="options"
+            />
         </div>`
     }}
   </Story>

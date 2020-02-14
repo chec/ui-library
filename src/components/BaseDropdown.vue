@@ -10,7 +10,7 @@
         {{
           value ?
           optionsByValue[value].label :
-          "Dropdown"
+          placeholder
         }}
         <div class="dropdown__down-arrow">
           <SvgDownArrow />
@@ -44,6 +44,12 @@ export default {
     BasePopover,
   },
   props: {
+    /**
+     * The placeholder value for the dropdown
+     */
+    placeholder: {
+      type: String,
+    },
     /**
      * The current value of selected option for the dropdown
      */
