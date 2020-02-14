@@ -5,7 +5,7 @@ import BaseDropdownOption from '../../components/BaseDropdownOption.vue';
 
 <Meta title="Components/BaseDropdown" component={BaseDropdown} />
 
-# dropdown
+# Dropdown
 
 <Props of={BaseDropdown} />
 
@@ -30,8 +30,38 @@ import BaseDropdownOption from '../../components/BaseDropdownOption.vue';
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
           <BaseDropdown
-            class="max-w-2xl"
-            placeholder="Example Dropdown"
+            class="max-w-md"
+            v-model="option"
+            :options="options"
+            />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# With Placeholder:
+
+<Preview>
+  <Story name="With Placeholder">
+    {{
+      components: {
+        BaseDropdown,
+        BaseDropdownOption,
+      },
+      data() {
+        return {
+          option: "",
+          options: [{value: '', label: 'Select an option'}, { value: 'optionKey1', label: 'Option Value 3'}, {value: 'optionKey2', label: 'Option Value 2'}],
+        }
+      },
+      methods: {
+        onOptionSelect: action('option-selected'),
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <BaseDropdown
+            class="max-w-md"
+            placeholder="Example Dropdown Placeholder"
             v-model="option"
             :options="options"
             />

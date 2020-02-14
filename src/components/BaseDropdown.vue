@@ -10,7 +10,7 @@
         {{
           value ?
           optionsByValue[value].label :
-          placeholder
+          (placeholder || optionsByValue[value].label)
         }}
         <div class="dropdown__down-arrow">
           <SvgDownArrow />
@@ -91,7 +91,7 @@ export default {
       this.toggleDropdown();
       /**
       * Emitted when an inner `<BaseDropdownOption>`'s `option-selected` event is emitted.
-      * @event option-selected
+      * @event input
       * @type {String}
       * @property {String} - key - the value of the option
       */
