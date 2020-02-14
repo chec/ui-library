@@ -1,7 +1,7 @@
 <template>
   <div
-    class="dropdown-option"
-    :class="{'dropdown-option--disabled': disabled }"
+    class="option"
+    :class="{'option--disabled': disabled }"
     @click="emitOptionsSelectedEvent"
     @keyup.enter="emitOptionsSelectedEvent"
     tabindex="0">
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'BaseDropdownOption',
+  name: 'BaseOption',
   props: {
     /**
      *
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .dropdown-option {
+  .option {
     @apply font-lato text-sm text-gray-600 px-4 py-3 outline-none cursor-pointer;
     &:hover {
       @apply bg-gray-100;

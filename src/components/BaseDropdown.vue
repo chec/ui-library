@@ -18,7 +18,7 @@
       </span>
     </div>
     <BasePopover v-if="showDropdown">
-      <BaseDropdownOption
+      <BaseOption
         v-for="({value, label}, i) in options"
         :key="i"
         :value="value"
@@ -26,7 +26,7 @@
         :disabled="!value"
       >
         {{label}}
-      </BaseDropdownOption>
+      </BaseOption>
     </BasePopover>
   </div>
 </template>
@@ -34,14 +34,14 @@
 <script>
 import SvgDownArrow from '../assets/svgs/down-arrow.svg';
 
-import BaseDropdownOption from './BaseDropdownOption.vue';
+import BaseOption from './BaseOption.vue';
 import BasePopover from './BasePopover.vue';
 
 export default {
   name: 'BaseDropdown',
   components: {
     SvgDownArrow,
-    BaseDropdownOption,
+    BaseOption,
     BasePopover,
   },
   props: {
@@ -90,7 +90,7 @@ export default {
       // toggle the dropdown
       this.toggleDropdown();
       /**
-      * Emitted when an inner `<BaseDropdownOption>`'s `option-selected` event is emitted.
+      * Emitted when an inner `<BaseOption>`'s `option-selected` event is emitted.
       * @event input
       * @type {String}
       * @property {String} - key - the value of the option

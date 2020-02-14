@@ -1,7 +1,7 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import BasePopover from '../../components/BasePopover.vue';
-import BaseDropdownOption from '../../components/BaseDropdownOption.vue';
+import BaseOption from '../../components/BaseOption.vue';
 
 <Meta title="Components/BasePopover" component={BasePopover} />
 
@@ -16,31 +16,31 @@ import BaseDropdownOption from '../../components/BaseDropdownOption.vue';
     {{
       components: {
         BasePopover,
-        BaseDropdownOption,
+        BaseOption,
       },
       template: `
-        <div class="w-full mx-auto max-w-md">
-          <div class="rounded black h-3 w-auto"></div>
+        <div class="w-full mx-auto max-w-md p-10">
+          <div class="rounded-sm bg-gray-300 h-10 w-10 shadow-lg ml-auto"></div>
           <BasePopover>
-            <BaseDropdownOption
+            <BaseOption
               :key="i"
               :value="value"
               disabled
             >
               Options
-            </BaseDropdownOption>
-            <BaseDropdownOption
+            </BaseOption>
+            <BaseOption
               :key="i"
               :value="value"
             >
               Disable
-            </BaseDropdownOption>
-            <BaseDropdownOption
+            </BaseOption>
+            <BaseOption
               :key="i"
               :value="value"
             >
               <span class="text-red-500">Delete<span>
-            </BaseDropdownOption>
+            </BaseOption>
           </BasePopover>
         </div>`
     }}
