@@ -22,6 +22,7 @@
         :value="value"
         @option-selected="(optionValue) => { onOptionSelect(optionValue, label) }"
         :disabled="!value"
+        :class="[baseOptionClass]"
       >
         {{label}}
       </BaseOption>
@@ -43,6 +44,12 @@ export default {
     BasePopover,
   },
   props: {
+    /**
+     * Class to pass to inner options
+     */
+    baseOptionClass: {
+      type: String,
+    },
     /**
      * The placeholder value for the dropdown
      */

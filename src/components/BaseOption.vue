@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss" scoped>
   .option {
-    @apply font-lato text-sm text-gray-600 px-4 py-3 outline-none cursor-pointer;
+    @apply font-lato text-sm text-gray-600 px-4 py-3 outline-none cursor-pointer bg-white;
     &:hover {
       @apply bg-gray-100;
     }
@@ -53,6 +53,11 @@ export default {
     }
     &--disabled {
       @apply opacity-50;
+      &:hover,
+      &:active,
+      &:focus {
+        @apply bg-white;
+      }
     }
   }
 </style>
