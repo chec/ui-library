@@ -31,6 +31,7 @@ module.exports = {
       inner: 'inset 0px 1px 2px rgba(40, 51, 65, 0.1)',
     },
     colors: {
+      transparent: 'transparent',
       'dark-blue': '#254E81',
       'primary-blue': '#2C7EA1',
       'purple-600': '#5A329A',

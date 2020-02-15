@@ -120,7 +120,18 @@ export default {
   .dropdown {
     @apply relative w-full;
     &__control {
-      @apply w-full bg-white shadow-sm rounded-sm outline-none transition-all ease-in duration-200 cursor-pointer;
+      @apply
+        w-full
+        bg-white
+        shadow-sm
+        rounded-sm
+        outline-none
+        transition-all
+        ease-in
+        duration-200
+        cursor-pointer
+        border
+        border-transparent;
       &:hover {
         @apply border border-gray-400;
       }
