@@ -13,9 +13,11 @@ import basetooltip from '../../directives/BaseTooltips.js';
         tooltip: basetooltip,
       },
       template: `
-      <div class="relative w-full mx-auto max-w-lg m-10">
-        <button v-tooltip="'Tooltip description here'" class="relative rounded-sm bg-gray-300 h-10 w-40 shadow-lg ml-auto"/>
-        <button v-tooltip.top="'Tooltip description here'" class="block relative rounded-sm bg-gray-300 h-10 w-40 shadow-lg"/>
+      <div class="flex relative w-full mx-auto max-w-lg m-10">
+        <button v-tooltip.left="'Left info stuff'" class="relative rounded-sm bg-gray-300 h-40 w-40 px-20 shadow-lg m-2"/>
+        <button v-tooltip="'Tooltip description'" class="relative rounded-sm bg-gray-300 h-10 w-40 shadow-lg m-2"/>
+        <button v-tooltip.top="'Top info'" class="relative rounded-sm bg-gray-300 h-10 w-40 shadow-lg m-2"/>
+        <button v-tooltip.right="'Right info'" class="relative rounded-sm bg-gray-300 h-40 w-40 shadow-lg m-2"/>
       </div>`
     }}
   </Story>
