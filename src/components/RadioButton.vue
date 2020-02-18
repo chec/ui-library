@@ -77,32 +77,27 @@ export default {
 <style lang="scss">
 
 .radio-btn {
-    display: flex;
-    // font-size: 16px;
-    cursor: pointer;
-    position: relative;
-    padding: 10px;
+    @apply flex p-3 relative cursor-pointer;
 
     // Hides browser's default radio style
     &__input{
-        // padding: 10px;
-        // z-index: 2;
-        @apply bg-white border border-gray-400;
-        margin: 0;
-        width: 16px;
-        height: 16px;
-        -webkit-appearance: none;
-        border-radius: 50px;
-        display: inline-block;
-        position: relative;
+        @apply
+          m-0
+          relative
+          inline-block
+          appearance-none
+          bg-white
+          rounded-full
+          border border-gray-400
+          shadow-sm
+          h-4 w-4;
 
         &:focus {
             @apply outline-none;
         }
 
         &:hover{
-          cursor: pointer;
-          @apply bg-white border border-gray-500;
+          @apply cursor-pointer bg-white border border-gray-500;
         }
 
         &:active{
@@ -110,21 +105,17 @@ export default {
         }
 
         &:disabled{
-          @apply bg-white border border-gray-400;
+          @apply bg-white border border-gray-300;
         }
     }
 
     &__input:checked:after {
-        @apply bg-gray-500;
+        @apply bg-gray-500 rounded-full absolute;
         content: '';
         width: 8px;
         height: 8px;
         top: 3px;
         left: 3px;
-        border-radius: 50px;
-        position: absolute;
-        text-shadow: 0px;
-        // font-size: 20px;
     }
 
     &__input:checked{
@@ -133,10 +124,7 @@ export default {
 
 
     &__container {
-        flex: 1;
-        display: flex;
-        cursor: pointer;
-        background: transparent;
+        @apply flex cursor-pointer flex-1 pl-6;
     }
 
     // &__content {
@@ -145,7 +133,6 @@ export default {
 
     &__label {
         @apply flex font-lato text-sm text-gray-600;
-        padding-left: 24px;
     }
 
 }
