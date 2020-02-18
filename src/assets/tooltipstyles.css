@@ -1,3 +1,17 @@
+[data-tooltip]::after {
+  position: absolute;
+  @apply h-auto w-auto mx-auto left-0 right-0;
+  content: url("data:image/svg+xml,%3Csvg width='12' height='6' viewBox='0 0 12 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 -5.24537e-07L0 6L12 6L6 -5.24537e-07Z' fill='%23283341'/%3E%3C/svg%3E");
+}
+[data-tooltip-modified-top][aria-description]::after {
+  top: 0; transform: rotate(-180deg); margin-top: -0.5rem;
+}
+[data-tooltip-modified-bottom][aria-description]::after {
+  bottom: 0; margin-bottom: -0.5rem;
+}
+[data-tooltip-modified-top][aria-description]::before { bottom: 100%; }
+[data-tooltip-modified-bottom][aria-description]::before { top: 100%; }
+
 [data-tooltip]::before {
-  @apply bg-gray-300;
+  @apply absolute font-lato font-bold p-1 bg-gray-600 text-white rounded;
 }

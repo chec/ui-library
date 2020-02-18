@@ -1,17 +1,40 @@
-export default (el, { value, modifiers }) => {
+export default (el, { arg, value, modifiers }) => {
   document.head.insertAdjacentHTML('beforeend', `<style>
-  [data-tooltip][aria-description]::before {
+  [${arg || 'data-tooltip'}][aria-description]::after {
+    display: none;
+    z-index: 9999;
+  }
+
+
+  [${arg || 'data-tooltip'}][aria-description]::before {
+    display: none;
+    z-index: 9999;
+  }
+
+  [${arg || 'data-tooltip'}][aria-description]::before {
     position: absolute;
     content: attr(aria-description);
-    ${modifiers.top ? 'bottom: 100%;' : 'top: 100%;'}
-    display: none;
   }
-  [data-tooltip][aria-description]:hover::before,
+
+  [data-tooltip][aria-description]:focus::after {
+    display: block;
+  }
+  [data-tooltip][aria-description]:hover::after {
+    display: block;
+  }
   [data-tooltip][aria-description]:focus::before {
     display: block;
-    z-index: 99999;
+  }
+
+  [data-tooltip][aria-description]:hover::before {
+    display: block;
   }
     </style>`);
   el.setAttribute('data-tooltip', '');
+  if (modifiers.top) {
+    el.setAttribute('data-tooltip-modified-top', '');
+  } else {
+    el.setAttribute('data-tooltip-modified-bottom', '');
+  }
   el.setAttribute('aria-description', value);
 };
