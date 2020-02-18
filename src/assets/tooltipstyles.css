@@ -1,0 +1,3 @@
+[data-tooltip]::before {
+  @apply bg-gray-300;
+}
