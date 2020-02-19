@@ -1,5 +1,6 @@
 <template>
   <div class="dropdown" ref="dropdown-el">
+    <input type="hidden" :name="name" v-model="value" />
     <div class="dropdown__control"
       :class="{ 'dropdown__control--open': showDropdown}"
       tabindex="0"
@@ -8,7 +9,7 @@
       @keyup.up="toggleDropdown">
       <span>
         {{
-          placeholderOrValue
+          this.selectedOption && this.selectedOption.label
         }}
         <div class="dropdown__down-arrow">
           <SvgDownArrow />
@@ -17,11 +18,12 @@
     </div>
     <BasePopover v-if="showDropdown">
       <BaseOption
-        v-for="({value, label}) in options"
+        v-for="({value, label, disabled}) in options"
         :key="value"
         :value="value"
-        @option-selected="(optionValue) => { onOptionSelect(optionValue, label) }"
-        :disabled="!value"
+        :options="optionsByValue"
+        :disabled="disabled"
+        @option-selected="onOptionSelect"
         :class="[baseOptionClass]"
       >
         {{label}}
@@ -45,15 +47,15 @@ export default {
   },
   props: {
     /**
-     * Class to pass to inner options
+     * Used as name attribute on hidden input
      */
-    baseOptionClass: {
+    name: {
       type: String,
     },
     /**
-     * The placeholder value for the dropdown
+     * Class to pass to inner options
      */
-    placeholder: {
+    baseOptionClass: {
       type: String,
     },
     /**
@@ -71,7 +73,6 @@ export default {
   },
   data() {
     return {
-      selectedOption: {},
       showDropdown: false,
     };
   },
@@ -92,9 +93,7 @@ export default {
         this.toggleDropdown();
       }
     },
-    onOptionSelect(value, label) {
-      // set selectedOption
-      this.selectedOption = { value, label };
+    onOptionSelect(value) {
       // toggle the dropdown
       this.toggleDropdown();
       /**
@@ -107,17 +106,8 @@ export default {
     },
   },
   computed: {
-    placeholderOrValue() {
-      return this.value
-        ? this.selectedOption.label
-        : (this.placeholder || this.optionsByValue[this.value].label);
-    },
-    optionsByValue() {
-      return this.options.reduce((newObj, currentOption) => {
-        const optionsByValue = newObj;
-        optionsByValue[currentOption.value] = currentOption;
-        return optionsByValue;
-      }, {});
+    selectedOption() {
+      return this.options.find((option) => option.value === this.value);
     },
   },
 };

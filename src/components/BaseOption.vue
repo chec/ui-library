@@ -18,6 +18,13 @@ export default {
      *
      * option's value
      */
+    options: {
+      type: Object,
+    },
+    /**
+     *
+     * option's value
+     */
     value: {
       type: String,
     },
@@ -32,7 +39,9 @@ export default {
   },
   methods: {
     emitOptionsSelectedEvent() {
-      this.$emit('option-selected', this.value);
+      if (!this.disabled) {
+        this.$emit('option-selected', this.value);
+      }
     },
   },
 };
