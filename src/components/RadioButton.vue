@@ -1,7 +1,7 @@
 <template>
     <div
         class="radio-btn"
-        :class="{ 'active' : isChecked, 'disabled' : disabled }"
+        :class="{ 'active' : isChecked, disabled }"
     >
         <input
             type="radio"
