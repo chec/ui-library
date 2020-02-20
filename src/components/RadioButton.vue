@@ -13,14 +13,12 @@
             @input="handleInput"
         />
         <span class="radio-btn__fill"></span>
-        <div class="radio-btn__content">
-            <!--  Custom label slot (bind 'label' string, 'isChecked' boolean, 'disabled' boolean -->
-            <slot name="label" v-bind="{ label, isChecked, disabled }">
-            <div v-if="label" class="radio-btn__label">{{ label }}</div>
-            </slot>
-        </div>
-      </label>
+        <!--  Custom label slot (bind 'label' string, 'isChecked' boolean, 'disabled' boolean -->
+        <slot name="label" v-bind="{ label, isChecked, disabled }">
+          <div v-if="label" class="radio-btn__label">{{ label }}</div>
+        </slot>
 
+      </label>
     </div>
 </template>
 
