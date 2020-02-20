@@ -46,7 +46,7 @@ export default {
       default: '',
     },
     /**
-     * The label for the radio input.
+     * Sets the label for the input option.
      */
     label: {
       type: String,
@@ -81,11 +81,14 @@ export default {
   },
   methods: {
     handleInput() {
+      /**
+       * Emitted when input is selected.
+       * @event input
+       */
       this.$emit('input', this.value);
     },
   },
 };
-
 </script>
 
 <style lang="scss">
@@ -93,20 +96,23 @@ export default {
 .radio-btn {
     @apply p-3 relative cursor-pointer;
 
+    &__container{
+       @apply flex font-lato text-sm text-gray-600 cursor-pointer;
+    }
+
     // Hides browser's default radio style
     &__input{
-      vertical-align: middle;
-      position: relative;
         @apply
+          align-middle
+          flex
           m-0
           relative
-          inline-block
           appearance-none
           bg-white
           rounded-full
           border border-gray-400
           shadow-sm
-          h-4 w-4;
+          h-4 w-4 mt-1;
 
         &:focus {
             @apply outline-none;
@@ -138,15 +144,9 @@ export default {
       @apply bg-white border border-gray-500;
     }
 
-
-    &__container {
-        @apply flex cursor-pointer;
-    }
-
     &__label {
-        @apply flex font-lato text-sm text-gray-600 pl-6;
+        @apply pl-3;
     }
-
 }
 
 </style>
