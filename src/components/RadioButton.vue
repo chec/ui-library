@@ -3,25 +3,23 @@
         class="radio-btn"
         :class="{ 'active' : isChecked, disabled }"
     >
+      <label :for="value" class="radio-btn__container">
         <input
             type="radio"
-            :id="value"
-            :name="name"
-            :value="value"
+            :id="'name' + 'value'"
             :checked="isChecked"
             :disabled="disabled"
             class="radio-btn__input"
             @input="handleInput"
         />
         <span class="radio-btn__fill"></span>
-        <label :for="value" class="radio-btn__container">
-            <div class="radio-btn__content">
-                <!--  Custom label slot (bind 'label' string, 'isChecked' boolean, 'disabled' boolean -->
-                <slot name="label" v-bind="{ label, isChecked, disabled }">
-                <div v-if="label" class="radio-btn__label">{{ label }}</div>
-                </slot>
-            </div>
-        </label>
+        <div class="radio-btn__content">
+            <!--  Custom label slot (bind 'label' string, 'isChecked' boolean, 'disabled' boolean -->
+            <slot name="label" v-bind="{ label, isChecked, disabled }">
+            <div v-if="label" class="radio-btn__label">{{ label }}</div>
+            </slot>
+        </div>
+      </label>
 
     </div>
 </template>
@@ -35,26 +33,44 @@ export default {
     event: 'input',
   },
   props: {
+    /**
+     * Name of the radio button
+     */
     name: {
       type: String,
       default: '',
     },
+    /**
+     * The value of the radio button
+     */
     value: {
       type: String,
       default: '',
     },
+    /**
+     * The label for the radio input.
+     */
     label: {
       type: String,
       default: '',
     },
+    /**
+     * States whether element is required
+     */
     required: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Disables the radio button
+     */
     disabled: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Check if radio button is selected.
+     */
     selected: {
       type: String,
       default: '',
@@ -77,10 +93,12 @@ export default {
 <style lang="scss">
 
 .radio-btn {
-    @apply flex p-3 relative cursor-pointer;
+    @apply p-3 relative cursor-pointer;
 
     // Hides browser's default radio style
     &__input{
+      vertical-align: middle;
+      position: relative;
         @apply
           m-0
           relative
@@ -124,15 +142,11 @@ export default {
 
 
     &__container {
-        @apply flex cursor-pointer flex-1 pl-6;
+        @apply flex cursor-pointer;
     }
 
-    // &__content {
-    //     flex: 1;
-    // }
-
     &__label {
-        @apply flex font-lato text-sm text-gray-600;
+        @apply flex font-lato text-sm text-gray-600 pl-6;
     }
 
 }

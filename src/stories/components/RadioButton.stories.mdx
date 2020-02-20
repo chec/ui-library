@@ -1,89 +1,16 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
-import { action } from '@storybook/addon-actions';
+import { action } from "@storybook/addon-actions";
 import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
 import { withInfo } from 'storybook-addon-vue-info';
 import RadioButton from '../../components/RadioButton.vue';
 
 <Meta title="Form fields/Radio button" component={ RadioButton } />
 
-
 # Radio button
 
-<Props of ={ RadioButton } />
 
-<Preview>
-  <Story name="default">
-    {{
-    components: {
-        RadioButton
-      },
-      props: {
-        disabled: {
-            default: boolean("Disable", false, "Props")
-        },
-        required: {
-            default: boolean("Require", false, "Props")
-        }
-      },
-      data(){
-          return {
-              checked: false,
-          };
-      },
-      
-      template: `
-        <div class="py-16 flex justify-center bg-gray-100">
-          <RadioButton
-            :name="name"
-            :value="value"
-            :disabled="disabled"
-            :required="required"
-            v-model="checked"
-          />
-        </div>`,
-    }}
-  </Story>
-</Preview>
+<Props of={RadioButton} />
 
-# Radio button with label
-
-<Preview>
-  <Story name="label">
-    {{
-    components: {
-        RadioButton
-      },
-      props: {
-        label: {
-          default: text("Label", "Option 1", "Props")
-        },
-        disabled: {
-            default: boolean("Disable", false, "Props")
-        },
-        required: {
-            default: boolean("Require", false, "Props")
-        }
-      },
-      data(){
-          return {
-              checked: false
-          };
-      },
-      
-      template: `
-        <div class="py-16 flex justify-center bg-gray-100">
-          <RadioButton
-            :label="label"
-            :name="name"
-            :value="value"
-            :disabled="disabled"
-            :required="required"
-            v-model="checked"
-          />
-        </div>`,
-    }}
-  </Story>
-</Preview>
 
 # Radio button group
 
@@ -95,14 +22,11 @@ import RadioButton from '../../components/RadioButton.vue';
       },
       props: {
         label: {
-          default: text("Label", "Option", "Props")
+          default: text("Label", "Option 1", "Props")
         },
         disabled: {
             default: boolean("Disable", false, "Props")
         },
-        required: {
-            default: boolean("Require", false, "Props")
-        }
       },
       data(){
           return {
@@ -114,7 +38,6 @@ import RadioButton from '../../components/RadioButton.vue';
         <div class="py-16 flex justify-center bg-gray-100">
         <ul>
           <RadioButton
-            :label="label"
             :name="name"
             value="a"
             :disabled="disabled"
@@ -122,15 +45,15 @@ import RadioButton from '../../components/RadioButton.vue';
             v-model="checked"
           >Test</RadioButton>
           <RadioButton
-            label="Option 2"
+            :label="label"
             :name="name"
             value="b"
             :disabled="disabled"
             :required="required"
             v-model="checked"
-          />
+          >Test</RadioButton>
           <RadioButton
-            label="Option 3"
+            label="Option 2"
             :name="name"
             value="c"
             :disabled="disabled"
@@ -140,7 +63,7 @@ import RadioButton from '../../components/RadioButton.vue';
           <RadioButton
             label="Disabled"
             :name="name"
-            value="d"
+            value="e"
             disabled="disabled"
             :required="required"
             v-model="checked"
