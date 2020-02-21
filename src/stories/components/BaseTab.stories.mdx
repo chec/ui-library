@@ -23,13 +23,20 @@ import BaseTab from '../../components/BaseTab.vue';
           default: boolean('Set as Active', false)
         },
       },
+      methods: {
+        click(tab) {
+          action(`Clicked tab "${tab}"`)();
+        }
+      },
       template: `
         <div class="flex justify-center mx-auto max-w-lg py-6 bg-gray-100">
           <BaseTab
             :disabled="disabled"
             :active="active"
-            tabText="Tab Label"
-          />
+            @click="click('Tab Label')""
+          >
+            Tab Label
+          </BaseTab>
         </div>`
     }}
   </Story>

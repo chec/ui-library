@@ -1,13 +1,18 @@
 <template>
   <button
     class="tab"
+    @click="handleClick"
     :class="{ 'tab--disabled': disabled, 'tab--active': active }"
-    :disabled="disabled">
-    <slot>
-      <span class="tab__text">
-        {{ tabText }}
-      </span>
-    </slot>
+    :disabled="disabled"
+  >
+    <span class="tab__text">
+      <!--
+        @slot Text to display within the tab button
+        @binding disabled Whether the tab is disabled
+        @binding active Whether the tab is active
+      -->
+      <slot v-bind="{ active, disabled }" />
+    </span>
   </button>
 </template>
 
@@ -15,14 +20,29 @@
 export default {
   name: 'BaseTab',
   props: {
-    tabText: {
-      type: String,
-    },
+    /**
+     * If this tab should appear selected (active)
+     */
     active: {
       type: Boolean,
+      default: false,
     },
+    /**
+     * Disables the tab (but not the click handler)
+     */
     disabled: {
       type: Boolean,
+      default: false,
+    },
+  },
+  methods: {
+    handleClick() {
+      /**
+       * Emitted the tab is clicked
+       * @event click
+       * @type {$event}
+       */
+      this.$emit('click');
     },
   },
 };
@@ -32,7 +52,10 @@ export default {
 .tab {
   @apply bg-white rounded-sm px-4 py-2 font-lato;
   &:hover {
-    @extend .tab--hover;
+    @apply bg-gray-200 cursor-not-allowed;
+    .tab__text {
+      @apply text-gray-500 font-bold;
+    }
   }
   &:active,
   &:focus {
@@ -66,13 +89,6 @@ export default {
     @apply bg-gray-400 outline-none;
     .tab__text {
       @apply text-white;
-    }
-  }
-
-  &--hover {
-    @apply bg-gray-200;
-    .tab__text {
-      @apply text-gray-500 font-bold;
     }
   }
 }
