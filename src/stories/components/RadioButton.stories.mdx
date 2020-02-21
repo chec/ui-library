@@ -20,7 +20,7 @@ import RadioButton from '../../components/RadioButton.vue';
 <Preview>
   <Story name="Radio group">
     {{
-    components: {
+      components: {
         RadioButton
       },
       props: {
@@ -28,15 +28,15 @@ import RadioButton from '../../components/RadioButton.vue';
           default: text("Label", "Option 1", "Props")
         },
         disabled: {
-            default: boolean("Disable", false, "Props")
+          default: boolean("Disable", false, "Props")
         },
       },
       data(){
-          return {
-              checked: false
-          };
+        return {
+          checked: false,
+          value: 'test',
+        };
       },
-      
       template: `
         <div class="py-16 flex justify-center bg-gray-100">
         <ul>

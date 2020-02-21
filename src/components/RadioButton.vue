@@ -6,7 +6,7 @@
       <label :for="id" class="radio-btn__container">
         <input
             type="radio"
-            :id="uid"
+            :id="id"
             :name="name"
             :value="value"
             :checked="isChecked"
@@ -15,22 +15,25 @@
             @input="handleInput"
         />
         <span class="radio-btn__fill"></span>
-        <!--  Custom label slot (bind 'label' string, 'isChecked' boolean, 'disabled' boolean -->
+        <!--
+          @slot Custom label slot
+          @bind label string
+          @bind isChecked boolean
+          @bind disabled boolean
+        -->
         <slot name="label" v-bind="{ label, isChecked, disabled }">
           <div v-if="label" class="radio-btn__label">{{ label }}</div>
         </slot>
-        <div class="uniqueid">{{id}}</div>
+
       </label>
     </div>
 </template>
 
 <script>
-
-import uid from '../mixins/uid';
+import _uniqueId from 'lodash.uniqueid';
 
 export default {
   name: 'RadioButton',
-  mixins: uid,
   model: {
     prop: 'selected',
     event: 'input',
@@ -82,6 +85,9 @@ export default {
   computed: {
     isChecked() {
       return this.value === this.selected;
+    },
+    id() {
+      return _uniqueId(`${this.name || 'radio'}_${this.value}_`);
     },
   },
   methods: {
