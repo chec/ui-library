@@ -1,5 +1,16 @@
 const tailwind = require('tailwindcss-plugins/gradients');
 
+const fontSizes = {
+  xs: '.75rem',
+  sm: '.938rem',
+  base: '1rem',
+  lg: '1.063rem',
+  xl: '1.25rem',
+  '2xl': '1.438rem',
+  '3xl': '1.688rem',
+  '4xl': '2rem',
+  '5xl': '2.5rem',
+};
 module.exports = {
   theme: {
     fontFamily: {
@@ -12,10 +23,11 @@ module.exports = {
       'primary-gradient': ['45deg', '#254E81', '#2C7EA1'],
     },
     boxShadow: {
-      sm: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-      md: '0px 6px 12px rgba(0, 0, 0, 0.1)',
-      lg: '0px 8px 16px rgba(0, 0, 0, 0.1)',
-      inner: 'inset 0px 1px 2px rgba(0, 0, 0, 0.1)',
+      default: '0px 0px 1px rgba(40, 51, 65, 0.2), 0px 1px 4px rgba(40, 51, 65, 0.1)',
+      sm: '0px 0px 1px rgba(40, 51, 65, 0.2), 0px 1px 4px rgba(40, 51, 65, 0.1)',
+      md: '0px 3px 12px rgba(40, 51, 65, 0.1), 0px 0px 1px rgba(40, 51, 65, 0.2)',
+      lg: '0px 4px 16px rgba(40, 51, 65, 0.1), 0px 0px 1px rgba(40, 51, 65, 0.2)',
+      inner: 'inset 0px 1px 2px rgba(40, 51, 65, 0.1)',
     },
     colors: {
       'dark-blue': '#254E81',
@@ -65,18 +77,11 @@ module.exports = {
       lg: '0.75rem',
       full: '9999px',
     },
-    fontSize: {
-      xs: '.75rem',
-      sm: '.938rem',
-      base: '1rem',
-      lg: '1.063rem',
-      xl: '1.25rem',
-      '2xl': '1.438rem',
-      '3xl': '1.688rem',
-      '4xl': '2rem',
-      '5xl': '2.5rem',
-    },
+    fontSize: fontSizes,
     extend: {
+      spacing: {
+        ...fontSizes,
+      },
       zIndex: {
         '-1': '-1',
       },
