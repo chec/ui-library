@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown" ref="dropdown-el">
-    <input type="hidden" :name="name" v-model="value" />
+    <input class="cursor-pointer" type="hidden" :name="name" v-model="value" />
     <div class="dropdown__control"
       :class="{ 'dropdown__control--open': showDropdown}"
       tabindex="0"
@@ -9,7 +9,9 @@
       @keyup.up="toggleDropdown">
       <span>
         {{
-          this.selectedOption && this.selectedOption.label
+          this.multiselect
+          ? this.displayCheckedOptionsLabels
+          : (this.selectedOption && this.selectedOption.label)
         }}
         <div class="dropdown__down-arrow">
           <SvgDownArrow />
@@ -36,6 +38,7 @@ import SvgDownArrow from '../assets/svgs/down-arrow.svg';
 
 import BaseOption from './BaseOption.vue';
 import BasePopover from './BasePopover.vue';
+import GroupBaseSelectOption from './GroupBaseSelectOption.vue';
 
 export default {
   name: 'BaseDropdown',
@@ -43,8 +46,16 @@ export default {
     SvgDownArrow,
     BaseOption,
     BasePopover,
+    GroupBaseSelectOption,
   },
   props: {
+    /**
+     * Used as name attribute on hidden input
+     */
+    multiselect: {
+      type: Boolean,
+      default: false,
+    },
     /**
      * Used as name attribute on hidden input
      */
@@ -61,20 +72,31 @@ export default {
      * The current value of selected option for the dropdown
      */
     value: {
-      type: [String, Object],
-      default: () => ({}),
+      type: [String, Array],
     },
     /**
      * The options for the dropdown
      */
     options: {
       type: Array,
+      default: () => ([]),
     },
   },
   data() {
+    if (this.multiselect) {
+      return {
+        showDropdown: false,
+        selectableOptions: [...this.value],
+      };
+    }
     return {
       showDropdown: false,
     };
+  },
+  watch: {
+    selectableOptions() {
+      this.onSelectableOptionChange();
+    },
   },
   created() {
     // add event listener to listen to outside click events
@@ -98,6 +120,10 @@ export default {
       */
       this.$emit('input', value);
     },
+    onSelectableOptionChange() {
+      // toggle dropdown
+      this.$emit('input', this.selectableOptions);
+    },
     toggleDropdown() {
       this.showDropdown = !this.showDropdown;
     },
@@ -108,8 +134,28 @@ export default {
     },
   },
   computed: {
+    displayCheckedOptionsLabels() {
+      const labels = this.selectableOptions.reduce((newArray, option) => {
+        if (option.group) {
+          return [...newArray, ...option.group.filter((_option) => _option.checked)];
+        }
+        return option.checked ? [...newArray, option] : newArray;
+      }, []).map((option) => option.label).reduce((string, label, i, labelsArray) => {
+        if (i < 2) {
+          return `${string}${i === 0 ? '' : ', '}${label}`;
+        }
+        if (i === 2) {
+          return `${string} and ${labelsArray.length - 2} more`;
+        }
+        return string;
+      }, '');
+      return labels;
+    },
     selectedOption() {
       return this.options.find((option) => option.value === (this.value || ''));
+    },
+    filteredSingleOptions() {
+      return this.options.filter((option) => !option.group);
     },
   },
 };
