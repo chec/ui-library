@@ -6,11 +6,16 @@ import RadioButton from '../../components/RadioButton.vue';
 
 <Meta title="Form fields/Radio button" component={ RadioButton } />
 
+# Radio button group
+
+#### Radio buttons allow the user to select only one option from a radio group.
+- Use radio buttons when the user needs to see all available options
+- Use radio group when there are 2-4 options to choose from
+- Use dropdown menu with selects if there are more than 4 options or options do not need to be visible
+
 # Show props table
 
 <Props of={RadioButton} />
-
-# Radio button group
 
 <Preview>
   <Story name="Radio group">
@@ -37,13 +42,14 @@ import RadioButton from '../../components/RadioButton.vue';
         <ul>
           <RadioButton
             :name="name"
-            value="a"
+            :label="label"
+            :value="value"
             :disabled="disabled"
             :required="required"
             v-model="checked"
           />
           <RadioButton
-            :label="label"
+            label="Option 2"
             :name="name"
             value="b"
             :disabled="disabled"
@@ -51,7 +57,7 @@ import RadioButton from '../../components/RadioButton.vue';
             v-model="checked"
           />
           <RadioButton
-            label="Option 2"
+            label="Option 3"
             :name="name"
             value="c"
             :disabled="disabled"
@@ -61,7 +67,7 @@ import RadioButton from '../../components/RadioButton.vue';
           <RadioButton
             label="Disabled"
             :name="name"
-            value="e"
+            value="d"
             disabled="disabled"
             :required="required"
             v-model="checked"

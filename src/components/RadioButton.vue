@@ -3,10 +3,12 @@
         class="radio-btn"
         :class="{ 'active' : isChecked, disabled }"
     >
-      <label :for="value" class="radio-btn__container">
+      <label :for="id" class="radio-btn__container">
         <input
             type="radio"
-            :id="'name' + 'value'"
+            :id="uid"
+            :name="name"
+            :value="value"
             :checked="isChecked"
             :disabled="disabled"
             class="radio-btn__input"
@@ -17,15 +19,18 @@
         <slot name="label" v-bind="{ label, isChecked, disabled }">
           <div v-if="label" class="radio-btn__label">{{ label }}</div>
         </slot>
-
+        <div class="uniqueid">{{id}}</div>
       </label>
     </div>
 </template>
 
 <script>
 
+import uid from '../mixins/uid';
+
 export default {
   name: 'RadioButton',
+  mixins: uid,
   model: {
     prop: 'selected',
     event: 'input',
