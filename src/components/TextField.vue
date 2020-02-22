@@ -6,7 +6,8 @@
     :placeholder="placeholder"
     :disabled="this.variant === 'disabled'"
     :class="classNames"
-    @input="onInput"
+    @input="handleInput"
+    @focus="handleFocus"
   />
 </template>
 <script>
@@ -46,7 +47,7 @@ export default {
     },
   },
   methods: {
-    onInput($event) {
+    handleInput($event) {
       /**
        * Emitted when the `<input>`'s 'input' event bubbles up. The v-model directive uses this to function.
        * @event input
@@ -54,17 +55,37 @@ export default {
        */
       this.$emit('input', $event.target.value);
     },
+    handleFocus($event) {
+      $event.target.select();
+    },
   },
 };
 </script>
 <style lang="scss" scoped>
 .input {
-  @apply text-base text-gray-500 p-4 bg-gray-200 rounded border border-gray-300 shadow-inner outline-none;
-  &:hover,
+  @apply
+    leading-tight
+    text-sm
+    text-gray-500
+    py-3
+    px-4
+    bg-white
+    rounded-sm
+    shadow-sm
+    border
+    outline-none;
+
+  border-color: transparent;
+
+  &:hover {
+    @apply border-gray-400;
+  }
+
   &:focus,
   &:active {
-    @apply border-primary-blue;
-  };
+    @apply border-gray-500;
+  }
+
   &--disabled {
     &:hover,
     &:focus,
