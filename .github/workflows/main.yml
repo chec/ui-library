@@ -21,14 +21,14 @@ jobs:
           cmd: build-lib
       - name: Commit
         # Run commit only if there are un-tracked changes
-        if: git diff-index --quiet HEAD --
+        if: ${{ git diff-index --quiet HEAD -- }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -am "Build library bundles"
       - name: Push
-        # Run push only if there are un-pushed changes
-        if: git diff-index --quiet origin/master --
         uses: ad-m/github-push-action@master
+        # Run push only if there are un-pushed changes
+        if: ${{ git diff-index --quiet origin/master -- }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
