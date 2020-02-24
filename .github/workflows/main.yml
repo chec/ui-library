@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - continue-on-error: true
       - uses: actions/checkout@v2
       - uses: borales/actions-yarn@v2.0.0
         name: Install
@@ -20,15 +21,13 @@ jobs:
         with:
           cmd: build-lib
       - name: Commit
-        # Run commit only if there are un-tracked changes
-        if: ${{ git diff-index --quiet HEAD -- }}
+        if: success()
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -am "Build library bundles"
       - name: Push
+        if: success()
         uses: ad-m/github-push-action@master
-        # Run push only if there are un-pushed changes
-        if: ${{ git diff-index --quiet origin/master -- }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
