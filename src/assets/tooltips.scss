@@ -1,7 +1,7 @@
 .tooltip {
   $arrow-size: 6px;
 
-  @apply font-bold leading-none z-50;
+  @apply font-bold text-sm leading-none z-50;
   display: block !important;
 
   .tooltip-inner {
