@@ -19,11 +19,11 @@ export default {
       type: String,
     },
     /**
-     * The name of the colour variant to be used. One of 'brand', 'primary', 'secondary', 'blue', 'green', or 'red'
+     * The name of the color variant to be used. One of 'brand', 'primary', 'secondary', 'blue', 'green', or 'red'
      */
-    colour: {
+    color: {
       type: String,
-      validate(colour) {
+      validate(color) {
         return [
           'brand',
           'primary',
@@ -31,7 +31,7 @@ export default {
           'blue',
           'green',
           'red',
-        ].includes(colour);
+        ].includes(color);
       },
       default: 'secondary',
     },
@@ -67,7 +67,7 @@ export default {
     classNames() {
       return [
         'button',
-        `button--colour-${this.colour}`,
+        `button--color-${this.color}`,
         `button--variant-${this.variant}`,
         {
           disabled: this.disabled,
@@ -171,7 +171,7 @@ export default {
       }
     }
   }
-  &--colour {
+  &--color {
     &-brand {
       @apply bg-primary-gradient text-white;
       &:hover {

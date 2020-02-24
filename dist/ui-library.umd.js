@@ -1437,12 +1437,12 @@ function _defineProperty(obj, key, value) {
     },
 
     /**
-     * The name of the colour variant to be used. One of 'brand', 'primary', 'secondary', 'blue', 'green', or 'red'
+     * The name of the color variant to be used. One of 'brand', 'primary', 'secondary', 'blue', 'green', or 'red'
      */
-    colour: {
+    color: {
       type: String,
-      validate: function validate(colour) {
-        return ['brand', 'primary', 'secondary', 'blue', 'green', 'red'].includes(colour);
+      validate: function validate(color) {
+        return ['brand', 'primary', 'secondary', 'blue', 'green', 'red'].includes(color);
       },
       default: 'secondary'
     },
@@ -1479,7 +1479,7 @@ function _defineProperty(obj, key, value) {
   },
   computed: {
     classNames: function classNames() {
-      return ['button', "button--colour-".concat(this.colour), "button--variant-".concat(this.variant), _defineProperty({
+      return ['button', "button--color-".concat(this.color), "button--variant-".concat(this.variant), _defineProperty({
         disabled: this.disabled,
         'button--has-icon': this.hasIcon
       }, "button--has-icon-".concat(this.iconPosition), this.hasIcon)];
@@ -1646,7 +1646,7 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var BaseButton = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"22f6fd4d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=ca959648&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"49749c82-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=ca959648&scoped=true&
 var TextFieldvue_type_template_id_ca959648_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('input',{staticClass:"input",class:_vm.classNames,attrs:{"type":"text","placeholder":_vm.placeholder,"disabled":this.variant === 'disabled'},domProps:{"value":_vm.value},on:{"input":_vm.handleInput,"focus":_vm.handleFocus}})}
 var TextFieldvue_type_template_id_ca959648_scoped_true_staticRenderFns = []
 
@@ -1743,7 +1743,7 @@ var TextField_component = normalizeComponent(
 )
 
 /* harmony default export */ var TextField = (TextField_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"22f6fd4d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseTag.vue?vue&type=template&id=21b7d61a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"49749c82-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseTag.vue?vue&type=template&id=21b7d61a&
 var BaseTagvue_type_template_id_21b7d61a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"tag",class:this.classObject},[_vm._t("default")],2)}
 var BaseTagvue_type_template_id_21b7d61a_staticRenderFns = []
 

@@ -32,8 +32,8 @@ Todo list
         BaseButton
       },
       props: {
-        colour: {
-          default: select('Colour', ['brand', 'primary', 'secondary', 'blue', 'green', 'red'], 'secondary'),
+        color: {
+          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red'], 'secondary'),
         },
         variant: {
           default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
@@ -47,7 +47,7 @@ Todo list
       },
       template: `
         <div class="py-16 flex justify-center">
-          <base-button :colour="colour" :variant="variant" :disabled="disabled">
+          <base-button :color="color" :variant="variant" :disabled="disabled">
             {{ text }}
           </base-button>
         </div>
@@ -59,7 +59,7 @@ Todo list
 
 ## States and sizes
 
-This is a button modified using the Colour and Variant props.
+This is a button modified using the Color and Variant props.
 
 <Preview>
   <Story name="States and sizes" decorators={[withKnobs()]}>
@@ -67,11 +67,11 @@ This is a button modified using the Colour and Variant props.
       computed: {
         possibilities() {
           return makeVariants({
-            colour: ['brand', 'primary', 'secondary', 'blue', 'green', 'red'],
+            color: ['brand', 'primary', 'secondary', 'blue', 'green', 'red'],
             variant: ['large', 'regular', 'small', 'round'],
           }).map(possibility => ({
             ...possibility,
-            label: `${possibility.colour} - ${possibility.variant}`,
+            label: `${possibility.color} - ${possibility.variant}`,
           }));
         }
       },
@@ -80,8 +80,8 @@ This is a button modified using the Colour and Variant props.
       },
       template: `
         <div class="py-16 grid grid-cols-4 gap-4 justify-center mx-20">
-          <div v-for="{ colour, variant, label } in possibilities">
-            <base-button class="mx-auto capitalize" :colour="colour" :variant="variant">
+          <div v-for="{ color, variant, label } in possibilities">
+            <base-button class="mx-auto capitalize" :color="color" :variant="variant">
               {{ label }}
             </base-button>
           </div>
@@ -101,8 +101,8 @@ This is a button modified using the Colour and Variant props.
         CloseIcon
       },
       props: {
-        colour: {
-          default: select('Colour', ['brand', 'primary', 'secondary', 'blue', 'green', 'red'], 'secondary'),
+        color: {
+          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red'], 'secondary'),
         },
         variant: {
           default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
@@ -110,13 +110,13 @@ This is a button modified using the Colour and Variant props.
       },
       template: `
         <div class="py-16 justify-center">
-          <base-button class="mx-auto mb-4" :colour="colour" :variant="variant">
+          <base-button class="mx-auto mb-4" :color="color" :variant="variant">
             Bigger, amazing
             <template v-slot:icon>
               <CloseIcon />
             </template>
           </base-button>
-          <base-button class="mx-auto" :colour="colour" :variant="variant" icon-position="after">
+          <base-button class="mx-auto" :color="color" :variant="variant" icon-position="after">
             Bigger, amazing
             <template v-slot:icon>
               <CloseIcon />
