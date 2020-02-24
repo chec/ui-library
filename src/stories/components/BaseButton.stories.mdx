@@ -3,6 +3,8 @@ import { action } from "@storybook/addon-actions";
 import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
 import { withInfo } from 'storybook-addon-vue-info'
 import BaseButton from '../../components/BaseButton.vue';
+import CloseIcon from '../../assets/svgs/close-icon.svg';
+import makeVariants from '../helpers/makeVariants';
 
 <Meta title="Form fields/Button" component={BaseButton} />
 
@@ -21,9 +23,7 @@ Todo list
 
 <Props of={BaseButton} />
 
-# Defaults
-
-This is a simple button with some text in it.
+## Default
 
 <Preview>
   <Story name="Defaults">
@@ -31,40 +31,96 @@ This is a simple button with some text in it.
       components: {
         BaseButton
       },
+      props: {
+        color: {
+          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red'], 'secondary'),
+        },
+        variant: {
+          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
+        },
+        disabled: {
+          default: select('Disabled', [true, false], false),
+        },
+        text: {
+          default: text('Text', 'Button text'),
+        },
+      },
       template: `
         <div class="py-16 flex justify-center">
-          <BaseButton @click="action">Hello Button</BaseButton>
+          <base-button :color="color" :variant="variant" :disabled="disabled">
+            {{ text }}
+          </base-button>
+        </div>
+      `,
+      methods: { action: action("clicked") }
+    }}
+  </Story>
+</Preview>
+
+## States and sizes
+
+This is a button modified using the Color and Variant props.
+
+<Preview>
+  <Story name="States and sizes" decorators={[withKnobs()]}>
+    {{
+      computed: {
+        possibilities() {
+          return makeVariants({
+            color: ['brand', 'primary', 'secondary', 'blue', 'green', 'red'],
+            variant: ['large', 'regular', 'small', 'round'],
+          }).map(possibility => ({
+            ...possibility,
+            label: `${possibility.color} - ${possibility.variant}`,
+          }));
+        }
+      },
+      components: {
+        BaseButton
+      },
+      template: `
+        <div class="py-16 grid grid-cols-4 gap-4 justify-center mx-20">
+          <div v-for="{ color, variant, label } in possibilities">
+            <base-button class="mx-auto capitalize" :color="color" :variant="variant">
+              {{ label }}
+            </base-button>
+          </div>
         </div>`,
         methods: { action: action("clicked") }
     }}
   </Story>
 </Preview>
 
-# States and sizes
-
-This is a button modified using the Colour and Variant props.
+## With icons
 
 <Preview>
-  <Story name="States and sizes" decorators={[withKnobs()]}>
+  <Story name="With icons" decorators={[withKnobs()]}>
     {{
       components: {
-        BaseButton
+        BaseButton,
+        CloseIcon
       },
       props: {
-        colour: {
-          default: select('Colour', ['primary', 'secondary'], 'primary')
+        color: {
+          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red'], 'secondary'),
         },
         variant: {
-          default: select('Variant', ['large', 'small', 'round'], 'large')
-        },
-        disabled: {
-          default: select('Disabled', [true, false], false)
+          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
         },
       },
       template: `
-        <div class="py-16 flex justify-center">
-          <base-button :colour="colour" :variant="variant" :disabled="disabled">
+        <div class="py-16 justify-center">
+          <base-button class="mx-auto mb-4" :color="color" :variant="variant">
             Bigger, amazing
+            <template v-slot:icon>
+              <CloseIcon />
+            </template>
+          </base-button>
+          <base-button class="mx-auto" :color="color" :variant="variant" icon-position="after">
+            Bigger, amazing
+            <template v-slot:icon>
+              <CloseIcon />
+            </template>
           </base-button>
         </div>`,
         methods: { action: action("clicked") }
