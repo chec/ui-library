@@ -1,0 +1,29 @@
+name: Build library files and push changes
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: borales/actions-yarn@v2.0.0
+        name: Install
+        with:
+          cmd: install 
+      - uses: borales/actions-yarn@v2.0.0
+        name: Build
+        with:
+          cmd: build-lib
+      - name: Commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Build library bundles"
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
