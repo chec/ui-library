@@ -1,23 +1,28 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
-import basetooltip from '../../directives/BaseTooltips.js';
+import { BaseButton } from '../../index';
 
-<Meta title="Components/Tooltip Directive" />
+<Meta title="Directives/Tooltips" />
 
 # Default:
 
 <Preview>
   <Story name="Default">
     {{
-      directives: {
-        tooltip: basetooltip,
+      components: {
+        BaseButton,
       },
       template: `
       <div class="flex relative w-full mx-auto max-w-lg m-10">
-        <button v-tooltip.left="'Left info stuff'" class="relative rounded-sm bg-gray-300 h-40 w-40 px-20 shadow-lg m-2"/>
-        <button v-tooltip="'Tooltip description'" class="relative rounded-sm bg-gray-300 h-10 w-40 shadow-lg m-2"/>
-        <button v-tooltip.top="'Top info'" class="relative rounded-sm bg-gray-300 h-10 w-40 shadow-lg m-2"/>
-        <button v-tooltip.right="'Right info'" class="relative rounded-sm bg-gray-300 h-40 w-40 shadow-lg m-2"/>
+        <BaseButton v-tooltip="{
+            content: 'I am the automatic position for a tooltip',
+            show: true,
+            autoHide: false,
+        }">Default</BaseButton>
+        <BaseButton v-tooltip.left="'On the left of the target'">Left</BaseButton>
+        <BaseButton v-tooltip.right="'Positioned on the right of the BaseButton'">Right</BaseButton>
+        <BaseButton v-tooltip.top="'Above the target'">Top</BaseButton>
+        <BaseButton v-tooltip.bottom="'Popover is shown below the target'">Bottom</BaseButton>
       </div>`
     }}
   </Story>

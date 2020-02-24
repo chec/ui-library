@@ -1,0 +1,90 @@
+.tooltip {
+  $arrow-size: 6px;
+
+  @apply font-bold leading-none z-50;
+  display: block !important;
+
+  .tooltip-inner {
+    @apply bg-gray-600 text-white p-4 rounded-md;
+  }
+
+  .tooltip-arrow {
+    @apply border-gray-600 absolute border-solid w-0 h-0 z-10;
+  }
+
+  &[x-placement^="top"] {
+    margin-bottom: $arrow-size;
+
+    .tooltip-arrow {
+      @apply ml-0 mr-0;
+      border-width: $arrow-size $arrow-size 0 $arrow-size;
+      border-left-color: transparent !important;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      bottom: -($arrow-size);
+      left: calc(50% - #{$arrow-size});
+    }
+  }
+
+  &[x-placement^="bottom"] {
+    margin-top: $arrow-size;
+
+    .tooltip-arrow {
+      @apply ml-0 mr-0;
+      border-width: 0 $arrow-size $arrow-size $arrow-size;
+      border-left-color: transparent !important;
+      border-right-color: transparent !important;
+      border-top-color: transparent !important;
+      top: -($arrow-size);
+      left: calc(50% - #{$arrow-size});
+    }
+  }
+
+  &[x-placement^="right"] {
+    margin-left: $arrow-size;
+
+    .tooltip-arrow {
+      @apply ml-0 mr-0;
+      border-width: $arrow-size $arrow-size $arrow-size 0;
+      border-left-color: transparent !important;
+      border-top-color: transparent !important;
+      border-bottom-color: transparent !important;
+      left: -($arrow-size);
+      top: calc(50% - #{$arrow-size});
+    }
+  }
+
+  &[x-placement^="left"] {
+    margin-right: $arrow-size;
+
+    .tooltip-arrow {
+      @apply ml-0 mr-0;
+      border-width: $arrow-size 0 $arrow-size $arrow-size;
+      border-top-color: transparent !important;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      right: -$arrow-size;
+      top: calc(50% - #{$arrow-size});
+    }
+  }
+
+  &.popover {
+    .popover-inner {
+      @apply bg-white text-gray-600 p-4 rounded-sm;
+    }
+
+    .popover-arrow {
+      @apply border-white;
+    }
+  }
+
+  &[aria-hidden='true'] {
+    @apply invisible opacity-0;
+    transition: opacity .15s, visibility .15s;
+  }
+
+  &[aria-hidden='false'] {
+    @apply visible opacity-100;
+    transition: opacity .15s;
+  }
+}
