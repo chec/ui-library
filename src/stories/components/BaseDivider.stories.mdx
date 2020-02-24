@@ -1,0 +1,33 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { text } from '@storybook/addon-knobs';
+import BaseDivider from '../../components/BaseDivider.vue';
+
+<Meta title="Components/Divider" component={BaseDivider} />
+
+# Divider
+
+<Props of={BaseDivider} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        BaseDivider
+      },
+      props: {
+        label: {
+          default: text('Label', 'message')
+        },
+        containerClasses: {
+          default: text('Container classes', 'mx-20 bg-gray-100 py-10')
+        },
+      },
+      template: `
+      <div :class="containerClasses">
+        <BaseDivider>
+          {{ label }}
+        </BaseDivider>
+      </div>`
+    }}
+  </Story>
+</Preview>
