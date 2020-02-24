@@ -1,0 +1,45 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { BaseButton } from '../../index';
+
+<Meta title="Directives/Tooltips" />
+
+# Default:
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        BaseButton,
+      },
+      template: `
+      <div class="flex relative w-full mx-auto max-w-lg m-10">
+        <BaseButton v-tooltip="{
+            content: 'I am the automatic position for a tooltip',
+            show: true,
+            autoHide: false,
+        }">Default</BaseButton>
+        <BaseButton v-tooltip.left="'On the left of the target'">Left</BaseButton>
+        <BaseButton v-tooltip.right="'Positioned on the right of the BaseButton'">Right</BaseButton>
+        <BaseButton v-tooltip.top="'Above the target'">Top</BaseButton>
+        <BaseButton v-tooltip.bottom="'Popover is shown below the target'">Bottom</BaseButton>
+      </div>`
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Contextual example">
+    {{
+      template: `
+<div class="overflow-y-auto mx-auto text-justify mt-8" style="width: 400px; max-height: 400px;">
+<p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at metus libero. Curabitur sed nulla ut quam feugiat luctus in sed arcu. Maecenas ac vulputate tortor. Sed aliquam metus sem, a posuere diam fermentum ut. Donec blandit libero id urna facilisis sodales. Fusce congue nibh eros, at fringilla tellus mollis eget. Nam lobortis, lectus in dictum imperdiet, mi augue ultrices elit, nec consequat est mauris at justo. Duis eu nunc quis ipsum posuere eleifend eget at ante. Nunc dui nisl, sagittis id diam id, venenatis lobortis neque. Proin tristique metus in eleifend lacinia. Fusce sodales tempus suscipit. Nam nec tempor leo. Ut egestas elit vitae nisi facilisis tempor. Nunc et mollis orci.</p>
+<p class="mb-2">Phasellus quam elit, <strong v-tooltip="'An example tooltip'">sollicitudin</strong> tincidunt aliquet id, lacinia id metus. Mauris sed luctus eros. Nullam porta vestibulum leo, quis mattis lorem pellentesque vitae. Sed maximus tempor commodo. Quisque arcu ipsum, sodales in ante et, finibus dapibus urna. Mauris neque ligula, scelerisque et fringilla id, congue id elit. Phasellus ullamcorper odio enim, ut vehicula ipsum tempus non. Morbi semper luctus sollicitudin. Donec tristique ex lectus, sed euismod eros rutrum a.</p>
+<p class="mb-2"><strong v-tooltip="'A tooltip with a really long description that should be wider than its container so we can see how that is handled'">Pellentesque</strong> viverra aliquam diam non interdum. Mauris vitae varius tortor. Nunc tristique, mauris ut mattis finibus, neque ipsum mollis sem, sit amet egestas justo lorem in arcu. Phasellus risus tortor, semper eget nibh a, condimentum euismod nisl. Aenean posuere, felis quis iaculis semper, nunc nisi sodales mi, quis pharetra eros nulla vitae nibh. Sed malesuada scelerisque posuere. Aenean et odio non diam ullamcorper semper. Integer vitae condimentum neque.</p>
+<p class="mb-2">Etiam aliquam pulvinar dolor a consectetur. Ut ut dui finibus, gravida urna id, tincidunt dui. Proin sollicitudin sed nunc ut convallis. Sed varius ipsum at tempus auctor. Maecenas congue interdum arcu, non euismod tellus convallis nec. Aliquam vel pellentesque tellus, eu fringilla libero. Nam cursus aliquam tincidunt. In aliquam, ex vitae tristique lobortis, sem arcu ornare purus, et tincidunt risus eros nec tortor. Etiam pellentesque metus vel magna fermentum consectetur. Donec ac ex lacus.</p>
+<p class="mb-2">Suspendisse facilisis blandit enim eget volutpat. Donec iaculis tortor ac fermentum hendrerit. Proin et fermentum urna. Duis molestie ipsum purus, sit amet congue erat lobortis eu. Nullam et porta ipsum. Nulla finibus lectus a tortor iaculis, ac volutpat dolor commodo. Cras fringilla et nunc sed laoreet. In hac habitasse platea dictumst. Quisque non est quis neque tincidunt lobortis.</p>
+</div>
+      `
+    }}
+  </Story>
+</Preview>
