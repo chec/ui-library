@@ -1,6 +1,7 @@
 const tailwind = require('tailwindcss-plugins/gradients');
 
 const fontSizes = {
+  xxs: '.625rem',
   xs: '.75rem',
   sm: '.938rem',
   base: '1rem',
