@@ -1,0 +1,48 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import BasePopover from '../../components/BasePopover.vue';
+import BaseOption from '../../components/BaseOption.vue';
+
+<Meta title="Components/BasePopover" component={BasePopover} />
+
+# Popover w/ options
+
+<Props of={BasePopover} />
+
+# Default:
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        BasePopover,
+        BaseOption,
+      },
+      template: `
+        <div class="relative w-full mx-auto max-w-lg m-10">
+          <div class="rounded-sm bg-gray-300 h-10 w-10 shadow-lg ml-auto"></div>
+          <BasePopover>
+            <BaseOption
+              :key="i"
+              :value="value"
+              disabled
+            >
+              Disabled
+            </BaseOption>
+            <BaseOption
+              :key="i"
+              :value="value"
+            >
+              Option
+            </BaseOption>
+            <BaseOption
+              :key="i"
+              :value="value"
+            >
+              <span class="text-red-500">Delete<span>
+            </BaseOption>
+          </BasePopover>
+        </div>`
+    }}
+  </Story>
+</Preview>

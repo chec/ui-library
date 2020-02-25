@@ -1,0 +1,74 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import BaseDropdown from '../../components/BaseDropdown.vue';
+import BaseOption from '../../components/BaseOption.vue';
+const defaultOptions = [
+  { value: '', label: 'Select a Ticket', disabled: true },
+  { value: 't3', label: 'T3 Ticket' },
+  { value: 't2', label: 'T2 Ticket' },
+  { value: 't1', label: 'T1 Ticket (Coming Soon)', disabled: true }
+];
+
+<Meta title="Components/BaseDropdown" component={BaseDropdown} />
+
+# Dropdown
+
+<Props of={BaseDropdown} />
+
+# Default:
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        BaseDropdown,
+      },
+      data() {
+        return {
+          option: "",
+          options: defaultOptions,
+        }
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <BaseDropdown
+            name="example-1"
+            class="max-w-md"
+            v-model="option"
+            :options="options"
+            />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# In context:
+
+<Preview>
+  <Story name="In context">
+    {{
+      components: {
+        BaseDropdown,
+      },
+      data() {
+        return {
+          option: "",
+          options: defaultOptions,
+        }
+      },
+      template: `
+        <div class="p-16 bg-gray-100 text-center">
+          <div>Some content</div>
+          <BaseDropdown
+            name="example-3"
+            class="max-w-md mx-auto"
+            placeholder="Example Dropdown Placeholder"
+            v-model="option"
+            :options="options"
+            baseOptionClass="text-left"
+            />
+            <div>Some more content</div>
+        </div>`
+    }}
+  </Story>
+</Preview>

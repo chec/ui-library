@@ -31,6 +31,7 @@ module.exports = {
       inner: 'inset 0px 1px 2px rgba(40, 51, 65, 0.1)',
     },
     colors: {
+      transparent: 'transparent',
       'dark-blue': '#254E81',
       'primary-blue': '#2C7EA1',
       'purple-600': '#5A329A',
@@ -79,6 +80,13 @@ module.exports = {
       full: '9999px',
     },
     fontSize: fontSizes,
+    borderWidth: {
+      default: '1px',
+      0: '0',
+      2: '2px',
+      4: '4px',
+      8: '8px',
+    },
     extend: {
       spacing: {
         ...fontSizes,
