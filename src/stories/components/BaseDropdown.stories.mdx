@@ -10,19 +10,18 @@ const defaultOptions = [
 ];
 const defaultSelectOptions = [
   {
-    checked: true,
     value: 'meats',
     label: 'Meat',
     group: [
-      { checked: false, value: 'steak', label: 'Steak (Sold Out)', disabled: true },
-      { checked: false, value: 'chicken', label: 'Chicken' },
-      { checked: false, value: 'fish', label: 'Fish' },
+      { value: 'steak', label: 'Steak (Sold Out)', disabled: true },
+      { value: 'chicken', label: 'Chicken' },
+      { value: 'fish', label: 'Fish' },
     ],
   },
-  { checked: true, value: 'apple', label: 'Apple' },
-  { checked: false, value: 'pear', label: 'Pear' },
-  { checked: false, value: 'kiwi', label: 'Kiwis' },
-  { checked: false, value: 'blueberry', label: 'Blueberries' }
+  { value: 'apple', label: 'Apple' },
+  { value: 'pear', label: 'Pear' },
+  { value: 'kiwi', label: 'Kiwis' },
+  { value: 'blueberry', label: 'Blueberries' }
 ];
 
 <Meta title="Components/BaseDropdown" component={BaseDropdown} />
@@ -100,19 +99,21 @@ const defaultSelectOptions = [
       data() {
         return {
           options: defaultSelectOptions,
+          selected: [],
         }
       },
       template: `
         <div class="my-8 p-16 bg-gray-100 text-center">
           {{
-            JSON.stringify(options)
+            JSON.stringify(selected)
           }}
           <div>Some content</div>
           <BaseDropdown
             name="example-4"
             class="max-w-md mx-auto"
             placeholder="Example Dropdown Placeholder"
-            v-model="options"
+            v-model="selected"
+            :options="options"
             :multiselect="true"
             baseOptionClass="text-left"
             />

@@ -1,27 +1,21 @@
 <template>
-  <label
-    v-if="selectOption"
-    class="option"
-    :class="{'option--disabled': disabled }"
-    tabindex="0"
-    :for="value.value">
-    <input
-      type="checkbox"
-      class="mr-3"
-      :id="value.value"
-      v-model="value.checked"
-      @input="onCheckboxChange"
-      :name="value.value"
-      :disabled="value.disabled">
-    <slot></slot>
-  </label>
   <div
-    v-else
     class="option"
     :class="{'option--disabled': disabled }"
     @click="emitOptionsSelectedEvent"
     @keyup.enter="emitOptionsSelectedEvent"
-    tabindex="0">
+    tabindex="0"
+  >
+    <input
+      v-if="selectOption"
+      type="checkbox"
+      class="mr-3"
+      :id="value.value"
+      :checked="checked"
+      :name="value.value"
+      :disabled="value.disabled"
+      :indeterminate.prop="indeterminate"
+    />
     <slot>
     </slot>
   </div>
@@ -38,6 +32,18 @@ export default {
     selectOption: {
       type: Boolean,
       default: false,
+    },
+    checked: {
+      type: Boolean,
+      default: false,
+    },
+    indeterminate: {
+      type: Boolean,
+      default: false,
+    },
+    level: {
+      type: Number,
+      default: 0,
     },
     /**
      *
@@ -66,11 +72,6 @@ export default {
       if (!this.disabled) {
         this.$emit('input', value);
         this.emitOptionsSelectedEvent();
-      }
-    },
-    onCheckboxChange() {
-      if (!this.disabled) {
-        this.valueModel = { ...this.value, checked: !this.value.checked };
       }
     },
   },
