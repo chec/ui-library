@@ -18,15 +18,14 @@
     </div>
     <BasePopover v-if="showDropdown">
       <BaseOption
-        v-for="({value, label, disabled}) in options"
-        :key="value"
-        :value="value"
-        :options="optionsByValue"
-        :disabled="disabled"
-        @option-selected="onOptionSelect"
+        v-for="(option) in options"
+        :key="option.value"
+        :disabled="option.disabled"
         :class="[baseOptionClass]"
+        :value="option.value"
+        @option-selected="onBaseOptionSelect"
       >
-        {{label}}
+        {{option.label}}
       </BaseOption>
     </BasePopover>
   </div>
@@ -62,7 +61,8 @@ export default {
      * The current value of selected option for the dropdown
      */
     value: {
-      type: String,
+      type: [String, Object],
+      default: () => ({}),
     },
     /**
      * The options for the dropdown
@@ -85,17 +85,11 @@ export default {
     window.removeEventListener('click', this.onOutsideClick);
   },
   methods: {
-    toggleDropdown() {
-      this.showDropdown = !this.showDropdown;
-    },
-    onOutsideClick(e) {
-      if (!this.$refs['dropdown-el'].contains(e.target) && this.showDropdown) {
-        this.toggleDropdown();
-      }
-    },
-    onOptionSelect(value) {
-      // toggle the dropdown
+    onBaseOptionSelect(value) {
       this.toggleDropdown();
+      this.emitInput(value);
+    },
+    emitInput(value) {
       /**
       * Emitted when an option is selected.
       * @event input
@@ -104,10 +98,18 @@ export default {
       */
       this.$emit('input', value);
     },
+    toggleDropdown() {
+      this.showDropdown = !this.showDropdown;
+    },
+    onOutsideClick(e) {
+      if (!this.$refs['dropdown-el'].contains(e.target) && this.showDropdown) {
+        this.toggleDropdown();
+      }
+    },
   },
   computed: {
     selectedOption() {
-      return this.options.find((option) => option.value === this.value);
+      return this.options.find((option) => option.value === (this.value || ''));
     },
   },
 };

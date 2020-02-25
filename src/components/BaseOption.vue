@@ -16,14 +16,7 @@ export default {
   props: {
     /**
      *
-     * option's value
-     */
-    options: {
-      type: Object,
-    },
-    /**
-     *
-     * option's value
+     * option object
      */
     value: {
       type: String,
