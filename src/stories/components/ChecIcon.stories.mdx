@@ -31,22 +31,7 @@ Todo list
       },
       props: {
         icon: {
-          default: select('Icon',
-            [
-              'left',
-              'right',
-              'down',
-              'up',
-              'plus',
-              'close',
-              'check',
-              'more',
-              'download',
-              'upload',
-              'grip',
-              'minus',
-            ],
-          'left')
+          default: select('Icon', Object.keys(icons), 'left')
         },
         color: {
           default: select('Color', ['text-gray-500', 'text-white'], 'text-gray-500')
@@ -69,13 +54,13 @@ Todo list
         ChecIcon
       },
       props: {
-        icon: {
+        icons: {
           default: icons,
         },
       },
       template: `
         <div class="py-16 flex justify-center bg-gray-400">
-          <chec-icon v-for="icon in icons" :icon="icon" class="w-3 h-3" :class="color" />
+          <chec-icon v-for="icon in Object.keys(icons)" :icon="icon" class="w-3 h-3" :class="color" />
         </div>`,
     }}
   </Story>
