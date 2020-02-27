@@ -10,6 +10,7 @@ import BasePopover from './components/BasePopover.vue';
 import BaseTag from './components/BaseTag.vue';
 import BaseTooltip from './directives/BaseTooltip';
 import ChecIcon from './components/ChecIcon.vue';
+import ChecDataPill from './components/ChecDataPill.vue';
 import TextField from './components/TextField.vue';
 
 export {
@@ -23,6 +24,7 @@ export {
   BaseTag,
   BaseTooltip,
   ChecIcon,
+  ChecDataPill,
   TextField,
   SvgIcons as Icons,
 };

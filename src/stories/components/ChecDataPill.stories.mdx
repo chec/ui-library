@@ -1,0 +1,26 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { text, select } from '@storybook/addon-knobs';
+import ChecDataPill from '../../components/ChecDataPill';
+
+<Meta title="Components/Data pill" component={ChecDataPill} />
+
+# Data pill
+
+<Props of={ChecDataPill} />
+
+<Preview>
+  <Story name="Variants">
+    {{
+      components: {
+        ChecDataPill,
+      },
+      template: `
+        <div class="mx-auto max-w-lg pt-6">
+          <ChecDataPill>Label</ChecDataPill>
+          <ChecDataPill variant="news">News</ChecDataPill>
+          <ChecDataPill variant="new">New</ChecDataPill>
+          <ChecDataPill variant="updated">Updated</ChecDataPill>
+        </div>`
+    }}
+  </Story>
+</Preview>
