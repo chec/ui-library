@@ -1,5 +1,8 @@
 <template>
   <span class="data-pill" :class="this.classObject">
+    <!--
+      @slot Text to display within the pill
+    -->
     <slot />
   </span>
 </template>
