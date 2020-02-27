@@ -116,7 +116,7 @@ export default {
 
 <style lang="scss">
 .button {
-  @apply inline-block font-bold shadow-sm border border-0 cursor-pointer flex;
+  @apply font-bold shadow-sm border border-0 cursor-pointer flex justify-center;
   &:focus {
     @apply outline-none;
   }
