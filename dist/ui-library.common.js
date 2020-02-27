@@ -1270,6 +1270,17 @@ module.exports = function (METHOD_NAME, argument) {
 
 /***/ }),
 
+/***/ "a686":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseDivider_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("d5cc");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseDivider_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseDivider_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseDivider_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "a691":
 /***/ (function(module, exports) {
 
@@ -1661,6 +1672,13 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
   return !!descriptor && descriptor.enumerable;
 } : nativePropertyIsEnumerable;
 
+
+/***/ }),
+
+/***/ "d5cc":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -9767,7 +9785,7 @@ if (typeof window !== 'undefined') {
   downArrow: down_arrow
 });
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f793deba-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseAlert.vue?vue&type=template&id=3ce27030&scoped=true&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"alert",class:_vm.classObject},[_c('div',{staticClass:"alert__content-container"},[(_vm.tagText)?_c('BaseTag',{attrs:{"variant":_vm.variant}},[_vm._v(" "+_vm._s(_vm.tagText)+" ")]):_vm._e(),_vm._t("default",[(_vm.alertText)?_c('p',{staticClass:"alert__text"},[_vm._v(" "+_vm._s(_vm.alertText)+" ")]):_vm._e()])],2),_c('div',{staticClass:"alert__close-icon"},[_c('SvgCloseIcon',{on:{"click":_vm.onClose}})],1)])}
+var BaseAlertvue_type_template_id_3ce27030_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"alert",class:_vm.classObject},[_c('div',{staticClass:"alert__content-container"},[(_vm.tagText)?_c('BaseTag',{attrs:{"variant":_vm.variant}},[_vm._v(" "+_vm._s(_vm.tagText)+" ")]):_vm._e(),_vm._t("default",[(_vm.alertText)?_c('p',{staticClass:"alert__text"},[_vm._v(" "+_vm._s(_vm.alertText)+" ")]):_vm._e()])],2),_c('div',{staticClass:"alert__close-icon"},[_c('SvgCloseIcon',{on:{"click":_vm.onClose}})],1)])}
 var staticRenderFns = []
 
 
@@ -10042,7 +10060,7 @@ var BaseAlertvue_type_style_index_0_id_3ce27030_lang_scss_scoped_true_ = __webpa
 
 var BaseAlert_component = normalizeComponent(
   components_BaseAlertvue_type_script_lang_js_,
-  render,
+  BaseAlertvue_type_template_id_3ce27030_scoped_true_render,
   staticRenderFns,
   false,
   null,
@@ -10283,6 +10301,49 @@ var BaseButton_component = normalizeComponent(
 )
 
 /* harmony default export */ var BaseButton = (BaseButton_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f793deba-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseDivider.vue?vue&type=template&id=301af6ab&
+var BaseDividervue_type_template_id_301af6ab_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"divider"},[_vm._t("default")],2)}
+var BaseDividervue_type_template_id_301af6ab_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/BaseDivider.vue?vue&type=template&id=301af6ab&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseDivider.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var BaseDividervue_type_script_lang_js_ = ({
+  name: 'BaseDivider'
+});
+// CONCATENATED MODULE: ./src/components/BaseDivider.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_BaseDividervue_type_script_lang_js_ = (BaseDividervue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/BaseDivider.vue?vue&type=style&index=0&lang=scss&
+var BaseDividervue_type_style_index_0_lang_scss_ = __webpack_require__("a686");
+
+// CONCATENATED MODULE: ./src/components/BaseDivider.vue
+
+
+
+
+
+
+/* normalize component */
+
+var BaseDivider_component = normalizeComponent(
+  components_BaseDividervue_type_script_lang_js_,
+  BaseDividervue_type_template_id_301af6ab_render,
+  BaseDividervue_type_template_id_301af6ab_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var BaseDivider = (BaseDivider_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f793deba-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseDropdown.vue?vue&type=template&id=886bfd06&scoped=true&
 var BaseDropdownvue_type_template_id_886bfd06_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"dropdown-el",staticClass:"dropdown"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.value),expression:"value"}],attrs:{"type":"hidden","name":_vm.name},domProps:{"value":(_vm.value)},on:{"input":function($event){if($event.target.composing){ return; }_vm.value=$event.target.value}}}),_c('div',{staticClass:"dropdown__control",class:{ 'dropdown__control--open': _vm.showDropdown},attrs:{"tabindex":"0"},on:{"click":_vm.toggleDropdown,"keyup":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }return _vm.toggleDropdown($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }return _vm.toggleDropdown($event)}]}},[_c('span',[_vm._v(" "+_vm._s(this.selectedOption && this.selectedOption.label)+" "),_c('div',{staticClass:"dropdown__down-arrow"},[_c('SvgDownArrow')],1)])]),(_vm.showDropdown)?_c('BasePopover',_vm._l((_vm.options),function(option){return _c('BaseOption',{key:option.value,class:[_vm.baseOptionClass],attrs:{"disabled":option.disabled,"value":option.value},on:{"option-selected":_vm.onBaseOptionSelect}},[_vm._v(" "+_vm._s(option.label)+" ")])}),1):_vm._e()],1)}
 var BaseDropdownvue_type_template_id_886bfd06_scoped_true_staticRenderFns = []
@@ -10573,6 +10634,429 @@ var v_tooltip_esm = __webpack_require__("e37d");
   VClosePopover: v_tooltip_esm["a" /* VClosePopover */],
   VTooltip: v_tooltip_esm["c" /* VTooltip */]
 });
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-left.svg
+
+      /* harmony default export */ var ic_left = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M8 2L4 6l4 4","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-right.svg
+
+      /* harmony default export */ var ic_right = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M4 10l4-4-4-4","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-down.svg
+
+      /* harmony default export */ var ic_down = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M2 4l4 4 4-4","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-up.svg
+
+      /* harmony default export */ var ic_up = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M10 8L6 4 2 8","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-plus.svg
+
+      /* harmony default export */ var ic_plus = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M6 3v6M3 6h6","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-close.svg
+
+      /* harmony default export */ var ic_close = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M8.121 3.879L3.88 8.12M3.879 3.879L8.12 8.12","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-check.svg
+
+      /* harmony default export */ var ic_check = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M2 6l3.333 3L10 3","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-more.svg
+
+      /* harmony default export */ var ic_more = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('circle',{attrs:{"cx":"2","cy":"6","r":".75","stroke":"currentColor","stroke-width":"1.5"}}),_c('circle',{attrs:{"cx":"6","cy":"6","r":".75","stroke":"currentColor","stroke-width":"1.5"}}),_c('circle',{attrs:{"cx":"10","cy":"6","r":".75","stroke":"currentColor","stroke-width":"1.5"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-download.svg
+
+      /* harmony default export */ var ic_download = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M3 5l3 3m0 0V1m0 7l3-3M3 11h6","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-upload.svg
+
+      /* harmony default export */ var ic_upload = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M9 7L6 4m0 0v7m0-7L3 7M9 1H3","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-grip.svg
+
+      /* harmony default export */ var ic_grip = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M9 9V3M6 9V3M3 9V3","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/IconBasic/ic-minus.svg
+
+      /* harmony default export */ var ic_minus = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M3 6h6","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/lib/icons.js
+
+
+
+
+
+
+
+
+
+
+
+
+var icons = {
+  left: ic_left,
+  right: ic_right,
+  down: ic_down,
+  up: ic_up,
+  plus: ic_plus,
+  close: ic_close,
+  check: ic_check,
+  more: ic_more,
+  download: ic_download,
+  upload: ic_upload,
+  grip: ic_grip,
+  minus: ic_minus
+};
+/* harmony default export */ var lib_icons = (icons);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecIcon.vue?vue&type=script&lang=js&
+
+/* harmony default export */ var ChecIconvue_type_script_lang_js_ = ({
+  name: 'ChecIcon',
+  props: {
+    /**
+     * Type of icon
+     */
+    icon: {
+      type: String,
+      required: true
+    }
+    /**
+     * Choose any color available in our pallete
+     */
+
+  },
+  render: function render(createElement) {
+    if (!lib_icons[this.icon]) {
+      throw Error('Required param "icon" was not valid');
+    }
+
+    return createElement(lib_icons[this.icon]);
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecIcon.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecIconvue_type_script_lang_js_ = (ChecIconvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/ChecIcon.vue
+var ChecIcon_render, ChecIcon_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var ChecIcon_component = normalizeComponent(
+  components_ChecIconvue_type_script_lang_js_,
+  ChecIcon_render,
+  ChecIcon_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChecIcon = (ChecIcon_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f793deba-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=ca959648&scoped=true&
 var TextFieldvue_type_template_id_ca959648_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('input',{staticClass:"input",class:_vm.classNames,attrs:{"type":"text","placeholder":_vm.placeholder,"disabled":this.variant === 'disabled'},domProps:{"value":_vm.value},on:{"input":_vm.handleInput,"focus":_vm.handleFocus}})}
 var TextFieldvue_type_template_id_ca959648_scoped_true_staticRenderFns = []
@@ -10682,15 +11166,19 @@ var TextField_component = normalizeComponent(
 
 
 
+
+
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
 /* concated harmony reexport BaseAlert */__webpack_require__.d(__webpack_exports__, "BaseAlert", function() { return BaseAlert; });
 /* concated harmony reexport BaseBreadcrumbs */__webpack_require__.d(__webpack_exports__, "BaseBreadcrumbs", function() { return BaseBreadcrumbs; });
 /* concated harmony reexport BaseButton */__webpack_require__.d(__webpack_exports__, "BaseButton", function() { return BaseButton; });
+/* concated harmony reexport BaseDivider */__webpack_require__.d(__webpack_exports__, "BaseDivider", function() { return BaseDivider; });
 /* concated harmony reexport BaseDropdown */__webpack_require__.d(__webpack_exports__, "BaseDropdown", function() { return BaseDropdown; });
 /* concated harmony reexport BaseOption */__webpack_require__.d(__webpack_exports__, "BaseOption", function() { return BaseOption; });
 /* concated harmony reexport BasePopover */__webpack_require__.d(__webpack_exports__, "BasePopover", function() { return BasePopover; });
 /* concated harmony reexport BaseTag */__webpack_require__.d(__webpack_exports__, "BaseTag", function() { return BaseTag; });
 /* concated harmony reexport BaseTooltip */__webpack_require__.d(__webpack_exports__, "BaseTooltip", function() { return BaseTooltip; });
+/* concated harmony reexport ChecIcon */__webpack_require__.d(__webpack_exports__, "ChecIcon", function() { return ChecIcon; });
 /* concated harmony reexport TextField */__webpack_require__.d(__webpack_exports__, "TextField", function() { return TextField; });
 /* concated harmony reexport Icons */__webpack_require__.d(__webpack_exports__, "Icons", function() { return svgs; });
 
