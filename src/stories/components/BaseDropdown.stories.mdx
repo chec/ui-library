@@ -18,15 +18,28 @@ const defaultSelectOptions = [
       { value: 'fish', label: 'Fish' },
     ],
   },
-  { value: 'apple', label: 'Apple' },
-  { value: 'pear', label: 'Pear' },
-  { value: 'kiwi', label: 'Kiwis' },
-  { value: 'blueberry', label: 'Blueberries' }
+  { label: 'Fruit', group: [
+    { value: 'apple', label: 'Apple' },
+    { value: 'pear', label: 'Pear' },
+    { value: 'kiwi', label: 'Kiwis' },
+    { value: 'blueberry', label: 'Blueberries' }
+  ]},
+  { value: 'bread', label: 'Bread' },
 ];
 
 <Meta title="Components/BaseDropdown" component={BaseDropdown} />
 
 # Dropdown
+
+<details>
+<summary>
+Todo list
+</summary>
+
+- Add a "Select All" option
+- Implement keyboard navigation
+
+</details>
 
 <Props of={BaseDropdown} />
 
@@ -104,10 +117,6 @@ const defaultSelectOptions = [
       },
       template: `
         <div class="my-8 p-16 bg-gray-100 text-center">
-          {{
-            JSON.stringify(selected)
-          }}
-          <div>Some content</div>
           <BaseDropdown
             name="example-4"
             class="max-w-md mx-auto"
@@ -117,7 +126,6 @@ const defaultSelectOptions = [
             :multiselect="true"
             baseOptionClass="text-left"
             />
-            <div>Select</div>
         </div>`
     }}
   </Story>

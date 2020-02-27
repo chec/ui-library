@@ -9,31 +9,31 @@
       :key="optionValue"
       :value="optionValue"
     />
-    <div class="dropdown__control"
+    <div
+      class="dropdown__control"
       :class="{ 'dropdown__control--open': showDropdown}"
       tabindex="0"
       @click="toggleDropdown"
-      @keyup.space="toggleDropdown"
-      @keyup.up="toggleDropdown">
+      @keyup="onKeyPress"
+    >
       <span>
         {{ shownValue }}
+        &nbsp;
         <div class="dropdown__down-arrow">
           <SvgDownArrow />
         </div>
       </span>
     </div>
-    <BasePopover v-if="showDropdown" class="overflow-scroll h-auto">
+    <BasePopover v-show="showDropdown" class="overflow-scroll h-auto">
       <BaseOption
         v-for="option in renderableOptions"
         :key="option.value"
-        :disabled="option.disabled"
         :class="baseOptionClass"
-        :value="option.value"
+        :option="option"
         @option-selected="onBaseOptionSelect"
-        :select-option="multiselect"
+        :show-checkbox="multiselect"
         :checked="!isIndeterminate(option) && isChecked(option)"
         :indeterminate="isIndeterminate(option)"
-        :level="option.level"
       >
         {{option.label}}
       </BaseOption>
@@ -56,7 +56,7 @@ export default {
   },
   props: {
     /**
-     * Used as name attribute on hidden input
+     * Indicates that multiple options may be selected. In this case the bound v-model will be an array of values
      */
     multiselect: {
       type: Boolean,
@@ -85,18 +85,13 @@ export default {
      */
     options: {
       type: Array,
-      default: () => ([]),
+      required: true,
     },
   },
   data() {
     return {
       showDropdown: false,
     };
-  },
-  watch: {
-    selectableOptions() {
-      this.onSelectableOptionChange();
-    },
   },
   created() {
     // add event listener to listen to outside click events
@@ -107,10 +102,22 @@ export default {
     window.removeEventListener('click', this.onOutsideClick);
   },
   methods: {
+    /**
+     * Determines if the option is provided as a "parent" to child options
+     *
+     * @param {Object} option
+     * @returns {boolean}
+     */
     isParentOption(option) {
       return Object.hasOwnProperty.call(option, 'group');
     },
-    onBaseOptionSelect(value) {
+    /**
+     * Handle an option being selected
+     *
+     * @param {Object} option
+     */
+    onBaseOptionSelect(option) {
+      const { value } = option;
       // Normal selects are easy...
       if (!this.multiselect) {
         this.toggleDropdown();
@@ -120,7 +127,6 @@ export default {
 
       // We need to only use the values of the bottom level children. Parents can only be chosen to (de)select all of
       // their children. The next little bit will reduce the selected option to only the values of non-parent options
-      const option = this.renderableOptions.find(candidate => candidate.value === value);
       const valueReducer = (acc, config) => {
         if (config.disabled) {
           return acc;
@@ -146,6 +152,11 @@ export default {
         ...values.filter(candidate => !this.value.includes(candidate)),
       ]);
     },
+    /**
+     * Container for the input event
+     *
+     * @param {string} value
+     */
     emitInput(value) {
       /**
       * Emitted when an option is selected.
@@ -155,37 +166,60 @@ export default {
       */
       this.$emit('input', value);
     },
-    onSelectableOptionChange() {
-      // toggle dropdown
-      this.$emit('input', this.selectableOptions);
-    },
+    /**
+     * Toggles visibility of the dropdown
+     */
     toggleDropdown() {
       this.showDropdown = !this.showDropdown;
     },
-    onOutsideClick(e) {
-      if (!this.$refs['dropdown-el'].contains(e.target) && this.showDropdown) {
+    /**
+     * Handle a keyboard key press while the dropdown is focused
+     */
+    onKeyPress() {
+      // TODO Add keyboard navigation of options
+      this.toggleDropdown();
+    },
+    /**
+     * A handler bound on the window while the component is mounted that closes the dropdown when clicked away
+     *
+     * @param {Event} event
+     */
+    onOutsideClick(event) {
+      if (!this.$refs['dropdown-el'].contains(event.target) && this.showDropdown) {
         this.toggleDropdown();
       }
     },
-    selectAll() {
-      this.renderableOptions.map((option) => option.value);
-    },
+    /**
+     * Determines whether an option is "checked" - used for filling the prop of `BaseOption`
+     *
+     * @param {Object} option
+     */
     isChecked(option) {
       if (!this.isParentOption(option)) {
         return this.value.includes(option.value);
       }
-      return option.group.filter(candidate => !candidate.disabled).every(candidate => this.isChecked(candidate));
+      return option.group.every(candidate => this.isChecked(candidate));
     },
+    /**
+     * Determines whether an option is "indeterminate" - used for filling the prop of `BaseOption`
+     *
+     * @param {Object} option
+     */
     isIndeterminate(option) {
       if (!this.isParentOption(option)) {
         return false;
       }
 
-      return !this.isChecked(option)
-        && option.group.filter(candidate => !candidate.disabled).some(candidate => this.isChecked(candidate));
+      return option.group.some(candidate => this.isChecked(candidate)) && !this.isChecked(option);
     },
   },
   computed: {
+    /**
+     * Flattens the provided options into an ordered list, and adds a "level" prop to show what level of indentation
+     * a child option will need.
+     *
+     * @returns {Array<Object>}
+     */
     renderableOptions() {
       if (!this.multiselect) {
         return this.options;
@@ -207,15 +241,30 @@ export default {
 
       return this.options.reduce(reducer(), []);
     },
+    /**
+     * Returns an array of the currently selected options. Note that for a single select, this still returns an array,
+     * but with only one element
+     *
+     * @returns {Array<Object>}
+     */
     selectedOptions() {
       if (!this.multiselect) {
         return [this.options.find(candidate => candidate.value === this.value)];
       }
       return this.renderableOptions.filter(candidate => this.value.includes(candidate.value));
     },
+    /**
+     * The value that should be shown in the field
+     *
+     * @returns {string|*}
+     */
     shownValue() {
       if (!this.multiselect) {
-        return this.selectedOption ? this.selectedOption.label : '';
+        return this.selectedOptions.length > 0 ? this.selectedOptions[0].label : '\xa0';
+      }
+
+      if (this.selectedOptions.length === 0) {
+        return '\xa0';
       }
 
       const validOptions = this.selectedOptions.filter(option => !this.isParentOption(option));
@@ -227,9 +276,6 @@ export default {
         ...validOptions.slice(0, 2).map(option => option.label),
         ` and ${validOptions.length - 2} more`,
       ].join(', ');
-    },
-    selectedOption() {
-      return this.options.find((option) => option.value === (this.value || ''));
     },
   },
 };

@@ -1,19 +1,18 @@
 <template>
   <div
     class="option"
-    :class="{'option--disabled': disabled }"
+    :class="classNames"
     @click="emitOptionsSelectedEvent"
     @keyup.enter="emitOptionsSelectedEvent"
     tabindex="0"
   >
     <input
-      v-if="selectOption"
+      v-if="showCheckbox"
       type="checkbox"
       class="mr-3"
-      :id="value.value"
+      :id="option.value"
       :checked="checked"
-      :name="value.value"
-      :disabled="value.disabled"
+      :disabled="option.disabled"
       :indeterminate.prop="indeterminate"
     />
     <slot>
@@ -26,61 +25,58 @@ export default {
   name: 'BaseOption',
   props: {
     /**
-     *
      * Set's the option as a selectable option
      */
-    selectOption: {
+    showCheckbox: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Indicate the checkbox (if shown) should be checked
+     */
     checked: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Indicate the checkbox (if shown) should have an indeterminate state
+     */
     indeterminate: {
       type: Boolean,
       default: false,
     },
-    level: {
-      type: Number,
-      default: 0,
-    },
     /**
-     *
-     * option object
+     * The option object
      */
-    value: {
-      type: [String, Object],
-      default: () => ({}),
+    option: {
+      type: Object,
+      required: true,
     },
-    /**
-     *
-     * disables option
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
+  },
+  computed: {
+    level() {
+      const { level } = this.option;
+
+      if (!level || typeof level !== 'number') {
+        return 0;
+      }
+      if (level > 3) {
+        return 3;
+      }
+      return level;
+    },
+    classNames() {
+      return [
+        { 'option--disabled': this.option.disabled },
+        `option--level-${this.level}`,
+      ];
     },
   },
   methods: {
     emitOptionsSelectedEvent() {
-      if (!this.disabled) {
-        this.$emit('option-selected', this.value);
+      if (!this.option.disabled) {
+        this.$emit('option-selected', this.option);
       }
-    },
-    emitInput(value) {
-      if (!this.disabled) {
-        this.$emit('input', value);
-        this.emitOptionsSelectedEvent();
-      }
-    },
-  },
-  computed: {
-    valueModel: {
-      get() { return this.value; },
-      set(value) {
-        this.emitInput(value);
-      },
     },
   },
 };
@@ -105,6 +101,17 @@ export default {
       &:active,
       &:focus {
         @apply bg-white;
+      }
+    }
+    &--level- {
+      &1 {
+        @apply pl-8;
+      }
+      &2 {
+        @apply pl-12;
+      }
+      &3 {
+        @apply pl-16;
       }
     }
   }
