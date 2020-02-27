@@ -1,0 +1,68 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info'
+import ChecIcon from '../../components/ChecIcon.vue';
+import icons from '../../lib/icons';
+
+<Meta title="Components/Icon" component={ChecIcon} />
+
+<details>
+<summary>
+Todo list
+</summary>
+
+- Implement custom size attribute 12px & 16px
+- Import in tooltip to hover over each icon in icon list
+
+</details>
+
+# Icon
+
+<Props of={ ChecIcon } />
+
+## Basic Stroke Icon
+
+<Preview>
+  <Story name="Basic">
+    {{
+      components: {
+        ChecIcon
+      },
+      props: {
+        icon: {
+          default: select('Icon', Object.keys(icons), 'left')
+        },
+        color: {
+          default: select('Color', ['text-gray-500', 'text-white'], 'text-gray-500')
+        },
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-400">
+          <chec-icon :icon="icon" class="w-3 h-3" :class="color" />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+## Basic Icons List
+
+<Preview>
+  <Story name="Basic Icons List">
+    {{
+      components: {
+        ChecIcon
+      },
+      props: {
+        icons: {
+          default: icons,
+        },
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-400">
+          <chec-icon v-for="icon in Object.keys(icons)" :icon="icon" class="w-3 h-3" :class="color" />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
