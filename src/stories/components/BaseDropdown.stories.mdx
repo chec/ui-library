@@ -8,10 +8,38 @@ const defaultOptions = [
   { value: 't2', label: 'T2 Ticket' },
   { value: 't1', label: 'T1 Ticket (Coming Soon)', disabled: true }
 ];
+const defaultSelectOptions = [
+  {
+    value: 'meats',
+    label: 'Meat',
+    group: [
+      { value: 'steak', label: 'Steak (Sold Out)', disabled: true },
+      { value: 'chicken', label: 'Chicken' },
+      { value: 'fish', label: 'Fish' },
+    ],
+  },
+  { label: 'Fruit', group: [
+    { value: 'apple', label: 'Apple' },
+    { value: 'pear', label: 'Pear' },
+    { value: 'kiwi', label: 'Kiwis' },
+    { value: 'blueberry', label: 'Blueberries' }
+  ]},
+  { value: 'bread', label: 'Bread' },
+];
 
 <Meta title="Components/BaseDropdown" component={BaseDropdown} />
 
 # Dropdown
+
+<details>
+<summary>
+Todo list
+</summary>
+
+- Add a "Select All" option
+- Implement keyboard navigation
+
+</details>
 
 <Props of={BaseDropdown} />
 
@@ -68,6 +96,36 @@ const defaultOptions = [
             baseOptionClass="text-left"
             />
             <div>Some more content</div>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# As multi-select:
+
+<Preview>
+  <Story name="As multi-select">
+    {{
+      components: {
+        BaseDropdown,
+      },
+      data() {
+        return {
+          options: defaultSelectOptions,
+          selected: [],
+        }
+      },
+      template: `
+        <div class="my-8 p-16 bg-gray-100 text-center">
+          <BaseDropdown
+            name="example-4"
+            class="max-w-md mx-auto"
+            placeholder="Example Dropdown Placeholder"
+            v-model="selected"
+            :options="options"
+            :multiselect="true"
+            baseOptionClass="text-left"
+            />
         </div>`
     }}
   </Story>
