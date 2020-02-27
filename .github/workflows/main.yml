@@ -22,13 +22,13 @@ jobs:
       - name: Check for changes
         run: git diff --exit-code --quiet
       - name: Commit
-        if: failure()
+        id: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -am "Build library bundles"
+          git diff --exit-code --quiet || (git commit -am "Build library bundles" && echo "::set-output name=status::built")
       - name: Push
-        if: success()
+        if: contains(steps.commit.outputs.status, 'built')
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
