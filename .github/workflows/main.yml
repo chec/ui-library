@@ -19,8 +19,6 @@ jobs:
         name: Build
         with:
           cmd: build-lib
-      - name: Check for changes
-        run: git diff --exit-code --quiet
       - name: Commit
         id: commit
         run: |
