@@ -48,7 +48,7 @@ Todo list
       template: `
         <div class="py-16 flex justify-center">
           <base-button :color="color" :variant="variant" :disabled="disabled">
-            {{ text }}
+            {{text}}
           </base-button>
         </div>
       `,
@@ -142,6 +142,39 @@ This is a button modified using the Color and Variant props.
           </base-button>
         </div>`,
         methods: { action: action("clicked") }
+    }}
+  </Story>
+</Preview>
+
+## Slot content
+
+<Preview>
+  <Story name="Slot Content" decorators={[withKnobs({escapeHTML: false})]}>
+    {{
+      components: {
+        BaseButton
+      },
+      props: {
+        color: {
+          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red'], 'secondary'),
+        },
+        variant: {
+          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
+        },
+        disabled: {
+          default: select('Disabled', [true, false], false),
+        },
+        text: {
+          default: text('Slot Content', '<b>Bold text</b>'),
+        },
+      },
+      template: `
+        <div class="py-16 flex justify-center">
+          <base-button :color="color" :variant="variant" :disabled="disabled" v-html="text">
+          </base-button>
+        </div>
+      `,
+      methods: { action: action("clicked") }
     }}
   </Story>
 </Preview>
