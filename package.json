@@ -8,7 +8,9 @@
     "lint:fix": "vue-cli-service lint --fix",
     "build-lib": "vue-cli-service build --target lib --name ui-library src/index.js",
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
-    "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook"
+    "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
+    "predeploy": "yarn run storybook:build",
+    "storybook:deploy": "gh-pages -d storybook-static"
   },
   "dependencies": {
     "@vue/eslint-config-airbnb": "^5.0.2",
@@ -33,6 +35,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "gh-pages": "^2.2.0",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
     "storybook-addon-vue-info": "^1.4.1",
@@ -43,6 +46,7 @@
     "vue-svg-loader": "^0.15.0",
     "vue-template-compiler": "^2.6.10"
   },
+  "homepage": "https://chec.github.io/ui-library/",
   "browserslist": [
     "> 1%",
     "last 2 versions"
