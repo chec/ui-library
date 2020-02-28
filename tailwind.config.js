@@ -99,6 +99,7 @@ module.exports = {
   },
   variants: {
     gradients: ['responsive', 'hover'],
+    transitionProperty: ['responsive', 'hover', 'focus'],
   },
   plugins: [
     tailwind,
