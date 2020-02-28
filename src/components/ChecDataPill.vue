@@ -35,6 +35,7 @@ export default {
 <style lang="scss">
 .data-pill {
   @apply mr-2 py-1 px-2 rounded-full text-xxs font-bold uppercase bg-white text-black border border-black;
+  letter-spacing: 1px;
 
   &--news {
     @apply bg-gray-200 border-gray-200 text-gray-500;
