@@ -143,16 +143,16 @@ export default {
     }
 
     &__input:checked:after {
-        @apply bg-gray-500 rounded-full absolute;
+        @apply bg-white rounded-full absolute;
         content: '';
         width: 8px;
         height: 8px;
-        top: 3px;
-        left: 3px;
+        top: 4px;
+        left: 4px;
     }
 
     &__input:checked{
-      @apply bg-white border border-gray-500;
+      @apply bg-gray-500 border-none;
     }
 
     &__label {
