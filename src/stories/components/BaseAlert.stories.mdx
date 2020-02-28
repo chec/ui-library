@@ -29,13 +29,10 @@ import BaseAlert from '../../components/BaseAlert.vue';
       },
       props: {
         variant: {
-          default: select('Variant', ['default', 'success', 'error', 'warning', 'info']),
+          default: select('Variant', ['success', 'error', 'warning', 'info']),
         },
         alertText: {
           default: text('Text to Alert', 'An alert!'),
-        },
-        tagText: {
-          default: text('Text within tag', 'Yay')
         },
       },
       template: `
@@ -45,7 +42,6 @@ import BaseAlert from '../../components/BaseAlert.vue';
             :variant="variant"
             @close-alert="close()"
             :alertText="alertText"
-            :tagText="tagText"
           />
         </div>`
     }}
@@ -62,7 +58,7 @@ import BaseAlert from '../../components/BaseAlert.vue';
       },
       data() {
         return {
-          variants: ['default', 'success', 'error', 'warning', 'info'],
+          variants: ['success', 'error', 'warning', 'info'],
           closed: [],
         };
       },
@@ -91,7 +87,6 @@ import BaseAlert from '../../components/BaseAlert.vue';
             :variant="variant"
             @close-alert="close(variant)"
             :alertText="content(variant)"
-            :tagText="variant"
           />
         </div>`
     }}
@@ -120,11 +115,8 @@ import BaseAlert from '../../components/BaseAlert.vue';
       },
       props: {
         variant: {
-          default: select('Variant', ['default', 'success', 'error', 'warning', 'info']),
+          default: select('Variant', ['success', 'error', 'warning', 'info']),
         },
-        tagText: {
-          default: text('Text within tag', 'Yay')
-        }
       },
       template: `
         <div class="mx-auto max-w-lg pt-6">
@@ -132,7 +124,6 @@ import BaseAlert from '../../components/BaseAlert.vue';
             v-if="!closed"
             :variant="variant"
             @close-alert="close()"
-            :tagText="tagText"
           >
             <p class="font-bold text-red-200 text-xs italic">
               Formatted alert text.

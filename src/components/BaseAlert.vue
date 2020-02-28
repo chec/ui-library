@@ -1,28 +1,26 @@
 <template>
   <div class="alert" :class="classObject">
     <div class="alert__content-container">
-      <BaseTag v-if="tagText" :variant="variant">
-        {{tagText}}
-      </BaseTag>
+      <!--
+      @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
+      -->
       <slot>
         <p v-if="alertText" class="alert__text">
           {{alertText}}
         </p>
       </slot>
     </div>
-    <div class="alert__close-icon">
+    <button type="button" class="alert__close-icon">
       <SvgCloseIcon @click="onClose" />
-    </div>
+    </button>
   </div>
 </template>
 <script>
 import SvgCloseIcon from '../assets/svgs/close-icon.svg';
-import BaseTag from './BaseTag.vue';
 
 export default {
   name: 'BaseAlert',
   components: {
-    BaseTag,
     SvgCloseIcon,
   },
   props: {
@@ -34,25 +32,19 @@ export default {
       required: true,
     },
     /**
-     * The text for the tag.
-     */
-    tagText: {
-      type: String,
-    },
-    /**
-     * The style variant for the alert. One of "default", "success", "error", "warning", "info". Default is "default"
+     * The style variant for the alert. One of "success", "error", "warning", "info". Default is "info"
      */
     variant: {
       type: String,
-      default: 'default',
+      default: 'info',
       validator(value) {
-        return ['default', 'success', 'error', 'warning', 'info'].includes(value);
+        return ['success', 'error', 'warning', 'info'].includes(value);
       },
     },
   },
   computed: {
     classObject() {
-      return this.variant !== 'default' && `alert--${this.variant}`;
+      return `alert--${this.variant}`;
     },
   },
   methods: {
@@ -77,30 +69,45 @@ export default {
     @apply font-bold text-primary-blue text-sm;
   }
   &__close-icon {
-    @apply h-4 w-4 fill-current text-primary-blue cursor-pointer;
+    @apply ml-4 p-2 bg-green-600 rounded-sm text-white cursor-pointer;
+    > svg {
+      @apply h-4 w-4;
+    }
   }
   &--success {
-    @apply bg-green-100;
+    @apply bg-green-100 border border-green-400;
     .alert__text {
       @apply text-green-600;
     }
+    .alert__close-icon {
+      @apply bg-green-500;
+    }
   }
   &--error {
-    @apply bg-red-100;
+    @apply bg-red-100 border border-red-400;
     .alert__text {
       @apply text-red-600;
     }
+    .alert__close-icon {
+      @apply bg-red-500;
+    }
   }
   &--warning {
-    @apply bg-orange-100;
+    @apply bg-orange-100 border border-orange-400;
     .alert__text {
       @apply text-orange-600;
     }
+    .alert__close-icon {
+      @apply bg-orange-500;
+    }
   }
   &--info {
-    @apply bg-purple-100;
+    @apply bg-purple-100 border border-purple-400;
     .alert__text {
       @apply text-purple-600;
+    }
+    .alert__close-icon {
+      @apply bg-purple-500;
     }
   }
 }

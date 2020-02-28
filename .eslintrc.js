@@ -13,7 +13,7 @@ module.exports = {
 
     // Change line length from 100 -> 120 to have consistency with PHP
     'max-len': ['error', 120],
-    'arrow-parens': "off",
+    'arrow-parens': 'off',
   },
   parserOptions: {
     parser: 'babel-eslint',
