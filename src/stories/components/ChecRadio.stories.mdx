@@ -1,0 +1,80 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info';
+import ChecRadio from '../../components/ChecRadio.vue';
+
+<Meta title="Form fields/Radio button" component={ ChecRadio } />
+
+# Radio button group
+
+#### Radio buttons allow the user to select only one option from a radio group.
+- Use radio buttons when the user needs to see all available options
+- Use radio group when there are 2-4 options to choose from
+- Use dropdown menu with selects if there are more than 4 options or options do not need to be visible
+
+<Props of={ChecRadio} />
+
+<Preview>
+  <Story name="Radio group">
+    {{
+      components: {
+        ChecRadio
+      },
+      props: {
+        label: {
+          default: text("Label", "Option 1", "Props")
+        },
+        disabled: {
+          default: boolean("Disable", false, "Props")
+        },
+        required: {
+          default: boolean("Required", false, "Props")
+        }
+      },
+      data(){
+        return {
+          checked: false,
+          value: 'test',
+        };
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-100">
+        <ul>
+          <ChecRadio
+            :name="name"
+            :label="label"
+            :value="value"
+            :disabled="disabled"
+            :required="required"
+            v-model="checked"
+          />
+          <ChecRadio
+            label="Option 2"
+            :name="name"
+            value="b"
+            :disabled="disabled"
+            :required="required"
+            v-model="checked"
+          />
+          <ChecRadio
+            label="Option 3"
+            :name="name"
+            value="c"
+            :disabled="disabled"
+            :required="required"
+            v-model="checked"
+          />
+          <ChecRadio
+            label="Disabled"
+            :name="name"
+            value="d"
+            disabled="disabled"
+            :required="required"
+            v-model="checked"
+          />
+          <ul>
+        </div>`,
+    }}
+  </Story>
+</Preview>
