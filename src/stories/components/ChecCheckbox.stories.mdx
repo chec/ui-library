@@ -1,0 +1,72 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info';
+import ChecCheckbox from '../../components/ChecCheckbox.vue';
+
+<Meta title="Form fields/Checkbox" component={ ChecCheckbox } />
+
+# Checkbox group
+
+#### Checkboxes allow the user to select multiple options from a checkbox group.
+- Use checkboxes when the user needs to see all available options
+- Users can select as many options, all the options, or none
+- Use radio button component when only one selection of a group is allowed
+
+<Props of={ ChecCheckbox } />
+
+<Preview>
+  <Story name="Checkbox group">
+    {{
+      components: {
+        ChecCheckbox
+      },
+      props: {
+        label: {
+          default: text("Label", "Apple", "Props")
+        },
+        disabled: {
+          default: boolean("Disable", false, "Props")
+        },
+      },
+      data(){
+        return {
+          checked: [],
+        };
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-100">
+        <ul>
+          <ChecCheckbox
+            v-model="checked"
+            name="apple"
+            :label="label"
+            value="apple"
+            :disabled="disabled"
+          />
+          <ChecCheckbox
+            v-model="checked"
+            name="orange"
+            label="Orange"
+            value="orange"
+            :disabled="disabled"
+          />
+          <ChecCheckbox
+            v-model="checked"
+            name="pear"
+            label="Pear"
+            value="pear"
+            :disabled="disabled"
+          />
+          <ChecCheckbox
+            v-model="checked"
+            name="disabled"
+            label="Disabled"
+            value="disabled"
+            disabled="disabled"
+          />
+          <ul>
+        </div>`,
+    }}
+  </Story>
+</Preview>
