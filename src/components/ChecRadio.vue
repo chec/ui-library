@@ -143,12 +143,10 @@ export default {
     }
 
     &__input:checked:after {
-        @apply bg-white rounded-full absolute;
+        @apply self-center left-0 right-0 mx-auto bg-white rounded-full absolute;
         content: '';
         width: 8px;
         height: 8px;
-        top: 4px;
-        left: 4px;
     }
 
     &__input:checked{
