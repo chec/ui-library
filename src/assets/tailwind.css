@@ -2,8 +2,9 @@
 @tailwind components;
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 *{
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: always;
+  -webkit-font-smoothing: antialiased !important;
+  font-smoothing: always !important;
   text-shadow: 1px 1px 1px rgba(0,0,0,.004);
+  -moz-osx-font-smoothing: grayscale;
 }
 @tailwind utilities;
