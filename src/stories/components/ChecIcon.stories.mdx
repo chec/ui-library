@@ -64,9 +64,8 @@ Todo list
       },
       template: `
         <div class="py-16 flex justify-center bg-gray-400">
-          <chec-icon v-for="icon in Object.keys(icons)" :icon="icon" class="w-3 h-3" :class="color" v-tooltip.top="{text: icon}"/>
+          <chec-icon v-for="(_, icon) in icons" :icon="icon" class="w-3 h-3" :class="color" v-tooltip.top="{text: icon}"/>
         </div>`,
     }}
   </Story>
 </Preview>
-
