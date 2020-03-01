@@ -24,20 +24,20 @@ import BaseOption from '../../components/BaseOption.vue';
           <BasePopover>
             <BaseOption
               :key="i"
-              :value="value"
-              disabled
+              :option="{value}"
+              :disabled="true"
             >
               Disabled
             </BaseOption>
             <BaseOption
               :key="i"
-              :value="value"
+              :option="{value}"
             >
               Option
             </BaseOption>
             <BaseOption
               :key="i"
-              :value="value"
+              :option="{value}"
             >
               <span class="text-red-500">Delete<span>
             </BaseOption>
