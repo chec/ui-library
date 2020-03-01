@@ -57,12 +57,14 @@ Todo list
         icons: {
           default: icons,
         },
+        color: {
+          default: select('Color', ['text-gray-500', 'text-white'], 'text-gray-500')
+        },
       },
       template: `
         <div class="py-16 flex justify-center bg-gray-400">
-          <chec-icon v-for="icon in Object.keys(icons)" :icon="icon" class="w-3 h-3" :class="color" />
+          <chec-icon v-for="(_, icon) in icons" :icon="icon" class="w-3 h-3" :class="color" v-tooltip.top="icon"/>
         </div>`,
     }}
   </Story>
 </Preview>
-
