@@ -128,16 +128,16 @@ export default {
 <style lang="scss">
 
 .checkbox {
-    @apply p-3 relative cursor-pointer;
+    @apply relative cursor-pointer;
 
     &__container {
-       @apply flex font-lato text-sm text-gray-600 cursor-pointer;
+       @apply flex items-center font-lato text-sm text-gray-600 cursor-pointer;
     }
 
     &__input {
       @apply
-        align-middle
         flex
+        align-middle
         m-0
         relative
         appearance-none
@@ -145,7 +145,7 @@ export default {
         rounded-sm
         border border-gray-400
         shadow-sm
-        h-4 w-4 mt-1;
+        h-4 w-4;
 
       &:focus {
         @apply outline-none;
@@ -173,10 +173,9 @@ export default {
     }
 
     &__check {
-      margin-top: 1px;
-      @apply flex absolute h-4 w-4 self-center justify-around;
+      @apply flex items-center justify-center absolute h-4 w-4;
       svg {
-        @apply h-3 w-3 self-center text-white;
+        @apply text-white h-3 w-3;
       }
     }
 
