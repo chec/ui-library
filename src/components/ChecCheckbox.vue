@@ -14,6 +14,9 @@
             class="checkbox__input"
             @input="handleInput"
         />
+        <span v-show="isChecked" class="checkbox__check">
+          <chec-icon icon="check" />
+        </span>
         <!--
           @slot Custom label slot
           @bind label string
@@ -23,9 +26,6 @@
         <slot name="label" v-bind="{ label, isChecked, disabled }">
           <div v-if="label" class="checkbox__label">{{ label }}</div>
         </slot>
-        <span class="checkbox__checkmark" :class="{ 'is-active': isChecked }">
-            <chec-icon v-if="isChecked" icon="check" />
-        </span>
       </label>
     </div>
 </template>
@@ -130,12 +130,11 @@ export default {
 .checkbox {
     @apply p-3 relative cursor-pointer;
 
-    &__container{
+    &__container {
        @apply flex font-lato text-sm text-gray-600 cursor-pointer;
     }
 
-    // Hides browser's default radio style
-    &__input{
+    &__input {
       @apply
         align-middle
         flex
@@ -149,7 +148,7 @@ export default {
         h-4 w-4 mt-1;
 
       &:focus {
-          @apply outline-none;
+        @apply outline-none;
       }
 
       &:hover{
@@ -173,12 +172,16 @@ export default {
       }
     }
 
-    &__checkmark .chec-icon{
-      @apply absolute;
+    &__check {
+      margin-top: 1px;
+      @apply flex absolute h-4 w-4 self-center justify-around;
+      svg {
+        @apply h-3 w-3 self-center text-white;
+      }
     }
 
     &__label {
-        @apply pl-3;
+      @apply pl-3;
     }
 }
 
