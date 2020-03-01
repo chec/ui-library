@@ -33,7 +33,7 @@
 import _uniqueId from 'lodash.uniqueid';
 
 export default {
-  name: 'RadioButton',
+  name: 'ChecRadio',
   model: {
     prop: 'selected',
     event: 'input',
@@ -143,16 +143,12 @@ export default {
     }
 
     &__input:checked:after {
-        @apply bg-gray-500 rounded-full absolute;
+        @apply self-center left-0 right-0 mx-auto w-2 h-2 bg-white rounded-full absolute;
         content: '';
-        width: 8px;
-        height: 8px;
-        top: 3px;
-        left: 3px;
     }
 
     &__input:checked{
-      @apply bg-white border border-gray-500;
+      @apply bg-gray-500 border-none;
     }
 
     &__label {
