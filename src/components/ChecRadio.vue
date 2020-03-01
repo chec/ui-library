@@ -143,10 +143,8 @@ export default {
     }
 
     &__input:checked:after {
-        @apply self-center left-0 right-0 mx-auto bg-white rounded-full absolute;
+        @apply self-center left-0 right-0 mx-auto w-2 h-2 bg-white rounded-full absolute;
         content: '';
-        width: 8px;
-        height: 8px;
     }
 
     &__input:checked{
