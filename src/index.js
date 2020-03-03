@@ -5,6 +5,7 @@ import BaseBreadcrumbs from './components/BaseBreadcrumbs.vue';
 import BaseButton from './components/BaseButton.vue';
 import BaseDivider from './components/BaseDivider.vue';
 import BaseDropdown from './components/BaseDropdown.vue';
+import BaseNotification from './components/BaseNotification.vue';
 import BaseOption from './components/BaseOption.vue';
 import BasePopover from './components/BasePopover.vue';
 import BaseTag from './components/BaseTag.vue';
@@ -19,6 +20,7 @@ export {
   BaseButton,
   BaseDivider,
   BaseDropdown,
+  BaseNotification,
   BaseOption,
   BasePopover,
   BaseTag,
