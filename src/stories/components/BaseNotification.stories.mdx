@@ -83,6 +83,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
         <div class="mx-auto max-w-lg pt-6">
           <BaseNotification
             v-for="variant in variants"
+            v-if="!isClosed(variant)"
             class="mb-2"
             :variant="variant"
             @close="close(variant)"

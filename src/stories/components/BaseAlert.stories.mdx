@@ -29,7 +29,7 @@ import BaseAlert from '../../components/BaseAlert.vue';
       },
       props: {
         variant: {
-          default: select('Variant', ['success', 'error', 'warning', 'info'], ''),
+          default: select('Variant', ['success', 'error', 'warning', 'info']),
         },
         text: {
           default: text('Text to Alert', 'Text to alert!'),
@@ -38,7 +38,7 @@ import BaseAlert from '../../components/BaseAlert.vue';
       template: `
         <div class="mx-auto px-16 pt-6">
           <BaseAlert
-            v-if="!closed"
+            v-show="!closed"
             :variant="variant"
             @close="close()"
           >
@@ -83,8 +83,8 @@ import BaseAlert from '../../components/BaseAlert.vue';
         <div class="mx-auto px-16 pt-6">
           <BaseAlert
             v-for="variant in variants"
-            v-if="!isClosed(variant)"
-            class="mb-2"
+            v-show="!isClosed(variant)"
+            class="my-6"
             :variant="variant"
             @close="close(variant)"
           >

@@ -1,18 +1,20 @@
 <template>
-  <div class="alert" :class="classObject">
-    <div class="alert__content-container">
-      <!--
-      @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
-      -->
-      <span class="alert__text">
-        <slot>
-        </slot>
-      </span>
+  <transition name="fade">
+    <div class="alert" :class="classObject">
+      <div class="alert__content-container">
+        <!--
+        @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
+        -->
+        <span class="alert__text">
+          <slot>
+          </slot>
+        </span>
+      </div>
+      <button type="button" class="alert__close-icon">
+        <SvgCloseIcon @click="onClose" />
+      </button>
     </div>
-    <button type="button" class="alert__close-icon">
-      <SvgCloseIcon @click="onClose" />
-    </button>
-  </div>
+  </transition>
 </template>
 <script>
 import SvgCloseIcon from '../assets/svgs/close-icon.svg';
@@ -24,11 +26,11 @@ export default {
   },
   props: {
     /**
-     * The style variant for the alert. One of "success", "error", "warning", "info". Default is "info"
+     * The style variant for the alert. One of "success", "error", "warning", "info". Default is "success"
      */
     variant: {
       type: String,
-      default: 'info',
+      default: 'success',
       validator(value) {
         return ['success', 'error', 'warning', 'info'].includes(value);
       },
@@ -36,7 +38,7 @@ export default {
   },
   computed: {
     classObject() {
-      return `alert--${this.variant || 'success'}`;
+      return `alert--${this.variant}`;
     },
   },
   methods: {
@@ -53,7 +55,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .alert {
-  @apply flex font-lato justify-between items-center bg-gray-200 p-4 w-full;
+  @apply flex font-lato justify-between items-center bg-gray-200 p-4 w-full shadow-lg;
   &__content-container {
     @apply flex flex-grow items-center;
   }
@@ -78,5 +80,11 @@ export default {
   &--info {
     @apply bg-purple-500 border border-purple-400;
   }
+}
+.fade-enter-active, .fade-leave-active {
+  @apply transition-opacity duration-500 ease-in-out;
+}
+.fade-enter, .fade-leave-to {
+  @apply opacity-0;
 }
 </style>
