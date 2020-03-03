@@ -1,6 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
-import { text, select } from '@storybook/addon-knobs';
+import { text, select, withKnobs } from '@storybook/addon-knobs';
 import BaseAlert from '../../components/BaseAlert.vue';
 
 <Meta title="Components/Alert" component={BaseAlert} />
@@ -31,18 +31,19 @@ import BaseAlert from '../../components/BaseAlert.vue';
         variant: {
           default: select('Variant', ['success', 'error', 'warning', 'info']),
         },
-        alertText: {
-          default: text('Text to Alert', 'An alert!'),
+        text: {
+          default: text('Text to Alert', 'Text to alert!'),
         },
       },
       template: `
-        <div class="mx-auto max-w-lg pt-6">
+        <div class="mx-auto px-16 pt-6">
           <BaseAlert
-            v-if="!closed"
+            v-show="!closed"
             :variant="variant"
-            @close-alert="close()"
-            :alertText="alertText"
-          />
+            @close="close()"
+          >
+            Text to Alert!
+          </BaseAlert>
         </div>`
     }}
   </Story>
@@ -79,55 +80,15 @@ import BaseAlert from '../../components/BaseAlert.vue';
         }
       },
       template: `
-        <div class="mx-auto max-w-lg pt-6">
+        <div class="mx-auto px-16 pt-6">
           <BaseAlert
             v-for="variant in variants"
-            v-if="!isClosed(variant)"
-            class="mb-2"
+            v-show="!isClosed(variant)"
+            class="my-6"
             :variant="variant"
-            @close-alert="close(variant)"
-            :alertText="content(variant)"
-          />
-        </div>`
-    }}
-  </Story>
-</Preview>
-
-# Format alert text using a default slot:
-
-<Preview>
-  <Story name="Formatted alert text">
-    {{
-      components: {
-        BaseAlert
-      },
-      data() {
-        return {
-          closed: false,
-        };
-      },
-      methods: {
-        close() {
-          setTimeout(() => this.closed = false, 3000);
-          this.closed = true;
-          return action('Alert closed!')();
-        }
-      },
-      props: {
-        variant: {
-          default: select('Variant', ['success', 'error', 'warning', 'info']),
-        },
-      },
-      template: `
-        <div class="mx-auto max-w-lg pt-6">
-          <BaseAlert
-            v-if="!closed"
-            :variant="variant"
-            @close-alert="close()"
+            @close="close(variant)"
           >
-            <p class="font-bold text-red-200 text-xs italic">
-              Formatted alert text.
-            </p>
+            {{content(variant)}}
           </BaseAlert>
         </div>`
     }}

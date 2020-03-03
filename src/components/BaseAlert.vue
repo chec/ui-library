@@ -1,19 +1,20 @@
 <template>
-  <div class="alert" :class="classObject">
-    <div class="alert__content-container">
-      <!--
-      @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
-      -->
-      <slot>
-        <p v-if="alertText" class="alert__text">
-          {{alertText}}
-        </p>
-      </slot>
+  <transition name="fade">
+    <div class="alert" :class="classObject">
+      <div class="alert__content-container">
+        <!--
+        @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
+        -->
+        <span class="alert__text">
+          <slot>
+          </slot>
+        </span>
+      </div>
+      <button type="button" class="alert__close-icon">
+        <SvgCloseIcon @click="onClose" />
+      </button>
     </div>
-    <button type="button" class="alert__close-icon">
-      <SvgCloseIcon @click="onClose" />
-    </button>
-  </div>
+  </transition>
 </template>
 <script>
 import SvgCloseIcon from '../assets/svgs/close-icon.svg';
@@ -25,18 +26,11 @@ export default {
   },
   props: {
     /**
-     * The text to alert.
-     */
-    alertText: {
-      type: String,
-      required: true,
-    },
-    /**
-     * The style variant for the alert. One of "success", "error", "warning", "info". Default is "info"
+     * The style variant for the alert. One of "success", "error", "warning", "info". Default is "success"
      */
     variant: {
       type: String,
-      default: 'info',
+      default: 'success',
       validator(value) {
         return ['success', 'error', 'warning', 'info'].includes(value);
       },
@@ -51,64 +45,46 @@ export default {
     onClose($event) {
       /**
        * Emitted when the 'close' icon is clicked.
-       * @event close-alert
+       * @event close
        * @type {$event}
        */
-      this.$emit('close-alert', $event);
+      this.$emit('close', $event);
     },
   },
 };
 </script>
 <style lang="scss" scoped>
 .alert {
-  @apply flex font-lato justify-between items-center bg-gray-200 rounded-md p-4;
+  @apply flex font-lato justify-between items-center bg-gray-200 p-4 w-full shadow-lg;
   &__content-container {
-    @apply flex items-center;
+    @apply flex flex-grow items-center;
   }
   &__text {
-    @apply font-bold text-primary-blue text-sm;
+    @apply flex-grow font-normal text-white text-sm text-center;
   }
   &__close-icon {
-    @apply ml-4 p-2 bg-green-600 rounded-sm text-white cursor-pointer;
+    @apply ml-4 p-2 bg-transparent rounded-sm text-white cursor-pointer outline-none;
     > svg {
       @apply h-4 w-4;
     }
   }
   &--success {
-    @apply bg-green-100 border border-green-400;
-    .alert__text {
-      @apply text-green-600;
-    }
-    .alert__close-icon {
-      @apply bg-green-500;
-    }
+    @apply bg-green-500 border border-green-400;
   }
   &--error {
-    @apply bg-red-100 border border-red-400;
-    .alert__text {
-      @apply text-red-600;
-    }
-    .alert__close-icon {
-      @apply bg-red-500;
-    }
+    @apply bg-red-500 border border-red-400;
   }
   &--warning {
-    @apply bg-orange-100 border border-orange-400;
-    .alert__text {
-      @apply text-orange-600;
-    }
-    .alert__close-icon {
-      @apply bg-orange-500;
-    }
+    @apply bg-orange-500 border border-orange-400;
   }
   &--info {
-    @apply bg-purple-100 border border-purple-400;
-    .alert__text {
-      @apply text-purple-600;
-    }
-    .alert__close-icon {
-      @apply bg-purple-500;
-    }
+    @apply bg-purple-500 border border-purple-400;
   }
+}
+.fade-enter-active, .fade-leave-active {
+  @apply transition-opacity duration-500 ease-in-out;
+}
+.fade-enter, .fade-leave-to {
+  @apply opacity-0;
 }
 </style>
