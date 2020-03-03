@@ -2,10 +2,12 @@
   <nav>
     <ul v-if="crumbs.length" class="breadcrumb">
       <li v-for="(crumb, i) in crumbs" :key="i">
-        {{crumb.meta.breadcrumb}}
-        <div v-if="(i + 1) !== crumbs.length" class="breadcrumb__right-arrow">
-          <SvgRightArrow />
-        </div>
+        <router-link :to="crumb.path">
+          {{crumb.meta.breadcrumb}}
+          <div v-if="(i + 1) !== crumbs.length" class="breadcrumb__right-arrow">
+            <SvgRightArrow />
+          </div>
+        </router-link>
       </li>
     </ul>
   </nav>
@@ -41,7 +43,9 @@ export default {
     @apply h-3 w-2 fill-current text-gray-400 ml-2;
   }
   li {
-    @apply flex items-center pr-3;
+    > a {
+      @apply flex items-center pr-3;
+    }
     &:last-child {
       @apply font-bold;
     }
