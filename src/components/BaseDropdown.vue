@@ -63,6 +63,12 @@ export default {
       default: false,
     },
     /**
+     * Placeholder used when multiselect is true
+     */
+    placeholder: {
+      type: String,
+    },
+    /**
      * Used as name attribute on hidden input
      */
     name: {
@@ -279,7 +285,7 @@ export default {
       }
 
       if (this.selectedOptions.length === 0) {
-        return '\xa0';
+        return this.placeholder || '\xa0';
       }
 
       const validOptions = this.selectedOptions.filter(option => !this.isParentOption(option));
