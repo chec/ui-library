@@ -15,7 +15,7 @@ Set to iterate breadcrumbs based on `this.$route.matched`; works well with  a gl
 
 <Preview>
   <Story name="Default" decorators={[StoryRouter({}, {
-    initialEntry: "/settings/developers",
+    initialEntry: "/settings/developers/api-keys",
     routes: [
       {
         path: '/',
@@ -27,7 +27,13 @@ Set to iterate breadcrumbs based on `this.$route.matched`; works well with  a gl
             children: [
               {
                 path: 'developers',
-                meta: {breadcrumb: 'Developers'}
+                meta: {breadcrumb: 'Developers'},
+                children: [
+                  {
+                    path: 'api-keys',
+                    meta: {breadcrumb: 'API Keys'}
+                  }
+                ]
               }
             ]
           }
