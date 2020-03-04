@@ -13,9 +13,15 @@
             :disabled="disabled"
             class="checkbox__input"
             @input="handleInput"
+            :indeterminate="indeterminate"
         />
+        <!-- Display none check icon and display when checked -->
         <span v-show="isChecked" class="checkbox__check">
           <chec-icon icon="check" />
+        </span>
+        <!-- Display none minus icon and display when indeterminate -->
+        <span v-show="indeterminate" class="checkbox__minus">
+          <chec-icon icon="minus" />
         </span>
         <!--
           @slot Custom label slot
@@ -23,9 +29,11 @@
           @bind isChecked boolean
           @bind disabled boolean
         -->
-        <slot name="label" v-bind="{ label, isChecked, disabled }">
-          <div v-if="label" class="checkbox__label">{{ label }}</div>
-        </slot>
+        <div v-if="label" class="checkbox__label" :class="{ disabled: disabled }">
+          <slot v-bind="{ label, isChecked, disabled }">
+            {{ label }}
+          </slot>
+        </div>
       </label>
     </div>
 </template>
@@ -66,6 +74,13 @@ export default {
       default: '',
     },
     /**
+     * Puts checkbox into an indeterminate state
+     */
+    indeterminate: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * States whether element is required
      */
     required: {
@@ -99,6 +114,14 @@ export default {
       // generates unique id concating id, name, value
       return _uniqueId(`${this.name || 'checkbox'}_${this.value}_`);
     },
+    // isIndeterminate() {
+    //   let checkedCount = this.selected.length;
+    //   if(isChecked().length === 0){
+    //     // return
+    //   } else if(isChecked().length === checkedCount) {
+    //     // return
+    //   }
+    // },
   },
   methods: {
     handleInput() {
@@ -160,7 +183,7 @@ export default {
       }
 
       &:disabled{
-        @apply bg-white border border-gray-300;
+        @apply bg-white border border-gray-300 cursor-not-allowed;
       }
 
       &:checked:after {
@@ -168,6 +191,14 @@ export default {
       }
 
       &:checked{
+        @apply bg-gray-500 border-none;
+      }
+
+      &:indeterminate:after {
+        @apply text-white absolute;
+      }
+
+      &:indeterminate {
         @apply bg-gray-500 border-none;
       }
     }
@@ -179,8 +210,19 @@ export default {
       }
     }
 
+    &__minus {
+      @apply flex items-center justify-center absolute h-4 w-4;
+      svg {
+        @apply text-white h-3 w-3;
+      }
+    }
+
     &__label {
-      @apply pl-3;
+      @apply ml-3;
+    }
+
+    &__label.disabled {
+      @apply text-gray-300 cursor-not-allowed;
     }
 }
 
