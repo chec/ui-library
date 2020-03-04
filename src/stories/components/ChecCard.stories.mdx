@@ -1,0 +1,28 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import ChecCard from '../../components/ChecCard.vue';
+
+<Meta title="Components/Card" component={ChecCard} />
+
+# Card Component
+
+<Props of={ChecCard} />
+
+# Default:
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecCard,
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <ChecCard
+            class="w-20 h-20"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
