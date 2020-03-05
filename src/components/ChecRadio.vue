@@ -22,7 +22,7 @@
           @bind disabled boolean
         -->
         <slot name="label" v-bind="{ label, isChecked, disabled }">
-          <div v-if="label" class="radio-btn__label">{{ label }}</div>
+          <div v-if="label" class="radio-btn__label" :class="{ disabled: disabled }">{{ label }}</div>
         </slot>
 
       </label>
@@ -138,7 +138,7 @@ export default {
         }
 
         &:disabled{
-          @apply bg-white border border-gray-300;
+          @apply bg-white border border-gray-300 cursor-not-allowed;
         }
     }
 
@@ -157,6 +157,10 @@ export default {
 
     &__label {
         @apply pl-3;
+    }
+
+    &__label.disabled {
+        @apply text-gray-300 cursor-not-allowed;
     }
 }
 
