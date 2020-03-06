@@ -11,9 +11,6 @@ export default {
       type: String,
       required: true,
     },
-    /**
-     * Choose any color available in our pallete
-     */
   },
   render(createElement) {
     if (!icons[this.icon]) {
