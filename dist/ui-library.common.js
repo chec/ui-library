@@ -13227,10 +13227,6 @@ var icons = {
       type: String,
       required: true
     }
-    /**
-     * Choose any color available in our pallete
-     */
-
   },
   render: function render(createElement) {
     if (!lib_icons[this.icon]) {
