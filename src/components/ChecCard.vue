@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div class="card__inner-wrapper">
+    <div class="card__inner-wrapper" :class="innerClass">
       <slot>
       </slot>
     </div>
@@ -9,14 +9,26 @@
 <script>
 export default {
   name: 'ChecCard',
+  props: {
+    /**
+     * Class to pass to inner container
+     */
+    innerClass: {
+      type: String,
+    },
+  },
 };
 </script>
 <style scoped lang="scss">
   .card {
     @apply relative shadow-sm rounded-md;
     z-index: 1;
+    margin: 0.25rem;
     &__inner-wrapper {
-      @apply bg-white rounded-md h-full w-full;
+      @apply flex h-full w-full overflow-scroll;
+      max-height: 100vh;
+      border-radius: inherit;
+      background: white;
     }
     &:before, &:after {
       @apply shadow-sm rounded-lg;
