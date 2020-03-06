@@ -1,0 +1,70 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import ChecCard from '../../components/ChecCard.vue';
+import TextField from '../../components/TextField.vue';
+
+<Meta title="Components/Card" component={ChecCard} />
+
+# Card Component
+
+<Props of={ChecCard} />
+
+# Default:
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecCard,
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <p>text and stuff</p>
+          <ChecCard
+            class="w-40 h-40"
+          >
+            <p class="self-center mx-auto">Nothing here</p>
+          </ChecCard>
+        </div>`
+    }}
+  </Story>
+</Preview>
+ 
+
+<Preview>
+  <Story name="With inner elements">
+    {{
+      components: {
+        ChecCard,
+        TextField,
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full">
+          <ChecCard
+            class="w-full max-w-lg h-20 font-lato h-auto"
+          >
+            <div class="bg-gray-100 px-8 py-10 w-full">
+              <span class="block text-lg text-gray-500 font-bold mb-4">
+                Update payment method
+              </span>
+              <!-- flex grid -->
+              <div class="flex -mx-2">
+                <div class="w-1/2 px-2">
+                  <TextField
+                    class="w-full"
+                    placeholder="First Name"
+                  />
+                </div>
+                <div class="w-1/2 px-2">
+                  <TextField
+                    class="w-full"
+                    placeholder="Last Name"
+                  />
+                </div>
+              </div>
+            </div>
+          </ChecCard>
+        </div>`
+    }}
+  </Story>
+</Preview>
