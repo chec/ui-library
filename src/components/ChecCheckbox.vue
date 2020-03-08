@@ -16,7 +16,7 @@
             :indeterminate="indeterminate"
         />
         <!-- Display none check icon and display when checked -->
-        <span v-show="isChecked" class="checkbox__check">
+        <span v-show="!indeterminate && isChecked" class="checkbox__check">
           <chec-icon icon="check" />
         </span>
         <!-- Display none minus icon and display when indeterminate -->
@@ -114,14 +114,6 @@ export default {
       // generates unique id concating id, name, value
       return _uniqueId(`${this.name || 'checkbox'}_${this.value}_`);
     },
-    // isIndeterminate() {
-    //   let checkedCount = this.selected.length;
-    //   if(isChecked().length === 0){
-    //     // return
-    //   } else if(isChecked().length === checkedCount) {
-    //     // return
-    //   }
-    // },
   },
   methods: {
     handleInput() {

@@ -70,10 +70,10 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
           />
           <ChecCheckbox
             class="p-3"
-            v-model="indeterminate"
             name="indeterminate"
             label="Indeterminate"
             value="indeterminate"
+            :disabled="disabled"
             indeterminate="indeterminate"
           />
           <ul>
