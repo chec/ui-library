@@ -3,7 +3,8 @@ export default {
   name: 'BaseButton',
   props: {
     /**
-     * The type of button - eg. internal link (route). One of "link", "button", or "route".
+     * The type of HTML element tag to use as the button- eg. internal link (route). One of "link",
+     * "button", or "route".
      */
     tagType: {
       type: String,
@@ -12,10 +13,14 @@ export default {
       },
       default: 'button',
     },
+    /**
+     * The HTML `type` of button to use, when `tagType` is "button". If the `tagType` is not "button" then
+     * `null` will be the `buttonType`.
+     */
     buttonType: {
       type: String,
       validate(type) {
-        return ['button', 'submit'].includes(type);
+        return ['button', 'reset', 'submit'].includes(type);
       },
       default: 'button',
     },
