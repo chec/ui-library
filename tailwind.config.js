@@ -18,8 +18,13 @@ const checTablesPlugin = plugin(({addBase, config}) => {
     'tbody td': {
       fontSize: config('theme.fontSize.sm'),
     },
-    'tbody tr:not(:last-child)': {
-      borderBottom: `${config('theme.borderWidth.default')} solid ${config('theme.colors.gray-200')}`
+    'tbody tr': {
+      '&:hover': {
+        backgroundColor: config('theme.colors.gray-100'),
+      },
+      '&:not(:last-child)': {
+        borderBottom: `${config('theme.borderWidth.default')} solid ${config('theme.colors.gray-200')}`
+      },
     },
     'td, th': {
       padding: config('theme.spacing.4'),
