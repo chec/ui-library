@@ -1,9 +1,5 @@
 <template>
-    <div
-        class="radio-btn"
-        :class="{ 'active' : isChecked, disabled }"
-    >
-      <label :for="id" class="radio-btn__container">
+      <label :for="id" class="radio-btn" :class="{ 'active' : isChecked, disabled }">
         <input
             type="radio"
             :id="id"
@@ -26,7 +22,6 @@
         </slot>
 
       </label>
-    </div>
 </template>
 
 <script>
@@ -105,41 +100,37 @@ export default {
 <style lang="scss">
 
 .radio-btn {
-    @apply p-3 relative cursor-pointer;
-
-    &__container{
-       @apply flex font-lato text-sm text-gray-600 cursor-pointer;
-    }
+    @apply p-3 cursor-pointer flex text-sm text-gray-600;
 
     // Hides browser's default radio style
     &__input{
-        @apply
-          align-middle
-          flex
-          m-0
-          relative
-          appearance-none
-          bg-white
-          rounded-full
-          border border-gray-400
-          shadow-sm
-          h-4 w-4 mt-1;
+      @apply
+        align-middle
+        flex
+        m-0
+        relative
+        appearance-none
+        bg-white
+        rounded-full
+        border border-gray-400
+        shadow-sm
+        h-4 w-4 mt-1;
 
-        &:focus {
-            @apply outline-none;
-        }
+      &:focus {
+          @apply outline-none;
+      }
 
-        &:hover{
-          @apply cursor-pointer bg-white border border-gray-500;
-        }
+      &:hover{
+        @apply cursor-pointer bg-white border border-gray-500;
+      }
 
-        &:active{
-          @apply bg-gray-300 border border-gray-600;
-        }
+      &:active{
+        @apply bg-gray-300 border border-gray-600;
+      }
 
-        &:disabled{
-          @apply bg-white border border-gray-300 cursor-not-allowed;
-        }
+      &:disabled{
+        @apply bg-white border border-gray-300 cursor-not-allowed;
+      }
     }
 
     &__input:checked:after {
@@ -160,7 +151,7 @@ export default {
     }
 
     &__label.disabled {
-        @apply text-gray-300 cursor-not-allowed;
+        @apply text-gray-400 cursor-not-allowed;
     }
 }
 
