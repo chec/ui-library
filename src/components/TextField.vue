@@ -70,7 +70,7 @@ export default {
     py-3
     px-4
     bg-white
-    rounded-sm
+    rounded
     shadow-sm
     border
     outline-none;

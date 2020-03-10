@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss">
 .tab {
-  @apply bg-white rounded-sm px-4 py-2 font-lato;
+  @apply bg-white rounded px-4 py-2 font-lato;
   &:hover {
     @apply bg-gray-200 cursor-not-allowed;
     .tab__text {

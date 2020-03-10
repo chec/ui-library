@@ -62,7 +62,7 @@ export default {
     @apply font-bold text-primary-blue text-sm;
   }
   &__close-icon {
-    @apply ml-4 p-2 bg-green-600 rounded-sm text-white cursor-pointer;
+    @apply ml-4 p-2 bg-green-600 rounded text-white cursor-pointer;
     > svg {
       @apply h-4 w-4;
     }
