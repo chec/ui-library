@@ -6,7 +6,7 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
 
 <Meta title="Form fields/Checkbox" component={ ChecCheckbox } />
 
-# Checkbox group
+# Checkbox
 
 #### Checkboxes allow the user to select multiple options from a checkbox group.
 - Use checkboxes when the user needs to see all available options
@@ -16,7 +16,7 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
 <Props of={ ChecCheckbox } />
 
 <Preview>
-  <Story name="Checkbox group">
+  <Story name="Checkbox">
     {{
       components: {
         ChecCheckbox
@@ -29,55 +29,45 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
           default: boolean("Disable", false, "Props")
         },
       },
-      data(){
-        return {
-          checked: [],
-        };
-      },
       template: `
         <div class="py-16 flex justify-center bg-gray-100 font-lato">
-          <ul>
-           <div class="flex justify-center">Items Checked: {{checked}}</div>
-            <ChecCheckbox
-              class="p-3"
-              name="apple"
-              :label="label"
-              value="apple"
-              v-model="checked"
-              :disabled="disabled"
-            />
-            <ChecCheckbox
-            v-model="checked"
-              class="p-3"
-              name="orange"
-              label="Orange"
-              value="orange"
-              :disabled="disabled"
-            />
-            <ChecCheckbox
-            v-model="checked"
-              class="p-3"
-              name="pear"
-              label="Pear"
-              value="pear"
-              :disabled="disabled"
-            />
-            <ChecCheckbox
-              class="p-3"
-              name="disabled"
-              label="Disabled"
-              value="disabled"
-              disabled="disabled"
-            />
-            <ChecCheckbox
-              class="p-3"
-              name="indeterminate"
-              label="Indeterminate"
-              value="indeterminate"
-              :disabled="disabled"
-              indeterminate="indeterminate"
-            />
-          </ul>
+          <ChecCheckbox
+            class="p-3"
+            name="apple"
+            :label="label"
+            value="apple"
+            checked=true
+            :disabled="disabled"
+          />
+          <ChecCheckbox
+            class="p-3"
+            name="orange"
+            label="Orange"
+            value="orange"
+            :disabled="disabled"
+          />
+          <ChecCheckbox
+            class="p-3"
+            name="pear"
+            label="Pear"
+            value="pear"
+            :disabled="disabled"
+          />
+          <ChecCheckbox
+            class="p-3"
+            name="disabled"
+            label="Disabled"
+            value="disabled"
+            disabled="disabled"
+          />
+          <ChecCheckbox
+            class="p-3"
+            name="indeterminate"
+            label="Indeterminate"
+            value="indeterminate"
+            :disabled="disabled"
+            indeterminate="indeterminate"
+          />
         </div>`,
     }}
   </Story>

@@ -43,7 +43,7 @@ export default {
     ChecIcon,
   },
   model: {
-    prop: 'selected',
+    prop: 'checked',
     event: 'input',
   },
   props: {
@@ -55,7 +55,7 @@ export default {
       default: '',
     },
     /**
-     * Used to determine if the checkbox is selected
+     * Used to determine if the checkbox is checked
      */
     value: {
       type: String,
@@ -90,20 +90,16 @@ export default {
       default: false,
     },
     /**
-     * Check if checkbox is selected.
+     * Check if checkbox is checked.
      */
-    selected: {
-      type: [Array, Boolean],
+    checked: {
+      type: Boolean,
       default: false,
     },
   },
   computed: {
     isChecked() {
-      if (typeof this.selected === 'boolean') {
-        return this.selected;
-      }
-      // Does the selected include the value, compare against the value
-      return this.selected.includes(this.value);
+      return this.checked;
     },
     id() {
       // generates unique id concating id, name, value
@@ -113,23 +109,11 @@ export default {
   methods: {
     handleInput() {
       /**
-       * Emitted when input is selected.
+       * Emitted when input is checked.
        * @event input
        */
-      if (typeof this.selected === 'boolean') {
-        this.$emit('input', !this.selected);
-        return;
-      }
-      // Store selected w/ spread operator on selected keys in array
-      let selected = [...this.selected];
-      if (selected.includes(this.value)) {
-        // uncheck
-        selected = selected.filter((value) => value !== this.value);
-      } else {
-        // check
-        selected.push(this.value);
-      }
-      this.$emit('input', selected);
+      this.checked = !this.checked;
+      this.$emit('input', this.checked);
     },
   },
 };
@@ -205,7 +189,7 @@ export default {
   }
 
   &__label.disabled {
-    @apply text-gray-300 cursor-not-allowed;
+    @apply text-gray-400 cursor-not-allowed;
   }
 }
 
