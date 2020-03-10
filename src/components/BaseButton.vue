@@ -3,12 +3,24 @@ export default {
   name: 'BaseButton',
   props: {
     /**
-     * The type of button - eg. internal link (route). One of "link", "button", or "route".
+     * The type of HTML element tag to use as the button- eg. internal link (route). One of "link",
+     * "button", or "route".
      */
-    type: {
+    tagType: {
       type: String,
       validate(type) {
-        return ['link', 'button', 'submit', 'route'].includes(type);
+        return ['link', 'button', 'route'].includes(type);
+      },
+      default: 'button',
+    },
+    /**
+     * The HTML `type` of button to use, when `tagType` is "button". If the `tagType` is not "button" then
+     * `null` will be the `buttonType`.
+     */
+    buttonType: {
+      type: String,
+      validate(type) {
+        return ['button', 'reset', 'submit'].includes(type);
       },
       default: 'button',
     },
@@ -90,7 +102,7 @@ export default {
     },
   },
   render(createElement) {
-    const tag = this.type === 'link' ? 'a' : 'button';
+    const tag = this.tagType === 'link' ? 'a' : 'button';
     // Get the children. For an "icon" variant, if an icon slot is specified, use that instead of the default slot
     // Note that this would not be ideal usage. Just providing the icon to the default slot is preferred.
     const children = [createElement('span', { class: ['button__content'] }, this.$slots.default)];
@@ -108,6 +120,7 @@ export default {
       class: this.classNames,
       domProps: {
         disabled: this.disabled,
+        type: this.tagType === 'button' ? this.buttonType : null,
       },
     }, children);
   },
