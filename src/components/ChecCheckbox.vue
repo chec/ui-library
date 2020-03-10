@@ -59,7 +59,7 @@ export default {
      */
     value: {
       type: String,
-      default: 'on',
+      default: '',
     },
     /**
      * Sets the label for the input option.
@@ -138,7 +138,7 @@ export default {
 <style lang="scss">
 
 .checkbox {
-  @apply cursor-pointer font-lato flex items-center text-sm text-gray-600 cursor-pointer;
+  @apply cursor-pointer flex items-center text-sm text-gray-600 cursor-pointer;
 
   &__input {
     @apply
