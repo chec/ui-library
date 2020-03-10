@@ -1,0 +1,74 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info';
+import ChecCheckbox from '../../components/ChecCheckbox.vue';
+
+<Meta title="Form fields/Checkbox" component={ ChecCheckbox } />
+
+# Checkbox
+
+#### Checkboxes allow the user to select multiple options from a checkbox group.
+- Use checkboxes when the user needs to see all available options
+- Users can select as many options, all the options, or none
+- Use radio button component when only one selection of a group is allowed
+
+<Props of={ ChecCheckbox } />
+
+<Preview>
+  <Story name="Checkbox">
+    {{
+      components: {
+        ChecCheckbox
+      },
+      props: {
+        label: {
+          default: text("Label", "Apple", "Props")
+        },
+        disabled: {
+          default: boolean("Disable", false, "Props")
+        },
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-100 font-lato">
+          <ChecCheckbox
+            class="p-3"
+            name="apple"
+            :label="label"
+            value="apple"
+            checked=true
+            :disabled="disabled"
+          />
+          <ChecCheckbox
+            class="p-3"
+            name="orange"
+            label="Orange"
+            value="orange"
+            :disabled="disabled"
+          />
+          <ChecCheckbox
+            class="p-3"
+            name="pear"
+            label="Pear"
+            value="pear"
+            :disabled="disabled"
+          />
+          <ChecCheckbox
+            class="p-3"
+            name="disabled"
+            label="Disabled"
+            value="disabled"
+            disabled="disabled"
+          />
+          <ChecCheckbox
+            class="p-3"
+            name="indeterminate"
+            label="Indeterminate"
+            value="indeterminate"
+            :disabled="disabled"
+            indeterminate="indeterminate"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
