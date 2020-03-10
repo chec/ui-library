@@ -11,20 +11,20 @@ import icons from '../../lib/icons';
 <summary>
 Todo list
 </summary>
-
-- Implement custom size attribute 12px & 16px
-- Import in tooltip to hover over each icon in icon list
-
 </details>
 
 # Icon
+
+#### There are  main groups of icons: UI, Navigation, Marketing
+- UI icons are standard stroke icons utilized throughout product interface
+    - Sizes are customized using inline class attributes `w-3 h-3` and `w-4 h-4`
 
 <Props of={ ChecIcon } />
 
 ## Basic Stroke Icon
 
 <Preview>
-  <Story name="Basic">
+  <Story name="UI">
     {{
       components: {
         ChecIcon
@@ -34,12 +34,12 @@ Todo list
           default: select('Icon', Object.keys(icons), 'left')
         },
         color: {
-          default: select('Color', ['text-gray-500', 'text-white'], 'text-gray-500')
+          default: select('Color', ['text-gray-500', 'text-white', 'text-red-600', 'text-green-600'], 'text-gray-500')
         },
       },
       template: `
-        <div class="py-16 flex justify-center bg-gray-400">
-          <chec-icon :icon="icon" class="w-3 h-3" :class="color" />
+        <div class="py-16 flex justify-center bg-gray-200">
+          <chec-icon :icon="icon" class="w-4 h-4" :class="color" />
         </div>`,
     }}
   </Story>
@@ -48,7 +48,7 @@ Todo list
 ## Basic Icons List
 
 <Preview>
-  <Story name="Basic Icons List">
+  <Story name="UI icons list">
     {{
       components: {
         ChecIcon
@@ -58,12 +58,12 @@ Todo list
           default: icons,
         },
         color: {
-          default: select('Color', ['text-gray-500', 'text-white'], 'text-gray-500')
+          default: select('Color', ['text-gray-500', 'text-white', 'text-red-600', 'text-green-600'], 'text-gray-500')
         },
       },
       template: `
-        <div class="py-16 flex justify-center bg-gray-400">
-          <chec-icon v-for="(_, icon) in icons" :icon="icon" class="w-3 h-3" :class="color" v-tooltip.top="icon"/>
+        <div class="py-16 flex justify-center bg-gray-200">
+          <chec-icon v-for="(_, icon) in icons" :icon="icon" class="w-4 h-4" :class="color" v-tooltip.top="icon"/>
         </div>`,
     }}
   </Story>
