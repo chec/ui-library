@@ -1,4 +1,38 @@
-const tailwind = require('tailwindcss-plugins/gradients');
+const gradientsPlugin = require('tailwindcss-plugins/gradients');
+const plugin = require('tailwindcss/plugin')
+
+const checTablesPlugin = plugin(({addBase, config}) => {
+  const tables = {
+    table: {
+      boxShadow: config('theme.boxShadow.sm'),
+      borderRadius: config('theme.borderRadius.md'),
+      overflow: 'hidden',
+      textAlign: 'left',
+      color: config('theme.colors.gray-500'),
+    },
+    'thead th': {
+      backgroundColor: config('theme.colors.gray-200'),
+      textTransform: 'uppercase',
+      fontSize: config('theme.fontSize.xs'),
+    },
+    'tbody td': {
+      fontSize: config('theme.fontSize.sm'),
+    },
+    'tbody tr': {
+      '&:hover': {
+        backgroundColor: config('theme.colors.gray-100'),
+      },
+      '&:not(:last-child)': {
+        borderBottom: `${config('theme.borderWidth.default')} solid ${config('theme.colors.gray-200')}`
+      },
+    },
+    'td, th': {
+      padding: config('theme.spacing.4'),
+      backgroundColor: config('theme.color.white'),
+    },
+  };
+  addBase(tables);
+});
 
 const fontSizes = {
   xxs: '.625rem',
@@ -102,6 +136,7 @@ module.exports = {
     transitionProperty: ['responsive', 'hover', 'focus'],
   },
   plugins: [
-    tailwind,
+    checTablesPlugin,
+    gradientsPlugin,
   ],
 };

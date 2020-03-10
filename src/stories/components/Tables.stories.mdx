@@ -1,0 +1,124 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+<Meta title="Components/Tables" />
+
+# Tables styles
+
+# Default:
+
+<Preview>
+  <Story name="Default">
+    {{
+      template: `
+      <div class="flex justify-center items-center h-screen font-lato">
+        <table class="">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Views</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+            <tr>
+              <td>Intro to CSS</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+            <tr>
+              <td>Intro to CSS</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      `
+    }}
+  </Story>
+</Preview>
+
+# With Auto
+
+<Preview>
+  <Story name="With auto layout">
+    {{
+      template: `
+      <div class="flex justify-center items-center h-screen font-lato">
+        <table class="table-auto">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Views</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+            <tr>
+              <td>Intro to CSS</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+            <tr>
+              <td>Intro to CSS</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      `
+    }}
+  </Story>
+</Preview>
+
+# With Fixed Auto
+
+<Preview>
+  <Story name="With fixed layout">
+    {{
+      template: `
+      <div class="flex justify-center items-center h-screen font-lato">
+        <table class="table-fixed">
+          <thead>
+            <tr>
+              <th class="w-1/2">Title</th>
+              <th class="w-1/2">Author</th>
+              <th class="w-1/2">Views</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+            <tr>
+              <td>Intro to CSS</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+            <tr>
+              <td>Intro to CSS</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      `
+    }}
+  </Story>
+</Preview>
+ 
