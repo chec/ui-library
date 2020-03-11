@@ -5,7 +5,11 @@
         <ChecIcon :icon="isOpen ? 'up' : 'down'" />
       </template>
     </BaseButton>
-    <BasePopover v-if="isOpen" :class="{'mt-10': this.position === 'right'}">
+    <BasePopover
+      v-if="isOpen"
+      :class="{'mt-10': this.position === 'right'}"
+      @option-selected="this.handleSelectOption"
+    >
       <!--
         @slot Provide BaseOption instances here
       -->
@@ -73,6 +77,12 @@ export default {
       if (!this.$refs['menu-el'].contains(event.target) && this.isOpen) {
         this.isOpen = false;
       }
+    },
+    /**
+     * When an option is selected, close the menu
+     */
+    handleSelectOption() {
+      this.isOpen = false;
     },
   },
 };
