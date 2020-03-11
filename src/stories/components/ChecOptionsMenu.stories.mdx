@@ -20,6 +20,13 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
       },
       methods: {
         action: action('option-selected'),
+        confirm(message) {
+          if (confirm(message)) {
+            this.action();
+            return true;
+          }
+          return false;
+        }
       },
       template: `
       <div class="p-16 flex justify-center font-lato w-full text-gray-500">
@@ -31,7 +38,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
             <BaseOption @option-selected="action">
               Check for changes
             </BaseOption>
-            <BaseOption class="text-red-600" @option-selected="action">
+            <BaseOption class="text-red-600" @option-selected="confirm('Are you sure?')">
               Delete record
             </BaseOption>
             <BaseOption :option="{ disabled: true }">
