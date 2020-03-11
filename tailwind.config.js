@@ -1,7 +1,7 @@
 const gradientsPlugin = require('tailwindcss-plugins/gradients');
-const plugin = require('tailwindcss/plugin')
+const plugin = require('tailwindcss/plugin');
 
-const checTablesPlugin = plugin(({addBase, config}) => {
+const checTablesPlugin = plugin(({ addBase, config }) => {
   const tables = {
     table: {
       boxShadow: config('theme.boxShadow.sm'),
@@ -24,7 +24,7 @@ const checTablesPlugin = plugin(({addBase, config}) => {
         backgroundColor: config('theme.colors.gray-100'),
       },
       '&:not(:last-child)': {
-        borderBottom: `${config('theme.borderWidth.default')} solid ${config('theme.colors.gray-200')}`
+        borderBottom: `${config('theme.borderWidth.default')} solid ${config('theme.colors.gray-200')}`,
       },
     },
     'td, th': {
