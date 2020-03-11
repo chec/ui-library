@@ -44,7 +44,7 @@ import { action } from '@storybook/addon-actions';
   </Story>
 </Preview>
 
-# With Auto
+# With auto layout
 
 <Preview>
   <Story name="With auto layout">
@@ -83,7 +83,7 @@ import { action } from '@storybook/addon-actions';
   </Story>
 </Preview>
 
-# With Fixed Auto
+# With fixed layout
 
 <Preview>
   <Story name="With fixed layout">
@@ -121,4 +121,42 @@ import { action } from '@storybook/addon-actions';
     }}
   </Story>
 </Preview>
- 
+
+# With dark background
+
+<Preview>
+  <Story name="With dark background">
+    {{
+      template: `
+      <div class="flex justify-center items-center h-screen font-lato bg-gray-600">
+        <table class="table-fixed">
+          <thead>
+            <tr>
+              <th class="w-1/2">Title</th>
+              <th class="w-1/2">Author</th>
+              <th class="w-1/2">Views</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+            <tr>
+              <td>Intro to CSS</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+            <tr>
+              <td>Intro to CSS</td>
+              <td>Adam</td>
+              <td>858</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      `
+    }}
+  </Story>
+</Preview>

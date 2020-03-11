@@ -8,6 +8,7 @@ const checTablesPlugin = plugin(({addBase, config}) => {
       borderRadius: config('theme.borderRadius.md'),
       overflow: 'hidden',
       textAlign: 'left',
+      backgroundColor: config('theme.colors.white'),
       color: config('theme.colors.gray-500'),
     },
     'thead th': {
@@ -95,7 +96,7 @@ module.exports = {
       'blue-600': '#14ABD2',
       'blue-500': '#16BEE9',
       'blue-400': '#44CBEE',
-      'blue-300': '#73D8F2', 
+      'blue-300': '#73D8F2',
       'blue-200': '#A1E5F7',
       'blue-100': '#E3F7FC',
       'gray-600': '#283341',
