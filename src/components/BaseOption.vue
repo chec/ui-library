@@ -50,7 +50,10 @@ export default {
      */
     option: {
       type: Object,
-      required: true,
+      default: () => ({
+        value: null,
+        disabled: false,
+      }),
     },
   },
   computed: {
@@ -84,7 +87,7 @@ export default {
 
 <style lang="scss" scoped>
   .option {
-    @apply w-full flex items-center font-lato text-sm text-gray-500 px-4 py-3 outline-none cursor-pointer bg-white;
+    @apply w-full flex items-center text-sm px-4 py-3 outline-none cursor-pointer bg-white;
     &:hover {
       @apply bg-gray-100;
     }
@@ -96,7 +99,7 @@ export default {
       @apply border-b border-gray-200;
     }
     &--disabled {
-      @apply opacity-50;
+      @apply opacity-50 cursor-not-allowed;
       &:hover,
       &:active,
       &:focus {

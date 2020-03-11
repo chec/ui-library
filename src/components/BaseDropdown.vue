@@ -284,7 +284,7 @@ export default {
 
 <style lang="scss" scoped>
   .dropdown {
-    @apply relative w-full;
+    @apply relative w-full text-gray-500;
     &__control {
       @apply
         w-full
@@ -306,14 +306,14 @@ export default {
         @apply border border-gray-500;
       }
       > span {
-        @apply flex items-center justify-between w-full font-lato p-4 text-sm text-gray-500;
+        @apply flex items-center justify-between w-full p-4 text-sm;
       }
       &--open {
         @apply border border-gray-500;
       }
     }
     &__option {
-      @apply font-lato text-sm text-gray-600 px-4 py-3;
+      @apply text-sm text-gray-600 px-4 py-3;
       &:not(:last-child) {
         @apply border-b border-gray-200;
       }
