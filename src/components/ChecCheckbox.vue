@@ -132,7 +132,7 @@ export default {
       relative
       appearance-none
       bg-white
-      rounded-sm
+      rounded
       border border-gray-400
       shadow-sm
       h-4 w-4;

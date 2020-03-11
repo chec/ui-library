@@ -63,7 +63,7 @@ export default {
     @apply flex-grow font-normal text-white text-sm text-center;
   }
   &__close-icon {
-    @apply ml-4 p-2 bg-transparent rounded-sm text-white cursor-pointer outline-none;
+    @apply ml-4 p-2 bg-transparent rounded text-white cursor-pointer outline-none;
     > svg {
       @apply h-4 w-4;
     }

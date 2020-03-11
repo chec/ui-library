@@ -109,7 +109,7 @@ module.exports = {
       black: '#000000',
     },
     borderRadius: {
-      sm: '4px',
+      sm: '2px',
       default: '4px',
       md: '8px',
       lg: '12px',

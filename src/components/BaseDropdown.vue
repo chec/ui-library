@@ -290,7 +290,7 @@ export default {
         w-full
         bg-white
         shadow-sm
-        rounded-sm
+        rounded
         outline-none
         transition-all
         ease-in
