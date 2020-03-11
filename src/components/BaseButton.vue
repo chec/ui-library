@@ -122,6 +122,9 @@ export default {
         disabled: this.disabled,
         type: this.tagType === 'button' ? this.buttonType : null,
       },
+      on: {
+        click: this.handleClick,
+      },
     }, children);
   },
 };
@@ -138,20 +141,20 @@ export default {
   }
 
   &--has-icon-before {
-    .button__icon {
-      @apply mr-1;
+    .button__content:not(:empty) {
+      @apply ml-1;
     }
-    &.button--variant-large .button__icon {
-      @apply mr-2;
+    &.button--variant-large .button__content:not(:empty) {
+      @apply ml-2;
     }
   }
 
   &--has-icon-after {
-    .button__icon {
-      @apply ml-1;
+    .button__content:not(:empty) {
+      @apply mr-1;
     }
-    &.button--variant-large .button__icon {
-      @apply ml-2;
+    &.button--variant-large .button__content:not(:empty) {
+      @apply mr-2;
     }
   }
 

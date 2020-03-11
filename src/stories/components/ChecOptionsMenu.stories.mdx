@@ -1,0 +1,88 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import BaseOption from '../../components/BaseOption.vue';
+import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
+
+<Meta title="Components/Options menu" component={ChecOptionsMenu} />
+
+# Options menu
+
+<Props of={ChecOptionsMenu} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        BaseOption,
+        ChecOptionsMenu,
+      },
+      methods: {
+        action: action('option-selected'),
+        confirm(message) {
+          if (confirm(message)) {
+            this.action();
+            return true;
+          }
+          return false;
+        }
+      },
+      template: `
+      <div class="p-16 flex justify-center font-lato w-full text-gray-500">
+        <div class="w-64 relative">
+          <ChecOptionsMenu :open="true">
+            <BaseOption @option-selected="action">
+              Edit record
+            </BaseOption>
+            <BaseOption @option-selected="action">
+              Check for changes
+            </BaseOption>
+            <BaseOption class="text-red-600" @option-selected="confirm('Are you sure?')">
+              Delete record
+            </BaseOption>
+            <BaseOption :option="{ disabled: true }">
+              Disabled action
+            </BaseOption>
+          </ChecOptionsMenu>
+         </div>
+        </div>
+      </div>`
+    }}
+  </Story>
+</Preview>
+
+# Right aligned
+
+<Preview>
+  <Story name="Right aligned">
+    {{
+      components: {
+        BaseOption,
+        ChecOptionsMenu,
+      },
+      methods: {
+        action: action('option-selected'),
+      },
+      template: `
+      <div class="p-16 flex justify-center font-lato w-full text-gray-500">
+         <div class="w-64 relative">
+          <ChecOptionsMenu position="right" :open="false">
+            <BaseOption @option-selected="action">
+              Edit record
+            </BaseOption>
+            <BaseOption @option-selected="action">
+              Check for changes
+            </BaseOption>
+            <BaseOption class="text-red-600" @option-selected="action">
+              Delete record
+            </BaseOption>
+            <BaseOption :option="{ disabled: true }">
+              Disabled action
+            </BaseOption>
+          </ChecOptionsMenu>
+        </div>
+      </div>`
+    }}
+  </Story>
+</Preview>
