@@ -34,7 +34,7 @@ export default {
      */
     placeholder: {
       type: String,
-      default: 'Text Field',
+      default: '',
     },
   },
   computed: {
