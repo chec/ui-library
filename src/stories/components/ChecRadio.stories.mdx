@@ -39,40 +39,48 @@ import ChecRadio from '../../components/ChecRadio.vue';
         };
       },
       template: `
-        <div class="py-16 flex justify-center bg-gray-100">
+        <div class="py-16 font-lato flex justify-center bg-gray-100">
         <ul>
-          <ChecRadio
-            :name="name"
-            :label="label"
-            :value="value"
-            :disabled="disabled"
-            :required="required"
-            v-model="checked"
-          />
-          <ChecRadio
-            label="Option 2"
-            :name="name"
-            value="b"
-            :disabled="disabled"
-            :required="required"
-            v-model="checked"
-          />
-          <ChecRadio
-            label="Option 3"
-            :name="name"
-            value="c"
-            :disabled="disabled"
-            :required="required"
-            v-model="checked"
-          />
-          <ChecRadio
-            label="Disabled"
-            :name="name"
-            value="d"
-            disabled="disabled"
-            :required="required"
-            v-model="checked"
-          />
+          <li>
+            <ChecRadio
+              :name="name"
+              :label="label"
+              :value="value"
+              :disabled="disabled"
+              :required="required"
+              v-model="checked"
+            />
+          </li>
+          <li>
+            <ChecRadio
+              label="Option 2"
+              :name="name"
+              value="b"
+              :disabled="disabled"
+              :required="required"
+              v-model="checked"
+            />
+          </li>
+          <li>
+            <ChecRadio
+              label="Option 3"
+              :name="name"
+              value="c"
+              :disabled="disabled"
+              :required="required"
+              v-model="checked"
+            />
+          </li>
+          <li>
+            <ChecRadio
+              label="Disabled"
+              :name="name"
+              value="d"
+              disabled="disabled"
+              :required="required"
+              v-model="checked"
+            />
+          </li>
           <ul>
         </div>`,
     }}
