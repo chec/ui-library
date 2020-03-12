@@ -33,11 +33,30 @@ export default {
         return ['success', 'error', 'warning', 'info'].includes(value);
       },
     },
+    /**
+     * Whether the notification should automatically disappear after a certain period of time (`hideTime`)
+     */
+    autoHide: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * The time in milliseconds after which a notification will disappear, if `autoHide` is true
+     */
+    hideTime: {
+      type: Number,
+      default: 3000, // milliseconds
+    },
   },
   computed: {
     classObject() {
       return `notif--${this.variant}`;
     },
+  },
+  mounted() {
+    if (this.autoHide) {
+      this.registerHideTimer();
+    }
   },
   methods: {
     onClose($event) {
@@ -48,18 +67,30 @@ export default {
        */
       this.$emit('close', $event);
     },
+    registerHideTimer($event) {
+      window.setTimeout(() => {
+        /**
+         * Emitted when the notification should be automatically hidden, and the timer expires
+         * @event close
+         * @type {$event}
+         */
+        this.$emit('close', $event);
+      }, this.hideTime);
+    },
   },
 };
 </script>
 <style lang="scss" scoped>
 .notif {
-  @apply flex font-lato justify-between items-center bg-gray-200 rounded-md p-4;
+  @apply flex justify-between items-start bg-gray-200 rounded-md p-4;
   &__content-container {
     @apply flex items-center;
-
+    // Manual tweaks to keep single line text vertically centered with the close button
+    padding-top: 3px;
+    padding-bottom: 3px;
   }
   &__text {
-    @apply font-bold text-primary-blue text-sm;
+    @apply text-primary-blue text-sm;
   }
   &__close-icon {
     @apply ml-4 p-2 bg-green-600 rounded text-white cursor-pointer;
