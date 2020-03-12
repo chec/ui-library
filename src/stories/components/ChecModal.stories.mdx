@@ -1,0 +1,92 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { select } from '@storybook/addon-knobs';
+import BaseButton from '../../components/BaseButton.vue';
+import ChecModal from '../../components/ChecModal.vue';
+import TextField from '../../components/TextField.vue';
+const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', 'full', 'screen-sm', 'screen-md', 'screen-lg', 'screen-xl', 'none'];
+
+<Meta title="Components/Modal" component={ChecModal} />
+
+# Default
+
+<Props of={ChecModal} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecModal,
+      },
+      props: {
+        width: {
+          default: select('Width', widths, '2xl'),
+        },
+      },
+      template: `
+        <div>
+          <ChecModal :width="width">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor imperdiet pellentesque. Mauris quam enim, vehicula ac felis vel, tempus tincidunt massa.</p>
+            <p>Mauris eget mi neque. Nullam eu est a velit mattis cursus vel nec purus. Pellentesque tincidunt ornare auctor.</p>
+            <p>Mauris vitae lobortis justo. Donec nec nisl condimentum, efficitur tellus vel, lobortis leo. Curabitur volutpat porta sapien, eget sagittis est placerat ac. Cras commodo vehicula arcu, sed tincidunt ligula molestie ac.</p>
+          </ChecModal>
+          <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-right m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# With a form
+
+<Props of={ChecModal} />
+
+<Preview>
+  <Story name="With a form">
+    {{
+      components: {
+        BaseButton,
+        ChecModal,
+        TextField,
+      },
+      data() {
+        return {
+          showModal: true,
+        };
+      },
+      props: {
+        width: {
+          default: select('Width', widths, 'lg'),
+        },
+      },
+      methods: {
+        hideModal() {
+          this.showModal = false;
+        },
+      },
+      template: `
+        <div class="font-lato">
+          <ChecModal :width="width" v-if="showModal">
+            <h2 class="text-lg mb-4 font-bold">Set up your account</h2>
+            <label class="block mb-4">
+              First name
+              <TextField value="Leslie" class="w-full" />
+            </label>
+            <label class="block mb-4">
+              Surname
+              <TextField value="Lawless" class="w-full" />
+            </label>
+            <label class="block mb-4">
+              Email address
+              <TextField value="lezlie@example.com" class="w-full" />
+            </label>
+            <BaseButton color="red" class="mt-8" @click="hideModal">Close</BaseButton>
+          </ChecModal>
+          <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-right m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+        </div>`
+    }}
+  </Story>
+</Preview>
