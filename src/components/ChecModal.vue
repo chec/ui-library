@@ -28,7 +28,7 @@ export default {
 .modal-overlay {
   @apply absolute top-0 left-0 w-full h-full z-50 flex justify-center items-center;
   // Special / overlay
-  background-color: rgba(65, 85, 108, 0.9);;
+  background-color: rgba(65, 85, 108, 0.9);
 }
 
 .modal-card {
