@@ -11,6 +11,7 @@ import BasePopover from './components/BasePopover.vue';
 import BaseTag from './components/BaseTag.vue';
 import BaseTooltip from './directives/BaseTooltip';
 import ChecCard from './components/ChecCard.vue';
+import ChecCheckbox from './components/ChecCheckbox.vue';
 import ChecIcon from './components/ChecIcon.vue';
 import ChecDataPill from './components/ChecDataPill.vue';
 import ChecModal from './components/ChecModal.vue';
@@ -29,6 +30,7 @@ export {
   BaseTag,
   BaseTooltip,
   ChecCard,
+  ChecCheckbox,
   ChecIcon,
   ChecDataPill,
   ChecModal,
