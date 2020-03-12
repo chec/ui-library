@@ -279,13 +279,16 @@ export default {
      * @returns {string|*}
      */
     shownValue() {
+      const emptyLabel = this.placeholder || '\xa0';
       if (!this.multiselect) {
         // Note: \xa0 is the hex code for a non-breaking space. This is used so Vue will still render it.
-        return this.selectedOptions.lengthl > 0 ? this.selectedOptions[0].label : '\xa0';
+        return this.selectedOptions.length > 0 && this.selectedOptions[0].value.trim()
+          ? this.selectedOptions[0].label
+          : emptyLabel;
       }
 
       if (this.selectedOptions.length === 0) {
-        return this.placeholder || '\xa0';
+        return emptyLabel;
       }
 
       const validOptions = this.selectedOptions.filter(option => !this.isParentOption(option));
