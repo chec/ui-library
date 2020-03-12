@@ -3,7 +3,17 @@ import { action } from "@storybook/addon-actions";
 import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
 import { withInfo } from 'storybook-addon-vue-info'
 import ChecIcon from '../../components/ChecIcon.vue';
-import icons from '../../lib/icons';
+import { uiIcons } from '../../lib/icons';
+const colors = {
+  blue: 'text-primary-blue',
+  gray: 'text-gray-500',
+  white: 'text-white',
+  blue600: 'text-blue-600',
+  green600: 'text-green-600',
+  red600: 'text-red-600',
+  purple600: 'text-purple-600',
+  orange600: 'text-orange-600',
+}
 
 <Meta title="Components/Icon" component={ChecIcon} />
 
@@ -31,10 +41,10 @@ Todo list
       },
       props: {
         icon: {
-          default: select('Icon', Object.keys(icons), 'left')
+          default: select('Icon', Object.keys(uiIcons), 'left')
         },
         color: {
-          default: select('Color', ['text-gray-500', 'text-white', 'text-red-600', 'text-green-600'], 'text-gray-500')
+          default: select('Color', colors, colors.blue)
         },
       },
       template: `
@@ -55,10 +65,10 @@ Todo list
       },
       props: {
         icons: {
-          default: icons,
+          default: uiIcons,
         },
         color: {
-          default: select('Color', ['text-gray-500', 'text-white', 'text-red-600', 'text-green-600'], 'text-gray-500')
+          default: select('Color', colors, colors.blue)
         },
       },
       template: `
