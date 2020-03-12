@@ -33,11 +33,30 @@ export default {
         return ['success', 'error', 'warning', 'info'].includes(value);
       },
     },
+    /**
+     * Whether the notification should automatically disappear after a certain period of time (`hideTime`)
+     */
+    autoHide: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * The time in milliseconds after which a notification will disappear, if `autoHide` is true
+     */
+    hideTime: {
+      type: Number,
+      default: 3000, // milliseconds
+    },
   },
   computed: {
     classObject() {
       return `notif--${this.variant}`;
     },
+  },
+  mounted() {
+    if (this.autoHide) {
+      this.registerHideTimer();
+    }
   },
   methods: {
     onClose($event) {
@@ -47,6 +66,16 @@ export default {
        * @type {$event}
        */
       this.$emit('close', $event);
+    },
+    registerHideTimer($event) {
+      window.setTimeout(() => {
+        /**
+         * Emitted when the notification should be automatically hidden, and the timer expires
+         * @event close
+         * @type {$event}
+         */
+        this.$emit('close', $event);
+      }, this.hideTime);
     },
   },
 };

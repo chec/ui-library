@@ -5,7 +5,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
 
 <Meta title="Components/Notifications" component={BaseNotification} />
 
-# Alert
+# Notification
 
 <Props of={BaseNotification} />
 
@@ -32,7 +32,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
           default: select('Variant', ['success', 'error', 'warning', 'info']),
         },
         text: {
-          default: text('Text to Alert', 'An alert!'),
+          default: text('Text to Notification', 'An alert!'),
         },
       },
       template: `
@@ -41,6 +41,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
             v-if="!closed"
             :variant="variant"
             @closet="close()"
+            :autoHide="false"
           >
             {{text}}
           </BaseNotification>
@@ -87,6 +88,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
             class="mb-2"
             :variant="variant"
             @close="close(variant)"
+            :autoHide="false"
           >
             {{content(variant)}}
           </BaseNotification>
@@ -112,7 +114,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
         close() {
           setTimeout(() => this.closed = false, 3000);
           this.closed = true;
-          return action('Alert closed!')();
+          return action('Notification closed!')();
         }
       },
       props: {
@@ -126,10 +128,52 @@ import BaseNotification from '../../components/BaseNotification.vue';
             v-if="!closed"
             :variant="variant"
             @close="close()"
+            :autoHide="false"
           >
             <p class="font-bold text-red-200 text-xs italic">
               Formatted alert text.
             </p>
+          </BaseNotification>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# Automatically hide on a timer
+
+<Preview>
+  <Story name="Hide on timer">
+    {{
+      components: {
+        BaseNotification
+      },
+      data() {
+        return {
+          closed: false,
+        };
+      },
+      methods: {
+        close() {
+          setTimeout(() => this.closed = false, 3000);
+          this.closed = true;
+          return action('Notification timer expired and was it was hidden')();
+        }
+      },
+      props: {
+        variant: {
+          default: select('Variant', ['success', 'error', 'warning', 'info']),
+        },
+      },
+      template: `
+        <div class="mx-auto max-w-lg pt-6">
+          <BaseNotification
+            v-if="!closed"
+            :variant="variant"
+            @close="close()"
+            :hideTime="3000"
+            autoHide
+          >
+            I will disappear after 3 seconds
           </BaseNotification>
         </div>`
     }}
