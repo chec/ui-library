@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div class="card__inner-wrapper" :class="innerClasses()">
+    <div class="card__inner-wrapper" :class="innerClassWithDefault">
       <slot>
       </slot>
     </div>
@@ -18,8 +18,8 @@ export default {
       default: '',
     },
   },
-  methods: {
-    innerClasses() {
+  computed: {
+    innerClassWithDefault() {
       // If the dev hasn't already provided a background class, make it white
       if (!this.innerClass.match(/(^|\s+)bg-/)) {
         return `${this.innerClass} bg-white`;
