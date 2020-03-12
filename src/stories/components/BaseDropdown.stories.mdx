@@ -4,8 +4,6 @@ import BaseDropdown from '../../components/BaseDropdown.vue';
 import BaseOption from '../../components/BaseOption.vue';
 import ChecModal from '../../components/ChecModal.vue';
 const defaultOptions = [
-  { value: '', label: 'Select a Ticket', disabled: true },
-  { value: 't3', label: 'T3 Ticket' },
   { value: 't2', label: 'T2 Ticket' },
   { value: 't1', label: 'T1 Ticket (Coming Soon)', disabled: true }
 ];
@@ -75,7 +73,7 @@ Todo list
 # In context:
 
 <Preview>
-  <Story name="In context">
+  <Story name="In context and required">
     {{
       components: {
         BaseDropdown,
@@ -96,6 +94,7 @@ Todo list
             v-model="option"
             :options="options"
             baseOptionClass="text-left"
+            :required="true"
             />
             <div>Some more content</div>
         </div>`

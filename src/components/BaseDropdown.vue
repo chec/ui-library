@@ -30,10 +30,9 @@
         :key="option.value"
         :class="baseOptionClass"
         :option="option"
-        @option-selected="onBaseOptionSelect"
         :show-checkbox="multiselect"
-        :checked="!isIndeterminate(option) && isChecked(option)"
-        :indeterminate="isIndeterminate(option)"
+        :checked="multiselect && !isIndeterminate(option) && isChecked(option)"
+        :indeterminate="multiselect && isIndeterminate(option)"
       >
         {{option.label}}
       </BaseOption>
@@ -55,6 +54,13 @@ export default {
     BasePopover,
   },
   props: {
+    /**
+     *  If true an empty option will render
+     */
+    required: {
+      type: Boolean,
+      default: false,
+    },
     /**
      * Indicates that multiple options may be selected. In this case the bound v-model will be an array of values
      */
@@ -269,7 +275,7 @@ export default {
      */
     selectedOptions() {
       if (!this.multiselect) {
-        return [this.options.find(candidate => candidate.value === this.value)];
+        return this.options.find(candidate => candidate.value === this.value);
       }
       return this.renderableOptions.filter(candidate => this.value.includes(candidate.value));
     },
@@ -282,8 +288,8 @@ export default {
       const emptyLabel = this.placeholder || '\xa0';
       if (!this.multiselect) {
         // Note: \xa0 is the hex code for a non-breaking space. This is used so Vue will still render it.
-        return this.selectedOptions.length > 0 && this.selectedOptions[0].value.trim()
-          ? this.selectedOptions[0].label
+        return this.selectedOptions && this.selectedOptions.label.trim()
+          ? this.selectedOptions.label.trim()
           : emptyLabel;
       }
 
