@@ -1,5 +1,5 @@
 <script>
-import icons from '../lib/icons';
+import { uiIcons } from '../lib/icons';
 
 export default {
   name: 'ChecIcon',
@@ -13,10 +13,10 @@ export default {
     },
   },
   render(createElement) {
-    if (!icons[this.icon]) {
+    if (!uiIcons[this.icon]) {
       throw Error('Required param "icon" was not valid');
     }
-    return createElement(icons[this.icon]);
+    return createElement(uiIcons[this.icon]);
   },
 };
 </script>
