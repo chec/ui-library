@@ -82,7 +82,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .notif {
-  @apply flex font-lato justify-between items-center bg-gray-200 rounded-md p-4;
+  @apply flex justify-between items-start bg-gray-200 rounded-md p-4;
   &__content-container {
     @apply flex items-center;
 
