@@ -13,6 +13,7 @@ import BaseTooltip from './directives/BaseTooltip';
 import ChecCard from './components/ChecCard.vue';
 import ChecIcon from './components/ChecIcon.vue';
 import ChecDataPill from './components/ChecDataPill.vue';
+import ChecModal from './components/ChecModal.vue';
 import ChecOptionsMenu from './components/ChecOptionsMenu.vue';
 import TextField from './components/TextField.vue';
 
@@ -30,6 +31,7 @@ export {
   ChecCard,
   ChecIcon,
   ChecDataPill,
+  ChecModal,
   ChecOptionsMenu,
   TextField,
   SvgIcons as Icons,
