@@ -1,14 +1,18 @@
 <template>
   <div class="options-menu" ref="menu-el">
-    <BaseButton @click="toggleMenu" :class="{'float-right': this.position === 'right'}">
+    <BaseButton @click="toggleMenu" :class="{'float-right': position === 'right'}">
       <template v-slot:icon>
         <ChecIcon :icon="isOpen ? 'up' : 'down'" />
       </template>
     </BaseButton>
     <BasePopover
       v-if="isOpen"
-      :class="{'mt-10': this.position === 'right'}"
-      @option-selected="this.handleSelectOption"
+      :class="{
+        'left-0': position === 'left',
+        'mt-10': position === 'right',
+        'right-0': position === 'right',
+      }"
+      @option-selected="handleSelectOption"
     >
       <!--
         @slot Provide BaseOption instances here
@@ -87,3 +91,16 @@ export default {
   },
 };
 </script>
+<style scoped lang="scss">
+.options-menu {
+  @apply relative;
+
+  .button {
+    @apply shadow-none bg-transparent;
+  }
+
+  .popover {
+    min-width: 10rem;
+  }
+}
+</style>

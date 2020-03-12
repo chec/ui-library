@@ -64,6 +64,7 @@ module.exports = {
       md: '0px 3px 12px rgba(40, 51, 65, 0.1), 0px 0px 1px rgba(40, 51, 65, 0.2)',
       lg: '0px 4px 16px rgba(40, 51, 65, 0.1), 0px 0px 1px rgba(40, 51, 65, 0.2)',
       inner: 'inset 0px 1px 2px rgba(40, 51, 65, 0.1)',
+      none: 'none',
     },
     colors: {
       transparent: 'transparent',
