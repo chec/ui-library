@@ -97,18 +97,25 @@ export default {
   created() {
     // add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
+    // update this.dropdownElWidth on resize
+    window.addEventListener('resize', this.setDropdownElWidth);
   },
   mounted() {
-    // set BasePopover width to match root's width since this component is has a 'static' position by default to
-    // allow for popping out of scrollable overflow
-    const dropdownEl = this.$refs['dropdown-el'];
-    this.dropdownElWidth = dropdownEl.clientWidth;
+    this.setDropdownElWidth();
   },
   beforeDestroy() {
     // remove event listeners
     window.removeEventListener('click', this.onOutsideClick);
+    window.removeEventListener('resize', this.setDropdownElWidth);
   },
   methods: {
+    /** Method used to size set the root element's width in the state */
+    setDropdownElWidth() {
+      // set BasePopover width to match root's width since this component is has a 'static' position by default to
+      // allow for popping out of scrollable overflow
+      const dropdownEl = this.$refs['dropdown-el'];
+      this.dropdownElWidth = dropdownEl.clientWidth;
+    },
     /**
      * Determines if the option is provided as a "parent" to child options
      *
