@@ -11,6 +11,7 @@ import IcDownload from '../assets/svgs/UiIcons/ic-download.svg';
 import IcUpload from '../assets/svgs/UiIcons/ic-upload.svg';
 import IcGrip from '../assets/svgs/UiIcons/ic-grip.svg';
 import IcMinus from '../assets/svgs/UiIcons/ic-minus.svg';
+import IcCopy from '../assets/svgs/UiIcons/ic-copy.svg';
 // Marketing icons imports
 import IcStandard from '../assets/svgs/MIcons/ic-standard.svg';
 import IcPlusPlan from '../assets/svgs/MIcons/ic-plus-plan.svg';
@@ -39,6 +40,7 @@ export const uiIcons = {
   upload: IcUpload,
   grip: IcGrip,
   minus: IcMinus,
+  copy: IcCopy,
 };
 
 export const mIcons = {
