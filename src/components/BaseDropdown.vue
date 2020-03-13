@@ -24,7 +24,7 @@
         </div>
       </span>
     </div>
-    <BasePopover v-show="showDropdown" class="overflow-scroll h-auto" :style="{ width: `${dropdownElWidth}px`  }">
+    <BasePopover v-show="showDropdown" class="dropdown__base-popover" :style="{ width: `${dropdownElWidth}px`  }">
       <BaseOption
         v-for="option in renderableOptions"
         :key="option.value"
@@ -268,7 +268,7 @@ export default {
     shownValue() {
       if (!this.multiselect) {
         // Note: \xa0 is the hex code for a non-breaking space. This is used so Vue will still render it.
-        return this.selectedOptions.length > 0 ? this.selectedOptions[0].label : '\xa0';
+        return this.selectedOptions.lengthl > 0 ? this.selectedOptions[0].label : '\xa0';
       }
 
       if (this.selectedOptions.length === 0) {
@@ -324,6 +324,10 @@ export default {
       &:not(:last-child) {
         @apply border-b border-gray-200;
       }
+    }
+    &__base-popover {
+      @apply overflow-scroll;
+      max-height: 50vh;
     }
     &__down-arrow {
       @apply flex flex-col justify-center w-5 h-5 fill-current text-gray-600;
