@@ -1,0 +1,32 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info'
+import ChecMarketingIcon from '../../components/ChecMarketingIcon.vue';
+import { mIcons } from '../../lib/icons';
+
+<Meta title="Components/Icons - Marketing" component={ChecMarketingIcon} />
+
+# Marketing Icon
+
+<Props of={ ChecMarketingIcon } />
+
+<Preview>
+  <Story name="Marketing icons">
+    {{
+      components: {
+        ChecMarketingIcon
+      },
+      props: {
+        icon: {
+          default: select('Icon', Object.keys(mIcons), 'standard')
+        },
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-white">
+          <chec-marketing-icon :icon="icon" />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
