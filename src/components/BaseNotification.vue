@@ -45,7 +45,7 @@ export default {
      */
     hideTime: {
       type: Number,
-      default: 3000, // milliseconds
+      default: 5000, // milliseconds
     },
   },
   computed: {
