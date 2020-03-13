@@ -14132,6 +14132,35 @@ var lodash_uniqueid_default = /*#__PURE__*/__webpack_require__.n(lodash_uniqueid
         }
       });
     
+// CONCATENATED MODULE: ./src/assets/svgs/UiIcons/ic-copy.svg
+
+      /* harmony default export */ var ic_copy = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill":"currentColor","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round","d":"M5 4h5v7H5z"}}),_c('path',{attrs:{"d":"M2 1V0a1 1 0 00-1 1h1zm6 1a1 1 0 000-2v2zM1 9a1 1 0 102 0H1zm1-7h6V0H2v2zm1 7V1H1v8h2z","fill":"currentColor"}})])
+          )
+        }
+      });
+    
 // CONCATENATED MODULE: ./src/assets/svgs/MIcons/ic-standard.svg
 
       /* harmony default export */ var ic_standard = ({
@@ -14493,6 +14522,7 @@ var lodash_uniqueid_default = /*#__PURE__*/__webpack_require__.n(lodash_uniqueid
 
 
 
+
  // Marketing icons imports
 
 
@@ -14520,7 +14550,8 @@ var uiIcons = {
   download: ic_download,
   upload: ic_upload,
   grip: ic_grip,
-  minus: ic_minus
+  minus: ic_minus,
+  copy: ic_copy
 };
 var mIcons = {
   standard: ic_standard,
