@@ -93,12 +93,12 @@ export default {
     },
   },
   methods: {
-    handleClick() {
+    handleClick(event) {
       /**
        * Triggered on a click event on the button
        * @type {Event}
        */
-      this.$emit('click');
+      this.$emit('click', event);
     },
   },
   render(createElement) {
