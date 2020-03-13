@@ -12694,12 +12694,12 @@ function _defineProperty(obj, key, value) {
     }
   },
   methods: {
-    handleClick: function handleClick() {
+    handleClick: function handleClick(event) {
       /**
        * Triggered on a click event on the button
        * @type {Event}
        */
-      this.$emit('click');
+      this.$emit('click', event);
     }
   },
   render: function render(createElement) {
