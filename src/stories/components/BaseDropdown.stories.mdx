@@ -2,6 +2,7 @@ import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import BaseDropdown from '../../components/BaseDropdown.vue';
 import BaseOption from '../../components/BaseOption.vue';
+import ChecModal from '../../components/ChecModal.vue';
 const defaultOptions = [
   { value: '', label: 'Select a Ticket', disabled: true },
   { value: 't3', label: 'T3 Ticket' },
@@ -127,6 +128,43 @@ Todo list
             baseOptionClass="text-left"
             />
         </div>`
+    }}
+  </Story>
+</Preview>
+
+# Within a ChecModal, popping out of the overflow:
+
+<Preview>
+  <Story name="Within a ChecModal popping out of overflow">
+    {{
+      components: {
+        ChecModal,
+        BaseDropdown,
+      },
+      data() {
+        return {
+          events: [],
+          options:  ["api-keys.create","api-keys.delete","api-keys.update","assets.create","assets.delete","checkouts.capture","developer.logs.delete","discounts.create","discounts.delete","giftcards.create","giftcards.redeem","orders.fulfill.digital","orders.fulfill.physical","orders.refund","orders.update","products.assets.create","products.assets.delete","products.assets.update","products.create","products.delete","products.update"]
+          .map(option => ({ value: option, label: option})),
+        }
+      },
+      template: `
+          <ChecModal
+            width="xl"
+            class="w-full h-full relative overflow-scroll"
+            innerClass="bg-gray-100 overflow-scroll"
+          > 
+            <div>
+              <h2 class="mb-4">Event(s)</h2>
+              <BaseDropdown
+                v-model="events"
+                name="example-dropdown"
+                :options="options"
+                multiselect
+              />
+            </div>
+          </ChecModal>
+      `
     }}
   </Story>
 </Preview>

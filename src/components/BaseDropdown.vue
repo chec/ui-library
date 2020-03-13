@@ -24,7 +24,7 @@
         </div>
       </span>
     </div>
-    <BasePopover v-show="showDropdown" class="overflow-scroll h-auto">
+    <BasePopover v-show="showDropdown" class="overflow-scroll h-auto" :style="{ width: `${dropdownElWidth}px`  }">
       <BaseOption
         v-for="option in renderableOptions"
         :key="option.value"
@@ -91,11 +91,18 @@ export default {
   data() {
     return {
       showDropdown: false,
+      dropdownElWidth: 0,
     };
   },
   created() {
     // add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
+  },
+  mounted() {
+    // set BasePopover width to match root's width since this component is has a 'static' position by default to
+    // allow for popping out of scrollable overflow
+    const dropdownEl = this.$refs['dropdown-el'];
+    this.dropdownElWidth = dropdownEl.clientWidth;
   },
   beforeDestroy() {
     // remove event listeners
@@ -284,7 +291,7 @@ export default {
 
 <style lang="scss" scoped>
   .dropdown {
-    @apply relative w-full text-gray-500;
+    @apply static w-full text-gray-500;
     &__control {
       @apply
         w-full
