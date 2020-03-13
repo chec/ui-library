@@ -2,7 +2,7 @@
   <button
     class="tab"
     @click="handleClick"
-    :class="{ 'tab--disabled': disabled, 'tab--active': active }"
+    :class="{ 'tab--active': active }"
     :disabled="disabled"
   >
     <span class="tab__text">
@@ -48,47 +48,39 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .tab {
-  @apply bg-white rounded px-4 py-2 font-lato;
+  @apply bg-gray-500 rounded-sm px-4 py-2 cursor-pointer;
   &:hover {
-    @apply bg-gray-200 cursor-not-allowed;
-    .tab__text {
-      @apply text-gray-500 font-bold;
+    &:enabled {
+      @apply bg-gray-600;
+      .tab__text {
+        @apply text-white font-bold;
+      }
     }
   }
   &:active,
   &:focus {
     @extend .tab--active;
-    &:hover {
-      .tab__text {
-        @apply text-gray-500;
-      }
-    }
   }
-
+  &:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
   &__text {
-    @apply text-gray-500 font-bold;
+    @apply text-white font-bold;
   }
-
-  &--disabled {
-    @apply opacity-50;
-    &:hover {
-      @apply bg-white;
-    }
-    &:active,
-    &:focus {
-      @apply bg-white;
+  &--active {
+    &:enabled {
+      @apply bg-gray-400 outline-none;
       .tab__text {
-        @apply text-gray-500;
+        @apply text-white;
+      }
+      &:hover {
+        @apply bg-gray-600;
       }
     }
-  }
-
-  &--active {
-    @apply bg-gray-400 outline-none;
-    .tab__text {
-      @apply text-white;
+    &:disabled {
+      @apply bg-gray-500;
     }
   }
 }
