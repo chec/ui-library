@@ -24,7 +24,7 @@
         </div>
       </span>
     </div>
-    <BasePopover v-show="showDropdown" class="overflow-scroll h-auto">
+    <BasePopover v-show="showDropdown" class="dropdown__base-popover" :style="{ width: `${dropdownElWidth}px`  }">
       <BaseOption
         v-for="option in renderableOptions"
         :key="option.value"
@@ -91,17 +91,31 @@ export default {
   data() {
     return {
       showDropdown: false,
+      dropdownElWidth: 0,
     };
   },
   created() {
     // add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
+    // update this.dropdownElWidth on resize
+    window.addEventListener('resize', this.setDropdownElWidth);
+  },
+  mounted() {
+    this.setDropdownElWidth();
   },
   beforeDestroy() {
     // remove event listeners
     window.removeEventListener('click', this.onOutsideClick);
+    window.removeEventListener('resize', this.setDropdownElWidth);
   },
   methods: {
+    /** Method used to size set the root element's width in the state */
+    setDropdownElWidth() {
+      // set BasePopover width to match root's width since this component is has a 'static' position by default to
+      // allow for popping out of scrollable overflow
+      const dropdownEl = this.$refs['dropdown-el'];
+      this.dropdownElWidth = dropdownEl.clientWidth;
+    },
     /**
      * Determines if the option is provided as a "parent" to child options
      *
@@ -261,7 +275,7 @@ export default {
     shownValue() {
       if (!this.multiselect) {
         // Note: \xa0 is the hex code for a non-breaking space. This is used so Vue will still render it.
-        return this.selectedOptions.length > 0 ? this.selectedOptions[0].label : '\xa0';
+        return this.selectedOptions.lengthl > 0 ? this.selectedOptions[0].label : '\xa0';
       }
 
       if (this.selectedOptions.length === 0) {
@@ -284,7 +298,7 @@ export default {
 
 <style lang="scss" scoped>
   .dropdown {
-    @apply relative w-full text-gray-500;
+    @apply static w-full text-gray-500;
     &__control {
       @apply
         w-full
@@ -317,6 +331,10 @@ export default {
       &:not(:last-child) {
         @apply border-b border-gray-200;
       }
+    }
+    &__base-popover {
+      @apply overflow-scroll;
+      max-height: 50vh;
     }
     &__down-arrow {
       @apply flex flex-col justify-center w-5 h-5 fill-current text-gray-600;
