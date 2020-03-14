@@ -3,7 +3,8 @@ import { action } from "@storybook/addon-actions";
 import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
 import { withInfo } from 'storybook-addon-vue-info'
 import ChecIcon from '../../components/ChecIcon.vue';
-import { uiIcons } from '../../lib/icons';
+import ChecMarketingIcon from '../../components/ChecMarketingIcon.vue';
+import { uiIcons, mIcons } from '../../lib/icons';
 const colors = {
   blue: 'text-primary-blue',
   gray: 'text-gray-500',
@@ -20,18 +21,22 @@ const colors = {
 <details>
 <summary>
 Todo list
+- Add dashboard navigation icons once finalized
 </summary>
 </details>
 
 # Icon
 
-#### There are  main groups of icons: UI, Navigation, Marketing
+#### There are 3 main groups of icons: UI, Navigation, Marketing
 - UI icons are standard stroke icons utilized throughout product interface
     - Sizes are customized using inline class attributes `w-3 h-3` for 12px and `w-4 h-4` for 16px
 
+- Marketing icons are utilize on marketing site and product dashboard
+    - Two sets of icons: 32px & 80px
+
 <Props of={ ChecIcon } />
 
-## Basic Stroke Icon
+## UI icon
 
 <Preview>
   <Story name="UI icon">
@@ -55,7 +60,7 @@ Todo list
   </Story>
 </Preview>
 
-## Basic Icons List
+## All icons list
 
 <Preview>
   <Story name="All UI icons">
@@ -74,6 +79,27 @@ Todo list
       template: `
         <div class="py-16 flex justify-center bg-gray-200">
           <chec-icon v-for="(_, icon) in icons" :icon="icon" class="w-3 h-3" :class="color" v-tooltip.top="icon"/>
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+## Marketing icon
+
+<Preview>
+  <Story name="Marketing icons">
+    {{
+      components: {
+        ChecMarketingIcon
+      },
+      props: {
+        icon: {
+          default: select('Icon', Object.keys(mIcons), 'standard')
+        },
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-white">
+          <chec-marketing-icon :icon="icon" />
         </div>`,
     }}
   </Story>
