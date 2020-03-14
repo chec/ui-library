@@ -32,7 +32,7 @@ export default {
 <style scoped lang="scss">
   .card {
     @apply relative shadow-sm rounded-lg p-1;
-    background-image: url(../assets/media/hologram-bg.png);
+    background-image: inline("../assets/media/hologram-bg.png");
 
     &__inner-wrapper {
       @apply p-8 rounded-md h-full;
