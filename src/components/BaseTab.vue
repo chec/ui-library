@@ -55,7 +55,7 @@ export default {
     &:enabled {
       @apply bg-gray-600;
       .tab__text {
-        @apply text-white font-bold;
+        @apply text-white;
       }
     }
   }
@@ -67,7 +67,7 @@ export default {
     @apply opacity-50 cursor-not-allowed;
   }
   &__text {
-    @apply text-white font-bold;
+    @apply text-white;
   }
   &--active {
     &:enabled {
