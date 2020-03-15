@@ -1,6 +1,6 @@
 <template>
   <TabsGroup>
-    <paginate @input="emitInput" v-bind="{...$props}">
+    <paginate @input="emitInput" v-bind="$props">
       <template v-for="pageNumber in pageCount" v-slot:[pageNumber]="{ page }">
         <BaseTab :active="page.selected" :disabled="page.disabled" :key="pageNumber">
           {{ page.content }}

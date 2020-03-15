@@ -1,6 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
-import { text, select, boolean } from '@storybook/addon-knobs';
+import { number, select, boolean } from '@storybook/addon-knobs';
 import ChecPaginate from '../../components/ChecPaginate.vue';
 
 <Meta title="Components/Tabs" component={ChecPaginate} />
@@ -15,15 +15,23 @@ import ChecPaginate from '../../components/ChecPaginate.vue';
       components: {
         ChecPaginate,
       },
+      props: {
+        pageCount: {
+          default: number("Page Count", 12)
+        },
+      },
+      data() {
+        return {
+          currentPage: 1,
+        }
+      },
       template: `
-        <div class="flex justify-center font-lato mx-auto p-16 bg-gray-100">
+        <div class="flex flex-col font-lato p-16 bg-gray-100 w-full">
+          <h2 class="my-2 mx-auto">The current page is {{ currentPage }}</h2>
           <ChecPaginate
-            :pageCount="10"
-            :margin-pages="2"
-            :page-range="5"
-            page-link-class="page-link-item"
-            break-view-class="break-view"
-            break-view-link-class="break-view-link"
+            v-model="currentPage"
+            :pageCount="pageCount"
+            class="inline-flex self-center"
           >
           </ChecPaginate>
         </div>`
