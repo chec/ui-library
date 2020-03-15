@@ -1,31 +1,34 @@
 <template>
-  <paginate @input="emitInput" v-bind="{...$props}">
-    <template v-for="pageNumber in pageCount" v-slot:[pageNumber]="{ page }">
-      <BaseTab :active="page.selected" :disabled="page.disabled" :key="pageNumber">
-        {{ page.content }}
-      </BaseTab>
-    </template>
-    <template #prevContent>
-      <BaseButton color="primary">
-        <template v-slot:icon>
-          <ChecIcon icon="left" />
-        </template>
-      </BaseButton>
-    </template>
-    <template #nextContent>
-      <BaseButton color="primary">
-        <template v-slot:icon>
-          <ChecIcon icon="right" />
-        </template>
-      </BaseButton>
-    </template>
-  </paginate>
+  <TabsGroup>
+    <paginate @input="emitInput" v-bind="{...$props}">
+      <template v-for="pageNumber in pageCount" v-slot:[pageNumber]="{ page }">
+        <BaseTab :active="page.selected" :disabled="page.disabled" :key="pageNumber">
+          {{ page.content }}
+        </BaseTab>
+      </template>
+      <template #prevContent>
+        <BaseButton color="primary">
+          <template v-slot:icon>
+            <ChecIcon icon="left" />
+          </template>
+        </BaseButton>
+      </template>
+      <template #nextContent>
+        <BaseButton color="primary">
+          <template v-slot:icon>
+            <ChecIcon icon="right" />
+          </template>
+        </BaseButton>
+      </template>
+    </paginate>
+  </TabsGroup>
 </template>
 <script>
 import { Paginate } from 'vuejs-paginate';
 import BaseTab from './BaseTab.vue';
 import ChecIcon from './ChecIcon.vue';
 import BaseButton from './BaseButton.vue';
+import TabsGroup from './TabsGroup.vue';
 
 export default {
   name: 'ChecPaginate',
@@ -34,6 +37,7 @@ export default {
     BaseTab,
     BaseButton,
     ChecIcon,
+    TabsGroup,
   },
   props: {
     value: {
@@ -72,7 +76,7 @@ export default {
     },
     containerClass: {
       type: String,
-      default: 'flex items-center',
+      default: 'flex items-center justify-start flex-wrap',
     },
     pageClass: {
       type: String,

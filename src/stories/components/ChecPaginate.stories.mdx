@@ -15,23 +15,10 @@ import ChecPaginate from '../../components/ChecPaginate.vue';
       components: {
         ChecPaginate,
       },
-      props: {
-        disabled: {
-          default: boolean('Disable Button', false)
-        },
-        active: {
-          default: boolean('Set as Active', false)
-        },
-      },
-      methods: {
-        click(tab) {
-          action(`Clicked tab "${tab}"`)();
-        }
-      },
       template: `
         <div class="flex justify-center font-lato mx-auto p-16 bg-gray-100">
           <ChecPaginate
-            :pageCount="20"
+            :pageCount="10"
             :margin-pages="2"
             :page-range="5"
             page-link-class="page-link-item"
