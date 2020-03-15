@@ -50,7 +50,7 @@ export default {
 
 <style scoped lang="scss">
 .tab {
-  @apply bg-gray-500 rounded-sm px-4 py-2 cursor-pointer;
+  @apply bg-gray-500 rounded px-4 py-2 cursor-pointer;
   &:hover {
     &:enabled {
       @apply bg-gray-600;

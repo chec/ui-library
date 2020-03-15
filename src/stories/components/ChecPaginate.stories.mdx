@@ -1,19 +1,19 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
 import { text, select, boolean } from '@storybook/addon-knobs';
-import BaseTab from '../../components/BaseTab.vue';
+import ChecPaginate from '../../components/ChecPaginate.vue';
 
-<Meta title="Components/Tabs" component={BaseTab} />
+<Meta title="Components/Tabs" component={ChecPaginate} />
 
-# Tab
+# Pagination
 
-<Props of={BaseTab} />
+<Props of={ChecPaginate} />
 
 <Preview>
-  <Story name="Default">
+  <Story name="Pagination">
     {{
       components: {
-        BaseTab,
+        ChecPaginate,
       },
       props: {
         disabled: {
@@ -29,14 +29,16 @@ import BaseTab from '../../components/BaseTab.vue';
         }
       },
       template: `
-        <div class="flex justify-center font-lato mx-auto max-w-lg py-6 bg-gray-100">
-          <BaseTab
-            :disabled="disabled"
-            :active="active"
-            @click="click('Tab Label')""
+        <div class="flex justify-center font-lato mx-auto p-16 bg-gray-100">
+          <ChecPaginate
+            :pageCount="20"
+            :margin-pages="2"
+            :page-range="5"
+            page-link-class="page-link-item"
+            break-view-class="break-view"
+            break-view-link-class="break-view-link"
           >
-            Tab Label
-          </BaseTab>
+          </ChecPaginate>
         </div>`
     }}
   </Story>
