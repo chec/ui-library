@@ -69,7 +69,7 @@ export default {
       default: false,
     },
     /**
-     * Placeholder used when multiselect is true
+     * Placeholder used when no option has been selected
      */
     placeholder: {
       type: String,
