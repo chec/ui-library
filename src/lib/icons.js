@@ -12,6 +12,13 @@ import IcUpload from '../assets/svgs/UiIcons/ic-upload.svg';
 import IcGrip from '../assets/svgs/UiIcons/ic-grip.svg';
 import IcMinus from '../assets/svgs/UiIcons/ic-minus.svg';
 import IcCopy from '../assets/svgs/UiIcons/ic-copy.svg';
+// Nav icons imports
+import IcOrders from '../assets/svgs/NavIcons/ic-orders.svg';
+import IcProducts from '../assets/svgs/NavIcons/ic-products.svg';
+import IcDiscounts from '../assets/svgs/NavIcons/ic-discounts.svg';
+import IcLogs from '../assets/svgs/NavIcons/ic-logs.svg';
+import IcSettings from '../assets/svgs/NavIcons/ic-settings.svg';
+import IcCategories from '../assets/svgs/NavIcons/ic-categories.svg';
 // Marketing icons imports
 import IcStandard from '../assets/svgs/MIcons/ic-standard.svg';
 import IcPlusPlan from '../assets/svgs/MIcons/ic-plus-plan.svg';
@@ -41,6 +48,15 @@ export const uiIcons = {
   grip: IcGrip,
   minus: IcMinus,
   copy: IcCopy,
+};
+
+export const navIcons = {
+  orders: IcOrders,
+  products: IcProducts,
+  discounts: IcDiscounts,
+  logs: IcLogs,
+  settings: IcSettings,
+  categories: IcCategories,
 };
 
 export const mIcons = {
