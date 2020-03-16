@@ -117,6 +117,15 @@ module.exports = {
       full: '9999px',
     },
     fontSize: fontSizes,
+    letterSpacing: {
+      tightest: '-.12em',
+      tighter: '-.085em',
+      tight: '-.025em',
+      normal: '0',
+      wide: '.025em',
+      wider: '.085em',
+      widest: '.12em',
+    },
     borderWidth: {
       default: '1px',
       0: '0',

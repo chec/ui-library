@@ -1,0 +1,34 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { text } from '@storybook/addon-knobs';
+import ChecLoading from '../../components/ChecLoading.vue';
+const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', 'full', 'screen-sm', 'screen-md', 'screen-lg', 'screen-xl', 'none'];
+
+<Meta title="Components/Loading" component={ChecLoading} />
+
+# Default
+
+<Props of={ChecLoading} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecLoading,
+      },
+      props: {
+        message: {
+          default: text('Message', 'Loading...'),
+        },
+      },
+      template: `
+        <div class="font-lato">
+          <ChecLoading :message="message" />
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget elementum quam. Sed vitae nulla malesuada, suscipit purus non, mollis risus.</p>
+          <p>Etiam eu odio pharetra, porttitor nisi eget, gravida tellus. Aliquam consequat urna sed cursus imperdiet.</p>
+          <p>Duis lobortis, diam eget tempor feugiat, dolor ipsum vulputate tortor, vitae aliquet lorem erat in velit. Duis suscipit consequat neque, pretium congue risus condimentum malesuada.</p>
+          <p>Duis sed interdum felis, sit amet varius massa. Suspendisse commodo enim id lobortis tristique.</p>
+        </div>`
+    }}
+  </Story>
+</Preview>
