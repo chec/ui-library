@@ -30,6 +30,7 @@
         :key="option.value"
         :class="baseOptionClass"
         :option="option"
+        @option-selected="onBaseOptionSelect"
         :show-checkbox="multiselect"
         :checked="multiselect && !isIndeterminate(option) && isChecked(option)"
         :indeterminate="multiselect && isIndeterminate(option)"
