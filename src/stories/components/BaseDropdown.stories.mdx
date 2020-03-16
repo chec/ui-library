@@ -25,6 +25,7 @@ const defaultSelectOptions = [
   ]},
   { value: 'bread', label: 'Bread' },
 ];
+const onClick = action('option selected');
 
 <Meta title="Form fields/Dropdown" component={BaseDropdown} />
 
@@ -54,6 +55,7 @@ Todo list
         return {
           option: "",
           options: defaultOptions,
+          onClick,
         }
       },
       template: `
@@ -63,6 +65,7 @@ Todo list
             class="max-w-md"
             v-model="option"
             :options="options"
+            @input="onClick"
             placeholder="Example Dropdown Placeholder"
             />
         </div>`
@@ -82,6 +85,7 @@ Todo list
         return {
           option: "",
           options: defaultOptions,
+          onClick,
         }
       },
       template: `
@@ -95,6 +99,7 @@ Todo list
             :options="options"
             baseOptionClass="text-left"
             :required="true"
+            @input="onClick"
             />
             <div>Some more content</div>
         </div>`
@@ -114,6 +119,7 @@ Todo list
         return {
           options: defaultSelectOptions,
           selected: [],
+          onClick,
         }
       },
       template: `
@@ -126,6 +132,7 @@ Todo list
             :options="options"
             :multiselect="true"
             baseOptionClass="text-left"
+            @input="onClick"
             />
         </div>`
     }}

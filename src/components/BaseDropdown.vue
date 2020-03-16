@@ -247,8 +247,13 @@ export default {
      * @returns {Array<Object>}
      */
     renderableOptions() {
+      const options = [...this.options];
+
       if (!this.multiselect) {
-        return this.options;
+        if (!this.required) {
+          options.unshift({ value: '', label: '\xa0' });
+        }
+        return options;
       }
 
       const reducer = (level = 0) => (acc, candidate) => {
@@ -265,7 +270,7 @@ export default {
         }];
       };
 
-      return this.options.reduce(reducer(), []);
+      return options.reduce(reducer(), []);
     },
     /**
      * Returns an array of the currently selected options. Note that for a single select, this still returns an array,
