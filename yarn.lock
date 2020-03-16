@@ -12280,7 +12280,7 @@ vue@^2.6.10, vue@^2.6.11:
 
 "vuejs-paginate@github:john-raymon/vuejs-paginate":
   version "0.1.0"
-  resolved "https://codeload.github.com/john-raymon/vuejs-paginate/tar.gz/7bf7c97904f963a40b53b1ff3767b703f37175a3"
+  resolved "https://codeload.github.com/john-raymon/vuejs-paginate/tar.gz/c127fa9262b5aea00927d1e637e61449d990e441"
   dependencies:
     core-js "^3.6.4"
     vue "^2.6.11"

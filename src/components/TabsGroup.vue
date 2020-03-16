@@ -10,11 +10,9 @@ export default {
 </script>
 <style scoped lang="scss">
   .tabs-group {
-    @apply rounded-md bg-gray-500 p-2;
+    @apply rounded-md bg-gray-500 p-2 text-sm;
     > button {
-      &:before, &:after {
-        @apply mx-2;
-      }
+        @apply mx-1;
     }
   }
 </style>

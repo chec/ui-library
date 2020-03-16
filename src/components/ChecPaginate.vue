@@ -7,17 +7,15 @@
         </BaseTab>
       </template>
       <template #prevContent>
-        <BaseButton color="primary">
+        <BaseButton color="primary" class="next-prev-button">
           <template v-slot:icon>
-            <ChecIcon icon="left" />
+            <ChecIcon icon="left"/>
           </template>
         </BaseButton>
       </template>
       <template #nextContent>
-        <BaseButton color="primary">
-          <template v-slot:icon>
-            <ChecIcon icon="right" />
-          </template>
+        <BaseButton color="primary" class="next-prev-button">
+          <ChecIcon icon="right"/>
         </BaseButton>
       </template>
     </paginate>
@@ -80,30 +78,32 @@ export default {
     },
     pageClass: {
       type: String,
-      default: 'px-2',
+      default: 'px-1',
     },
     pageLinkClass: {
       type: String,
     },
     prevClass: {
       type: String,
-      default: 'px-1',
+      default: 'pr-1',
     },
     prevLinkClass: {
       type: String,
     },
     nextClass: {
       type: String,
-      default: 'px-1',
+      default: 'pl-1',
     },
     nextLinkClass: {
       type: String,
     },
     breakViewClass: {
       type: String,
+      default: 'cursor-default text-white',
     },
     breakViewLinkClass: {
       type: String,
+      default: 'outline-none',
     },
     activeClass: {
       type: String,
@@ -152,3 +152,11 @@ export default {
   },
 };
 </script>
+<style scoped lang="scss">
+.next-prev-button {
+  @apply flex flex-col items-center justify-center w-8 h-8 shadow-none;
+  svg {
+    @apply w-xs h-xs mx-auto;
+  }
+}
+</style>
