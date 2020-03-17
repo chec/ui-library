@@ -4,8 +4,6 @@ import BaseDropdown from '../../components/BaseDropdown.vue';
 import BaseOption from '../../components/BaseOption.vue';
 import ChecModal from '../../components/ChecModal.vue';
 const defaultOptions = [
-  { value: '', label: 'Select a Ticket', disabled: true },
-  { value: 't3', label: 'T3 Ticket' },
   { value: 't2', label: 'T2 Ticket' },
   { value: 't1', label: 'T1 Ticket (Coming Soon)', disabled: true }
 ];
@@ -27,6 +25,7 @@ const defaultSelectOptions = [
   ]},
   { value: 'bread', label: 'Bread' },
 ];
+const onClick = action('option selected');
 
 <Meta title="Form fields/Dropdown" component={BaseDropdown} />
 
@@ -56,6 +55,7 @@ Todo list
         return {
           option: "",
           options: defaultOptions,
+          onClick,
         }
       },
       template: `
@@ -65,6 +65,8 @@ Todo list
             class="max-w-md"
             v-model="option"
             :options="options"
+            @input="onClick"
+            placeholder="Example Dropdown Placeholder"
             />
         </div>`
     }}
@@ -74,7 +76,7 @@ Todo list
 # In context:
 
 <Preview>
-  <Story name="In context">
+  <Story name="In context and required">
     {{
       components: {
         BaseDropdown,
@@ -83,6 +85,7 @@ Todo list
         return {
           option: "",
           options: defaultOptions,
+          onClick,
         }
       },
       template: `
@@ -95,6 +98,8 @@ Todo list
             v-model="option"
             :options="options"
             baseOptionClass="text-left"
+            :required="true"
+            @input="onClick"
             />
             <div>Some more content</div>
         </div>`
@@ -114,6 +119,7 @@ Todo list
         return {
           options: defaultSelectOptions,
           selected: [],
+          onClick,
         }
       },
       template: `
@@ -126,6 +132,7 @@ Todo list
             :options="options"
             :multiselect="true"
             baseOptionClass="text-left"
+            @input="onClick"
             />
         </div>`
     }}
@@ -159,6 +166,7 @@ Todo list
               <BaseDropdown
                 v-model="events"
                 name="example-dropdown"
+                placeholder="Example Dropdown Placeholder"
                 :options="options"
                 multiselect
               />

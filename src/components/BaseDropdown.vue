@@ -32,8 +32,8 @@
         :option="option"
         @option-selected="onBaseOptionSelect"
         :show-checkbox="multiselect"
-        :checked="!isIndeterminate(option) && isChecked(option)"
-        :indeterminate="isIndeterminate(option)"
+        :checked="multiselect && !isIndeterminate(option) && isChecked(option)"
+        :indeterminate="multiselect && isIndeterminate(option)"
       >
         {{option.label}}
       </BaseOption>
@@ -56,11 +56,24 @@ export default {
   },
   props: {
     /**
+     *  When in single select mode, a value must be selected. If false, an empty option will be prepended.
+     */
+    required: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * Indicates that multiple options may be selected. In this case the bound v-model will be an array of values
      */
     multiselect: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * Placeholder used when no option has been selected
+     */
+    placeholder: {
+      type: String,
     },
     /**
      * Used as name attribute on hidden input
@@ -235,8 +248,13 @@ export default {
      * @returns {Array<Object>}
      */
     renderableOptions() {
+      const options = [...this.options];
+
       if (!this.multiselect) {
-        return this.options;
+        if (!this.required) {
+          options.unshift({ value: '', label: '\xa0' });
+        }
+        return options;
       }
 
       const reducer = (level = 0) => (acc, candidate) => {
@@ -253,7 +271,7 @@ export default {
         }];
       };
 
-      return this.options.reduce(reducer(), []);
+      return options.reduce(reducer(), []);
     },
     /**
      * Returns an array of the currently selected options. Note that for a single select, this still returns an array,
@@ -263,7 +281,7 @@ export default {
      */
     selectedOptions() {
       if (!this.multiselect) {
-        return [this.options.find(candidate => candidate.value === this.value)];
+        return this.options.find(candidate => candidate.value === this.value);
       }
       return this.renderableOptions.filter(candidate => this.value.includes(candidate.value));
     },
@@ -273,13 +291,16 @@ export default {
      * @returns {string|*}
      */
     shownValue() {
+      const emptyLabel = this.placeholder || '\xa0';
       if (!this.multiselect) {
         // Note: \xa0 is the hex code for a non-breaking space. This is used so Vue will still render it.
-        return this.selectedOptions.lengthl > 0 ? this.selectedOptions[0].label : '\xa0';
+        return this.selectedOptions && this.selectedOptions.label.trim()
+          ? this.selectedOptions.label.trim()
+          : emptyLabel;
       }
 
       if (this.selectedOptions.length === 0) {
-        return '\xa0';
+        return emptyLabel;
       }
 
       const validOptions = this.selectedOptions.filter(option => !this.isParentOption(option));
