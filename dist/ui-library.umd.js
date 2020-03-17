@@ -14203,6 +14203,180 @@ var lodash_uniqueid_default = /*#__PURE__*/__webpack_require__.n(lodash_uniqueid
         }
       });
     
+// CONCATENATED MODULE: ./src/assets/svgs/NavIcons/ic-orders.svg
+
+      /* harmony default export */ var ic_orders = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M2.32 12l2.13 4.842 1.598-1.597L3.128 12H2.32zm2.153 0l2.283 2.537L9.293 12h-4.82zm6.234 0l-3.281 3.281L10.773 19h2.454l3.347-3.719L13.293 12h-2.586zm4 0l2.537 2.537L19.527 12h-4.82zm6.166 0l-2.92 3.245 1.596 1.597L21.68 12h-.807zm-15.99 5.824l.254.579a1 1 0 00.916.597h3.374l-2.71-3.01-1.834 1.834zm12.4-1.835L14.572 19h3.375a1 1 0 00.915-.597l.254-.579-1.835-1.835z","fill":"#41556C"}}),_c('path',{attrs:{"opacity":".6","fill-rule":"evenodd","clip-rule":"evenodd","d":"M2.168 5.445a1 1 0 011.387-.277L9.303 9h5.394l5.748-3.832a1 1 0 011.11 1.664L18.303 9H22a1 1 0 110 2H2a1 1 0 110-2h3.697L2.445 6.832a1 1 0 01-.277-1.387z","fill":"#7187A5"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/NavIcons/ic-products.svg
+
+      /* harmony default export */ var ic_products = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"opacity":".6","fill-rule":"evenodd","clip-rule":"evenodd","d":"M17.03 3.03a.1.1 0 00-.071-.03H7.04a.1.1 0 00-.07.03l-3.8 3.8a.1.1 0 00.07.17H20.76a.1.1 0 00.07-.17l-3.8-3.8z","fill":"#7187A5"}}),_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M3 8a1 1 0 00-1 1v11a1 1 0 001 1h18a1 1 0 001-1V9a1 1 0 00-1-1h-6.5v5L12 12l-2.5 1V8H3z","fill":"#41556C"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/NavIcons/ic-discounts.svg
+
+      /* harmony default export */ var ic_discounts = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M2 6a1 1 0 011-1h14.52a1 1 0 01.78.375l3.2 4a1 1 0 010 1.25l-3.2 4a1 1 0 01-.78.375H3a1 1 0 01-1-1V6zm16 4a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM5 7.5a.5.5 0 00-1 0v5a.5.5 0 001 0v-5z","fill":"#41556C"}}),_c('path',{attrs:{"opacity":".6","fill-rule":"evenodd","clip-rule":"evenodd","d":"M2.793 15.99l1.17 3.212a1 1 0 001.281.597L15.683 16H5.99l.279.766a.5.5 0 01-.94.342L4.926 16H3c-.07 0-.139-.004-.207-.01z","fill":"#7187A5"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/NavIcons/ic-logs.svg
+
+      /* harmony default export */ var ic_logs = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M4 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H4zm-.5 3a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5zm0 6a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5zM4 7.5a.5.5 0 000 1h6a.5.5 0 000-1H4zM3.5 14a.5.5 0 01.5-.5h4a.5.5 0 010 1H4a.5.5 0 01-.5-.5z","fill":"#41556C"}}),_c('path',{attrs:{"opacity":".6","fill-rule":"evenodd","clip-rule":"evenodd","d":"M10 19v1a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2h-5v2.5h5a.5.5 0 110 1h-5v2h3a.5.5 0 110 1h-3v2h5a.5.5 0 110 1h-5v.5a3 3 0 01-3 3h-2z","fill":"#7187A5"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/NavIcons/ic-settings.svg
+
+      /* harmony default export */ var ic_settings = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M14 3.269c0 .578.396 1.074.935 1.286.085.034.17.07.253.106.531.23 1.162.16 1.572-.25a1.269 1.269 0 011.794 0l1.034 1.035a1.269 1.269 0 010 1.794c-.41.41-.48 1.04-.248 1.572.036.084.07.168.105.253.212.539.708.935 1.286.935.701 0 1.269.568 1.269 1.269v1.462c0 .701-.568 1.269-1.269 1.269-.578 0-1.074.396-1.287.935-.033.085-.068.17-.104.253-.232.531-.161 1.162.248 1.572a1.269 1.269 0 010 1.794l-1.034 1.034a1.269 1.269 0 01-1.794 0c-.41-.41-1.04-.48-1.572-.248a7.935 7.935 0 01-.253.105c-.539.212-.935.708-.935 1.286 0 .701-.568 1.269-1.269 1.269H11.27C10.568 22 10 21.432 10 20.731c0-.578-.396-1.074-.935-1.287a7.975 7.975 0 01-.253-.104c-.531-.232-1.162-.161-1.572.248a1.269 1.269 0 01-1.794 0l-1.034-1.034a1.269 1.269 0 010-1.794c.41-.41.48-1.04.249-1.572a7.913 7.913 0 01-.106-.253C4.343 14.396 3.847 14 3.27 14 2.568 14 2 13.432 2 12.731V11.27C2 10.568 2.568 10 3.269 10c.578 0 1.074-.396 1.286-.935.034-.085.07-.17.106-.253.23-.531.16-1.162-.249-1.572a1.269 1.269 0 010-1.794l1.034-1.034a1.269 1.269 0 011.794 0c.41.41 1.04.48 1.572.249a7.93 7.93 0 01.253-.106c.539-.212.935-.708.935-1.286C10 2.568 10.568 2 11.269 2h1.462C13.432 2 14 2.568 14 3.269zM12 17a5 5 0 100-10 5 5 0 000 10z","fill":"#41556C"}}),_c('circle',{attrs:{"opacity":".6","cx":"12","cy":"12","r":"4","fill":"#7187A5"}})])
+          )
+        }
+      });
+    
+// CONCATENATED MODULE: ./src/assets/svgs/NavIcons/ic-categories.svg
+
+      /* harmony default export */ var ic_categories = ({
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M2.172 9.632A.5.5 0 012.655 9h18.69a.5.5 0 01.483.632l-2.727 10a.5.5 0 01-.483.368H5.382a.5.5 0 01-.482-.368l-2.728-10z","fill":"#41556C"}}),_c('path',{attrs:{"opacity":".6","d":"M20.603 5.62a.5.5 0 00-.486-.62H10.5a.5.5 0 01-.5-.5.5.5 0 00-.5-.5H3.638a.5.5 0 00-.486.62l.736 3a.5.5 0 00.486.38h15.252a.5.5 0 00.486-.38l.49-2z","fill":"#7187A5"}})])
+          )
+        }
+      });
+    
 // CONCATENATED MODULE: ./src/assets/svgs/MIcons/ic-standard.svg
 
       /* harmony default export */ var ic_standard = ({
@@ -14565,6 +14739,13 @@ var lodash_uniqueid_default = /*#__PURE__*/__webpack_require__.n(lodash_uniqueid
 
 
 
+ // Nav icons imports
+
+
+
+
+
+
  // Marketing icons imports
 
 
@@ -14594,6 +14775,14 @@ var uiIcons = {
   grip: ic_grip,
   minus: ic_minus,
   copy: ic_copy
+};
+var navIcons = {
+  orders: ic_orders,
+  products: ic_products,
+  discounts: ic_discounts,
+  logs: ic_logs,
+  settings: ic_settings,
+  categories: ic_categories
 };
 var mIcons = {
   standard: ic_standard,
