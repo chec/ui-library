@@ -31,6 +31,47 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
       template: `
       <div class="p-16 flex justify-center font-lato w-full text-gray-500">
         <div class="w-64 relative">
+          <table>
+            <thead>
+              <tr>
+                <th class="webhooks__id">ID</th>
+                <th>Events</th>
+                <th>URL</th>
+                <th class="text-right">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="webhook"
+              >
+                <td>
+                  stuff
+                </td>
+                <td class="webhook__events">
+                  other
+                </td>
+                <td>
+                  more
+                </td>
+                <td class="webhook__options">
+                  <ChecOptionsMenu :open="true">
+                    <BaseOption @option-selected="action">
+                      Edit record
+                    </BaseOption>
+                    <BaseOption @option-selected="action">
+                      Check for changes
+                    </BaseOption>
+                    <BaseOption class="text-red-600" @option-selected="confirm('Are you sure?')">
+                      Delete record
+                    </BaseOption>
+                    <BaseOption :option="{ disabled: true }">
+                      Disabled action
+                    </BaseOption>
+                  </ChecOptionsMenu>
+                </td>
+              </tr>
+            </tbody>
+          </table>
           <ChecOptionsMenu :open="true">
             <BaseOption @option-selected="action">
               Edit record
@@ -45,7 +86,6 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
               Disabled action
             </BaseOption>
           </ChecOptionsMenu>
-         </div>
         </div>
       </div>`
     }}

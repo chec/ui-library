@@ -8,7 +8,6 @@
     <BasePopover
       v-if="isOpen"
       :class="{
-        'left-0': position === 'left',
         'mt-10': position === 'right',
         'right-0': position === 'right',
       }"
@@ -46,9 +45,9 @@ export default {
      */
     position: {
       type: String,
-      default: 'left',
+      default: '',
       validate(position) {
-        return ['left', 'right'].includes(position);
+        return ['right'].includes(position);
       },
     },
   },
@@ -93,8 +92,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .options-menu {
-  @apply relative;
-
+  @apply static;
   .button {
     @apply shadow-none bg-transparent;
   }
