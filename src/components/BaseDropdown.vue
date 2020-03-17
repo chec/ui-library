@@ -56,7 +56,7 @@ export default {
   },
   props: {
     /**
-     *  If true an empty option will render
+     *  When in single select mode, a value must be selected. If false, an empty option will be prepended.
      */
     required: {
       type: Boolean,
