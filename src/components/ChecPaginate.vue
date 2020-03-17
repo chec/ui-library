@@ -22,7 +22,7 @@
   </TabsGroup>
 </template>
 <script>
-import { Paginate } from 'vuejs-paginate';
+import Paginate from '../lib/Paginate.vue';
 import BaseTab from './BaseTab.vue';
 import ChecIcon from './ChecIcon.vue';
 import BaseButton from './BaseButton.vue';
