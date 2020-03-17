@@ -1,16 +1,15 @@
 <template>
   <div class="options-menu" ref="menu-el">
-    <BaseButton @click="toggleMenu" :class="{'float-right': position === 'right'}">
+    <Popper
+      :showPopperDefault="open"
+      trigger="clickToToggle"
+      :options="{ placement: 'bottom' }">
+      <BaseButton @click="toggleMenu" slot="reference">
       <template v-slot:icon>
         <ChecIcon :icon="isOpen ? 'up' : 'down'" />
       </template>
     </BaseButton>
     <BasePopover
-      v-if="isOpen"
-      :class="{
-        'mt-10': position === 'right',
-        'right-0': position === 'right',
-      }"
       @option-selected="handleSelectOption"
     >
       <!--
@@ -18,9 +17,11 @@
       -->
       <slot />
     </BasePopover>
+    </Popper>
   </div>
 </template>
 <script>
+import Popper from 'vue-popperjs';
 import BaseButton from './BaseButton.vue';
 import BasePopover from './BasePopover.vue';
 import ChecIcon from './ChecIcon.vue';
@@ -31,6 +32,7 @@ export default {
     BaseButton,
     BasePopover,
     ChecIcon,
+    Popper,
   },
   props: {
     /**
@@ -53,7 +55,7 @@ export default {
   },
   data() {
     return {
-      isOpen: this.open,
+      isOpen: false,
     };
   },
   created() {
@@ -102,3 +104,4 @@ export default {
   }
 }
 </style>
+/* eslint-enable */

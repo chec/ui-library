@@ -30,8 +30,8 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
       },
       template: `
       <div class="p-16 flex justify-center font-lato w-full text-gray-500">
-        <div class="w-64 relative">
-          <table>
+        <div class="w-full relative">
+          <table class="w-full">
             <thead>
               <tr>
                 <th class="webhooks__id">ID</th>
@@ -53,7 +53,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
                 <td>
                   more
                 </td>
-                <td class="webhook__options">
+                <td class="flex justify-end">
                   <ChecOptionsMenu :open="true">
                     <BaseOption @option-selected="action">
                       Edit record
