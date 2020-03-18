@@ -11,17 +11,16 @@
     "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook"
   },
   "dependencies": {
+    "@popperjs/core": "^2.1.1",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.4",
     "lodash.uniqueid": "^4.0.1",
-    "popper.js": "^1.16.1",
     "postcss-assets": "^5.0.0",
     "tailwindcss": "^1.2.0",
     "tailwindcss-plugins": "^0.3.0",
     "v-tooltip": "akryum/v-tooltip",
-    "vue": "^2.6.10",
-    "vue-popperjs": "github:john-raymon/vue-popper"
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@storybook/addon-actions": ">=5.3.0",
