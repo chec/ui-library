@@ -30,10 +30,10 @@
         page.selected ? activeClass : '',
         page.disabled ? disabledClass : '',
         page.breakView ? breakViewClass: '']">
-      <a
+      <span
         v-if="page.breakView"
         :class="[pageLinkClass, breakViewLinkClass]"
-        ><slot name="breakViewContent">{{ breakViewText }}</slot></a>
+        ><slot name="breakViewContent">{{ breakViewText }}</slot></span>
       <a
         v-else
         @click="!page.disabled && handlePageSelected(page.index + 1)"
