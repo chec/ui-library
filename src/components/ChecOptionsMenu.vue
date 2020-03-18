@@ -1,18 +1,14 @@
 <template>
   <div class="options-menu" ref="menu-el">
-    <BaseButton @click="toggleMenu" :class="{'float-right': position === 'right'}">
+    <BaseButton @click="toggleMenu" slot="reference" ref="button-el">
       <template v-slot:icon>
         <ChecIcon :icon="isOpen ? 'up' : 'down'" />
       </template>
     </BaseButton>
     <BasePopover
-      v-if="isOpen"
-      :class="{
-        'left-0': position === 'left',
-        'mt-10': position === 'right',
-        'right-0': position === 'right',
-      }"
+      v-show="isOpen"
       @option-selected="handleSelectOption"
+      ref="popper-el"
     >
       <!--
         @slot Provide BaseOption instances here
@@ -22,6 +18,7 @@
   </div>
 </template>
 <script>
+import { createPopper } from '@popperjs/core';
 import BaseButton from './BaseButton.vue';
 import BasePopover from './BasePopover.vue';
 import ChecIcon from './ChecIcon.vue';
@@ -42,13 +39,28 @@ export default {
       default: false,
     },
     /**
-     * Whether to left or right align the menu button in its container
+     *  Describes the preferred placement of the options menu.
      */
-    position: {
+    menuPlacement: {
       type: String,
-      default: 'left',
-      validate(position) {
-        return ['left', 'right'].includes(position);
+      default: 'bottom',
+      validate(placement) {
+        return [
+          'auto',
+          'auto-start',
+          'auto-end',
+          'top',
+          'top-start',
+          'top-end',
+          'bottom',
+          'bottom-start',
+          'bottom-end',
+          'right',
+          'right-start',
+          'right-end',
+          'left',
+          'left-start',
+          'left-end'].includes(placement);
       },
     },
   },
@@ -57,15 +69,76 @@ export default {
       isOpen: this.open,
     };
   },
+  watch: {
+    isOpen(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        if (newVal) {
+          this.show();
+        } else {
+          this.hide();
+        }
+      }
+    },
+  },
   created() {
     // add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.createPopper();
+    });
   },
   beforeDestroy() {
     // remove event listeners
     window.removeEventListener('click', this.onOutsideClick);
   },
   methods: {
+    /**
+     * Show the popper.js
+     */
+    show() {
+      this.$refs['button-el'].$el.setAttribute('data-show', '');
+      this.createPopper();
+    },
+    /**
+     * Hide the popper
+     */
+    hide() {
+      this.$refs['popper-el'].$el.removeAttribute('data-show');
+      this.destroyPopper();
+    },
+    /**
+     * Create the popper.js instance
+     */
+    createPopper() {
+      this.$popper = createPopper(this.$refs['button-el'].$el, this.$refs['popper-el'].$el, {
+        placement: this.menuPlacement,
+        modifiers: [
+          {
+            name: 'flip',
+            options: {
+              fallbackPlacements: ['top', 'bottom'],
+            },
+          },
+          {
+            name: 'preventOverflow',
+            options: {
+              rootBoundary: 'document',
+            },
+          },
+        ],
+      });
+    },
+    /**
+     * Destroys the popper.js instance
+     */
+    destroyPopper() {
+      if (this.$popper) {
+        this.$popper.destroy();
+        this.$popper = null;
+      }
+    },
     /**
      * Toggles the menu between open and closed
      */
@@ -93,8 +166,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .options-menu {
-  @apply relative;
-
+  @apply static;
   .button {
     @apply shadow-none bg-transparent;
   }
