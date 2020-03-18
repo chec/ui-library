@@ -1,0 +1,40 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { number, select, boolean } from '@storybook/addon-knobs';
+import ChecPaginate from '../../components/ChecPaginate.vue';
+
+<Meta title="Components/Pagination" component={ChecPaginate} />
+
+# Pagination
+
+<Props of={ChecPaginate} />
+
+<Preview>
+  <Story name="Pagination">
+    {{
+      components: {
+        ChecPaginate,
+      },
+      props: {
+        pageCount: {
+          default: number("Page Count", 12)
+        },
+      },
+      data() {
+        return {
+          currentPage: 1,
+        }
+      },
+      template: `
+        <div class="flex flex-col font-lato p-16 bg-gray-100 w-full">
+          <h2 class="my-2 mx-auto">The current page is {{ currentPage }}</h2>
+          <ChecPaginate
+            v-model="currentPage"
+            :pageCount="pageCount"
+            class="inline-flex self-center"
+          >
+          </ChecPaginate>
+        </div>`
+    }}
+  </Story>
+</Preview>

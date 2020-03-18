@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions";
 import { text, select, boolean } from '@storybook/addon-knobs';
 import BaseTab from '../../components/BaseTab.vue';
 
-<Meta title="Components/Tab" component={BaseTab} />
+<Meta title="Components/Tabs" component={BaseTab} />
 
 # Tab
 
@@ -13,7 +13,7 @@ import BaseTab from '../../components/BaseTab.vue';
   <Story name="Default">
     {{
       components: {
-        BaseTab
+        BaseTab,
       },
       props: {
         disabled: {

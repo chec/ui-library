@@ -1,0 +1,42 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { text, select, boolean } from '@storybook/addon-knobs';
+import TabsGroup from '../../components/TabsGroup.vue';
+import BaseTab from '../../components/BaseTab.vue';
+
+<Meta title="Components/Tabs" component={TabsGroup} />
+
+# Pagination
+
+<Props of={TabsGroup} />
+
+<Preview>
+  <Story name="Tabs Group">
+    {{
+      components: {
+        TabsGroup,
+        BaseTab,
+      },
+      template: `
+        <div class="flex justify-center font-lato mx-auto p-16 bg-gray-100">
+          <TabsGroup>
+            <BaseTab>
+              15
+            </BaseTab>
+            <BaseTab>
+              30
+            </BaseTab>
+            <BaseTab>
+              50
+            </BaseTab>
+            <BaseTab>
+              100
+            </BaseTab>
+            <BaseTab>
+              All
+            </BaseTab>
+          </TabsGroup>
+        </div>`
+    }}
+  </Story>
+</Preview>
