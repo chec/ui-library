@@ -65,31 +65,31 @@ export default {
 // Loading animations
 @keyframes a0_t {
   0% {
-    transform: translate(16px,16px) rotate(0deg);
+    transform: translate(16px, 16px) rotate(0deg);
   }
   100% {
-    transform: translate(16px,16px) rotate(-360deg);
+    transform: translate(16px, 16px) rotate(-360deg);
   }
 }
 @keyframes a0_do {
   0% {
-    stroke-dashoffset: 100px;
+    stroke-dashoffset: 100;
     animation-timing-function: cubic-bezier(0.42,0,0.58,1);
   }
   25% {
-    stroke-dashoffset: 200px;
+    stroke-dashoffset: 200;
     animation-timing-function: cubic-bezier(0.42,0,0.58,1);
   }
   50% {
-    stroke-dashoffset: 300px;
+    stroke-dashoffset: 300;
     animation-timing-function: cubic-bezier(0.42,0,0.58,1);
   }
   75% {
-    stroke-dashoffset: 400px;
+    stroke-dashoffset: 400;
     animation-timing-function: cubic-bezier(0.42,0,0.58,1);
   }
   100% {
-    stroke-dashoffset: 500px;
+    stroke-dashoffset: 500;
   }
 }
 </style>
