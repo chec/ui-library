@@ -13,6 +13,12 @@ export default {
   components: {
     ChecCard,
   },
+  mounted() {
+    document.body.style.overflow = 'hidden';
+  },
+  destroyed() {
+    document.body.style.overflow = 'initial';
+  },
   props: {
     /**
      * Controls the max width of the modal. Use one of the tailwind sizes, e.g. md, xl, 2xl.
