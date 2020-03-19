@@ -13,6 +13,12 @@ export default {
   components: {
     ChecCard,
   },
+  mounted() {
+    document.body.style.overflow = 'hidden';
+  },
+  destroyed() {
+    document.body.style.overflow = 'initial';
+  },
   props: {
     /**
      * Controls the max width of the modal. Use one of the tailwind sizes, e.g. md, xl, 2xl.
@@ -26,7 +32,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .modal-overlay {
-  @apply absolute top-0 left-0 w-full h-full z-50 flex justify-center items-center;
+  @apply fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center overflow-scroll;
   // Special / overlay
   background-color: rgba(65, 85, 108, 0.9);
 }
