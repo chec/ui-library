@@ -15,6 +15,7 @@ import ChecCheckbox from './components/ChecCheckbox.vue';
 import ChecIcon from './components/ChecIcon.vue';
 import ChecDataPill from './components/ChecDataPill.vue';
 import ChecLoading from './components/ChecLoading.vue';
+import ChecMarketingIcon from './components/ChecMarketingIcon.vue';
 import ChecModal from './components/ChecModal.vue';
 import ChecOptionsMenu from './components/ChecOptionsMenu.vue';
 import TextField from './components/TextField.vue';
@@ -35,6 +36,7 @@ export {
   ChecIcon,
   ChecDataPill,
   ChecLoading,
+  ChecMarketingIcon,
   ChecModal,
   ChecOptionsMenu,
   TextField,
