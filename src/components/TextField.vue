@@ -67,8 +67,7 @@ export default {
     leading-tight
     text-sm
     text-gray-500
-    py-3
-    px-4
+    p-4
     bg-white
     rounded
     shadow-sm
