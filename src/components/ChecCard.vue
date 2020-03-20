@@ -35,7 +35,7 @@ export default {
     background-image: inline("../assets/media/hologram-bg.png");
 
     &__inner-wrapper {
-      @apply p-8 rounded-md h-full;
+      @apply rounded-md h-full;
     }
   }
 </style>
