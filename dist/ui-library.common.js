@@ -13094,6 +13094,7 @@ __webpack_require__.d(__webpack_exports__, "ChecCheckbox", function() { return /
 __webpack_require__.d(__webpack_exports__, "ChecIcon", function() { return /* reexport */ ChecIcon; });
 __webpack_require__.d(__webpack_exports__, "ChecDataPill", function() { return /* reexport */ ChecDataPill; });
 __webpack_require__.d(__webpack_exports__, "ChecLoading", function() { return /* reexport */ ChecLoading; });
+__webpack_require__.d(__webpack_exports__, "ChecMarketingIcon", function() { return /* reexport */ ChecMarketingIcon; });
 __webpack_require__.d(__webpack_exports__, "ChecModal", function() { return /* reexport */ ChecModal; });
 __webpack_require__.d(__webpack_exports__, "ChecOptionsMenu", function() { return /* reexport */ ChecOptionsMenu; });
 __webpack_require__.d(__webpack_exports__, "TextField", function() { return /* reexport */ TextField; });
@@ -16036,6 +16037,49 @@ var ChecLoading_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecLoading = (ChecLoading_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecMarketingIcon.vue?vue&type=script&lang=js&
+
+/* harmony default export */ var ChecMarketingIconvue_type_script_lang_js_ = ({
+  name: 'ChecMarketingIcon',
+  props: {
+    /**
+     * Type of icon
+     */
+    icon: {
+      type: String,
+      required: true
+    }
+  },
+  render: function render(createElement) {
+    if (!mIcons[this.icon]) {
+      throw Error('Required param "icon" was not valid');
+    }
+
+    return createElement(mIcons[this.icon]);
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecMarketingIcon.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecMarketingIconvue_type_script_lang_js_ = (ChecMarketingIconvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/ChecMarketingIcon.vue
+var ChecMarketingIcon_render, ChecMarketingIcon_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var ChecMarketingIcon_component = normalizeComponent(
+  components_ChecMarketingIconvue_type_script_lang_js_,
+  ChecMarketingIcon_render,
+  ChecMarketingIcon_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChecMarketingIcon = (ChecMarketingIcon_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"57c1ab85-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecModal.vue?vue&type=template&id=f9afe0b8&scoped=true&
 var ChecModalvue_type_template_id_f9afe0b8_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"modal-overlay"},[_c('ChecCard',{staticClass:"modal-card",class:("max-w-" + _vm.width)},[_vm._t("default")],2)],1)}
 var ChecModalvue_type_template_id_f9afe0b8_scoped_true_staticRenderFns = []
@@ -17571,6 +17615,7 @@ var TextField_component = normalizeComponent(
 
 /* harmony default export */ var TextField = (TextField_component.exports);
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
