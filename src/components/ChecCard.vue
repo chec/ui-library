@@ -1,12 +1,14 @@
 <template>
   <div class="card">
-    <div class="card__inner-wrapper" :class="innerClassWithDefault">
+    <div class="card__inner-wrapper" :class="tailwindClasses">
       <slot>
       </slot>
     </div>
   </div>
 </template>
 <script>
+import TailwindClasses from '../mixins/TailwindClasses';
+
 export default {
   name: 'ChecCard',
   props: {
@@ -18,15 +20,7 @@ export default {
       default: '',
     },
   },
-  computed: {
-    innerClassWithDefault() {
-      // If the dev hasn't already provided a background class, make it white
-      if (!this.innerClass.match(/(^|\s+)bg-/)) {
-        return `${this.innerClass} bg-white`;
-      }
-      return this.innerClass;
-    },
-  },
+  mixins: [TailwindClasses('p-4 bg-white')],
 };
 </script>
 <style scoped lang="scss">
