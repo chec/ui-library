@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div class="card__inner-wrapper" :class="tailwindClasses">
+    <div class="card__inner-wrapper" :class="[tailwindClasses, innerClass]">
       <slot>
       </slot>
     </div>
