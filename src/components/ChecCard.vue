@@ -20,7 +20,7 @@ export default {
       default: '',
     },
   },
-  mixins: [TailwindClasses('p-4 bg-white')],
+  mixins: [TailwindClasses('p-8 bg-white')],
 };
 </script>
 <style scoped lang="scss">
