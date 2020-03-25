@@ -3,16 +3,16 @@
 <circle cx="29" cy="40" r="12" fill="white"/>
 <circle cx="51" cy="31" r="8" fill="white"/>
 <circle cx="47" cy="60" r="4" fill="white"/>
-<g filter="url(#filter0_i)">
+<g filter="url(#filter0_iclrggrowth)">
 <path d="M25 27C25 25.8954 25.8954 25 27 25H43C44.1046 25 45 25.8954 45 27V43C45 44.1046 44.1046 45 43 45H27C25.8954 45 25 44.1046 25 43V27Z" fill="#85E0CE"/>
 </g>
 <path d="M25 27C25 25.8954 25.8954 25 27 25H43C44.1046 25 45 25.8954 45 27V43C45 44.1046 44.1046 45 43 45H27C25.8954 45 25 44.1046 25 43V27Z" stroke="#283341" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<g filter="url(#filter1_i)">
+<g filter="url(#filter1_iclrggrowth)">
 <path d="M35 37C35 35.8954 35.8954 35 37 35H53C54.1046 35 55 35.8954 55 37V53C55 54.1046 54.1046 55 53 55H37C35.8954 55 35 54.1046 35 53V37Z" fill="#AA8BDA"/>
 </g>
 <path d="M35 37C35 35.8954 35.8954 35 37 35H53C54.1046 35 55 35.8954 55 37V53C55 54.1046 54.1046 55 53 55H37C35.8954 55 35 54.1046 35 53V37Z" stroke="#283341" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <defs>
-<filter id="filter0_i" x="24.5" y="24.5" width="21" height="21" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_iclrggrowth" x="24.5" y="24.5" width="21" height="21" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
@@ -21,7 +21,7 @@
 <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0"/>
 <feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
 </filter>
-<filter id="filter1_i" x="34.5" y="34.5" width="21" height="21" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter1_iclrggrowth" x="34.5" y="34.5" width="21" height="21" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
