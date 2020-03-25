@@ -61,7 +61,7 @@ export const navIcons = {
 
 export const mIcons = {
   standard: IcStandard,
-  plusplan: IcPlusPlan,
+  plus: IcPlusPlan,
   pro: IcPro,
   rise: IcRise,
   growth: IcGrowth,
