@@ -3,20 +3,20 @@
 <circle cx="27.5" cy="47.5" r="9.5" fill="white"/>
 <circle cx="48" cy="27" r="8" fill="white"/>
 <circle cx="49" cy="52" r="4" fill="white"/>
-<g filter="url(#filter0_i)">
+<g filter="url(#filter0_iclrgrise)">
 <path d="M35.2898 28.6758C35.092 28.3637 34.6357 28.3665 34.4418 28.6811L25.4699 43.2377C25.2646 43.5708 25.5042 44 25.8955 44H44.0912C44.4854 44 44.7245 43.5653 44.5136 43.2324L35.2898 28.6758Z" fill="#F9A86C"/>
 </g>
 <path d="M35.2898 28.6758C35.092 28.3637 34.6357 28.3665 34.4418 28.6811L25.4699 43.2377C25.2646 43.5708 25.5042 44 25.8955 44H44.0912C44.4854 44 44.7245 43.5653 44.5136 43.2324L35.2898 28.6758Z" stroke="#283341" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<g filter="url(#filter1_i)">
+<g filter="url(#filter1_iclrgrise)">
 <path d="M45.2898 28.6758C45.092 28.3637 44.6357 28.3665 44.4418 28.6811L35.4699 43.2377C35.2646 43.5708 35.5042 44 35.8955 44H54.0912C54.4854 44 54.7245 43.5653 54.5136 43.2324L45.2898 28.6758Z" fill="#AA8BDA"/>
 </g>
 <path d="M45.2898 28.6758C45.092 28.3637 44.6357 28.3665 44.4418 28.6811L35.4699 43.2377C35.2646 43.5708 35.5042 44 35.8955 44H54.0912C54.4854 44 54.7245 43.5653 54.5136 43.2324L45.2898 28.6758Z" stroke="#283341" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<g filter="url(#filter2_i)">
+<g filter="url(#filter2_iclrgrise)">
 <path d="M40.2898 36.6758C40.092 36.3637 39.6357 36.3665 39.4418 36.6811L30.4699 51.2377C30.2646 51.5708 30.5042 52 30.8955 52H49.0912C49.4854 52 49.7245 51.5653 49.5136 51.2324L40.2898 36.6758Z" fill="#E77E90"/>
 </g>
 <path d="M40.2898 36.6758C40.092 36.3637 39.6357 36.3665 39.4418 36.6811L30.4699 51.2377C30.2646 51.5708 30.5042 52 30.8955 52H49.0912C49.4854 52 49.7245 51.5653 49.5136 51.2324L40.2898 36.6758Z" stroke="#283341" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <defs>
-<filter id="filter0_i" x="24.8939" y="27.9434" width="20.1989" height="16.5566" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_iclrgrise" x="24.8939" y="27.9434" width="20.1989" height="16.5566" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
@@ -25,7 +25,7 @@
 <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0"/>
 <feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
 </filter>
-<filter id="filter1_i" x="34.8939" y="27.9434" width="20.1989" height="16.5566" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter1_iclrgrise" x="34.8939" y="27.9434" width="20.1989" height="16.5566" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
@@ -34,7 +34,7 @@
 <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0"/>
 <feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
 </filter>
-<filter id="filter2_i" x="29.8939" y="35.9434" width="20.1989" height="16.5566" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter2_iclrgrise" x="29.8939" y="35.9434" width="20.1989" height="16.5566" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>

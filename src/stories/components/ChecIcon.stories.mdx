@@ -30,7 +30,7 @@ const colors = {
 
 <Props of={ ChecIcon } />
 
-## UI icon
+## UI icons
 
 <Preview>
   <Story name="UI icon">
@@ -48,13 +48,13 @@ const colors = {
       },
       template: `
         <div class="py-16 flex justify-center bg-gray-200">
-          <chec-icon :icon="icon" class="w-3 h-3" :class="color" />
+          <chec-icon :icon="icon" class="w-24 h-24" :class="color" />
         </div>`,
     }}
   </Story>
 </Preview>
 
-## All icons list
+## All UI icons
 
 <Preview>
   <Story name="All UI icons">
@@ -72,11 +72,20 @@ const colors = {
       },
       template: `
         <div class="py-16 flex justify-center bg-gray-200">
-          <chec-icon v-for="(_, icon) in icons" :icon="icon" class="w-3 h-3" :class="color" v-tooltip.top="icon"/>
+          <chec-icon
+            v-for="(_, icon) in icons"
+            :key="icon"
+            :icon="icon"
+            class="w-6 h-6"
+            :class="color"
+            v-tooltip.top="icon"
+          />
         </div>`,
     }}
   </Story>
 </Preview>
+
+## Navigation icons
 
 <Preview>
   <Story name="Navigation icons">
@@ -91,13 +100,44 @@ const colors = {
       },
       template: `
         <div class="py-16 flex justify-center bg-gray-100">
-          <chec-nav-icon :icon="icon" class="w-6 h-6"/>
+          <chec-nav-icon :icon="icon" class="w-24 h-24"/>
         </div>`,
     }}
   </Story>
 </Preview>
 
-## Marketing icon
+## All navigation icons
+
+<Preview>
+  <Story name="All navigation icons">
+    {{
+      components: {
+        ChecNavIcon
+      },
+      props: {
+        icons: {
+          default: navIcons,
+        },
+        color: {
+          default: select('Color', colors, colors.blue)
+        },
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-200">
+          <chec-nav-icon
+            v-for="(_, icon) in icons"
+            :key="icon"
+            :icon="icon"
+            class="w-12 h-12"
+            :class="color"
+            v-tooltip.top="icon"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+## Marketing icons
 
 <Preview>
   <Story name="Marketing icons">
@@ -111,8 +151,39 @@ const colors = {
         },
       },
       template: `
-        <div class="py-16 flex justify-center bg-white">
-          <chec-marketing-icon :icon="icon" />
+        <div class="py-16 flex justify-center bg-gray-100">
+          <chec-marketing-icon :icon="icon" class="w-24 h-24" />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+## All marketing icons
+
+<Preview>
+  <Story name="All marketing icons">
+    {{
+      components: {
+        ChecMarketingIcon
+      },
+      props: {
+        icons: {
+          default: mIcons,
+        },
+        color: {
+          default: select('Color', colors, colors.blue)
+        },
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-200">
+          <chec-marketing-icon
+            v-for="(_, icon) in icons"
+            :key="icon"
+            :icon="icon"
+            class="w-12 h-12"
+            :class="color"
+            v-tooltip.top="icon"
+          />
         </div>`,
     }}
   </Story>

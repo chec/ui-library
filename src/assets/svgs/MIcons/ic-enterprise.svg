@@ -1,10 +1,10 @@
 <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_i)">
+<g filter="url(#filter0_icenterprise)">
 <path d="M15.1004 3.35263C15.4651 2.60168 16.5349 2.60169 16.8996 3.35263L20.6353 11.0462L29.0217 12.2848C29.8369 12.4052 30.1648 13.4045 29.5794 13.9845L23.5 20.0077L24.9316 28.4918C25.0699 29.3109 24.2069 29.9317 23.4743 29.5402L16 25.5462L8.52571 29.5402C7.79305 29.9317 6.93014 29.3109 7.06836 28.4918L8.5 20.0077L2.4206 13.9845C1.83524 13.4045 2.16314 12.4052 2.9783 12.2848L11.3647 11.0462L15.1004 3.35263Z" fill="#85E0CE"/>
 </g>
 <path d="M15.1004 3.35263C15.4651 2.60168 16.5349 2.60169 16.8996 3.35263L20.6353 11.0462L29.0217 12.2848C29.8369 12.4052 30.1648 13.4045 29.5794 13.9845L23.5 20.0077L24.9316 28.4918C25.0699 29.3109 24.2069 29.9317 23.4743 29.5402L16 25.5462L8.52571 29.5402C7.79305 29.9317 6.93014 29.3109 7.06836 28.4918L8.5 20.0077L2.4206 13.9845C1.83524 13.4045 2.16314 12.4052 2.9783 12.2848L11.3647 11.0462L15.1004 3.35263Z" stroke="#283341" stroke-linecap="round" stroke-linejoin="round"/>
 <defs>
-<filter id="filter0_i" x="1.6228" y="2.28943" width="28.7544" height="27.8721" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_icenterprise" x="1.6228" y="2.28943" width="28.7544" height="27.8721" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
