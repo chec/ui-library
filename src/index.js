@@ -9,6 +9,7 @@ import BaseNotification from './components/BaseNotification.vue';
 import BaseOption from './components/BaseOption.vue';
 import BasePopover from './components/BasePopover.vue';
 import BaseTag from './components/BaseTag.vue';
+import BaseTab from './components/BaseTab.vue';
 import BaseTooltip from './directives/BaseTooltip';
 import ChecCard from './components/ChecCard.vue';
 import ChecCheckbox from './components/ChecCheckbox.vue';
@@ -18,6 +19,7 @@ import ChecLoading from './components/ChecLoading.vue';
 import ChecMarketingIcon from './components/ChecMarketingIcon.vue';
 import ChecModal from './components/ChecModal.vue';
 import ChecOptionsMenu from './components/ChecOptionsMenu.vue';
+import TabsGroup from './components/TabsGroup.vue';
 import TextField from './components/TextField.vue';
 
 export {
@@ -29,6 +31,7 @@ export {
   BaseNotification,
   BaseOption,
   BasePopover,
+  BaseTab,
   BaseTag,
   BaseTooltip,
   ChecCard,
@@ -39,6 +42,7 @@ export {
   ChecMarketingIcon,
   ChecModal,
   ChecOptionsMenu,
+  TabsGroup,
   TextField,
   SvgIcons as Icons,
 };
