@@ -1,5 +1,5 @@
-import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { text, select, boolean } from '@storybook/addon-knobs';
 import TabsGroup from '../../components/TabsGroup.vue';
 import BaseTab from '../../components/BaseTab.vue';
@@ -17,23 +17,44 @@ import BaseTab from '../../components/BaseTab.vue';
         TabsGroup,
         BaseTab,
       },
+      data() {
+        return {
+          list: {
+            data: 15,
+            meta: {
+              pagination: {
+                total: 101,
+                count: 15,
+                per_page: 15,
+                current_page: 1,
+                total_pages: 7,
+                links: {},
+              },
+            },
+          },
+          activeLimit: 15,
+        };
+      },
+      methods: {
+        changeInvoicesLimit(limit) {
+          this.activeLimit = limit;
+          const newLimit = limit === 'All' ? this.list.meta.pagination.total : limit;
+          action(`Fetch invoices with limit : ${newLimit}`)();
+        }
+      },
       template: `
         <div class="flex justify-center font-lato mx-auto p-16 bg-gray-100">
           <TabsGroup>
-            <BaseTab>
-              15
-            </BaseTab>
-            <BaseTab>
-              30
-            </BaseTab>
-            <BaseTab>
-              50
-            </BaseTab>
-            <BaseTab>
-              100
-            </BaseTab>
-            <BaseTab>
-              All
+            <BaseTab
+              v-for="
+                (limit, i) in
+                [15, 30, 50, 100, 'All']
+                  .filter(limit => limit === 'All' || limit <= list.meta.pagination.total)"
+              :key="i"
+              :active="limit === activeLimit"
+              @click="changeInvoicesLimit(limit)"
+            >
+              {{ limit }}
             </BaseTab>
           </TabsGroup>
         </div>`
