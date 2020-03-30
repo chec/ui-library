@@ -3,6 +3,7 @@ import { uiIcons } from '../lib/icons';
 
 export default {
   name: 'ChecIcon',
+  functional: true,
   props: {
     /**
      * Type of icon
@@ -12,11 +13,11 @@ export default {
       required: true,
     },
   },
-  render(createElement) {
-    if (!uiIcons[this.icon]) {
+  render(createElement, { props, data }) {
+    if (!uiIcons[props.icon]) {
       throw Error('Required param "icon" was not valid');
     }
-    return createElement(uiIcons[this.icon]);
+    return createElement(uiIcons[props.icon], data);
   },
 };
 </script>
