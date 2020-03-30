@@ -16165,6 +16165,7 @@ var mIcons = {
 
 /* harmony default export */ var ChecIconvue_type_script_lang_js_ = ({
   name: 'ChecIcon',
+  functional: true,
   props: {
     /**
      * Type of icon
@@ -16174,12 +16175,15 @@ var mIcons = {
       required: true
     }
   },
-  render: function render(createElement) {
-    if (!uiIcons[this.icon]) {
+  render: function render(createElement, _ref) {
+    var props = _ref.props,
+        data = _ref.data;
+
+    if (!uiIcons[props.icon]) {
       throw Error('Required param "icon" was not valid');
     }
 
-    return createElement(uiIcons[this.icon]);
+    return createElement(uiIcons[props.icon], data);
   }
 });
 // CONCATENATED MODULE: ./src/components/ChecIcon.vue?vue&type=script&lang=js&
