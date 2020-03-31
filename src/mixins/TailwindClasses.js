@@ -36,7 +36,7 @@ export default (defaults, propName = 'tailwind') => ({
         return input;
       };
 
-      const tailwind = resolveClasses(this.tailwind);
+      const tailwind = resolveClasses(this[propName]);
       const definedPrefixes = tailwind.map(className => className.split('-')[0]);
 
       return [

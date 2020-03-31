@@ -18,6 +18,7 @@ import ChecDataPill from './components/ChecDataPill.vue';
 import ChecLoading from './components/ChecLoading.vue';
 import ChecMarketingIcon from './components/ChecMarketingIcon.vue';
 import ChecModal from './components/ChecModal.vue';
+import ChecNavigation from './components/ChecNavigation.vue';
 import ChecOptionsMenu from './components/ChecOptionsMenu.vue';
 import ChecPaginate from './components/ChecPaginate.vue';
 import TabsGroup from './components/TabsGroup.vue';
@@ -42,6 +43,7 @@ export {
   ChecLoading,
   ChecMarketingIcon,
   ChecModal,
+  ChecNavigation,
   ChecOptionsMenu,
   ChecPaginate,
   TabsGroup,
