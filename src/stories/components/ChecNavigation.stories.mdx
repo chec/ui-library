@@ -1,0 +1,115 @@
+import { Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import ChecNavigation from '../../components/ChecNavigation.vue';
+import StoryRouter from 'storybook-vue-router';
+const routes = [
+  {
+    path: '/orders',
+    meta: {
+      navItem: {
+        label: 'Orders', 
+        iconName: 'orders'
+      },
+    },
+  },
+  {
+    path: '/products',
+    meta: {
+      navItem: {
+        label: 'Products', 
+        iconName: 'products'
+      },
+    },
+  },
+  {
+    path: '/categories',
+    meta: {
+      navItem: {
+        label: 'Categories', 
+        iconName: 'categories'
+      },
+    },
+  },
+  {
+    path: '/discounts',
+    meta: {
+      navItem: {
+        label: 'Discounts', 
+        iconName: 'discounts'
+      },
+    },
+  },
+  {
+    path: '/logs',
+    meta: {
+      navItem: {
+        label: 'Logs', 
+        iconName: 'logs'
+      },
+    },
+  },
+  {
+    path: '/settings',
+    meta: {
+      navItem: {
+        label: 'Settings', 
+        iconName: 'settings'
+      },
+    },
+  },
+];
+
+<Meta title="Components/Navigation" component={ChecNavigation} />
+
+# Navigation
+
+<Props of={ChecNavigation} />
+
+<Preview>
+  <Story name="Default" decorators={[ StoryRouter({}, { routes })]}>
+    {{
+      components: {
+        ChecNavigation
+      },
+      template: `
+      <div class="w-full">
+        <ChecNavigation class="absolute"/>
+      </div>`
+    }}
+  </Story>
+</Preview>
+
+# Navigation with active route (/orders)
+
+<Preview>
+  <Story 
+    name="With active /orders route" 
+    decorators={[ StoryRouter({}, { initialEntry: '/orders/55555', routes })]}>
+    {{
+      components: {
+        ChecNavigation
+      },
+      template: `
+      <div class="w-full">
+        <ChecNavigation />
+      </div>`
+    }}
+  </Story>
+</Preview>
+
+# Navigation set to expand (/orders)
+
+<Preview>
+  <Story 
+    name="Expanded via prop" 
+    decorators={[ StoryRouter({}, { initialEntry: '/orders/55555', routes })]}>
+    {{
+      components: {
+        ChecNavigation
+      },
+      template: `
+      <div class="w-full">
+        <ChecNavigation :expanded="true" />
+      </div>`
+    }}
+  </Story>
+</Preview>
