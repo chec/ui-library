@@ -16,7 +16,7 @@ export default {
       type: String,
       default: '',
       validator(value) {
-        return ['', 'news', 'new', 'updated'].includes(value);
+        return ['', 'news', 'new', 'updated', 'slug'].includes(value);
       },
     },
   },
@@ -47,6 +47,10 @@ export default {
 
   &--updated {
     @apply bg-orange-100 border-orange-100 text-orange-600;
+  }
+
+  &--slug {
+    @apply bg-purple-100 border-purple-100 text-purple-600;
   }
 }
 </style>
