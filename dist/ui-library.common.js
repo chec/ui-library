@@ -16650,12 +16650,12 @@ var ChecCheckbox_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecCheckbox = (ChecCheckbox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f2b7a1e8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPill.vue?vue&type=template&id=521f1639&
-var ChecDataPillvue_type_template_id_521f1639_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"data-pill",class:this.classObject},[_vm._t("default")],2)}
-var ChecDataPillvue_type_template_id_521f1639_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f2b7a1e8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPill.vue?vue&type=template&id=2da11f0a&
+var ChecDataPillvue_type_template_id_2da11f0a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"data-pill",class:this.classObject},[_vm._t("default")],2)}
+var ChecDataPillvue_type_template_id_2da11f0a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecDataPill.vue?vue&type=template&id=521f1639&
+// CONCATENATED MODULE: ./src/components/ChecDataPill.vue?vue&type=template&id=2da11f0a&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPill.vue?vue&type=script&lang=js&
 
@@ -16676,7 +16676,7 @@ var ChecDataPillvue_type_template_id_521f1639_staticRenderFns = []
       type: String,
       default: '',
       validator: function validator(value) {
-        return ['', 'news', 'new', 'updated'].includes(value);
+        return ['', 'news', 'new', 'updated', 'slug'].includes(value);
       }
     }
   },
@@ -16707,8 +16707,8 @@ var ChecDataPillvue_type_style_index_0_lang_scss_ = __webpack_require__("be98");
 
 var ChecDataPill_component = normalizeComponent(
   components_ChecDataPillvue_type_script_lang_js_,
-  ChecDataPillvue_type_template_id_521f1639_render,
-  ChecDataPillvue_type_template_id_521f1639_staticRenderFns,
+  ChecDataPillvue_type_template_id_2da11f0a_render,
+  ChecDataPillvue_type_template_id_2da11f0a_staticRenderFns,
   false,
   null,
   null,
