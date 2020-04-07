@@ -16162,7 +16162,9 @@ function _typeof(obj) {
   return {
     props: _defineProperty({}, propName, {
       type: [Array, Object, String],
-      default: []
+      default: function _default() {
+        return [];
+      }
     }),
     computed: {
       tailwindClasses: function tailwindClasses() {
