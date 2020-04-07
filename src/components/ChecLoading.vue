@@ -29,7 +29,7 @@
         class="loading__animation-spinner"
       />
     </svg>
-    <div class="loading__message">{{ message }}</div>
+    <div class="loading__message" v-if="message">{{ message }}</div>
   </div>
 </template>
 <script>
@@ -38,7 +38,7 @@ export default {
   props: {
     message: {
       type: String,
-      default: 'Loading...',
+      default: '',
     },
   },
 };
@@ -50,7 +50,7 @@ export default {
   background: rgba(255, 255, 255, 0.9);
 
   &__animation {
-    @apply w-8 mb-2;
+    @apply w-8;
   }
 
   &__animation-spinner {
@@ -58,7 +58,7 @@ export default {
   }
 
   &__message {
-    @apply uppercase font-bold tracking-wider text-gray-500 text-xs;
+    @apply uppercase font-bold tracking-wider text-gray-500 text-xs mt-2;
   }
 }
 
