@@ -15,7 +15,7 @@ export default (defaults, propName = 'tailwind') => ({
   props: {
     [propName]: {
       type: [Array, Object, String],
-      default: [],
+      default: () => [],
     },
   },
   computed: {
