@@ -55,6 +55,13 @@ export default {
         disabled: false,
       }),
     },
+    /**
+     * Whether the option is destructure, i.e. that it deletes something
+     */
+    destructive: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     level() {
@@ -70,7 +77,10 @@ export default {
     },
     classNames() {
       return [
-        { 'option--disabled': this.option.disabled },
+        {
+          'option--disabled': this.option.disabled,
+          'option--destructive': this.destructive,
+        },
         `option--level-${this.level}`,
       ];
     },
@@ -90,6 +100,7 @@ export default {
 <style lang="scss" scoped>
   .option {
     @apply w-full flex items-center text-sm px-4 py-3 outline-none cursor-pointer bg-white;
+
     &:hover {
       @apply bg-gray-100;
     }
@@ -97,9 +108,11 @@ export default {
     &:active {
       @apply bg-gray-100;
     }
+
     &:not(:last-child) {
       @apply border-b border-gray-200;
     }
+
     &--disabled {
       @apply opacity-50 cursor-not-allowed;
       &:hover,
@@ -108,6 +121,11 @@ export default {
         @apply bg-white;
       }
     }
+
+    &--destructive {
+      @apply text-red-600;
+    }
+
     &--level- {
       &1 {
         @apply pl-8;

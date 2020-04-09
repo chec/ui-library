@@ -61,7 +61,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
                     <BaseOption @option-selected="action">
                       Check for changes
                     </BaseOption>
-                    <BaseOption class="text-red-600" @option-selected="confirm('Are you sure?')">
+                    <BaseOption @option-selected="confirm('Are you sure?')" destructive>
                       Delete record
                     </BaseOption>
                     <BaseOption :option="{ disabled: true }">
@@ -79,7 +79,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
             <BaseOption @option-selected="action">
               Check for changes
             </BaseOption>
-            <BaseOption class="text-red-600" @option-selected="confirm('Are you sure?')">
+            <BaseOption @option-selected="confirm('Are you sure?')" destructive>
               Delete record
             </BaseOption>
             <BaseOption :option="{ disabled: true }">
@@ -114,7 +114,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
             <BaseOption @option-selected="action">
               Check for changes
             </BaseOption>
-            <BaseOption class="text-red-600" @option-selected="action">
+            <BaseOption @option-selected="action" destructive>
               Delete record
             </BaseOption>
             <BaseOption :option="{ disabled: true }">
