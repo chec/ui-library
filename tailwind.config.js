@@ -1,7 +1,34 @@
 const gradientsPlugin = require('tailwindcss-plugins/gradients');
 const plugin = require('tailwindcss/plugin');
 
-const checTablesPlugin = plugin(({ addBase, config }) => {
+const checTablesPlugin = plugin(({ addUtilities, addBase, config }) => {
+  const returnTitleDeclarations = (
+    fontSize = '',
+    fontWeight = '',
+    textColor = '',
+    textTransform = '',
+    letterSpacing = '',
+  ) => ({
+    fontSize: config(fontSize),
+    fontWeight: config(fontWeight),
+    color: config(textColor),
+    textTransform,
+    letterSpacing: config(letterSpacing),
+  });
+  const titleUtils = {
+    '.title-2xl': returnTitleDeclarations('theme.fontSize.2xl', 'theme.fontWeight.bold', 'theme.colors.gray-600'),
+    '.title-xl': returnTitleDeclarations('theme.fontSize.xl', 'theme.fontWeight.bold', 'theme.colors.gray-600'),
+    '.title-lg': returnTitleDeclarations('theme.fontSize.lg', 'theme.fontWeight.bold', 'theme.colors.gray-600'),
+    '.title-sm': returnTitleDeclarations(
+      'theme.fontSize.sm', 'theme.fontWeight.bold', 'theme.colors.gray-500', null, 'theme.spacing.px',
+    ),
+    '.title-xs': returnTitleDeclarations(
+      'theme.fontSize.xs', 'theme.fontWeight.bold', 'theme.colors.gray-500', 'uppercase', 'theme.spacing.px',
+    ),
+    '.title-xxs': returnTitleDeclarations(
+      'theme.fontSize.xxs', 'theme.fontWeight.bold', 'theme.colors.gray-500', 'uppercase', 'theme.spacing.px',
+    ),
+  };
   const tables = {
     table: {
       boxShadow: config('theme.boxShadow.sm'),
@@ -33,6 +60,7 @@ const checTablesPlugin = plugin(({ addBase, config }) => {
     },
   };
   addBase(tables);
+  addUtilities(titleUtils);
 });
 
 const fontSizes = {

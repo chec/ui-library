@@ -1,4 +1,22 @@
 @tailwind base;
+h1 {
+  @apply title-2xl;
+}
+h2 {
+  @apply title-xl;
+}
+h3 {
+  @apply title-lg;
+}
+h4 {
+  @apply title-sm;
+}
+h5 {
+  @apply title-xs;
+}
+h6 {
+  @apply title-xxs;
+}
 @tailwind components;
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 *{
