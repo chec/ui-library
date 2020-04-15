@@ -30,9 +30,9 @@ export default {
   },
   methods: {
     /**
-    * Emitted when the modal's background overlay is click.
-    * @event overlay-click
-    */
+     * Emitted when the modal's background overlay is click.
+     * @event overlay-click
+     */
     emitOverlayClick() {
       this.$emit('overlay-click');
     },
