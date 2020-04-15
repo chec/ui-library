@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-overlay">
+  <div class="modal-overlay" @click.self="emitOverlayClick">
     <ChecCard class="modal-card" :class="`max-w-${width}`">
       <slot />
     </ChecCard>
@@ -26,6 +26,15 @@ export default {
     width: {
       type: String,
       default: '2xl',
+    },
+  },
+  methods: {
+    /**
+     * Emitted when the modal's background overlay is click.
+     * @event overlay-click
+     */
+    emitOverlayClick() {
+      this.$emit('overlay-click');
     },
   },
 };

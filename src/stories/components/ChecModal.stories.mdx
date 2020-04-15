@@ -90,3 +90,55 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
     }}
   </Story>
 </Preview>
+
+# Close on overlay click
+
+<Props of={ChecModal} />
+
+<Preview>
+  <Story name="Close on overlay click">
+    {{
+      components: {
+        BaseButton,
+        ChecModal,
+        TextField,
+      },
+      data() {
+        return {
+          showModal: true,
+        };
+      },
+      props: {
+        width: {
+          default: select('Width', widths, 'lg'),
+        },
+      },
+      methods: {
+        hideModal() {
+          this.showModal = false;
+        },
+      },
+      template: `
+        <div class="font-lato">
+          <ChecModal :width="width" v-if="showModal" @overlay-click="hideModal">
+            <h2 class="text-lg mb-4 font-bold">Set up your account</h2>
+            <label class="block mb-4">
+              First name
+              <TextField value="Leslie" class="w-full" />
+            </label>
+            <label class="block mb-4">
+              Surname
+              <TextField value="Lawless" class="w-full" />
+            </label>
+            <label class="block mb-4">
+              Email address
+              <TextField value="lezlie@example.com" class="w-full" />
+            </label>
+          </ChecModal>
+          <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-right m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+        </div>`
+    }}
+  </Story>
+</Preview>
