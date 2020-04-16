@@ -55,35 +55,44 @@ export default {
 </script>
 <style lang="scss" scoped>
 .alert {
-  @apply flex font-lato justify-between items-center bg-gray-200 p-4 w-full shadow-lg;
+  @apply flex font-lato justify-between items-center bg-gray-200 p-4 w-full shadow-lg z-20;
+
   &__content-container {
     @apply flex flex-grow items-center;
   }
+
   &__text {
     @apply flex-grow font-normal text-white text-sm text-center;
   }
+
   &__close-icon {
     @apply ml-4 p-2 bg-transparent rounded text-white cursor-pointer outline-none;
     > svg {
       @apply h-4 w-4;
     }
   }
+
   &--success {
     @apply bg-green-500 border border-green-400;
   }
+
   &--error {
     @apply bg-red-500 border border-red-400;
   }
+
   &--warning {
     @apply bg-orange-500 border border-orange-400;
   }
+
   &--info {
     @apply bg-purple-500 border border-purple-400;
   }
 }
+
 .fade-enter-active, .fade-leave-active {
   @apply transition-opacity duration-500 ease-in-out;
 }
+
 .fade-enter, .fade-leave-to {
   @apply opacity-0;
 }
