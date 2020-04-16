@@ -1,6 +1,6 @@
 <template>
   <div class="modal-overlay" @click.self="emitOverlayClick">
-    <ChecCard class="modal-card" :class="`max-w-${width}`">
+    <ChecCard class="modal-card" :class="`max-w-${width}`" :tailwind="innerCardTailwind">
       <slot />
     </ChecCard>
   </div>
@@ -26,6 +26,13 @@ export default {
     width: {
       type: String,
       default: '2xl',
+    },
+    /**
+     * inner Tailwind prop to override chec-card tailwind classes
+     */
+    innerCardTailwind: {
+      type: String,
+      default: '',
     },
   },
   methods: {

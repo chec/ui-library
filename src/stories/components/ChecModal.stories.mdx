@@ -120,7 +120,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
       },
       template: `
         <div class="font-lato">
-          <ChecModal :width="width" v-if="showModal" @overlay-click="hideModal">
+          <ChecModal innerCardTailwind="bg-gray-100" :width="width" v-if="showModal" @overlay-click="hideModal">
             <h2 class="text-lg mb-4 font-bold">Set up your account</h2>
             <label class="block mb-4">
               First name
