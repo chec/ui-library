@@ -47,7 +47,7 @@ You can import helpful sass mixins such as `aspect-ratio`.
 ```scss
 /* mixins.scss */
 
-@import '~@chec/ui-library/src/assets/mixins.css';
+@import '~@chec/ui-library/src/assets/mixins.scss';
 ```
 
 Mixins
