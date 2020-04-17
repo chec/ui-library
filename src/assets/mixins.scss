@@ -1,0 +1,16 @@
+/* ex:
+  1:1 -> aspect-ratio(1, 1),
+  3:4 -> aspect-ratio(3, 4),
+  16:9 -> aspect-ratio(16, 9)
+*/
+@mixin aspect-ratio($width, $height) {
+  @apply relative;
+  &::before {
+    @apply block w-full;
+    content: "";
+    padding-top: ($width / $height) * 100%;
+  }
+  > img, div {
+    @apply absolute w-full h-full inset-0 object-cover;
+  }
+}
