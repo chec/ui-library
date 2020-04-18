@@ -8,6 +8,7 @@
     :class="classNames"
     @input="handleInput"
     @focus="handleFocus"
+    @blur="handleblur"
   />
 </template>
 <script>
@@ -47,6 +48,14 @@ export default {
     },
   },
   methods: {
+    handleblur($event) {
+      /**
+       * Emits the `<input>`'s 'blur' event.
+       * @event blur
+       * @type {$event}
+       */
+      this.$emit('blur', $event);
+    },
     handleInput($event) {
       /**
        * Emitted when the `<input>`'s 'input' event bubbles up. The v-model directive uses this to function.
@@ -55,7 +64,13 @@ export default {
        */
       this.$emit('input', $event.target.value);
     },
+    /**
+     * Emits the `<input>`'s 'focus' event.
+     * @event focus
+     * @type {$event}
+     */
     handleFocus($event) {
+      this.$emit('focus', $event);
       $event.target.select();
     },
   },
