@@ -1,6 +1,6 @@
 <template>
   <div class="modal-overlay" @click.self="emitOverlayClick">
-    <ChecCard class="modal-card" :class="`max-w-${width}`">
+    <ChecCard class="modal-card" :class="`max-w-${width}`" tailwind="bg-gray-100">
       <slot />
     </ChecCard>
   </div>
