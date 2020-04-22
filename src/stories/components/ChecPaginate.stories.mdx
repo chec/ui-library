@@ -16,24 +16,36 @@ import ChecPaginate from '../../components/ChecPaginate.vue';
         ChecPaginate,
       },
       props: {
-        pageCount: {
-          default: number("Page Count", 12)
+        itemCount: {
+          default: number("Total item count", 74)
         },
       },
       data() {
         return {
-          currentPage: 1,
+          page: 1,
+          pageSize: 15,
         }
+      },
+      methods: {
+        choosePage(page) {
+          action("Page chosen")(page);
+          this.page = page;
+        },
+        choosePageSize(size) {
+          action("Page size chosen")(size);
+          this.pageSize = size;
+        },
       },
       template: `
         <div class="flex flex-col font-lato p-16 bg-gray-100 w-full">
-          <h2 class="my-2 mx-auto">The current page is {{ currentPage }}</h2>
+          <h2 class="my-2 mx-auto">The current page is {{ page }}</h2>
           <ChecPaginate
-            v-model="currentPage"
-            :pageCount="pageCount"
-            class="inline-flex self-center"
-          >
-          </ChecPaginate>
+            :page="page"
+            :page-size="pageSize"
+            @choose-page="choosePage"
+            @choose-page-size="choosePageSize"
+            :count="itemCount"
+          />
         </div>`
     }}
   </Story>

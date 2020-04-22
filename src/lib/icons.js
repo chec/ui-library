@@ -1,6 +1,8 @@
 // UI icons imports
 import IcLeft from '../assets/svgs/UiIcons/ic-left.svg';
+import IcDoubleLeft from '../assets/svgs/UiIcons/ic-double-left.svg';
 import IcRight from '../assets/svgs/UiIcons/ic-right.svg';
+import IcDoubleRight from '../assets/svgs/UiIcons/ic-double-right.svg';
 import IcDown from '../assets/svgs/UiIcons/ic-down.svg';
 import IcUp from '../assets/svgs/UiIcons/ic-up.svg';
 import IcPlus from '../assets/svgs/UiIcons/ic-plus.svg';
@@ -36,7 +38,9 @@ import IcLrgEnterprise from '../assets/svgs/MIcons/ic-lrg-enterprise.svg';
 
 export const uiIcons = {
   left: IcLeft,
+  'double-left': IcDoubleLeft,
   right: IcRight,
+  'double-right': IcDoubleRight,
   down: IcDown,
   up: IcUp,
   plus: IcPlus,
