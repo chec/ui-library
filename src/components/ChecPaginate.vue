@@ -1,162 +1,189 @@
 <template>
-  <TabsGroup>
-    <paginate @input="emitInput" v-bind="$props">
-      <template v-for="pageNumber in pageCount" v-slot:[pageNumber]="{ page }">
-        <BaseTab :active="page.selected" :disabled="page.disabled" :key="pageNumber">
-          {{ page.content }}
-        </BaseTab>
-      </template>
-      <template #prevContent>
-        <BaseButton color="primary" class="next-prev-button">
-          <template v-slot:icon>
-            <ChecIcon icon="left"/>
-          </template>
-        </BaseButton>
-      </template>
-      <template #nextContent>
-        <BaseButton color="primary" class="next-prev-button">
-          <ChecIcon icon="right"/>
-        </BaseButton>
-      </template>
-    </paginate>
-  </TabsGroup>
+  <div class="chec-paginate">
+    <TabsGroup class="chec-page-selector">
+      <BaseTab title="Go to the first page" class="chec-page-selector__control" @click="choosePage('first')"
+               :disabled="page === 1"
+      >
+        <ChecIcon icon="double-left" />
+      </BaseTab>
+      <BaseTab title="Go to the previous page" class="chec-page-selector__control"
+               @click="choosePage('previous')" :disabled="page === 1"
+      >
+        <ChecIcon icon="left" />
+      </BaseTab>
+      <span class="chec-page-selector__page-reference">{{ page }} of {{ pageCount }}</span>
+      <BaseTab title="Go to the next page" class="chec-page-selector__control" @click="choosePage('next')"
+               :disabled="page === pageCount"
+      >
+        <ChecIcon icon="right" />
+      </BaseTab>
+      <BaseTab title="Go to the last page" class="chec-page-selector__control" @click="choosePage('last')"
+               :disabled="page === pageCount"
+      >
+        <ChecIcon icon="double-right" />
+      </BaseTab>
+    </TabsGroup>
+    <TabsGroup class="chec-per-page-control" v-show="limitOptions.length > 1">
+      <span class="chec-per-page-control__label">Showing</span>
+      <BaseTab class="chec-per-page-control__option" v-for="option in limitOptions" :key="option"
+               @click="emitChoosePageSize(option)" :active="option === pageSize"
+      >
+        {{ option }}
+      </BaseTab>
+    </TabsGroup>
+  </div>
 </template>
+
 <script>
-import Paginate from '../lib/Paginate.vue';
+import TabsGroup from './TabsGroup.vue';
 import BaseTab from './BaseTab.vue';
 import ChecIcon from './ChecIcon.vue';
-import BaseButton from './BaseButton.vue';
-import TabsGroup from './TabsGroup.vue';
 
 export default {
   name: 'ChecPaginate',
-  components: {
-    Paginate,
-    BaseTab,
-    BaseButton,
-    ChecIcon,
-    TabsGroup,
-  },
+  components: { ChecIcon, BaseTab, TabsGroup },
   props: {
-    value: {
-      type: Number,
-    },
-    pageCount: {
-      type: Number,
-      required: true,
-    },
-    forcePage: {
-      type: Number,
-    },
-    clickHandler: {
-      type: Function,
-      default: () => { },
-    },
-    pageRange: {
-      type: Number,
-      default: 3,
-    },
-    marginPages: {
+    /**
+     * Currently selected page
+     */
+    page: {
       type: Number,
       default: 1,
     },
-    prevText: {
-      type: String,
-      default: 'Prev',
+
+    /**
+     * Currently selected page size
+     */
+    pageSize: {
+      type: Number,
+      default: 15,
     },
-    nextText: {
-      type: String,
-      default: 'Next',
+
+    /**
+     * The number of records that the pagination should page through
+     */
+    count: {
+      type: Number,
     },
-    breakViewText: {
-      type: String,
-      default: '…',
+
+    /**
+     * A list of page size options to provide.
+     */
+    pageSizeOptions: {
+      type: Array,
+      validate: options => options.every(option => typeof option === 'number'),
+      default: () => [15, 30, 50, 100],
     },
-    containerClass: {
-      type: String,
-      default: 'flex items-center justify-start flex-wrap',
+  },
+  mounted() {
+    // Ensure the initial page size is valid. This is here as the validity relies on a different prop
+    if (!this.pageSizeOptions.includes(this.pageSize)) {
+      this.emitChoosePageSize(this.pageSizeOptions[0]);
+    }
+  },
+  computed: {
+    limitOptions() {
+      // Find the options that are less than the total count, and also the first option that's more
+      const firstLargerIndex = this.pageSizeOptions.findIndex(option => option >= this.count);
+      if (firstLargerIndex < 0) {
+        return this.pageSizeOptions;
+      }
+      return this.pageSizeOptions.slice(0, firstLargerIndex + 1);
     },
-    pageClass: {
-      type: String,
-      default: 'px-1',
-    },
-    pageLinkClass: {
-      type: String,
-    },
-    prevClass: {
-      type: String,
-      default: 'pr-1',
-    },
-    prevLinkClass: {
-      type: String,
-    },
-    nextClass: {
-      type: String,
-      default: 'pl-1',
-    },
-    nextLinkClass: {
-      type: String,
-    },
-    breakViewClass: {
-      type: String,
-      default: 'cursor-default text-white',
-    },
-    breakViewLinkClass: {
-      type: String,
-      default: 'outline-none',
-    },
-    activeClass: {
-      type: String,
-      default: 'active',
-    },
-    disabledClass: {
-      type: String,
-      default: 'disabled',
-    },
-    noLiSurround: {
-      type: Boolean,
-      default: false,
-    },
-    firstLastButton: {
-      type: Boolean,
-      default: false,
-    },
-    firstButtonText: {
-      type: String,
-      default: 'First',
-    },
-    lastButtonText: {
-      type: String,
-      default: 'Last',
-    },
-    hidePrevNext: {
-      type: Boolean,
-      default: false,
+    pageCount() {
+      return Math.ceil(this.count / this.pageSize);
     },
   },
   methods: {
-    /**
-     * Container for the input event
-     *
-     * @param {string} value
-     */
-    emitInput(value) {
+    choosePage(action) {
+      if (action === 'first') {
+        this.emitChoosePage(1);
+        return;
+      }
+      if (action === 'last') {
+        this.emitChoosePage(this.pageCount);
+        return;
+      }
+      const delta = action === 'next' ? 1 : -1;
+      const newPage = this.page + delta;
+
+      if (newPage < 0 || newPage > this.pageCount) {
+        return;
+      }
+
+      this.emitChoosePage(newPage);
+    },
+    emitChoosePage(page) {
       /**
       * Emitted when a page is selected.
-      * @event input
+      * @event choose-page
       * @type {String}
-      * @property {String} - key - the value of the page number
+      * @property {String} - page - the page number that is requested
       */
-      this.$emit('input', value);
+      this.$emit('choose-page', page);
+    },
+    emitChoosePageSize(limit) {
+      /**
+       * Emitted when a page is selected.
+       * @event choose-page-size
+       * @type {String}
+       * @property {String} - limit - the size of the page that is requested
+       */
+      this.$emit('choose-page-size', limit);
+    },
+  },
+  watch: {
+    /**
+     * Watch for page size changes so we can handle cases where:
+     *  - the page number is made invalid, or
+     *  - the records on the current page are going to jump around too much
+     */
+    pageSize(newSize, oldSize) {
+      const { page, pageCount } = this;
+      if (page > pageCount) {
+        this.emitChoosePage(pageCount);
+        return;
+      }
+
+      // Try to keep showing the user relevant records
+      const priorLowestIndex = oldSize * (page - 1);
+      const pageWithOldIndex = Math.ceil(priorLowestIndex / newSize) || 1;
+      if (pageWithOldIndex !== page) {
+        this.emitChoosePage(pageWithOldIndex);
+      }
     },
   },
 };
 </script>
 <style scoped lang="scss">
-.next-prev-button {
-  @apply flex flex-col items-center justify-center w-8 h-8 shadow-none;
-  svg {
-    @apply w-xs h-xs mx-auto;
+.chec-paginate {
+  @apply flex w-full justify-between flex-row-reverse;
+}
+
+.chec-per-page-control {
+  @apply leading-tight uppercase text-white text-xxs tracking-widest font-bold py-2 px-3;
+
+  &__label {
+    @apply text-xxs mr-3;
+  }
+
+  &__option {
+    @apply text-xs font-bold p-1 mr-1 ml-0;
+  }
+}
+
+.chec-page-selector {
+  @apply uppercase text-white tracking-widest font-bold;
+
+  &__control {
+    @apply p-1 mr-1 ml-0;
+    svg {
+      @apply w-3 h-3;
+    }
+  }
+
+  &__page-reference {
+    @apply leading-relaxed text-xxs mx-3 align-text-top;
   }
 }
 </style>

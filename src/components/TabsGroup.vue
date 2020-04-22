@@ -9,10 +9,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-  .tabs-group {
-    @apply rounded-md bg-gray-500 p-2 text-sm;
-    > button {
-        @apply mx-1;
-    }
-  }
+.tabs-group {
+  @apply rounded-md bg-gray-500 p-2 text-sm;
+}
 </style>

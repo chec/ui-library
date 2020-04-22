@@ -1,11 +1,11 @@
 <template>
   <button
-    class="tab"
+    class="chec-tab"
     @click="handleClick"
-    :class="{ 'tab--active': active }"
+    :class="{ 'chec-tab--active': active }"
     :disabled="disabled"
   >
-    <span class="tab__text">
+    <span class="chec-tab__text">
       <!--
         @slot Text to display within the tab button
         @binding disabled Whether the tab is disabled
@@ -48,20 +48,16 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.tab {
-  @apply bg-gray-500 rounded px-4 py-2 cursor-pointer;
+<style lang="scss">
+.chec-tab {
+  @apply bg-gray-500 rounded px-4 py-2 cursor-pointer mx-1;
   &:hover {
     &:enabled {
       @apply bg-gray-600;
-      .tab__text {
+      .chec-tab__text {
         @apply text-white;
       }
     }
-  }
-  &:active,
-  &:focus {
-    @extend .tab--active;
   }
   &:disabled {
     @apply opacity-50 cursor-not-allowed;
@@ -69,10 +65,10 @@ export default {
   &__text {
     @apply text-white;
   }
-  &--active {
+  &--active, &:active, &:focus {
     &:enabled {
       @apply bg-gray-400 outline-none;
-      .tab__text {
+      .chec-tab__text {
         @apply text-white;
       }
       &:hover {
