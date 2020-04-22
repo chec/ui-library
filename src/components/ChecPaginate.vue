@@ -1,17 +1,25 @@
 <template>
   <div class="chec-paginate">
     <TabsGroup class="chec-page-selector">
-      <BaseTab title="Go to the first page" class="chec-page-selector__control" @click="choosePage('first')">
+      <BaseTab title="Go to the first page" class="chec-page-selector__control" @click="choosePage('first')"
+               :disabled="page === 1"
+      >
         <ChecIcon icon="double-left" />
       </BaseTab>
-      <BaseTab title="Go to the previous page" class="chec-page-selector__control" @click="choosePage('previous')">
+      <BaseTab title="Go to the previous page" class="chec-page-selector__control"
+               @click="choosePage('previous')" :disabled="page === 1"
+      >
         <ChecIcon icon="left" />
       </BaseTab>
       <span class="chec-page-selector__page-reference">{{ page }} of {{ pageCount }}</span>
-      <BaseTab title="Go to the next page" class="chec-page-selector__control" @click="choosePage('next')">
+      <BaseTab title="Go to the next page" class="chec-page-selector__control" @click="choosePage('next')"
+               :disabled="page === pageCount"
+      >
         <ChecIcon icon="right" />
       </BaseTab>
-      <BaseTab title="Go to the last page" class="chec-page-selector__control" @click="choosePage('last')">
+      <BaseTab title="Go to the last page" class="chec-page-selector__control" @click="choosePage('last')"
+               :disabled="page === pageCount"
+      >
         <ChecIcon icon="double-right" />
       </BaseTab>
     </TabsGroup>
