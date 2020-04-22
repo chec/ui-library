@@ -1,13 +1,5 @@
 <template>
   <div class="chec-paginate">
-    <TabsGroup class="chec-per-page-control">
-      <span class="chec-per-page-control__label">Showing</span>
-      <BaseTab class="chec-per-page-control__option" v-for="option in limitOptions" :key="option"
-               @click="emitChoosePageSize(option)" :active="option === pageSize"
-      >
-        {{ option }}
-      </BaseTab>
-    </TabsGroup>
     <TabsGroup class="chec-page-selector">
       <BaseTab title="Go to the first page" class="chec-page-selector__control" @click="choosePage('first')">
         <ChecIcon icon="double-left" />
@@ -21,6 +13,14 @@
       </BaseTab>
       <BaseTab title="Go to the last page" class="chec-page-selector__control" @click="choosePage('last')">
         <ChecIcon icon="double-right" />
+      </BaseTab>
+    </TabsGroup>
+    <TabsGroup class="chec-per-page-control" v-show="limitOptions.length > 1">
+      <span class="chec-per-page-control__label">Showing</span>
+      <BaseTab class="chec-per-page-control__option" v-for="option in limitOptions" :key="option"
+               @click="emitChoosePageSize(option)" :active="option === pageSize"
+      >
+        {{ option }}
       </BaseTab>
     </TabsGroup>
   </div>
@@ -75,7 +75,12 @@ export default {
   },
   computed: {
     limitOptions() {
-      return this.pageSizeOptions.filter(option => option < this.count);
+      // Find the options that are less than the total count, and also the first option that's more
+      const firstLargerIndex = this.pageSizeOptions.findIndex(option => option >= this.count);
+      if (firstLargerIndex < 0) {
+        return this.pageSizeOptions;
+      }
+      return this.pageSizeOptions.slice(0, firstLargerIndex + 1);
     },
     pageCount() {
       return Math.ceil(this.count / this.pageSize);
@@ -133,7 +138,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .chec-paginate {
-  @apply flex w-full justify-between;
+  @apply flex w-full justify-between flex-row-reverse;
 }
 
 .chec-per-page-control {
