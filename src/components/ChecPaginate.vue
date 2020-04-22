@@ -134,11 +134,22 @@ export default {
   },
   watch: {
     /**
-     * Watch for page size changes where the page number is made invalid
+     * Watch for page size changes so we can handle cases where:
+     *  - the page number is made invalid, or
+     *  - the records on the current page are going to jump around too much
      */
-    pageSize() {
-      if (this.page > this.pageCount) {
-        this.emitChoosePage(this.pageCount);
+    pageSize(newSize, oldSize) {
+      const { page, pageCount } = this;
+      if (page > pageCount) {
+        this.emitChoosePage(pageCount);
+        return;
+      }
+
+      // Try to keep showing the user relevant records
+      const priorLowestIndex = oldSize * (page - 1);
+      const pageWithOldIndex = Math.ceil(priorLowestIndex / newSize) || 1;
+      if (pageWithOldIndex !== page) {
+        this.emitChoosePage(pageWithOldIndex);
       }
     },
   },
