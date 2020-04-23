@@ -26,7 +26,7 @@
     <TabsGroup class="chec-per-page-control" v-show="limitOptions.length > 1">
       <span class="chec-per-page-control__label">Showing</span>
       <BaseTab class="chec-per-page-control__option" v-for="option in limitOptions" :key="option"
-               @click="emitChoosePageSize(option)" :active="option === pageSize"
+               @click="choosePageSize(option)" :active="option === pageSize"
       >
         {{ option }}
       </BaseTab>
@@ -113,6 +113,25 @@ export default {
 
       this.emitChoosePage(newPage);
     },
+    choosePageSize(newSize) {
+      const { count, page, pageSize: oldSize } = this;
+      const newPageCount = Math.ceil(count / newSize);
+
+      if (page > newPageCount) {
+        this.emitChoosePageSize(newSize, newPageCount);
+        return;
+      }
+
+      // Try to keep showing the user relevant records
+      const priorLowestIndex = oldSize * (page - 1) + 1;
+      const pageWithOldIndex = Math.ceil(priorLowestIndex / newSize) || 1;
+      if (pageWithOldIndex !== page) {
+        this.emitChoosePageSize(newSize, pageWithOldIndex);
+        return;
+      }
+
+      this.emitChoosePageSize(newSize);
+    },
     emitChoosePage(page) {
       /**
       * Emitted when a page is selected.
@@ -122,35 +141,14 @@ export default {
       */
       this.$emit('choose-page', page);
     },
-    emitChoosePageSize(limit) {
+    emitChoosePageSize(size, newPage = null) {
       /**
        * Emitted when a page is selected.
        * @event choose-page-size
        * @type {String}
        * @property {String} - limit - the size of the page that is requested
        */
-      this.$emit('choose-page-size', limit);
-    },
-  },
-  watch: {
-    /**
-     * Watch for page size changes so we can handle cases where:
-     *  - the page number is made invalid, or
-     *  - the records on the current page are going to jump around too much
-     */
-    pageSize(newSize, oldSize) {
-      const { page, pageCount } = this;
-      if (page > pageCount) {
-        this.emitChoosePage(pageCount);
-        return;
-      }
-
-      // Try to keep showing the user relevant records
-      const priorLowestIndex = oldSize * (page - 1);
-      const pageWithOldIndex = Math.ceil(priorLowestIndex / newSize) || 1;
-      if (pageWithOldIndex !== page) {
-        this.emitChoosePage(pageWithOldIndex);
-      }
+      this.$emit('choose-page-size', { size, page: newPage || this.page });
     },
   },
 };
