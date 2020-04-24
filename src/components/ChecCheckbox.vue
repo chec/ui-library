@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import _uniqueId from 'lodash.uniqueid';
+import uniqueId from '@/lib/helpers/createUniqueId';
 import ChecIcon from './ChecIcon.vue';
 
 export default {
@@ -102,8 +102,7 @@ export default {
       return this.checked;
     },
     id() {
-      // generates unique id concating id, name, value
-      return _uniqueId(`${this.name || 'checkbox'}_${this.value}_`);
+      return uniqueId(this.name, this.value, 'checkbox')();
     },
   },
   methods: {
