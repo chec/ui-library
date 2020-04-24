@@ -9,8 +9,8 @@
         </slot>
       </span>
     </div>
-    <button type="button" class="notif__close-icon">
-      <SvgCloseIcon @click="onClose" />
+    <button @click="onClose" type="button" class="notif__close-icon">
+      <SvgCloseIcon />
     </button>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
      */
     variant: {
       type: String,
-      default: 'info',
+      default: 'success',
       validator(value) {
         return ['success', 'error', 'warning', 'info'].includes(value);
       },
@@ -82,7 +82,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .notif {
-  @apply flex justify-between items-start bg-gray-200 rounded-md p-4;
+  @apply flex justify-between items-start bg-gray-200 rounded-md p-4 shadow-md;
+  min-width: 7.25rem;
+
   &__content-container {
     @apply flex items-center;
     // Manual tweaks to keep single line text vertically centered with the close button
@@ -99,39 +101,59 @@ export default {
     }
   }
   &--success {
-    @apply bg-green-100 border border-green-400;
+    @apply bg-green-500;
     .notif__text {
-      @apply text-green-600;
+      @apply text-white;
     }
     .notif__close-icon {
-      @apply bg-green-500;
+      @apply text-white bg-transparent transition-all ease-in-out duration-300;
+      &:hover,
+      &:active,
+      &:focus {
+        @apply opacity-50 bg-green-600 outline-none;
+      }
     }
   }
   &--error {
-    @apply bg-red-100 border border-red-400;
+    @apply bg-red-500;
     .notif__text {
-      @apply text-red-600;
+      @apply text-white;
     }
     .notif__close-icon {
-      @apply bg-red-500;
+      @apply text-white bg-transparent transition-all ease-in-out duration-300;
+      &:hover,
+      &:active,
+      &:focus {
+        @apply opacity-50 bg-red-600 outline-none;
+      }
     }
   }
   &--warning {
-    @apply bg-orange-100 border border-orange-400;
+    @apply bg-orange-500;
     .notif__text {
-      @apply text-orange-600;
+      @apply text-white;
     }
     .notif__close-icon {
-      @apply bg-orange-500;
+      @apply text-white bg-transparent transition-all ease-in-out duration-300;
+      &:hover,
+      &:active,
+      &:focus {
+        @apply opacity-50 bg-orange-600 outline-none;
+      }
     }
   }
   &--info {
-    @apply bg-purple-100 border border-purple-400;
+    @apply bg-blue-500;
     .notif__text {
-      @apply text-purple-600;
+      @apply text-white;
     }
     .notif__close-icon {
-      @apply bg-purple-500;
+      @apply text-white bg-transparent transition-all ease-in-out duration-300;
+      &:hover,
+      &:active,
+      &:focus {
+        @apply opacity-50 bg-blue-600 outline-none;
+      }
     }
   }
 }
