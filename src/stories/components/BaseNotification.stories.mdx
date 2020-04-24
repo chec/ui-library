@@ -36,7 +36,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
         },
       },
       template: `
-        <div class="mx-auto max-w-lg pt-6 font-lato">
+        <div class="w-1/2 mx-auto pt-6 font-lato">
           <BaseNotification
             v-if="!closed"
             :variant="variant"
@@ -81,7 +81,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
         }
       },
       template: `
-        <div class="mx-auto max-w-lg pt-6 font-lato">
+        <div class="w-1/2 mx-auto pt-6 font-lato">
           <BaseNotification
             v-for="variant in variants"
             v-if="!isClosed(variant)"
@@ -123,7 +123,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
         },
       },
       template: `
-        <div class="mx-auto max-w-lg pt-6 font-lato">
+        <div class="w-1/2 mx-auto pt-6 font-lato">
           <BaseNotification
             v-if="!closed"
             :variant="variant"
@@ -165,7 +165,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
         },
       },
       template: `
-        <div class="mx-auto max-w-lg pt-6 font-lato">
+        <div class="w-1/2 mx-auto font-lato">
           <BaseNotification
             v-if="!closed"
             :variant="variant"
