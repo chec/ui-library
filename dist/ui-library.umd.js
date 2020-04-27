@@ -16342,12 +16342,12 @@ var ChecCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecCard = (ChecCard_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f2b7a1e8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCheckbox.vue?vue&type=template&id=6c3540b2&
-var ChecCheckboxvue_type_template_id_6c3540b2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"checkbox",class:{ 'active' : _vm.isChecked, disabled: _vm.disabled },attrs:{"for":_vm.id}},[_c('input',{staticClass:"checkbox__input",attrs:{"type":"checkbox","id":_vm.id,"name":_vm.name,"disabled":_vm.disabled,"indeterminate":_vm.indeterminate},domProps:{"value":_vm.value,"checked":_vm.isChecked},on:{"input":_vm.handleInput}}),_c('span',{directives:[{name:"show",rawName:"v-show",value:(!_vm.indeterminate && _vm.isChecked),expression:"!indeterminate && isChecked"}],staticClass:"checkbox__check"},[_c('chec-icon',{attrs:{"icon":"check"}})],1),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.indeterminate),expression:"indeterminate"}],staticClass:"checkbox__minus"},[_c('chec-icon',{attrs:{"icon":"minus"}})],1),(_vm.label)?_c('div',{staticClass:"checkbox__label",class:{ disabled: _vm.disabled }},[_vm._t("default",[_vm._v(" "+_vm._s(_vm.label)+" ")],null,{ label: _vm.label, isChecked: _vm.isChecked, disabled: _vm.disabled })],2):_vm._e()])}
-var ChecCheckboxvue_type_template_id_6c3540b2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f2b7a1e8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCheckbox.vue?vue&type=template&id=0e962c43&
+var ChecCheckboxvue_type_template_id_0e962c43_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"checkbox",class:{ 'active' : _vm.isChecked, disabled: _vm.disabled },attrs:{"for":_vm.id}},[_c('input',{staticClass:"checkbox__input",attrs:{"type":"checkbox","id":_vm.id,"name":_vm.name,"disabled":_vm.disabled,"indeterminate":_vm.indeterminate},domProps:{"value":_vm.value,"checked":_vm.isChecked},on:{"input":_vm.handleInput}}),_c('span',{directives:[{name:"show",rawName:"v-show",value:(!_vm.indeterminate && _vm.isChecked),expression:"!indeterminate && isChecked"}],staticClass:"checkbox__check"},[_c('chec-icon',{attrs:{"icon":"check"}})],1),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.indeterminate),expression:"indeterminate"}],staticClass:"checkbox__minus"},[_c('chec-icon',{attrs:{"icon":"minus"}})],1),(_vm.label)?_c('div',{staticClass:"checkbox__label",class:{ disabled: _vm.disabled }},[_vm._t("default",[_vm._v(" "+_vm._s(_vm.label)+" ")],null,{ label: _vm.label, isChecked: _vm.isChecked, disabled: _vm.disabled })],2):_vm._e()])}
+var ChecCheckboxvue_type_template_id_0e962c43_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecCheckbox.vue?vue&type=template&id=6c3540b2&
+// CONCATENATED MODULE: ./src/components/ChecCheckbox.vue?vue&type=template&id=0e962c43&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
@@ -16356,6 +16356,16 @@ var es_function_name = __webpack_require__("b0c0");
 var lodash_uniqueid = __webpack_require__("f5cb");
 var lodash_uniqueid_default = /*#__PURE__*/__webpack_require__.n(lodash_uniqueid);
 
+// CONCATENATED MODULE: ./src/lib/helpers/createUniqueId.js
+
+ // generates unique id concating id, name, value
+
+/* harmony default export */ var createUniqueId = (function (name, value) {
+  var defaultName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  return function () {
+    return lodash_uniqueid_default()("".concat(name || defaultName, "_").concat(value, "_"));
+  };
+});
 // EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-left.svg
 var ic_left = __webpack_require__("025b");
 var ic_left_default = /*#__PURE__*/__webpack_require__.n(ic_left);
@@ -16614,7 +16624,6 @@ var ChecIcon_component = normalizeComponent(
 /* harmony default export */ var ChecIcon = (ChecIcon_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCheckbox.vue?vue&type=script&lang=js&
 
-
 //
 //
 //
@@ -16723,8 +16732,7 @@ var ChecIcon_component = normalizeComponent(
       return this.checked;
     },
     id: function id() {
-      // generates unique id concating id, name, value
-      return lodash_uniqueid_default()("".concat(this.name || 'checkbox', "_").concat(this.value, "_"));
+      return createUniqueId(this.name, this.value, 'checkbox')();
     }
   },
   methods: {
@@ -16754,8 +16762,8 @@ var ChecCheckboxvue_type_style_index_0_lang_scss_ = __webpack_require__("c437");
 
 var ChecCheckbox_component = normalizeComponent(
   components_ChecCheckboxvue_type_script_lang_js_,
-  ChecCheckboxvue_type_template_id_6c3540b2_render,
-  ChecCheckboxvue_type_template_id_6c3540b2_staticRenderFns,
+  ChecCheckboxvue_type_template_id_0e962c43_render,
+  ChecCheckboxvue_type_template_id_0e962c43_staticRenderFns,
   false,
   null,
   null,
