@@ -55,7 +55,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .alert {
-  @apply flex font-lato justify-between items-center bg-gray-200 p-4 w-full shadow-lg z-20;
+  @apply flex font-lato justify-between items-center bg-gray-200 p-4 w-full shadow-md z-20;
 
   &__content-container {
     @apply flex flex-grow items-center;
@@ -85,7 +85,7 @@ export default {
   }
 
   &--info {
-    @apply bg-purple-500 border border-purple-400;
+    @apply bg-blue-500 border border-blue-400;
   }
 }
 
