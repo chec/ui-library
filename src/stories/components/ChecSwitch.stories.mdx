@@ -1,0 +1,35 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info';
+import ChecSwitch from '@/components/ChecSwitch.vue';
+
+<Meta title="Form fields/Switch" component={ ChecSwitch } />
+
+# Checkbox
+
+<Props of={ ChecSwitch } />
+
+<Preview>
+  <Story name="Switch">
+    {{
+      components: {
+        ChecSwitch
+      },
+      data() {
+        return {
+          toggled: false,
+        };
+      },
+      template: `
+        <div class="py-16 flex justify-center font-lato">
+          <ChecSwitch
+            name="testing"
+            v-model="toggled"
+          >
+            Label
+          </ ChecSwitch>
+        </div>`,
+    }}
+  </Story>
+</Preview>
