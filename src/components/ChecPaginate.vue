@@ -117,16 +117,16 @@ export default {
       const { count, page, pageSize: oldSize } = this;
       const newPageCount = Math.ceil(count / newSize);
 
-      if (page > newPageCount) {
-        this.emitChoosePageSize(newSize, newPageCount);
-        return;
-      }
-
       // Try to keep showing the user relevant records
       const priorLowestIndex = oldSize * (page - 1) + 1;
       const pageWithOldIndex = Math.ceil(priorLowestIndex / newSize) || 1;
       if (pageWithOldIndex !== page) {
         this.emitChoosePageSize(newSize, pageWithOldIndex);
+        return;
+      }
+
+      if (page > newPageCount) {
+        this.emitChoosePageSize(newSize, newPageCount);
         return;
       }
 
