@@ -138,6 +138,7 @@ module.exports = {
       black: '#000000',
     },
     borderRadius: {
+      none: '0',
       sm: '2px',
       default: '4px',
       md: '8px',

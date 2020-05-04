@@ -60,13 +60,13 @@ export default {
     &--border-vertical {
       @apply px-0 overflow-hidden;
       .card__inner-wrapper {
-        border-radius: 0;
+        @apply rounded-none;
       }
     }
     &--border-horizontal {
       @apply py-0 overflow-hidden;
       .card__inner-wrapper {
-        border-radius: 0;
+        @apply rounded-none;
       }
     }
   }
