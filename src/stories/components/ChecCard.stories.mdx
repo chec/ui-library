@@ -1,5 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
+import { select } from '@storybook/addon-knobs';
 import ChecCard from '../../components/ChecCard.vue';
 import TextField from '../../components/TextField.vue';
 
@@ -9,18 +10,22 @@ import TextField from '../../components/TextField.vue';
 
 <Props of={ChecCard} />
 
-# Default:
+# Default
 
 <Preview>
   <Story name="Default">
     {{
       components: {
-        ChecCard,
+        ChecCard
+      },
+      props: {
+        variant: {
+          default: select('Variant', ['bordered', 'borderless', 'border-vertical', 'border-horizontal']),
+        },
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
-          <p>text and stuff</p>
-          <ChecCard class="w-40 h-40">
+          <ChecCard :variant="variant" class="w-40 h-40">
             <p class="self-center mx-auto">Nothing here</p>
           </ChecCard>
         </div>`
@@ -67,9 +72,15 @@ import TextField from '../../components/TextField.vue';
         ChecCard,
         TextField,
       },
+      props: {
+        variant: {
+          default: select('Variant', ['bordered', 'borderless', 'border-vertical', 'border-horizontal']),
+        },
+      },
       template: `
         <div class="p-16 flex justify-center w-full font-lato">
           <ChecCard
+            :variant="variant"
             class="w-full max-w-lg"
             tailwind="bg-gray-100"
           >
