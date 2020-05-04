@@ -16,6 +16,9 @@
       @click="toggleDropdown"
       @keyup="onKeyPress"
     >
+      <label class="dropdown__control-label">
+        {{ label }}
+      </label>
       <span>
         {{ shownValue }}
         &nbsp;
@@ -99,6 +102,13 @@ export default {
     options: {
       type: Array,
       required: true,
+    },
+    /**
+     * The label to use
+     */
+    label: {
+      type: String,
+      default: 'label',
     },
   },
   data() {
@@ -322,6 +332,7 @@ export default {
     @apply static w-full text-gray-500;
     &__control {
       @apply
+        relative
         w-full
         bg-white
         shadow-sm
@@ -333,6 +344,11 @@ export default {
         cursor-pointer
         border
         border-transparent;
+
+      &-label {
+        @apply absolute top-0 left-0 w-full pt-2 pl-4 text-xs text-gray-500;
+      }
+
       &:hover {
         @apply border border-gray-400;
       }
@@ -341,7 +357,7 @@ export default {
         @apply border border-gray-500;
       }
       > span {
-        @apply flex items-center justify-between w-full p-4 text-sm;
+        @apply flex items-center justify-between w-full px-4 pb-2 pt-6 text-sm;
       }
       &--open {
         @apply border border-gray-500;
