@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="classObject">
     <div class="card__inner-wrapper" :class="[tailwindClasses, innerClass]">
       <slot>
       </slot>
@@ -19,6 +19,27 @@ export default {
       type: String,
       default: '',
     },
+    /**
+     * The style variant for the card.
+     One of "bordered", "borderless", "border-vertical", "border-horizontal". Default is "bordered"
+     */
+    variant: {
+      type: String,
+      default: 'bordered',
+      validator(value) {
+        return ['bordered', 'borderless', 'border-vertical', 'border-horizontal'].includes(value);
+      },
+    },
+  },
+  computed: {
+    /**
+     * Returns the computed class name for the variant type, e.g. `card--borderless`
+     *
+     * @returns {string}
+     */
+    classObject() {
+      return this.variant ? `card--${this.variant}` : '';
+    },
   },
   mixins: [TailwindClasses('p-8 bg-white')],
 };
@@ -30,6 +51,23 @@ export default {
 
     &__inner-wrapper {
       @apply rounded-md h-full;
+    }
+
+    &--borderless {
+      @apply p-0 rounded-md;
+    }
+
+    &--border-vertical {
+      @apply px-0 overflow-hidden;
+      .card__inner-wrapper {
+        @apply rounded-none;
+      }
+    }
+    &--border-horizontal {
+      @apply py-0 overflow-hidden;
+      .card__inner-wrapper {
+        @apply rounded-none;
+      }
     }
   }
 </style>
