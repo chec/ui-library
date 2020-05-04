@@ -54,7 +54,7 @@ export default {
     }
 
     &--borderless {
-      @apply p-0
+      @apply p-0 rounded-md;
     }
 
     &--border-vertical {
