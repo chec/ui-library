@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown" ref="dropdown-el">
+  <div class="dropdown" ref="dropdown-el" :class="{ 'dropdown--with-inline-label': label }">
     <input v-if="!multiselect" type="hidden" :name="name" v-model="value" />
     <input
       v-else
@@ -16,10 +16,10 @@
       @click="toggleDropdown"
       @keyup="onKeyPress"
     >
-      <label class="dropdown__control-label">
+      <label v-if="label" class="dropdown__label">
         {{ label }}
       </label>
-      <span>
+      <span class="dropdown__value">
         {{ shownValue }}
         &nbsp;
         <div class="dropdown__down-arrow">
@@ -108,7 +108,7 @@ export default {
      */
     label: {
       type: String,
-      default: 'label',
+      default: '',
     },
   },
   data() {
@@ -330,9 +330,16 @@ export default {
 <style lang="scss" scoped>
   .dropdown {
     @apply static w-full text-gray-500;
+    &__label {
+      @apply absolute top-0 left-0 w-full pt-2 pl-4 text-xs text-left;
+    }
+    &__value {
+        @apply flex items-center justify-between w-full p-4 text-sm;
+    }
     &__control {
       @apply
         relative
+        left-0
         w-full
         bg-white
         shadow-sm
@@ -344,20 +351,12 @@ export default {
         cursor-pointer
         border
         border-transparent;
-
-      &-label {
-        @apply absolute top-0 left-0 w-full pt-2 pl-4 text-xs text-gray-500;
-      }
-
       &:hover {
         @apply border border-gray-400;
       }
       &:focus,
       &:active {
         @apply border border-gray-500;
-      }
-      > span {
-        @apply flex items-center justify-between w-full px-4 pb-2 pt-6 text-sm;
       }
       &--open {
         @apply border border-gray-500;
@@ -375,6 +374,11 @@ export default {
     }
     &__down-arrow {
       @apply flex flex-col justify-center w-5 h-5 fill-current text-gray-600;
+    }
+    &--with-inline-label {
+      .dropdown__value {
+        @apply px-4 pb-2 pt-6;
+      }
     }
   }
 </style>

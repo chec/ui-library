@@ -1,8 +1,8 @@
 <template>
-  <div class="text-field">
+  <div class="text-field" :class="{ 'text-field--with-inline-label': label }">
     <input
       class="input"
-      type="text"
+      :type="$attrs.type || 'text'"
       :value="value"
       :placeholder="placeholder"
       :disabled="this.variant === 'disabled'"
@@ -11,7 +11,7 @@
       @input="[handleInput, innerInputClass]"
       @focus="handleFocus"
     />
-    <label class="text-field__label" :for="$inputId">
+    <label v-if="label" class="text-field__label" :for="$inputId">
       {{ label }}
     </label>
   </div>
@@ -21,6 +21,7 @@ import uniqueId from '@/lib/helpers/createUniqueId';
 
 export default {
   name: 'TextField',
+  inheritAttrs: false,
   props: {
     /**
      * The state of the text field. One of "disabled", "error".
@@ -56,7 +57,7 @@ export default {
      */
     label: {
       type: String,
-      default: 'Label',
+      default: '',
     },
   },
   created() {
@@ -98,9 +99,7 @@ export default {
       text-sm
       text-gray-500
       w-full
-      px-4
-      pb-2
-      pt-6
+      p-4
       bg-white
       rounded
       shadow-sm

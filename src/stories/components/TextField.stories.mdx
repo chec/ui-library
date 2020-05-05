@@ -25,6 +25,9 @@ import TextField from '../../components/TextField.vue';
         disabled: {
           default: boolean('Disabled', false)
         },
+        label: {
+          default: text('Label', 'Label')
+        },
       },
       computed: {
         variant() {
@@ -37,6 +40,7 @@ import TextField from '../../components/TextField.vue';
       template: `
         <div class="py-16 flex justify-center">
           <TextField
+            :label="label"
             placeholder="Text Field Placeholder"
             v-model="inputValue"
             :variant="variant"

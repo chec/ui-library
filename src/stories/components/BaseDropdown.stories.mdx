@@ -1,5 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
+import { withKnobs, text } from '@storybook/addon-knobs';
 import BaseDropdown from '../../components/BaseDropdown.vue';
 import BaseOption from '../../components/BaseOption.vue';
 import ChecModal from '../../components/ChecModal.vue';
@@ -58,9 +59,15 @@ Todo list
           onClick,
         }
       },
+      props: {
+        label: {
+          default: text('Label', 'Label'),
+        }
+      },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
           <BaseDropdown
+            :label="label"
             name="example-1"
             class="max-w-md"
             v-model="option"
@@ -160,7 +167,7 @@ Todo list
             width="xl"
             class="w-full h-full relative"
             innerClass="bg-gray-100"
-          > 
+          >
             <div>
               <h2 class="mb-4">Event(s)</h2>
               <BaseDropdown
