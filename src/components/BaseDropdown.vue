@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown" ref="dropdown-el">
+  <div class="dropdown" ref="dropdown-el" :class="{ 'dropdown--with-inline-label': label }">
     <input v-if="!multiselect" type="hidden" :name="name" v-model="value" />
     <input
       v-else
@@ -16,13 +16,17 @@
       @click="toggleDropdown"
       @keyup="onKeyPress"
     >
-      <span>
-        {{ shownValue }}
-        &nbsp;
-        <div class="dropdown__down-arrow">
-          <SvgDownArrow />
-        </div>
-      </span>
+      <div class="dropdown-inner">
+        <label v-if="label" class="dropdown-inner__label">
+          {{ label }}
+        </label>
+        <span class="dropdown-inner__value">
+          {{ shownValue }}
+        </span>
+      </div>
+      <div class="dropdown__down-arrow">
+        <SvgDownArrow />
+      </div>
     </div>
     <BasePopover v-show="showDropdown" class="dropdown__base-popover" :style="{ width: `${dropdownElWidth}px`  }">
       <BaseOption
@@ -99,6 +103,13 @@ export default {
     options: {
       type: Array,
       required: true,
+    },
+    /**
+     * The label to use
+     */
+    label: {
+      type: String,
+      default: '',
     },
   },
   data() {
@@ -320,8 +331,19 @@ export default {
 <style lang="scss" scoped>
   .dropdown {
     @apply static w-full text-gray-500;
+    &-inner {
+      @apply flex flex-col;
+      &__label {
+        @apply w-full text-xs text-left;
+      }
+      &__value {
+        @apply text-sm;
+      }
+    }
     &__control {
       @apply
+        relative
+        left-0
         w-full
         bg-white
         shadow-sm
@@ -332,16 +354,17 @@ export default {
         duration-200
         cursor-pointer
         border
-        border-transparent;
+        border-transparent
+        p-4
+        flex
+        items-center
+        justify-between;
       &:hover {
         @apply border border-gray-400;
       }
       &:focus,
       &:active {
         @apply border border-gray-500;
-      }
-      > span {
-        @apply flex items-center justify-between w-full p-4 text-sm;
       }
       &--open {
         @apply border border-gray-500;
@@ -358,7 +381,12 @@ export default {
       max-height: 50vh;
     }
     &__down-arrow {
-      @apply flex flex-col justify-center w-5 h-5 fill-current text-gray-600;
+      @apply flex flex-col justify-center w-4 h-4 fill-current text-gray-600;
+    }
+    &--with-inline-label {
+      .dropdown__control {
+        @apply px-4 py-2;
+      }
     }
   }
 </style>
