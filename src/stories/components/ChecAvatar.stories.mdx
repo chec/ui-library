@@ -1,0 +1,63 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import ChecAvatar from '../../components/ChecAvatar.vue';
+import TextField from '../../components/TextField.vue';
+
+<Meta title="Components/Avatar" component={ChecAvatar} />
+
+# Avatar Component
+
+<Props of={ChecAvatar} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecAvatar
+      },
+      props: {
+        variant: {
+          default: select('Size', ['sm', 'md', 'lg']),
+        },
+        image: {
+          default: text('Image URL', ''),
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <ChecAvatar
+            :variant="variant"
+            :image="image"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="With Image">
+    {{
+      components: {
+        ChecAvatar
+      },
+      props: {
+        variant: {
+          default: select('Size', ['sm', 'md', 'lg']),
+        },
+        image: {
+          default: text('Image URL', 'http://lorempixel.com/400/400/people/'),
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <ChecAvatar
+            :variant="variant"
+            :image="image"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
