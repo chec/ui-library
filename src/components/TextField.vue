@@ -50,7 +50,7 @@ export default {
      */
     innerInputClass: {
       type: String,
-      default: 'label',
+      default: '',
     },
     /**
      * Label for input

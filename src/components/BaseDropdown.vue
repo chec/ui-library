@@ -16,16 +16,17 @@
       @click="toggleDropdown"
       @keyup="onKeyPress"
     >
-      <label v-if="label" class="dropdown__label">
-        {{ label }}
-      </label>
-      <span class="dropdown__value">
-        {{ shownValue }}
-        &nbsp;
-        <div class="dropdown__down-arrow">
-          <SvgDownArrow />
-        </div>
-      </span>
+      <div class="dropdown-inner">
+        <label v-if="label" class="dropdown-inner__label">
+          {{ label }}
+        </label>
+        <span class="dropdown-inner__value">
+          {{ shownValue }}
+        </span>
+      </div>
+      <div class="dropdown__down-arrow">
+        <SvgDownArrow />
+      </div>
     </div>
     <BasePopover v-show="showDropdown" class="dropdown__base-popover" :style="{ width: `${dropdownElWidth}px`  }">
       <BaseOption
@@ -330,11 +331,14 @@ export default {
 <style lang="scss" scoped>
   .dropdown {
     @apply static w-full text-gray-500;
-    &__label {
-      @apply absolute top-0 left-0 w-full pt-2 pl-4 text-xs text-left;
-    }
-    &__value {
-        @apply flex items-center justify-between w-full p-4 text-sm;
+    &-inner {
+      @apply flex flex-col;
+      &__label {
+        @apply w-full text-xs text-left;
+      }
+      &__value {
+        @apply text-sm;
+      }
     }
     &__control {
       @apply
@@ -350,7 +354,11 @@ export default {
         duration-200
         cursor-pointer
         border
-        border-transparent;
+        border-transparent
+        p-4
+        flex
+        items-center
+        justify-between;
       &:hover {
         @apply border border-gray-400;
       }
@@ -373,11 +381,11 @@ export default {
       max-height: 50vh;
     }
     &__down-arrow {
-      @apply flex flex-col justify-center w-5 h-5 fill-current text-gray-600;
+      @apply flex flex-col justify-center w-4 h-4 fill-current text-gray-600;
     }
     &--with-inline-label {
-      .dropdown__value {
-        @apply px-4 pb-2 pt-6;
+      .dropdown__control {
+        @apply px-4 py-2;
       }
     }
   }
