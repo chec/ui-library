@@ -26,7 +26,7 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
+<style lang="scss">
   .progress {
     @apply h-1 rounded-lg bg-gray-200 overflow-hidden;
     &__bar{
