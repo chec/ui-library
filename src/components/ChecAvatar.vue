@@ -20,7 +20,7 @@ export default {
   },
   props: {
     /**
-     * The style variant for the card.
+     * The style variant for the avatar.
      One of "sm", "md", "lg". Default is "md"
      */
     variant: {
