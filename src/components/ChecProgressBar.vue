@@ -35,7 +35,7 @@ export default {
   .progress {
     @apply h-1 rounded-lg bg-gray-200 overflow-hidden;
     &__bar{
-      @apply h-1 bg-green-500;
+      @apply h-1 bg-green-500 transition-all ease-in-out duration-200;
     }
   }
 </style>
