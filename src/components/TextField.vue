@@ -87,7 +87,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .text-field {
   @apply relative;
   &__label {
