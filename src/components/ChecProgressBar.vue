@@ -2,7 +2,7 @@
   <div class="progress">
     <div
       class="progress__bar"
-      :style="{width: percentage + '%'}"
+      :style="{width: `${percentage}%`}"
       role="progressbar"
       :aria-valuenow="percentage"
       aria-valuemin="0"
@@ -21,12 +21,7 @@ export default {
     percentage: {
       type: Number,
       default: 1,
-      validator: value => {
-        if (value >= 0 && value <= 100) {
-          return true;
-        }
-        return false;
-      },
+      validator: value => value >= 0 && value <= 100,
     },
   },
 };
