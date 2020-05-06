@@ -1,0 +1,37 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { number } from '@storybook/addon-knobs';
+import ChecProgressBar from '../../components/ChecProgressBar.vue';
+const options = {
+  range: true,
+  min: 0,
+  max: 100,
+  step: 1,
+};
+
+<Meta title="Components/Progress Bar" component={ChecProgressBar} />
+
+# Progress Component
+
+<Props of={ChecProgressBar} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecProgressBar
+      },
+      props: {
+        percentage: {
+          default: number("Percentage", 50, options),
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full">
+          <ChecProgressBar :percentage="percentage" class="w-40"/>
+        </div>`
+    }}
+  </Story>
+</Preview>

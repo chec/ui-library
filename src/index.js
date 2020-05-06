@@ -23,6 +23,7 @@ import ChecOptionsMenu from './components/ChecOptionsMenu.vue';
 import ChecPaginate from './components/ChecPaginate.vue';
 import TabsGroup from './components/TabsGroup.vue';
 import TextField from './components/TextField.vue';
+import ChecProgressBar from './components/ChecProgressBar.vue';
 
 export {
   BaseAlert,
@@ -48,5 +49,6 @@ export {
   ChecPaginate,
   TabsGroup,
   TextField,
+  ChecProgressBar,
   SvgIcons as Icons,
 };
