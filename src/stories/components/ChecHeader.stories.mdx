@@ -1,0 +1,42 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, text } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info';
+import ChecHeader from '@/components/ChecHeader.vue';
+import BaseButton from '@/components/BaseButton.vue';
+
+<Meta title="Components" component={ ChecHeader } />
+
+# Header
+
+<Props of={ ChecHeader } />
+
+<Preview>
+  <Story name="Header">
+    {{
+      components: {
+        ChecHeader,
+        BaseButton,
+      },
+      props: {
+        title: {
+          default: text('Title', 'Section Title')
+        },
+        label: {
+          default: text('Label', 'Label'),
+        },
+      },
+      template: `
+        <div class="py-16 px-4 font-lato">
+          <ChecHeader
+            :title="title"
+            :label="label"
+          >
+            <BaseButton color="primary" variant="round">
+              Button Texts
+            </BaseButton>
+          </ChecHeader>
+        </div>`,
+    }}
+  </Story>
+</Preview>

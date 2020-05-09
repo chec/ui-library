@@ -25,6 +25,7 @@ import TabsGroup from './components/TabsGroup.vue';
 import TextField from './components/TextField.vue';
 import ChecProgressBar from './components/ChecProgressBar.vue';
 import ChecAvatar from './components/ChecAvatar.vue';
+import ChecHeader from './components/ChecHeader.vue';
 
 export {
   BaseAlert,
@@ -52,5 +53,6 @@ export {
   TextField,
   ChecProgressBar,
   ChecAvatar,
+  ChecHeader,
   SvgIcons as Icons,
 };
