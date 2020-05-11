@@ -1,5 +1,8 @@
 <template>
-  <div class="text-field" :class="{ 'text-field--with-inline-label': this.isFocus }">
+  <div
+    class="text-field"
+    :class="[{ 'text-field--with-inline-label': this.isFocus }, {'text-field--no-label': !this.label}]"
+  >
     <input
       class="input"
       :type="$attrs.type || 'text'"
@@ -183,6 +186,11 @@ export default {
     }
     .input{
       @apply pt-6 pb-2;
+    }
+  }
+  &--no-label {
+    .input{
+      @apply py-4;
     }
   }
 }
