@@ -1,10 +1,10 @@
 <template>
   <header class="chec-header">
-    <h2 class="chec-header__h2">
+    <h2 class="chec-header__title">
       {{ title }}
     </h2>
 
-    <div class="chec-header-inner">
+    <div v-if="label || $slots.default" class="chec-header-inner">
       <label class="chec-header-inner__label">
         {{ label }}
       </label>
@@ -40,7 +40,7 @@ export default {
 <style lang="scss">
 .chec-header {
   @apply flex justify-between items-center w-full;
-  &__h2 {
+  &__title {
     @apply text-2xl;
   }
   &-inner {

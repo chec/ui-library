@@ -1,6 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 import { withInfo } from 'storybook-addon-vue-info';
 import ChecHeader from '@/components/ChecHeader.vue';
 import BaseButton from '@/components/BaseButton.vue';
@@ -25,6 +25,9 @@ import BaseButton from '@/components/BaseButton.vue';
         label: {
           default: text('Label', 'Label'),
         },
+        withButtonSlot: {
+          default: select('Pass button slot', [true, false], true),
+        },
       },
       template: `
         <div class="py-16 px-4 font-lato">
@@ -32,7 +35,7 @@ import BaseButton from '@/components/BaseButton.vue';
             :title="title"
             :label="label"
           >
-            <BaseButton color="primary" variant="round">
+            <BaseButton v-if="withButtonSlot" color="primary" variant="round">
               Button Texts
             </BaseButton>
           </ChecHeader>
