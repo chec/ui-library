@@ -1,0 +1,103 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { withInfo } from 'storybook-addon-vue-info';
+import ChangeLog from '@/components/ChangeLog.vue';
+
+<Meta title="Components" component={ ChangeLog } />
+
+# Change Log
+
+<Props of={ ChangeLog } />
+
+<Preview>
+  <Story name="Change Log">
+    {{
+      components: {
+        ChangeLog,
+      },
+      data() {
+        return {
+          updates: {
+            "May 7, 2020":[
+                {
+                  "type":"update",
+                  "details":"Our Spaces (hosted) storefront now displays product categories and filters.",
+                  "created":"2020-05-07T00:00+12:00",
+                  "moreInfoLink":"https://commercejs.com/blog/spaces-our-hosted-headless-ecommerce-storefront/",
+                  "variant":"updated"
+                }
+            ],
+            "March 19, 2020":[
+                {
+                  "type":"new",
+                  "details":"Webhooks are now available via the Setup tab.",
+                  "created":"2020-03-19T00:00-07:00",
+                  "moreInfoLink":"https://commercejs.com/blog/webhooks-for-commerce",
+                  "variant":"new"
+                }
+            ],
+            "January 18, 2020":[
+                {
+                  "type":"update",
+                  "details":"New and improved order management interface in the Chec Dashboard.",
+                  "created":"2020-01-18T00:00-07:00",
+                  "variant":"updated"
+                }
+            ],
+            "January 14, 2020":[
+                {
+                  "type":"news",
+                  "details":"Commerce.js v2.0.0 is now available, with an updated API including using promises over callbacks.",
+                  "created":"2020-01-14T00:00-07:00",
+                  "variant":"news"
+                },
+                {
+                  "type":"new",
+                  "details":"Chec's CLI (command line interface) has been released, including demo store creation and log streaming.",
+                  "created":"2020-01-14T00:00-07:00",
+                  "moreInfoLink":"https://github.com/chec/cli",
+                  "variant":"new"
+                }
+            ],
+            "January 13, 2020":[
+                {
+                  "type":"new",
+                  "details":"New API endpoints: add product, and multi-asset management for products.",
+                  "created":"2020-01-13T00:00-07:00",
+                  "variant":"new"
+                }
+            ],
+            "November 29, 2019":[
+                {
+                  "type":"news",
+                  "details":"The Commerce.js JavaScript SDK is now available on NPM.",
+                  "created":"2019-11-29T00:00-07:00",
+                  "moreInfoLink":"https://www.npmjs.com/package/@chec/commerce.js",
+                  "variant":"news"
+                }
+            ],
+            "May 8, 2018":[
+                {
+                  "type":"update",
+                  "details":"Improved order export functionality to handle larger exports.",
+                  "created":"2018-05-08T00:00-07:00",
+                  "variant":"updated"
+                }
+            ],
+            "May 1, 2018":[
+                {
+                  "type":"news",
+                  "details":"Preparing our next major release, which includes updated APIs and bug fixes.",
+                  "created":"2018-05-01T00:00-07:00",
+                  "variant":"news"
+                }
+            ]
+          },
+        };
+      },
+      template: `
+        <div class="w-1/2 py-8 mx-auto font-lato">
+          <ChangeLog v-for="(updates, updateDate) in updates" :key="updateDate" :updates="updates" :updateDate="updateDate" />
+        </div>`,
+    }}
+  </Story>
+</Preview>
