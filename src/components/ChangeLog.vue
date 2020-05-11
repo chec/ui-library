@@ -1,9 +1,9 @@
 <template>
   <div class="update-group">
-    <BaseDivider class="mb-2">{{ updateDate }}</BaseDivider>
+    <BaseDivider class="update-group__divider">{{ updateDate }}</BaseDivider>
     <div class="update-section">
       <div v-for="(update, key) in updates" :key="key" class="update">
-        <ChecDataPill :variant="update.variant" class="inline-block mb-1">{{ update.type }}</ChecDataPill>
+        <ChecDataPill :variant="update.variant" class="update__pill">{{ update.type }}</ChecDataPill>
         <p>
           {{ update.details }}
           <a
@@ -52,6 +52,9 @@ export default {
 <style lang="scss">
 .update-group {
   @apply mb-8 w-full;
+  &__divider {
+    @apply mb-2;
+  }
 }
 
 .update-section {
@@ -63,6 +66,10 @@ export default {
 
   &__link {
     @apply text-blue-600;
+  }
+
+  &__pill {
+    @apply inline-block mb-1;
   }
 
   &:not(:last-child) {
