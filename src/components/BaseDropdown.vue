@@ -339,9 +339,7 @@ export default {
      */
     shownLabel() {
       if (!this.isFocus) {
-        return this.placeholder
-          ? this.placeholder
-          : this.label;
+        return this.placeholder || this.label;
       }
       return this.label;
     },
