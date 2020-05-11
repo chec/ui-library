@@ -1,15 +1,15 @@
 <template>
-  <div class="text-field" :class="{ 'text-field--with-inline-label': label }">
+  <div class="text-field" :class="{ 'text-field--with-inline-label': this.isFocus }">
     <input
       class="input"
       :type="$attrs.type || 'text'"
       :value="value"
-      :placeholder="placeholder"
       :disabled="this.variant === 'disabled'"
       :class="classNames"
       :id='$inputId'
       @input="[handleInput, innerInputClass]"
       @focus="handleFocus"
+      @blur="handleBlur"
     />
     <label v-if="label" class="text-field__label" :for="$inputId">
       {{ label }}
@@ -60,7 +60,15 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      isFocus: false,
+    };
+  },
   created() {
+    if (this.value !== '') {
+      this.isFocus = true;
+    }
     this.$inputId = uniqueId(this.name, this.value, 'chec-switch')();
   },
   computed: {
@@ -82,7 +90,13 @@ export default {
       this.$emit('input', $event.target.value);
     },
     handleFocus($event) {
+      this.isFocus = true;
       $event.target.select();
+    },
+    handleBlur() {
+      if (this.value === '') {
+        this.isFocus = false;
+      }
     },
   },
 };
@@ -91,7 +105,8 @@ export default {
 .text-field {
   @apply relative;
   &__label {
-    @apply absolute top-0 left-0 w-full pt-2 pl-4 text-xs text-gray-500;
+    @apply absolute top-0 left-0 w-full pt-4 text-sm text-gray-500;
+    padding-left: calc(1rem + 1px);
   }
   .input {
     @apply
@@ -143,8 +158,12 @@ export default {
   }
 
   &--with-inline-label {
-    .input {
-      @apply pb-2 pt-6;
+    .text-field__label {
+      @apply pt-2 text-xs;
+      padding-left: calc(1rem + 1px);
+    }
+    .input{
+      @apply pt-6 pb-2;
     }
   }
 }
