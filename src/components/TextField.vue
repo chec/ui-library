@@ -12,7 +12,7 @@
       @blur="handleBlur"
     />
     <label v-if="label" class="text-field__label" :for="$inputId">
-      {{ label }}
+      {{ shownLabel }}
     </label>
   </div>
 </template>
@@ -78,6 +78,19 @@ export default {
         'input--error': this.variant === 'error',
         'input--empty': this.value === '',
       };
+    },
+    /**
+     * The Label that should be shown if placeholder supplied
+     *
+     * @returns {string|*}
+     */
+    shownLabel() {
+      if (!this.isFocus) {
+        return this.placeholder
+          ? this.placeholder
+          : this.label;
+      }
+      return this.label;
     },
   },
   methods: {

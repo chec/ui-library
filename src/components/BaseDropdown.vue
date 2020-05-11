@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown" ref="dropdown-el" :class="{ 'dropdown--with-inline-label': label }">
+  <div class="dropdown" ref="dropdown-el" :class="{ 'dropdown--with-inline-label': this.isFocus }">
     <input v-if="!multiselect" type="hidden" :name="name" v-model="value" />
     <input
       v-else
@@ -17,8 +17,8 @@
       @keyup="onKeyPress"
     >
       <div class="dropdown-inner">
-        <label v-if="label" class="dropdown-inner__label">
-          {{ label }}
+        <label v-if="label || placeholder" class="dropdown-inner__label">
+          {{ shownLabel }}
         </label>
         <span class="dropdown-inner__value">
           {{ shownValue }}
@@ -114,11 +114,15 @@ export default {
   },
   data() {
     return {
+      isFocus: false,
       showDropdown: false,
       dropdownElWidth: 0,
     };
   },
   created() {
+    if (this.value !== '') {
+      this.isFocus = true;
+    }
     // add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
     // update this.dropdownElWidth on resize
@@ -156,6 +160,10 @@ export default {
      */
     onBaseOptionSelect(option) {
       const { value } = option;
+      this.isFocus = false;
+      if (option.value) {
+        this.isFocus = true;
+      }
       // Normal selects are easy...
       if (!this.multiselect) {
         this.toggleDropdown();
@@ -297,12 +305,12 @@ export default {
       return this.renderableOptions.filter(candidate => this.value.includes(candidate.value));
     },
     /**
-     * The value that should be shown in the field
+     * The Label that should be shown if placeholder supplied
      *
      * @returns {string|*}
      */
     shownValue() {
-      const emptyLabel = this.placeholder || '\xa0';
+      const emptyLabel = '\xa0';
       if (!this.multiselect) {
         // Note: \xa0 is the hex code for a non-breaking space. This is used so Vue will still render it.
         return this.selectedOptions && this.selectedOptions.label.trim()
@@ -324,6 +332,19 @@ export default {
         ` and ${validOptions.length - 2} more`,
       ].join(', ');
     },
+    /**
+     * The Label that should be shown
+     *
+     * @returns {string|*}
+     */
+    shownLabel() {
+      if (!this.isFocus) {
+        return this.placeholder
+          ? this.placeholder
+          : this.label;
+      }
+      return this.label;
+    },
   },
 };
 </script>
@@ -334,10 +355,10 @@ export default {
     &-inner {
       @apply flex flex-col;
       &__label {
-        @apply w-full text-xs text-left;
+        @apply py-2 absolute w-full text-sm text-left;
       }
       &__value {
-        @apply text-sm;
+        @apply py-2 text-sm;
       }
     }
     &__control {
@@ -355,7 +376,8 @@ export default {
         cursor-pointer
         border
         border-transparent
-        p-4
+        py-2
+        px-4
         flex
         items-center
         justify-between;
@@ -384,8 +406,13 @@ export default {
       @apply flex flex-col justify-center w-4 h-4 fill-current text-gray-600;
     }
     &--with-inline-label {
-      .dropdown__control {
-        @apply px-4 py-2;
+      .dropdown-inner {
+        .dropdown-inner__value{
+          @apply pt-4 pb-0;
+        }
+        .dropdown-inner__label{
+          @apply text-xs py-0;
+        }
       }
     }
   }
