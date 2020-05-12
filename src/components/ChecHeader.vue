@@ -5,7 +5,7 @@
     </h2>
 
     <div v-if="label || $slots.default" class="chec-header-inner">
-      <label class="chec-header-inner__label">
+      <label class="chec-header-inner__label" v-if="label">
         {{ label }}
       </label>
       <!--
