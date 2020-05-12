@@ -5,15 +5,17 @@
     }"
   >
     <input
+      ref="input"
       class="input"
       :type="$attrs.type || 'text'"
       :value="value"
-      :placeholder="placeholder"
+      :placeholder="label ? (isFocus ? '' : placeholder) : placeholder"
       :disabled="this.variant === 'disabled'"
       :class="[classNames, innerInputClass]"
       :id='$inputId'
       @input="handleInput"
       @focus="handleFocus"
+      @blur="handleBlur"
     />
     <label v-if="label" class="text-field__label" :for="$inputId">
       {{ label }}
@@ -76,6 +78,11 @@ export default {
       };
     },
   },
+  data() {
+    return {
+      isFocus: false,
+    };
+  },
   methods: {
     handleInput($event) {
       /**
@@ -86,7 +93,11 @@ export default {
       this.$emit('input', $event.target.value);
     },
     handleFocus($event) {
+      this.isFocus = true;
       $event.target.select();
+    },
+    handleBlur() {
+      this.isFocus = false;
     },
   },
 };
