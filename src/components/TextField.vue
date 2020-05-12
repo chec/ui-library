@@ -1,7 +1,7 @@
 <template>
   <div class="text-field" :class="{
-    'text-field--with-inline-label': label,
-    'text-field--has-modified-value': label ? !!value : false,
+    'text-field--inline-label': label,
+    'text-field--modified': label ? !!value : false,
     }"
   >
     <input
@@ -106,7 +106,8 @@ export default {
 .text-field {
   @apply relative;
   &__label {
-    @apply absolute top-0 left-0 w-full pt-2 pl-4 text-xs text-gray-500 opacity-0;
+    @apply absolute top-0 left-0 w-full pt-2 text-xs text-gray-500 opacity-0;
+    padding-left: calc(1rem + 1px);
   }
   .input {
     @apply
@@ -157,7 +158,7 @@ export default {
     }
   }
 
-  &--has-modified-value {
+  &--modified {
     .text-field__label {
       @apply opacity-100;
     }
@@ -166,7 +167,7 @@ export default {
     }
   }
 
-  &--with-inline-label {
+  &--inline-label {
     .input:focus {
       @apply pb-2 pt-6;
       .text-field__label {
