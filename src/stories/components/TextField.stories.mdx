@@ -168,6 +168,9 @@ import TextField from '../../components/TextField.vue';
         label: {
           default: text('Input Value', 'Password'),
         },
+        hiddenField: {
+          default: text('Name of hidden field', 'password'),
+        },
       },
       components: {
         TextField
@@ -180,7 +183,7 @@ import TextField from '../../components/TextField.vue';
             v-model="inputValue"
             placeholder="Enter your password"
             v-model="inputValue"
-            :withShowPassword="withShowPassword"
+            :hiddenField="hiddenField"
             type="password"
           />
         </div>`,

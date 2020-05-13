@@ -18,8 +18,9 @@
     ></textarea>
     <input v-else
       ref="input"
+      :name="$attrs.name"
       class="input"
-      :type="showPassword ? 'text' : 'password'"
+      :type="isPasswordType ? (showPassword ? 'text' : 'password') : $attrs.type"
       :value="value"
       :placeholder="label"
       :disabled="this.variant === 'disabled'"
@@ -38,11 +39,11 @@
       <span class="invisible">{{ label }}</span>
     </label>
     <a
-      v-if="$attrs.type === 'password' && withShowPassword"
+      v-if="isPasswordType"
       class="text-field__show-password"
       @click="toggleShowPassword"
     >
-      {{ showPassword ? 'hide' : 'show' }} password
+      {{ showHideText }}
     </a>
   </div>
 </template>
@@ -96,6 +97,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Appended text to 'show/hide' button
+     */
+    hiddenField: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -128,6 +136,12 @@ export default {
       this.$nextTick(() => {
         this.autoGrow();
       });
+    },
+    isPasswordType() {
+      return this.$attrs.type === 'password';
+    },
+    showHideText() {
+      return `${this.showPassword ? 'hide' : 'show'} ${this.hiddenField}`;
     },
   },
   methods: {
