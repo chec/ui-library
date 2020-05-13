@@ -166,7 +166,7 @@ import TextField from '../../components/TextField.vue';
           default: text('Input Value', '')
         },
         label: {
-          default: text('Label', 'Label')
+          default: text('Input Value', 'Password'),
         },
       },
       components: {
@@ -179,6 +179,8 @@ import TextField from '../../components/TextField.vue';
             class="w-full max-w-sm"
             v-model="inputValue"
             placeholder="Enter your password"
+            v-model="inputValue"
+            :withShowPassword="withShowPassword"
             type="password"
           />
         </div>`,

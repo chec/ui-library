@@ -19,7 +19,7 @@
     <input v-else
       ref="input"
       class="input"
-      :type="$attrs.type || 'text'"
+      :type="showPassword ? 'text' : 'password'"
       :value="value"
       :placeholder="label"
       :disabled="this.variant === 'disabled'"
@@ -37,6 +37,13 @@
       :for="$inputId">
       <span class="invisible">{{ label }}</span>
     </label>
+    <a
+      v-if="$attrs.type === 'password' && withShowPassword"
+      class="text-field__show-password"
+      @click="toggleShowPassword"
+    >
+      {{ showPassword ? 'hide' : 'show' }} password
+    </a>
   </div>
 </template>
 <script>
@@ -93,6 +100,7 @@ export default {
   data() {
     return {
       isScrollable: false,
+      showPassword: false,
     };
   },
   created() {
@@ -123,6 +131,12 @@ export default {
     },
   },
   methods: {
+    /**
+     * Toggles password type with type text to show password
+     */
+    toggleShowPassword() {
+      this.showPassword = !this.showPassword;
+    },
     handleInput($event) {
       /**
        * Emitted when the `<input>`'s 'input' event bubbles up. The v-model directive uses this to function.
@@ -160,6 +174,11 @@ export default {
       transform: translate3d(0, -2.8rem, 0) scale3d(.8, .8, 1);
     }
   }
+
+  &__show-password {
+    @apply title-xxs text-blue-500 float-right mt-1 cursor-pointer;
+  }
+
   .input {
     @apply
       leading-tight
