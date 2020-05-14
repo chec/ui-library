@@ -9,16 +9,20 @@
       class="input"
       :type="$attrs.type || 'text'"
       :value="value"
-      :placeholder="label ? (isFocus ? '' : placeholder) : placeholder"
+      :placeholder="label"
       :disabled="this.variant === 'disabled'"
       :class="[classNames, innerInputClass]"
       :id='$inputId'
       @input="handleInput"
       @focus="handleFocus"
-      @blur="handleBlur"
+      :aria-describedby="label"
     />
-    <label v-if="label" class="text-field__label" :for="$inputId">
-      {{ label }}
+    <label
+      v-if="label"
+      class="text-field__label"
+      :data-content="label"
+      :for="$inputId">
+      <span class="invisible">{{ label }}</span>
     </label>
   </div>
 </template>
@@ -78,11 +82,6 @@ export default {
       };
     },
   },
-  data() {
-    return {
-      isFocus: false,
-    };
-  },
   methods: {
     handleInput($event) {
       /**
@@ -93,58 +92,80 @@ export default {
       this.$emit('input', $event.target.value);
     },
     handleFocus($event) {
-      this.isFocus = true;
       $event.target.select();
-    },
-    handleBlur() {
-      this.isFocus = false;
     },
   },
 };
-</script>d
+</script>
 <style lang="scss">
 .text-field {
   @apply relative;
   &__label {
-    @apply absolute top-0 left-0 w-full pt-2 text-xs text-gray-500 opacity-0;
-    padding-left: calc(1rem + 1px);
+    &::before {
+      @apply relative text-gray-500 inline-block origin-top-left transition-transform duration-150 left-0 pl-5;
+      content: attr(data-content);
+      backface-visibility: hidden;
+      transform: translate3d(0, -2.8rem, 0) scale3d(.8, .8, 1);
+    }
   }
   .input {
     @apply
       leading-tight
       text-sm
-      text-gray-500
+      text-gray-600
       w-full
       p-4
       bg-white
       rounded
-      shadow-sm
       border
+      border-gray-300
       outline-none;
-
-    border-color: transparent;
-
+    &::placeholder {
+      color: rgba(0, 0, 0, 0);
+    }
+    &:placeholder-shown {
+      + {
+        .text-field__label {
+          &::before {
+            transform: translate3d(0, -2.3rem, 0) scale3d(1, 1, 1);
+          }
+        }
+      }
+    }
+    &:focus, &:active {
+      @apply border-gray-500;
+      + {
+        .text-field__label {
+          &::before {
+            transform: translate3d(0, -2.8rem, 0) scale3d(.8, .8, 1);
+          }
+        }
+      }
+    }
     &:hover {
       @apply border-gray-400;
     }
-
-    &:focus,
-    &:active {
-      @apply border-gray-500;
-      + .text-field__label {
-        @apply opacity-75 transition-opacity duration-300 ease-in-out;
-      }
-    };
-
     &--disabled {
+      + {
+        .text-field__label {
+          &::before {
+            @apply transition-opacity duration-300 ease-in-out opacity-50;
+          }
+        }
+      }
       &:hover,
       &:focus,
       &:active {
-        @apply border-gray-300;
+        @apply border-gray-300 transition-opacity duration-300 ease-in-out opacity-50;
+        + {
+          .text-field__label {
+            &::before {
+              transform: translate3d(0, -2.3rem, 0) scale3d(1, 1, 1);
+            }
+          }
+        }
       };
-      + .text-field__label {
-        @apply transition-opacity duration-300 ease-in-out;
-      }
+
     }
 
     &--error,
