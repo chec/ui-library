@@ -73,7 +73,41 @@ Todo list
             v-model="option"
             :options="options"
             @input="onClick"
-            placeholder="Example Dropdown Placeholder"
+            />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# No Label:
+
+<Preview>
+  <Story name="No Label">
+    {{
+      components: {
+        BaseDropdown,
+      },
+      data() {
+        return {
+          option: "",
+          options: defaultOptions,
+          onClick,
+        }
+      },
+      props: {
+        label: {
+          default: text('Label', ''),
+        }
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <BaseDropdown
+            :label="label"
+            name="example-1"
+            class="max-w-md"
+            v-model="option"
+            :options="options"
+            @input="onClick"
             />
         </div>`
     }}
@@ -95,13 +129,18 @@ Todo list
           onClick,
         }
       },
+      props: {
+        label: {
+          default: text('Label', 'Label'),
+        }
+      },
       template: `
         <div class="p-16 bg-gray-100 text-center">
           <div>Some content</div>
           <BaseDropdown
             name="example-3"
+            :label="label"
             class="max-w-md mx-auto"
-            placeholder="Example Dropdown Placeholder"
             v-model="option"
             :options="options"
             baseOptionClass="text-left"
@@ -140,7 +179,6 @@ Todo list
             name="example-4"
             class="max-w-md mx-auto"
             :label="label"
-            placeholder="Example Dropdown Placeholder"
             v-model="selected"
             :options="options"
             :multiselect="true"
@@ -179,7 +217,6 @@ Todo list
               <BaseDropdown
                 v-model="events"
                 name="example-dropdown"
-                placeholder="Example Dropdown Placeholder"
                 :options="options"
                 multiselect
               />

@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown" ref="dropdown-el" :class="{ 'dropdown--with-inline-label': this.isFocus }">
+  <div class="dropdown" ref="dropdown-el" :class="{ 'dropdown--with-inline-label': this.isFocus && this.label }">
     <input v-if="!multiselect" type="hidden" :name="name" v-model="value" />
     <input
       v-else
@@ -120,7 +120,7 @@ export default {
     };
   },
   created() {
-    if (this.value !== '') {
+    if (this.value !== '' && this.value.length !== 0) {
       this.isFocus = true;
     }
     // add event listener to listen to outside click events
@@ -135,6 +135,11 @@ export default {
     // remove event listeners
     window.removeEventListener('click', this.onOutsideClick);
     window.removeEventListener('resize', this.setDropdownElWidth);
+  },
+  watch: {
+    value(selection) {
+      this.isFocus = selection.length > 0;
+    },
   },
   methods: {
     /** Method used to size set the root element's width in the state */
@@ -160,10 +165,6 @@ export default {
      */
     onBaseOptionSelect(option) {
       const { value } = option;
-      this.isFocus = false;
-      if (option.value) {
-        this.isFocus = true;
-      }
       // Normal selects are easy...
       if (!this.multiselect) {
         this.toggleDropdown();
@@ -353,7 +354,9 @@ export default {
     &-inner {
       @apply flex flex-col;
       &__label {
-        @apply py-2 absolute w-full text-sm text-left;
+        @apply text-left absolute text-gray-500 inline-block origin-top-left transition-transform duration-150 ;
+        transform: translate3d(0, .5rem, 0) scale3d(1, 1, 1);
+        backface-visibility: hidden;
       }
       &__value {
         @apply py-2 text-sm;
@@ -409,7 +412,7 @@ export default {
           @apply pt-4 pb-0;
         }
         .dropdown-inner__label{
-          @apply text-xs py-0;
+          transform: translate3d(0, 0rem, 0) scale3d(.8, .8, 1);
         }
       }
     }
