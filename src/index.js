@@ -22,7 +22,6 @@ import ChecNavigation from './components/ChecNavigation.vue';
 import ChecOptionsMenu from './components/ChecOptionsMenu.vue';
 import ChecPaginate from './components/ChecPaginate.vue';
 import TabsGroup from './components/TabsGroup.vue';
-import Textarea from './components/Textarea.vue';
 import TextField from './components/TextField.vue';
 import ChecProgressBar from './components/ChecProgressBar.vue';
 import ChecAvatar from './components/ChecAvatar.vue';
@@ -52,7 +51,6 @@ export {
   ChecOptionsMenu,
   ChecPaginate,
   TabsGroup,
-  Textarea,
   TextField,
   ChecProgressBar,
   ChecAvatar,

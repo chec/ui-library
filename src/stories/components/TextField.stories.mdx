@@ -28,6 +28,9 @@ import TextField from '../../components/TextField.vue';
         label: {
           default: text('Label', 'Label')
         },
+        multiline: {
+          default: boolean('Multiline', false)
+        },
       },
       computed: {
         variant() {
@@ -41,6 +44,52 @@ import TextField from '../../components/TextField.vue';
         <div class="py-16 flex justify-center">
           <TextField
             :label="label"
+            :multiline="multiline"
+            placeholder="Example Placeholder"
+            v-model="inputValue"
+            :variant="variant"
+            class="w-full max-w-sm"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+# Multiline
+
+<Preview>
+  <Story name="Multiline">
+    {{
+      props: {
+        inputValue: {
+          default: text('Input Value', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas id pariatur hic? At quod ab necessitatibus sunt!')
+        },
+        errored: {
+          default: boolean('Errored', false)
+        },
+        disabled: {
+          default: boolean('Disabled', false)
+        },
+        label: {
+          default: text('Label', 'Label')
+        },
+        multiline: {
+          default: boolean('Multiline', true)
+        },
+      },
+      computed: {
+        variant() {
+          return this.disabled ? 'disabled' : this.errored ? 'error' : '';
+        }
+      },
+      components: {
+        TextField
+      },
+      template: `
+        <div class="py-16 flex justify-center">
+          <TextField
+            :label="label"
+            :multiline="multiline"
             placeholder="Example Placeholder"
             v-model="inputValue"
             :variant="variant"

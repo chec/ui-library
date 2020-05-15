@@ -2,9 +2,21 @@
   <div class="text-field" :class="{
     'text-field--inline-label': label,
     'text-field--modified': label ? !!value : false,
+    'text-field--multiline': multiline,
     }"
   >
-    <input
+    <textarea v-if="multiline"
+      class="input"
+      ref="multilineinput"
+      :value="value"
+      :placeholder="placeholder"
+      :disabled="this.variant === 'disabled'"
+      :class="classNames"
+      @input="handleInput"
+      @focus="handleFocus"
+      :id='$inputId'
+    ></textarea>
+    <input v-else
       ref="input"
       class="input"
       :type="$attrs.type || 'text'"
@@ -69,9 +81,19 @@ export default {
       type: String,
       default: '',
     },
+    /**
+    * Display multiline text field
+    */
+    multiline: {
+      type: Boolean,
+      default: false,
+    },
   },
   created() {
     this.$inputId = uniqueId(this.name, this.value, 'chec-switch')();
+  },
+  mounted() {
+    this.autoGrow();
   },
   computed: {
     classNames() {
@@ -89,10 +111,16 @@ export default {
        * @event input
        * @type {$event.target.value}
        */
+      this.autoGrow();
       this.$emit('input', $event.target.value);
     },
     handleFocus($event) {
       $event.target.select();
+    },
+    autoGrow() {
+      if (!this.$refs.multilineinput) return;
+      this.$refs.multilineinput.style.height = '  5.375rem';
+      this.$refs.multilineinput.style.height = `${this.$refs.multilineinput.scrollHeight}px`;
     },
   },
 };
@@ -194,6 +222,18 @@ export default {
       .text-field__label {
         @apply opacity-100;
       }
+    }
+  }
+  &--multiline {
+    .text-field__label{
+      @apply absolute left-0 top-0 w-full pointer-events-none;
+      &:before{
+        top: 3.25rem;
+      }
+    }
+    .input{
+      @apply resize-none overflow-hidden;
+      height:5.375rem;
     }
   }
 }
