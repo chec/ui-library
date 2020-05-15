@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown" ref="dropdown-el" :class="{ 'dropdown--with-inline-label': label }">
+  <div class="dropdown" ref="dropdown-el" :class="{ 'dropdown--with-inline-label': this.isFocus && this.label }">
     <input v-if="!multiselect" type="hidden" :name="name" v-model="value" />
     <input
       v-else
@@ -17,8 +17,8 @@
       @keyup="onKeyPress"
     >
       <div class="dropdown-inner">
-        <label v-if="label" class="dropdown-inner__label">
-          {{ label }}
+        <label v-if="label || placeholder" class="dropdown-inner__label">
+          {{ shownLabel }}
         </label>
         <span class="dropdown-inner__value">
           {{ shownValue }}
@@ -114,11 +114,15 @@ export default {
   },
   data() {
     return {
+      isFocus: false,
       showDropdown: false,
       dropdownElWidth: 0,
     };
   },
   created() {
+    if (this.value !== '' && this.value.length !== 0) {
+      this.isFocus = true;
+    }
     // add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
     // update this.dropdownElWidth on resize
@@ -131,6 +135,11 @@ export default {
     // remove event listeners
     window.removeEventListener('click', this.onOutsideClick);
     window.removeEventListener('resize', this.setDropdownElWidth);
+  },
+  watch: {
+    value(selection) {
+      this.isFocus = selection.length > 0;
+    },
   },
   methods: {
     /** Method used to size set the root element's width in the state */
@@ -297,12 +306,12 @@ export default {
       return this.renderableOptions.filter(candidate => this.value.includes(candidate.value));
     },
     /**
-     * The value that should be shown in the field
+     * The Label that should be shown if placeholder supplied
      *
      * @returns {string|*}
      */
     shownValue() {
-      const emptyLabel = this.placeholder || '\xa0';
+      const emptyLabel = '\xa0';
       if (!this.multiselect) {
         // Note: \xa0 is the hex code for a non-breaking space. This is used so Vue will still render it.
         return this.selectedOptions && this.selectedOptions.label.trim()
@@ -324,6 +333,17 @@ export default {
         ` and ${validOptions.length - 2} more`,
       ].join(', ');
     },
+    /**
+     * The Label that should be shown
+     *
+     * @returns {string|*}
+     */
+    shownLabel() {
+      if (!this.isFocus) {
+        return this.placeholder || this.label;
+      }
+      return this.label;
+    },
   },
 };
 </script>
@@ -334,10 +354,12 @@ export default {
     &-inner {
       @apply flex flex-col;
       &__label {
-        @apply w-full text-xs text-left;
+        @apply text-left absolute text-gray-500 inline-block origin-top-left transition-transform duration-150 ;
+        transform: translate3d(0, .5rem, 0) scale3d(1, 1, 1);
+        backface-visibility: hidden;
       }
       &__value {
-        @apply text-sm;
+        @apply py-2 text-sm;
       }
     }
     &__control {
@@ -355,7 +377,8 @@ export default {
         cursor-pointer
         border
         border-transparent
-        p-4
+        py-2
+        px-4
         flex
         items-center
         justify-between;
@@ -384,8 +407,13 @@ export default {
       @apply flex flex-col justify-center w-4 h-4 fill-current text-gray-600;
     }
     &--with-inline-label {
-      .dropdown__control {
-        @apply px-4 py-2;
+      .dropdown-inner {
+        .dropdown-inner__value{
+          @apply pt-4 pb-0;
+        }
+        .dropdown-inner__label{
+          transform: translate3d(0, 0rem, 0) scale3d(.8, .8, 1);
+        }
       }
     }
   }

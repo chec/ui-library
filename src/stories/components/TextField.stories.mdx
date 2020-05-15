@@ -17,7 +17,7 @@ import TextField from '../../components/TextField.vue';
     {{
       props: {
         inputValue: {
-          default: text('Input Value', 'Text Field')
+          default: text('Input Value', '')
         },
         errored: {
           default: boolean('Errored', false)
@@ -41,9 +41,10 @@ import TextField from '../../components/TextField.vue';
         <div class="py-16 flex justify-center">
           <TextField
             :label="label"
-            placeholder="Text Field Placeholder"
+            placeholder="Example Placeholder"
             v-model="inputValue"
             :variant="variant"
+            class="w-full max-w-sm"
           />
         </div>`,
     }}
@@ -58,9 +59,16 @@ import TextField from '../../components/TextField.vue';
       components: {
         TextField
       },
+      props: {
+        label: {
+          default: text('Label', 'Label')
+        },
+      },
       template: `
         <div class="py-16 flex justify-center">
           <TextField
+            class="w-full max-w-sm"
+            :label="label"
             placeholder="Text Field Placeholder"
             variant="disabled"
           />
@@ -76,7 +84,10 @@ import TextField from '../../components/TextField.vue';
     {{
       props: {
         inputValue: {
-          default: text('Input Value', 'Text Field')
+          default: text('Input Value', '')
+        },
+        label: {
+          default: text('Label', 'Label')
         },
       },
       components: {
@@ -85,6 +96,7 @@ import TextField from '../../components/TextField.vue';
       template: `
         <div class="py-16 flex justify-center">
           <TextField
+            :label="label"
             class="w-full max-w-sm"
             placeholder="Text Field Placeholder"
             variant="error"
@@ -102,7 +114,10 @@ import TextField from '../../components/TextField.vue';
     {{
       props: {
         inputValue: {
-          default: text('Input Value', 'Text Field')
+          default: text('Input Value', '')
+        },
+        label: {
+          default: text('Label', 'Label')
         },
       },
       components: {
@@ -111,6 +126,9 @@ import TextField from '../../components/TextField.vue';
       template: `
         <div class="py-16 flex justify-center">
           <TextField
+            :label="label"
+            class="w-full max-w-sm"
+            v-model="inputValue"
             placeholder="Enter your password"
             type="password"
           />
