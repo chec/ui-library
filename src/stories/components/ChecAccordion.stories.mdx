@@ -1,0 +1,159 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text, number } from '@storybook/addon-knobs';
+import ChecAccordion from '../../components/ChecAccordion.vue';
+import BaseButton from '../../components/BaseButton.vue';
+import TextField from '../../components/TextField.vue';
+
+<Meta title="Components/Accordion" component={ChecAccordion} />
+
+# Avatar Component
+
+<Props of={ChecAccordion} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecAccordion
+      },
+      props: {
+        title: {
+          default: text('Title', 'Accordion Title'),
+        },
+        subtitle: {
+          default: text('Subtitle', 'Accordion Subtitle'),
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full">
+          <ChecAccordion
+            :title="title"
+            :subtitle="subtitle"
+            class="w-1/2"
+          >
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor imperdiet pellentesque. Mauris quam enim, vehicula ac felis vel, tempus tincidunt massa.</p>
+            <p>Mauris eget mi neque. Nullam eu est a velit mattis cursus vel nec purus. Pellentesque tincidunt ornare auctor.</p>
+          </ChecAccordion>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="With Form">
+    {{
+      components: {
+        ChecAccordion,
+        BaseButton,
+        TextField,
+      },
+      props: {
+        title: {
+          default: text('Title', 'Accordion Title'),
+        },
+        subtitle: {
+          default: text('Subtitle', 'Accordion Subtitle'),
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full">
+          <ChecAccordion
+            :title="title"
+            :subtitle="subtitle"
+            class="w-1/2"
+          >
+            <h2 class="text-lg mb-4 font-bold">Set up your account</h2>
+            <label class="block mb-4">
+              First name
+              <TextField value="Leslie" class="w-full" />
+            </label>
+            <label class="block mb-4">
+              Surname
+              <TextField value="Lawless" class="w-full" />
+            </label>
+            <label class="block mb-4">
+              Email address
+              <TextField value="lezlie@example.com" class="w-full" />
+            </label>
+            <BaseButton color="green" class="mt-8">Submit</BaseButton>
+          </ChecAccordion>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Start Active">
+    {{
+      components: {
+        ChecAccordion
+      },
+      props: {
+        title: {
+          default: text('Title', 'Accordion Title'),
+        },
+        subtitle: {
+          default: text('Subtitle', 'Accordion Subtitle'),
+        },
+      },
+      template: `
+        <div class="p-16 flex flex-col items-center w-full">
+          <ChecAccordion
+            :title="title"
+            :subtitle="subtitle"
+            :open="true"
+            class="w-1/2"
+          >
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor imperdiet pellentesque. Mauris quam enim, vehicula ac felis vel, tempus tincidunt massa.</p>
+            <p>Mauris eget mi neque. Nullam eu est a velit mattis cursus vel nec purus. Pellentesque tincidunt ornare auctor.</p>
+          </ChecAccordion>
+          <ChecAccordion
+            :title="title"
+            :subtitle="subtitle"
+            class="w-1/2"
+          >
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor imperdiet pellentesque. Mauris quam enim, vehicula ac felis vel, tempus tincidunt massa.</p>
+            <p>Mauris eget mi neque. Nullam eu est a velit mattis cursus vel nec purus. Pellentesque tincidunt ornare auctor.</p>
+          </ChecAccordion>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="List">
+    {{
+      components: {
+        ChecAccordion,
+        BaseButton,
+        TextField,
+      },
+      props: {
+        title: {
+          default: text('Title', 'Accordion Title'),
+        },
+        subtitle: {
+          default: text('Subtitle', 'Accordion Subtitle'),
+        },
+        amount: {
+          default: number('Amount', 5),
+        },
+      },
+      template: `
+        <div class="p-16 flex flex-col items-center w-full">
+          <ChecAccordion
+            v-for="n in amount"
+            :title="title"
+            :subtitle="subtitle"
+            class="w-1/2"
+          >
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor imperdiet pellentesque. Mauris quam enim, vehicula ac felis vel, tempus tincidunt massa.</p>
+            <p>Mauris eget mi neque. Nullam eu est a velit mattis cursus vel nec purus. Pellentesque tincidunt ornare auctor.</p>
+          </ChecAccordion>
+        </div>`
+    }}
+  </Story>
+</Preview>
