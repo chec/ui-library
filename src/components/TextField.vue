@@ -118,8 +118,13 @@ export default {
       $event.target.select();
     },
     autoGrow() {
-      if (!this.$refs.multilineinput) return;
-      this.$refs.multilineinput.style.height = '  5.375rem';
+      if (!this.$refs.multilineinput) {
+        return;
+      }
+      /**
+       * Allows the text area to grow to mtch the value as the user is typing.
+       */
+      this.$refs.multilineinput.style.height = '  5rem';
       this.$refs.multilineinput.style.height = `${this.$refs.multilineinput.scrollHeight}px`;
     },
   },
@@ -232,8 +237,7 @@ export default {
       }
     }
     .input{
-      @apply resize-none overflow-hidden;
-      height:5.375rem;
+      @apply resize-none overflow-hidden h-20;
     }
   }
 }
