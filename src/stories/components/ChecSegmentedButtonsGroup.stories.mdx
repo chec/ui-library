@@ -1,0 +1,50 @@
+import { action } from "@storybook/addon-actions";
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { text, select, boolean } from '@storybook/addon-knobs';
+import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGroup.vue';
+import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
+
+<Meta title="Components/Segmented Buttons" component={ChecSegmentedButtonsGroup} />
+
+# Default Segmented Buttons
+
+<Props of={ChecSegmentedButtonsGroup} />
+
+<Preview>
+  <Story name="Default Segmented Buttons">
+    {{
+      components: {
+        ChecSegmentedButton,
+        ChecSegmentedButtonsGroup,
+      },
+      data() {
+        return {
+          options: [
+            { label: 'Label 1', value:'1' },
+            { label: 'Label 2', value: '2' },
+          ],
+        }
+      },
+      methods: {
+        click(option) {
+          {/* this.active = option.value; */}
+          action(`Clicked button "${option.value}"`)();
+        }
+      },
+      template: `
+        <div class="flex flex-column justify-center font-lato mx-auto p-16 bg-gray-100">
+          <ChecSegmentedButtonsGroup>
+            <ChecSegmentedButton
+              v-for="option in options"
+              :key="i"
+              :active="active"
+              :value="value"
+              @click="click(option)"
+            >
+            {{ option.label }}
+            </ChecSegmentedButton>
+          </ChecSegmentedButtonsGroup>
+        </div>`
+    }}
+  </Story>
+</Preview>

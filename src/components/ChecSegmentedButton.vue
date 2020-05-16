@@ -1,18 +1,19 @@
 <template>
-  <button
-    class="chec-segmented-btn"
-    @click="handleClick"
-    :class="{ 'chec-segmented-btn--active': active }"
-  >
-    <span class="chec-segmented-btn__label">
-      <!--
-        @slot Label to display within the segmented button
-        @binding disabled Whether the button is disabled
-        @binding active Whether the button is active
-      -->
-      <slot v-bind="{ active }" />
-    </span>
-  </button>
+  <div class="segmented-btn">
+    <button
+      class="segmented-btn__btn"
+      @click="handleClick"
+      :class="{ 'segmented-btn__btn--active': active }"
+    >
+      <span class="segmented-btn__label">
+        <!--
+          @slot Label to display within the segmented button
+          @binding active Whether the button is active
+        -->
+        <slot v-bind="{ active }" />
+      </span>
+    </button>
+  </div>
 </template>
 
 <script>
@@ -26,11 +27,23 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Used to determine which button is active
+     */
+    value: {
+      type: String,
+      default: '',
+    },
   },
+  // computed: {
+  //   isActive() {
+  //     return this.value === this.active;
+  //   },
+  // },
   methods: {
     handleClick() {
       /**
-       * Emitted the button is click
+       * Emitted the button is clicked
        * @event click
        * @type {$event}
        */
@@ -41,17 +54,20 @@ export default {
 </script>
 
 <style lang="scss">
-.chec-segmented-btn {
-  @apply bg-gray-200 cursor-pointer px-2 py-2;
-
-  &__label {
-    @apply text-gray-500
-  }
-  &--active {
-    &:enabled {
-      @apply bg-gray-500;
-      .chec-segmented-btn__label {
-        @apply text-white;
+.segmented-btn {
+  @apply cursor-pointer;
+  &__btn {
+    @apply bg-gray-200 px-3 py-1 text-xs text-gray-500 font-bold uppercase;
+    &__label {
+      @apply text-gray-500;
+    }
+    &--active, &:active, &:focus {
+      // @apply bg-gray-500;
+      &:enabled {
+        @apply bg-gray-500 outline-none;
+        .segmented-btn__label {
+          @apply text-white;
+        }
       }
     }
   }
