@@ -99,7 +99,7 @@ export default {
     /**
      * Appended text to 'show/hide' button
      */
-    hiddenField: {
+    hiddenFieldName: {
       type: String,
       default: '',
     },
@@ -140,7 +140,7 @@ export default {
       return this.$attrs.type === 'password';
     },
     showHideText() {
-      return `${this.showPassword ? 'hide' : 'show'} ${this.hiddenField}`;
+      return `${this.showPassword ? 'hide' : 'show'} ${this.hiddenFieldName}`;
     },
   },
   methods: {
