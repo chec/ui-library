@@ -27,7 +27,6 @@ import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
       },
       methods: {
         click(option) {
-          {/* this.active = option.value; */}
           action(`Clicked button "${option.value}"`)();
         }
       },
@@ -36,10 +35,9 @@ import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
           <ChecSegmentedButtonsGroup>
             <ChecSegmentedButton
               v-for="option in options"
-              :key="i"
-              :active="active"
-              :value="value"
+              :key="option.value"
               @click="click(option)"
+              :value="option.value"
             >
             {{ option.label }}
             </ChecSegmentedButton>

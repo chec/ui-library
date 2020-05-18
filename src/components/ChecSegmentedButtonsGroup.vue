@@ -10,6 +10,6 @@ export default {
 </script>
 <style scoped lang="scss">
 .segmented-btns-group {
-  @apply flex;
+  @apply flex cursor-pointer overflow-hidden;
 }
 </style>
