@@ -17,7 +17,6 @@
       :id='$inputId'
     ></textarea>
     <input v-else
-      ref="input"
       :name="$attrs.name"
       class="input"
       :type="isPasswordType ? (showPassword ? 'text' : 'password') : $attrs.type"
