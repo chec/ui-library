@@ -176,16 +176,16 @@ import TextField from '../../components/TextField.vue';
         TextField
       },
       template: `
-        <div class="py-16 flex justify-center">
-          <TextField
-            :label="label"
-            class="w-full max-w-sm"
-            v-model="inputValue"
-            placeholder="Enter your password"
-            v-model="inputValue"
-            :hiddenField="hiddenField"
-            type="password"
-          />
+        <div class="py-16 flex justify-center max-w-sm mx-auto">
+          <form class="w-full">
+            <TextField
+              :label="label"
+              placeholder="Enter your password"
+              v-model="inputValue"
+              :hiddenField="hiddenField"
+              type="password"
+            />
+          </for>
         </div>`,
     }}
   </Story>
