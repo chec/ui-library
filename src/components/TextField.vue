@@ -11,7 +11,7 @@
       :value="value"
       :placeholder="placeholder"
       :disabled="this.variant === 'disabled'"
-      :class="className"
+      :class="classNames"
       @input="handleInput"
       @focus="handleFocus"
       :id='$inputId'
@@ -247,10 +247,9 @@ export default {
       &:before{
         top: 3.25rem;
       }
-      &.text-field__label--scrollable{
-        background: linear-gradient(0deg, rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.8) 45%, rgba(255,255,255,1) 100%);
-        width:calc(100% - 10px);
+      &--scrollable{
+        @apply bg-vertical-transparent-gradient;
+        width: calc(100% - 10px);
       }
     }
     .input{
