@@ -108,6 +108,7 @@ export default {
     // Hides browser's default radio style
     &__input{
       @apply
+        flex
         relative
         appearance-none
         bg-white
