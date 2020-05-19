@@ -11,7 +11,7 @@
       :value="value"
       :placeholder="placeholder"
       :disabled="this.variant === 'disabled'"
-      :class="classNames"
+      :class="className"
       @input="handleInput"
       @focus="handleFocus"
       :id='$inputId'
@@ -32,6 +32,7 @@
     <label
       v-if="label"
       class="text-field__label"
+      :class="scrollable"
       :data-content="label"
       :for="$inputId">
       <span class="invisible">{{ label }}</span>
@@ -89,6 +90,11 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      isScrollable: false,
+    };
+  },
   created() {
     this.$inputId = uniqueId(this.name, this.value, 'chec-switch')();
   },
@@ -101,6 +107,11 @@ export default {
         'opacity-50 input--disabled': this.variant === 'disabled',
         'input--error': this.variant === 'error',
         'input--empty': this.value === '',
+      };
+    },
+    scrollable() {
+      return {
+        'text-field__label--scrollable': this.isScrollable,
       };
     },
   },
@@ -133,6 +144,7 @@ export default {
        */
       this.$refs.multilineinput.style.height = '  5rem';
       this.$refs.multilineinput.style.height = `${this.$refs.multilineinput.scrollHeight + 2}px`;
+      this.isScrollable = this.$refs.multilineinput.scrollHeight > 160;
     },
   },
 };
@@ -197,15 +209,7 @@ export default {
       &:focus,
       &:active {
         @apply border-gray-300 transition-opacity duration-300 ease-in-out opacity-50;
-        + {
-          .text-field__label {
-            &::before {
-              transform: translate3d(0, -2.3rem, 0) scale3d(1, 1, 1);
-            }
-          }
-        }
       };
-
     }
 
     &--error,
@@ -239,12 +243,14 @@ export default {
   &--multiline {
     .text-field__label{
       @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
-      background: linear-gradient(0deg, rgba(255,255,255,0) 0%,
-      rgba(255,255,255,0.8) 45%, rgba(255,255,255,1) 100%);
-      margin:1px;
-      width:calc(100% - 10px);
+      margin: 1px;
       &:before{
         top: 3.25rem;
+      }
+      &.text-field__label--scrollable{
+        background: linear-gradient(0deg, rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.8) 45%, rgba(255,255,255,1) 100%);
+        width:calc(100% - 10px);
       }
     }
     .input{
