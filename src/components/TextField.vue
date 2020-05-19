@@ -2,9 +2,21 @@
   <div class="text-field" :class="{
     'text-field--inline-label': label,
     'text-field--modified': label ? !!value : false,
+    'text-field--multiline': multiline,
     }"
   >
-    <input
+    <textarea v-if="multiline"
+      class="input"
+      ref="multilineinput"
+      :value="value"
+      :placeholder="placeholder"
+      :disabled="this.variant === 'disabled'"
+      :class="classNames"
+      @input="handleInput"
+      @focus="handleFocus"
+      :id='$inputId'
+    ></textarea>
+    <input v-else
       ref="input"
       class="input"
       :type="$attrs.type || 'text'"
@@ -20,6 +32,7 @@
     <label
       v-if="label"
       class="text-field__label"
+      :class="scrollable"
       :data-content="label"
       :for="$inputId">
       <span class="invisible">{{ label }}</span>
@@ -69,9 +82,24 @@ export default {
       type: String,
       default: '',
     },
+    /**
+    * Display multiline text field
+    */
+    multiline: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      isScrollable: false,
+    };
   },
   created() {
     this.$inputId = uniqueId(this.name, this.value, 'chec-switch')();
+  },
+  mounted() {
+    this.autoGrow();
   },
   computed: {
     classNames() {
@@ -81,6 +109,18 @@ export default {
         'input--empty': this.value === '',
       };
     },
+    scrollable() {
+      return {
+        'text-field__label--scrollable': this.isScrollable,
+      };
+    },
+  },
+  watch: {
+    value() {
+      this.$nextTick(() => {
+        this.autoGrow();
+      });
+    },
   },
   methods: {
     handleInput($event) {
@@ -89,10 +129,22 @@ export default {
        * @event input
        * @type {$event.target.value}
        */
+      this.autoGrow();
       this.$emit('input', $event.target.value);
     },
     handleFocus($event) {
       $event.target.select();
+    },
+    autoGrow() {
+      if (!this.$refs.multilineinput) {
+        return;
+      }
+      /**
+       * Allows the text area to grow to mtch the value as the user is typing.
+       */
+      this.$refs.multilineinput.style.height = '  5rem';
+      this.$refs.multilineinput.style.height = `${this.$refs.multilineinput.scrollHeight + 2}px`;
+      this.isScrollable = this.$refs.multilineinput.scrollHeight > 160;
     },
   },
 };
@@ -157,15 +209,7 @@ export default {
       &:focus,
       &:active {
         @apply border-gray-300 transition-opacity duration-300 ease-in-out opacity-50;
-        + {
-          .text-field__label {
-            &::before {
-              transform: translate3d(0, -2.3rem, 0) scale3d(1, 1, 1);
-            }
-          }
-        }
       };
-
     }
 
     &--error,
@@ -194,6 +238,35 @@ export default {
       .text-field__label {
         @apply opacity-100;
       }
+    }
+  }
+  &--multiline {
+    .text-field__label {
+      @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
+      margin: 1px;
+      &:before {
+        top: 3.25rem;
+      }
+      &--scrollable {
+        @apply bg-vertical-transparent-gradient;
+        width: calc(100% - 10px);
+      }
+    }
+    .input {
+      @apply resize-none overflow-auto h-20;
+      max-height: 10rem;
+      scroll-margin: 50px 0 0 50px;
+      &::-webkit-scrollbar {
+        @apply w-1;
+      }
+      &::-webkit-scrollbar-track {
+        @apply bg-transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        @apply w-1 bg-gray-300 rounded;
+      }
+      scrollbar-color: #D3E0F1 transparent;
+      scrollbar-width: thin;
     }
   }
 }

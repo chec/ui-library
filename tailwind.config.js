@@ -85,6 +85,7 @@ module.exports = {
     },
     gradients: {
       'primary-gradient': ['45deg', '#254E81', '#2C7EA1'],
+      'vertical-transparent-gradient': ['0deg', 'rgba(255,255,255,0)', 'rgba(255,255,255,0.8)', 'rgba(255,255,255,1)'],
     },
     boxShadow: {
       default: '0px 0px 1px rgba(40, 51, 65, 0.2), 0px 1px 4px rgba(40, 51, 65, 0.1)',
