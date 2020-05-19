@@ -241,20 +241,21 @@ export default {
     }
   }
   &--multiline {
-    .text-field__label{
+    .text-field__label {
       @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
       margin: 1px;
-      &:before{
+      &:before {
         top: 3.25rem;
       }
-      &--scrollable{
+      &--scrollable {
         @apply bg-vertical-transparent-gradient;
         width: calc(100% - 10px);
       }
     }
-    .input{
+    .input {
       @apply resize-none overflow-auto h-20;
       max-height: 10rem;
+      scroll-margin: 50px 0 0 50px;
       &::-webkit-scrollbar {
         @apply w-1;
       }
