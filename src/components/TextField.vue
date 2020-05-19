@@ -104,6 +104,13 @@ export default {
       };
     },
   },
+  watch: {
+    value() {
+      this.$nextTick(() => {
+        this.autoGrow();
+      });
+    },
+  },
   methods: {
     handleInput($event) {
       /**
@@ -125,7 +132,7 @@ export default {
        * Allows the text area to grow to mtch the value as the user is typing.
        */
       this.$refs.multilineinput.style.height = '  5rem';
-      this.$refs.multilineinput.style.height = `${this.$refs.multilineinput.scrollHeight}px`;
+      this.$refs.multilineinput.style.height = `${this.$refs.multilineinput.scrollHeight + 2}px`;
     },
   },
 };
@@ -231,13 +238,29 @@ export default {
   }
   &--multiline {
     .text-field__label{
-      @apply absolute left-0 top-0 w-full pointer-events-none;
+      @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
+      background: linear-gradient(0deg, rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.8) 45%, rgba(255,255,255,1) 100%);
+      margin:1px;
+      width:calc(100% - 10px);
       &:before{
         top: 3.25rem;
       }
     }
     .input{
-      @apply resize-none overflow-hidden h-20;
+      @apply resize-none overflow-auto h-20;
+      max-height: 10rem;
+      &::-webkit-scrollbar {
+        @apply w-1;
+      }
+      &::-webkit-scrollbar-track {
+        @apply bg-transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        @apply w-1 bg-gray-300 rounded;
+      }
+      scrollbar-color: #D3E0F1 transparent;
+      scrollbar-width: thin;
     }
   }
 }
