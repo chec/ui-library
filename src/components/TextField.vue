@@ -5,38 +5,41 @@
     'text-field--multiline': multiline,
     }"
   >
-    <textarea v-if="multiline"
-      class="input"
-      ref="multilineinput"
-      :value="value"
-      :placeholder="placeholder"
-      :disabled="this.variant === 'disabled'"
-      :class="classNames"
-      @input="handleInput"
-      @focus="handleFocus"
-      :id='$inputId'
-    ></textarea>
-    <input v-else
-      :name="$attrs.name"
-      class="input"
-      :type="isPasswordType ? (showPassword ? 'text' : 'password') : $attrs.type"
-      :value="value"
-      :placeholder="label"
-      :disabled="this.variant === 'disabled'"
-      :class="[classNames, innerInputClass]"
-      :id='$inputId'
-      @input="handleInput"
-      @focus="handleFocus"
-      :aria-describedby="label"
-    />
-    <label
-      v-if="label"
-      class="text-field__label"
-      :class="scrollable"
-      :data-content="label"
-      :for="$inputId">
-      <span class="invisible">{{ label }}</span>
-    </label>
+    <div class="input-wrapper">
+      <textarea v-if="multiline"
+        :name="$attrs.name"
+        class="input"
+        ref="multilineinput"
+        :value="value"
+        :placeholder="placeholder"
+        :disabled="this.variant === 'disabled'"
+        :class="classNames"
+        @input="handleInput"
+        @focus="handleFocus"
+        :id='$inputId'
+      ></textarea>
+      <input v-else
+        :name="$attrs.name"
+        class="input"
+        :type="isPasswordType ? (showPassword ? 'text' : 'password') : $attrs.type"
+        :value="value"
+        :placeholder="label"
+        :disabled="this.variant === 'disabled'"
+        :class="[classNames, innerInputClass]"
+        :id='$inputId'
+        @input="handleInput"
+        @focus="handleFocus"
+        :aria-describedby="label"
+      />
+      <label
+        v-if="label"
+        class="text-field__label"
+        :for="$inputId"
+      >
+        {{ label }}
+      </label>
+      <div v-if="showPasswordStrength" class="text-field__password-strength" :class="strengthClass" />
+    </div>
     <a
       v-if="isPasswordType"
       class="text-field__show-password"
@@ -103,6 +106,20 @@ export default {
       type: String,
       default: '',
     },
+    /**
+     * Boolean indicating whether to show password strength indicator
+     */
+    showPasswordStrength: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * Strength of password from 0-4
+     */
+    passwordStrengthScore: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
@@ -142,6 +159,24 @@ export default {
     showHideText() {
       return `${this.showPassword ? 'hide' : 'show'} ${this.hiddenFieldName}`;
     },
+    /**
+     * Contextual highlight classes per strength score
+     *
+     * @returns {string}
+     */
+    strengthClass() {
+      const score = this.passwordStrengthScore;
+      if (score < 2) {
+        return 'text-field__password-strength--red-300';
+      }
+      if (score < 3) {
+        return 'text-field__password-strength--orange-300';
+      }
+      if (score < 4) {
+        return 'text-field__password-strength--green-300';
+      }
+      return 'text-field__password-strength--green-400';
+    },
   },
   methods: {
     /**
@@ -180,16 +215,34 @@ export default {
 .text-field {
   @apply relative;
   &__label {
-    &::before {
-      @apply relative text-gray-500 inline-block origin-top-left transition-transform duration-150 left-0 pl-5;
-      content: attr(data-content);
-      backface-visibility: hidden;
-      transform: translate3d(0, -2.8rem, 0) scale3d(.8, .8, 1);
-    }
+    @apply text-gray-500 h-full origin-left transition-transform duration-150 text-xs cursor-text overflow-hidden;
   }
 
   &__show-password {
     @apply title-xxs text-blue-500 float-right mt-1 cursor-pointer;
+  }
+
+  .input-wrapper {
+    @apply flex flex-col-reverse overflow-hidden;
+  }
+
+  &__password-strength {
+    @apply absolute left-0 bottom-0 w-full h-1 rounded-bl;
+    &--red-300 {
+      @apply bg-red-300 w-1/4;
+    }
+
+    &--orange-300 {
+      @apply bg-orange-300 w-2/4;
+    }
+
+    &--green-300 {
+      @apply bg-green-300 w-3/4;
+    }
+
+    &--green-400 {
+      @apply bg-green-400 w-full rounded-br;
+    }
   }
 
   .input {
@@ -204,31 +257,36 @@ export default {
       border
       border-gray-300
       outline-none;
+
+    &:hover {
+      @apply border-gray-400;
+    }
+
     &::placeholder {
       color: rgba(0, 0, 0, 0);
     }
+
     &:placeholder-shown {
       + {
         .text-field__label {
-          &::before {
-            transform: translate3d(0, -2.3rem, 0) scale3d(1, 1, 1);
-          }
+          transform: translate(1rem, 2.2rem) scale(1.3);
         }
       }
     }
+
+    &:not(:placeholder-shown) + .text-field__label {
+      transform: translate(1rem, 1.5rem) scale(1);
+    }
+
     &:focus, &:active {
       @apply border-gray-500;
       + {
         .text-field__label {
-          &::before {
-            transform: translate3d(0, -2.8rem, 0) scale3d(.8, .8, 1);
-          }
+          transform: translate(1rem, 1.5rem) scale(1);
         }
       }
     }
-    &:hover {
-      @apply border-gray-400;
-    }
+
     &--disabled {
       + {
         .text-field__label {

@@ -171,6 +171,12 @@ import TextField from '../../components/TextField.vue';
         hiddenFieldName: {
           default: text('Name of hidden field', 'password'),
         },
+        showPasswordStrength: {
+          default: boolean('Show password strength', true),
+        },
+        passwordStrengthScore: {
+          default: select('Password strength', [ 0, 1, 2, 3, 4 ], 2)
+        }
       },
       components: {
         TextField
@@ -185,8 +191,10 @@ import TextField from '../../components/TextField.vue';
               v-model="inputValue"
               :hiddenFieldName="hiddenFieldName"
               type="password"
+              :showPasswordStrength="showPasswordStrength"
+              :passwordStrengthScore="passwordStrengthScore"
             />
-          </for>
+          </form>
         </div>`,
     }}
   </Story>
