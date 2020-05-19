@@ -18969,18 +18969,32 @@ var ChecPaginate_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecPaginate = (ChecPaginate_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f2b7a1e8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=6d3ee368&
-var TextFieldvue_type_template_id_6d3ee368_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-field",class:{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f2b7a1e8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=d188bf8e&
+var TextFieldvue_type_template_id_d188bf8e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-field",class:{
   'text-field--inline-label': _vm.label,
   'text-field--modified': _vm.label ? !!_vm.value : false,
-  }},[_c('input',{ref:"input",staticClass:"input",class:[_vm.classNames, _vm.innerInputClass],attrs:{"type":_vm.$attrs.type || 'text',"placeholder":_vm.label,"disabled":this.variant === 'disabled',"id":_vm.$inputId,"aria-describedby":_vm.label},domProps:{"value":_vm.value},on:{"input":_vm.handleInput,"focus":_vm.handleFocus}}),(_vm.label)?_c('label',{staticClass:"text-field__label",attrs:{"data-content":_vm.label,"for":_vm.$inputId}},[_c('span',{staticClass:"invisible"},[_vm._v(_vm._s(_vm.label))])]):_vm._e()])}
-var TextFieldvue_type_template_id_6d3ee368_staticRenderFns = []
+  'text-field--multiline': _vm.multiline,
+  }},[(_vm.multiline)?_c('textarea',{ref:"multilineinput",staticClass:"input",class:_vm.classNames,attrs:{"placeholder":_vm.placeholder,"disabled":this.variant === 'disabled',"id":_vm.$inputId},domProps:{"value":_vm.value},on:{"input":_vm.handleInput,"focus":_vm.handleFocus}}):_c('input',{ref:"input",staticClass:"input",class:[_vm.classNames, _vm.innerInputClass],attrs:{"type":_vm.$attrs.type || 'text',"placeholder":_vm.label,"disabled":this.variant === 'disabled',"id":_vm.$inputId,"aria-describedby":_vm.label},domProps:{"value":_vm.value},on:{"input":_vm.handleInput,"focus":_vm.handleFocus}}),(_vm.label)?_c('label',{staticClass:"text-field__label",class:_vm.scrollable,attrs:{"data-content":_vm.label,"for":_vm.$inputId}},[_c('span',{staticClass:"invisible"},[_vm._v(_vm._s(_vm.label))])]):_vm._e()])}
+var TextFieldvue_type_template_id_d188bf8e_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/TextField.vue?vue&type=template&id=6d3ee368&
+// CONCATENATED MODULE: ./src/components/TextField.vue?vue&type=template&id=d188bf8e&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=script&lang=js&
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19053,10 +19067,26 @@ var TextFieldvue_type_template_id_6d3ee368_staticRenderFns = []
     label: {
       type: String,
       default: ''
+    },
+
+    /**
+    * Display multiline text field
+    */
+    multiline: {
+      type: Boolean,
+      default: false
     }
+  },
+  data: function data() {
+    return {
+      isScrollable: false
+    };
   },
   created: function created() {
     this.$inputId = createUniqueId(this.name, this.value, 'chec-switch')();
+  },
+  mounted: function mounted() {
+    this.autoGrow();
   },
   computed: {
     classNames: function classNames() {
@@ -19065,6 +19095,20 @@ var TextFieldvue_type_template_id_6d3ee368_staticRenderFns = []
         'input--error': this.variant === 'error',
         'input--empty': this.value === ''
       };
+    },
+    scrollable: function scrollable() {
+      return {
+        'text-field__label--scrollable': this.isScrollable
+      };
+    }
+  },
+  watch: {
+    value: function value() {
+      var _this = this;
+
+      this.$nextTick(function () {
+        _this.autoGrow();
+      });
     }
   },
   methods: {
@@ -19074,10 +19118,24 @@ var TextFieldvue_type_template_id_6d3ee368_staticRenderFns = []
        * @event input
        * @type {$event.target.value}
        */
+      this.autoGrow();
       this.$emit('input', $event.target.value);
     },
     handleFocus: function handleFocus($event) {
       $event.target.select();
+    },
+    autoGrow: function autoGrow() {
+      if (!this.$refs.multilineinput) {
+        return;
+      }
+      /**
+       * Allows the text area to grow to mtch the value as the user is typing.
+       */
+
+
+      this.$refs.multilineinput.style.height = '  5rem';
+      this.$refs.multilineinput.style.height = "".concat(this.$refs.multilineinput.scrollHeight + 2, "px");
+      this.isScrollable = this.$refs.multilineinput.scrollHeight > 160;
     }
   }
 });
@@ -19097,8 +19155,8 @@ var TextFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("2b23");
 
 var TextField_component = normalizeComponent(
   components_TextFieldvue_type_script_lang_js_,
-  TextFieldvue_type_template_id_6d3ee368_render,
-  TextFieldvue_type_template_id_6d3ee368_staticRenderFns,
+  TextFieldvue_type_template_id_d188bf8e_render,
+  TextFieldvue_type_template_id_d188bf8e_staticRenderFns,
   false,
   null,
   null,
