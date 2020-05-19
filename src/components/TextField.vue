@@ -12,7 +12,7 @@
         ref="multilineinput"
         :value="value"
         :placeholder="placeholder"
-        :disabled="this.variant === 'disabled'"
+        :disabled="this.variant === 'disabled' || $attrs.disabled"
         :class="classNames"
         @input="handleInput"
         @focus="handleFocus"
@@ -24,7 +24,7 @@
         :type="isPasswordType ? (showPassword ? 'text' : 'password') : $attrs.type"
         :value="value"
         :placeholder="label"
-        :disabled="this.variant === 'disabled'"
+        :disabled="this.variant === 'disabled' || $attrs.disabled"
         :class="[classNames, innerInputClass]"
         :id='$inputId'
         @input="handleInput"
@@ -33,6 +33,7 @@
       />
       <label
         v-if="label"
+        :class="scrollable"
         class="text-field__label"
         :for="$inputId"
       >
@@ -111,14 +112,14 @@ export default {
      */
     showPasswordStrength: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     /**
      * Strength of password from 0-4
      */
     passwordStrengthScore: {
       type: Number,
-      default: 0,
+      default: null,
     },
   },
   data() {
@@ -146,13 +147,6 @@ export default {
         'text-field__label--scrollable': this.isScrollable,
       };
     },
-  },
-  watch: {
-    value() {
-      this.$nextTick(() => {
-        this.autoGrow();
-      });
-    },
     isPasswordType() {
       return this.$attrs.type === 'password';
     },
@@ -166,16 +160,26 @@ export default {
      */
     strengthClass() {
       const score = this.passwordStrengthScore;
+      if (!score && score !== 0) {
+        return '';
+      }
       if (score < 2) {
-        return 'text-field__password-strength--red-300';
+        return 'text-field__password-strength--invalid';
       }
       if (score < 3) {
-        return 'text-field__password-strength--orange-300';
+        return 'text-field__password-strength--bad';
       }
       if (score < 4) {
-        return 'text-field__password-strength--green-300';
+        return 'text-field__password-strength--good';
       }
-      return 'text-field__password-strength--green-400';
+      return 'text-field__password-strength--great';
+    },
+  },
+  watch: {
+    value() {
+      this.$nextTick(() => {
+        this.autoGrow();
+      });
     },
   },
   methods: {
@@ -215,7 +219,21 @@ export default {
 .text-field {
   @apply relative;
   &__label {
-    @apply text-gray-500 h-full origin-left transition-transform duration-150 text-xs cursor-text overflow-hidden;
+    @apply
+      absolute
+      flex
+      items-center
+      pl-4
+      left-0
+      top-0
+      text-gray-500
+      h-full
+      origin-left
+      transition-transform
+      duration-150
+      text-xs
+      cursor-text
+      overflow-hidden;
   }
 
   &__show-password {
@@ -223,24 +241,27 @@ export default {
   }
 
   .input-wrapper {
-    @apply flex flex-col-reverse overflow-hidden;
+    @apply relative flex flex-col-reverse overflow-hidden rounded border border-gray-300;
+    &:hover {
+      @apply border-gray-400;
+    }
   }
 
   &__password-strength {
-    @apply absolute left-0 bottom-0 w-full h-1 rounded-bl;
-    &--red-300 {
+    @apply absolute left-0 w-full h-1 rounded-bl;
+    &--invalid {
       @apply bg-red-300 w-1/4;
     }
 
-    &--orange-300 {
+    &--bad {
       @apply bg-orange-300 w-2/4;
     }
 
-    &--green-300 {
+    &--good {
       @apply bg-green-300 w-3/4;
     }
 
-    &--green-400 {
+    &--great {
       @apply bg-green-400 w-full rounded-br;
     }
   }
@@ -253,9 +274,6 @@ export default {
       w-full
       p-4
       bg-white
-      rounded
-      border
-      border-gray-300
       outline-none;
 
     &:hover {
@@ -269,32 +287,28 @@ export default {
     &:placeholder-shown {
       + {
         .text-field__label {
-          transform: translate(1rem, 2.2rem) scale(1.3);
+          transform: translate(0) scale(1.5);
         }
       }
     }
 
     &:not(:placeholder-shown) + .text-field__label {
-      transform: translate(1rem, 1.5rem) scale(1);
+      transform: translate(0, -0.5rem) scale(1);
     }
 
-    &:focus, &:active {
-      @apply border-gray-500;
-      + {
-        .text-field__label {
-          transform: translate(1rem, 1.5rem) scale(1);
-        }
-      }
-    }
 
-    &--disabled {
-      + {
-        .text-field__label {
-          &::before {
-            @apply transition-opacity duration-300 ease-in-out opacity-50;
+    &:enabled {
+      &:focus, &:active, {
+        @apply border-gray-500;
+        + {
+          .text-field__label {
+            transform: translate(0, -0.5rem) scale(1);
           }
         }
       }
+    }
+
+    &--disabled, &:disabled {
       &:hover,
       &:focus,
       &:active {
@@ -330,20 +344,20 @@ export default {
       }
     }
   }
+
   &--multiline {
     .text-field__label {
-      @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
-      margin: 1px;
+      @apply left-0 top-0 h-10 rounded pointer-events-none py-6;
+      width: calc(100% - 10px);
       &:before {
         top: 3.25rem;
       }
       &--scrollable {
         @apply bg-vertical-transparent-gradient;
-        width: calc(100% - 10px);
       }
     }
     .input {
-      @apply resize-none overflow-auto h-20;
+      @apply resize-none h-20 overflow-y-auto;
       max-height: 10rem;
       scroll-margin: 50px 0 0 50px;
       &::-webkit-scrollbar {
@@ -357,6 +371,7 @@ export default {
       }
       scrollbar-color: #D3E0F1 transparent;
       scrollbar-width: thin;
+
     }
   }
 }

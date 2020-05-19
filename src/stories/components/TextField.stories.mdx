@@ -118,7 +118,7 @@ import TextField from '../../components/TextField.vue';
           <TextField
             class="w-full max-w-sm"
             :label="label"
-            placeholder="Text Field Placeholder"
+            value="Disabled"
             variant="disabled"
           />
         </div>`,
@@ -175,7 +175,7 @@ import TextField from '../../components/TextField.vue';
           default: boolean('Show password strength', true),
         },
         passwordStrengthScore: {
-          default: select('Password strength', [ 0, 1, 2, 3, 4 ], 2)
+          default: select('Password strength', [null, 0, 1, 2, 3, 4 ], 3)
         }
       },
       components: {
