@@ -38,7 +38,7 @@ Todo list
           default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'], 'secondary'),
         },
         variant: {
-          default: select('Variant', ['large', 'regular', 'round'], 'regular'),
+          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
         },
         disabled: {
           default: select('Disabled', [true, false], false),
@@ -82,7 +82,7 @@ This is a button modified using the Color and Variant props.
         possibilities() {
           return makeVariants({
             color: ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'],
-            variant: ['large', 'regular', 'round'],
+            variant: ['large', 'regular', 'small', 'round'],
           }).map(possibility => ({
             ...possibility,
             label: `${possibility.color} - ${possibility.variant}`,
@@ -93,7 +93,7 @@ This is a button modified using the Color and Variant props.
         BaseButton
       },
       template: `
-        <div class="py-16 grid grid-cols-3 gap-4 justify-center mx-20">
+        <div class="py-16 grid grid-cols-4 gap-4 justify-center mx-20">
           <div v-for="{ color, variant, label } in possibilities">
             <base-button class="mx-auto capitalize" :color="color" :variant="variant">
               {{ label }}
@@ -137,7 +137,7 @@ This is a button modified using the Color and Variant props.
           default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'], 'secondary'),
         },
         variant: {
-          default: select('Variant', ['large', 'regular', 'round'], 'regular'),
+          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
         },
         hasIcon: {
           default: boolean('Show Icon', true),
@@ -203,7 +203,7 @@ This is a button modified using the Color and Variant props.
           default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'], 'secondary'),
         },
         variant: {
-          default: select('Variant', ['large', 'regular', 'round'], 'regular'),
+          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
         },
         disabled: {
           default: select('Disabled', [true, false], false),
