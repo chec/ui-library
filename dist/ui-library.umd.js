@@ -15048,7 +15048,7 @@ function _defineProperty(obj, key, value) {
     },
 
     /**
-     * The style variant of the button. Includes size, border radius, etc.
+     * The style variant of the button. Includes size, border radius, etc. One of 'large', 'regular', 'small', 'round'
      */
     variant: {
       type: String,
@@ -15059,7 +15059,8 @@ function _defineProperty(obj, key, value) {
     },
 
     /**
-     * Indicates the position where an icon should show (if any)
+     * Indicates the position where an icon should show (if any). Defaults to 'before' but it is optional.
+     * Accepts 'before' or 'after'.
      */
     iconPosition: {
       type: String,
@@ -15105,7 +15106,7 @@ function _defineProperty(obj, key, value) {
       class: ['button__content']
     }, this.$slots.default)];
 
-    if (this.hasIcon) {
+    if (this.hasIcon && this.$slots.icon) {
       var icon = createElement('i', {
         class: ['button__icon']
       }, this.$slots.icon);
