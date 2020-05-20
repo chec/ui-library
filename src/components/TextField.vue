@@ -15,7 +15,6 @@
       :type="$attrs.type || 'text'"
       @input="handleInput"
       @focus="handleFocus"
-      data-input
     />
     <label
       v-if="label"
@@ -73,6 +72,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Additional input attributes that should be applied to the native input
+     */
+    additionalInputAttributes: Object,
   },
   data() {
     return {
@@ -86,6 +89,7 @@ export default {
   computed: {
     sharedInputProps() {
       const {
+        additionalInputAttributes,
         value,
         classNames,
         variant,
@@ -96,6 +100,7 @@ export default {
 
       return {
         ...$attrs,
+        ...additionalInputAttributes,
         'aria-describedby': label,
         placeholder: ' ',
         class: classNames,

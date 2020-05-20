@@ -63,6 +63,7 @@ export default {
         label,
         variant,
         value,
+        additionalInputAttributes: { 'data-input': true },
         disabled: variant === 'disabled',
       },
       on: {

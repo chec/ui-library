@@ -1,10 +1,10 @@
 <template>
   <div class="chec-horizontal-spinner">
-    <button @click="() => navigate(-1)" class="chec-horizontal-spinner__button">
+    <button @click="handlePrevious" class="chec-horizontal-spinner__button">
       <ChecIcon icon="left" />
     </button>
     <span class="chec-horizontal-spinner__value" :style="computedStyle">{{ value }}</span>
-    <button @click="() => navigate(1)" class="chec-horizontal-spinner__button">
+    <button @click="handleNext" class="chec-horizontal-spinner__button">
       <ChecIcon icon="right" />
     </button>
   </div>
@@ -51,6 +51,12 @@ export default {
     },
   },
   methods: {
+    handlePrevious() {
+      this.navigate(-1);
+    },
+    handleNext() {
+      this.navigate(1);
+    },
     navigate(indexModification) {
       const selectedOption = this.options.findIndex(candidate => candidate === this.value);
       const currentIndex = selectedOption > 0 ? selectedOption : 0;
