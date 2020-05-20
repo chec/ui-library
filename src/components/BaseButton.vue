@@ -48,7 +48,7 @@ export default {
       default: 'secondary',
     },
     /**
-     * The style variant of the button. Includes size, border radius, etc.
+     * The style variant of the button. Includes size, border radius, etc. One of 'large', 'regular', 'small', 'round'
      */
     variant: {
       type: String,
@@ -58,7 +58,7 @@ export default {
       default: 'regular',
     },
     /**
-     * Indicates the position where an icon should show (if any)
+     * Indicates the position where an icon should show (if any). Either 'before' or 'after'
      */
     iconPosition: {
       type: String,
@@ -107,7 +107,7 @@ export default {
     // Note that this would not be ideal usage. Just providing the icon to the default slot is preferred.
     const children = [createElement('span', { class: ['button__content'] }, this.$slots.default)];
 
-    if (this.hasIcon) {
+    if (this.hasIcon && this.$slots.icon) {
       const icon = createElement('i', { class: ['button__icon'] }, this.$slots.icon);
       if (this.iconPosition === 'before') {
         children.unshift(icon);
@@ -115,7 +115,6 @@ export default {
         children.push(icon);
       }
     }
-
     return createElement(tag, {
       class: this.classNames,
       domProps: {
@@ -137,7 +136,7 @@ export default {
     @apply outline-none;
   }
   &__icon {
-    @apply self-center;
+    @apply w-base self-center;
   }
 
   &--has-icon-before {
@@ -160,30 +159,18 @@ export default {
 
   &--variant {
     &-regular {
-      @apply py-3 px-4 rounded text-sm leading-tight;
-      & .button__icon {
-        @apply w-sm;
-      }
+      @apply py-4 px-4 rounded text-sm leading-tight;
     }
     &-large {
       @apply py-4 px-8 rounded text-lg leading-tight;
-      & .button__icon {
-        @apply w-lg;
-      }
     }
     &-small {
-      @apply py-2 px-4 rounded text-sm leading-tight;
-      & .button__icon {
-        @apply w-sm;
-      }
+      @apply p-2 rounded text-sm leading-tight;
     }
     &-round {
       @apply py-2 px-4 rounded-full text-xs;
       & .button__content {
         @apply uppercase tracking-widest;
-      }
-      & .button__icon {
-        @apply w-xs;
       }
     }
   }
@@ -242,6 +229,24 @@ export default {
       }
       &:active {
         @apply bg-red-600;
+      }
+    }
+    &-purple {
+      @apply bg-purple-500 text-white;
+      &:hover {
+        @apply bg-purple-400;
+      }
+      &:active {
+        @apply bg-purple-600;
+      }
+    }
+    &-orange {
+      @apply bg-orange-500 text-white;
+      &:hover {
+        @apply bg-orange-400;
+      }
+      &:active {
+        @apply bg-orange-600;
       }
     }
   }

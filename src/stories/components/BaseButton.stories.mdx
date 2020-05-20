@@ -4,6 +4,7 @@ import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs
 import { withInfo } from 'storybook-addon-vue-info'
 import BaseButton from '../../components/BaseButton.vue';
 import CloseIcon from '../../assets/svgs/close-icon.svg';
+import ChecIcon from '../../components/ChecIcon.vue';
 import makeVariants from '../helpers/makeVariants';
 
 <Meta title="Form fields/Button" component={BaseButton} />
@@ -29,14 +30,15 @@ Todo list
   <Story name="Defaults">
     {{
       components: {
-        BaseButton
+        BaseButton,
+        ChecIcon
       },
       props: {
         color: {
-          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red'], 'secondary'),
+          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'], 'secondary'),
         },
         variant: {
-          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
+          default: select('Variant', ['large', 'regular', 'round'], 'regular'),
         },
         disabled: {
           default: select('Disabled', [true, false], false),
@@ -44,11 +46,23 @@ Todo list
         text: {
           default: text('Text', 'Button text'),
         },
+        hasIcon: {
+          default: boolean('Show Icon', true),
+        },
+        icon: {
+          default: select('Icon', ['left', 'right', 'down', 'up', 'plus', 'close', 'check', 'more', 'download', 'upload', 'grip', 'minus', 'copy',], 'plus'),
+        },
+        iconPosition: {
+          default: select('Icon Position', ['before', 'after'], 'before'),
+        },
       },
       template: `
         <div class="py-16 flex justify-center">
-          <base-button :color="color" :variant="variant" :disabled="disabled">
+          <base-button :color="color" :variant="variant" :icon-position="iconPosition" :disabled="disabled">
             {{text}}
+            <template v-if="hasIcon" v-slot:icon>
+              <ChecIcon :icon="icon" />
+            </template>
           </base-button>
         </div>
       `,
@@ -67,8 +81,8 @@ This is a button modified using the Color and Variant props.
       computed: {
         possibilities() {
           return makeVariants({
-            color: ['brand', 'primary', 'secondary', 'blue', 'green', 'red'],
-            variant: ['large', 'regular', 'small', 'round'],
+            color: ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'],
+            variant: ['large', 'regular', 'round'],
           }).map(possibility => ({
             ...possibility,
             label: `${possibility.color} - ${possibility.variant}`,
@@ -79,7 +93,7 @@ This is a button modified using the Color and Variant props.
         BaseButton
       },
       template: `
-        <div class="py-16 grid grid-cols-4 gap-4 justify-center mx-20">
+        <div class="py-16 grid grid-cols-3 gap-4 justify-center mx-20">
           <div v-for="{ color, variant, label } in possibilities">
             <base-button class="mx-auto capitalize" :color="color" :variant="variant">
               {{ label }}
@@ -120,22 +134,52 @@ This is a button modified using the Color and Variant props.
       },
       props: {
         color: {
-          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red'], 'secondary'),
+          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'], 'secondary'),
         },
         variant: {
-          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
+          default: select('Variant', ['large', 'regular', 'round'], 'regular'),
+        },
+        hasIcon: {
+          default: boolean('Show Icon', true),
         },
       },
       template: `
         <div class="py-16 justify-center">
           <base-button class="mx-auto mb-4" :color="color" :variant="variant">
             Bigger, amazing
-            <template v-slot:icon>
+            <template v-if="hasIcon" v-slot:icon>
               <CloseIcon />
             </template>
           </base-button>
           <base-button class="mx-auto" :color="color" :variant="variant" icon-position="after">
             Bigger, amazing
+            <template v-if="hasIcon" v-slot:icon>
+              <CloseIcon />
+            </template>
+          </base-button>
+        </div>`,
+        methods: { action: action("clicked") }
+    }}
+  </Story>
+</Preview>
+
+## Icon Only
+
+<Preview>
+  <Story name="Icon Only" decorators={[withKnobs()]}>
+    {{
+      components: {
+        BaseButton,
+        CloseIcon
+      },
+      props: {
+        color: {
+          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'], 'brand'),
+        },
+      },
+      template: `
+        <div class="py-16 justify-center">
+          <base-button class="mx-auto mb-4" :color="color" variant="small">
             <template v-slot:icon>
               <CloseIcon />
             </template>
@@ -156,10 +200,10 @@ This is a button modified using the Color and Variant props.
       },
       props: {
         color: {
-          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red'], 'secondary'),
+          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'], 'secondary'),
         },
         variant: {
-          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
+          default: select('Variant', ['large', 'regular', 'round'], 'regular'),
         },
         disabled: {
           default: select('Disabled', [true, false], false),
