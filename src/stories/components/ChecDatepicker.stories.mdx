@@ -1,0 +1,35 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import ChecDatepicker from '../../components/ChecDatepicker.js';
+
+<Meta title="Form Fields" component={ChecDatepicker} />
+
+# Datepicker
+
+Extends the [Flatpickr wrapper component](https://github.com/ankurk91/vue-flatpickr-component) in order to:
+
+- \- automatically pull in relevant stylesheets
+- \- update the controls for month / year
+- \- change the display of days of the week to just letters
+- \- ensure a `TextField` is rendered
+
+The props displayed are only those that are added by this extension. The date is controlled with `v-model`, and all the
+prop definitions on the library component are also available _except `config`_.
+
+<Props of={ChecDatepicker} />
+
+<Preview>
+  <Story name="Date Picker">
+    {{
+      components: {
+        ChecDatepicker,
+      },
+      data() {
+        return { date: null };
+      },
+      template: `
+        <div class="mx-auto max-w-lg pt-6">
+          <ChecDatepicker label="Date" v-model="date" />
+        </div>`
+    }}
+  </Story>
+</Preview>

@@ -15,6 +15,7 @@
       :type="$attrs.type || 'text'"
       @input="handleInput"
       @focus="handleFocus"
+      data-input
     />
     <label
       v-if="label"
@@ -132,7 +133,7 @@ export default {
        * @type {$event.target.value}
        */
       this.autoGrow();
-      this.$emit('input', $event.target.value);
+      this.$emit('input', $event.target.value, $event);
     },
     handleFocus($event) {
       $event.target.select();
