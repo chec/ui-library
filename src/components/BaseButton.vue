@@ -58,7 +58,8 @@ export default {
       default: 'regular',
     },
     /**
-     * Indicates the position where an icon should show (if any). Either 'before' or 'after'
+     * Indicates the position where an icon should show (if any). Defaults to 'before' but it is optional.
+     * Accepts 'before' or 'after'.
      */
     iconPosition: {
       type: String,
