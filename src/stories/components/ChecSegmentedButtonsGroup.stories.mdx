@@ -4,14 +4,14 @@ import { text, select, boolean } from '@storybook/addon-knobs';
 import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGroup.vue';
 import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
 
-<Meta title="Components/Segmented Buttons" component={ChecSegmentedButtonsGroup} />
+<Meta title="Form fields/Segmented buttons" component={ChecSegmentedButtonsGroup} />
 
-# Default Segmented Buttons
+# Grouped
 
 <Props of={ChecSegmentedButtonsGroup} />
 
 <Preview>
-  <Story name="Default Segmented Buttons">
+  <Story name="Grouped">
     {{
       components: {
         ChecSegmentedButton,
@@ -23,21 +23,40 @@ import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
             { label: 'Label 1', value:'1' },
             { label: 'Label 2', value: '2' },
           ],
+          currentActiveButtonValue: '2',
         }
       },
       methods: {
-        click(option) {
-          action(`Clicked button "${option.value}"`)();
+        click(value) {
+          this.currentActiveButtonValue = value;
+          action(`Clicked button "${value}"`)();
+        },
+        isButtonActive(value) {
+          return value === this.currentActiveButtonValue;
+        },
+        onKeyDownRight(index) {
+          this.$nextTick(() => {
+            this.$refs["button" + (1 - index)][0].$el.focus()
+          });
+        },
+        onKeyDownLeft(index) {
+          this.$nextTick(() => {
+            this.$refs["button" + (1 - index)][0].$el.focus()
+          });
         }
       },
       template: `
         <div class="flex flex-column justify-center font-lato mx-auto p-16 bg-gray-100">
           <ChecSegmentedButtonsGroup>
             <ChecSegmentedButton
-              v-for="option in options"
+              v-for="(option, index) in options"
+              :ref="'button' + index"
+              @move-prev="onKeyDownLeft(index)"
+              @move-next="onKeyDownRight(index)"
               :key="option.value"
-              @click="click(option)"
+              @click="click"
               :value="option.value"
+              :active="isButtonActive(option.value)"
             >
             {{ option.label }}
             </ChecSegmentedButton>

@@ -8,7 +8,7 @@ export default {
   name: 'ChecSegmentedButtonsGroup',
 };
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .segmented-btns-group {
   @apply flex cursor-pointer overflow-hidden;
 }

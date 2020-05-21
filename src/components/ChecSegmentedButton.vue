@@ -1,30 +1,24 @@
 <template>
-  <div class="segmented-btn">
     <button
-      class="segmented-btn__btn"
-      :class="{ 'segmented-btn__btn--active': isActive }"
+      class="segmented-btn"
+      :class="{ 'segmented-btn--active': $attrs.active }"
       @click="handleClick"
       :value="value"
-      :active="isActive"
+      @keydown.right="onKeyDownRight"
+      @keydown.left="onKeyDownLeft"
     >
-      <span class="segmented-btn__label">
+      <span class="segmented-btn__label" :class="{ 'segmented-btn__label--active': $attrs.active }">
         <!--
           @slot Label to display within the segmented button
-          @binding active Whether the button is active
         -->
-        <slot v-bind="{ isActive }" />
+        <slot />
       </span>
     </button>
-  </div>
 </template>
 
 <script>
 export default {
   name: 'ChecSegmentedButton',
-  model: {
-    prop: 'active',
-    event: 'click',
-  },
   props: {
     /**
      * Check if the button is selected (active)
@@ -41,11 +35,6 @@ export default {
       default: '',
     },
   },
-  computed: {
-    isActive() {
-      return this.value === this.active;
-    },
-  },
   methods: {
     handleClick() {
       /**
@@ -55,26 +44,44 @@ export default {
        */
       this.$emit('click', this.value);
     },
+    onKeyDownRight() {
+      /**
+       * Emitted the keyboard event is down
+       * @event keydown
+       * @type {$event}
+       */
+      this.$emit('move-next');
+    },
+    onKeyDownLeft() {
+      /**
+       * Emitted the keyboard event is down
+       * @event keydown
+       * @type {$event}
+       */
+      this.$emit('move-prev');
+    },
   },
 };
 </script>
 
 <style lang="scss">
 .segmented-btn {
-  @apply cursor-pointer;
-  &__btn {
-    @apply bg-gray-200 px-3 py-1 text-xs text-gray-500 font-bold uppercase rounded-sm;
-    &__label {
-      @apply text-gray-500;
-    }
-    &--active, &:active, &:focus {
-      // @apply bg-gray-500;
-      &:enabled {
-        @apply bg-gray-500 outline-none;
-        .segmented-btn__label {
-          @apply text-white;
-        }
+  @apply cursor-pointer bg-gray-200 px-3 py-1 text-xs rounded-sm;
+
+  &:enabled {
+    &:active, &:focus {
+      @apply bg-gray-500 outline-none;
+      .segmented-btn__label {
+        @apply text-white;
       }
+    }
+  }
+
+  &__label {
+    @apply text-gray-500 uppercase font-bold;
+
+    &--active {
+      @apply text-white;
     }
   }
 }

@@ -3,39 +3,39 @@ import { action } from "@storybook/addon-actions";
 import { text, select, boolean } from '@storybook/addon-knobs';
 import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
 
-<Meta title="Components/Segmented Buttons" component={ChecSegmentedButton} />
+<Meta title="Form fields/Segmented buttons" component={ChecSegmentedButton} />
 
-# Segmented Buttons
+# Segmented buttons
 
 <Props of={ChecSegmentedButton} />
 
 <Preview>
-  <Story name="Single Segmented Button">
+  <Story name="Single segmented button">
     {{
       components: {
         ChecSegmentedButton,
       },
-      props: {
-        active: {
-          default: boolean('Set to active', false)
-        },
-        option: {
-          type: String,
-          default: 'Label',
-        },
+      data() {
+        return {
+          option: {
+            label: 'Label 1',
+            value:'1'
+          },
+        }
       },
       methods: {
-        click(option) {
-          action(`Clicked button "${option}"`)();
-        }
+        click(value) {
+          action(`Clicked button "${value}"`)();
+        },
       },
       template: `
         <div class="flex justify-center font-lato uppercase mx-auto mx-auto p-16 bg-gray-100">
           <ChecSegmentedButton
-            @click="click(option)"
-            :active="active"
+            @click="click"
+            :value="option.value"
+            :active="option.value"
           >
-            {{option}}
+            {{option.label}}
           </ChecSegmentedButton>
         </div>`
     }}
