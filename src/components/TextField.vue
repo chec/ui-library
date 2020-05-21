@@ -6,37 +6,27 @@
     }"
   >
     <textarea v-if="multiline"
-      class="input"
-      ref="multilineinput"
-      :value="value"
-      :placeholder="placeholder"
-      :disabled="this.variant === 'disabled'"
-      :class="classNames"
+      v-bind="sharedInputProps"
       @input="handleInput"
       @focus="handleFocus"
-      :id='$inputId'
     ></textarea>
     <input v-else
-      ref="input"
-      class="input"
       :type="$attrs.type || 'text'"
-      :value="value"
-      :placeholder="label"
-      :disabled="this.variant === 'disabled'"
-      :class="[classNames, innerInputClass]"
-      :id='$inputId'
+      v-bind="sharedInputProps"
       @input="handleInput"
       @focus="handleFocus"
-      :aria-describedby="label"
     />
     <label
       v-if="label"
       class="text-field__label"
       :class="scrollable"
       :data-content="label"
-      :for="$inputId">
+      :for="id">
       <span class="invisible">{{ label }}</span>
     </label>
+    <div class="text-field__right-content" ref="rightContentSlot">
+      <slot></slot>
+    </div>
   </div>
 </template>
 <script>
@@ -58,13 +48,6 @@ export default {
      * @see https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
      */
     value: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The value used for the inner `<input>`'s placeholder html attribute
-     */
-    placeholder: {
       type: String,
       default: '',
     },
@@ -93,21 +76,38 @@ export default {
   data() {
     return {
       isScrollable: false,
+      id: uniqueId(this.name, this.value, 'chec-switch')(),
     };
-  },
-  created() {
-    this.$inputId = uniqueId(this.name, this.value, 'chec-switch')();
   },
   mounted() {
     this.autoGrow();
   },
   computed: {
-    classNames() {
+    sharedInputProps() {
+      const {
+        value,
+        classNames,
+        variant,
+        id,
+        label,
+      } = this;
+
       return {
-        'opacity-50 input--disabled': this.variant === 'disabled',
-        'input--error': this.variant === 'error',
-        'input--empty': this.value === '',
+        'aria-describedby': label,
+        placeholder: ' ',
+        class: classNames,
+        disabled: variant === 'disabled',
+        id,
+        ref: 'input',
+        value,
       };
+    },
+    classNames() {
+      return [{
+        'text-field__input--disabled': this.variant === 'disabled',
+        'text-field__input--error': this.variant === 'error',
+        'text-field__input--empty': this.value === '',
+      }, 'text-field__input', this.innerInputClass];
     },
     scrollable() {
       return {
@@ -136,15 +136,15 @@ export default {
       $event.target.select();
     },
     autoGrow() {
-      if (!this.$refs.multilineinput) {
+      if (!this.multiline) {
         return;
       }
       /**
        * Allows the text area to grow to mtch the value as the user is typing.
        */
-      this.$refs.multilineinput.style.height = '  5rem';
-      this.$refs.multilineinput.style.height = `${this.$refs.multilineinput.scrollHeight + 2}px`;
-      this.isScrollable = this.$refs.multilineinput.scrollHeight > 160;
+      this.$refs.input.style.height = '  5rem';
+      this.$refs.input.style.height = `${this.$refs.input.scrollHeight + 2}px`;
+      this.isScrollable = this.$refs.input.scrollHeight > 160;
     },
   },
 };
@@ -152,6 +152,7 @@ export default {
 <style lang="scss">
 .text-field {
   @apply relative;
+
   &__label {
     &::before {
       @apply relative text-gray-500 inline-block origin-top-left transition-transform duration-150 left-0 pl-5;
@@ -160,7 +161,8 @@ export default {
       transform: translate3d(0, -2.8rem, 0) scale3d(.8, .8, 1);
     }
   }
-  .input {
+
+  &__input {
     @apply
       leading-tight
       text-sm
@@ -172,9 +174,11 @@ export default {
       border
       border-gray-300
       outline-none;
+
     &::placeholder {
       color: rgba(0, 0, 0, 0);
     }
+
     &:placeholder-shown {
       + {
         .text-field__label {
@@ -184,13 +188,13 @@ export default {
         }
       }
     }
+
     &:focus, &:active {
       @apply border-gray-500;
-      + {
-        .text-field__label {
-          &::before {
-            transform: translate3d(0, -2.8rem, 0) scale3d(.8, .8, 1);
-          }
+
+      &:not(.text-field__input--disabled) + .text-field__label {
+        &::before {
+          transform: translate3d(0, -2.8rem, 0) scale3d(.8, .8, 1);
         }
       }
     }
@@ -198,13 +202,14 @@ export default {
       @apply border-gray-400;
     }
     &--disabled {
-      + {
-        .text-field__label {
-          &::before {
-            @apply transition-opacity duration-300 ease-in-out opacity-50;
-          }
+      @apply opacity-50;
+
+      + .text-field__label {
+        &::before {
+          @apply transition-opacity duration-300 ease-in-out opacity-50;
         }
       }
+
       &:hover,
       &:focus,
       &:active {
@@ -213,7 +218,7 @@ export default {
     }
 
     &--error,
-    &:not(.input--empty):invalid {
+    &:not(.text-field__input--empty):invalid {
       @apply border-red-300;
       &:hover,
       &:focus,
@@ -227,19 +232,20 @@ export default {
     .text-field__label {
       @apply opacity-100;
     }
-    .input {
+    .text-field__input {
       @apply pb-2 pt-6;
     }
   }
 
   &--inline-label {
-    .input:focus {
+    .text-field__input:focus {
       @apply pb-2 pt-6;
       .text-field__label {
         @apply opacity-100;
       }
     }
   }
+
   &--multiline {
     .text-field__label {
       @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
@@ -252,7 +258,8 @@ export default {
         width: calc(100% - 10px);
       }
     }
-    .input {
+
+    .text-field__input {
       @apply resize-none overflow-auto h-20;
       max-height: 10rem;
       scroll-margin: 50px 0 0 50px;
