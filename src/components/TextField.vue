@@ -11,8 +11,8 @@
       @focus="handleFocus"
     ></textarea>
     <input v-else
-      :type="$attrs.type || 'text'"
       v-bind="sharedInputProps"
+      :type="$attrs.type || 'text'"
       @input="handleInput"
       @focus="handleFocus"
     />
@@ -90,9 +90,11 @@ export default {
         variant,
         id,
         label,
+        $attrs,
       } = this;
 
       return {
+        ...$attrs,
         'aria-describedby': label,
         placeholder: ' ',
         class: classNames,
