@@ -156,11 +156,22 @@ export default {
   @apply relative;
 
   &__label {
+    @apply absolute top-0 left-0;
     &::before {
-      @apply relative text-gray-500 inline-block origin-top-left transition-transform duration-150 left-0 pl-5;
+      @apply
+        relative
+        text-gray-500
+        inline-block
+        origin-top-left
+        transition-transform
+        duration-150
+        pl-5
+        py-4
+        leading-tight;
+
       content: attr(data-content);
       backface-visibility: hidden;
-      transform: translate3d(0, -2.8rem, 0) scale3d(.8, .8, 1);
+      transform: translate3d(0, -.3rem, 0) scale3d(.8, .8, 1);
     }
   }
 
@@ -185,7 +196,7 @@ export default {
       + {
         .text-field__label {
           &::before {
-            transform: translate3d(0, -2.3rem, 0) scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
           }
         }
       }
@@ -196,7 +207,7 @@ export default {
 
       &:not(.text-field__input--disabled) + .text-field__label {
         &::before {
-          transform: translate3d(0, -2.8rem, 0) scale3d(.8, .8, 1);
+          transform: translate3d(0, -.3rem, 0) scale3d(.8, .8, 1);
         }
       }
     }
