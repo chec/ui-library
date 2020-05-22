@@ -9,7 +9,6 @@
         >
       </div>
     </div>
-
     <label :for="id" class="chec-switch__label" v-if="$slots.default" @click.prevent="handleToggle">
       <slot />
     </label>
@@ -88,7 +87,7 @@ export default {
     }
 
     &__label {
-      @apply relative pl-4;
+      @apply relative pl-2 cursor-pointer;
     }
 
     &__input {

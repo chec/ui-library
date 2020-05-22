@@ -3,6 +3,8 @@ import { action } from "@storybook/addon-actions";
 import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
 import { withInfo } from 'storybook-addon-vue-info'
 import TextField from '../../components/TextField.vue';
+import ChecIcon from '../../components/ChecIcon.vue';
+import ChecSwitch from '../../components/ChecSwitch.vue';
 
 <Meta title="Form fields/Text field" component={TextField} />
 
@@ -186,6 +188,61 @@ import TextField from '../../components/TextField.vue';
             placeholder="Enter your password"
             type="password"
           />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+# Utilising right slot
+
+<Preview>
+  <Story name="Right slot">
+    {{
+      components: {
+        TextField,
+        ChecIcon,
+        ChecSwitch,
+      },
+      props: {
+        variant: {
+          default: boolean('Disabled', false) ? 'disabled' : '',
+        },
+      },
+      data() {
+        return {
+          inputValue: '',
+          switchState: false,
+        }
+      },
+      template: `
+        <div class="py-16 flex justify-center flex flex-col justify-center">
+          <TextField
+            label="With label"
+            class="self-center w-full max-w-sm mb-4"
+            v-model="inputValue"
+            type="text"
+            :variant="variant"
+          >
+            Label
+          </TextField>
+          <TextField
+            label="With icon"
+            class="self-center w-full max-w-sm mb-4"
+            v-model="inputValue"
+            type="text"
+            :variant="variant"
+          >
+            <ChecIcon icon="calendar" class="w-4 h-4 text-gray-500" />
+          </TextField>
+          <TextField
+            label="With switch"
+            class="self-center w-full max-w-sm mb-4"
+            v-model="inputValue"
+            type="text"
+            :variant="variant"
+          >
+            <ChecSwitch v-model="switchState">Label</ChecSwitch>
+          </TextField>
         </div>`,
     }}
   </Story>
