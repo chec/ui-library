@@ -68,6 +68,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Additional input attributes that should be applied to the native input
+     */
+    additionalInputAttributes: Object,
   },
   data() {
     return {
@@ -100,6 +104,7 @@ export default {
   computed: {
     sharedInputProps() {
       const {
+        additionalInputAttributes,
         value,
         variant,
         id,
@@ -109,6 +114,7 @@ export default {
 
       return {
         ...$attrs,
+        ...additionalInputAttributes,
         'aria-describedby': label,
         placeholder: ' ',
         class: ['text-field__input', this.innerInputClass],
@@ -156,7 +162,7 @@ export default {
        * @type {$event.target.value}
        */
       this.autoGrow();
-      this.$emit('input', $event.target.value);
+      this.$emit('input', $event.target.value, $event);
     },
     handleFocus($event) {
       $event.target.select();

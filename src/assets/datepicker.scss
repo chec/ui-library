@@ -1,0 +1,46 @@
+.flatpickr-calendar {
+  @apply p-2 w-auto;
+
+  .flatpickr-weekdays {
+    @apply mb-1;
+  }
+
+  .dayContainer, .flatpickr-weekdays, .flatpickr-days {
+    width: 248px;
+    min-width: 248px;
+    max-width: 248px;
+  }
+
+  .dayContainer {
+    @apply content-between;
+    height: 212px;
+  }
+
+  .flatpickr-day {
+    @apply block box-border rounded-sm text-xs text-gray-500;
+
+    max-width: 32px;
+    max-height: 32px;
+    line-height: 32px;
+
+    &.prevMonthDay {
+      @apply text-gray-400;
+    }
+
+    &.today {
+      @apply border-gray-300;
+    }
+
+    &.selected {
+      @apply text-white bg-gray-400 border-gray-400;
+    }
+
+    &:hover {
+      @apply bg-gray-200 border-gray-200;
+
+      &.selected, &.today {
+        @apply text-gray-500;
+      }
+    }
+  }
+}

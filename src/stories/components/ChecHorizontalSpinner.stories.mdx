@@ -1,0 +1,28 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import ChecHorizontalSpinner from '../../components/ChecHorizontalSpinner.vue';
+
+<Meta title="Components" component={ChecHorizontalSpinner} />
+
+# Horizontal Spinner
+
+<Props of={ChecHorizontalSpinner} />
+
+<Preview>
+  <Story name="Horizontal Spinner">
+    {{
+      components: {
+        ChecHorizontalSpinner,
+      },
+      data() {
+        return {
+          selection: 'Monday',
+          options: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        };
+      },
+      template: `
+        <div class="mx-auto pt-6 flex justify-around">
+          <ChecHorizontalSpinner :options="options" v-model="selection" value-width="5rem" />
+        </div>`
+    }}
+  </Story>
+</Preview>
