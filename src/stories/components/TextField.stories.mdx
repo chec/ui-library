@@ -33,6 +33,9 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
         multiline: {
           default: boolean('Multiline', false)
         },
+        type: {
+          default: select('Type', ['text', 'email', 'password', 'number', 'date', 'color', 'month', 'search', 'tel', 'url', 'week'], 'text')
+        },
       },
       computed: {
         variant() {
@@ -51,6 +54,7 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
             placeholder="Example Placeholder"
             v-model="inputValue"
             :variant="variant"
+            :type="type"
             class="w-full max-w-sm"
           />
         </div>`,
