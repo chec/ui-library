@@ -88,7 +88,7 @@ export default {
     }
 
     &__label {
-      @apply relative pl-4;
+      @apply relative pl-2;
     }
 
     &__input {

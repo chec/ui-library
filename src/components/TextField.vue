@@ -1,10 +1,5 @@
 <template>
-  <div class="text-field" :class="{
-    'text-field--inline-label': label,
-    'text-field--modified': label ? !!value : false,
-    'text-field--multiline': multiline,
-    }"
-  >
+  <div class="text-field" :class="classNames">
     <textarea v-if="multiline"
       v-bind="sharedInputProps"
       @input="handleInput"
@@ -15,6 +10,7 @@
       :type="$attrs.type || 'text'"
       @input="handleInput"
       @focus="handleFocus"
+      :style="{ 'padding-right': hasSlot && `${slotWidth}px` }"
     />
     <label
       v-if="label"
@@ -76,17 +72,35 @@ export default {
   data() {
     return {
       isScrollable: false,
+      slotObserver: null,
       id: uniqueId(this.name, this.value, 'chec-switch')(),
+      slotWidth: 0,
+      hasSlot: false,
     };
   },
   mounted() {
     this.autoGrow();
+
+    if (!this.multiline) {
+      this.slotObserver = new MutationObserver(this.adjustSlotWidth);
+
+      this.slotObserver.observe(
+        this.$refs.rightContentSlot,
+        {
+          attributes: true,
+          childList: true,
+          characterData: true,
+          subtree: true,
+        },
+      );
+
+      this.adjustSlotWidth();
+    }
   },
   computed: {
     sharedInputProps() {
       const {
         value,
-        classNames,
         variant,
         id,
         label,
@@ -97,7 +111,7 @@ export default {
         ...$attrs,
         'aria-describedby': label,
         placeholder: ' ',
-        class: classNames,
+        class: ['text-field__input', this.innerInputClass],
         disabled: variant === 'disabled',
         id,
         ref: 'input',
@@ -105,11 +119,21 @@ export default {
       };
     },
     classNames() {
-      return [{
-        'text-field__input--disabled': this.variant === 'disabled',
-        'text-field__input--error': this.variant === 'error',
-        'text-field__input--empty': this.value === '',
-      }, 'text-field__input', this.innerInputClass];
+      const {
+        label,
+        multiline,
+        value,
+        variant,
+      } = this;
+
+      return {
+        'text-field--disabled': variant === 'disabled',
+        'text-field--error': variant === 'error',
+        'text-field--empty': value === '',
+        'text-field--inline-label': label,
+        'text-field--modified': label ? !!value : false,
+        'text-field--multiline': multiline,
+      };
     },
     scrollable() {
       return {
@@ -137,6 +161,10 @@ export default {
     handleFocus($event) {
       $event.target.select();
     },
+    adjustSlotWidth() {
+      this.hasSlot = this.$refs.rightContentSlot.clientWidth > 0;
+      this.slotWidth = this.$refs.rightContentSlot.scrollWidth;
+    },
     autoGrow() {
       if (!this.multiline) {
         return;
@@ -157,6 +185,7 @@ export default {
 
   &__label {
     @apply absolute top-0 left-0;
+
     &::before {
       @apply
         relative
@@ -193,35 +222,32 @@ export default {
     }
 
     &:placeholder-shown {
-      + {
-        .text-field__label {
-          &::before {
-            transform: scale(1, 1);
-          }
+      + .text-field__label {
+        &::before {
+          transform: scale(1, 1);
         }
       }
     }
 
     &:focus, &:active {
       @apply border-gray-500;
-
-      &:not(.text-field__input--disabled) + .text-field__label {
-        &::before {
-          transform: translate(0, -.3rem) scale(.8, .8);
-        }
-      }
     }
+
     &:hover {
       @apply border-gray-400;
     }
-    &--disabled {
-      @apply opacity-50;
+  }
 
-      + .text-field__label {
-        &::before {
-          @apply transition-opacity duration-300 ease-in-out opacity-50;
-        }
-      }
+  &__right-content {
+    // Alignment & spacing
+    @apply absolute flex items-center h-full right-0 top-0 mx-4;
+    // Default styles & colours
+    @apply text-gray-500 uppercase tracking-widest text-xxs font-bold font-lato;
+  }
+
+  &--disabled {
+    .text-field__input {
+      @apply opacity-50;
 
       &:hover,
       &:focus,
@@ -230,14 +256,22 @@ export default {
       };
     }
 
-    &--error,
-    &:not(.text-field__input--empty):invalid {
-      @apply border-red-300;
-      &:hover,
-      &:focus,
-      &:active {
-        @apply border-red-200;
-      }
+    .text-field__right-content {
+      @apply opacity-50;
+    }
+
+    .text-field__label::before {
+      @apply transition-opacity duration-300 ease-in-out opacity-50;
+    }
+  }
+
+  &--error &__input,
+  :not(.text-field--empty) &__input:invalid {
+    @apply border-red-300;
+    &:hover,
+    &:focus,
+    &:active {
+      @apply border-red-200;
     }
   }
 
@@ -264,7 +298,7 @@ export default {
       @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
       margin: 1px;
 
-      &--scrollable {
+      .text-field--scrollable & {
         @apply bg-vertical-transparent-gradient;
         width: calc(100% - 10px);
       }
@@ -285,6 +319,14 @@ export default {
       }
       scrollbar-color: #D3E0F1 transparent;
       scrollbar-width: thin;
+    }
+  }
+
+  &:not(.text-field--disabled) .text-field__input {
+    &:focus, &:active {
+      + .text-field__label::before {
+        transform: translate(0, -.3rem) scale(.8, .8);
+      }
     }
   }
 }

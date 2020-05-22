@@ -14,6 +14,7 @@ import IcUpload from '../assets/svgs/UiIcons/ic-upload.svg';
 import IcGrip from '../assets/svgs/UiIcons/ic-grip.svg';
 import IcMinus from '../assets/svgs/UiIcons/ic-minus.svg';
 import IcCopy from '../assets/svgs/UiIcons/ic-copy.svg';
+import IcCalendar from '../assets/svgs/UiIcons/ic-calendar.svg';
 // Nav icons imports
 import IcOrders from '../assets/svgs/NavIcons/ic-orders.svg';
 import IcProducts from '../assets/svgs/NavIcons/ic-products.svg';
@@ -52,6 +53,7 @@ export const uiIcons = {
   grip: IcGrip,
   minus: IcMinus,
   copy: IcCopy,
+  calendar: IcCalendar,
 };
 
 export const navIcons = {
