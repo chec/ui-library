@@ -171,7 +171,7 @@ export default {
 
       content: attr(data-content);
       backface-visibility: hidden;
-      transform: translate3d(0, -.3rem, 0) scale3d(.8, .8, 1);
+      transform: translate(0, -.3rem) scale(.8, .8);
     }
   }
 
@@ -196,7 +196,7 @@ export default {
       + {
         .text-field__label {
           &::before {
-            transform: scale3d(1, 1, 1);
+            transform: scale(1, 1);
           }
         }
       }
@@ -207,7 +207,7 @@ export default {
 
       &:not(.text-field__input--disabled) + .text-field__label {
         &::before {
-          transform: translate3d(0, -.3rem, 0) scale3d(.8, .8, 1);
+          transform: translate(0, -.3rem) scale(.8, .8);
         }
       }
     }
