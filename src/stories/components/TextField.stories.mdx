@@ -5,6 +5,7 @@ import { withInfo } from 'storybook-addon-vue-info'
 import TextField from '../../components/TextField.vue';
 import ChecIcon from '../../components/ChecIcon.vue';
 import ChecSwitch from '../../components/ChecSwitch.vue';
+import PasswordTextField from '../../components/PasswordTextField.vue';
 
 <Meta title="Form fields/Text field" component={TextField} />
 
@@ -162,31 +163,29 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
   </Story>
 </Preview>
 
-# Password
+# Password TextField
 
 <Preview>
-  <Story name="Password">
+  <Story name="PasswordTextField">
     {{
       props: {
         inputValue: {
-          default: text('Input Value', '')
+          default: text('Input Value', 'Password')
         },
         label: {
           default: text('Label', 'Label')
         },
       },
       components: {
-        TextField
+        PasswordTextField
       },
       template: `
         <div class="py-16 flex justify-center">
-          <TextField
+          <PasswordTextField
             name="password"
             :label="label"
             class="w-full max-w-sm"
             v-model="inputValue"
-            placeholder="Enter your password"
-            type="password"
           />
         </div>`,
     }}
