@@ -184,7 +184,7 @@ export default {
   @apply relative;
 
   &__label {
-    @apply absolute top-0 left-0;
+    @apply absolute top-0 left-0 cursor-text;
 
     &::before {
       @apply
@@ -242,7 +242,7 @@ export default {
     // Alignment & spacing
     @apply absolute flex items-center h-full right-0 top-0 mx-4;
     // Default styles & colours
-    @apply text-gray-500 uppercase tracking-widest text-xxs font-bold font-lato;
+    @apply cursor-default text-gray-500 uppercase tracking-widest text-xxs font-bold font-lato;
   }
 
   &--disabled {
