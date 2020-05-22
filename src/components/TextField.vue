@@ -263,9 +263,7 @@ export default {
     .text-field__label {
       @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
       margin: 1px;
-      &:before {
-        top: 3.25rem;
-      }
+
       &--scrollable {
         @apply bg-vertical-transparent-gradient;
         width: calc(100% - 10px);
