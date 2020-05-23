@@ -7,12 +7,10 @@
       @keydown.right="onKeyDownRight"
       @keydown.left="onKeyDownLeft"
     >
-      <span class="segmented-btn__label" :class="{ 'segmented-btn__label--active': $attrs.active }">
-        <!--
-          @slot Label to display within the segmented button
-        -->
-        <slot />
-      </span>
+      <!--
+        @slot Label to display within the segmented button
+      -->
+      <slot />
     </button>
 </template>
 
@@ -59,24 +57,11 @@ export default {
 
 <style lang="scss">
 .segmented-btn {
-  @apply cursor-pointer bg-gray-200 px-3 py-1 text-xs rounded-sm;
+  @apply cursor-pointer bg-gray-200 px-3 py-1 text-xs rounded-sm text-gray-500 uppercase font-bold;
 
   &:enabled {
     &:active, &:focus {
-      @apply bg-gray-500 outline-none;
-      .segmented-btn__label {
-        @apply text-white;
-      }
-    }
-  }
-
-  &__label {
-    @apply text-gray-500 uppercase font-bold;
-
-    &--active {
-      &:enabled {
-        @apply text-white;
-      }
+      @apply bg-gray-500 outline-none text-white;
     }
   }
 }
