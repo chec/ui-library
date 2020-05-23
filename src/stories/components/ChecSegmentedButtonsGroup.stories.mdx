@@ -51,8 +51,8 @@ import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
             <ChecSegmentedButton
               v-for="(option, index) in options"
               :ref="'button' + index"
-              @move-prev="onKeyDownLeft(index)"
-              @move-next="onKeyDownRight(index)"
+              @move-prev="() => onKeyDownLeft(index)"
+              @move-next="() => onKeyDownRight(index)"
               :key="option.value"
               @click="click"
               :value="option.value"

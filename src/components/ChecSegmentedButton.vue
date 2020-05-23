@@ -21,13 +21,6 @@ export default {
   name: 'ChecSegmentedButton',
   props: {
     /**
-     * Check if the button is selected (active)
-     */
-    active: {
-      type: Boolean,
-      default: false,
-    },
-    /**
      * The value of the segmented button
      */
     value: {
@@ -50,7 +43,7 @@ export default {
        * @event keydown
        * @type {$event}
        */
-      this.$emit('move-next');
+      this.$emit('move-next', this.value);
     },
     onKeyDownLeft() {
       /**
@@ -58,7 +51,7 @@ export default {
        * @event keydown
        * @type {$event}
        */
-      this.$emit('move-prev');
+      this.$emit('move-prev', this.value);
     },
   },
 };
@@ -81,7 +74,9 @@ export default {
     @apply text-gray-500 uppercase font-bold;
 
     &--active {
-      @apply text-white;
+      &:enabled {
+        @apply text-white;
+      }
     }
   }
 }
