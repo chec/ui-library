@@ -1,8 +1,8 @@
 import { action } from "@storybook/addon-actions";
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
-import { text, select, boolean } from '@storybook/addon-knobs';
+import { boolean } from '@storybook/addon-knobs';
 import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGroup.vue';
-import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
+
 
 <Meta title="Form fields/Segmented buttons" component={ChecSegmentedButtonsGroup} />
 
@@ -14,8 +14,13 @@ import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
   <Story name="Grouped">
     {{
       components: {
-        ChecSegmentedButton,
         ChecSegmentedButtonsGroup,
+      },
+      props: {
+        disabled: {
+          type: Boolean,
+          default: () => boolean('Disabled', false),
+        },
       },
       data() {
         return {
@@ -23,44 +28,16 @@ import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
             { label: 'Label 1', value:'1' },
             { label: 'Label 2', value: '2' },
           ],
-          currentActiveButtonValue: '2',
-        }
-      },
-      methods: {
-        click(value) {
-          this.currentActiveButtonValue = value;
-          action(`Clicked button "${value}"`)();
-        },
-        isButtonActive(value) {
-          return value === this.currentActiveButtonValue;
-        },
-        onKeyDownRight(index) {
-          this.$nextTick(() => {
-            this.$refs["button" + (1 - index)][0].$el.focus()
-          });
-        },
-        onKeyDownLeft(index) {
-          this.$nextTick(() => {
-            this.$refs["button" + (1 - index)][0].$el.focus()
-          });
+          selected: null,
         }
       },
       template: `
         <div class="flex flex-column justify-center font-lato mx-auto p-16 bg-gray-100">
-          <ChecSegmentedButtonsGroup>
-            <ChecSegmentedButton
-              v-for="(option, index) in options"
-              :ref="'button' + index"
-              @move-prev="() => onKeyDownLeft(index)"
-              @move-next="() => onKeyDownRight(index)"
-              :key="option.value"
-              @click="click"
-              :value="option.value"
-              :active="isButtonActive(option.value)"
-            >
-            {{ option.label }}
-            </ChecSegmentedButton>
-          </ChecSegmentedButtonsGroup>
+          <ChecSegmentedButtonsGroup
+            :options="options"
+            v-model="selected"
+            :disabled="disabled"
+          />
         </div>`
     }}
   </Story>

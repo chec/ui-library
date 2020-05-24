@@ -1,11 +1,12 @@
 <template>
     <button
       class="segmented-btn"
-      :class="{ 'segmented-btn--active': $attrs.active }"
+      :class="{ 'segmented-btn--active': active }"
       @click="handleClick"
       :value="value"
       @keydown.right="onKeyDownRight"
       @keydown.left="onKeyDownLeft"
+      v-bind="$attrs"
     >
       <!--
         @slot Label to display within the segmented button
@@ -23,15 +24,19 @@ export default {
      */
     value: {
       type: String,
-      default: '',
+      required: true,
     },
+    /**
+     * Whether this button should appear as "active" - having been selected
+     */
+    active: Boolean,
   },
   methods: {
     handleClick() {
       /**
        * Emitted the button is clicked
        * @event click
-       * @type {$event}
+       * @property {string} The current value
        */
       this.$emit('click', this.value);
     },
@@ -39,7 +44,7 @@ export default {
       /**
        * Emitted the keyboard event is down
        * @event keydown
-       * @type {$event}
+       * @property {string} The current value
        */
       this.$emit('move-next', this.value);
     },
@@ -47,7 +52,7 @@ export default {
       /**
        * Emitted the keyboard event is down
        * @event keydown
-       * @type {$event}
+       * @property {string} The current value
        */
       this.$emit('move-prev', this.value);
     },
@@ -59,8 +64,8 @@ export default {
 .segmented-btn {
   @apply cursor-pointer bg-gray-200 px-3 py-1 text-xs rounded-sm text-gray-500 uppercase font-bold;
 
-  &:enabled {
-    &:active, &:focus {
+  &--active, &:active, &:focus {
+    &:enabled {
       @apply bg-gray-500 outline-none text-white;
     }
   }
