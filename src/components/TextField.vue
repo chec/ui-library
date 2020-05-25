@@ -242,18 +242,22 @@ export default {
       text-sm
       text-gray-600
       w-full
-      p-4
+      px-4
       bg-white
       rounded
       border
       border-gray-300
-      outline-none;
+      outline-none
+      pb-2
+      pt-6
+    ;
 
     &::placeholder {
       color: rgba(0, 0, 0, 0);
     }
 
     &:placeholder-shown {
+      @apply py-4;
       + .text-field__label {
         &::before {
           transform: scale(1, 1);
