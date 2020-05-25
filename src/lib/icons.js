@@ -15,6 +15,7 @@ import IcGrip from '../assets/svgs/UiIcons/ic-grip.svg';
 import IcMinus from '../assets/svgs/UiIcons/ic-minus.svg';
 import IcCopy from '../assets/svgs/UiIcons/ic-copy.svg';
 import IcCalendar from '../assets/svgs/UiIcons/ic-calendar.svg';
+import ChecLogo from '../assets/svgs/chec-logo.svg';
 // Nav icons imports
 import IcOrders from '../assets/svgs/NavIcons/ic-orders.svg';
 import IcProducts from '../assets/svgs/NavIcons/ic-products.svg';
@@ -54,6 +55,7 @@ export const uiIcons = {
   minus: IcMinus,
   copy: IcCopy,
   calendar: IcCalendar,
+  chec: ChecLogo,
 };
 
 export const navIcons = {
