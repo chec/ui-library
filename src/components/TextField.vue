@@ -175,7 +175,7 @@ export default {
        * @event click
        * @type {e}
        */
-      this.$emit('onActionClick', e);
+      this.$emit('actionClick', e, this.value);
     },
     handleInput($event) {
       /**
@@ -216,7 +216,7 @@ export default {
   }
 
   &__label {
-    @apply absolute top-0 left-0 cursor-text;
+    @apply absolute top-0 left-0 h-12 cursor-text;
 
     &::before {
       @apply

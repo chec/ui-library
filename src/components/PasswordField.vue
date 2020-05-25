@@ -1,16 +1,16 @@
 <template>
   <TextField
     v-bind="{...$attrs, ...$props}"
-    :type="passwordType"
+    :type="fieldType"
     :actionLabel="showHideText"
-    @onActionClick="toggleShowPassword"
+    @actionClick="toggleShowPassword"
   />
 </template>
 <script>
 import TextField from './TextField.vue';
 
 export default {
-  name: 'PasswordTextField',
+  name: 'PasswordField',
   components: {
     TextField,
   },
@@ -29,13 +29,16 @@ export default {
     },
   },
   computed: {
-    isPasswordType() {
-      return this.$attrs.type === 'password';
-    },
+    /**
+     * @returns {string}
+     */
     showHideText() {
       return `${this.showPassword ? 'hide' : 'show'} password`;
     },
-    passwordType() {
+    /**
+     * @returns {string}
+     */
+    fieldType() {
       return this.showPassword ? 'text' : 'password';
     },
   },
