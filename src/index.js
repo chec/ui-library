@@ -20,11 +20,13 @@ import ChecModal from './components/ChecModal.vue';
 import ChecNavigation from './components/ChecNavigation.vue';
 import ChecOptionsMenu from './components/ChecOptionsMenu.vue';
 import ChecPaginate from './components/ChecPaginate.vue';
+import ChecTab from './components/ChecTab.vue';
 import TextField from './components/TextField.vue';
 import ChecProgressBar from './components/ChecProgressBar.vue';
 import ChecAvatar from './components/ChecAvatar.vue';
 import ChecAccordion from './components/ChecAccordion.vue';
 import ChecHeader from './components/ChecHeader.vue';
+import PasswordField from './components/PasswordField.vue';
 
 export {
   BaseAlert,
@@ -47,6 +49,8 @@ export {
   ChecNavigation,
   ChecOptionsMenu,
   ChecPaginate,
+  ChecTab,
+  PasswordField,
   TextField,
   ChecProgressBar,
   ChecAvatar,
