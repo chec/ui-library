@@ -23,6 +23,13 @@
     <div class="text-field__right-content" ref="rightContentSlot">
       <slot></slot>
     </div>
+    <a
+      v-if="actionLabel"
+      class="text-field__action-button"
+      @click="onActionClick"
+    >
+      {{ actionLabel }}
+    </a>
   </div>
 </template>
 <script>
@@ -67,6 +74,13 @@ export default {
     multiline: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * Text for action button beneath input
+     */
+    actionLabel: {
+      type: String,
+      default: '',
     },
     /**
      * Additional input attributes that should be applied to the native input
@@ -155,6 +169,14 @@ export default {
     },
   },
   methods: {
+    onActionClick(e) {
+      /**
+       * Emitted when action button is clicked
+       * @event click
+       * @type {e}
+       */
+      this.$emit('actionClick', e, this.value);
+    },
     handleInput($event) {
       /**
        * Emitted when the `<input>`'s 'input' event bubbles up. The v-model directive uses this to function.
@@ -189,8 +211,12 @@ export default {
 .text-field {
   @apply relative;
 
+  &__action-button {
+    @apply title-xxs text-blue-500 float-right mt-1 cursor-pointer;
+  }
+
   &__label {
-    @apply absolute top-0 left-0 cursor-text;
+    @apply absolute top-0 left-0 h-12 cursor-text;
 
     &::before {
       @apply

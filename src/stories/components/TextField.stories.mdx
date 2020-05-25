@@ -162,33 +162,40 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
   </Story>
 </Preview>
 
-# Password
+# With action button
 
 <Preview>
-  <Story name="Password">
+  <Story name="With action button">
     {{
       props: {
         inputValue: {
-          default: text('Input Value', '')
+          default: text('Input value', 'Hello world')
         },
         label: {
-          default: text('Label', 'Label')
+          default: text('Label', 'Enter your greeting')
         },
+        actionLabel: {
+          default: text('Action label', 'Click me'),
+        }
+      },
+      methods: {
+        handleClick(e, value) {
+          return action(`Text field action button was clicked with: ${value}`)();
+        }
       },
       components: {
-        TextField
+        TextField,
       },
       template: `
         <div class="py-16 flex justify-center">
           <TextField
-            name="password"
             :label="label"
-            class="w-full max-w-sm"
             v-model="inputValue"
-            placeholder="Enter your password"
-            type="password"
+            :actionLabel="actionLabel"
+            @actionClick="handleClick"
           />
-        </div>`,
+        </div>
+      `
     }}
   </Story>
 </Preview>
