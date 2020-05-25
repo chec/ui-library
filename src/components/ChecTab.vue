@@ -5,20 +5,18 @@
     :class="{ 'chec-tab--active': active }"
     :disabled="disabled"
   >
-    <span class="chec-tab__text">
-      <!--
-        @slot Text to display within the tab button
-        @binding disabled Whether the tab is disabled
-        @binding active Whether the tab is active
-      -->
-      <slot v-bind="{ active, disabled }" />
-    </span>
+    <!--
+      @slot Text to display within the tab button
+      @binding disabled Whether the tab is disabled
+      @binding active Whether the tab is active
+    -->
+    <slot v-bind="{ active, disabled }" />
   </button>
 </template>
 
 <script>
 export default {
-  name: 'BaseTab',
+  name: 'ChecTab',
   props: {
     /**
      * If this tab should appear selected (active)
@@ -50,33 +48,17 @@ export default {
 
 <style lang="scss">
 .chec-tab {
-  @apply bg-gray-500 rounded px-4 py-2 cursor-pointer mx-1;
-  &:hover {
-    &:enabled {
-      @apply bg-gray-600;
-      .chec-tab__text {
-        @apply text-white;
-      }
-    }
+  @apply px-6 py-2 border-b-2 border-gray-300;
+  @apply font-bold font-lato text-sm text-gray-400;
+  &:hover:enabled {
+    @apply text-gray-500 border-gray-400;
   }
   &:disabled {
     @apply opacity-50 cursor-not-allowed;
   }
-  &__text {
-    @apply text-white;
-  }
   &--active, &:active, &:focus {
     &:enabled {
-      @apply bg-gray-400 outline-none;
-      .chec-tab__text {
-        @apply text-white;
-      }
-      &:hover {
-        @apply bg-gray-600;
-      }
-    }
-    &:disabled {
-      @apply bg-gray-500;
+      @apply outline-none text-gray-500 border-gray-500;
     }
   }
 }
