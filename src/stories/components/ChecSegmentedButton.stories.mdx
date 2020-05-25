@@ -15,25 +15,25 @@ import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
       components: {
         ChecSegmentedButton,
       },
+      props: {
+        disabled: {
+          type: Boolean,
+          default: () => boolean('Disabled', false),
+        },
+      },
       data() {
         return {
           option: {
             label: 'Label 1',
-            value:'1'
+            value: '1'
           },
         }
-      },
-      methods: {
-        click(value) {
-          action(`Clicked button "${value}"`)();
-        },
       },
       template: `
         <div class="flex justify-center font-lato uppercase mx-auto mx-auto p-16 bg-gray-100">
           <ChecSegmentedButton
-            @click="click"
             :value="option.value"
-            :active="option.value"
+            :disabled="disabled"
           >
             {{option.label}}
           </ChecSegmentedButton>
