@@ -1,47 +1,45 @@
 <template>
   <div class="chec-paginate">
-    <TabsGroup class="chec-page-selector">
-      <BaseTab title="Go to the first page" class="chec-page-selector__control" @click="choosePage('first')"
+    <div class="chec-page-selector">
+      <button title="Go to the first page" class="chec-page-selector__control" @click="choosePage('first')"
                :disabled="page === 1"
       >
         <ChecIcon icon="double-left" />
-      </BaseTab>
-      <BaseTab title="Go to the previous page" class="chec-page-selector__control"
+      </button>
+      <button title="Go to the previous page" class="chec-page-selector__control"
                @click="choosePage('previous')" :disabled="page === 1"
       >
         <ChecIcon icon="left" />
-      </BaseTab>
+      </button>
       <span class="chec-page-selector__page-reference">{{ page }} of {{ pageCount }}</span>
-      <BaseTab title="Go to the next page" class="chec-page-selector__control" @click="choosePage('next')"
+      <button title="Go to the next page" class="chec-page-selector__control" @click="choosePage('next')"
                :disabled="page === pageCount"
       >
         <ChecIcon icon="right" />
-      </BaseTab>
-      <BaseTab title="Go to the last page" class="chec-page-selector__control" @click="choosePage('last')"
+      </button>
+      <button title="Go to the last page" class="chec-page-selector__control" @click="choosePage('last')"
                :disabled="page === pageCount"
       >
         <ChecIcon icon="double-right" />
-      </BaseTab>
-    </TabsGroup>
-    <TabsGroup class="chec-per-page-control" v-show="limitOptions.length > 1">
+      </button>
+    </div>
+    <div class="chec-per-page-control" v-show="limitOptions.length > 1">
       <span class="chec-per-page-control__label">Showing</span>
-      <BaseTab class="chec-per-page-control__option" v-for="option in limitOptions" :key="option"
-               @click="choosePageSize(option)" :active="option === pageSize"
+      <button class="chec-per-page-control__option" v-for="option in limitOptions" :key="option"
+               @click="choosePageSize(option)" :class="{'chec-per-page-control__option--active': option === pageSize}"
       >
         {{ option }}
-      </BaseTab>
-    </TabsGroup>
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
-import TabsGroup from './TabsGroup.vue';
-import BaseTab from './BaseTab.vue';
 import ChecIcon from './ChecIcon.vue';
 
 export default {
   name: 'ChecPaginate',
-  components: { ChecIcon, BaseTab, TabsGroup },
+  components: { ChecIcon },
   props: {
     /**
      * Currently selected page
@@ -153,30 +151,72 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
+<style lang="scss">
+%active-control {
+  &:enabled {
+    @apply bg-gray-400 outline-none;
+    &:hover {
+      @apply bg-gray-600;
+    }
+  }
+  &:disabled {
+    @apply bg-gray-500;
+  }
+}
+
+%control-shared {
+  @apply bg-gray-500 rounded p-1 mr-1 ml-0;
+  &:hover {
+    &:enabled {
+      @apply bg-gray-600;
+      .chec-tab__text {
+        @apply text-white;
+      }
+    }
+  }
+  &:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+  &:active, &:focus {
+    @extend %active-control;
+  }
+}
+
+%control-group {
+  @apply rounded-md bg-gray-500 p-2 text-sm uppercase text-white tracking-widest font-bold;
+}
+
 .chec-paginate {
   @apply flex w-full justify-between flex-row-reverse;
 }
 
 .chec-per-page-control {
-  @apply leading-tight uppercase text-white text-xxs tracking-widest font-bold py-2 px-3;
-
+  @extend %control-group;
+  @apply leading-tight text-xxs py-2 px-3;
   &__label {
     @apply text-xxs mr-3;
   }
 
   &__option {
-    @apply text-xs font-bold p-1 mr-1 ml-0;
+    @extend %control-shared;
+    @apply text-xs font-bold;
+
+    &--active {
+      @extend %active-control;
+    }
   }
 }
 
 .chec-page-selector {
-  @apply uppercase text-white tracking-widest font-bold;
+  @extend %control-group;
 
   &__control {
-    @apply p-1 mr-1 ml-0;
+    @extend %control-shared;
     svg {
       @apply w-3 h-3;
+    }
+    &--active {
+      @extend %active-control;
     }
   }
 

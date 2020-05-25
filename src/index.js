@@ -9,7 +9,6 @@ import BaseNotification from './components/BaseNotification.vue';
 import BaseOption from './components/BaseOption.vue';
 import BasePopover from './components/BasePopover.vue';
 import BaseTag from './components/BaseTag.vue';
-import BaseTab from './components/BaseTab.vue';
 import BaseTooltip from './directives/BaseTooltip';
 import ChecCard from './components/ChecCard.vue';
 import ChecCheckbox from './components/ChecCheckbox.vue';
@@ -21,7 +20,6 @@ import ChecModal from './components/ChecModal.vue';
 import ChecNavigation from './components/ChecNavigation.vue';
 import ChecOptionsMenu from './components/ChecOptionsMenu.vue';
 import ChecPaginate from './components/ChecPaginate.vue';
-import TabsGroup from './components/TabsGroup.vue';
 import TextField from './components/TextField.vue';
 import ChecProgressBar from './components/ChecProgressBar.vue';
 import ChecAvatar from './components/ChecAvatar.vue';
@@ -37,7 +35,6 @@ export {
   BaseNotification,
   BaseOption,
   BasePopover,
-  BaseTab,
   BaseTag,
   BaseTooltip,
   ChecCard,
@@ -50,7 +47,6 @@ export {
   ChecNavigation,
   ChecOptionsMenu,
   ChecPaginate,
-  TabsGroup,
   TextField,
   ChecProgressBar,
   ChecAvatar,
