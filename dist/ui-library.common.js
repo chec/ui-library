@@ -19001,16 +19001,23 @@ var ChecPaginate_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecPaginate = (ChecPaginate_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=6542950e&
-var TextFieldvue_type_template_id_6542950e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-field",class:_vm.classNames},[(_vm.multiline)?_c('textarea',_vm._b({on:{"input":_vm.handleInput,"focus":_vm.handleFocus}},'textarea',_vm.sharedInputProps,false)):_c('input',_vm._b({style:({ 'padding-right': _vm.hasSlot && (_vm.slotWidth + "px") }),attrs:{"type":_vm.$attrs.type || 'text'},on:{"input":_vm.handleInput,"focus":_vm.handleFocus}},'input',_vm.sharedInputProps,false)),(_vm.label)?_c('label',{staticClass:"text-field__label",class:_vm.scrollable,attrs:{"data-content":_vm.label,"for":_vm.id}},[_c('span',{staticClass:"invisible"},[_vm._v(_vm._s(_vm.label))])]):_vm._e(),_c('div',{ref:"rightContentSlot",staticClass:"text-field__right-content"},[_vm._t("default")],2)])}
-var TextFieldvue_type_template_id_6542950e_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=7b3c81be&
+var TextFieldvue_type_template_id_7b3c81be_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-field",class:_vm.classNames},[(_vm.multiline)?_c('textarea',_vm._b({on:{"input":_vm.handleInput,"focus":_vm.handleFocus}},'textarea',_vm.sharedInputProps,false)):_c('input',_vm._b({style:({ 'padding-right': _vm.hasSlot && (_vm.slotWidth + "px") }),attrs:{"type":_vm.$attrs.type || 'text'},on:{"input":_vm.handleInput,"focus":_vm.handleFocus}},'input',_vm.sharedInputProps,false)),(_vm.label)?_c('label',{staticClass:"text-field__label",class:_vm.scrollable,attrs:{"data-content":_vm.label,"for":_vm.id}},[_c('span',{staticClass:"invisible"},[_vm._v(_vm._s(_vm.label))])]):_vm._e(),_c('div',{ref:"rightContentSlot",staticClass:"text-field__right-content"},[_vm._t("default")],2),(_vm.actionLabel)?_c('a',{staticClass:"text-field__action-button",on:{"click":_vm.onActionClick}},[_vm._v(" "+_vm._s(_vm.actionLabel)+" ")]):_vm._e()])}
+var TextFieldvue_type_template_id_7b3c81be_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/TextField.vue?vue&type=template&id=6542950e&
+// CONCATENATED MODULE: ./src/components/TextField.vue?vue&type=template&id=7b3c81be&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=script&lang=js&
 
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19082,6 +19089,14 @@ var TextFieldvue_type_template_id_6542950e_staticRenderFns = []
     multiline: {
       type: Boolean,
       default: false
+    },
+
+    /**
+     * Text for action button beneath input
+     */
+    actionLabel: {
+      type: String,
+      default: ''
     },
 
     /**
@@ -19160,6 +19175,14 @@ var TextFieldvue_type_template_id_6542950e_staticRenderFns = []
     }
   },
   methods: {
+    onActionClick: function onActionClick(e) {
+      /**
+       * Emitted when action button is clicked
+       * @event click
+       * @type {e}
+       */
+      this.$emit('actionClick', e, this.value);
+    },
     handleInput: function handleInput($event) {
       /**
        * Emitted when the `<input>`'s 'input' event bubbles up. The v-model directive uses this to function.
@@ -19207,8 +19230,8 @@ var TextFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("2b23");
 
 var TextField_component = normalizeComponent(
   components_TextFieldvue_type_script_lang_js_,
-  TextFieldvue_type_template_id_6542950e_render,
-  TextFieldvue_type_template_id_6542950e_staticRenderFns,
+  TextFieldvue_type_template_id_7b3c81be_render,
+  TextFieldvue_type_template_id_7b3c81be_staticRenderFns,
   false,
   null,
   null,
