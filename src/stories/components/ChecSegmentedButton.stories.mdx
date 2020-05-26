@@ -1,0 +1,50 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { text, select, boolean } from '@storybook/addon-knobs';
+import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
+
+<Meta title="Form fields/Segmented buttons" component={ChecSegmentedButton} />
+
+# Segmented buttons
+
+<Props of={ChecSegmentedButton} />
+
+<Preview>
+  <Story name="Single segmented button">
+    {{
+      components: {
+        ChecSegmentedButton,
+      },
+      props: {
+        label: {
+          default: text('Label', 'Label'),
+        },
+        disabled: {
+          type: Boolean,
+          default: () => boolean('Disabled', false),
+        },
+        active: {
+          default: boolean('Active', false)
+        },
+      },
+      data() {
+        return {
+          option: {
+            label: 'Label 1',
+            value: '1'
+          },
+        }
+      },
+      template: `
+        <div class="flex justify-center font-lato uppercase mx-auto mx-auto p-16 bg-gray-100">
+          <ChecSegmentedButton
+            :value="option.value"
+            :disabled="disabled"
+            :active="active"
+          >
+            {{ label }}
+          </ChecSegmentedButton>
+        </div>`
+    }}
+  </Story>
+</Preview>

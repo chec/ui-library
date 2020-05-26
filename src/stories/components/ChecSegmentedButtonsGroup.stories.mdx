@@ -1,0 +1,44 @@
+import { action } from "@storybook/addon-actions";
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { boolean } from '@storybook/addon-knobs';
+import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGroup.vue';
+
+
+<Meta title="Form fields/Segmented buttons" component={ChecSegmentedButtonsGroup} />
+
+# Grouped
+
+<Props of={ChecSegmentedButtonsGroup} />
+
+<Preview>
+  <Story name="Grouped">
+    {{
+      components: {
+        ChecSegmentedButtonsGroup,
+      },
+      props: {
+        disabled: {
+          type: Boolean,
+          default: () => boolean('Disabled', false),
+        },
+      },
+      data() {
+        return {
+          options: [
+            { label: 'Label 1', value:'1' },
+            { label: 'Label 2', value: '2' },
+          ],
+          selected: null,
+        }
+      },
+      template: `
+        <div class="flex flex-column justify-center font-lato mx-auto p-16 bg-gray-100">
+          <ChecSegmentedButtonsGroup
+            :options="options"
+            v-model="selected"
+            :disabled="disabled"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
