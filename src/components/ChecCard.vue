@@ -1,8 +1,10 @@
 <template>
   <div class="card" :class="classObject">
     <div class="card__inner-wrapper" :class="[tailwindClasses, innerClass]">
-      <slot>
-      </slot>
+      <!--
+      @slot Card content
+      -->
+      <slot />
     </div>
   </div>
 </template>
@@ -20,15 +22,21 @@ export default {
       default: '',
     },
     /**
-     * The style variant for the card.
-     One of "bordered", "borderless", "border-vertical", "border-horizontal". Default is "bordered"
+     * The style of the borders on the card. One of "full", "none", "vertical", "horizontal".
      */
-    variant: {
+    borders: {
       type: String,
-      default: 'bordered',
+      default: 'full',
       validator(value) {
-        return ['bordered', 'borderless', 'border-vertical', 'border-horizontal'].includes(value);
+        return ['full', 'none', 'vertical', 'horizontal'].includes(value);
       },
+    },
+    /**
+     * A "compact" variant that reduces border width and radius
+     */
+    compact: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -38,36 +46,49 @@ export default {
      * @returns {string}
      */
     classObject() {
-      return this.variant ? `card--${this.variant}` : '';
+      return [
+        `card--border-${this.borders}`,
+        { 'card--compact': this.compact },
+      ];
     },
   },
   mixins: [TailwindClasses('p-8 bg-white')],
 };
 </script>
-<style scoped lang="scss">
-  .card {
-    @apply relative shadow-sm rounded-lg p-1;
-    background-image: inline("../assets/media/hologram-bg.png");
+<style lang="scss">
+.card {
+  @apply relative shadow-sm rounded-lg p-1;
+  background-image: inline("../assets/media/hologram-bg.png");
 
-    &__inner-wrapper {
-      @apply rounded-md h-full;
-    }
+  &__inner-wrapper {
+    @apply rounded-md h-full;
+  }
 
-    &--borderless {
-      @apply p-0 rounded-md;
-    }
+  &--compact {
+    @apply rounded;
+    padding: 2px;
 
-    &--border-vertical {
-      @apply px-0 overflow-hidden;
-      .card__inner-wrapper {
-        @apply rounded-none;
-      }
-    }
-    &--border-horizontal {
-      @apply py-0 overflow-hidden;
-      .card__inner-wrapper {
-        @apply rounded-none;
-      }
+    .card__inner-wrapper {
+      @apply rounded-sm;
     }
   }
+
+  &--border-none {
+    @apply p-0 rounded-md;
+  }
+
+  &--border-vertical {
+    @apply px-0 overflow-hidden;
+    .card__inner-wrapper {
+      @apply rounded-none;
+    }
+  }
+
+  &--border-horizontal {
+    @apply py-0 overflow-hidden;
+    .card__inner-wrapper {
+      @apply rounded-none;
+    }
+  }
+}
 </style>
