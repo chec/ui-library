@@ -25,15 +25,23 @@ import BaseButton from '@/components/BaseButton.vue';
         label: {
           default: text('Label', 'Label'),
         },
+        variant: {
+          default: select('Variant', ['section', 'card', 'section']),
+        },
         withButtonSlot: {
           default: select('Pass button slot', [true, false], true),
         },
+        headerTag: {
+          default: select('Header tag', [null, 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'], null)
+        }
       },
       template: `
-        <div class="py-16 px-4 font-lato">
+        <div class="py-16 px-4 max-w-6xl mx-auto font-lato">
           <ChecHeader
             :title="title"
             :label="label"
+            :variant="variant"
+            :header-tag="headerTag"
           >
             <BaseButton v-if="withButtonSlot" color="primary" variant="round">
               Button Texts
