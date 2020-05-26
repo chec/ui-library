@@ -16,9 +16,15 @@ import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
         ChecSegmentedButton,
       },
       props: {
+        label: {
+          default: text('Label', 'Label'),
+        },
         disabled: {
           type: Boolean,
           default: () => boolean('Disabled', false),
+        },
+        active: {
+          default: boolean('Set as Active', false)
         },
       },
       data() {
@@ -34,8 +40,9 @@ import ChecSegmentedButton from '../../components/ChecSegmentedButton.vue';
           <ChecSegmentedButton
             :value="option.value"
             :disabled="disabled"
+            :active="active"
           >
-            {{option.label}}
+            {{ label }}
           </ChecSegmentedButton>
         </div>`
     }}
