@@ -19417,14 +19417,15 @@ var ChecAccordion_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecAccordion = (ChecAccordion_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHeader.vue?vue&type=template&id=ca9f9fb6&
-var ChecHeadervue_type_template_id_ca9f9fb6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('header',{staticClass:"chec-header"},[_c('h2',{staticClass:"chec-header__title"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.label || _vm.$slots.default)?_c('div',{staticClass:"chec-header-inner"},[(_vm.label)?_c('label',{staticClass:"chec-header-inner__label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e(),_vm._t("default")],2):_vm._e()])}
-var ChecHeadervue_type_template_id_ca9f9fb6_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHeader.vue?vue&type=template&id=cd703104&
+var ChecHeadervue_type_template_id_cd703104_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('header',{staticClass:"chec-header",class:("chec-header--" + (this.variant))},[_c(_vm.actualHeaderTag,{tag:"component",staticClass:"chec-header__title"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.label || _vm.$slots.default)?_c('div',{staticClass:"chec-header-inner"},[(_vm.label)?_c('label',{staticClass:"chec-header-inner__label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e(),_vm._t("default")],2):_vm._e()],1)}
+var ChecHeadervue_type_template_id_cd703104_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecHeader.vue?vue&type=template&id=ca9f9fb6&
+// CONCATENATED MODULE: ./src/components/ChecHeader.vue?vue&type=template&id=cd703104&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHeader.vue?vue&type=script&lang=js&
+
 //
 //
 //
@@ -19446,19 +19447,40 @@ var ChecHeadervue_type_template_id_ca9f9fb6_staticRenderFns = []
   name: 'ChecHeader',
   props: {
     /**
-     * heading text
+     * The text to be shown as the header
      */
     title: {
+      type: String,
+      required: true
+    },
+
+    /**
+     * Optional text to be shown as a label, that appears before the optional slot
+     */
+    label: {
       type: String,
       default: ''
     },
 
     /**
-     * label text
+     * The type of header - either for a "section" or a "card"
      */
-    label: {
+    variant: {
       type: String,
-      default: ''
+      validate: function validate(candidate) {
+        return ['section', 'card'].includes(candidate);
+      },
+      default: 'section'
+    },
+
+    /**
+     * The HTML tag to use for the title of the section. Defaults to `h2` for a "section" and `h3` for a "card"
+     */
+    headerTag: String
+  },
+  computed: {
+    actualHeaderTag: function actualHeaderTag() {
+      return this.headerTag || (this.variant === 'section' ? 'h2' : 'h3');
     }
   }
 });
@@ -19478,8 +19500,8 @@ var ChecHeadervue_type_style_index_0_lang_scss_ = __webpack_require__("8e3f");
 
 var ChecHeader_component = normalizeComponent(
   components_ChecHeadervue_type_script_lang_js_,
-  ChecHeadervue_type_template_id_ca9f9fb6_render,
-  ChecHeadervue_type_template_id_ca9f9fb6_staticRenderFns,
+  ChecHeadervue_type_template_id_cd703104_render,
+  ChecHeadervue_type_template_id_cd703104_staticRenderFns,
   false,
   null,
   null,
