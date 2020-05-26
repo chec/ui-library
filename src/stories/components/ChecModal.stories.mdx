@@ -8,7 +8,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
 
 <Meta title="Components/Modal" component={ChecModal} />
 
-# Default
+## Default
 
 <Props of={ChecModal} />
 
@@ -38,7 +38,36 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
   </Story>
 </Preview>
 
-# With a form
+## With a header
+
+<Preview>
+  <Story name="Header">
+    {{
+      components: {
+        ChecModal,
+      },
+      props: {
+        width: {
+          default: select('Width', widths, '2xl'),
+        },
+      },
+      template: `
+        <div>
+          <ChecModal :width="width" header="Modal title">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor imperdiet pellentesque. Mauris quam enim, vehicula ac felis vel, tempus tincidunt massa.</p>
+            <p>Mauris eget mi neque. Nullam eu est a velit mattis cursus vel nec purus. Pellentesque tincidunt ornare auctor.</p>
+            <p>Mauris vitae lobortis justo. Donec nec nisl condimentum, efficitur tellus vel, lobortis leo. Curabitur volutpat porta sapien, eget sagittis est placerat ac. Cras commodo vehicula arcu, sed tincidunt ligula molestie ac.</p>
+          </ChecModal>
+          <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-right m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+
+## With a form
 
 <Props of={ChecModal} />
 
@@ -67,8 +96,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
       },
       template: `
         <div class="font-lato">
-          <ChecModal :width="width" v-if="showModal">
-            <h2 class="text-lg mb-4 font-bold">Set up your account</h2>
+          <ChecModal :width="width" header="Set up your account" v-if="showModal">
             <label class="block mb-4">
               First name
               <TextField value="Leslie" class="w-full" />
@@ -91,7 +119,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
   </Story>
 </Preview>
 
-# Close on overlay click
+## Close on overlay click
 
 <Props of={ChecModal} />
 
@@ -120,8 +148,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
       },
       template: `
         <div class="font-lato">
-          <ChecModal :width="width" v-if="showModal" @overlay-click="hideModal">
-            <h2 class="text-lg mb-4 font-bold">Set up your account</h2>
+          <ChecModal :width="width" header="Set up your account" v-if="showModal" @dismiss="hideModal">
             <label class="block mb-4">
               First name
               <TextField value="Leslie" class="w-full" />

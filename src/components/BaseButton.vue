@@ -165,7 +165,7 @@ export default {
       @apply py-4 px-8 rounded text-lg leading-tight;
     }
     &-small {
-      @apply p-2 rounded text-sm leading-tight;
+      @apply p-2 rounded text-sm leading-tight shadow-none;
     }
     &-round {
       @apply py-2 px-4 rounded-full text-xs;

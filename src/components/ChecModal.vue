@@ -1,23 +1,23 @@
 <template>
-  <div class="modal-overlay" @click.self="emitOverlayClick">
-    <ChecCard class="modal-card" :class="`max-w-${width}`" tailwind="bg-gray-100">
+  <div class="modal__overlay" @click.self="emitClose">
+    <ChecCard class="modal__card" :class="`max-w-${width}`" tailwind="bg-gray-100">
+      <ChecModalHeader v-if="header" @close="emitClose">{{ header }}</ChecModalHeader>
+      <!--
+      @slot Modal content
+      -->
       <slot />
     </ChecCard>
   </div>
 </template>
 <script>
 import ChecCard from './ChecCard.vue';
+import ChecModalHeader from './ChecModal/ChecModalHeader.vue';
 
 export default {
   name: 'ChecModal',
   components: {
     ChecCard,
-  },
-  mounted() {
-    document.body.style.overflow = 'hidden';
-  },
-  destroyed() {
-    document.body.style.overflow = 'initial';
+    ChecModalHeader,
   },
   props: {
     /**
@@ -27,26 +27,48 @@ export default {
       type: String,
       default: '2xl',
     },
+    /**
+     * Optionally include a modal header by providing a title for the modal. This adds a close button too
+     */
+    header: String,
+    /**
+     * Prevent the close button from rendering when using the "header" prop
+     */
+    undismissable: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted() {
+    document.body.style.overflow = 'hidden';
+  },
+  destroyed() {
+    document.body.style.overflow = 'initial';
   },
   methods: {
     /**
      * Emitted when the modal's background overlay is click.
-     * @event overlay-click
+     * @event dismiss
      */
-    emitOverlayClick() {
-      this.$emit('overlay-click');
+    emitClose() {
+      this.$emit('dismiss');
     },
   },
 };
 </script>
-<style scoped lang="scss">
-.modal-overlay {
+<style lang="scss">
+.modal__overlay {
   @apply fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center overflow-scroll;
   // Special / overlay
   background-color: rgba(65, 85, 108, 0.9);
+
+  .card__inner-wrapper {
+    padding-top: 2.375rem;
+    padding-bottom: 2.375rem;
+  }
 }
 
-.modal-card {
+.modal__card {
   @apply w-full;
 }
 </style>
