@@ -2,6 +2,7 @@ import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import { select } from '@storybook/addon-knobs';
 import ChecCard from '../../components/ChecCard.vue';
+import ChecIcon from '../../components/ChecIcon.vue';
 import TextField from '../../components/TextField.vue';
 
 <Meta title="Components/Card" component={ChecCard} />
@@ -102,6 +103,35 @@ import TextField from '../../components/TextField.vue';
                 />
               </div>
             </div>
+          </ChecCard>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Fancy overlay">
+    {{
+      components: {
+        ChecCard,
+        TextField,
+        ChecIcon,
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full font-lato">
+          <ChecCard
+            variant="borderless"
+            class="text-white w-full max-w-lg"
+            tailwind="bg-primary-gradient"
+          >
+            <h3 class="text-white mb-4">
+              It's our brand!
+            </h3>
+            <p>
+              Much wow! Such amaze!
+            </p>
+            <ChecIcon icon="chec" class="absolute w-32 h-32 text-white pointer-events-none opacity-25 bottom-0"
+                      style="right: 20px">
           </ChecCard>
         </div>`
     }}
