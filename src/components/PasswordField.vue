@@ -1,15 +1,14 @@
 
 <template>
-  <div class="relative">
+  <div class="password-field">
     <TextField
-      class="password-field"
-      v-bind="{...$attrs, ...$props}"
+      v-bind="{...$attrs, ...textFieldProps}"
       :type="fieldType"
       :actionLabel="showHideText"
       @actionClick="toggleShowPassword"
       @input="e => $emit('input', e)"
     />
-    <div v-if="showPasswordStrength" class="password-strength" :class="strengthClass" />
+    <div v-if="showPasswordStrength" class="password-field__strength" :class="strengthClass" />
   </div>
 </template>
 <script>
@@ -47,6 +46,34 @@ export default {
       type: Number,
       default: null,
     },
+    /**
+     * all props below are passed down to <text-field>
+     */
+    /**
+     * The state of the text field. One of "disabled", "error".
+     */
+    variant: {
+      type: String,
+      default: '',
+    },
+    /**
+     * Class to pass to inner input element
+     */
+    innerInputClass: {
+      type: String,
+      default: '',
+    },
+    /**
+     * Label for input
+     */
+    label: {
+      type: String,
+      default: '',
+    },
+    /**
+     * Additional input attributes that should be applied to the native input
+     */
+    additionalInputAttributes: Object,
   },
   computed: {
     /**
@@ -72,15 +99,29 @@ export default {
         return '';
       }
       if (score < 2) {
-        return 'password-strength--invalid';
+        return 'password-field__strength--invalid';
       }
       if (score < 3) {
-        return 'password-strength--bad';
+        return 'password-field__strength--bad';
       }
       if (score < 4) {
-        return 'password-strength--good';
+        return 'password-field__strength--good';
       }
-      return 'password-strength--great';
+      return 'password-field__strength--great';
+    },
+    /**
+     * props to be passed to text-field
+     */
+    textFieldProps() {
+      const {
+        variant, innerInputClass, label, additionalInputAttributes,
+      } = this;
+      return {
+        variant,
+        innerInputClass,
+        label,
+        additionalInputAttributes,
+      };
     },
   },
   methods: {
@@ -94,35 +135,37 @@ export default {
 };
 </script>
 <style lang="scss">
-  .password-strength {
-    @apply
-      absolute
-      left-0
-      transform
-      -translate-y-1
-      w-full
-      h-1
-      bg-transparent
-      rounded-bl
-      transition
-      delay-300
-      duration-300
-      ease-in-out;
+  .password-field {
+    @apply relative;
+    &__strength {
+      @apply
+        absolute
+        left-0
+        transform
+        -translate-y-1
+        w-full
+        h-1
+        bg-transparent
+        rounded-bl
+        transition-all
+        duration-300
+        ease-in-out;
 
-    &--invalid {
-      @apply bg-red-300 w-1/4;
-    }
+      &--invalid {
+        @apply bg-red-300 w-1/4;
+      }
 
-    &--bad {
-      @apply bg-orange-300 w-2/4;
-    }
+      &--bad {
+        @apply bg-orange-300 w-2/4;
+      }
 
-    &--good {
-      @apply bg-green-300 w-3/4;
-    }
+      &--good {
+        @apply bg-green-300 w-3/4;
+      }
 
-    &--great {
-      @apply bg-green-400 w-full rounded-br;
+      &--great {
+        @apply bg-green-400 w-full rounded-br;
+      }
     }
   }
 </style>
