@@ -2,7 +2,7 @@
 <template>
   <div class="relative">
     <TextField
-      class="passworld-field"
+      class="password-field"
       v-bind="{...$attrs, ...$props}"
       :type="fieldType"
       :actionLabel="showHideText"
