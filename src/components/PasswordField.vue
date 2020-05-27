@@ -68,7 +68,7 @@ export default {
      */
     strengthClass() {
       const score = this.passwordStrengthScore;
-      if (!score && (score !== 0 || score === null)) {
+      if (!score && score !== 0) {
         return '';
       }
       if (score < 2) {
