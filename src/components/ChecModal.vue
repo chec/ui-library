@@ -61,14 +61,14 @@ export default {
   @apply fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center overflow-scroll;
   // Special / overlay
   background-color: rgba(65, 85, 108, 0.9);
-
-  .card__inner-wrapper {
-    padding-top: 2.375rem;
-    padding-bottom: 2.375rem;
-  }
 }
 
 .modal__card {
   @apply w-full;
+
+  > .card__inner-wrapper {
+    padding-top: 2.375rem;
+    padding-bottom: 2.375rem;
+  }
 }
 </style>
