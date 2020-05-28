@@ -5,6 +5,7 @@ import { withInfo } from 'storybook-addon-vue-info'
 import TextField from '../../components/TextField.vue';
 import ChecIcon from '../../components/ChecIcon.vue';
 import ChecSwitch from '../../components/ChecSwitch.vue';
+import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGroup.vue';
 
 <Meta title="Form fields/Text field" component={TextField} />
 
@@ -213,6 +214,7 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
         TextField,
         ChecIcon,
         ChecSwitch,
+        ChecSegmentedButtonsGroup
       },
       props: {
         variant: {
@@ -223,6 +225,11 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
         return {
           inputValue: '',
           switchState: false,
+          options: [
+            { label: 'Label', value:'1' },
+            { label: 'Label', value: '2' },
+          ],
+          selected: null,
         }
       },
       template: `
@@ -253,6 +260,18 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
             :variant="variant"
           >
             <ChecSwitch v-model="switchState">Label</ChecSwitch>
+          </TextField>
+          <TextField
+            label="With segmented buttons"
+            class="self-center w-full max-w-sm mb-4"
+            v-model="inputValue"
+            type="text"
+            :variant="variant"
+          >
+            <ChecSegmentedButtonsGroup
+              :options="options"
+              v-model="selected"
+            />
           </TextField>
         </div>`,
     }}
