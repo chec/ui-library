@@ -42,10 +42,7 @@ export default {
     /**
      * Strength of password from 0-4
      */
-    passwordStrengthScore: {
-      type: Number,
-      default: null,
-    },
+    passwordStrengthScore: Number,
     /**
      * all props below are passed down to <text-field>
      */
