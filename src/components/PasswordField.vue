@@ -140,7 +140,7 @@ export default {
         left-0
         transform
         -translate-y-1
-        w-full
+        w-0
         h-1
         bg-transparent
         rounded-bl
