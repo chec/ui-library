@@ -229,6 +229,7 @@ import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGrou
             { label: 'Label', value:'1' },
             { label: 'Label', value: '2' },
           ],
+          selected: null,
         }
       },
       template: `
@@ -269,6 +270,7 @@ import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGrou
           >
             <ChecSegmentedButtonsGroup
               :options="options"
+              v-model="selected"
             />
           </TextField>
         </div>`,
