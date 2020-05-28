@@ -2557,6 +2557,17 @@ module.exports = {
 
 /***/ }),
 
+/***/ "6a04":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PasswordField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("d982");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PasswordField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PasswordField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PasswordField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "6ac9":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5816,6 +5827,13 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGT
         }
       }
     
+
+/***/ }),
+
+/***/ "d982":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -19631,14 +19649,20 @@ var ChecHeader_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecHeader = (ChecHeader_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=template&id=258c554b&
-var PasswordFieldvue_type_template_id_258c554b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('TextField',_vm._b({attrs:{"type":_vm.fieldType,"actionLabel":_vm.showHideText},on:{"actionClick":_vm.toggleShowPassword}},'TextField',Object.assign({}, _vm.$attrs, _vm.$props),false))}
-var PasswordFieldvue_type_template_id_258c554b_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=template&id=b6b7249e&
+var PasswordFieldvue_type_template_id_b6b7249e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"password-field"},[_c('TextField',_vm._b({attrs:{"type":_vm.fieldType,"actionLabel":_vm.showHideText},on:{"actionClick":_vm.toggleShowPassword,"input":function (e) { return _vm.$emit('input', e); }}},'TextField',Object.assign({}, _vm.$attrs, _vm.textFieldProps),false)),(_vm.showPasswordStrength)?_c('div',{staticClass:"password-field__strength",class:_vm.strengthClass}):_vm._e()],1)}
+var PasswordFieldvue_type_template_id_b6b7249e_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PasswordField.vue?vue&type=template&id=258c554b&
+// CONCATENATED MODULE: ./src/components/PasswordField.vue?vue&type=template&id=b6b7249e&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19665,7 +19689,53 @@ var PasswordFieldvue_type_template_id_258c554b_staticRenderFns = []
     initialShowPassword: {
       type: Boolean,
       default: false
-    }
+    },
+
+    /**
+     * Boolean indicating whether to show password strength indicator
+     */
+    showPasswordStrength: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
+     * Strength of password from 0-4
+     */
+    passwordStrengthScore: Number,
+
+    /**
+     * all props below are passed down to <text-field>
+     */
+
+    /**
+     * The state of the text field. One of "disabled", "error".
+     */
+    variant: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Class to pass to inner input element
+     */
+    innerInputClass: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Label for input
+     */
+    label: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Additional input attributes that should be applied to the native input
+     */
+    additionalInputAttributes: Object
   },
   computed: {
     /**
@@ -19680,6 +19750,49 @@ var PasswordFieldvue_type_template_id_258c554b_staticRenderFns = []
      */
     fieldType: function fieldType() {
       return this.showPassword ? 'text' : 'password';
+    },
+
+    /**
+     * Contextual highlight classes per strength score
+     *
+     * @returns {string}
+     */
+    strengthClass: function strengthClass() {
+      var score = this.passwordStrengthScore;
+
+      if (!score) {
+        return '';
+      }
+
+      if (score < 2) {
+        return 'password-field__strength--invalid';
+      }
+
+      if (score < 3) {
+        return 'password-field__strength--bad';
+      }
+
+      if (score < 4) {
+        return 'password-field__strength--good';
+      }
+
+      return 'password-field__strength--great';
+    },
+
+    /**
+     * props to be passed to text-field
+     */
+    textFieldProps: function textFieldProps() {
+      var variant = this.variant,
+          innerInputClass = this.innerInputClass,
+          label = this.label,
+          additionalInputAttributes = this.additionalInputAttributes;
+      return {
+        variant: variant,
+        innerInputClass: innerInputClass,
+        label: label,
+        additionalInputAttributes: additionalInputAttributes
+      };
     }
   },
   methods: {
@@ -19693,7 +19806,11 @@ var PasswordFieldvue_type_template_id_258c554b_staticRenderFns = []
 });
 // CONCATENATED MODULE: ./src/components/PasswordField.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_PasswordFieldvue_type_script_lang_js_ = (PasswordFieldvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/PasswordField.vue?vue&type=style&index=0&lang=scss&
+var PasswordFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("6a04");
+
 // CONCATENATED MODULE: ./src/components/PasswordField.vue
+
 
 
 
@@ -19703,8 +19820,8 @@ var PasswordFieldvue_type_template_id_258c554b_staticRenderFns = []
 
 var PasswordField_component = normalizeComponent(
   components_PasswordFieldvue_type_script_lang_js_,
-  PasswordFieldvue_type_template_id_258c554b_render,
-  PasswordFieldvue_type_template_id_258c554b_staticRenderFns,
+  PasswordFieldvue_type_template_id_b6b7249e_render,
+  PasswordFieldvue_type_template_id_b6b7249e_staticRenderFns,
   false,
   null,
   null,
