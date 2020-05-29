@@ -1,0 +1,83 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { text, select } from '@storybook/addon-knobs';
+import InnerBlock from '../../../components/ChecCard/InnerBlock.vue';
+import ChecCard from '../../../components/ChecCard.vue';
+import ChecHeader from '../../../components/ChecHeader.vue';
+
+<Meta title="Components/Card/InnerBlock" component={InnerBlock} />
+
+# Card `InnerBlock` component
+
+<Props of={InnerBlock} />
+
+## Default
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        InnerBlock
+      },
+      props: {
+        title: {
+          default: text('Title', 'Block title'),
+        },
+        titleTag: {
+          default: select('Title tag', [undefined, 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'], undefined)
+        },
+        actionText: {
+          default: text('Action text'),
+        },
+        actionColor: {
+          default: select('Color', [undefined, 'brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange']),
+        },
+      },
+      template: `
+        <div class="mt-8 flex justify-around max-w-sm mx-auto">
+          <InnerBlock :title="title" :titleTag="titleTag" :actionText="actionText" :actionColor="actionColor">
+            Content of the inner block
+          </InnerBlock>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+
+## In a card
+
+<Preview>
+  <Story name="In a card">
+    {{
+      components: {
+        ChecCard,
+        ChecHeader,
+        InnerBlock
+      },
+      props: {
+        title: {
+          default: text('Title', 'Block title'),
+        },
+        titleTag: {
+          default: select('Title tag', [undefined, 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'], undefined)
+        },
+        actionText: {
+          default: text('Action text'),
+        },
+        actionColor: {
+          default: select('Color', [undefined, 'brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange']),
+        },
+      },
+      template: `
+        <div class="mt-8 flex justify-around max-w-md mx-auto">
+          <ChecCard tailwind="p-4" class="w-full">
+            <ChecHeader variant="card" title="Demo card" />
+            <p class="py-4">Some misc card content</p>
+            <InnerBlock :title="title" :titleTag="titleTag" :actionText="actionText" :actionColor="actionColor">
+              Content of the inner block
+            </InnerBlock>
+          </ChecCard>
+        </div>`
+    }}
+  </Story>
+</Preview>
