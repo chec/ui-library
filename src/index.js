@@ -1,5 +1,4 @@
 import SvgIcons from './assets/svgs';
-
 import BaseAlert from './components/BaseAlert.vue';
 import BaseBreadcrumbs from './components/BaseBreadcrumbs.vue';
 import BaseButton from './components/BaseButton.vue';
@@ -11,6 +10,7 @@ import BasePopover from './components/BasePopover.vue';
 import BaseTag from './components/BaseTag.vue';
 import BaseTooltip from './directives/BaseTooltip';
 import ChecCard from './components/ChecCard.vue';
+import InnerBlock from './components/ChecCard/InnerBlock.vue';
 import ChecCheckbox from './components/ChecCheckbox.vue';
 import ChecIcon from './components/ChecIcon.vue';
 import ChecDataPill from './components/ChecDataPill.vue';
@@ -40,6 +40,7 @@ export {
   BaseTag,
   BaseTooltip,
   ChecCard,
+  InnerBlock,
   ChecCheckbox,
   ChecIcon,
   ChecDataPill,
