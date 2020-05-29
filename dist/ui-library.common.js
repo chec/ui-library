@@ -230,6 +230,13 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
 
 /***/ }),
 
+/***/ "0964":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "0cfb":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1645,6 +1652,17 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
   return O;
 };
 
+
+/***/ }),
+
+/***/ "3a2e":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InnerBlock_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0964");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InnerBlock_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InnerBlock_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InnerBlock_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -14690,6 +14708,7 @@ __webpack_require__.d(__webpack_exports__, "BasePopover", function() { return /*
 __webpack_require__.d(__webpack_exports__, "BaseTag", function() { return /* reexport */ BaseTag; });
 __webpack_require__.d(__webpack_exports__, "BaseTooltip", function() { return /* reexport */ BaseTooltip; });
 __webpack_require__.d(__webpack_exports__, "ChecCard", function() { return /* reexport */ ChecCard; });
+__webpack_require__.d(__webpack_exports__, "InnerBlock", function() { return /* reexport */ InnerBlock; });
 __webpack_require__.d(__webpack_exports__, "ChecCheckbox", function() { return /* reexport */ ChecCheckbox; });
 __webpack_require__.d(__webpack_exports__, "ChecIcon", function() { return /* reexport */ ChecIcon; });
 __webpack_require__.d(__webpack_exports__, "ChecDataPill", function() { return /* reexport */ ChecDataPill; });
@@ -16471,6 +16490,107 @@ var ChecCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecCard = (ChecCard_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard/InnerBlock.vue?vue&type=template&id=40e713fd&
+var InnerBlockvue_type_template_id_40e713fd_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card-inner-block"},[_c('div',[_c(_vm.titleTag,{tag:"component",staticClass:"card-inner-block__title"},[_vm._v(_vm._s(_vm.title))]),_vm._t("default")],2),(_vm.actionText)?_c('div',[_c('BaseButton',{staticClass:"card-inner-block__action",attrs:{"variant":"round","color":_vm.actionColor},on:{"click":_vm.emitAction},scopedSlots:_vm._u([(_vm.$slots.actionIcon)?{key:"icon",fn:function(){return [_vm._t("actionIcon")]},proxy:true}:null],null,true)},[_vm._v(" "+_vm._s(_vm.actionText)+" ")])],1):_vm._e()])}
+var InnerBlockvue_type_template_id_40e713fd_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecCard/InnerBlock.vue?vue&type=template&id=40e713fd&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard/InnerBlock.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var InnerBlockvue_type_script_lang_js_ = ({
+  name: 'InnerBlock',
+  components: {
+    BaseButton: BaseButton
+  },
+  props: {
+    /**
+     * The title of the inner block
+     */
+    title: {
+      type: String,
+      required: true
+    },
+
+    /**
+     * The HTML tag to use for the title of the block
+     */
+    titleTag: {
+      type: String,
+      default: function _default() {
+        return 'h3';
+      }
+    },
+
+    /**
+     * The text to be shown on the right aligned action button. If omitted, no button will show
+     */
+    actionText: String,
+
+    /**
+     * The button color that should be used on the action button
+     */
+    actionColor: String
+  },
+  methods: {
+    emitAction: function emitAction() {
+      /**
+       * Emitted when the user presses the action button (if configured)
+       *
+       * @event action
+       */
+      this.$emit('action');
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecCard/InnerBlock.vue?vue&type=script&lang=js&
+ /* harmony default export */ var ChecCard_InnerBlockvue_type_script_lang_js_ = (InnerBlockvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecCard/InnerBlock.vue?vue&type=style&index=0&lang=scss&
+var InnerBlockvue_type_style_index_0_lang_scss_ = __webpack_require__("3a2e");
+
+// CONCATENATED MODULE: ./src/components/ChecCard/InnerBlock.vue
+
+
+
+
+
+
+/* normalize component */
+
+var InnerBlock_component = normalizeComponent(
+  ChecCard_InnerBlockvue_type_script_lang_js_,
+  InnerBlockvue_type_template_id_40e713fd_render,
+  InnerBlockvue_type_template_id_40e713fd_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var InnerBlock = (InnerBlock_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCheckbox.vue?vue&type=template&id=0e962c43&
 var ChecCheckboxvue_type_template_id_0e962c43_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"checkbox",class:{ 'active' : _vm.isChecked, disabled: _vm.disabled },attrs:{"for":_vm.id}},[_c('input',{staticClass:"checkbox__input",attrs:{"type":"checkbox","id":_vm.id,"name":_vm.name,"disabled":_vm.disabled,"indeterminate":_vm.indeterminate},domProps:{"value":_vm.value,"checked":_vm.isChecked},on:{"input":_vm.handleInput}}),_c('span',{directives:[{name:"show",rawName:"v-show",value:(!_vm.indeterminate && _vm.isChecked),expression:"!indeterminate && isChecked"}],staticClass:"checkbox__check"},[_c('chec-icon',{attrs:{"icon":"check"}})],1),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.indeterminate),expression:"indeterminate"}],staticClass:"checkbox__minus"},[_c('chec-icon',{attrs:{"icon":"minus"}})],1),(_vm.label)?_c('div',{staticClass:"checkbox__label",class:{ disabled: _vm.disabled }},[_vm._t("default",[_vm._v(" "+_vm._s(_vm.label)+" ")],null,{ label: _vm.label, isChecked: _vm.isChecked, disabled: _vm.disabled })],2):_vm._e()])}
 var ChecCheckboxvue_type_template_id_0e962c43_staticRenderFns = []
@@ -19822,6 +19942,7 @@ var PasswordField_component = normalizeComponent(
 
 /* harmony default export */ var PasswordField = (PasswordField_component.exports);
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
