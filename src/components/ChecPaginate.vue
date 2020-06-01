@@ -26,7 +26,8 @@
     <div class="chec-per-page-control" v-show="limitOptions.length > 1">
       <span class="chec-per-page-control__label">Showing</span>
       <button class="chec-per-page-control__option" v-for="option in limitOptions" :key="option"
-               @click="choosePageSize(option)" :class="{'chec-per-page-control__option--active': option === pageSize}"
+              :title="`Show ${option} items per page`" @click="choosePageSize(option)"
+              :class="{'chec-per-page-control__option--active': option === pageSize}"
       >
         {{ option }}
       </button>
