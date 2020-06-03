@@ -6,6 +6,12 @@
       @slot Modal content
       -->
       <slot />
+      <div class="modal__toolbar" v-if="$slots.toolbar">
+        <!--
+        @slot Toolbar actions, buttons, etc
+        -->
+        <slot name="toolbar" />
+      </div>
     </ChecCard>
   </div>
 </template>
