@@ -58,7 +58,7 @@ export default {
   }
 
   &__message {
-    @apply small-caps mt-2;
+    @apply caps-xs mt-2;
   }
 }
 

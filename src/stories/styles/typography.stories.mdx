@@ -18,14 +18,14 @@ import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
       template: `
         <div class="p-16 bg-gray-200 text-gray-500">
           <template v-for="size in sizes">
-            <div class="small-caps mt-8 mb-2">.text-{{ size }}</div>
+            <div class="caps-xs mt-8 mb-2">.text-{{ size }}</div>
             <div class="flex justify-center items-start" :class="\`text-\${size}\`">
               <div class="p-8 bg-white">
-                <div class="mb-2 small-caps text-gray-400">.font-normal</div>
+                <div class="mb-2 caps-xs text-gray-400">.font-normal</div>
                 Imagination will often carry us to worlds that never were, but without it we go nowhere.
               </div>
               <div class="ml-16 p-8 bg-white" :class="weight(size)">
-                <div class="mb-2 small-caps text-gray-400">.{{ weight(size) }}</div>
+                <div class="mb-2 caps-xs text-gray-400">.{{ weight(size) }}</div>
                 Imagination will often carry us to worlds that never were, but without it we go nowhere.
               </div>
             </div>
@@ -43,12 +43,12 @@ import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
     {{
       template: `
         <div class="p-16 bg-gray-200 text-gray-500 grid grid-cols-2 col-gap-16 row-gap-12">
-          <div class="p-8 bg-white small-caps">
-            <div class="mb-2 small-caps text-gray-400">.small-caps</div>
+          <div class="p-8 bg-white caps-xs">
+            <div class="mb-2 caps-xs text-gray-400">.caps-xs</div>
             Imagination will often carry us to worlds that never were, but without it we go nowhere.
           </div>
-          <div class="p-8 bg-white tiny-caps">
-            <div class="mb-2 small-caps text-gray-400">.tiny-caps</div>
+          <div class="p-8 bg-white caps-xxs">
+            <div class="mb-2 caps-xs text-gray-400">.caps-xxs</div>
             Imagination will often carry us to worlds that never were, but without it we go nowhere.
           </div>
         </div>

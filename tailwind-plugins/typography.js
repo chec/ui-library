@@ -8,11 +8,11 @@ module.exports = plugin(({ addUtilities, config }) => {
   };
 
   addUtilities({
-    '.small-caps': {
+    '.caps-xs': {
       fontSize: config('theme.fontSize.xs'),
       ...caps,
     },
-    '.tiny-caps': {
+    '.caps-xxs': {
       fontSize: config('theme.fontSize.xxs'),
       ...caps,
     },

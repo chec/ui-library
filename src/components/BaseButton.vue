@@ -170,7 +170,7 @@ export default {
     &-round {
       @apply py-2 px-4 rounded-full;
       & .button__content {
-        @apply small-caps;
+        @apply caps-xs;
       }
     }
   }

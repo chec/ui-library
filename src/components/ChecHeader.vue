@@ -63,13 +63,13 @@ export default {
   }
 
   &--card &__title {
-    @apply rounded-full tiny-caps bg-gray-200 px-2 py-1 text-gray-500;
+    @apply rounded-full caps-xxs bg-gray-200 px-2 py-1 text-gray-500;
   }
 
   &-inner {
     @apply flex items-center;
     &__label {
-      @apply small-caps;
+      @apply caps-xs;
       &:not(:last-child) {
         @apply pr-4;
       }

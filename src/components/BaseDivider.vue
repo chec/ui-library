@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss">
 .divider {
-  @apply flex items-center text-center tiny-caps text-gray-500;
+  @apply flex items-center text-center caps-xxs text-gray-500;
 
   &:before, &:after {
     content: '';

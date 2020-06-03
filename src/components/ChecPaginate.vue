@@ -184,7 +184,7 @@ export default {
 }
 
 %control-group {
-  @apply rounded-md bg-gray-500 p-2 text-white small-caps;
+  @apply rounded-md bg-gray-500 p-2 text-white caps-xs;
 }
 
 .chec-paginate {
