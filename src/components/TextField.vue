@@ -212,7 +212,7 @@ export default {
   @apply relative;
 
   &__action-button {
-    @apply title-xxs text-blue-500 float-right mt-1 cursor-pointer;
+    @apply tiny-caps text-blue-500 float-right mt-1 cursor-pointer;
   }
 
   &__label {
@@ -278,7 +278,7 @@ export default {
     // Alignment & spacing
     @apply absolute flex items-center h-full right-0 top-0 mx-4;
     // Default styles & colours
-    @apply cursor-default text-gray-500 uppercase tracking-widest text-xxs font-bold font-lato;
+    @apply cursor-default text-gray-500 tiny-caps;
   }
 
   &--disabled {

@@ -57,8 +57,7 @@ export default {
 </script>
 <style lang="scss">
 .card {
-  @apply relative shadow-sm rounded-lg p-1;
-  background-image: inline("../assets/media/hologram-bg.png");
+  @apply relative shadow-sm rounded-lg p-1 bg-hologram;
 
   &__inner-wrapper {
     @apply rounded-md h-full;

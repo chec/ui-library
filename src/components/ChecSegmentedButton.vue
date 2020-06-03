@@ -62,7 +62,7 @@ export default {
 
 <style lang="scss">
 .segmented-btn {
-  @apply cursor-pointer bg-gray-200 px-3 py-1 text-xs rounded-sm text-gray-500 uppercase font-bold;
+  @apply cursor-pointer bg-gray-200 px-3 py-1 rounded-sm text-gray-500 small-caps;
 
   &:disabled {
     @apply cursor-not-allowed opacity-50;

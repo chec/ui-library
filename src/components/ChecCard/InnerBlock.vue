@@ -68,7 +68,7 @@ export default {
   @apply text-gray-600 text-sm leading-tight font-lato;
 
   &__title {
-    @apply uppercase tracking-widest text-xs mb-2 text-gray-500;
+    @apply small-caps mb-2 text-gray-500;
   }
 }
 </style>

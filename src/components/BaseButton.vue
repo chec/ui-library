@@ -168,9 +168,9 @@ export default {
       @apply p-2 rounded text-sm leading-tight shadow-none;
     }
     &-round {
-      @apply py-2 px-4 rounded-full text-xs;
+      @apply py-2 px-4 rounded-full;
       & .button__content {
-        @apply uppercase tracking-widest;
+        @apply small-caps;
       }
     }
   }

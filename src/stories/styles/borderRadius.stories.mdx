@@ -1,0 +1,23 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+
+<Meta title="Styles" />
+
+# Border Radius
+
+<Preview>
+  <Story name="Border Radius">
+    {{
+      data: () => ({ radii: ['-sm', '', '-md', '-lg', '-full']}),
+      template: `
+        <div class="py-16 flex justify-center bg-gray-200 space-x-4">
+          <div
+            v-for="variant in radii"
+            :class="\`flex bg-white w-48 h-48 border-2 border-black rounded\${variant} items-center justify-center\`"
+          >
+            rounded{{ variant }}
+          </div>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>

@@ -58,7 +58,7 @@ export default {
   }
 
   &__message {
-    @apply uppercase font-bold tracking-wider text-gray-500 text-xs mt-2;
+    @apply small-caps mt-2;
   }
 }
 
