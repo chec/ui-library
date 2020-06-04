@@ -184,7 +184,7 @@ export default {
 }
 
 %control-group {
-  @apply rounded-md bg-gray-500 p-2 text-sm uppercase text-white tracking-widest font-bold;
+  @apply rounded-md bg-gray-500 p-2 text-white caps-xs;
 }
 
 .chec-paginate {
@@ -210,6 +210,7 @@ export default {
 
 .chec-page-selector {
   @extend %control-group;
+  @apply flex items-center;
 
   &__control {
     @extend %control-shared;
@@ -222,7 +223,7 @@ export default {
   }
 
   &__page-reference {
-    @apply leading-relaxed text-xxs mx-3 align-text-top;
+    @apply leading-relaxed text-xxs mx-3 align-middle;
   }
 }
 </style>

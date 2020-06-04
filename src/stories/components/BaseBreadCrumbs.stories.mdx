@@ -3,7 +3,7 @@ import { withInfo } from 'storybook-addon-vue-info';
 import BaseBreadcrumbs from '../../components/BaseBreadcrumbs.vue';
 import StoryRouter from 'storybook-vue-router';
 
-<Meta title="Components/Breadcrumbs" component={BaseBreadcrumbs} />
+<Meta title="Components" component={BaseBreadcrumbs} />
 
 # Breadcrumbs
 
@@ -14,7 +14,7 @@ import StoryRouter from 'storybook-vue-router';
 Set to iterate breadcrumbs based on `this.$route.matched`; works well with  a global `vue-router` installation.
 
 <Preview>
-  <Story name="Default" decorators={[StoryRouter({}, {
+  <Story name="Breadcrumbs" decorators={[StoryRouter({}, {
     initialEntry: "/settings/developers/api-keys",
     routes: [
       {

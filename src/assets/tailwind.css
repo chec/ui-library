@@ -1,28 +1,33 @@
 @tailwind base;
-h1 {
-  @apply title-2xl;
-}
-h2 {
-  @apply title-xl;
-}
-h3 {
-  @apply title-lg;
-}
-h4 {
-  @apply title-sm;
-}
-h5 {
-  @apply title-xs;
-}
-h6 {
-  @apply title-xxs;
-}
-@tailwind components;
+
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-*{
-  -webkit-font-smoothing: antialiased !important;
-  font-smoothing: always !important;
-  text-shadow: 1px 1px 1px rgba(0,0,0,.004);
+
+* {
+  font-family: lato, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-smooth: always;
   -moz-osx-font-smoothing: grayscale;
 }
+
+h1 {
+  @apply text-2xl;
+}
+h2 {
+  @apply text-xl;
+}
+h3 {
+  @apply text-lg;
+}
+h4 {
+  @apply text-sm;
+}
+h5 {
+  @apply text-xs;
+}
+h6 {
+  @apply text-xxs;
+}
+
+@tailwind components;
+
 @tailwind utilities;

@@ -34,8 +34,7 @@ export default {
 </script>
 <style lang="scss">
 .data-pill {
-  @apply py-1 px-2 rounded-full text-xxs font-bold uppercase bg-white text-black border border-black;
-  letter-spacing: 1px;
+  @apply py-1 px-2 rounded-full caps-xxs bg-white text-black border border-black;
 
   &--news {
     @apply bg-gray-200 border-gray-200 text-gray-500;

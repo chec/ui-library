@@ -1,67 +1,7 @@
 const gradientsPlugin = require('tailwindcss-plugins/gradients');
 const plugin = require('tailwindcss/plugin');
-
-const checTablesPlugin = plugin(({ addUtilities, addBase, config }) => {
-  const returnTitleDeclarations = (
-    fontSize = '',
-    fontWeight = '',
-    textColor = '',
-    textTransform = '',
-    letterSpacing = '',
-  ) => ({
-    fontSize: config(fontSize),
-    fontWeight: config(fontWeight),
-    color: config(textColor),
-    textTransform,
-    letterSpacing: config(letterSpacing),
-  });
-  const titleUtils = {
-    '.title-2xl': returnTitleDeclarations('theme.fontSize.2xl', 'theme.fontWeight.bold', 'theme.colors.gray-600'),
-    '.title-xl': returnTitleDeclarations('theme.fontSize.xl', 'theme.fontWeight.bold', 'theme.colors.gray-600'),
-    '.title-lg': returnTitleDeclarations('theme.fontSize.lg', 'theme.fontWeight.bold', 'theme.colors.gray-600'),
-    '.title-sm': returnTitleDeclarations(
-      'theme.fontSize.sm', 'theme.fontWeight.bold', 'theme.colors.gray-500', null, 'theme.spacing.px',
-    ),
-    '.title-xs': returnTitleDeclarations(
-      'theme.fontSize.xs', 'theme.fontWeight.bold', 'theme.colors.gray-500', 'uppercase', 'theme.spacing.px',
-    ),
-    '.title-xxs': returnTitleDeclarations(
-      'theme.fontSize.xxs', 'theme.fontWeight.bold', 'theme.colors.gray-500', 'uppercase', 'theme.spacing.px',
-    ),
-  };
-  const tables = {
-    table: {
-      boxShadow: config('theme.boxShadow.sm'),
-      borderRadius: config('theme.borderRadius.md'),
-      overflow: 'hidden',
-      textAlign: 'left',
-      backgroundColor: config('theme.colors.white'),
-      color: config('theme.colors.gray-500'),
-    },
-    'thead th': {
-      backgroundColor: config('theme.colors.gray-200'),
-      textTransform: 'uppercase',
-      fontSize: config('theme.fontSize.xs'),
-    },
-    'tbody td': {
-      fontSize: config('theme.fontSize.sm'),
-    },
-    'tbody tr': {
-      '&:hover': {
-        backgroundColor: config('theme.colors.gray-100'),
-      },
-      '&:not(:last-child)': {
-        borderBottom: `${config('theme.borderWidth.default')} solid ${config('theme.colors.gray-200')}`,
-      },
-    },
-    'td, th': {
-      padding: config('theme.spacing.4'),
-      backgroundColor: config('theme.color.white'),
-    },
-  };
-  addBase(tables);
-  addUtilities(titleUtils);
-});
+const checTablesPlugin = require('./tailwind-plugins/tables');
+const checTypeographyPlugin = require('./tailwind-plugins/typography');
 
 const fontSizes = {
   xxs: '.625rem',
@@ -84,7 +24,9 @@ module.exports = {
       ],
     },
     gradients: {
-      'primary-gradient': ['45deg', '#254E81', '#2C7EA1'],
+      'primary-gradient': ['33.69deg', '#254E81', '#2C7EA1'],
+      'primary-gradient-2': ['85.06deg', '#254E81', '#2C7EA1'],
+      'gray-gradient': ['180deg', '#F1F6FC', '#F8FAFD'],
       'vertical-transparent-gradient': ['0deg', 'rgba(255,255,255,0)', 'rgba(255,255,255,0.8)', 'rgba(255,255,255,1)'],
     },
     boxShadow: {
@@ -186,6 +128,12 @@ module.exports = {
   },
   plugins: [
     checTablesPlugin,
+    checTypeographyPlugin,
     gradientsPlugin,
+    plugin(({ addUtilities }) => addUtilities({
+      '.bg-hologram': {
+        backgroundImage: 'inline("../assets/media/hologram-bg.png")',
+      },
+    })),
   ],
 };

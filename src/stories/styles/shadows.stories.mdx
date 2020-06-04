@@ -1,0 +1,25 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+
+<Meta title="Styles" />
+
+# Shadows
+
+Default is `sm`
+
+<Preview>
+  <Story name="Shadows">
+    {{
+      data: () => ({ shadows: ['sm', 'md', 'lg', 'inner']}),
+      template: `
+        <div class="py-16 flex justify-center bg-gray-200 space-x-4">
+          <div
+            v-for="variant in shadows"
+            :class="\`flex bg-white rounded w-48 h-48 shadow-\${variant} items-center justify-center\`"
+          >
+            shadow-{{ variant }}
+          </div>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>

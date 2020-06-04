@@ -1,0 +1,72 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+
+<Meta title="Styles/Colors" />
+
+# Colors
+
+## Colors - Marketing
+<Preview>
+  <Story name="Colors - Marketing">
+    {{
+      data: () => ({
+        colors: ['primary-gradient', 'dark-blue', 'primary-blue', 'hologram', 'primary-gradient-2'],
+      }),
+      template: `
+        <div class="py-16 flex justify-center space-x-2">
+          <div
+            v-for="color in colors"
+            v-tooltip.bottom="\`bg-\${color}\`"
+            :class="\`w-16 h-12 rounded bg-\${color} border border-gray-300\`"
+          />
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Grays (Product & Marketing)
+<Preview>
+  <Story name="Grays (Product & Marketing)">
+    {{
+      data: () => ({
+        colors: ['black'].concat([6,5,4,3,2,1].map(n => `gray-${n}00`)).concat(['white', 'gray-gradient']),
+      }),
+      template: `
+        <div class="py-16 flex justify-center space-x-2">
+          <div
+            v-for="color in colors"
+            v-tooltip.bottom="\`bg-\${color}\`"
+            :class="\`w-16 h-12 rounded bg-\${color} border border-gray-300\`"
+          />
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Colors - Dashboard
+<Preview>
+  <Story name="Colors - Dashboard">
+    {{
+      data: () => ({
+        colors: ['purple', 'red', 'orange', 'green', 'blue'],
+      }),
+      methods: {
+        makeTones(color) {
+          return [6,5,4,3,2,1].map(n => `${color}-${n}00`);
+        }
+      },
+      template: `
+        <div class="py-16 space-y-2">
+          <div v-for="color in colors" class="flex justify-center space-x-2">
+            <div
+              v-for="tone in makeTones(color)"
+              v-tooltip.bottom="\`bg-\${tone}\`"
+              :class="\`w-16 h-12 rounded bg-\${tone} border border-gray-300\`"
+            />
+          </div>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
