@@ -1,6 +1,7 @@
 <template>
     <button
       class="segmented-btn"
+      type="button"
       :class="{ 'segmented-btn--active': active }"
       @click="handleClick"
       :value="value"
