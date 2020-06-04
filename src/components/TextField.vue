@@ -99,7 +99,7 @@ export default {
   mounted() {
     this.autoGrow();
 
-    if (!this.multiline) {
+    if (!this.multiline && this.$slots.default) {
       this.slotObserver = new MutationObserver(this.adjustSlotWidth);
 
       this.slotObserver.observe(
