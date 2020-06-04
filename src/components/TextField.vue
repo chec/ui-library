@@ -20,7 +20,7 @@
       :for="id">
       <span class="invisible">{{ label }}</span>
     </label>
-    <div class="text-field__right-content" ref="rightContentSlot">
+    <div class="text-field__right-content" ref="rightContentSlot" v-if="$slots.default">
       <slot></slot>
     </div>
     <a
