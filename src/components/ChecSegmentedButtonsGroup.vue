@@ -83,5 +83,17 @@ export default {
 <style lang="scss">
 .segmented-btns-group {
   @apply flex cursor-pointer overflow-hidden;
+
+  .segmented-btn {
+    @apply rounded-none;
+  }
+
+  &:first-child {
+    @apply rounded-tl-sm rounded-bl-sm;
+  }
+
+  &:last-child {
+    @apply rounded-tr-sm rounded-br-sm;
+  }
 }
 </style>
