@@ -1,6 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
-import { select } from '@storybook/addon-knobs';
+import { select, boolean } from '@storybook/addon-knobs';
 import BaseButton from '../../components/BaseButton.vue';
 import ChecModal from '../../components/ChecModal.vue';
 import TextField from '../../components/TextField.vue';
@@ -85,6 +85,9 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
         };
       },
       props: {
+        form: {
+          default: () => boolean('Use <form> root', true),
+        },
         width: {
           default: select('Width', widths, 'lg'),
         },
@@ -96,7 +99,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
       },
       template: `
         <div class="font-lato">
-          <ChecModal :width="width" header="Set up your account" v-if="showModal">
+          <ChecModal :form="form" :width="width" header="Set up your account" v-if="showModal">
             <label class="block mb-4">
               <TextField label="First name" value="Leslie" class="w-full" />
             </label>
@@ -182,6 +185,9 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
         };
       },
       props: {
+        form: {
+          default: () => boolean('Use <form> root', true),
+        },
         width: {
           default: select('Width', widths, 'lg'),
         },
@@ -193,7 +199,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
       },
       template: `
         <div class="font-lato">
-          <ChecModal :width="width" header="Set up your account" undismissible>
+          <ChecModal :form="form" :width="width" header="Set up your account" undismissible>
             <label class="block mb-4">
               <TextField label="First name" value="Leslie" class="w-full" />
             </label>

@@ -1,5 +1,5 @@
 <template>
-  <div class="modal__overlay" @click.self="emitClose">
+  <component :is="$props.form ? 'form' : 'div'" class="modal__overlay" @click.self="emitClose">
     <ChecCard class="modal__card" :class="`max-w-${width}`" tailwind="bg-gray-100">
       <ChecModalHeader v-if="header" @close="emitClose">{{ header }}</ChecModalHeader>
       <!--
@@ -13,7 +13,7 @@
         <slot name="toolbar" />
       </div>
     </ChecCard>
-  </div>
+  </component>
 </template>
 <script>
 import ChecCard from './ChecCard.vue';
@@ -26,6 +26,13 @@ export default {
     ChecModalHeader,
   },
   props: {
+    /**
+     * Sets a <form> element as the root
+     */
+    form: {
+      type: Boolean,
+      default: false,
+    },
     /**
      * Controls the max width of the modal. Use one of the tailwind sizes, e.g. md, xl, 2xl.
      */
