@@ -12,7 +12,9 @@ module.exports = plugin(({ addBase, config }) => addBase({
   'thead th': {
     backgroundColor: config('theme.colors.gray-200'),
     textTransform: 'uppercase',
-    fontSize: config('theme.fontSize.xs'),
+    fontSize: config('theme.fontSize.xxs'),
+    padding: '0.75rem 1rem',
+    fontWeight: 'bold',
   },
   'tbody td': {
     fontSize: config('theme.fontSize.sm'),
