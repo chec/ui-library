@@ -1,6 +1,7 @@
 import FlatPickr from 'vue-flatpickr-component';
 import baseFlatpickr from 'flatpickr';
 import TextField from './TextField.vue';
+import ChecIcon from './ChecIcon.vue';
 import ChecFlatpickrPlugin from '../lib/flatpickr/formattingPlugin';
 
 import 'flatpickr/dist/flatpickr.css';
@@ -58,19 +59,30 @@ export default {
   },
   render(h) {
     const { label, variant, value } = this;
-    return h(TextField, {
-      props: {
-        label,
-        variant,
-        value,
-        additionalInputAttributes: { 'data-input': true },
-        disabled: variant === 'disabled',
-      },
-      on: {
-        input: (_, event) => {
-          this.onInput(event);
+    return h(
+      TextField,
+      {
+        props: {
+          label,
+          variant,
+          value,
+          additionalInputAttributes: { 'data-input': true },
+          disabled: variant === 'disabled',
+        },
+        on: {
+          input: (_, event) => {
+            this.onInput(event);
+          },
         },
       },
-    });
+      [
+        h(ChecIcon, {
+          props: {
+            icon: 'calendar',
+          },
+          class: 'w-4 h-4',
+        }),
+      ],
+    );
   },
 };
