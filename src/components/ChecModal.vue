@@ -6,6 +6,12 @@
       @slot Modal content
       -->
       <slot />
+      <div class="modal__toolbar" v-if="$slots.toolbar">
+        <!--
+        @slot Toolbar actions, buttons, etc
+        -->
+        <slot name="toolbar" />
+      </div>
     </ChecCard>
   </div>
 </template>
@@ -34,7 +40,7 @@ export default {
     /**
      * Prevent the close button from rendering when using the "header" prop
      */
-    undismissable: {
+    undismissible: {
       type: Boolean,
       default: false,
     },
@@ -57,18 +63,24 @@ export default {
 };
 </script>
 <style lang="scss">
-.modal__overlay {
-  @apply fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center overflow-scroll;
-  // Special / overlay
-  background-color: rgba(65, 85, 108, 0.9);
-}
+.modal {
+  &__overlay {
+    @apply fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center overflow-scroll;
+    // Special / overlay
+    background-color: rgba(65, 85, 108, 0.9);
+  }
 
-.modal__card {
-  @apply w-full;
+  &__card {
+    @apply w-full;
 
-  > .card__inner-wrapper {
-    padding-top: 2.375rem;
-    padding-bottom: 2.375rem;
+    > .card__inner-wrapper {
+      padding-top: 2.375rem;
+      padding-bottom: 2.375rem;
+    }
+  }
+
+  &__toolbar {
+    @apply flex justify-between mt-8;
   }
 }
 </style>

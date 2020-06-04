@@ -98,16 +98,13 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
         <div class="font-lato">
           <ChecModal :width="width" header="Set up your account" v-if="showModal">
             <label class="block mb-4">
-              First name
-              <TextField value="Leslie" class="w-full" />
+              <TextField label="First name" value="Leslie" class="w-full" />
             </label>
             <label class="block mb-4">
-              Surname
-              <TextField value="Lawless" class="w-full" />
+              <TextField label="Surname" value="Lawless" class="w-full" />
             </label>
             <label class="block mb-4">
-              Email address
-              <TextField value="lezlie@example.com" class="w-full" />
+              <TextField label="Email address" value="lezlie@example.com" class="w-full" />
             </label>
             <BaseButton color="red" class="mt-8" @click="hideModal">Close</BaseButton>
           </ChecModal>
@@ -150,17 +147,70 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
         <div class="font-lato">
           <ChecModal :width="width" header="Set up your account" v-if="showModal" @dismiss="hideModal">
             <label class="block mb-4">
-              First name
-              <TextField value="Leslie" class="w-full" />
+              <TextField label="First name" value="Leslie" class="w-full" />
             </label>
             <label class="block mb-4">
-              Surname
-              <TextField value="Lawless" class="w-full" />
+              <TextField label="Surname" value="Lawless" class="w-full" />
             </label>
             <label class="block mb-4">
-              Email address
-              <TextField value="lezlie@example.com" class="w-full" />
+              <TextField label="Email address" value="lezlie@example.com" class="w-full" />
             </label>
+          </ChecModal>
+          <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-right m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+## With action toolbar
+
+<Props of={ChecModal} />
+
+<Preview>
+  <Story name="With action toolbar">
+    {{
+      components: {
+        BaseButton,
+        ChecModal,
+        TextField,
+      },
+      data() {
+        return {
+          showModal: true,
+        };
+      },
+      props: {
+        width: {
+          default: select('Width', widths, 'lg'),
+        },
+      },
+      methods: {
+        hideModal() {
+          this.showModal = false;
+        },
+      },
+      template: `
+        <div class="font-lato">
+          <ChecModal :width="width" header="Set up your account" undismissible>
+            <label class="block mb-4">
+              <TextField label="First name" value="Leslie" class="w-full" />
+            </label>
+            <label class="block mb-4">
+              <TextField label="Surname" value="Lawless" class="w-full" />
+            </label>
+            <label class="block mb-4">
+              <TextField label="Email address" value="lezlie@example.com" class="w-full" />
+            </label>
+            <template v-slot:toolbar>
+              <BaseButton color="red">
+                Cancel
+              </BaseButton>
+              <BaseButton color="green">
+                Save
+              </BaseButton>
+            </template>
           </ChecModal>
           <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
           <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
