@@ -89,11 +89,11 @@ export default {
   }
 
   &:first-child {
-    @apply rounded-tl-sm rounded-bl-sm;
+    @apply rounded-l-sm;
   }
 
   &:last-child {
-    @apply rounded-tr-sm rounded-br-sm;
+    @apply rounded-r-sm;
   }
 }
 </style>
