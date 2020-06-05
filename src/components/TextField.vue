@@ -302,7 +302,7 @@ export default {
   }
 
   &--error &__input,
-  :not(.text-field--empty) &__input:invalid {
+  &:not(.text-field--empty) &__input:invalid {
     @apply border-red-300;
     &:hover,
     &:focus,
