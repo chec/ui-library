@@ -3,7 +3,7 @@
     <BaseDivider class="update-group__divider">{{ updateDate }}</BaseDivider>
     <div class="update-section">
       <div v-for="(update, key) in updates" :key="key" class="update">
-        <ChecDataPill :variant="update.variant" class="update__pill">{{ update.type }}</ChecDataPill>
+        <ChecDataPill :color="pillColor(update)" class="update__pill">{{ update.type }}</ChecDataPill>
         <p>
           {{ update.details }}
           <a
@@ -44,6 +44,15 @@ export default {
     updateDate: {
       type: String,
       default: '',
+    },
+  },
+  methods: {
+    pillColor(update) {
+      return ({
+        new: 'green',
+        news: 'gray',
+        updated: 'orange',
+      })[update.variant];
     },
   },
 };
