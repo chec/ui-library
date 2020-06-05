@@ -1,6 +1,7 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
-import { text, select } from '@storybook/addon-knobs';
+import { boolean, text, select } from '@storybook/addon-knobs';
 import ChecDataPill from '../../components/ChecDataPill';
+import ChecDataPillGroup from '../../components/ChecDataPillGroup';
 
 <Meta title="Components/Data pill" component={ChecDataPill} />
 
@@ -9,18 +10,84 @@ import ChecDataPill from '../../components/ChecDataPill';
 <Props of={ChecDataPill} />
 
 <Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecDataPill,
+      },
+      props: {
+        color: { default: select('Color', ['gray', 'green', 'orange', 'purple', 'red', 'blue', 'opaque'], 'gray') },
+        content: { default: text('Label', 'Label') },
+        filled: { default: boolean('Filled', false) },
+        background: { default: select('Background', ['light', 'dark'], 'dark') },
+      },
+      computed: {
+        bg() {
+          return `bg-gray-${this.background === 'dark' ? '400' : '100'}`;
+        }
+      },
+      template: `
+        <div class="py-6 text-center" :class="bg">
+          <ChecDataPill :color="color" :filled="filled">{{ content }}</ChecDataPill>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+
+<Preview>
   <Story name="Variants">
     {{
       components: {
         ChecDataPill,
       },
+      props: {
+        background: { default: select('Background', ['light', 'dark'], 'dark') },
+      },
+      data: () => ({
+        colors: ['gray', 'green', 'orange', 'purple', 'red', 'blue', 'opaque'],
+      }),
+      computed: {
+        bg() {
+          return `bg-gray-${this.background === 'dark' ? '400' : '100'}`;
+        }
+      },
       template: `
-        <div class="mx-auto max-w-lg pt-6 space-x-2">
-          <ChecDataPill>Label</ChecDataPill>
-          <ChecDataPill variant="news">News</ChecDataPill>
-          <ChecDataPill variant="new">New</ChecDataPill>
-          <ChecDataPill variant="updated">Updated</ChecDataPill>
-          <ChecDataPill variant="slug">Slug</ChecDataPill>
+        <div class="pt-4 pb-6" :class="bg">
+          <div class="text-center mt-2 space-x-2" v-for="color in colors">
+            <ChecDataPill :color="color">{{ color }}</ChecDataPill>
+            <ChecDataPill :color="color" filled>{{ color }}-filled</ChecDataPill>
+          </div>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+
+<Preview>
+  <Story name="Grouped">
+    {{
+      components: {
+        ChecDataPill,
+        ChecDataPillGroup,
+      },
+      props: {
+        background: { default: select('Background', ['light', 'dark'], 'dark') },
+      },
+      data: () => ({
+        colors: ['gray', 'green', 'orange', 'purple', 'red', 'blue', 'opaque'],
+      }),
+      computed: {
+        bg() {
+          return `bg-gray-${this.background === 'dark' ? '400' : '100'}`;
+        }
+      },
+      template: `
+        <div class="pt-4 pb-6" :class="bg">
+          <ChecDataPillGroup class="justify-center mt-2" v-for="color in colors">
+            <ChecDataPill :color="color" filled>{{ color }}-filled</ChecDataPill>
+            <ChecDataPill :color="color">{{ color }}</ChecDataPill>
+          </div>
         </div>`
     }}
   </Story>

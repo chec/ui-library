@@ -8,11 +8,13 @@ import BaseOption from './components/BaseOption.vue';
 import BasePopover from './components/BasePopover.vue';
 import BaseTag from './components/BaseTag.vue';
 import BaseTooltip from './directives/BaseTooltip';
+import ChangeLog from './components/ChangeLog.vue';
 import ChecAccordion from './components/ChecAccordion.vue';
 import ChecAvatar from './components/ChecAvatar.vue';
 import ChecCard from './components/ChecCard.vue';
 import ChecCheckbox from './components/ChecCheckbox.vue';
 import ChecDataPill from './components/ChecDataPill.vue';
+import ChecDataPillGroup from './components/ChecDataPillGroup.vue';
 import ChecDatepicker from './components/ChecDatepicker';
 import ChecHeader from './components/ChecHeader.vue';
 import ChecIcon from './components/ChecIcon.vue';
@@ -41,11 +43,13 @@ export {
   BasePopover,
   BaseTag,
   BaseTooltip,
+  ChangeLog,
   ChecCard,
   ChecAccordion,
   ChecAvatar,
   ChecCheckbox,
   ChecDataPill,
+  ChecDataPillGroup,
   ChecDatepicker,
   ChecHeader,
   ChecIcon,

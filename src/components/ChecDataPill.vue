@@ -10,46 +10,66 @@
 export default {
   props: {
     /**
-     * The style variant for the data pill. One of "news", "new", "updated", or empty for the primitive.
+     * The color the data pill - specifically the text. Options are: 'gray', 'green', 'orange', 'purple', 'red',
+     * 'blue', and 'opaque'. Note that `opaque` is the "soft white" variant.
      */
-    variant: {
+    color: {
       type: String,
-      default: '',
-      validator(value) {
-        return ['', 'news', 'new', 'updated', 'slug'].includes(value);
-      },
+      default: 'gray',
+      validator: value => ['gray', 'green', 'orange', 'purple', 'red', 'blue', 'opaque'].includes(value),
+    },
+    /**
+     * Indicates the "filled" variant should be used, where the background color matches the color prop.
+     */
+    filled: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
     /**
-     * Returns the computed class name for the variant type, e.g. `data-pill--updated`
+     * Returns the computed classes for the pill
      *
      * @returns {string}
      */
     classObject() {
-      return this.variant ? `data-pill--${this.variant}` : '';
+      return {
+        [`data-pill--${this.color}`]: true,
+        'data-pill--filled': this.filled,
+      };
     },
   },
 };
 </script>
 <style lang="scss">
+$colors: 'green', 'orange', 'purple', 'red', 'blue';
+
 .data-pill {
-  @apply py-1 px-2 rounded-full caps-xxs bg-white text-black border border-black;
+  $this: &;
 
-  &--news {
-    @apply bg-gray-200 border-gray-200 text-gray-500;
+  @apply py-1 px-2 rounded-full caps-xxs;
+
+  @each $color in $colors {
+    &--#{$color} {
+      @apply bg-#{$color}-100 text-#{$color}-600;
+
+      &#{$this}--filled {
+        @apply bg-#{$color}-600 text-white;
+      }
+    }
   }
 
-  &--new {
-    @apply bg-green-100 border-green-100 text-green-600;
+  // Special cases
+  &--gray {
+    @apply bg-gray-200 text-gray-500;
+
+    &#{$this}--filled {
+      @apply bg-gray-400 text-white;
+    }
   }
 
-  &--updated {
-    @apply bg-orange-100 border-orange-100 text-orange-600;
-  }
-
-  &--slug {
-    @apply bg-purple-100 border-purple-100 text-purple-600;
+  &--opaque {
+    @apply bg-white bg-opacity-20 text-white;
   }
 }
 </style>

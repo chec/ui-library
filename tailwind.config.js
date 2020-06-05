@@ -120,6 +120,9 @@ module.exports = {
       zIndex: {
         '-1': '-1',
       },
+      opacity: {
+        20: '0.2',
+      },
     },
   },
   variants: {
