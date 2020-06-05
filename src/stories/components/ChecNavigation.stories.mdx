@@ -6,7 +6,7 @@ const routes = [
     path: '/orders',
     meta: {
       navItem: {
-        label: 'Orders', 
+        label: 'Orders',
         iconName: 'orders'
       },
     },
@@ -15,7 +15,7 @@ const routes = [
     path: '/products',
     meta: {
       navItem: {
-        label: 'Products', 
+        label: 'Products',
         iconName: 'products'
       },
     },
@@ -24,7 +24,7 @@ const routes = [
     path: '/categories',
     meta: {
       navItem: {
-        label: 'Categories', 
+        label: 'Categories',
         iconName: 'categories'
       },
     },
@@ -33,7 +33,7 @@ const routes = [
     path: '/discounts',
     meta: {
       navItem: {
-        label: 'Discounts', 
+        label: 'Discounts',
         iconName: 'discounts'
       },
     },
@@ -42,8 +42,17 @@ const routes = [
     path: '/logs',
     meta: {
       navItem: {
-        label: 'Logs', 
+        label: 'Logs',
         iconName: 'logs'
+      },
+    },
+  },
+  {
+    path: '/developers',
+    meta: {
+      navItem: {
+        label: 'Developers',
+        iconName: 'developers'
       },
     },
   },
@@ -51,7 +60,7 @@ const routes = [
     path: '/settings',
     meta: {
       navItem: {
-        label: 'Settings', 
+        label: 'Settings',
         iconName: 'settings'
       },
     },
@@ -81,8 +90,8 @@ const routes = [
 # Navigation with active route (/orders)
 
 <Preview>
-  <Story 
-    name="With active /orders route" 
+  <Story
+    name="With active /orders route"
     decorators={[ StoryRouter({}, { initialEntry: '/orders/55555', routes })]}>
     {{
       components: {
@@ -99,8 +108,8 @@ const routes = [
 # Navigation set to expand (/orders)
 
 <Preview>
-  <Story 
-    name="Expanded via prop" 
+  <Story
+    name="Expanded via prop"
     decorators={[ StoryRouter({}, { initialEntry: '/orders/55555', routes })]}>
     {{
       components: {
