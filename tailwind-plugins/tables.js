@@ -15,6 +15,7 @@ module.exports = plugin(({ addBase, config }) => addBase({
     fontSize: config('theme.fontSize.xxs'),
     padding: '0.75rem 1rem',
     fontWeight: 'bold',
+    letterSpacing: config('theme.letterSpacing.widest'),
   },
   'tbody td': {
     fontSize: config('theme.fontSize.sm'),
