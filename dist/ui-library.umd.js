@@ -22895,15 +22895,15 @@ var ChecProgressBar_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecProgressBar = (ChecProgressBar_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=2c939084&
-var ChecSegmentedButtonsGroupvue_type_template_id_2c939084_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"segmented-btns-group"},_vm._l((_vm.resolvedOptions),function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=1fa2b2bc&
+var ChecSegmentedButtonsGroupvue_type_template_id_1fa2b2bc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"segmented-btns-group"},_vm._l((_vm.resolvedOptions),function(ref){
 var label = ref.label;
 var optionValue = ref.value;
 return _c('ChecSegmentedButton',{key:optionValue,ref:("button" + optionValue),refInFor:true,attrs:{"value":optionValue,"active":_vm.isActive(optionValue),"disabled":_vm.disabled},on:{"click":_vm.handleClick,"move-next":_vm.handleNext,"move-prev":_vm.handlePrev}},[_vm._v(" "+_vm._s(label)+" ")])}),1)}
-var ChecSegmentedButtonsGroupvue_type_template_id_2c939084_staticRenderFns = []
+var ChecSegmentedButtonsGroupvue_type_template_id_1fa2b2bc_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=2c939084&
+// CONCATENATED MODULE: ./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=1fa2b2bc&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e4d85882-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButton.vue?vue&type=template&id=7f6c90bc&
 var ChecSegmentedButtonvue_type_template_id_7f6c90bc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',_vm._b({staticClass:"segmented-btn",class:{ 'segmented-btn--active': _vm.active },attrs:{"type":"button","value":_vm.value},on:{"click":_vm.handleClick,"keydown":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"right",39,$event.key,["Right","ArrowRight"])){ return null; }if('button' in $event && $event.button !== 2){ return null; }return _vm.onKeyDownRight($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"left",37,$event.key,["Left","ArrowLeft"])){ return null; }if('button' in $event && $event.button !== 0){ return null; }return _vm.onKeyDownLeft($event)}]}},'button',_vm.$attrs,false),[_vm._t("default")],2)}
@@ -23109,8 +23109,8 @@ var ChecSegmentedButtonsGroupvue_type_style_index_0_lang_scss_ = __webpack_requi
 
 var ChecSegmentedButtonsGroup_component = normalizeComponent(
   components_ChecSegmentedButtonsGroupvue_type_script_lang_js_,
-  ChecSegmentedButtonsGroupvue_type_template_id_2c939084_render,
-  ChecSegmentedButtonsGroupvue_type_template_id_2c939084_staticRenderFns,
+  ChecSegmentedButtonsGroupvue_type_template_id_1fa2b2bc_render,
+  ChecSegmentedButtonsGroupvue_type_template_id_1fa2b2bc_staticRenderFns,
   false,
   null,
   null,
