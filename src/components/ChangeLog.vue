@@ -25,7 +25,7 @@ import ChecDataPill from './ChecDataPill.vue';
 import BaseDivider from './BaseDivider.vue';
 
 export default {
-  name: 'Updates',
+  name: 'ChangeLog',
   components: {
     BaseDivider,
     ChecDataPill,
