@@ -122,14 +122,12 @@ export default {
         value,
         variant,
         id,
-        label,
         $attrs,
       } = this;
 
       return {
         ...$attrs,
         ...additionalInputAttributes,
-        'aria-describedby': label,
         placeholder: ' ',
         class: ['text-field__input', this.innerInputClass],
         disabled: variant === 'disabled',
