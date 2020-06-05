@@ -83,6 +83,12 @@ module.exports = {
         'sans-serif',
       ],
     },
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1120px',
+    },
     gradients: {
       'primary-gradient': ['45deg', '#254E81', '#2C7EA1'],
       'vertical-transparent-gradient': ['0deg', 'rgba(255,255,255,0)', 'rgba(255,255,255,0.8)', 'rgba(255,255,255,1)'],

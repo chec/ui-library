@@ -21,6 +21,7 @@ import IcOrders from '../assets/svgs/NavIcons/ic-orders.svg';
 import IcProducts from '../assets/svgs/NavIcons/ic-products.svg';
 import IcDiscounts from '../assets/svgs/NavIcons/ic-discounts.svg';
 import IcLogs from '../assets/svgs/NavIcons/ic-logs.svg';
+import IcDevelopers from '../assets/svgs/NavIcons/ic-developers.svg';
 import IcSettings from '../assets/svgs/NavIcons/ic-settings.svg';
 import IcCategories from '../assets/svgs/NavIcons/ic-categories.svg';
 // Marketing icons imports
@@ -63,6 +64,7 @@ export const navIcons = {
   products: IcProducts,
   discounts: IcDiscounts,
   logs: IcLogs,
+  developers: IcDevelopers,
   settings: IcSettings,
   categories: IcCategories,
 };

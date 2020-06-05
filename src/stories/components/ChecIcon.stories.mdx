@@ -118,9 +118,6 @@ const colors = {
         icons: {
           default: navIcons,
         },
-        color: {
-          default: select('Color', colors, colors.blue)
-        },
       },
       template: `
         <div class="py-16 flex justify-center bg-gray-200">
@@ -129,7 +126,6 @@ const colors = {
             :key="icon"
             :icon="icon"
             class="w-12 h-12"
-            :class="color"
             v-tooltip.top="icon"
           />
         </div>`,
