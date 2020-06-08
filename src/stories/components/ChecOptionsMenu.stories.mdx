@@ -1,5 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
+import { select } from '@storybook/addon-knobs';
 import BaseOption from '../../components/BaseOption.vue';
 import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
 
@@ -17,6 +18,27 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
       components: {
         BaseOption,
         ChecOptionsMenu,
+      },
+      props: {
+        menuPlacement: {
+          default: select('Menu placement', [
+            'auto',
+            'auto-start',
+            'auto-end',
+            'top',
+            'top-start',
+            'top-end',
+            'bottom',
+            'bottom-start',
+            'bottom-end',
+            'right',
+            'right-start',
+            'right-end',
+            'left',
+            'left-start',
+            'left-end'
+          ], 'bottom'),
+        },
       },
       methods: {
         action: action('option-selected'),
@@ -54,7 +76,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
                   more
                 </td>
                 <td class="flex justify-end">
-                  <ChecOptionsMenu :open="true">
+                  <ChecOptionsMenu :open="true" :menu-placement="menuPlacement">
                     <BaseOption @option-selected="action">
                       Edit record
                     </BaseOption>
@@ -72,7 +94,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
               </tr>
             </tbody>
           </table>
-          <ChecOptionsMenu :open="true">
+          <ChecOptionsMenu :open="true" :menu-placement="menuPlacement">
             <BaseOption @option-selected="action">
               Edit record
             </BaseOption>
