@@ -19,8 +19,12 @@ module.exports = {
   theme: {
     fontFamily: {
       lato: [
-        'lato',
+        'Lato',
         'sans-serif',
+      ],
+      mono: [
+        'Roboto Mono',
+        'monospace',
       ],
     },
     gradients: {
