@@ -46,6 +46,7 @@ export default {
 <style scoped lang="scss">
 .loading {
   @apply absolute top-0 left-0 w-full h-full z-50 flex justify-center items-center flex-col;
+  border-radius: inherit;
   // Custom: Overlay / Light
   background: rgba(255, 255, 255, 0.9);
 
