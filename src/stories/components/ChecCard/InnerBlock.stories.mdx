@@ -26,6 +26,9 @@ import ChecHeader from '../../../components/ChecHeader.vue';
         titleTag: {
           default: select('Title tag', [undefined, 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'], undefined)
         },
+        content: {
+          default: text('Content', 'Content of the inner block'),
+        },
         actionText: {
           default: text('Action text'),
         },
@@ -36,13 +39,12 @@ import ChecHeader from '../../../components/ChecHeader.vue';
       template: `
         <div class="mt-8 flex justify-around max-w-sm mx-auto">
           <InnerBlock :title="title" :titleTag="titleTag" :actionText="actionText" :actionColor="actionColor">
-            Content of the inner block
+            {{ content }}
           </InnerBlock>
         </div>`
     }}
   </Story>
 </Preview>
-
 
 ## In a card
 
@@ -61,6 +63,9 @@ import ChecHeader from '../../../components/ChecHeader.vue';
         titleTag: {
           default: select('Title tag', [undefined, 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'], undefined)
         },
+        content: {
+          default: text('Content', 'Content of the inner block'),
+        },
         actionText: {
           default: text('Action text'),
         },
@@ -74,7 +79,7 @@ import ChecHeader from '../../../components/ChecHeader.vue';
             <ChecHeader variant="card" title="Demo card" />
             <p class="py-4">Some misc card content</p>
             <InnerBlock :title="title" :titleTag="titleTag" :actionText="actionText" :actionColor="actionColor">
-              Content of the inner block
+              {{ content }}
             </InnerBlock>
           </ChecCard>
         </div>`
