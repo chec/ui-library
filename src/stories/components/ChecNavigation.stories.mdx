@@ -3,28 +3,10 @@ import ChecNavigation from '../../components/ChecNavigation.vue';
 import StoryRouter from 'storybook-vue-router';
 const routes = [
   {
-    path: '/orders',
-    meta: {
-      navItem: {
-        label: 'Orders', 
-        iconName: 'orders'
-      },
-    },
-  },
-  {
-    path: '/products',
-    meta: {
-      navItem: {
-        label: 'Products', 
-        iconName: 'products'
-      },
-    },
-  },
-  {
     path: '/categories',
     meta: {
       navItem: {
-        label: 'Categories', 
+        label: 'Categories',
         iconName: 'categories'
       },
     },
@@ -33,26 +15,47 @@ const routes = [
     path: '/discounts',
     meta: {
       navItem: {
-        label: 'Discounts', 
+        label: 'Discounts',
         iconName: 'discounts'
       },
     },
   },
   {
-    path: '/logs',
+    path: '/orders',
     meta: {
       navItem: {
-        label: 'Logs', 
-        iconName: 'logs'
+        label: 'Orders',
+        iconName: 'orders',
+        sort: 10,
       },
     },
   },
   {
-    path: '/settings',
+    path: '/products',
     meta: {
       navItem: {
-        label: 'Settings', 
-        iconName: 'settings'
+        label: 'Products',
+        iconName: 'products',
+        sort: 20,
+      },
+    },
+  },
+  {
+      path: '/settings',
+      meta: {
+        navItem: {
+          label: 'Settings',
+          iconName: 'settings',
+          sort: 500,
+        },
+      },
+    },
+  {
+    path: '/logs',
+    meta: {
+      navItem: {
+        label: 'Logs',
+        iconName: 'logs'
       },
     },
   },
@@ -60,7 +63,16 @@ const routes = [
 
 <Meta title="Components/Navigation" component={ChecNavigation} />
 
-# Navigation
+## Navigation
+
+The Navigation component takes the `vue-router` routes are are defined on the Vue instance for the project
+you use the UI library in, e.g. the dashboard, and looks for any routes that are annotated with `navItem`
+objects in the `meta` data. It will then use them in the navigation.
+
+You may control the sort order by adding `sort: n` to this meta object. A low sort order will give it
+precedence in the navigation, e.g. "Orders" may be given a sort of -10 or less to make it show at the top of
+the navigation, while "Settings" should always be last, so one should give a sort of 500 or more. **If you
+don't provide a sort at all, it will default to 100.**
 
 <Props of={ChecNavigation} />
 
@@ -78,11 +90,11 @@ const routes = [
   </Story>
 </Preview>
 
-# Navigation with active route (/orders)
+## Navigation with active route
 
 <Preview>
-  <Story 
-    name="With active /orders route" 
+  <Story
+    name="With active /orders route"
     decorators={[ StoryRouter({}, { initialEntry: '/orders/55555', routes })]}>
     {{
       components: {
@@ -96,11 +108,11 @@ const routes = [
   </Story>
 </Preview>
 
-# Navigation set to expand (/orders)
+## Navigation set to expand (/orders)
 
 <Preview>
-  <Story 
-    name="Expanded via prop" 
+  <Story
+    name="Expanded"
     decorators={[ StoryRouter({}, { initialEntry: '/orders/55555', routes })]}>
     {{
       components: {

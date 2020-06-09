@@ -46,7 +46,17 @@ export default {
       if (!this.$router.options) {
         throw new Error('Could not locate vue-router instance from within <ChecNavigation>');
       }
-      return this.$router.options.routes.filter(route => route.meta && route.meta.navItem);
+      return this.$router.options.routes
+        .filter(route => route.meta && route.meta.navItem)
+        // Sort the routes by their sort order, if they're provided
+        .sort((a, b) => {
+          const sortA = a.meta.navItem.sort || 100;
+          const sortB = b.meta.navItem.sort || 100;
+          if (sortA < sortB) {
+            return -1;
+          }
+          return sortA > sortB ? 1 : 0;
+        });
     },
   },
 };
