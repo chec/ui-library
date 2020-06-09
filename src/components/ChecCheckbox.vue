@@ -126,27 +126,27 @@ export default {
       @apply outline-none;
     }
 
-    &:hover{
+    &:hover {
       @apply cursor-pointer bg-white border border-gray-500;
     }
 
-    &:active{
+    &:active {
       @apply bg-gray-300 border border-gray-500;
     }
 
-    &:disabled{
+    &:disabled {
       @apply bg-white border border-gray-300 cursor-not-allowed;
     }
 
-    &:checked:after {
+    &:checked::after {
       @apply text-white absolute;
     }
 
-    &:checked{
+    &:checked {
       @apply bg-gray-500 border-none;
     }
 
-    &:indeterminate:after {
+    &:indeterminate::after {
       @apply text-white absolute;
     }
 
@@ -157,6 +157,7 @@ export default {
 
   &__check {
     @apply flex items-center justify-center absolute h-4 w-4;
+
     svg {
       @apply text-white h-3 w-3;
     }
@@ -164,6 +165,7 @@ export default {
 
   &__minus {
     @apply flex items-center justify-center absolute h-4 w-4;
+
     svg {
       @apply text-white h-3 w-3;
     }

@@ -173,10 +173,12 @@ export default {
 %active-control {
   &:enabled {
     @apply bg-gray-400 outline-none;
+
     &:hover {
       @apply bg-gray-600;
     }
   }
+
   &:disabled {
     @apply bg-gray-500;
   }
@@ -184,18 +186,23 @@ export default {
 
 %control-shared {
   @apply bg-gray-500 rounded p-1 mr-1 ml-0;
+
   &:hover {
     &:enabled {
       @apply bg-gray-600;
+
       .chec-tab__text {
         @apply text-white;
       }
     }
   }
+
   &:disabled {
     @apply opacity-50 cursor-not-allowed;
   }
-  &:active, &:focus {
+
+  &:active,
+  &:focus {
     @extend %active-control;
   }
 }
@@ -210,13 +217,16 @@ export default {
 
 .chec-per-page-control {
   @extend %control-group;
+
   @apply leading-tight text-xxs py-2 px-3;
+
   &__label {
     @apply text-xxs mr-3;
   }
 
   &__option {
     @extend %control-shared;
+
     @apply text-xs font-bold;
 
     &--active {
@@ -227,13 +237,16 @@ export default {
 
 .chec-page-selector {
   @extend %control-group;
+
   @apply flex items-center;
 
   &__control {
     @extend %control-shared;
+
     svg {
       @apply w-3 h-3;
     }
+
     &--active {
       @extend %active-control;
     }

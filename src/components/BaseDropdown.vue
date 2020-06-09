@@ -350,17 +350,22 @@ export default {
 <style lang="scss" scoped>
   .dropdown {
     @apply static w-full text-gray-500;
+
     &-inner {
       @apply flex flex-col;
+
       &__label {
         @apply text-left absolute text-gray-500 inline-block origin-top-left transition-transform duration-150 ;
-        transform: translate3d(0, .5rem, 0) scale3d(1, 1, 1);
         backface-visibility: hidden;
+
+        transform: translate3d(0, 0.5rem, 0) scale3d(1, 1, 1);
       }
+
       &__value {
         @apply py-2 text-sm;
       }
     }
+
     &__control {
       @apply
         relative
@@ -381,37 +386,47 @@ export default {
         flex
         items-center
         justify-between;
+
       &:hover {
         @apply border border-gray-400;
       }
+
       &:focus,
       &:active {
         @apply border border-gray-500;
       }
+
       &--open {
         @apply border border-gray-500;
       }
     }
+
     &__option {
       @apply text-sm text-gray-600 px-4 py-3;
+
       &:not(:last-child) {
         @apply border-b border-gray-200;
       }
     }
+
     &__base-popover {
       @apply overflow-scroll;
+
       max-height: 50vh;
     }
+
     &__down-arrow {
       @apply flex flex-col justify-center w-4 h-4 fill-current text-gray-600;
     }
+
     &--with-inline-label {
       .dropdown-inner {
-        .dropdown-inner__value{
+        .dropdown-inner__value {
           @apply pt-4 pb-0;
         }
-        .dropdown-inner__label{
-          transform: translate3d(0, 0rem, 0) scale3d(.8, .8, 1);
+
+        .dropdown-inner__label {
+          transform: translate3d(0, 0, 0) scale3d(0.8, 0.8, 1);
         }
       }
     }

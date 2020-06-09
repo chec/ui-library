@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "rules": {
+    "max-nesting-depth": null,
+    "selector-class-pattern": [
+      "^\\w[\\w\\d]([a-z]|-(?!-))+(__([a-z]|-(?!-))+)?(--([a-z]|-(?!-))+)?$",
+      {}
+    ],
+    "scss/at-extend-no-missing-placeholder": null
+  }
+}

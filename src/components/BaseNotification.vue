@@ -81,30 +81,38 @@ export default {
 <style lang="scss" scoped>
 .notif {
   @apply flex justify-between items-start bg-gray-200 rounded-md p-4 shadow-md;
+
   min-width: 7.25rem;
 
   &__content-container {
     @apply flex items-center;
+    padding-bottom: 3px;
     // Manual tweaks to keep single line text vertically centered with the close button
     padding-top: 3px;
-    padding-bottom: 3px;
   }
+
   &__text {
     @apply text-primary-blue text-sm;
   }
+
   &__close-icon {
     @apply ml-4 p-2 bg-green-600 rounded text-white cursor-pointer;
+
     > svg {
       @apply h-4 w-4;
     }
   }
+
   &--success {
     @apply bg-green-500;
+
     .notif__text {
       @apply text-white;
     }
+
     .notif__close-icon {
       @apply text-white bg-transparent transition-all ease-in-out duration-300;
+
       &:hover,
       &:active,
       &:focus {
@@ -112,13 +120,17 @@ export default {
       }
     }
   }
+
   &--error {
     @apply bg-red-500;
+
     .notif__text {
       @apply text-white;
     }
+
     .notif__close-icon {
       @apply text-white bg-transparent transition-all ease-in-out duration-300;
+
       &:hover,
       &:active,
       &:focus {
@@ -126,13 +138,17 @@ export default {
       }
     }
   }
+
   &--warning {
     @apply bg-orange-500;
+
     .notif__text {
       @apply text-white;
     }
+
     .notif__close-icon {
       @apply text-white bg-transparent transition-all ease-in-out duration-300;
+
       &:hover,
       &:active,
       &:focus {
@@ -140,13 +156,17 @@ export default {
       }
     }
   }
+
   &--info {
     @apply bg-blue-500;
+
     .notif__text {
       @apply text-white;
     }
+
     .notif__close-icon {
       @apply text-white bg-transparent transition-all ease-in-out duration-300;
+
       &:hover,
       &:active,
       &:focus {

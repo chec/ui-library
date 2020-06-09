@@ -91,6 +91,7 @@ export default {
     &:hover {
       @apply bg-gray-100;
     }
+
     &:focus,
     &:active {
       @apply bg-gray-100;
@@ -102,6 +103,7 @@ export default {
 
     &--disabled {
       @apply opacity-50 cursor-not-allowed;
+
       &:hover,
       &:active,
       &:focus {
@@ -117,9 +119,11 @@ export default {
       &1 {
         @apply pl-8;
       }
+
       &2 {
         @apply pl-12;
       }
+
       &3 {
         @apply pl-16;
       }

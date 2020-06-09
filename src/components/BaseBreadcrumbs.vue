@@ -41,13 +41,16 @@ export default {
 <style lang="scss" scoped>
 .breadcrumb {
   @apply flex font-lato text-xl text-gray-500;
+
   &__right-arrow {
     @apply h-3 w-2 fill-current text-gray-400 ml-2;
   }
+
   li {
     > a {
       @apply flex items-center pr-3;
     }
+
     &:last-child {
       @apply font-bold;
     }

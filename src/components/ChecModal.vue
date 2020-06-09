@@ -81,8 +81,8 @@ export default {
     @apply w-full;
 
     > .card__inner-wrapper {
-      padding-top: 2.375rem;
       padding-bottom: 2.375rem;
+      padding-top: 2.375rem;
     }
   }
 

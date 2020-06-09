@@ -30,7 +30,8 @@ export default {
 <style lang="scss">
   .progress {
     @apply h-1 rounded-lg bg-gray-200 overflow-hidden;
-    &__bar{
+
+    &__bar {
       @apply h-1 bg-green-500 transition-all ease-in-out duration-200;
     }
   }

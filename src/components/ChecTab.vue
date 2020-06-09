@@ -44,13 +44,18 @@ export default {
 .chec-tab {
   @apply px-6 py-2 border-b-2 border-gray-300;
   @apply font-bold font-lato text-sm text-gray-400;
+
   &:hover:enabled {
     @apply text-gray-500 border-gray-400;
   }
+
   &:disabled {
     @apply opacity-50 cursor-not-allowed;
   }
-  &--active, &:active, &:focus {
+
+  &--active,
+  &:active,
+  &:focus {
     &:enabled {
       @apply outline-none text-gray-500 border-gray-500;
     }

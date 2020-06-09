@@ -64,6 +64,7 @@ export default {
 
   &--compact {
     @apply rounded;
+
     padding: 2px;
 
     .card__inner-wrapper {
@@ -77,6 +78,7 @@ export default {
 
   &--border-vertical {
     @apply px-0 overflow-hidden;
+
     .card__inner-wrapper {
       @apply rounded-none;
     }
@@ -84,6 +86,7 @@ export default {
 
   &--border-horizontal {
     @apply py-0 overflow-hidden;
+
     .card__inner-wrapper {
       @apply rounded-none;
     }

@@ -70,8 +70,10 @@ export default {
 
   &-inner {
     @apply flex items-center;
+
     &__label {
       @apply caps-xs;
+
       &:not(:last-child) {
         @apply pr-4;
       }

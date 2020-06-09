@@ -87,14 +87,15 @@ export default {
     }
 
     &__input {
-      position: absolute;
       left: -999em;
+      position: absolute;
     }
 
     &--toggled {
       .chec-switch__container {
         @apply bg-green-400;
       }
+
       .chec-switch__thumb {
         transform: translate3d(20px, 0, 0);
       }

@@ -234,10 +234,10 @@ export default {
         pl-5
         py-4
         leading-tight;
+      backface-visibility: hidden;
 
       content: attr(data-content);
-      backface-visibility: hidden;
-      transform: translate(0, -.3rem) scale(.8, .8);
+      transform: translate(0, -0.3rem) scale(0.8, 0.8);
     }
   }
 
@@ -263,6 +263,7 @@ export default {
 
     &:placeholder-shown {
       @apply py-4;
+
       + .text-field__label {
         &::before {
           transform: scale(1, 1);
@@ -270,7 +271,8 @@ export default {
       }
     }
 
-    &:focus, &:active {
+    &:focus,
+    &:active {
       @apply border-gray-500;
     }
 
@@ -294,7 +296,7 @@ export default {
       &:focus,
       &:active {
         @apply border-gray-300 transition-opacity duration-300 ease-in-out opacity-50;
-      };
+      }
     }
 
     .text-field__right-content {
@@ -309,6 +311,7 @@ export default {
   &--error &__input,
   &:not(.text-field--empty) &__input:invalid {
     @apply border-red-300;
+
     &:hover,
     &:focus,
     &:active {
@@ -320,6 +323,7 @@ export default {
     .text-field__label {
       @apply opacity-100;
     }
+
     .text-field__input {
       @apply pb-2 pt-6;
     }
@@ -328,6 +332,7 @@ export default {
   &--inline-label {
     .text-field__input:focus {
       @apply pb-2 pt-6;
+
       .text-field__label {
         @apply opacity-100;
       }
@@ -337,36 +342,44 @@ export default {
   &--multiline {
     .text-field__label {
       @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
+
       margin: 1px;
 
       .text-field--scrollable & {
         @apply bg-vertical-transparent-gradient;
+
         width: calc(100% - 10px);
       }
     }
 
     .text-field__input {
-      @apply resize-none overflow-auto h-20;
+
       max-height: 10rem;
       scroll-margin: 50px 0 0 50px;
+
+      scrollbar-color: #d3e0f1 transparent;
+      scrollbar-width: thin;
+
       &::-webkit-scrollbar {
         @apply w-1;
       }
+
       &::-webkit-scrollbar-track {
         @apply bg-transparent;
       }
+
       &::-webkit-scrollbar-thumb {
         @apply w-1 bg-gray-300 rounded;
       }
-      scrollbar-color: #D3E0F1 transparent;
-      scrollbar-width: thin;
+      @apply resize-none overflow-auto h-20;
     }
   }
 
   &:not(.text-field--disabled) .text-field__input {
-    &:focus, &:active {
+    &:focus,
+    &:active {
       + .text-field__label::before {
-        transform: translate(0, -.3rem) scale(.8, .8);
+        transform: translate(0, -0.3rem) scale(0.8, 0.8);
       }
     }
   }

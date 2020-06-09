@@ -92,6 +92,7 @@ export default {
       @apply w-3 h-3;
     }
   }
+
   &__value {
     @apply font-bold inline-block text-center;
   }

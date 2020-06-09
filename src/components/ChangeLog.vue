@@ -66,6 +66,7 @@ export default {
 <style lang="scss">
 .update-group {
   @apply mb-8 w-full;
+
   &__divider {
     @apply mb-2;
   }

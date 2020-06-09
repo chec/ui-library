@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
- .popover {
-  @apply absolute bg-white border border-gray-300 rounded overflow-hidden z-50 shadow-md;
- }
+  .popover {
+    @apply absolute bg-white border border-gray-300 rounded overflow-hidden z-50 shadow-md;
+  }
 </style>

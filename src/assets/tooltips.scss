@@ -2,6 +2,7 @@
   $arrow-size: 6px;
 
   @apply font-bold text-sm leading-none z-50;
+
   display: block !important;
 
   .tooltip-inner {
@@ -12,57 +13,61 @@
     @apply border-gray-600 absolute border-solid w-0 h-0 z-10;
   }
 
-  &[x-placement^="top"] {
+  &[x-placement^='top'] {
     margin-bottom: $arrow-size;
 
     .tooltip-arrow {
       @apply ml-0 mr-0;
-      border-width: $arrow-size $arrow-size 0 $arrow-size;
+      border-bottom-color: transparent !important;
       border-left-color: transparent !important;
       border-right-color: transparent !important;
-      border-bottom-color: transparent !important;
+
+      border-width: $arrow-size $arrow-size 0 $arrow-size;
       bottom: -($arrow-size);
       left: calc(50% - #{$arrow-size});
     }
   }
 
-  &[x-placement^="bottom"] {
+  &[x-placement^='bottom'] {
     margin-top: $arrow-size;
 
     .tooltip-arrow {
       @apply ml-0 mr-0;
-      border-width: 0 $arrow-size $arrow-size $arrow-size;
       border-left-color: transparent !important;
       border-right-color: transparent !important;
       border-top-color: transparent !important;
-      top: -($arrow-size);
+
+      border-width: 0 $arrow-size $arrow-size $arrow-size;
       left: calc(50% - #{$arrow-size});
+      top: -($arrow-size);
     }
   }
 
-  &[x-placement^="right"] {
+  &[x-placement^='right'] {
     margin-left: $arrow-size;
 
     .tooltip-arrow {
       @apply ml-0 mr-0;
-      border-width: $arrow-size $arrow-size $arrow-size 0;
+      border-bottom-color: transparent !important;
       border-left-color: transparent !important;
       border-top-color: transparent !important;
-      border-bottom-color: transparent !important;
+
+      border-width: $arrow-size $arrow-size $arrow-size 0;
       left: -($arrow-size);
       top: calc(50% - #{$arrow-size});
     }
   }
 
-  &[x-placement^="left"] {
+  &[x-placement^='left'] {
     margin-right: $arrow-size;
 
     .tooltip-arrow {
       @apply ml-0 mr-0;
-      border-width: $arrow-size 0 $arrow-size $arrow-size;
-      border-top-color: transparent !important;
-      border-right-color: transparent !important;
       border-bottom-color: transparent !important;
+      border-right-color: transparent !important;
+      border-top-color: transparent !important;
+
+      border-width: $arrow-size 0 $arrow-size $arrow-size;
       right: -$arrow-size;
       top: calc(50% - #{$arrow-size});
     }
@@ -80,11 +85,13 @@
 
   &[aria-hidden='true'] {
     @apply invisible opacity-0;
-    transition: opacity .15s, visibility .15s;
+
+    transition: opacity 0.15s, visibility 0.15s;
   }
 
   &[aria-hidden='false'] {
     @apply visible opacity-100;
-    transition: opacity .15s;
+
+    transition: opacity 0.15s;
   }
 }

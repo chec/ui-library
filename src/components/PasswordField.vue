@@ -134,6 +134,7 @@ export default {
 <style lang="scss">
   .password-field {
     @apply relative;
+
     &__strength {
       @apply
         absolute

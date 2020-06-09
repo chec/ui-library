@@ -68,11 +68,12 @@ export default {
     @apply cursor-not-allowed opacity-50;
   }
 
-  &--active, &:active, &:focus {
+  &--active,
+  &:active,
+  &:focus {
     &:enabled {
       @apply bg-gray-500 outline-none text-white;
     }
   }
-
 }
 </style>

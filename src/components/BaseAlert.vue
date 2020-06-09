@@ -68,6 +68,7 @@ export default {
 
   &__close-icon {
     @apply ml-4 p-2 bg-transparent rounded text-white cursor-pointer outline-none;
+
     > svg {
       @apply h-4 w-4;
     }
@@ -90,11 +91,13 @@ export default {
   }
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   @apply transition-opacity duration-500 ease-in-out;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   @apply opacity-0;
 }
 </style>

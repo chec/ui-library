@@ -14,14 +14,18 @@ export default {
 .divider {
   @apply flex items-center text-center caps-xxs text-gray-500;
 
-  &:before, &:after {
+  &::before,
+  &::after {
     content: '';
+
     @apply flex-1 border-t border-gray-300;
- }
-  &:before {
+  }
+
+  &::before {
     @apply mr-8;
   }
-  &:after {
+
+  &::after {
     @apply ml-8;
   }
 }
