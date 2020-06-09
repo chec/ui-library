@@ -51,7 +51,7 @@ export default {
      * @see https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
      */
     value: {
-      type: String,
+      type: [String, Number],
       default: '',
     },
     /**
