@@ -1,16 +1,16 @@
 <template>
   <label :for="id" class="radio-btn" :class="{ 'active' : isChecked, disabled }">
     <input
-        type="radio"
-        :id="id"
-        :name="name"
-        :value="value"
-        :checked="isChecked"
-        :disabled="disabled"
-        class="radio-btn__input"
-        @input="handleInput"
-    />
-    <span class="radio-btn__fill"></span>
+      :id="id"
+      type="radio"
+      :name="name"
+      :value="value"
+      :checked="isChecked"
+      :disabled="disabled"
+      class="radio-btn__input"
+      @input="handleInput"
+    >
+    <span class="radio-btn__fill" />
     <!--
       @slot Custom label slot
       @bind label string
@@ -55,19 +55,9 @@ export default {
       default: '',
     },
     /**
-     * States whether element is required
-     */
-    required: {
-      type: Boolean,
-      default: false,
-    },
-    /**
      * Disables the radio button
      */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+    disabled: Boolean,
     /**
      * Check if radio button is selected.
      */

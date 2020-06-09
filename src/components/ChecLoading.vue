@@ -29,9 +29,12 @@
         class="loading__animation-spinner"
       />
     </svg>
-    <div class="loading__message" v-if="message">{{ message }}</div>
+    <div v-if="message" class="loading__message">
+      {{ message }}
+    </div>
   </div>
 </template>
+
 <script>
 export default {
   name: 'ChecLoading',
@@ -43,6 +46,7 @@ export default {
   },
 };
 </script>
+
 <style scoped lang="scss">
 .loading {
   @apply absolute top-0 left-0 w-full h-full z-50 flex justify-center items-center flex-col;

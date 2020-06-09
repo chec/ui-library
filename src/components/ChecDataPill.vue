@@ -1,13 +1,15 @@
 <template>
-  <span class="data-pill" :class="this.classObject">
+  <span class="data-pill" :class="classObject">
     <!--
       @slot Text to display within the pill
     -->
     <slot />
   </span>
 </template>
+
 <script>
 export default {
+  name: 'ChecDataPill',
   props: {
     /**
      * The color the data pill - specifically the text. Options are: 'gray', 'green', 'orange', 'purple', 'red',
@@ -21,10 +23,7 @@ export default {
     /**
      * Indicates the "filled" variant should be used, where the background color matches the color prop.
      */
-    filled: {
-      type: Boolean,
-      default: false,
-    },
+    filled: Boolean,
   },
   computed: {
     /**
@@ -41,6 +40,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 $colors: 'green', 'orange', 'purple', 'red', 'blue';
 

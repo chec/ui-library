@@ -1,19 +1,18 @@
 <template>
-    <button
-      class="segmented-btn"
-      type="button"
-      :class="{ 'segmented-btn--active': active }"
-      @click="handleClick"
-      :value="value"
-      @keydown.right="onKeyDownRight"
-      @keydown.left="onKeyDownLeft"
-      v-bind="$attrs"
-    >
-      <!--
-        @slot Label to display within the segmented button
-      -->
-      <slot />
-    </button>
+  <button
+    class="segmented-btn"
+    type="button"
+    :class="{ 'segmented-btn--active': active }"
+    :value="value"
+    @click="handleClick"
+    @keydown.right="onKeyDownRight"
+    @keydown.left="onKeyDownLeft"
+  >
+    <!--
+      @slot Label to display within the segmented button
+    -->
+    <slot />
+  </button>
 </template>
 
 <script>

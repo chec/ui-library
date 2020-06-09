@@ -3,13 +3,14 @@
     <ChecSegmentedButton
       v-for="{ label, value: optionValue } in resolvedOptions"
       :key="optionValue"
+      :ref="`button${optionValue}`"
       :value="optionValue"
+      :active="isActive(optionValue)"
+      :disabled="disabled"
       @click="handleClick"
       @move-next="handleNext"
       @move-prev="handlePrev"
-      :active="isActive(optionValue)"
-      :disabled="disabled"
-      :ref="`button${optionValue}`">
+    >
       {{ label }}
     </ChecSegmentedButton>
   </div>
@@ -34,11 +35,11 @@ export default {
     /**
      * v-model binding for the currently selected option. With options passed as objects, this will be the `value` key.
      */
-    value: [String, Number],
-    disabled: {
-      type: Boolean,
-      default: false,
+    value: {
+      type: [String, Number],
+      required: true,
     },
+    disabled: Boolean,
   },
   computed: {
     resolvedOptions() {
@@ -80,6 +81,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 .segmented-btns-group {
   @apply flex cursor-pointer overflow-hidden;

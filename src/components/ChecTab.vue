@@ -1,9 +1,9 @@
 <template>
   <button
     class="chec-tab"
-    @click="handleClick"
     :class="{ 'chec-tab--active': active }"
     :disabled="disabled"
+    @click="handleClick"
   >
     <!--
       @slot Text to display within the tab button
@@ -21,17 +21,11 @@ export default {
     /**
      * If this tab should appear selected (active)
      */
-    active: {
-      type: Boolean,
-      default: false,
-    },
+    active: Boolean,
     /**
      * Disables the tab (but not the click handler)
      */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+    disabled: Boolean,
   },
   methods: {
     handleClick() {

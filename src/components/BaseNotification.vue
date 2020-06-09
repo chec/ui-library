@@ -2,18 +2,18 @@
   <div class="notif" :class="classObject">
     <div class="notif__content-container">
       <!--
-      @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
+        @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
       -->
       <span class="notif__text">
-        <slot>
-        </slot>
+        <slot />
       </span>
     </div>
-    <button @click="onClose" type="button" class="notif__close-icon">
+    <button type="button" class="notif__close-icon" @click="onClose">
       <SvgCloseIcon />
     </button>
   </div>
 </template>
+
 <script>
 import SvgCloseIcon from '../assets/svgs/close-icon.svg';
 
@@ -36,10 +36,7 @@ export default {
     /**
      * Whether the notification should automatically disappear after a certain period of time (`hideTime`)
      */
-    autoHide: {
-      type: Boolean,
-      default: true,
-    },
+    autoHide: Boolean,
     /**
      * The time in milliseconds after which a notification will disappear, if `autoHide` is true
      */
@@ -80,6 +77,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .notif {
   @apply flex justify-between items-start bg-gray-200 rounded-md p-4 shadow-md;

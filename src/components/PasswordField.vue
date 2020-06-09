@@ -4,13 +4,14 @@
     <TextField
       v-bind="{...$attrs, ...textFieldProps}"
       :type="fieldType"
-      :actionLabel="showHideText"
+      :action-label="showHideText"
       @actionClick="toggleShowPassword"
       @input="e => $emit('input', e)"
     />
     <div v-if="showPasswordStrength" class="password-field__strength" :class="strengthClass" />
   </div>
 </template>
+
 <script>
 import TextField from './TextField.vue';
 
@@ -19,26 +20,16 @@ export default {
   components: {
     TextField,
   },
-  data() {
-    return {
-      showPassword: this.initialShowPassword,
-    };
-  },
+  inheritAttrs: false,
   props: {
     /**
      * Default boolean value used for show/hide password state, false by default
      */
-    initialShowPassword: {
-      type: Boolean,
-      default: false,
-    },
+    initialShowPassword: Boolean,
     /**
      * Boolean indicating whether to show password strength indicator
      */
-    showPasswordStrength: {
-      type: Boolean,
-      default: false,
-    },
+    showPasswordStrength: Boolean,
     /**
      * Strength of password from 0-4
      */
@@ -70,7 +61,15 @@ export default {
     /**
      * Additional input attributes that should be applied to the native input
      */
-    additionalInputAttributes: Object,
+    additionalInputAttributes: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+  data() {
+    return {
+      showPassword: this.initialShowPassword,
+    };
   },
   computed: {
     /**
@@ -131,6 +130,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
   .password-field {
     @apply relative;

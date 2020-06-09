@@ -2,21 +2,20 @@
   <div
     class="option"
     :class="classNames"
+    tabindex="0"
     @click="emitOptionsSelectedEvent"
     @keyup.enter="emitOptionsSelectedEvent"
-    tabindex="0"
   >
     <input
       v-if="showCheckbox"
+      :id="option.value"
       type="checkbox"
       class="mr-3"
-      :id="option.value"
       :checked="checked"
       :disabled="option.disabled"
       :indeterminate.prop="indeterminate"
-    />
-    <slot>
-    </slot>
+    >
+    <slot />
   </div>
 </template>
 
@@ -27,24 +26,15 @@ export default {
     /**
      * Set's the option as a selectable option
      */
-    showCheckbox: {
-      type: Boolean,
-      default: false,
-    },
+    showCheckbox: Boolean,
     /**
      * Indicate the checkbox (if shown) should be checked
      */
-    checked: {
-      type: Boolean,
-      default: false,
-    },
+    checked: Boolean,
     /**
      * Indicate the checkbox (if shown) should have an indeterminate state
      */
-    indeterminate: {
-      type: Boolean,
-      default: false,
-    },
+    indeterminate: Boolean,
     /**
      * The option object
      */
@@ -58,10 +48,7 @@ export default {
     /**
      * Whether the option is destructure, i.e. that it deletes something
      */
-    destructive: {
-      type: Boolean,
-      default: false,
-    },
+    destructive: Boolean,
   },
   computed: {
     level() {

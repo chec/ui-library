@@ -1,7 +1,7 @@
 <template>
- <div class="popover">
-  <slot />
- </div>
+  <div class="popover">
+    <slot />
+  </div>
 </template>
 
 <script>

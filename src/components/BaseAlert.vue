@@ -3,11 +3,10 @@
     <div class="alert" :class="classObject">
       <div class="alert__content-container">
         <!--
-        @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
+          @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
         -->
         <span class="alert__text">
-          <slot>
-          </slot>
+          <slot />
         </span>
       </div>
       <button type="button" class="alert__close-icon">
@@ -16,6 +15,7 @@
     </div>
   </transition>
 </template>
+
 <script>
 import SvgCloseIcon from '../assets/svgs/close-icon.svg';
 
@@ -53,6 +53,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .alert {
   @apply flex font-lato justify-between items-center bg-gray-200 p-4 w-full shadow-md z-20;

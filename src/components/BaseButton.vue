@@ -27,12 +27,6 @@ export default {
       default: 'button',
     },
     /**
-     * A link to go to. Required if the type is not "button"
-     */
-    to: {
-      type: String,
-    },
-    /**
      * The name of the color variant to be used. One of 'brand', 'primary', 'secondary', 'blue', 'green', or 'red'
      */
     color: {
@@ -73,10 +67,7 @@ export default {
     /**
      * Disables the button
      */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+    disabled: Boolean,
     /**
      * An icon (from the available ui icons) to display
      */

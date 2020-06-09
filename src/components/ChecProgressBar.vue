@@ -7,10 +7,10 @@
       :aria-valuenow="percentage"
       aria-valuemin="0"
       aria-valuemax="100"
-    >
-    </div>
+    />
   </div>
 </template>
+
 <script>
 export default {
   name: 'ChecProgressBar',
@@ -26,6 +26,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
   .progress {
     @apply h-1 rounded-lg bg-gray-200 overflow-hidden;

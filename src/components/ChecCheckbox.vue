@@ -1,23 +1,23 @@
 <template>
   <label :for="id" class="checkbox" :class="{ 'active' : isChecked, disabled }">
     <input
-      type="checkbox"
       :id="id"
+      type="checkbox"
       :name="name"
       :value="value"
       :checked="isChecked"
       :disabled="disabled"
       class="checkbox__input"
-      @input="handleInput"
       :indeterminate="indeterminate"
-    />
+      @input="handleInput"
+    >
     <!-- Display none check icon and display when checked -->
     <span v-show="!indeterminate && isChecked" class="checkbox__check">
-      <chec-icon icon="check" />
+      <ChecIcon icon="check" />
     </span>
     <!-- Display none minus icon and display when indeterminate -->
     <span v-show="indeterminate" class="checkbox__minus">
-      <chec-icon icon="minus" />
+      <ChecIcon icon="minus" />
     </span>
     <!--
       @slot Custom label slot
@@ -71,31 +71,15 @@ export default {
     /**
      * Puts checkbox into an indeterminate state
      */
-    indeterminate: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * States whether element is required
-     */
-    required: {
-      type: Boolean,
-      default: false,
-    },
+    indeterminate: Boolean,
     /**
      * Disables the checkbox
      */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+    disabled: Boolean,
     /**
      * Check if checkbox is checked.
      */
-    checked: {
-      type: Boolean,
-      default: false,
-    },
+    checked: Boolean,
   },
   computed: {
     isChecked() {
@@ -111,6 +95,8 @@ export default {
        * Emitted when input is checked.
        * @event input
        */
+      // See issue #123
+      // eslint-disable-next-line vue/no-mutating-props
       this.checked = !this.checked;
       this.$emit('input', this.checked);
     },

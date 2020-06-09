@@ -1,27 +1,30 @@
 <template>
   <div class="text-field" :class="classNames">
-    <textarea v-if="multiline"
+    <textarea
+      v-if="multiline"
       v-bind="sharedInputProps"
       @input="handleInput"
       @focus="handleFocus"
-    ></textarea>
-    <input v-else
+    />
+    <input
+      v-else
       v-bind="sharedInputProps"
       :type="$attrs.type || 'text'"
+      :style="{ 'padding-right': hasSlot && `${slotWidth}px` }"
       @input="handleInput"
       @focus="handleFocus"
-      :style="{ 'padding-right': hasSlot && `${slotWidth}px` }"
-    />
+    >
     <label
       v-if="label"
       class="text-field__label"
       :class="scrollable"
       :data-content="label"
-      :for="id">
+      :for="id"
+    >
       <span class="invisible">{{ label }}</span>
     </label>
-    <div class="text-field__right-content" ref="rightContentSlot" v-if="$slots.default">
-      <slot></slot>
+    <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
+      <slot />
     </div>
     <a
       v-if="actionLabel"
@@ -32,6 +35,7 @@
     </a>
   </div>
 </template>
+
 <script>
 import uniqueId from '@/lib/helpers/createUniqueId';
 
@@ -73,7 +77,6 @@ export default {
     */
     multiline: {
       type: Boolean,
-      default: false,
     },
     /**
      * Text for action button beneath input
@@ -85,7 +88,10 @@ export default {
     /**
      * Additional input attributes that should be applied to the native input
      */
-    additionalInputAttributes: Object,
+    additionalInputAttributes: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
@@ -95,25 +101,6 @@ export default {
       slotWidth: 0,
       hasSlot: false,
     };
-  },
-  mounted() {
-    this.autoGrow();
-
-    if (!this.multiline && this.$slots.default) {
-      this.slotObserver = new MutationObserver(this.adjustSlotWidth);
-
-      this.slotObserver.observe(
-        this.$refs.rightContentSlot,
-        {
-          attributes: true,
-          childList: true,
-          characterData: true,
-          subtree: true,
-        },
-      );
-
-      this.adjustSlotWidth();
-    }
   },
   computed: {
     sharedInputProps() {
@@ -166,6 +153,25 @@ export default {
       });
     },
   },
+  mounted() {
+    this.autoGrow();
+
+    if (!this.multiline && this.$slots.default) {
+      this.slotObserver = new MutationObserver(this.adjustSlotWidth);
+
+      this.slotObserver.observe(
+        this.$refs.rightContentSlot,
+        {
+          attributes: true,
+          childList: true,
+          characterData: true,
+          subtree: true,
+        },
+      );
+
+      this.adjustSlotWidth();
+    }
+  },
   methods: {
     onActionClick(e) {
       /**
@@ -173,7 +179,7 @@ export default {
        * @event click
        * @type {e}
        */
-      this.$emit('actionClick', e, this.value);
+      this.$emit('action-click', e, this.value);
     },
     handleInput($event) {
       /**
@@ -205,6 +211,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 .text-field {
   @apply relative;

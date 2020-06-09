@@ -2,17 +2,19 @@
   <div class="card" :class="classObject">
     <div class="card__inner-wrapper" :class="[tailwindClasses, innerClass]">
       <!--
-      @slot Card content
+        @slot Card content
       -->
       <slot />
     </div>
   </div>
 </template>
+
 <script>
 import TailwindClasses from '../mixins/TailwindClasses';
 
 export default {
   name: 'ChecCard',
+  mixins: [TailwindClasses('p-8 bg-white')],
   props: {
     /**
      * Class to pass to inner container
@@ -34,10 +36,7 @@ export default {
     /**
      * A "compact" variant that reduces border width and radius
      */
-    compact: {
-      type: Boolean,
-      default: false,
-    },
+    compact: Boolean,
   },
   computed: {
     /**
@@ -52,9 +51,9 @@ export default {
       ];
     },
   },
-  mixins: [TailwindClasses('p-8 bg-white')],
 };
 </script>
+
 <style lang="scss">
 .card {
   @apply relative shadow-sm rounded-lg p-1 bg-hologram;

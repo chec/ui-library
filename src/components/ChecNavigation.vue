@@ -22,6 +22,7 @@
     </ul>
   </nav>
 </template>
+
 <script>
 import ChecLogo from '@/assets/svgs/chec-logo.svg';
 import ChecNavIcon from '@/components/ChecNavIcon.vue';
@@ -36,10 +37,7 @@ export default {
     /**
      * Expands the nav by default
      */
-    expanded: {
-      type: Boolean,
-      default: false,
-    },
+    expanded: Boolean,
   },
   computed: {
     navItems() {
@@ -61,6 +59,7 @@ export default {
   },
 };
 </script>
+
 <style scoped lang="scss">
   .chec-navigation {
     @apply fixed top-0 left-0 w-20 h-screen shadow-sm p-4 flex

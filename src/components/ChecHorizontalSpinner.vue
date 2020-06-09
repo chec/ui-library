@@ -1,10 +1,10 @@
 <template>
   <div class="chec-horizontal-spinner">
-    <button @click="handlePrevious" class="chec-horizontal-spinner__button">
+    <button class="chec-horizontal-spinner__button" @click="handlePrevious">
       <ChecIcon icon="left" />
     </button>
     <span class="chec-horizontal-spinner__value" :style="computedStyle">{{ value }}</span>
-    <button @click="handleNext" class="chec-horizontal-spinner__button">
+    <button class="chec-horizontal-spinner__button" @click="handleNext">
       <ChecIcon icon="right" />
     </button>
   </div>

@@ -3,7 +3,7 @@
     <ul v-if="crumbs.length" class="breadcrumb">
       <li v-for="(crumb, i) in crumbs" :key="i">
         <router-link :to="crumb.path">
-          {{crumb.meta.breadcrumb}}
+          {{ crumb.meta.breadcrumb }}
           <div v-if="(i + 1) !== crumbs.length" class="breadcrumb__right-arrow">
             <SvgRightArrow />
           </div>
@@ -12,6 +12,7 @@
     </ul>
   </nav>
 </template>
+
 <script>
 import SvgRightArrow from '../assets/svgs/right-arrow.svg';
 
@@ -36,6 +37,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .breadcrumb {
   @apply flex font-lato text-xl text-gray-500;

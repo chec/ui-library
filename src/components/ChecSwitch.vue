@@ -9,7 +9,12 @@
         >
       </div>
     </div>
-    <label :for="id" class="chec-switch__label" v-if="$slots.default" @click.prevent="handleToggle">
+    <label
+      v-if="$slots.default"
+      :for="id"
+      class="chec-switch__label"
+      @click.prevent="handleToggle"
+    >
       <slot />
     </label>
   </div>
@@ -42,24 +47,15 @@ export default {
     /**
      * States whether element is required
      */
-    required: {
-      type: Boolean,
-      default: false,
-    },
+    required: Boolean,
     /**
      * Disables the switch
      */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+    disabled: Boolean,
     /**
      * Check if checkbox is checked.
      */
-    toggled: {
-      type: Boolean,
-      default: false,
-    },
+    toggled: Boolean,
   },
   computed: {
     id() {

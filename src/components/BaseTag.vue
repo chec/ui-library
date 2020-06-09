@@ -1,31 +1,12 @@
 <template>
-  <span class="tag" :class="this.classObject">
+  <span class="tag" :class="classObject">
     <slot />
   </span>
 </template>
-<style lang="scss">
-.tag {
-  @apply mr-2 py-1 px-3 bg-primary-blue rounded-full text-xs text-white;
 
-  &--success {
-    @apply bg-green-600;
-  }
-
-  &--error {
-    @apply bg-red-600;
-  }
-
-  &--warning {
-    @apply bg-orange-600;
-  }
-
-  &--info {
-    @apply bg-purple-600;
-  }
-}
-</style>
 <script>
 export default {
+  name: 'BaseTag',
   props: {
     /**
      * The style variant for the tag. One of "default", "success", "error", "warning", "info". Default is "default"
@@ -50,3 +31,25 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.tag {
+  @apply mr-2 py-1 px-3 bg-primary-blue rounded-full text-xs text-white;
+
+  &--success {
+    @apply bg-green-600;
+  }
+
+  &--error {
+    @apply bg-red-600;
+  }
+
+  &--warning {
+    @apply bg-orange-600;
+  }
+
+  &--info {
+    @apply bg-purple-600;
+  }
+}
+</style>

@@ -1,14 +1,19 @@
 <template>
-  <div class="options-menu" ref="menu-el">
-    <BaseButton @click="toggleMenu" slot="reference" ref="button-el" variant="small">
+  <div ref="menu-el" class="options-menu">
+    <BaseButton
+      slot="reference"
+      ref="button-el"
+      variant="small"
+      @click="toggleMenu"
+    >
       <template #icon>
         <ChecIcon icon="more" />
       </template>
     </BaseButton>
     <BasePopover
       v-show="isOpen"
-      @option-selected="handleSelectOption"
       ref="popper-el"
+      @option-selected="handleSelectOption"
     >
       <!--
         @slot Provide BaseOption instances here
@@ -17,6 +22,7 @@
     </BasePopover>
   </div>
 </template>
+
 <script>
 import { createPopper } from '@popperjs/core';
 import BaseButton from './BaseButton.vue';
@@ -34,10 +40,7 @@ export default {
     /**
      * Whether the menu should initially be open or not
      */
-    open: {
-      type: Boolean,
-      default: false,
-    },
+    open: Boolean,
     /**
      *  Describes the preferred placement of the options menu.
      */
@@ -164,6 +167,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 .options-menu {
   @apply static;

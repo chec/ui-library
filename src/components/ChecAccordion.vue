@@ -3,11 +3,11 @@
     ref="accordion"
     class="accordion"
     :class="{'active': isOpen}"
-    >
+  >
     <div class="accordion__heading">
       <div>
-        <div class="accordion__title" v-html="title"></div>
-        <div class="accordion__subtitle" v-html="subtitle"></div>
+        <div class="accordion__title" v-html="title" />
+        <div class="accordion__subtitle" v-html="subtitle" />
       </div>
       <div class="accordion__toggle" @click="isOpen = !isOpen">
         <ChecIcon :icon="isOpen ? 'down' : 'right'" />
@@ -18,6 +18,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import ChecIcon from './ChecIcon.vue';
 
@@ -25,11 +26,6 @@ export default {
   name: 'ChecAccordion',
   components: {
     ChecIcon,
-  },
-  data() {
-    return {
-      isOpen: this.open,
-    };
   },
   props: {
     /**
@@ -49,13 +45,16 @@ export default {
     /**
     * Set the accordion to open on load. Default: False.
     */
-    open: {
-      type: Boolean,
-      default: false,
-    },
+    open: Boolean,
+  },
+  data() {
+    return {
+      isOpen: this.open,
+    };
   },
 };
 </script>
+
 <style lang="scss">
   .accordion{
     @apply rounded mb-2 bg-gray-100 p-4;
