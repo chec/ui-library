@@ -2,6 +2,7 @@ import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
 import { select, boolean } from '@storybook/addon-knobs';
 import BaseButton from '../../components/BaseButton.vue';
+import ChecLoading from '../../components/ChecLoading.vue';
 import ChecModal from '../../components/ChecModal.vue';
 import TextField from '../../components/TextField.vue';
 const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', 'full', 'screen-sm', 'screen-md', 'screen-lg', 'screen-xl', 'none'];
@@ -217,6 +218,46 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
                 Save
               </BaseButton>
             </template>
+          </ChecModal>
+          <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+          <p class="text-right m-40">I am a bunch of content that the modal will be displayed on top of.</p>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+## Loading state
+
+<Preview>
+  <Story name="With loading state">
+    {{
+      components: {
+        ChecModal,
+        ChecLoading,
+      },
+      data() {
+        return {
+          showModal: true,
+        };
+      },
+      props: {
+        form: {
+          default: () => boolean('Use <form> root', true),
+        },
+        width: {
+          default: select('Width', widths, 'lg'),
+        },
+      },
+      methods: {
+        hideModal() {
+          this.showModal = false;
+        },
+      },
+      template: `
+        <div class="font-lato">
+          <ChecModal :form="form" :width="width" header="Set up your account" undismissible>
+            <ChecLoading message="Please wait..." />
           </ChecModal>
           <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
           <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
