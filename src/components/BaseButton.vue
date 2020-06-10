@@ -82,7 +82,7 @@ export default {
         `button--color-${this.color}`,
         `button--variant-${this.variant}`,
         {
-          disabled: this.disabled,
+          'button--disabled': this.disabled,
           'button--has-icon': this.hasIcon,
           [`button--has-icon-${this.iconPosition}`]: this.hasIcon,
         },
@@ -130,8 +130,10 @@ export default {
 </script>
 
 <style lang="scss">
+@use "sass:map";
+
 .button {
-  @apply font-bold shadow-sm border border-0 cursor-pointer flex justify-center;
+  @apply font-bold shadow-sm border border-0 flex justify-center;
   &:focus {
     @apply outline-none;
   }
@@ -174,81 +176,61 @@ export default {
       }
     }
   }
+
   &--color {
-    &-brand {
-      @apply bg-primary-gradient text-white;
-      &:hover {
-        @apply bg-primary-blue;
-        // Override the gradient background
-        background-image: none;
-      }
-      &:active {
-        @apply bg-dark-blue;
+    $buttonColors: (
+      'brand': (
+        'default': 'bg-primary-gradient',
+        'hover': 'bg-primary-blue',
+        'active': 'bg-dark-blue',
+        'text': 'text-white',
+      ),
+      'primary': (
+        'default': 'bg-primary-gradient',
+        'hover': 'bg-primary-blue',
+        'active': 'bg-dark-blue',
+        'text': 'text-white',
+      ),
+      'secondary': (
+        'default': 'bg-white',
+        'hover': 'bg-gray-100',
+        'active': 'bg-gray-300',
+        'text': 'text-gray-500',
+      ),
+    );
+
+    $colors: 'green', 'orange', 'purple', 'red', 'blue';
+
+    @each $color in $colors {
+      $buttonColors: map.merge($buttonColors, (
+        '#{$color}': (
+          'default': 'bg-#{$color}-500',
+          'hover': 'bg-#{$color}-400',
+          'active': 'bg-#{$color}-600',
+          'text': 'text-white',
+        )
+      ));
+    }
+
+    @each $name, $config in $buttonColors {
+      &-#{$name} {
+        @apply #{map.get($config, 'default')} #{map.get($config, 'text')};
+
+        &:not(.button--disabled):hover,
+        &:not(:disabled):hover {
+          // Override any gradient background
+          background-image: none;
+          @apply #{map.get($config, 'hover')};
+        }
+        &:active {
+          @apply #{map.get($config, 'active')};
+        }
       }
     }
-    &-primary {
-      @apply bg-gray-600 text-white;
-      &:hover {
-        @apply bg-gray-500;
-      }
-      &:active {
-        @apply bg-gray-400;
-      }
-    }
-    &-secondary {
-      @apply bg-white text-gray-500;
-      &:hover {
-        @apply bg-gray-100 border-primary-blue;
-      }
-      &:active {
-        @apply bg-gray-300;
-      }
-    }
-    &-blue {
-      @apply bg-blue-500 text-white;
-      &:hover {
-        @apply bg-blue-400;
-      }
-      &:active {
-        @apply bg-blue-600;
-      }
-    }
-    &-green {
-      @apply bg-green-500 text-white;
-      &:hover {
-        @apply bg-green-400;
-      }
-      &:active {
-        @apply bg-green-600;
-      }
-    }
-    &-red {
-      @apply bg-red-500 text-white;
-      &:hover {
-        @apply bg-red-400;
-      }
-      &:active {
-        @apply bg-red-600;
-      }
-    }
-    &-purple {
-      @apply bg-purple-500 text-white;
-      &:hover {
-        @apply bg-purple-400;
-      }
-      &:active {
-        @apply bg-purple-600;
-      }
-    }
-    &-orange {
-      @apply bg-orange-500 text-white;
-      &:hover {
-        @apply bg-orange-400;
-      }
-      &:active {
-        @apply bg-orange-600;
-      }
-    }
+  }
+
+  &--disabled {
+    @apply opacity-40;
   }
 }
 </style>
