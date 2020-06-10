@@ -4,28 +4,6 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 import BaseDropdown from '../../components/BaseDropdown.vue';
 import BaseOption from '../../components/BaseOption.vue';
 import ChecModal from '../../components/ChecModal.vue';
-const defaultOptions = [
-  { value: 't2', label: 'T2 Ticket' },
-  { value: 't1', label: 'T1 Ticket (Coming Soon)', disabled: true }
-];
-const defaultSelectOptions = [
-  {
-    value: 'meats',
-    label: 'Meat',
-    group: [
-      { value: 'steak', label: 'Steak (Sold Out)', disabled: true },
-      { value: 'chicken', label: 'Chicken' },
-      { value: 'fish', label: 'Fish' },
-    ],
-  },
-  { label: 'Fruit', group: [
-    { value: 'apple', label: 'Apple' },
-    { value: 'pear', label: 'Pear' },
-    { value: 'kiwi', label: 'Kiwis' },
-    { value: 'blueberry', label: 'Blueberries' }
-  ]},
-  { value: 'bread', label: 'Bread' },
-];
 const onClick = action('option selected');
 
 <Meta title="Form fields/Dropdown" component={BaseDropdown} />
@@ -55,7 +33,10 @@ Todo list
       data() {
         return {
           option: "",
-          options: defaultOptions,
+          options: [
+            { value: 't2', label: 'T2 Ticket' },
+            { value: 't1', label: 'T1 Ticket (Coming Soon)', disabled: true }
+          ],
           onClick,
         }
       },
@@ -79,10 +60,10 @@ Todo list
   </Story>
 </Preview>
 
-# No Label:
+## No label
 
 <Preview>
-  <Story name="No Label">
+  <Story name="No label">
     {{
       components: {
         BaseDropdown,
@@ -90,7 +71,10 @@ Todo list
       data() {
         return {
           option: "",
-          options: defaultOptions,
+          options: [
+            { value: 't2', label: 'T2 Ticket' },
+            { value: 't1', label: 'T1 Ticket (Coming Soon)', disabled: true }
+          ],
           onClick,
         }
       },
@@ -114,7 +98,7 @@ Todo list
   </Story>
 </Preview>
 
-# In context:
+# In context and required
 
 <Preview>
   <Story name="In context and required">
@@ -125,7 +109,10 @@ Todo list
       data() {
         return {
           option: "",
-          options: defaultOptions,
+          options: [
+            { value: 't2', label: 'T2 Ticket' },
+            { value: 't1', label: 'T1 Ticket (Coming Soon)', disabled: true }
+          ],
           onClick,
         }
       },
@@ -153,7 +140,7 @@ Todo list
   </Story>
 </Preview>
 
-# As multi-select:
+# As multi-select
 
 <Preview>
   <Story name="As multi-select">
@@ -163,7 +150,24 @@ Todo list
       },
       data() {
         return {
-          options: defaultSelectOptions,
+          options: [
+            {
+              value: 'meats',
+              label: 'Meat',
+              group: [
+                { value: 'steak', label: 'Steak (Sold Out)', disabled: true },
+                { value: 'chicken', label: 'Chicken' },
+                { value: 'fish', label: 'Fish' },
+              ],
+            },
+            { label: 'Fruit', group: [
+              { value: 'apple', label: 'Apple' },
+              { value: 'pear', label: 'Pear' },
+              { value: 'kiwi', label: 'Kiwis' },
+              { value: 'blueberry', label: 'Blueberries' }
+            ]},
+            { value: 'bread', label: 'Bread' },
+          ],
           selected: [],
           onClick,
         }
@@ -190,7 +194,7 @@ Todo list
   </Story>
 </Preview>
 
-# Within a ChecModal, popping out of the overflow:
+# Within a ChecModal, popping out of the overflow
 
 <Preview>
   <Story name="Within a ChecModal popping out of overflow">
