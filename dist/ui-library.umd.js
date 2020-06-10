@@ -17448,6 +17448,40 @@ module.exports = function (key) {
 
 /***/ }),
 
+/***/ "f7f5":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M12 8a5 5 0 10-1.464 3.536M12 9l-1-1h2l-1 1z","stroke":"currentColor","stroke-width":"2"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "f880":
 /***/ (function(module, exports) {
 
@@ -19286,6 +19320,10 @@ var ic_copy_default = /*#__PURE__*/__webpack_require__.n(ic_copy);
 var ic_calendar = __webpack_require__("c3f8");
 var ic_calendar_default = /*#__PURE__*/__webpack_require__.n(ic_calendar);
 
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-refresh.svg
+var ic_refresh = __webpack_require__("f7f5");
+var ic_refresh_default = /*#__PURE__*/__webpack_require__.n(ic_refresh);
+
 // EXTERNAL MODULE: ./src/assets/svgs/chec-logo.svg
 var chec_logo = __webpack_require__("9a47");
 var chec_logo_default = /*#__PURE__*/__webpack_require__.n(chec_logo);
@@ -19380,6 +19418,7 @@ var ic_lrg_enterprise_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_enterp
 
 
 
+
  // Nav icons imports
 
 
@@ -19419,6 +19458,7 @@ var uiIcons = {
   minus: ic_minus_default.a,
   copy: ic_copy_default.a,
   calendar: ic_calendar_default.a,
+  refresh: ic_refresh_default.a,
   chec: chec_logo_default.a
 };
 var navIcons = {
