@@ -222,7 +222,8 @@ export default {
           background-image: none;
           @apply #{map.get($config, 'hover')};
         }
-        &:active {
+        &:not(.button--disabled):active,
+        &:not(:disabled):active {
           @apply #{map.get($config, 'active')};
         }
       }
@@ -230,7 +231,7 @@ export default {
   }
 
   &--disabled {
-    @apply opacity-40;
+    @apply opacity-40 cursor-not-allowed;
   }
 }
 </style>
