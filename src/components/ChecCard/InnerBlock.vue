@@ -7,8 +7,15 @@
     -->
     <slot />
   </div>
-  <div v-if="actionText">
-    <BaseButton class="card-inner-block__action" variant="round" :color="actionColor" @click="emitAction">
+  <div v-if="actionText || $slots.action">
+    <slot name="action" />
+    <BaseButton
+      v-if="!$slots.action"
+      class="card-inner-block__action"
+      variant="round"
+      :color="actionColor"
+      @click="emitAction"
+    >
       {{ actionText }}
       <!--
         @slot Passthrough for the icon slot on the button component
