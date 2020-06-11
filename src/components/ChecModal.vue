@@ -87,7 +87,7 @@ export default {
   }
 
   &__toolbar {
-    @apply flex justify-between mt-8;
+    @apply flex justify-between mt-8 clear-both;
   }
 }
 </style>
