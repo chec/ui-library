@@ -1,16 +1,16 @@
 <template>
   <label :for="id" class="radio-btn" :class="{ 'active' : isChecked, disabled }">
     <input
-        type="radio"
-        :id="id"
-        :name="name"
-        :value="value"
-        :checked="isChecked"
-        :disabled="disabled"
-        class="radio-btn__input"
-        @input="handleInput"
-    />
-    <span class="radio-btn__fill"></span>
+      :id="id"
+      type="radio"
+      :name="name"
+      :value="value"
+      :checked="isChecked"
+      :disabled="disabled"
+      class="radio-btn__input"
+      @input="handleInput"
+    >
+    <span class="radio-btn__fill" />
     <!--
       @slot Custom label slot
       @bind label string
@@ -55,19 +55,9 @@ export default {
       default: '',
     },
     /**
-     * States whether element is required
-     */
-    required: {
-      type: Boolean,
-      default: false,
-    },
-    /**
      * Disables the radio button
      */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+    disabled: Boolean,
     /**
      * Check if radio button is selected.
      */
@@ -99,53 +89,54 @@ export default {
 <style lang="scss">
 
 .radio-btn {
-    @apply p-3 cursor-pointer flex text-sm text-gray-600 items-center;
+  @apply p-3 cursor-pointer flex text-sm text-gray-600 items-center;
 
-    &.disabled {
-      @apply text-gray-400 cursor-not-allowed;
+  &.disabled {
+    @apply text-gray-400 cursor-not-allowed;
+  }
+
+  // Hides browser's default radio style
+  &__input {
+    @apply
+      flex
+      relative
+      appearance-none
+      bg-white
+      rounded-full
+      border border-gray-400
+      shadow-sm
+      h-4 w-4;
+
+    &:focus {
+      @apply outline-none;
     }
 
-    // Hides browser's default radio style
-    &__input{
-      @apply
-        flex
-        relative
-        appearance-none
-        bg-white
-        rounded-full
-        border border-gray-400
-        shadow-sm
-        h-4 w-4;
-
-      &:focus {
-          @apply outline-none;
-      }
-
-      &:hover{
-        @apply cursor-pointer bg-white border border-gray-500;
-      }
-
-      &:active{
-        @apply bg-gray-300 border border-gray-600;
-      }
-
-      &:disabled{
-        @apply bg-white border border-gray-300 cursor-not-allowed;
-      }
+    &:hover {
+      @apply cursor-pointer bg-white border border-gray-500;
     }
 
-    &__input:checked:after {
-        @apply self-center left-0 right-0 mx-auto w-2 h-2 bg-white rounded-full absolute;
-        content: '';
+    &:active {
+      @apply bg-gray-300 border border-gray-600;
     }
 
-    &__input:checked{
-      @apply bg-gray-500 border-none;
+    &:disabled {
+      @apply bg-white border border-gray-300 cursor-not-allowed;
     }
+  }
 
-    &__label {
-      @apply pl-3;
-    }
+  &__input:checked::after {
+    @apply self-center left-0 right-0 mx-auto w-2 h-2 bg-white rounded-full absolute;
+
+    content: '';
+  }
+
+  &__input:checked {
+    @apply bg-gray-500 border-none;
+  }
+
+  &__label {
+    @apply pl-3;
+  }
 }
 
 </style>

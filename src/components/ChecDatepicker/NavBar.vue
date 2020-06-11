@@ -1,9 +1,19 @@
 <template>
   <div class="date-picker-navigation">
-    <ChecHorizontalSpinner :options="months" :value="monthName" @input="chooseMonth" value-width="1.7rem"
-                           class="date-picker-navigation__spinner" />
-    <ChecHorizontalSpinner :options="years" :value="`${year}`" @input="chooseYear" value-width="2.2rem"
-                           class="date-picker-navigation__spinner" />
+    <ChecHorizontalSpinner
+      :options="months"
+      :value="monthName"
+      value-width="1.7rem"
+      class="date-picker-navigation__spinner"
+      @input="chooseMonth"
+    />
+    <ChecHorizontalSpinner
+      :options="years"
+      :value="`${year}`"
+      value-width="2.2rem"
+      class="date-picker-navigation__spinner"
+      @input="chooseYear"
+    />
   </div>
 </template>
 

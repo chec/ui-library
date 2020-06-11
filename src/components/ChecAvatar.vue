@@ -3,13 +3,14 @@
     class="avatar"
     :class="classObject"
     :style="styleObject"
-    >
+  >
     <UserIcon
       v-if="!image"
       class="avatar__icon"
     />
   </div>
 </template>
+
 <script>
 import UserIcon from '@/assets/svgs/user-icon.svg';
 
@@ -50,20 +51,25 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
-  .avatar {
-    @apply relative rounded-full bg-gray-400 bg-no-repeat bg-cover bg-center;
-    &__icon{
-      @apply absolute inset-0 m-auto;
-    }
-    &--sm {
-      @apply h-8 w-8;
-    }
-    &--md {
-      @apply h-12 w-12;
-    }
-    &--lg {
-      @apply h-20 w-20;
-    }
+.avatar {
+  @apply relative rounded-full bg-gray-400 bg-no-repeat bg-cover bg-center;
+
+  &__icon {
+    @apply absolute inset-0 m-auto;
   }
+
+  &--sm {
+    @apply h-8 w-8;
+  }
+
+  &--md {
+    @apply h-12 w-12;
+  }
+
+  &--lg {
+    @apply h-20 w-20;
+  }
+}
 </style>

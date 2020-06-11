@@ -2,18 +2,18 @@
   <div class="notif" :class="classObject">
     <div class="notif__content-container">
       <!--
-      @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
+        @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
       -->
       <span class="notif__text">
-        <slot>
-        </slot>
+        <slot />
       </span>
     </div>
-    <button @click="onClose" type="button" class="notif__close-icon">
+    <button type="button" class="notif__close-icon" @click="onClose">
       <SvgCloseIcon />
     </button>
   </div>
 </template>
+
 <script>
 import SvgCloseIcon from '../assets/svgs/close-icon.svg';
 
@@ -34,14 +34,11 @@ export default {
       },
     },
     /**
-     * Whether the notification should automatically disappear after a certain period of time (`hideTime`)
+     * Whether the notification should not automatically disappear after a certain period of time (`hideTime`)
      */
-    autoHide: {
-      type: Boolean,
-      default: true,
-    },
+    persist: Boolean,
     /**
-     * The time in milliseconds after which a notification will disappear, if `autoHide` is true
+     * The time in milliseconds after which a notification will disappear, if `persist` is true
      */
     hideTime: {
       type: Number,
@@ -54,7 +51,7 @@ export default {
     },
   },
   mounted() {
-    if (this.autoHide) {
+    if (!this.persist) {
       this.registerHideTimer();
     }
   },
@@ -80,33 +77,42 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .notif {
   @apply flex justify-between items-start bg-gray-200 rounded-md p-4 shadow-md;
+
   min-width: 7.25rem;
 
   &__content-container {
     @apply flex items-center;
+    padding-bottom: 3px;
     // Manual tweaks to keep single line text vertically centered with the close button
     padding-top: 3px;
-    padding-bottom: 3px;
   }
+
   &__text {
     @apply text-primary-blue text-sm;
   }
+
   &__close-icon {
     @apply ml-4 p-2 bg-green-600 rounded text-white cursor-pointer;
+
     > svg {
       @apply h-4 w-4;
     }
   }
+
   &--success {
     @apply bg-green-500;
+
     .notif__text {
       @apply text-white;
     }
+
     .notif__close-icon {
       @apply text-white bg-transparent transition-all ease-in-out duration-300;
+
       &:hover,
       &:active,
       &:focus {
@@ -114,13 +120,17 @@ export default {
       }
     }
   }
+
   &--error {
     @apply bg-red-500;
+
     .notif__text {
       @apply text-white;
     }
+
     .notif__close-icon {
       @apply text-white bg-transparent transition-all ease-in-out duration-300;
+
       &:hover,
       &:active,
       &:focus {
@@ -128,13 +138,17 @@ export default {
       }
     }
   }
+
   &--warning {
     @apply bg-orange-500;
+
     .notif__text {
       @apply text-white;
     }
+
     .notif__close-icon {
       @apply text-white bg-transparent transition-all ease-in-out duration-300;
+
       &:hover,
       &:active,
       &:focus {
@@ -142,13 +156,17 @@ export default {
       }
     }
   }
+
   &--info {
     @apply bg-blue-500;
+
     .notif__text {
       @apply text-white;
     }
+
     .notif__close-icon {
       @apply text-white bg-transparent transition-all ease-in-out duration-300;
+
       &:hover,
       &:active,
       &:focus {

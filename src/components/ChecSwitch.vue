@@ -9,7 +9,12 @@
         >
       </div>
     </div>
-    <label :for="id" class="chec-switch__label" v-if="$slots.default" @click.prevent="handleToggle">
+    <label
+      v-if="$slots.default"
+      :for="id"
+      class="chec-switch__label"
+      @click.prevent="handleToggle"
+    >
       <slot />
     </label>
   </div>
@@ -42,24 +47,15 @@ export default {
     /**
      * States whether element is required
      */
-    required: {
-      type: Boolean,
-      default: false,
-    },
+    required: Boolean,
     /**
      * Disables the switch
      */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+    disabled: Boolean,
     /**
      * Check if checkbox is checked.
      */
-    toggled: {
-      type: Boolean,
-      default: false,
-    },
+    toggled: Boolean,
   },
   computed: {
     id() {
@@ -75,33 +71,34 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .chec-switch {
-    @apply relative w-auto flex items-center cursor-pointer;
+.chec-switch {
+  @apply relative w-auto flex items-center cursor-pointer;
 
-    &__container {
-      @apply relative flex items-center w-10 h-5 rounded-full bg-gray-300 p-px;
+  &__container {
+    @apply relative flex items-center w-10 h-5 rounded-full bg-gray-300 p-px;
+  }
+
+  &__thumb {
+    @apply relative w-4 h-4 rounded-full bg-white mx-px cursor-pointer transition-all duration-300 ease-in-out;
+  }
+
+  &__label {
+    @apply relative pl-2 cursor-pointer;
+  }
+
+  &__input {
+    left: -999em;
+    position: absolute;
+  }
+
+  &--toggled {
+    .chec-switch__container {
+      @apply bg-green-400;
     }
 
-    &__thumb {
-      @apply relative w-4 h-4 rounded-full bg-white mx-px cursor-pointer transition-all duration-300 ease-in-out;
-    }
-
-    &__label {
-      @apply relative pl-2 cursor-pointer;
-    }
-
-    &__input {
-      position: absolute;
-      left: -999em;
-    }
-
-    &--toggled {
-      .chec-switch__container {
-        @apply bg-green-400;
-      }
-      .chec-switch__thumb {
-        transform: translate3d(20px, 0, 0);
-      }
+    .chec-switch__thumb {
+      transform: translate3d(20px, 0, 0);
     }
   }
+}
 </style>

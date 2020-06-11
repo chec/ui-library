@@ -13,9 +13,11 @@ export default {
 <style lang="scss">
 .data-pill-group {
   @apply flex;
+
   > .data-pill {
     @apply rounded-r-none;
-    & + .data-pill {
+
+    + .data-pill {
       @apply rounded-l-none rounded-r-full;
     }
   }

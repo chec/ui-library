@@ -20,6 +20,7 @@ function ChecFlatpickrPlugin() {
       if (!fp.monthNav) {
         return;
       }
+      // eslint-disable-next-line vue/require-name-property
       const bar = new Vue({
         ...NavBar,
         propsData: {

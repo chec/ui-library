@@ -1,20 +1,21 @@
 <template>
-  <header class="chec-header" :class="`chec-header--${this.variant}`">
+  <header class="chec-header" :class="`chec-header--${variant}`">
     <component :is="actualHeaderTag" class="chec-header__title">
       {{ title }}
     </component>
 
     <div v-if="label || $slots.default" class="chec-header-inner">
-      <label class="chec-header-inner__label" v-if="label">
+      <label v-if="label" class="chec-header-inner__label">
         {{ label }}
       </label>
       <!--
         @slot - Slot to distribute a <BaseButton> to
-      !-->
+        ! -->
       <slot />
     </div>
   </header>
 </template>
+
 <script>
 
 export default {
@@ -54,6 +55,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 .chec-header {
   @apply flex justify-between items-center w-full;
@@ -68,8 +70,10 @@ export default {
 
   &-inner {
     @apply flex items-center;
+
     &__label {
       @apply caps-xs;
+
       &:not(:last-child) {
         @apply pr-4;
       }

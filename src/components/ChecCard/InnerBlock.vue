@@ -1,29 +1,33 @@
 <template>
-<div class="card-inner-block">
-  <div>
-    <component :is="titleTag" class="card-inner-block__title">{{ title }}</component>
-    <!--
-      @slot The content of the block
-    -->
-    <slot />
-  </div>
-  <div v-if="actionText || $slots.action">
-    <slot name="action" />
-    <BaseButton
-      v-if="!$slots.action"
-      class="card-inner-block__action"
-      variant="round"
-      :color="actionColor"
-      @click="emitAction"
-    >
-      {{ actionText }}
+  <div class="card-inner-block">
+    <div>
+      <component :is="titleTag" class="card-inner-block__title">
+        {{ title }}
+      </component>
       <!--
-        @slot Passthrough for the icon slot on the button component
+        @slot The content of the block
       -->
-      <template v-if="$slots.actionIcon" v-slot:icon><slot name="actionIcon"/></template>
-    </BaseButton>
+      <slot />
+    </div>
+    <div v-if="actionText || $slots.action">
+      <slot name="action" />
+      <BaseButton
+        v-if="!$slots.action"
+        class="card-inner-block__action"
+        variant="round"
+        :color="actionColor"
+        @click="emitAction"
+      >
+        {{ actionText }}
+        <!--
+          @slot Passthrough for the icon slot on the button component
+        -->
+        <template v-if="$slots.actionIcon" #icon>
+          <slot name="actionIcon" />
+        </template>
+      </BaseButton>
+    </div>
   </div>
-</div>
 </template>
 
 <script>

@@ -1,33 +1,49 @@
 <template>
   <div class="chec-paginate">
     <div class="chec-page-selector">
-      <button title="Go to the first page" class="chec-page-selector__control" @click="choosePage('first')"
-               :disabled="page === 1"
+      <button
+        title="Go to the first page"
+        class="chec-page-selector__control"
+        :disabled="page === 1"
+        @click="choosePage('first')"
       >
         <ChecIcon icon="double-left" />
       </button>
-      <button title="Go to the previous page" class="chec-page-selector__control"
-               @click="choosePage('previous')" :disabled="page === 1"
+      <button
+        title="Go to the previous page"
+        class="chec-page-selector__control"
+        :disabled="page === 1"
+        @click="choosePage('previous')"
       >
         <ChecIcon icon="left" />
       </button>
       <span class="chec-page-selector__page-reference">{{ page }} of {{ pageCount }}</span>
-      <button title="Go to the next page" class="chec-page-selector__control" @click="choosePage('next')"
-               :disabled="page === pageCount"
+      <button
+        title="Go to the next page"
+        class="chec-page-selector__control"
+        :disabled="page === pageCount"
+        @click="choosePage('next')"
       >
         <ChecIcon icon="right" />
       </button>
-      <button title="Go to the last page" class="chec-page-selector__control" @click="choosePage('last')"
-               :disabled="page === pageCount"
+      <button
+        title="Go to the last page"
+        class="chec-page-selector__control"
+        :disabled="page === pageCount"
+        @click="choosePage('last')"
       >
         <ChecIcon icon="double-right" />
       </button>
     </div>
-    <div class="chec-per-page-control" v-show="limitOptions.length > 1">
+    <div v-show="limitOptions.length > 1" class="chec-per-page-control">
       <span class="chec-per-page-control__label">Showing</span>
-      <button class="chec-per-page-control__option" v-for="option in limitOptions" :key="option"
-              :title="`Show ${option} items per page`" @click="choosePageSize(option)"
-              :class="{'chec-per-page-control__option--active': option === pageSize}"
+      <button
+        v-for="option in limitOptions"
+        :key="option"
+        class="chec-per-page-control__option"
+        :title="`Show ${option} items per page`"
+        :class="{'chec-per-page-control__option--active': option === pageSize}"
+        @click="choosePageSize(option)"
       >
         {{ option }}
       </button>
@@ -74,12 +90,6 @@ export default {
       default: () => [15, 30, 50, 100],
     },
   },
-  mounted() {
-    // Ensure the initial page size is valid. This is here as the validity relies on a different prop
-    if (!this.pageSizeOptions.includes(this.pageSize)) {
-      this.emitChoosePageSize(this.pageSizeOptions[0]);
-    }
-  },
   computed: {
     limitOptions() {
       // Find the options that are less than the total count, and also the first option that's more
@@ -92,6 +102,12 @@ export default {
     pageCount() {
       return Math.ceil(this.count / this.pageSize);
     },
+  },
+  mounted() {
+    // Ensure the initial page size is valid. This is here as the validity relies on a different prop
+    if (!this.pageSizeOptions.includes(this.pageSize)) {
+      this.emitChoosePageSize(this.pageSizeOptions[0]);
+    }
   },
   methods: {
     choosePage(action) {
@@ -152,14 +168,17 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 %active-control {
   &:enabled {
     @apply bg-gray-400 outline-none;
+
     &:hover {
       @apply bg-gray-600;
     }
   }
+
   &:disabled {
     @apply bg-gray-500;
   }
@@ -167,18 +186,23 @@ export default {
 
 %control-shared {
   @apply bg-gray-500 rounded p-1 mr-1 ml-0;
+
   &:hover {
     &:enabled {
       @apply bg-gray-600;
+
       .chec-tab__text {
         @apply text-white;
       }
     }
   }
+
   &:disabled {
     @apply opacity-50 cursor-not-allowed;
   }
-  &:active, &:focus {
+
+  &:active,
+  &:focus {
     @extend %active-control;
   }
 }
@@ -193,13 +217,16 @@ export default {
 
 .chec-per-page-control {
   @extend %control-group;
+
   @apply leading-tight text-xxs py-2 px-3;
+
   &__label {
     @apply text-xxs mr-3;
   }
 
   &__option {
     @extend %control-shared;
+
     @apply text-xs font-bold;
 
     &--active {
@@ -210,13 +237,16 @@ export default {
 
 .chec-page-selector {
   @extend %control-group;
+
   @apply flex items-center;
 
   &__control {
     @extend %control-shared;
+
     svg {
       @apply w-3 h-3;
     }
+
     &--active {
       @extend %active-control;
     }

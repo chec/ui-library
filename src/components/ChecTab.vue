@@ -1,9 +1,9 @@
 <template>
   <button
     class="chec-tab"
-    @click="handleClick"
     :class="{ 'chec-tab--active': active }"
     :disabled="disabled"
+    @click="handleClick"
   >
     <!--
       @slot Text to display within the tab button
@@ -21,17 +21,11 @@ export default {
     /**
      * If this tab should appear selected (active)
      */
-    active: {
-      type: Boolean,
-      default: false,
-    },
+    active: Boolean,
     /**
      * Disables the tab (but not the click handler)
      */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+    disabled: Boolean,
   },
   methods: {
     handleClick() {
@@ -50,13 +44,18 @@ export default {
 .chec-tab {
   @apply px-6 py-2 border-b-2 border-gray-300;
   @apply font-bold font-lato text-sm text-gray-400;
+
   &:hover:enabled {
     @apply text-gray-500 border-gray-400;
   }
+
   &:disabled {
     @apply opacity-50 cursor-not-allowed;
   }
-  &--active, &:active, &:focus {
+
+  &--active,
+  &:active,
+  &:focus {
     &:enabled {
       @apply outline-none text-gray-500 border-gray-500;
     }

@@ -1,14 +1,18 @@
 <template>
   <div class="update-group">
-    <BaseDivider class="update-group__divider">{{ updateDate }}</BaseDivider>
+    <BaseDivider class="update-group__divider">
+      {{ updateDate }}
+    </BaseDivider>
     <div class="update-section">
       <div v-for="(update, key) in updates" :key="key" class="update">
-        <ChecDataPill :color="pillColor(update)" class="update__pill">{{ update.type }}</ChecDataPill>
+        <ChecDataPill :color="pillColor(update)" class="update__pill">
+          {{ update.type }}
+        </ChecDataPill>
         <p>
           {{ update.details }}
           <a
-            class="update__link"
             v-if="update.moreInfoLink"
+            class="update__link"
             :href="update.moreInfoLink"
             target="_blank"
             rel="noopener nofollow"
@@ -20,6 +24,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import ChecDataPill from './ChecDataPill.vue';
 import BaseDivider from './BaseDivider.vue';
@@ -61,6 +66,7 @@ export default {
 <style lang="scss">
 .update-group {
   @apply mb-8 w-full;
+
   &__divider {
     @apply mb-2;
   }

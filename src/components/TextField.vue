@@ -1,27 +1,30 @@
 <template>
   <div class="text-field" :class="classNames">
-    <textarea v-if="multiline"
+    <textarea
+      v-if="multiline"
       v-bind="sharedInputProps"
       @input="handleInput"
       @focus="handleFocus"
-    ></textarea>
-    <input v-else
+    />
+    <input
+      v-else
       v-bind="sharedInputProps"
       :type="$attrs.type || 'text'"
+      :style="{ 'padding-right': hasSlot && `${slotWidth}px` }"
       @input="handleInput"
       @focus="handleFocus"
-      :style="{ 'padding-right': hasSlot && `${slotWidth}px` }"
-    />
+    >
     <label
       v-if="label"
       class="text-field__label"
       :class="scrollable"
       :data-content="label"
-      :for="id">
+      :for="id"
+    >
       <span class="invisible">{{ label }}</span>
     </label>
-    <div class="text-field__right-content" ref="rightContentSlot" v-if="$slots.default">
-      <slot></slot>
+    <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
+      <slot />
     </div>
     <a
       v-if="actionLabel"
@@ -32,6 +35,7 @@
     </a>
   </div>
 </template>
+
 <script>
 import uniqueId from '@/lib/helpers/createUniqueId';
 
@@ -73,7 +77,6 @@ export default {
     */
     multiline: {
       type: Boolean,
-      default: false,
     },
     /**
      * Text for action button beneath input
@@ -85,7 +88,10 @@ export default {
     /**
      * Additional input attributes that should be applied to the native input
      */
-    additionalInputAttributes: Object,
+    additionalInputAttributes: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
@@ -95,25 +101,6 @@ export default {
       slotWidth: 0,
       hasSlot: false,
     };
-  },
-  mounted() {
-    this.autoGrow();
-
-    if (!this.multiline && this.$slots.default) {
-      this.slotObserver = new MutationObserver(this.adjustSlotWidth);
-
-      this.slotObserver.observe(
-        this.$refs.rightContentSlot,
-        {
-          attributes: true,
-          childList: true,
-          characterData: true,
-          subtree: true,
-        },
-      );
-
-      this.adjustSlotWidth();
-    }
   },
   computed: {
     sharedInputProps() {
@@ -166,6 +153,25 @@ export default {
       });
     },
   },
+  mounted() {
+    this.autoGrow();
+
+    if (!this.multiline && this.$slots.default) {
+      this.slotObserver = new MutationObserver(this.adjustSlotWidth);
+
+      this.slotObserver.observe(
+        this.$refs.rightContentSlot,
+        {
+          attributes: true,
+          childList: true,
+          characterData: true,
+          subtree: true,
+        },
+      );
+
+      this.adjustSlotWidth();
+    }
+  },
   methods: {
     onActionClick(e) {
       /**
@@ -173,7 +179,7 @@ export default {
        * @event click
        * @type {e}
        */
-      this.$emit('actionClick', e, this.value);
+      this.$emit('action-click', e, this.value);
     },
     handleInput($event) {
       /**
@@ -205,6 +211,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 .text-field {
   @apply relative;
@@ -227,10 +234,10 @@ export default {
         pl-5
         py-4
         leading-tight;
+      backface-visibility: hidden;
 
       content: attr(data-content);
-      backface-visibility: hidden;
-      transform: translate(0, -.3rem) scale(.8, .8);
+      transform: translate(0, -0.3rem) scale(0.8, 0.8);
     }
   }
 
@@ -256,6 +263,7 @@ export default {
 
     &:placeholder-shown {
       @apply py-4;
+
       + .text-field__label {
         &::before {
           transform: scale(1, 1);
@@ -263,7 +271,8 @@ export default {
       }
     }
 
-    &:focus, &:active {
+    &:focus,
+    &:active {
       @apply border-gray-500;
     }
 
@@ -287,7 +296,7 @@ export default {
       &:focus,
       &:active {
         @apply border-gray-300 transition-opacity duration-300 ease-in-out opacity-50;
-      };
+      }
     }
 
     .text-field__right-content {
@@ -302,6 +311,7 @@ export default {
   &--error &__input,
   &:not(.text-field--empty) &__input:invalid {
     @apply border-red-300;
+
     &:hover,
     &:focus,
     &:active {
@@ -313,6 +323,7 @@ export default {
     .text-field__label {
       @apply opacity-100;
     }
+
     .text-field__input {
       @apply pb-2 pt-6;
     }
@@ -321,6 +332,7 @@ export default {
   &--inline-label {
     .text-field__input:focus {
       @apply pb-2 pt-6;
+
       .text-field__label {
         @apply opacity-100;
       }
@@ -330,36 +342,44 @@ export default {
   &--multiline {
     .text-field__label {
       @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
+
       margin: 1px;
 
       .text-field--scrollable & {
         @apply bg-vertical-transparent-gradient;
+
         width: calc(100% - 10px);
       }
     }
 
     .text-field__input {
-      @apply resize-none overflow-auto h-20;
+
       max-height: 10rem;
       scroll-margin: 50px 0 0 50px;
+
+      scrollbar-color: #d3e0f1 transparent;
+      scrollbar-width: thin;
+
       &::-webkit-scrollbar {
         @apply w-1;
       }
+
       &::-webkit-scrollbar-track {
         @apply bg-transparent;
       }
+
       &::-webkit-scrollbar-thumb {
         @apply w-1 bg-gray-300 rounded;
       }
-      scrollbar-color: #D3E0F1 transparent;
-      scrollbar-width: thin;
+      @apply resize-none overflow-auto h-20;
     }
   }
 
   &:not(.text-field--disabled) .text-field__input {
-    &:focus, &:active {
+    &:focus,
+    &:active {
       + .text-field__label::before {
-        transform: translate(0, -.3rem) scale(.8, .8);
+        transform: translate(0, -0.3rem) scale(0.8, 0.8);
       }
     }
   }

@@ -27,12 +27,6 @@ export default {
       default: 'button',
     },
     /**
-     * A link to go to. Required if the type is not "button"
-     */
-    to: {
-      type: String,
-    },
-    /**
      * The name of the color variant to be used. One of 'brand', 'primary', 'secondary', 'blue', 'green', or 'red'
      */
     color: {
@@ -73,10 +67,7 @@ export default {
     /**
      * Disables the button
      */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+    disabled: Boolean,
     /**
      * An icon (from the available ui icons) to display
      */
@@ -144,10 +135,11 @@ export default {
 </script>
 
 <style lang="scss">
-@use "sass:map";
+@use 'sass:map';
 
 .button {
   @apply font-bold shadow-sm border border-0 flex justify-center items-center;
+
   &:focus {
     @apply outline-none;
   }
@@ -156,6 +148,7 @@ export default {
     .button__content:not(:empty) {
       @apply ml-1;
     }
+
     &.button--variant-large .button__content:not(:empty) {
       @apply ml-2;
     }
@@ -165,6 +158,7 @@ export default {
     .button__content:not(:empty) {
       @apply mr-1;
     }
+
     &.button--variant-large .button__content:not(:empty) {
       @apply mr-2;
     }
@@ -178,13 +172,14 @@ export default {
         @apply w-sm;
       }
     }
+
     &-large {
       @apply py-4 px-8 rounded text-lg leading-tight;
 
       .button__icon {
-        @apply w-lg
-      }
+        @apply w-lg; }
     }
+
     &-small {
       @apply p-2 rounded text-sm leading-tight shadow-none;
 
@@ -192,8 +187,10 @@ export default {
         @apply w-sm;
       }
     }
+
     &-round {
       @apply py-2 px-4 rounded-full;
+
       .button__content {
         @apply caps-xxs;
       }
@@ -205,7 +202,7 @@ export default {
   }
 
   &--color {
-    $buttonColors: (
+    $button-colors: (
       'brand': (
         'default': 'bg-primary-gradient',
         'hover': 'bg-primary-blue',
@@ -229,7 +226,7 @@ export default {
     $colors: 'green', 'orange', 'purple', 'red', 'blue';
 
     @each $color in $colors {
-      $buttonColors: map.merge($buttonColors, (
+      $button-colors: map.merge($button-colors, (
         '#{$color}': (
           'default': 'bg-#{$color}-500',
           'hover': 'bg-#{$color}-400',
@@ -239,7 +236,7 @@ export default {
       ));
     }
 
-    @each $name, $config in $buttonColors {
+    @each $name, $config in $button-colors {
       &-#{$name} {
         @apply #{map.get($config, 'default')} #{map.get($config, 'text')};
 
@@ -249,6 +246,7 @@ export default {
           background-image: none;
           @apply #{map.get($config, 'hover')};
         }
+
         &:not(.button--disabled):active,
         &:not(:disabled):active {
           @apply #{map.get($config, 'active')};

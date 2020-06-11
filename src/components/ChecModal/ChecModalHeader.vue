@@ -1,15 +1,22 @@
 <template>
-    <div class="chec-modal-header">
-      <component :is="tag">
-        <!--
+  <div class="chec-modal-header">
+    <component :is="tag">
+      <!--
         @slot The title of the header
-        -->
-        <slot />
-      </component>
-      <BaseButton variant="small" class="chec-modal-header__dismiss-button" @click="emitClose">
-        <template v-slot:icon><ChecIcon icon="close" /></template>
-      </BaseButton>
-    </div>
+      -->
+      <slot />
+    </component>
+    <BaseButton
+      v-if="!undismissible"
+      variant="small"
+      class="chec-modal-header__dismiss-button"
+      @click="emitClose"
+    >
+      <template #icon>
+        <ChecIcon icon="close" />
+      </template>
+    </BaseButton>
+  </div>
 </template>
 
 <script>
@@ -27,6 +34,7 @@ export default {
       type: String,
       default: 'h2',
     },
+    undismissible: Boolean,
   },
   methods: {
     emitClose() {

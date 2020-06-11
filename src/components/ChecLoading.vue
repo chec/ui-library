@@ -29,9 +29,12 @@
         class="loading__animation-spinner"
       />
     </svg>
-    <div class="loading__message" v-if="message">{{ message }}</div>
+    <div v-if="message" class="loading__message">
+      {{ message }}
+    </div>
   </div>
 </template>
+
 <script>
 export default {
   name: 'ChecLoading',
@@ -43,12 +46,13 @@ export default {
   },
 };
 </script>
+
 <style scoped lang="scss">
 .loading {
   @apply absolute top-0 left-0 w-full h-full z-50 flex justify-center items-center flex-col;
-  border-radius: inherit;
   // Custom: Overlay / Light
   background: rgba(255, 255, 255, 0.9);
+  border-radius: inherit;
 
   &__animation {
     @apply w-8;
@@ -68,27 +72,33 @@ export default {
   0% {
     transform: translate(16px, 16px) rotate(0deg);
   }
+
   100% {
     transform: translate(16px, 16px) rotate(-360deg);
   }
 }
+
 @keyframes a0_do {
   0% {
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
     stroke-dashoffset: 100;
-    animation-timing-function: cubic-bezier(0.42,0,0.58,1);
   }
+
   25% {
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
     stroke-dashoffset: 200;
-    animation-timing-function: cubic-bezier(0.42,0,0.58,1);
   }
+
   50% {
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
     stroke-dashoffset: 300;
-    animation-timing-function: cubic-bezier(0.42,0,0.58,1);
   }
+
   75% {
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
     stroke-dashoffset: 400;
-    animation-timing-function: cubic-bezier(0.42,0,0.58,1);
   }
+
   100% {
     stroke-dashoffset: 500;
   }

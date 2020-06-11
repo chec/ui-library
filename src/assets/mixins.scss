@@ -5,12 +5,16 @@
 */
 @mixin aspect-ratio($width, $height) {
   @apply relative;
+
   &::before {
     @apply block w-full;
-    content: "";
+
+    content: '';
     padding-top: ($width / $height) * 100%;
   }
-  > img, div {
+
+  > img,
+  div {
     @apply absolute w-full h-full inset-0 object-cover;
   }
 }

@@ -1,20 +1,23 @@
 <template>
-  <component :is="$props.form ? 'form' : 'div'" class="modal__overlay" @click.self="emitClose">
+  <component :is="form ? 'form' : 'div'" class="modal__overlay" @click.self="emitClose">
     <ChecCard class="modal__card" :class="`max-w-${width}`" tailwind="bg-gray-100">
-      <ChecModalHeader v-if="header" @close="emitClose">{{ header }}</ChecModalHeader>
+      <ChecModalHeader v-if="header" :undismissible="undismissible" @close="emitClose">
+        {{ header }}
+      </ChecModalHeader>
       <!--
-      @slot Modal content
+        @slot Modal content
       -->
       <slot />
-      <div class="modal__toolbar" v-if="$slots.toolbar">
+      <div v-if="$slots.toolbar" class="modal__toolbar">
         <!--
-        @slot Toolbar actions, buttons, etc
+          @slot Toolbar actions, buttons, etc
         -->
         <slot name="toolbar" />
       </div>
     </ChecCard>
   </component>
 </template>
+
 <script>
 import ChecCard from './ChecCard.vue';
 import ChecModalHeader from './ChecModal/ChecModalHeader.vue';
@@ -29,10 +32,7 @@ export default {
     /**
      * Sets a <form> element as the root
      */
-    form: {
-      type: Boolean,
-      default: false,
-    },
+    form: Boolean,
     /**
      * Controls the max width of the modal. Use one of the tailwind sizes, e.g. md, xl, 2xl.
      */
@@ -47,10 +47,7 @@ export default {
     /**
      * Prevent the close button from rendering when using the "header" prop
      */
-    undismissible: {
-      type: Boolean,
-      default: false,
-    },
+    undismissible: Boolean,
   },
   mounted() {
     document.body.style.overflow = 'hidden';
@@ -64,11 +61,14 @@ export default {
      * @event dismiss
      */
     emitClose() {
-      this.$emit('dismiss');
+      if (!this.undismissible) {
+        this.$emit('dismiss');
+      }
     },
   },
 };
 </script>
+
 <style lang="scss">
 .modal {
   &__overlay {
@@ -81,8 +81,8 @@ export default {
     @apply w-full;
 
     > .card__inner-wrapper {
-      padding-top: 2.375rem;
       padding-bottom: 2.375rem;
+      padding-top: 2.375rem;
     }
   }
 

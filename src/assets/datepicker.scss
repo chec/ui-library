@@ -5,24 +5,30 @@
     @apply mb-1;
   }
 
-  .dayContainer, .flatpickr-weekdays, .flatpickr-days {
-    width: 248px;
-    min-width: 248px;
+  /* stylelint-disable-next-line selector-class-pattern */
+  .dayContainer,
+  .flatpickr-weekdays,
+  .flatpickr-days {
     max-width: 248px;
+    min-width: 248px;
+    width: 248px;
   }
 
+  /* stylelint-disable-next-line selector-class-pattern */
   .dayContainer {
     @apply content-between;
+
     height: 212px;
   }
 
   .flatpickr-day {
     @apply block box-border rounded-sm text-xs text-gray-500;
+    line-height: 32px;
+    max-height: 32px;
 
     max-width: 32px;
-    max-height: 32px;
-    line-height: 32px;
 
+    /* stylelint-disable-next-line selector-class-pattern */
     &.prevMonthDay {
       @apply text-gray-400;
     }
@@ -38,7 +44,8 @@
     &:hover {
       @apply bg-gray-200 border-gray-200;
 
-      &.selected, &.today {
+      &.selected,
+      &.today {
         @apply text-gray-500;
       }
     }
