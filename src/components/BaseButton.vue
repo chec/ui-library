@@ -1,4 +1,7 @@
 <script>
+import { uiIcons } from '@/lib/icons';
+import ChecIcon from './ChecIcon.vue';
+
 export default {
   name: 'BaseButton',
   props: {
@@ -74,6 +77,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * An icon (from the available ui icons) to display
+     */
+    icon: {
+      type: String,
+      default: null,
+      validate: icon => Object.keys(uiIcons).includes(icon),
+    },
   },
   computed: {
     classNames() {
@@ -82,14 +93,14 @@ export default {
         `button--color-${this.color}`,
         `button--variant-${this.variant}`,
         {
-          disabled: this.disabled,
+          'button--disabled': this.disabled,
           'button--has-icon': this.hasIcon,
           [`button--has-icon-${this.iconPosition}`]: this.hasIcon,
         },
       ];
     },
     hasIcon() {
-      return this.$slots.icon && Boolean(this.$slots.icon.length);
+      return this.icon || (this.$slots.icon && Boolean(this.$slots.icon.length));
     },
   },
   methods: {
@@ -107,8 +118,11 @@ export default {
     // Note that this would not be ideal usage. Just providing the icon to the default slot is preferred.
     const children = [createElement('span', { class: ['button__content'] }, this.$slots.default)];
 
-    if (this.hasIcon && this.$slots.icon) {
-      const icon = createElement('i', { class: ['button__icon'] }, this.$slots.icon);
+    if (this.hasIcon) {
+      const icon = this.$slots.icon
+        ? createElement('i', { class: ['button__icon'] }, this.$slots.icon)
+        : createElement(ChecIcon, { class: ['button__icon'], props: { icon: this.icon } });
+
       if (this.iconPosition === 'before') {
         children.unshift(icon);
       } else {
@@ -130,13 +144,12 @@ export default {
 </script>
 
 <style lang="scss">
+@use "sass:map";
+
 .button {
-  @apply font-bold shadow-sm border border-0 cursor-pointer flex justify-center;
+  @apply font-bold shadow-sm border border-0 flex justify-center items-center;
   &:focus {
     @apply outline-none;
-  }
-  &__icon {
-    @apply w-base self-center;
   }
 
   &--has-icon-before {
@@ -160,95 +173,92 @@ export default {
   &--variant {
     &-regular {
       @apply py-4 px-4 rounded text-sm leading-tight;
+
+      .button__icon {
+        @apply w-sm;
+      }
     }
     &-large {
       @apply py-4 px-8 rounded text-lg leading-tight;
+
+      .button__icon {
+        @apply w-lg
+      }
     }
     &-small {
       @apply p-2 rounded text-sm leading-tight shadow-none;
+
+      .button__icon {
+        @apply w-sm;
+      }
     }
     &-round {
       @apply py-2 px-4 rounded-full;
-      & .button__content {
-        @apply caps-xs;
+      .button__content {
+        @apply caps-xxs;
+      }
+
+      .button__icon {
+        @apply w-xxs;
       }
     }
   }
+
   &--color {
-    &-brand {
-      @apply bg-primary-gradient text-white;
-      &:hover {
-        @apply bg-primary-blue;
-        // Override the gradient background
-        background-image: none;
-      }
-      &:active {
-        @apply bg-dark-blue;
+    $buttonColors: (
+      'brand': (
+        'default': 'bg-primary-gradient',
+        'hover': 'bg-primary-blue',
+        'active': 'bg-dark-blue',
+        'text': 'text-white',
+      ),
+      'primary': (
+        'default': 'bg-gray-600',
+        'hover': 'bg-gray-500',
+        'active': 'bg-gray-400',
+        'text': 'text-white',
+      ),
+      'secondary': (
+        'default': 'bg-white',
+        'hover': 'bg-gray-100',
+        'active': 'bg-gray-300',
+        'text': 'text-gray-500',
+      ),
+    );
+
+    $colors: 'green', 'orange', 'purple', 'red', 'blue';
+
+    @each $color in $colors {
+      $buttonColors: map.merge($buttonColors, (
+        '#{$color}': (
+          'default': 'bg-#{$color}-500',
+          'hover': 'bg-#{$color}-400',
+          'active': 'bg-#{$color}-600',
+          'text': 'text-white',
+        )
+      ));
+    }
+
+    @each $name, $config in $buttonColors {
+      &-#{$name} {
+        @apply #{map.get($config, 'default')} #{map.get($config, 'text')};
+
+        &:not(.button--disabled):hover,
+        &:not(:disabled):hover {
+          // Override any gradient background
+          background-image: none;
+          @apply #{map.get($config, 'hover')};
+        }
+        &:not(.button--disabled):active,
+        &:not(:disabled):active {
+          @apply #{map.get($config, 'active')};
+        }
       }
     }
-    &-primary {
-      @apply bg-gray-600 text-white;
-      &:hover {
-        @apply bg-gray-500;
-      }
-      &:active {
-        @apply bg-gray-400;
-      }
-    }
-    &-secondary {
-      @apply bg-white text-gray-500;
-      &:hover {
-        @apply bg-gray-100 border-primary-blue;
-      }
-      &:active {
-        @apply bg-gray-300;
-      }
-    }
-    &-blue {
-      @apply bg-blue-500 text-white;
-      &:hover {
-        @apply bg-blue-400;
-      }
-      &:active {
-        @apply bg-blue-600;
-      }
-    }
-    &-green {
-      @apply bg-green-500 text-white;
-      &:hover {
-        @apply bg-green-400;
-      }
-      &:active {
-        @apply bg-green-600;
-      }
-    }
-    &-red {
-      @apply bg-red-500 text-white;
-      &:hover {
-        @apply bg-red-400;
-      }
-      &:active {
-        @apply bg-red-600;
-      }
-    }
-    &-purple {
-      @apply bg-purple-500 text-white;
-      &:hover {
-        @apply bg-purple-400;
-      }
-      &:active {
-        @apply bg-purple-600;
-      }
-    }
-    &-orange {
-      @apply bg-orange-500 text-white;
-      &:hover {
-        @apply bg-orange-400;
-      }
-      &:active {
-        @apply bg-orange-600;
-      }
-    }
+  }
+
+  &--disabled {
+    @apply opacity-40 cursor-not-allowed;
   }
 }
 </style>

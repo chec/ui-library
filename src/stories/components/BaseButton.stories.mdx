@@ -41,7 +41,7 @@ Todo list
           default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
         },
         disabled: {
-          default: select('Disabled', [true, false], false),
+          default: boolean('Disabled', false),
         },
         text: {
           default: text('Text', 'Button text'),
@@ -58,11 +58,14 @@ Todo list
       },
       template: `
         <div class="py-16 flex justify-center">
-          <base-button :color="color" :variant="variant" :icon-position="iconPosition" :disabled="disabled">
+          <base-button
+            :color="color"
+            :variant="variant"
+            :icon-position="iconPosition"
+            :disabled="disabled"
+            :icon="hasIcon ? icon : null"
+          >
             {{text}}
-            <template v-if="hasIcon" v-slot:icon>
-              <ChecIcon :icon="icon" />
-            </template>
           </base-button>
         </div>
       `,
