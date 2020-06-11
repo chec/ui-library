@@ -34,11 +34,11 @@ export default {
       },
     },
     /**
-     * Whether the notification should automatically disappear after a certain period of time (`hideTime`)
+     * Whether the notification should not automatically disappear after a certain period of time (`hideTime`)
      */
-    autoHide: Boolean,
+    persist: Boolean,
     /**
-     * The time in milliseconds after which a notification will disappear, if `autoHide` is true
+     * The time in milliseconds after which a notification will disappear, if `persist` is true
      */
     hideTime: {
       type: Number,
@@ -51,7 +51,7 @@ export default {
     },
   },
   mounted() {
-    if (this.autoHide) {
+    if (!this.persist) {
       this.registerHideTimer();
     }
   },

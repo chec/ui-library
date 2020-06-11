@@ -41,7 +41,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
             v-if="!closed"
             :variant="variant"
             @close="close()"
-            :autoHide="false"
+            persist
           >
             {{text}}
           </BaseNotification>
@@ -88,7 +88,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
             class="mb-2"
             :variant="variant"
             @close="close(variant)"
-            :autoHide="false"
+            persist
           >
             {{content(variant)}}
           </BaseNotification>
@@ -128,7 +128,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
             v-if="!closed"
             :variant="variant"
             @close="close()"
-            :autoHide="false"
+            persist
           >
             <p class="font-bold text-red-200 text-xs italic">
               Formatted alert text.
@@ -171,7 +171,6 @@ import BaseNotification from '../../components/BaseNotification.vue';
             :variant="variant"
             @close="close()"
             :hideTime="3000"
-            autoHide
           >
             I will disappear after 3 seconds
           </BaseNotification>
