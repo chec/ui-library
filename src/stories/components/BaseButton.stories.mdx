@@ -58,11 +58,14 @@ Todo list
       },
       template: `
         <div class="py-16 flex justify-center">
-          <base-button :color="color" :variant="variant" :icon-position="iconPosition" :disabled="disabled">
+          <base-button
+            :color="color"
+            :variant="variant"
+            :icon-position="iconPosition"
+            :disabled="disabled"
+            :icon="hasIcon ? icon : null"
+          >
             {{text}}
-            <template v-if="hasIcon" v-slot:icon>
-              <ChecIcon :icon="icon" />
-            </template>
           </base-button>
         </div>
       `,

@@ -1,4 +1,7 @@
 <script>
+import { uiIcons } from '@/lib/icons';
+import ChecIcon from './ChecIcon.vue';
+
 export default {
   name: 'BaseButton',
   props: {
@@ -74,6 +77,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * An icon (from the available ui icons) to display
+     */
+    icon: {
+      type: String,
+      default: null,
+      validate: icon => Object.keys(uiIcons).includes(icon),
+    },
   },
   computed: {
     classNames() {
@@ -89,7 +100,7 @@ export default {
       ];
     },
     hasIcon() {
-      return this.$slots.icon && Boolean(this.$slots.icon.length);
+      return this.icon || (this.$slots.icon && Boolean(this.$slots.icon.length));
     },
   },
   methods: {
@@ -107,8 +118,11 @@ export default {
     // Note that this would not be ideal usage. Just providing the icon to the default slot is preferred.
     const children = [createElement('span', { class: ['button__content'] }, this.$slots.default)];
 
-    if (this.hasIcon && this.$slots.icon) {
-      const icon = createElement('i', { class: ['button__icon'] }, this.$slots.icon);
+    if (this.hasIcon) {
+      const icon = this.$slots.icon
+        ? createElement('i', { class: ['button__icon'] }, this.$slots.icon)
+        : createElement(ChecIcon, { class: ['button__icon'], props: { icon: this.icon } });
+
       if (this.iconPosition === 'before') {
         children.unshift(icon);
       } else {
@@ -133,12 +147,9 @@ export default {
 @use "sass:map";
 
 .button {
-  @apply font-bold shadow-sm border border-0 flex justify-center;
+  @apply font-bold shadow-sm border border-0 flex justify-center items-center;
   &:focus {
     @apply outline-none;
-  }
-  &__icon {
-    @apply w-base self-center;
   }
 
   &--has-icon-before {
@@ -162,17 +173,33 @@ export default {
   &--variant {
     &-regular {
       @apply py-4 px-4 rounded text-sm leading-tight;
+
+      .button__icon {
+        @apply w-sm;
+      }
     }
     &-large {
       @apply py-4 px-8 rounded text-lg leading-tight;
+
+      .button__icon {
+        @apply w-lg
+      }
     }
     &-small {
       @apply p-2 rounded text-sm leading-tight shadow-none;
+
+      .button__icon {
+        @apply w-sm;
+      }
     }
     &-round {
       @apply py-2 px-4 rounded-full;
-      & .button__content {
+      .button__content {
         @apply caps-xxs;
+      }
+
+      .button__icon {
+        @apply w-xxs;
       }
     }
   }
@@ -186,9 +213,9 @@ export default {
         'text': 'text-white',
       ),
       'primary': (
-        'default': 'bg-primary-gradient',
-        'hover': 'bg-primary-blue',
-        'active': 'bg-dark-blue',
+        'default': 'bg-gray-600',
+        'hover': 'bg-gray-500',
+        'active': 'bg-gray-400',
         'text': 'text-white',
       ),
       'secondary': (
