@@ -1,8 +1,8 @@
 <template>
   <div class="options-menu" ref="menu-el">
-    <BaseButton @click="toggleMenu" slot="reference" ref="button-el">
-      <template v-slot:icon>
-        <ChecIcon :icon="isOpen ? 'up' : 'down'" />
+    <BaseButton @click="toggleMenu" slot="reference" ref="button-el" variant="small">
+      <template #icon>
+        <ChecIcon icon="more" />
       </template>
     </BaseButton>
     <BasePopover
@@ -164,12 +164,9 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .options-menu {
   @apply static;
-  .button {
-    @apply shadow-none bg-transparent;
-  }
 
   .popover {
     min-width: 10rem;
