@@ -85,48 +85,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .option {
-    @apply w-full flex items-center text-sm px-4 py-3 outline-none cursor-pointer bg-white;
+.option {
+  @apply w-full flex items-center text-sm px-4 py-3 outline-none cursor-pointer bg-white;
 
-    &:hover {
-      @apply bg-gray-100;
-    }
+  &:hover {
+    @apply bg-gray-100;
+  }
 
-    &:focus,
-    &:active {
-      @apply bg-gray-100;
-    }
+  &:focus,
+  &:active {
+    @apply bg-gray-100;
+  }
 
-    &:not(:last-child) {
-      @apply border-b border-gray-200;
-    }
+  &:not(:last-child) {
+    @apply border-b border-gray-200;
+  }
 
-    &--disabled {
-      @apply opacity-50 cursor-not-allowed;
+  &--disabled {
+    @apply opacity-50 cursor-not-allowed;
 
-      &:hover,
-      &:active,
-      &:focus {
-        @apply bg-white;
-      }
-    }
-
-    &--destructive {
-      @apply text-red-600;
-    }
-
-    &--level- {
-      &1 {
-        @apply pl-8;
-      }
-
-      &2 {
-        @apply pl-12;
-      }
-
-      &3 {
-        @apply pl-16;
-      }
+    &:hover,
+    &:active,
+    &:focus {
+      @apply bg-white;
     }
   }
+
+  &--destructive {
+    @apply text-red-600;
+  }
+
+  &--level- {
+    &1 {
+      @apply pl-8;
+    }
+
+    &2 {
+      @apply pl-12;
+    }
+
+    &3 {
+      @apply pl-16;
+    }
+  }
+}
 </style>

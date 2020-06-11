@@ -6,6 +6,9 @@
       "^\\w[\\w\\d]([a-z]|-(?!-))+(__([a-z]|-(?!-))+)?(--([a-z]|-(?!-))+)?$",
       {}
     ],
-    "scss/at-extend-no-missing-placeholder": null
+    "scss/at-extend-no-missing-placeholder": null,
+    "indentation": [2, {
+      "baseIndentLevel": 0
+    }]
   }
 }

@@ -61,63 +61,63 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .chec-navigation {
-    @apply fixed top-0 left-0 w-20 h-screen shadow-sm p-4 flex
-      flex-col transition-all duration-300 ease-in-out;
+.chec-navigation {
+  @apply fixed top-0 left-0 w-20 h-screen shadow-sm p-4 flex
+    flex-col transition-all duration-300 ease-in-out;
 
-    &__logo {
-      @apply fill-current text-gray-500 w-full h-auto justify-start py-2;
-      max-width: 3rem;
+  &__logo {
+    @apply fill-current text-gray-500 w-full h-auto justify-start py-2;
+    max-width: 3rem;
 
-      min-height: 3rem;
+    min-height: 3rem;
+  }
+
+  &__links-list {
+    @apply mt-20 flex-grow;
+
+    li {
+      @apply mb-2;
     }
+  }
 
-    &__links-list {
-      @apply mt-20 flex-grow;
+  &__link {
+    @apply relative flex items-center justify-between overflow-hidden w-full rounded;
 
-      li {
-        @apply mb-2;
-      }
-    }
-
-    &__link {
-      @apply relative flex items-center justify-between overflow-hidden w-full rounded;
-
-      span {
-        @apply flex-grow w-0 opacity-0 text-sm text-gray-600 duration-100;
-      }
-
-      &:hover {
-        @apply bg-gray-100;
-      }
-
-      &--active {
-        @apply bg-gray-200;
-      }
-    }
-
-    &__icon-wrapper {
-      @apply w-12 h-12 p-3 z-10;
-
-      min-width: 3rem;
-
-      > svg {
-        @apply w-full h-full;
-      }
-    }
-
-    &--expanded {
-      width: 15rem;
-
-      .chec-navigation__link {
-        span {
-          @apply w-auto opacity-100;
-        }
-      }
+    span {
+      @apply flex-grow w-0 opacity-0 text-sm text-gray-600 duration-100;
     }
 
     &:hover {
-      @extend .chec-navigation--expanded;
+      @apply bg-gray-100;
+    }
+
+    &--active {
+      @apply bg-gray-200;
     }
   }
+
+  &__icon-wrapper {
+    @apply w-12 h-12 p-3 z-10;
+
+    min-width: 3rem;
+
+    > svg {
+      @apply w-full h-full;
+    }
+  }
+
+  &--expanded {
+    width: 15rem;
+
+    .chec-navigation__link {
+      span {
+        @apply w-auto opacity-100;
+      }
+    }
+  }
+
+  &:hover {
+    @extend .chec-navigation--expanded;
+  }
+}
 </style>

@@ -132,38 +132,38 @@ export default {
 </script>
 
 <style lang="scss">
-  .password-field {
-    @apply relative;
+.password-field {
+  @apply relative;
 
-    &__strength {
-      @apply
-        absolute
-        left-0
-        transform
-        -translate-y-1
-        w-0
-        h-1
-        bg-transparent
-        rounded-bl
-        transition-all
-        duration-300
-        ease-in-out;
+  &__strength {
+    @apply
+      absolute
+      left-0
+      transform
+      -translate-y-1
+      w-0
+      h-1
+      bg-transparent
+      rounded-bl
+      transition-all
+      duration-300
+      ease-in-out;
 
-      &--invalid {
-        @apply bg-red-300 w-1/4;
-      }
+    &--invalid {
+      @apply bg-red-300 w-1/4;
+    }
 
-      &--bad {
-        @apply bg-orange-300 w-2/4;
-      }
+    &--bad {
+      @apply bg-orange-300 w-2/4;
+    }
 
-      &--good {
-        @apply bg-green-300 w-3/4;
-      }
+    &--good {
+      @apply bg-green-300 w-3/4;
+    }
 
-      &--great {
-        @apply bg-green-400 w-full rounded-br;
-      }
+    &--great {
+      @apply bg-green-400 w-full rounded-br;
     }
   }
+}
 </style>

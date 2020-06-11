@@ -56,37 +56,37 @@ export default {
 </script>
 
 <style lang="scss">
-  .accordion {
-    @apply rounded mb-2 bg-gray-100 p-4;
+.accordion {
+  @apply rounded mb-2 bg-gray-100 p-4;
 
-    &__heading {
-      @apply text-gray-500 flex justify-between items-center;
-    }
+  &__heading {
+    @apply text-gray-500 flex justify-between items-center;
+  }
 
-    &__title {
-      @apply font-bold text-sm;
-    }
+  &__title {
+    @apply font-bold text-sm;
+  }
 
-    &__subtitle {
-      @apply text-xs;
-    }
+  &__subtitle {
+    @apply text-xs;
+  }
 
-    &__toggle {
-      @apply rounded p-2 bg-white h-8 w-8 cursor-pointer;
-    }
+  &__toggle {
+    @apply rounded p-2 bg-white h-8 w-8 cursor-pointer;
+  }
 
-    &__body {
-      @apply pt-0 max-h-0 overflow-hidden;
+  &__body {
+    @apply pt-0 max-h-0 overflow-hidden;
 
-      transition: max-height 500ms cubic-bezier(0, 1, 0, 1), padding 200ms linear;
-    }
+    transition: max-height 500ms cubic-bezier(0, 1, 0, 1), padding 200ms linear;
+  }
 
-    &.active {
-      .accordion__body {
-        @apply pt-4 max-h-full-px ;
+  &.active {
+    .accordion__body {
+      @apply pt-4 max-h-full-px ;
 
-        transition: max-height 1500ms cubic-bezier(1, 0, 0, 1), padding 200ms linear;
-      }
+      transition: max-height 1500ms cubic-bezier(1, 0, 0, 1), padding 200ms linear;
     }
   }
+}
 </style>

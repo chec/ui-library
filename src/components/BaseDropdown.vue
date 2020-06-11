@@ -348,87 +348,87 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .dropdown {
-    @apply static w-full text-gray-500;
+.dropdown {
+  @apply static w-full text-gray-500;
 
-    &-inner {
-      @apply flex flex-col;
+  &-inner {
+    @apply flex flex-col;
 
-      &__label {
-        @apply text-left absolute text-gray-500 inline-block origin-top-left transition-transform duration-150 ;
-        backface-visibility: hidden;
+    &__label {
+      @apply text-left absolute text-gray-500 inline-block origin-top-left transition-transform duration-150 ;
+      backface-visibility: hidden;
 
-        transform: translate3d(0, 0.5rem, 0) scale3d(1, 1, 1);
-      }
-
-      &__value {
-        @apply py-2 text-sm;
-      }
+      transform: translate3d(0, 0.5rem, 0) scale3d(1, 1, 1);
     }
 
-    &__control {
-      @apply
-        relative
-        left-0
-        w-full
-        bg-white
-        shadow-sm
-        rounded
-        outline-none
-        transition-all
-        ease-in
-        duration-200
-        cursor-pointer
-        border
-        border-transparent
-        py-2
-        px-4
-        flex
-        items-center
-        justify-between;
+    &__value {
+      @apply py-2 text-sm;
+    }
+  }
 
-      &:hover {
-        @apply border border-gray-400;
-      }
+  &__control {
+    @apply
+      relative
+      left-0
+      w-full
+      bg-white
+      shadow-sm
+      rounded
+      outline-none
+      transition-all
+      ease-in
+      duration-200
+      cursor-pointer
+      border
+      border-transparent
+      py-2
+      px-4
+      flex
+      items-center
+      justify-between;
 
-      &:focus,
-      &:active {
-        @apply border border-gray-500;
-      }
-
-      &--open {
-        @apply border border-gray-500;
-      }
+    &:hover {
+      @apply border border-gray-400;
     }
 
-    &__option {
-      @apply text-sm text-gray-600 px-4 py-3;
+    &:focus,
+    &:active {
+      @apply border border-gray-500;
+    }
 
-      &:not(:last-child) {
-        @apply border-b border-gray-200;
+    &--open {
+      @apply border border-gray-500;
+    }
+  }
+
+  &__option {
+    @apply text-sm text-gray-600 px-4 py-3;
+
+    &:not(:last-child) {
+      @apply border-b border-gray-200;
+    }
+  }
+
+  &__base-popover {
+    @apply overflow-scroll;
+
+    max-height: 50vh;
+  }
+
+  &__down-arrow {
+    @apply flex flex-col justify-center w-4 h-4 fill-current text-gray-600;
+  }
+
+  &--with-inline-label {
+    .dropdown-inner {
+      .dropdown-inner__value {
+        @apply pt-4 pb-0;
       }
-    }
 
-    &__base-popover {
-      @apply overflow-scroll;
-
-      max-height: 50vh;
-    }
-
-    &__down-arrow {
-      @apply flex flex-col justify-center w-4 h-4 fill-current text-gray-600;
-    }
-
-    &--with-inline-label {
-      .dropdown-inner {
-        .dropdown-inner__value {
-          @apply pt-4 pb-0;
-        }
-
-        .dropdown-inner__label {
-          transform: translate3d(0, 0, 0) scale3d(0.8, 0.8, 1);
-        }
+      .dropdown-inner__label {
+        transform: translate3d(0, 0, 0) scale3d(0.8, 0.8, 1);
       }
     }
   }
+}
 </style>

@@ -28,11 +28,11 @@ export default {
 </script>
 
 <style lang="scss">
-  .progress {
-    @apply h-1 rounded-lg bg-gray-200 overflow-hidden;
+.progress {
+  @apply h-1 rounded-lg bg-gray-200 overflow-hidden;
 
-    &__bar {
-      @apply h-1 bg-green-500 transition-all ease-in-out duration-200;
-    }
+  &__bar {
+    @apply h-1 bg-green-500 transition-all ease-in-out duration-200;
   }
+}
 </style>
