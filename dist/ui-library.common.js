@@ -17857,6 +17857,12 @@ var BaseBreadcrumbs_component = normalizeComponent(
 )
 
 /* harmony default export */ var BaseBreadcrumbs = (BaseBreadcrumbs_component.exports);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
+var es_object_keys = __webpack_require__("b64b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
+var es_string_includes = __webpack_require__("2532");
+
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -17872,7 +17878,285 @@ function _defineProperty(obj, key, value) {
 
   return obj;
 }
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-left.svg
+var ic_left = __webpack_require__("025b");
+var ic_left_default = /*#__PURE__*/__webpack_require__.n(ic_left);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-double-left.svg
+var ic_double_left = __webpack_require__("1a91");
+var ic_double_left_default = /*#__PURE__*/__webpack_require__.n(ic_double_left);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-right.svg
+var ic_right = __webpack_require__("1029");
+var ic_right_default = /*#__PURE__*/__webpack_require__.n(ic_right);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-double-right.svg
+var ic_double_right = __webpack_require__("93d0");
+var ic_double_right_default = /*#__PURE__*/__webpack_require__.n(ic_double_right);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-down.svg
+var ic_down = __webpack_require__("a339");
+var ic_down_default = /*#__PURE__*/__webpack_require__.n(ic_down);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-up.svg
+var ic_up = __webpack_require__("5546");
+var ic_up_default = /*#__PURE__*/__webpack_require__.n(ic_up);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-plus.svg
+var ic_plus = __webpack_require__("e834");
+var ic_plus_default = /*#__PURE__*/__webpack_require__.n(ic_plus);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-close.svg
+var ic_close = __webpack_require__("75d3");
+var ic_close_default = /*#__PURE__*/__webpack_require__.n(ic_close);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-check.svg
+var ic_check = __webpack_require__("923b");
+var ic_check_default = /*#__PURE__*/__webpack_require__.n(ic_check);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-more.svg
+var ic_more = __webpack_require__("58c8");
+var ic_more_default = /*#__PURE__*/__webpack_require__.n(ic_more);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-download.svg
+var ic_download = __webpack_require__("b04e");
+var ic_download_default = /*#__PURE__*/__webpack_require__.n(ic_download);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-upload.svg
+var ic_upload = __webpack_require__("f880");
+var ic_upload_default = /*#__PURE__*/__webpack_require__.n(ic_upload);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-grip.svg
+var ic_grip = __webpack_require__("2e39");
+var ic_grip_default = /*#__PURE__*/__webpack_require__.n(ic_grip);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-minus.svg
+var ic_minus = __webpack_require__("5034");
+var ic_minus_default = /*#__PURE__*/__webpack_require__.n(ic_minus);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-copy.svg
+var ic_copy = __webpack_require__("ffff");
+var ic_copy_default = /*#__PURE__*/__webpack_require__.n(ic_copy);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-calendar.svg
+var ic_calendar = __webpack_require__("c3f8");
+var ic_calendar_default = /*#__PURE__*/__webpack_require__.n(ic_calendar);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-refresh.svg
+var ic_refresh = __webpack_require__("f7f5");
+var ic_refresh_default = /*#__PURE__*/__webpack_require__.n(ic_refresh);
+
+// EXTERNAL MODULE: ./src/assets/svgs/chec-logo.svg
+var chec_logo = __webpack_require__("9a47");
+var chec_logo_default = /*#__PURE__*/__webpack_require__.n(chec_logo);
+
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-orders.svg
+var ic_orders = __webpack_require__("21ed");
+var ic_orders_default = /*#__PURE__*/__webpack_require__.n(ic_orders);
+
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-products.svg
+var ic_products = __webpack_require__("21ee");
+var ic_products_default = /*#__PURE__*/__webpack_require__.n(ic_products);
+
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-discounts.svg
+var ic_discounts = __webpack_require__("f505");
+var ic_discounts_default = /*#__PURE__*/__webpack_require__.n(ic_discounts);
+
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-logs.svg
+var ic_logs = __webpack_require__("24fa");
+var ic_logs_default = /*#__PURE__*/__webpack_require__.n(ic_logs);
+
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-settings.svg
+var ic_settings = __webpack_require__("eee6");
+var ic_settings_default = /*#__PURE__*/__webpack_require__.n(ic_settings);
+
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-categories.svg
+var ic_categories = __webpack_require__("378b");
+var ic_categories_default = /*#__PURE__*/__webpack_require__.n(ic_categories);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-standard.svg
+var ic_standard = __webpack_require__("2bd0");
+var ic_standard_default = /*#__PURE__*/__webpack_require__.n(ic_standard);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-plus-plan.svg
+var ic_plus_plan = __webpack_require__("9f10");
+var ic_plus_plan_default = /*#__PURE__*/__webpack_require__.n(ic_plus_plan);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-pro.svg
+var ic_pro = __webpack_require__("77a1");
+var ic_pro_default = /*#__PURE__*/__webpack_require__.n(ic_pro);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-rise.svg
+var ic_rise = __webpack_require__("fbae");
+var ic_rise_default = /*#__PURE__*/__webpack_require__.n(ic_rise);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-growth.svg
+var ic_growth = __webpack_require__("a52d");
+var ic_growth_default = /*#__PURE__*/__webpack_require__.n(ic_growth);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-enterprise.svg
+var ic_enterprise = __webpack_require__("b245");
+var ic_enterprise_default = /*#__PURE__*/__webpack_require__.n(ic_enterprise);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-standard.svg
+var ic_lrg_standard = __webpack_require__("74ec");
+var ic_lrg_standard_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_standard);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-plus.svg
+var ic_lrg_plus = __webpack_require__("8fed");
+var ic_lrg_plus_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_plus);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-pro.svg
+var ic_lrg_pro = __webpack_require__("8bb9");
+var ic_lrg_pro_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_pro);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-rise.svg
+var ic_lrg_rise = __webpack_require__("cbc3");
+var ic_lrg_rise_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_rise);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-growth.svg
+var ic_lrg_growth = __webpack_require__("668f");
+var ic_lrg_growth_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_growth);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-enterprise.svg
+var ic_lrg_enterprise = __webpack_require__("d978");
+var ic_lrg_enterprise_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_enterprise);
+
+// CONCATENATED MODULE: ./src/lib/icons.js
+// UI icons imports
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // Nav icons imports
+
+
+
+
+
+
+ // Marketing icons imports
+
+
+
+
+
+
+ // Circle marketing icons imports
+
+
+
+
+
+
+
+var uiIcons = {
+  left: ic_left_default.a,
+  'double-left': ic_double_left_default.a,
+  right: ic_right_default.a,
+  'double-right': ic_double_right_default.a,
+  down: ic_down_default.a,
+  up: ic_up_default.a,
+  plus: ic_plus_default.a,
+  close: ic_close_default.a,
+  check: ic_check_default.a,
+  more: ic_more_default.a,
+  download: ic_download_default.a,
+  upload: ic_upload_default.a,
+  grip: ic_grip_default.a,
+  minus: ic_minus_default.a,
+  copy: ic_copy_default.a,
+  calendar: ic_calendar_default.a,
+  refresh: ic_refresh_default.a,
+  chec: chec_logo_default.a
+};
+var navIcons = {
+  orders: ic_orders_default.a,
+  products: ic_products_default.a,
+  discounts: ic_discounts_default.a,
+  logs: ic_logs_default.a,
+  settings: ic_settings_default.a,
+  categories: ic_categories_default.a
+};
+var mIcons = {
+  standard: ic_standard_default.a,
+  plusplan: ic_plus_plan_default.a,
+  pro: ic_pro_default.a,
+  rise: ic_rise_default.a,
+  growth: ic_growth_default.a,
+  enterprise: ic_enterprise_default.a,
+  standardcircle: ic_lrg_standard_default.a,
+  pluscircle: ic_lrg_plus_default.a,
+  procircle: ic_lrg_pro_default.a,
+  risecircle: ic_lrg_rise_default.a,
+  growthcircle: ic_lrg_growth_default.a,
+  enterprisecircle: ic_lrg_enterprise_default.a
+};
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecIcon.vue?vue&type=script&lang=js&
+
+/* harmony default export */ var ChecIconvue_type_script_lang_js_ = ({
+  name: 'ChecIcon',
+  functional: true,
+  props: {
+    /**
+     * Type of icon
+     */
+    icon: {
+      type: String,
+      required: true
+    }
+  },
+  render: function render(createElement, _ref) {
+    var props = _ref.props,
+        data = _ref.data;
+
+    if (!uiIcons[props.icon]) {
+      throw Error('Required param "icon" was not valid');
+    }
+
+    return createElement(uiIcons[props.icon], data);
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecIcon.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecIconvue_type_script_lang_js_ = (ChecIconvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/ChecIcon.vue
+var ChecIcon_render, ChecIcon_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var ChecIcon_component = normalizeComponent(
+  components_ChecIconvue_type_script_lang_js_,
+  ChecIcon_render,
+  ChecIcon_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChecIcon = (ChecIcon_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseButton.vue?vue&type=script&lang=js&
+
+
+
+
 
 
 /* harmony default export */ var BaseButtonvue_type_script_lang_js_ = ({
@@ -17948,17 +18232,28 @@ function _defineProperty(obj, key, value) {
     disabled: {
       type: Boolean,
       default: false
+    },
+
+    /**
+     * An icon (from the available ui icons) to display
+     */
+    icon: {
+      type: String,
+      default: null,
+      validate: function validate(icon) {
+        return Object.keys(uiIcons).includes(icon);
+      }
     }
   },
   computed: {
     classNames: function classNames() {
       return ['button', "button--color-".concat(this.color), "button--variant-".concat(this.variant), _defineProperty({
-        disabled: this.disabled,
+        'button--disabled': this.disabled,
         'button--has-icon': this.hasIcon
       }, "button--has-icon-".concat(this.iconPosition), this.hasIcon)];
     },
     hasIcon: function hasIcon() {
-      return this.$slots.icon && Boolean(this.$slots.icon.length);
+      return this.icon || this.$slots.icon && Boolean(this.$slots.icon.length);
     }
   },
   methods: {
@@ -17978,10 +18273,15 @@ function _defineProperty(obj, key, value) {
       class: ['button__content']
     }, this.$slots.default)];
 
-    if (this.hasIcon && this.$slots.icon) {
-      var icon = createElement('i', {
+    if (this.hasIcon) {
+      var icon = this.$slots.icon ? createElement('i', {
         class: ['button__icon']
-      }, this.$slots.icon);
+      }, this.$slots.icon) : createElement(ChecIcon, {
+        class: ['button__icon'],
+        props: {
+          icon: this.icon
+        }
+      });
 
       if (this.iconPosition === 'before') {
         children.unshift(icon);
@@ -18105,9 +18405,6 @@ var es_array_slice = __webpack_require__("fb6a");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.some.js
 var es_array_some = __webpack_require__("45fc");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
-var es_string_includes = __webpack_require__("2532");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
 var es_string_trim = __webpack_require__("498a");
 
@@ -18119,9 +18416,6 @@ var es_object_get_own_property_descriptor = __webpack_require__("e439");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js
 var es_object_get_own_property_descriptors = __webpack_require__("dbb4");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
-var es_object_keys = __webpack_require__("b64b");
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js
 
@@ -19247,280 +19541,6 @@ var ChecAccordionvue_type_template_id_04d26564_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/ChecAccordion.vue?vue&type=template&id=04d26564&
 
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-left.svg
-var ic_left = __webpack_require__("025b");
-var ic_left_default = /*#__PURE__*/__webpack_require__.n(ic_left);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-double-left.svg
-var ic_double_left = __webpack_require__("1a91");
-var ic_double_left_default = /*#__PURE__*/__webpack_require__.n(ic_double_left);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-right.svg
-var ic_right = __webpack_require__("1029");
-var ic_right_default = /*#__PURE__*/__webpack_require__.n(ic_right);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-double-right.svg
-var ic_double_right = __webpack_require__("93d0");
-var ic_double_right_default = /*#__PURE__*/__webpack_require__.n(ic_double_right);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-down.svg
-var ic_down = __webpack_require__("a339");
-var ic_down_default = /*#__PURE__*/__webpack_require__.n(ic_down);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-up.svg
-var ic_up = __webpack_require__("5546");
-var ic_up_default = /*#__PURE__*/__webpack_require__.n(ic_up);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-plus.svg
-var ic_plus = __webpack_require__("e834");
-var ic_plus_default = /*#__PURE__*/__webpack_require__.n(ic_plus);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-close.svg
-var ic_close = __webpack_require__("75d3");
-var ic_close_default = /*#__PURE__*/__webpack_require__.n(ic_close);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-check.svg
-var ic_check = __webpack_require__("923b");
-var ic_check_default = /*#__PURE__*/__webpack_require__.n(ic_check);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-more.svg
-var ic_more = __webpack_require__("58c8");
-var ic_more_default = /*#__PURE__*/__webpack_require__.n(ic_more);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-download.svg
-var ic_download = __webpack_require__("b04e");
-var ic_download_default = /*#__PURE__*/__webpack_require__.n(ic_download);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-upload.svg
-var ic_upload = __webpack_require__("f880");
-var ic_upload_default = /*#__PURE__*/__webpack_require__.n(ic_upload);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-grip.svg
-var ic_grip = __webpack_require__("2e39");
-var ic_grip_default = /*#__PURE__*/__webpack_require__.n(ic_grip);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-minus.svg
-var ic_minus = __webpack_require__("5034");
-var ic_minus_default = /*#__PURE__*/__webpack_require__.n(ic_minus);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-copy.svg
-var ic_copy = __webpack_require__("ffff");
-var ic_copy_default = /*#__PURE__*/__webpack_require__.n(ic_copy);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-calendar.svg
-var ic_calendar = __webpack_require__("c3f8");
-var ic_calendar_default = /*#__PURE__*/__webpack_require__.n(ic_calendar);
-
-// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-refresh.svg
-var ic_refresh = __webpack_require__("f7f5");
-var ic_refresh_default = /*#__PURE__*/__webpack_require__.n(ic_refresh);
-
-// EXTERNAL MODULE: ./src/assets/svgs/chec-logo.svg
-var chec_logo = __webpack_require__("9a47");
-var chec_logo_default = /*#__PURE__*/__webpack_require__.n(chec_logo);
-
-// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-orders.svg
-var ic_orders = __webpack_require__("21ed");
-var ic_orders_default = /*#__PURE__*/__webpack_require__.n(ic_orders);
-
-// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-products.svg
-var ic_products = __webpack_require__("21ee");
-var ic_products_default = /*#__PURE__*/__webpack_require__.n(ic_products);
-
-// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-discounts.svg
-var ic_discounts = __webpack_require__("f505");
-var ic_discounts_default = /*#__PURE__*/__webpack_require__.n(ic_discounts);
-
-// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-logs.svg
-var ic_logs = __webpack_require__("24fa");
-var ic_logs_default = /*#__PURE__*/__webpack_require__.n(ic_logs);
-
-// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-settings.svg
-var ic_settings = __webpack_require__("eee6");
-var ic_settings_default = /*#__PURE__*/__webpack_require__.n(ic_settings);
-
-// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-categories.svg
-var ic_categories = __webpack_require__("378b");
-var ic_categories_default = /*#__PURE__*/__webpack_require__.n(ic_categories);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-standard.svg
-var ic_standard = __webpack_require__("2bd0");
-var ic_standard_default = /*#__PURE__*/__webpack_require__.n(ic_standard);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-plus-plan.svg
-var ic_plus_plan = __webpack_require__("9f10");
-var ic_plus_plan_default = /*#__PURE__*/__webpack_require__.n(ic_plus_plan);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-pro.svg
-var ic_pro = __webpack_require__("77a1");
-var ic_pro_default = /*#__PURE__*/__webpack_require__.n(ic_pro);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-rise.svg
-var ic_rise = __webpack_require__("fbae");
-var ic_rise_default = /*#__PURE__*/__webpack_require__.n(ic_rise);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-growth.svg
-var ic_growth = __webpack_require__("a52d");
-var ic_growth_default = /*#__PURE__*/__webpack_require__.n(ic_growth);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-enterprise.svg
-var ic_enterprise = __webpack_require__("b245");
-var ic_enterprise_default = /*#__PURE__*/__webpack_require__.n(ic_enterprise);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-standard.svg
-var ic_lrg_standard = __webpack_require__("74ec");
-var ic_lrg_standard_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_standard);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-plus.svg
-var ic_lrg_plus = __webpack_require__("8fed");
-var ic_lrg_plus_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_plus);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-pro.svg
-var ic_lrg_pro = __webpack_require__("8bb9");
-var ic_lrg_pro_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_pro);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-rise.svg
-var ic_lrg_rise = __webpack_require__("cbc3");
-var ic_lrg_rise_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_rise);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-growth.svg
-var ic_lrg_growth = __webpack_require__("668f");
-var ic_lrg_growth_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_growth);
-
-// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-enterprise.svg
-var ic_lrg_enterprise = __webpack_require__("d978");
-var ic_lrg_enterprise_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_enterprise);
-
-// CONCATENATED MODULE: ./src/lib/icons.js
-// UI icons imports
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- // Nav icons imports
-
-
-
-
-
-
- // Marketing icons imports
-
-
-
-
-
-
- // Circle marketing icons imports
-
-
-
-
-
-
-
-var uiIcons = {
-  left: ic_left_default.a,
-  'double-left': ic_double_left_default.a,
-  right: ic_right_default.a,
-  'double-right': ic_double_right_default.a,
-  down: ic_down_default.a,
-  up: ic_up_default.a,
-  plus: ic_plus_default.a,
-  close: ic_close_default.a,
-  check: ic_check_default.a,
-  more: ic_more_default.a,
-  download: ic_download_default.a,
-  upload: ic_upload_default.a,
-  grip: ic_grip_default.a,
-  minus: ic_minus_default.a,
-  copy: ic_copy_default.a,
-  calendar: ic_calendar_default.a,
-  refresh: ic_refresh_default.a,
-  chec: chec_logo_default.a
-};
-var navIcons = {
-  orders: ic_orders_default.a,
-  products: ic_products_default.a,
-  discounts: ic_discounts_default.a,
-  logs: ic_logs_default.a,
-  settings: ic_settings_default.a,
-  categories: ic_categories_default.a
-};
-var mIcons = {
-  standard: ic_standard_default.a,
-  plusplan: ic_plus_plan_default.a,
-  pro: ic_pro_default.a,
-  rise: ic_rise_default.a,
-  growth: ic_growth_default.a,
-  enterprise: ic_enterprise_default.a,
-  standardcircle: ic_lrg_standard_default.a,
-  pluscircle: ic_lrg_plus_default.a,
-  procircle: ic_lrg_pro_default.a,
-  risecircle: ic_lrg_rise_default.a,
-  growthcircle: ic_lrg_growth_default.a,
-  enterprisecircle: ic_lrg_enterprise_default.a
-};
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecIcon.vue?vue&type=script&lang=js&
-
-/* harmony default export */ var ChecIconvue_type_script_lang_js_ = ({
-  name: 'ChecIcon',
-  functional: true,
-  props: {
-    /**
-     * Type of icon
-     */
-    icon: {
-      type: String,
-      required: true
-    }
-  },
-  render: function render(createElement, _ref) {
-    var props = _ref.props,
-        data = _ref.data;
-
-    if (!uiIcons[props.icon]) {
-      throw Error('Required param "icon" was not valid');
-    }
-
-    return createElement(uiIcons[props.icon], data);
-  }
-});
-// CONCATENATED MODULE: ./src/components/ChecIcon.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_ChecIconvue_type_script_lang_js_ = (ChecIconvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/ChecIcon.vue
-var ChecIcon_render, ChecIcon_staticRenderFns
-
-
-
-
-/* normalize component */
-
-var ChecIcon_component = normalizeComponent(
-  components_ChecIconvue_type_script_lang_js_,
-  ChecIcon_render,
-  ChecIcon_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var ChecIcon = (ChecIcon_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=script&lang=js&
 //
 //
