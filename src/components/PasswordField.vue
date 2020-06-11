@@ -5,7 +5,7 @@
       v-bind="{...$attrs, ...textFieldProps}"
       :type="fieldType"
       :action-label="showHideText"
-      @actionClick="toggleShowPassword"
+      @action-click="toggleShowPassword"
       @input="e => $emit('input', e)"
     />
     <div v-if="showPasswordStrength" class="password-field__strength" :class="strengthClass" />
