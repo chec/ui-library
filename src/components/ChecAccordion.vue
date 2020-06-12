@@ -2,19 +2,21 @@
   <div
     ref="accordion"
     class="accordion"
-    :class="{'active': isOpen}"
+    :class="{'accordion--active': isOpen}"
   >
     <div class="accordion__heading">
       <div>
         <div class="accordion__title" v-html="title" />
-        <div class="accordion__subtitle" v-html="subtitle" />
+        <div v-if="subtitle" class="accordion__subtitle" v-html="subtitle" />
       </div>
       <div class="accordion__toggle" @click="isOpen = !isOpen">
         <ChecIcon :icon="isOpen ? 'down' : 'right'" />
       </div>
     </div>
-    <div class="accordion__body">
-      <slot />
+    <div class="accordion__body-container">
+      <div class="accordion__body">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
@@ -57,7 +59,7 @@ export default {
 
 <style lang="scss">
 .accordion {
-  @apply rounded mb-2 bg-gray-100 p-4;
+  @apply rounded bg-gray-100 p-4;
 
   &__heading {
     @apply text-gray-500 flex justify-between items-center;
@@ -68,24 +70,28 @@ export default {
   }
 
   &__subtitle {
-    @apply text-xs;
+    @apply text-xs mt-2;
   }
 
   &__toggle {
     @apply rounded p-2 bg-white h-8 w-8 cursor-pointer;
   }
 
-  &__body {
-    @apply pt-0 max-h-0 overflow-hidden;
+  &__body-container {
+    @apply max-h-0 overflow-hidden;
 
-    transition: max-height 500ms cubic-bezier(0, 1, 0, 1), padding 200ms linear;
+    transition: max-height 700ms cubic-bezier(0, 1, 0, 1);
   }
 
-  &.active {
-    .accordion__body {
-      @apply pt-4 max-h-full-px ;
+  &__body {
+    @apply mt-4;
+  }
 
-      transition: max-height 1500ms cubic-bezier(1, 0, 0, 1), padding 200ms linear;
+  &--active {
+    .accordion__body-container {
+      @apply max-h-full-px;
+
+      transition: max-height 1200ms cubic-bezier(1, 0, 0, 1);
     }
   }
 }
