@@ -21335,12 +21335,12 @@ var ChecNavigation_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecNavigation = (ChecNavigation_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=994645cc&
-var ChecOptionsMenuvue_type_template_id_994645cc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"menu-el",staticClass:"options-menu"},[_c('BaseButton',{ref:"button-el",attrs:{"slot":"reference","variant":"small"},on:{"click":_vm.toggleMenu},slot:"reference",scopedSlots:_vm._u([{key:"icon",fn:function(){return [_c('ChecIcon',{attrs:{"icon":"more"}})]},proxy:true}])}),_c('BasePopover',{directives:[{name:"show",rawName:"v-show",value:(_vm.isOpen),expression:"isOpen"}],ref:"popper-el",on:{"option-selected":_vm.handleSelectOption}},[_vm._t("default")],2)],1)}
-var ChecOptionsMenuvue_type_template_id_994645cc_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=a575152a&
+var ChecOptionsMenuvue_type_template_id_a575152a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"menu-el",staticClass:"options-menu"},[_c('BaseButton',_vm._b({ref:"button-el",attrs:{"slot":"reference","variant":"small"},on:{"click":_vm.toggleMenu},slot:"reference",scopedSlots:_vm._u([{key:"icon",fn:function(){return [_c('ChecIcon',{attrs:{"icon":"more"}})]},proxy:true}])},'BaseButton',_vm.$attrs,false)),_c('BasePopover',{directives:[{name:"show",rawName:"v-show",value:(_vm.isOpen),expression:"isOpen"}],ref:"popper-el",on:{"option-selected":_vm.handleSelectOption}},[_vm._t("default")],2)],1)}
+var ChecOptionsMenuvue_type_template_id_a575152a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=994645cc&
+// CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=a575152a&
 
 // EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/index.js
 var lib = __webpack_require__("1235");
@@ -22554,6 +22554,7 @@ Object(lib["popperGenerator"])({
 //
 //
 //
+//
 
 
 
@@ -22565,6 +22566,7 @@ Object(lib["popperGenerator"])({
     BasePopover: BasePopover,
     ChecIcon: ChecIcon
   },
+  inheritAttrs: false,
   props: {
     /**
      * Whether the menu should initially be open or not
@@ -22702,8 +22704,8 @@ var ChecOptionsMenuvue_type_style_index_0_lang_scss_ = __webpack_require__("a4fe
 
 var ChecOptionsMenu_component = normalizeComponent(
   components_ChecOptionsMenuvue_type_script_lang_js_,
-  ChecOptionsMenuvue_type_template_id_994645cc_render,
-  ChecOptionsMenuvue_type_template_id_994645cc_staticRenderFns,
+  ChecOptionsMenuvue_type_template_id_a575152a_render,
+  ChecOptionsMenuvue_type_template_id_a575152a_staticRenderFns,
   false,
   null,
   null,
