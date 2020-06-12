@@ -4,6 +4,7 @@
       slot="reference"
       ref="button-el"
       variant="small"
+      v-bind="$attrs"
       @click="toggleMenu"
     >
       <template #icon>
@@ -36,6 +37,7 @@ export default {
     BasePopover,
     ChecIcon,
   },
+  inheritAttrs: false,
   props: {
     /**
      * Whether the menu should initially be open or not
