@@ -3,6 +3,7 @@
     class="option"
     :class="classNames"
     tabindex="0"
+    :role="!showCheckbox && 'button'"
     @click="emitOptionsSelectedEvent"
     @keyup.enter="emitOptionsSelectedEvent"
   >
