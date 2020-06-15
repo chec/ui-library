@@ -353,9 +353,11 @@ export default {
 
   &-inner {
     @apply flex flex-col;
+    width: inherit;
 
     &__label {
-      @apply text-left absolute text-gray-500 inline-block origin-top-left transition-transform duration-150 ;
+      @apply text-left absolute inline-block origin-top-left transition-transform duration-150
+        truncate w-10/12;
       backface-visibility: hidden;
 
       transform: translate3d(0, 0.5rem, 0) scale3d(1, 1, 1);
