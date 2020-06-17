@@ -7,9 +7,9 @@
     "lint": "yarn lint-js && yarn lint-scss",
     "lint:fix": "yarn lint-js:fix && yarn lint-scss:fix",
     "lint-js": "vue-cli-service lint",
-    "lint-scss": "stylelint src/**/*.scss src/**/*.vue",
+    "lint-scss": "stylelint \"src/**/*.scss\" \"src/**/*.vue\"",
     "lint-js:fix": "vue-cli-service lint --fix",
-    "lint-scss:fix": "stylelint src/**/*.scss src/**/*.vue --fix",
+    "lint-scss:fix": "stylelint \"src/**/*.scss\" \"src/**/*.vue\" --fix",
     "build-lib": "vue-cli-service build --target lib --name ui-library src/index.js",
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
     "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook"

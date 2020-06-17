@@ -10,7 +10,7 @@
         <div v-if="subtitle" class="accordion__subtitle" v-html="subtitle" />
       </div>
       <div class="accordion__toggle" @click="isOpen = !isOpen">
-        <ChecIcon :icon="isOpen ? 'down' : 'right'" />
+        <ChecIcon icon="down" />
       </div>
     </div>
     <div class="accordion__body-container">
@@ -75,6 +75,10 @@ export default {
 
   &__toggle {
     @apply rounded p-2 bg-white h-8 w-8 cursor-pointer;
+
+    svg {
+      @apply transition-transform duration-500;
+    }
   }
 
   &__body-container {
@@ -92,6 +96,10 @@ export default {
       @apply max-h-full-px;
 
       transition: max-height 1200ms cubic-bezier(1, 0, 0, 1);
+    }
+
+    .accordion__toggle svg {
+      @apply transform -rotate-180;
     }
   }
 }
