@@ -138,7 +138,7 @@ export default {
 @use 'sass:map';
 
 .button {
-  @apply font-bold shadow-sm border border-0 flex justify-center items-center;
+  @apply font-bold shadow-sm border border-0 flex justify-center items-center text-center;
 
   &:focus {
     @apply outline-none;
