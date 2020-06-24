@@ -75,8 +75,9 @@ export default {
 
 <style lang="scss">
 .card-inner-block {
-  @apply flex flex-row items-center justify-between w-full bg-gray-100 rounded p-4;
-  @apply text-gray-600 text-sm leading-tight font-lato;
+  @apply
+    flex flex-row items-center justify-between w-full bg-gray-100 rounded p-4
+    text-gray-600 text-sm leading-tight break-all;
 
   &__title {
     @apply caps-xs mb-2 text-gray-500;
