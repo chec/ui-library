@@ -134,3 +134,36 @@ don't provide a sort at all, it will default to 100.**
     }}
   </Story>
 </Preview>
+
+
+## Navigation with slot content
+
+<Preview>
+  <Story
+    name="With slot"
+    decorators={[ StoryRouter({}, { initialEntry: '/orders/55555', routes })]}>
+    {{
+      components: {
+        ChecNavigation
+      },
+      template: `
+      <div class="w-full">
+        <ChecNavigation>
+          <div>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <path d="M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z" fill="white"/>
+              <ellipse cx="23.9999" cy="21" rx="4" ry="4" stroke="#7187A5" stroke-width="2"/>
+              <path d="M30.9999 31C30.9999 27.6863 27.8659 25 23.9999 25C20.1339 25 16.9999 27.6863 16.9999 31" stroke="#7187A5" stroke-width="2" stroke-linecap="round"/>
+              <path d="M24 47C11.2975 47 1 36.7025 1 24H-1C-1 37.8071 10.1929 49 24 49V47ZM47 24C47 36.7025 36.7025 47 24 47V49C37.8071 49 49 37.8071 49 24H47ZM24 1C36.7025 1 47 11.2975 47 24H49C49 10.1929 37.8071 -1 24 -1V1ZM24 -1C10.1929 -1 -1 10.1929 -1 24H1C1 11.2975 11.2975 1 24 1V-1Z" fill="url(#pattern0)"/>
+              <defs>
+                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0" transform="translate(0 -0.0406852) scale(0.00107066)"/>
+                </pattern>
+              </defs>
+            </svg>
+          </div>
+        </ChecNavigation>
+      </div>`
+    }}
+  </Story>
+</Preview>
