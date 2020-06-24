@@ -20,6 +20,9 @@
         </router-link>
       </li>
     </ul>
+    <div v-if="$slots.default" class="chec-navigation__bottom-content">
+      <slot />
+    </div>
   </nav>
 </template>
 
@@ -60,10 +63,10 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .chec-navigation {
   @apply fixed top-0 left-0 w-20 h-screen shadow-sm p-4 flex
-    flex-col transition-all duration-300 ease-in-out;
+    flex-col transition-all duration-300 ease-in-out overflow-scroll;
 
   &__logo {
     @apply fill-current text-gray-500 w-full h-auto justify-start py-2;

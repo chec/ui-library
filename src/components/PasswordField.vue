@@ -1,4 +1,3 @@
-
 <template>
   <div class="password-field">
     <TextField
