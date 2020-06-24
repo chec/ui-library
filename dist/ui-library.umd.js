@@ -302,27 +302,6 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 /***/ }),
 
-/***/ "0f88":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getBoundingClientRect; });
-function getBoundingClientRect(element) {
-  var rect = element.getBoundingClientRect();
-  return {
-    width: rect.width,
-    height: rect.height,
-    top: rect.top,
-    right: rect.right,
-    bottom: rect.bottom,
-    left: rect.left,
-    x: rect.left,
-    y: rect.top
-  };
-}
-
-/***/ }),
-
 /***/ "1029":
 /***/ (function(module, exports) {
 
@@ -354,240 +333,6 @@ function getBoundingClientRect(element) {
         }
       }
     
-
-/***/ }),
-
-/***/ "1235":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "popperGenerator", function() { return popperGenerator; });
-/* unused harmony export createPopper */
-/* harmony import */ var _dom_utils_getCompositeRect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("d116");
-/* harmony import */ var _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("e2e9");
-/* harmony import */ var _dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("ea1a");
-/* harmony import */ var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("b62b");
-/* harmony import */ var _utils_orderModifiers_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("b9e6");
-/* harmony import */ var _utils_debounce_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("b1e2");
-/* harmony import */ var _utils_mergeByName_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("2a35");
-/* harmony import */ var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("2767");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var INVALID_ELEMENT_ERROR = 'Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.';
-var INFINITE_LOOP_ERROR = 'Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.';
-var DEFAULT_OPTIONS = {
-  placement: 'bottom',
-  modifiers: [],
-  strategy: 'absolute'
-};
-
-function areValidElements() {
-  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  return !args.some(function (element) {
-    return !(element && typeof element.getBoundingClientRect === 'function');
-  });
-}
-
-function popperGenerator(generatorOptions) {
-  if (generatorOptions === void 0) {
-    generatorOptions = {};
-  }
-
-  var _generatorOptions = generatorOptions,
-      _generatorOptions$def = _generatorOptions.defaultModifiers,
-      defaultModifiers = _generatorOptions$def === void 0 ? [] : _generatorOptions$def,
-      _generatorOptions$def2 = _generatorOptions.defaultOptions,
-      defaultOptions = _generatorOptions$def2 === void 0 ? DEFAULT_OPTIONS : _generatorOptions$def2;
-  return function createPopper(reference, popper, options) {
-    if (options === void 0) {
-      options = defaultOptions;
-    }
-
-    var state = {
-      placement: 'bottom',
-      orderedModifiers: [],
-      options: Object.assign({}, DEFAULT_OPTIONS, {}, defaultOptions),
-      modifiersData: {},
-      elements: {
-        reference: reference,
-        popper: popper
-      },
-      attributes: {},
-      styles: {}
-    };
-    var effectCleanupFns = [];
-    var isDestroyed = false;
-    var instance = {
-      state: state,
-      setOptions: function setOptions(options) {
-        cleanupModifierEffects();
-        state.options = Object.assign({}, defaultOptions, {}, state.options, {}, options);
-        state.scrollParents = {
-          reference: Object(_dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_7__[/* isElement */ "a"])(reference) ? Object(_dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(reference) : [],
-          popper: Object(_dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(popper)
-        }; // Orders the modifiers based on their dependencies and `phase`
-        // properties
-
-        var orderedModifiers = Object(_utils_orderModifiers_js__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Object(_utils_mergeByName_js__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])([].concat(defaultModifiers, state.options.modifiers))); // Strip out disabled modifiers
-
-        state.orderedModifiers = orderedModifiers.filter(function (m) {
-          return m.enabled;
-        }); // Validate the provided modifiers so that the consumer will get warned
-        // if one of the modifiers is invalid for any reason
-
-        if (false) { var _getComputedStyle, marginTop, marginRight, marginBottom, marginLeft, flipModifier, modifiers; }
-
-        runModifierEffects();
-        return instance.update();
-      },
-      // Sync update – it will always be executed, even if not necessary. This
-      // is useful for low frequency updates where sync behavior simplifies the
-      // logic.
-      // For high frequency updates (e.g. `resize` and `scroll` events), always
-      // prefer the async Popper#update method
-      forceUpdate: function forceUpdate() {
-        if (isDestroyed) {
-          return;
-        }
-
-        var _state$elements = state.elements,
-            reference = _state$elements.reference,
-            popper = _state$elements.popper; // Don't proceed if `reference` or `popper` are not valid elements
-        // anymore
-
-        if (!areValidElements(reference, popper)) {
-          if (false) {}
-
-          return;
-        } // Store the reference and popper rects to be read by modifiers
-
-
-        state.rects = {
-          reference: Object(_dom_utils_getCompositeRect_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(reference, Object(_dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(popper), state.options.strategy === 'fixed'),
-          popper: Object(_dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(popper)
-        }; // Modifiers have the ability to reset the current update cycle. The
-        // most common use case for this is the `flip` modifier changing the
-        // placement, which then needs to re-run all the modifiers, because the
-        // logic was previously ran for the previous placement and is therefore
-        // stale/incorrect
-
-        state.reset = false;
-        state.placement = state.options.placement; // On each update cycle, the `modifiersData` property for each modifier
-        // is filled with the initial data specified by the modifier. This means
-        // it doesn't persist and is fresh on each update.
-        // To ensure persistent data, use `${name}#persistent`
-
-        state.orderedModifiers.forEach(function (modifier) {
-          return state.modifiersData[modifier.name] = Object.assign({}, modifier.data);
-        });
-        var __debug_loops__ = 0;
-
-        for (var index = 0; index < state.orderedModifiers.length; index++) {
-          if (false) {}
-
-          if (state.reset === true) {
-            state.reset = false;
-            index = -1;
-            continue;
-          }
-
-          var _state$orderedModifie = state.orderedModifiers[index],
-              fn = _state$orderedModifie.fn,
-              _state$orderedModifie2 = _state$orderedModifie.options,
-              _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2,
-              name = _state$orderedModifie.name;
-
-          if (typeof fn === 'function') {
-            state = fn({
-              state: state,
-              options: _options,
-              name: name,
-              instance: instance
-            }) || state;
-          }
-        }
-      },
-      // Async and optimistically optimized update – it will not be executed if
-      // not necessary (debounced to run at most once-per-tick)
-      update: Object(_utils_debounce_js__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(function () {
-        return new Promise(function (resolve) {
-          instance.forceUpdate();
-          resolve(state);
-        });
-      }),
-      destroy: function destroy() {
-        cleanupModifierEffects();
-        isDestroyed = true;
-      }
-    };
-
-    if (!areValidElements(reference, popper)) {
-      if (false) {}
-
-      return instance;
-    }
-
-    instance.setOptions(options).then(function (state) {
-      if (!isDestroyed && options.onFirstUpdate) {
-        options.onFirstUpdate(state);
-      }
-    }); // Modifiers have the ability to execute arbitrary code before the first
-    // update cycle runs. They will be executed in the same order as the update
-    // cycle. This is useful when a modifier adds some persistent data that
-    // other modifiers need to use, but the modifier is run after the dependent
-    // one.
-
-    function runModifierEffects() {
-      state.orderedModifiers.forEach(function (_ref3) {
-        var name = _ref3.name,
-            _ref3$options = _ref3.options,
-            options = _ref3$options === void 0 ? {} : _ref3$options,
-            effect = _ref3.effect;
-
-        if (typeof effect === 'function') {
-          var cleanupFn = effect({
-            state: state,
-            name: name,
-            instance: instance,
-            options: options
-          });
-
-          var noopFn = function noopFn() {};
-
-          effectCleanupFns.push(cleanupFn || noopFn);
-        }
-      });
-    }
-
-    function cleanupModifierEffects() {
-      effectCleanupFns.forEach(function (fn) {
-        return fn();
-      });
-      effectCleanupFns = [];
-    }
-
-    return instance;
-  };
-}
-var createPopper =
-/*#__PURE__*/
-popperGenerator();
 
 /***/ }),
 
@@ -984,25 +729,6 @@ module.exports = function (METHOD_NAME) {
   });
 };
 
-
-/***/ }),
-
-/***/ "1fc0":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getWindow; });
-/*:: import type { Window } from '../types'; */
-
-/*:: declare function getWindow(node: Node | Window): Window; */
-function getWindow(node) {
-  if (node.toString() !== '[object Window]') {
-    var ownerDocument = node.ownerDocument;
-    return ownerDocument ? ownerDocument.defaultView : window;
-  }
-
-  return node;
-}
 
 /***/ }),
 
@@ -1404,34 +1130,6 @@ if (NOT_GENERIC || INCORRECT_NAME) {
 
 /***/ }),
 
-/***/ "2767":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isElement; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isHTMLElement; });
-/* harmony import */ var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("1fc0");
-
-/*:: declare function isElement(node: mixed): boolean %checks(node instanceof
-  Element); */
-
-function isElement(node) {
-  var OwnElement = Object(_getWindow_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(node).Element;
-  return node instanceof OwnElement || node instanceof Element;
-}
-/*:: declare function isHTMLElement(node: mixed): boolean %checks(node instanceof
-  HTMLElement); */
-
-
-function isHTMLElement(node) {
-  var OwnElement = Object(_getWindow_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(node).HTMLElement;
-  return node instanceof OwnElement || node instanceof HTMLElement;
-}
-
-
-
-/***/ }),
-
 /***/ "28a8":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1440,28 +1138,6 @@ function isHTMLElement(node) {
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecHorizontalSpinner_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecHorizontalSpinner_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecHorizontalSpinner_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "2a35":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mergeByName; });
-function mergeByName(modifiers) {
-  var merged = modifiers.reduce(function (merged, current) {
-    var existing = merged[current.name];
-    merged[current.name] = existing ? Object.assign({}, existing, {}, current, {
-      options: Object.assign({}, existing.options, {}, current.options),
-      data: Object.assign({}, existing.data, {}, current.data)
-    }) : current;
-    return merged;
-  }, {}); // IE11 does not support Object.values
-
-  return Object.keys(merged).map(function (key) {
-    return merged[key];
-  });
-}
 
 /***/ }),
 
@@ -1593,13 +1269,6 @@ module.exports = version && +version;
 /***/ }),
 
 /***/ "3040":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "30ba":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
@@ -1769,6 +1438,17 @@ module.exports = function (it) {
   } return it;
 };
 
+
+/***/ }),
+
+/***/ "3c3d":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("f4e2");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -1949,17 +1629,6 @@ $({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
   }
 });
 
-
-/***/ }),
-
-/***/ "46c5":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_id_4284f452_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("30ba");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_id_4284f452_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_id_4284f452_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_id_4284f452_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -2300,7 +1969,7 @@ var store = __webpack_require__("c6cd");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.6.4',
+  version: '3.6.5',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2020 Denis Pushkarev (zloirock.ru)'
 });
@@ -2323,17 +1992,6 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
   return getOwnPropertySymbols ? keys.concat(getOwnPropertySymbols(it)) : keys;
 };
 
-
-/***/ }),
-
-/***/ "5788":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getNodeName; });
-function getNodeName(element) {
-  return element ? (element.nodeName || '').toLowerCase() : null;
-}
 
 /***/ }),
 
@@ -2456,30 +2114,6 @@ module.exports = function (bitmap, value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "6125":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getWindowScrollBarX; });
-/* harmony import */ var _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0f88");
-/* harmony import */ var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("ef52");
-/* harmony import */ var _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("a321");
-
-
-
-function getWindowScrollBarX(element) {
-  // If <html> has a CSS width greater than the viewport, then this will be
-  // incorrect for RTL.
-  // Popper 1 is broken in this case and never had a bug report so let's assume
-  // it's not an issue. I don't think anyone ever specifies width on <html>
-  // anyway.
-  // Browsers where the left scrollbar doesn't cause an issue report `0` for
-  // this (e.g. Edge 2019, IE11, Safari)
-  return Object(_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(Object(_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(element)).left + Object(_getWindowScroll_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(element).scrollLeft;
-}
 
 /***/ }),
 
@@ -2921,72 +2555,6 @@ module.exports = function (NAME) {
 
 /***/ }),
 
-/***/ "77f9":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return top; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return bottom; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return right; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return left; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return auto; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return basePlacements; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return start; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return end; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return clippingParents; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return viewport; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return popper; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return reference; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return variationPlacements; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return placements; });
-/* unused harmony export beforeRead */
-/* unused harmony export read */
-/* unused harmony export afterRead */
-/* unused harmony export beforeMain */
-/* unused harmony export main */
-/* unused harmony export afterMain */
-/* unused harmony export beforeWrite */
-/* unused harmony export write */
-/* unused harmony export afterWrite */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return modifierPhases; });
-var top = 'top';
-var bottom = 'bottom';
-var right = 'right';
-var left = 'left';
-var auto = 'auto';
-var basePlacements = [top, bottom, right, left];
-var start = 'start';
-var end = 'end';
-var clippingParents = 'clippingParents';
-var viewport = 'viewport';
-var popper = 'popper';
-var reference = 'reference';
-var variationPlacements =
-/*#__PURE__*/
-basePlacements.reduce(function (acc, placement) {
-  return acc.concat([placement + "-" + start, placement + "-" + end]);
-}, []);
-var placements =
-/*#__PURE__*/
-[].concat(basePlacements, [auto]).reduce(function (acc, placement) {
-  return acc.concat([placement, placement + "-" + start, placement + "-" + end]);
-}, []); // modifiers that need to read the DOM
-
-var beforeRead = 'beforeRead';
-var read = 'read';
-var afterRead = 'afterRead'; // pure-logic modifiers
-
-var beforeMain = 'beforeMain';
-var main = 'main';
-var afterMain = 'afterMain'; // modifier with the purpose to write to the DOM (or write into a framework state)
-
-var beforeWrite = 'beforeWrite';
-var write = 'write';
-var afterWrite = 'afterWrite';
-var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
-
-/***/ }),
-
 /***/ "7839":
 /***/ (function(module, exports) {
 
@@ -3319,6 +2887,91 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "8875":
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// addapted from the document.currentScript polyfill by Adam Miller
+// MIT license
+// source: https://github.com/amiller-gh/currentScript-polyfill
+
+// added support for Firefox https://bugzilla.mozilla.org/show_bug.cgi?id=1620505
+
+(function (root, factory) {
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {}
+}(typeof self !== 'undefined' ? self : this, function () {
+  function getCurrentScript () {
+    var descriptor = Object.getOwnPropertyDescriptor(document, 'currentScript')
+    // for chrome
+    if (!descriptor && 'currentScript' in document && document.currentScript) {
+      return document.currentScript
+    }
+
+    // for other browsers with native support for currentScript
+    if (descriptor && descriptor.get !== getCurrentScript && document.currentScript) {
+      return document.currentScript
+    }
+  
+    // IE 8-10 support script readyState
+    // IE 11+ & Firefox support stack trace
+    try {
+      throw new Error();
+    }
+    catch (err) {
+      // Find the second match for the "at" string to get file src url from stack.
+      var ieStackRegExp = /.*at [^(]*\((.*):(.+):(.+)\)$/ig,
+        ffStackRegExp = /@([^@]*):(\d+):(\d+)\s*$/ig,
+        stackDetails = ieStackRegExp.exec(err.stack) || ffStackRegExp.exec(err.stack),
+        scriptLocation = (stackDetails && stackDetails[1]) || false,
+        line = (stackDetails && stackDetails[2]) || false,
+        currentLocation = document.location.href.replace(document.location.hash, ''),
+        pageSource,
+        inlineScriptSourceRegExp,
+        inlineScriptSource,
+        scripts = document.getElementsByTagName('script'); // Live NodeList collection
+  
+      if (scriptLocation === currentLocation) {
+        pageSource = document.documentElement.outerHTML;
+        inlineScriptSourceRegExp = new RegExp('(?:[^\\n]+?\\n){0,' + (line - 2) + '}[^<]*<script>([\\d\\D]*?)<\\/script>[\\d\\D]*', 'i');
+        inlineScriptSource = pageSource.replace(inlineScriptSourceRegExp, '$1').trim();
+      }
+  
+      for (var i = 0; i < scripts.length; i++) {
+        // If ready state is interactive, return the script tag
+        if (scripts[i].readyState === 'interactive') {
+          return scripts[i];
+        }
+  
+        // If src matches, return the script tag
+        if (scripts[i].src === scriptLocation) {
+          return scripts[i];
+        }
+  
+        // If inline source matches, return the script tag
+        if (
+          scriptLocation === currentLocation &&
+          scripts[i].innerHTML &&
+          scripts[i].innerHTML.trim() === inlineScriptSource
+        ) {
+          return scripts[i];
+        }
+      }
+  
+      // If no match, return null
+      return null;
+    }
+  };
+
+  return getCurrentScript
+}));
+
 
 /***/ }),
 
@@ -3991,25 +3644,6 @@ $({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
   }
 });
 
-
-/***/ }),
-
-/***/ "a321":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getWindowScroll; });
-/* harmony import */ var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("1fc0");
-
-function getWindowScroll(node) {
-  var win = Object(_getWindow_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(node);
-  var scrollLeft = win.pageXOffset;
-  var scrollTop = win.pageYOffset;
-  return {
-    scrollLeft: scrollLeft,
-    scrollTop: scrollTop
-  };
-}
 
 /***/ }),
 
@@ -4823,29 +4457,6 @@ if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
 
 /***/ }),
 
-/***/ "b1e2":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return debounce; });
-function debounce(fn) {
-  var pending;
-  return function () {
-    if (!pending) {
-      pending = new Promise(function (resolve) {
-        Promise.resolve().then(function () {
-          pending = undefined;
-          resolve(fn());
-        });
-      });
-    }
-
-    return pending;
-  };
-}
-
-/***/ }),
-
 /***/ "b241":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4891,31 +4502,6 @@ function debounce(fn) {
 
 /***/ }),
 
-/***/ "b50e":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getBasePlacement; });
-
-function getBasePlacement(placement) {
-  return placement.split('-')[0];
-}
-
-/***/ }),
-
-/***/ "b519":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getComputedStyle; });
-/* harmony import */ var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("1fc0");
-
-function getComputedStyle(element) {
-  return Object(_getWindow_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(element).getComputedStyle(element);
-}
-
-/***/ }),
-
 /***/ "b5c4":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4948,70 +4534,6 @@ module.exports = function (name) {
   } return WellKnownSymbolsStore[name];
 };
 
-
-/***/ }),
-
-/***/ "b62b":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ getOffsetParent; });
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindow.js
-var getWindow = __webpack_require__("1fc0");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
-var getNodeName = __webpack_require__("5788");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
-var getComputedStyle = __webpack_require__("b519");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
-var instanceOf = __webpack_require__("2767");
-
-// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js
-
-function isTableElement(element) {
-  return ['table', 'td', 'th'].indexOf(Object(getNodeName["a" /* default */])(element)) >= 0;
-}
-// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js
-
-
-
-
- // https://stackoverflow.com/a/9851769/2059996
-
-var isFirefox = function isFirefox() {
-  return typeof window.InstallTrigger !== 'undefined';
-};
-
-function getTrueOffsetParent(element) {
-  var offsetParent;
-
-  if (!Object(instanceOf["b" /* isHTMLElement */])(element) || !(offsetParent = element.offsetParent) || // https://github.com/popperjs/popper-core/issues/837
-  isFirefox() && Object(getComputedStyle["a" /* default */])(offsetParent).position === 'fixed') {
-    return null;
-  }
-
-  return offsetParent;
-}
-
-function getOffsetParent(element) {
-  var window = Object(getWindow["a" /* default */])(element);
-  var offsetParent = getTrueOffsetParent(element); // Find the nearest non-table offsetParent
-
-  while (offsetParent && isTableElement(offsetParent)) {
-    offsetParent = getTrueOffsetParent(offsetParent);
-  }
-
-  if (offsetParent && Object(getNodeName["a" /* default */])(offsetParent) === 'body' && Object(getComputedStyle["a" /* default */])(offsetParent).position === 'static') {
-    return window;
-  }
-
-  return offsetParent || window;
-}
 
 /***/ }),
 
@@ -5127,59 +4649,6 @@ module.exports = {
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseBreadcrumbs_vue_vue_type_style_index_0_id_5ab3b571_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseBreadcrumbs_vue_vue_type_style_index_0_id_5ab3b571_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseBreadcrumbs_vue_vue_type_style_index_0_id_5ab3b571_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "b9e6":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return orderModifiers; });
-/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("77f9");
- // source: https://stackoverflow.com/questions/49875255
-
-function order(modifiers) {
-  var map = new Map();
-  var visited = new Set();
-  var result = [];
-  modifiers.forEach(function (modifier) {
-    map.set(modifier.name, modifier);
-  }); // On visiting object, check for its dependencies and visit them recursively
-
-  function sort(modifier) {
-    visited.add(modifier.name);
-    var requires = [].concat(modifier.requires || [], modifier.requiresIfExists || []);
-    requires.forEach(function (dep) {
-      if (!visited.has(dep)) {
-        var depModifier = map.get(dep);
-
-        if (depModifier) {
-          sort(depModifier);
-        }
-      }
-    });
-    result.push(modifier);
-  }
-
-  modifiers.forEach(function (modifier) {
-    if (!visited.has(modifier.name)) {
-      // check for visited object
-      sort(modifier);
-    }
-  });
-  return result;
-}
-
-function orderModifiers(modifiers) {
-  // order based on dependencies
-  var orderedModifiers = order(modifiers); // order based on phase
-
-  return _enums_js__WEBPACK_IMPORTED_MODULE_0__[/* modifierPhases */ "g"].reduce(function (acc, phase) {
-    return acc.concat(orderedModifiers.filter(function (modifier) {
-      return modifier.phase === phase;
-    }));
-  }, []);
-}
 
 /***/ }),
 
@@ -8228,103 +7697,6 @@ module.exports = function (namespace, method) {
 
 /***/ }),
 
-/***/ "d116":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ getCompositeRect; });
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
-var getBoundingClientRect = __webpack_require__("0f88");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js
-var getWindowScroll = __webpack_require__("a321");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindow.js
-var getWindow = __webpack_require__("1fc0");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
-var instanceOf = __webpack_require__("2767");
-
-// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js
-function getHTMLElementScroll(element) {
-  return {
-    scrollLeft: element.scrollLeft,
-    scrollTop: element.scrollTop
-  };
-}
-// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js
-
-
-
-
-function getNodeScroll(node) {
-  if (node === Object(getWindow["a" /* default */])(node) || !Object(instanceOf["b" /* isHTMLElement */])(node)) {
-    return Object(getWindowScroll["a" /* default */])(node);
-  } else {
-    return getHTMLElementScroll(node);
-  }
-}
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
-var getNodeName = __webpack_require__("5788");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js
-var getWindowScrollBarX = __webpack_require__("6125");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js
-var getDocumentElement = __webpack_require__("ef52");
-
-// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js
-
-
-
-
-
- // Returns the composite rect of an element relative to its offsetParent.
-// Composite means it takes into account transforms as well as layout.
-
-function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
-  if (isFixed === void 0) {
-    isFixed = false;
-  }
-
-  var documentElement;
-  var rect = Object(getBoundingClientRect["a" /* default */])(elementOrVirtualElement);
-  var scroll = {
-    scrollLeft: 0,
-    scrollTop: 0
-  };
-  var offsets = {
-    x: 0,
-    y: 0
-  };
-
-  if (!isFixed) {
-    if (Object(getNodeName["a" /* default */])(offsetParent) !== 'body') {
-      scroll = getNodeScroll(offsetParent);
-    }
-
-    if (Object(instanceOf["b" /* isHTMLElement */])(offsetParent)) {
-      offsets = Object(getBoundingClientRect["a" /* default */])(offsetParent);
-      offsets.x += offsetParent.clientLeft;
-      offsets.y += offsetParent.clientTop;
-    } else if (documentElement = Object(getDocumentElement["a" /* default */])(offsetParent)) {
-      offsets.x = Object(getWindowScrollBarX["a" /* default */])(documentElement);
-    }
-  }
-
-  return {
-    x: rect.left + scroll.scrollLeft - offsets.x,
-    y: rect.top + scroll.scrollTop - offsets.y,
-    width: rect.width,
-    height: rect.height
-  };
-}
-
-/***/ }),
-
 /***/ "d1e7":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9001,24 +8373,6 @@ addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
 
-
-/***/ }),
-
-/***/ "e2e9":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getLayoutRect; });
-// Returns the layout rect of an element relative to its offsetParent. Layout
-// means it doesn't take into account transforms.
-function getLayoutRect(element) {
-  return {
-    x: element.offsetLeft,
-    y: element.offsetTop,
-    width: element.offsetWidth,
-    height: element.offsetHeight
-  };
-}
 
 /***/ }),
 
@@ -14374,85 +13728,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "ea1a":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ listScrollParents; });
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
-var getNodeName = __webpack_require__("5788");
-
-// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js
-
-function getParentNode(element) {
-  if (Object(getNodeName["a" /* default */])(element) === 'html') {
-    return element;
-  }
-
-  return element.parentNode || // DOM Element detected
-  // $FlowFixMe: need a better way to handle this...
-  element.host || // ShadowRoot detected
-  document.ownerDocument || // Fallback to ownerDocument if available
-  document.documentElement // Or to documentElement if everything else fails
-  ;
-}
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
-var getComputedStyle = __webpack_require__("b519");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
-var instanceOf = __webpack_require__("2767");
-
-// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js
-
-
-
-
-function getScrollParent(node) {
-  if (['html', 'body', '#document'].indexOf(Object(getNodeName["a" /* default */])(node)) >= 0) {
-    // $FlowFixMe: assume body is always available
-    return node.ownerDocument.body;
-  }
-
-  if (Object(instanceOf["b" /* isHTMLElement */])(node)) {
-    // Firefox wants us to check `-x` and `-y` variations as well
-    var _getComputedStyle = Object(getComputedStyle["a" /* default */])(node),
-        overflow = _getComputedStyle.overflow,
-        overflowX = _getComputedStyle.overflowX,
-        overflowY = _getComputedStyle.overflowY;
-
-    if (/auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX)) {
-      return node;
-    }
-  }
-
-  return getScrollParent(getParentNode(node));
-}
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindow.js
-var getWindow = __webpack_require__("1fc0");
-
-// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js
-
-
-
-
-function listScrollParents(element, list) {
-  if (list === void 0) {
-    list = [];
-  }
-
-  var scrollParent = getScrollParent(element);
-  var isBody = Object(getNodeName["a" /* default */])(scrollParent) === 'body';
-  var target = isBody ? Object(getWindow["a" /* default */])(scrollParent) : scrollParent;
-  var updatedList = list.concat(target);
-  return isBody ? updatedList : // $FlowFixMe: isBody tells us target will be an HTMLElement here
-  updatedList.concat(listScrollParents(getParentNode(target)));
-}
-
-/***/ }),
-
 /***/ "eee6":
 /***/ (function(module, exports) {
 
@@ -14484,20 +13759,6 @@ function listScrollParents(element, list) {
         }
       }
     
-
-/***/ }),
-
-/***/ "ef52":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getDocumentElement; });
-/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2767");
-
-function getDocumentElement(element) {
-  // $FlowFixMe: assume body is always available
-  return (Object(_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__[/* isElement */ "a"])(element) ? element.ownerDocument : element.document).documentElement;
-}
 
 /***/ }),
 
@@ -17160,6 +16421,13 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 
+/***/ "f4e2":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "f505":
 /***/ (function(module, exports) {
 
@@ -17408,49 +16676,6 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
 
 /***/ }),
 
-/***/ "f6fd":
-/***/ (function(module, exports) {
-
-// document.currentScript polyfill by Adam Miller
-
-// MIT license
-
-(function(document){
-  var currentScript = "currentScript",
-      scripts = document.getElementsByTagName('script'); // Live NodeList collection
-
-  // If browser needs currentScript polyfill, add get currentScript() to the document object
-  if (!(currentScript in document)) {
-    Object.defineProperty(document, currentScript, {
-      get: function(){
-
-        // IE 6-10 supports script readyState
-        // IE 10+ support stack trace
-        try { throw new Error(); }
-        catch (err) {
-
-          // Find the second match for the "at" string to get file src url from stack.
-          // Specifically works with the format of stack traces in IE.
-          var i, res = ((/.*at [^\(]*\((.*):.+:.+\)$/ig).exec(err.stack) || [false])[1];
-
-          // For all scripts on the page, if src matches or if ready state is interactive, return the script tag
-          for(i in scripts){
-            if(scripts[i].src == res || scripts[i].readyState == "interactive"){
-              return scripts[i];
-            }
-          }
-
-          // If no match, return null
-          return null;
-        }
-      }
-    });
-  }
-})(document);
-
-
-/***/ }),
-
 /***/ "f772":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17581,20 +16806,27 @@ __webpack_require__.d(__webpack_exports__, "TextField", function() { return /* r
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
+  var currentScript = window.document.currentScript
   if (true) {
-    __webpack_require__("f6fd")
+    var getCurrentScript = __webpack_require__("8875")
+    currentScript = getCurrentScript()
+
+    // for backward compatibility, because previously we directly included the polyfill
+    if (!('currentScript' in document)) {
+      Object.defineProperty(document, 'currentScript', { get: getCurrentScript })
+    }
   }
 
-  var setPublicPath_i
-  if ((setPublicPath_i = window.document.currentScript) && (setPublicPath_i = setPublicPath_i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
-    __webpack_require__.p = setPublicPath_i[1] // eslint-disable-line
+  var src = currentScript && currentScript.src.match(/(.+\/)[^/]+\.js(\?.*)?$/)
+  if (src) {
+    __webpack_require__.p = src[1] // eslint-disable-line
   }
 }
 
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseAlert.vue?vue&type=template&id=4c5bb509&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseAlert.vue?vue&type=template&id=4c5bb509&scoped=true&
 var BaseAlertvue_type_template_id_4c5bb509_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"fade"}},[_c('div',{staticClass:"alert",class:_vm.classObject},[_c('div',{staticClass:"alert__content-container"},[_c('span',{staticClass:"alert__text"},[_vm._t("default")],2)]),_c('button',{staticClass:"alert__close-icon",attrs:{"type":"button"}},[_c('SvgCloseIcon',{on:{"click":_vm.onClose}})],1)])])}
 var staticRenderFns = []
 
@@ -17732,7 +16964,12 @@ function normalizeComponent (
     options._ssrRegister = hook
   } else if (injectStyles) {
     hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      ? function () {
+        injectStyles.call(
+          this,
+          (options.functional ? this.parent : this).$root.$options.shadowRoot
+        )
+      }
       : injectStyles
   }
 
@@ -17783,7 +17020,7 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var BaseAlert = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseBreadcrumbs.vue?vue&type=template&id=5ab3b571&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseBreadcrumbs.vue?vue&type=template&id=5ab3b571&scoped=true&
 var BaseBreadcrumbsvue_type_template_id_5ab3b571_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',[(_vm.crumbs.length)?_c('ul',{staticClass:"breadcrumb"},_vm._l((_vm.crumbs),function(crumb,i){return _c('li',{key:i},[_c('router-link',{attrs:{"to":crumb.path}},[_vm._v(" "+_vm._s(crumb.meta.breadcrumb)+" "),((i + 1) !== _vm.crumbs.length)?_c('div',{staticClass:"breadcrumb__right-arrow"},[_c('SvgRightArrow')],1):_vm._e()])],1)}),0):_vm._e()])}
 var BaseBreadcrumbsvue_type_template_id_5ab3b571_scoped_true_staticRenderFns = []
 
@@ -18334,7 +17571,7 @@ var BaseButton_component = normalizeComponent(
 )
 
 /* harmony default export */ var BaseButton = (BaseButton_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseDivider.vue?vue&type=template&id=f76d3f30&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseDivider.vue?vue&type=template&id=f76d3f30&
 var BaseDividervue_type_template_id_f76d3f30_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"divider"},[_vm._t("default")],2)}
 var BaseDividervue_type_template_id_f76d3f30_staticRenderFns = []
 
@@ -18377,7 +17614,7 @@ var BaseDivider_component = normalizeComponent(
 )
 
 /* harmony default export */ var BaseDivider = (BaseDivider_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseDropdown.vue?vue&type=template&id=26a4a771&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseDropdown.vue?vue&type=template&id=26a4a771&scoped=true&
 var BaseDropdownvue_type_template_id_26a4a771_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"dropdown-el",staticClass:"dropdown",class:{ 'dropdown--with-inline-label': _vm.isFocus && _vm.label }},[(!_vm.multiselect)?_c('input',{attrs:{"type":"hidden","name":_vm.name},domProps:{"value":_vm.value}}):_vm._l((_vm.value),function(optionValue){return _c('input',{key:optionValue,attrs:{"type":"hidden","name":(_vm.name + "[]")},domProps:{"value":optionValue}})}),_c('div',{staticClass:"dropdown__control",class:{ 'dropdown__control--open': _vm.showDropdown},attrs:{"tabindex":"0"},on:{"click":_vm.toggleDropdown,"keyup":_vm.onKeyPress}},[_c('div',{staticClass:"dropdown-inner"},[(_vm.label || _vm.placeholder)?_c('label',{staticClass:"dropdown-inner__label"},[_vm._v(" "+_vm._s(_vm.shownLabel)+" ")]):_vm._e(),_c('span',{staticClass:"dropdown-inner__value"},[_vm._v(" "+_vm._s(_vm.shownValue)+" ")])]),_c('div',{staticClass:"dropdown__down-arrow"},[_c('SvgDownArrow')],1)]),_c('BasePopover',{directives:[{name:"show",rawName:"v-show",value:(_vm.showDropdown),expression:"showDropdown"}],staticClass:"dropdown__base-popover",style:({ width: (_vm.dropdownElWidth + "px") })},_vm._l((_vm.renderableOptions),function(option){return _c('BaseOption',{key:option.value,class:_vm.baseOptionClass,attrs:{"option":option,"show-checkbox":_vm.multiselect,"checked":_vm.multiselect && !_vm.isIndeterminate(option) && _vm.isChecked(option),"indeterminate":_vm.multiselect && _vm.isIndeterminate(option)},on:{"option-selected":_vm.onBaseOptionSelect}},[_vm._v(" "+_vm._s(option.label)+" ")])}),1)],2)}
 var BaseDropdownvue_type_template_id_26a4a771_scoped_true_staticRenderFns = []
 
@@ -18466,15 +17703,20 @@ function _objectSpread2(target) {
 
   return target;
 }
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
 
-    return arr2;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
   }
+
+  return arr2;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
 }
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
 var es_symbol_description = __webpack_require__("e01a");
@@ -18491,9 +17733,6 @@ var es_array_iterator = __webpack_require__("e260");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
 var es_object_to_string = __webpack_require__("d3b7");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
-var es_regexp_to_string = __webpack_require__("25f0");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
 var es_string_iterator = __webpack_require__("3ca3");
 
@@ -18509,26 +17748,48 @@ var web_dom_collections_iterator = __webpack_require__("ddb0");
 
 
 
-
 function _iterableToArray(iter) {
-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
+var es_function_name = __webpack_require__("b0c0");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
+var es_regexp_to_string = __webpack_require__("25f0");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+
+
+
+
+
+
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
 }
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
 function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
 
 
 
+
 function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
 // EXTERNAL MODULE: ./src/assets/svgs/down-arrow.svg
 var down_arrow = __webpack_require__("8cbf");
 var down_arrow_default = /*#__PURE__*/__webpack_require__.n(down_arrow);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseOption.vue?vue&type=template&id=0851b99a&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseOption.vue?vue&type=template&id=0851b99a&scoped=true&
 var BaseOptionvue_type_template_id_0851b99a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"option",class:_vm.classNames,attrs:{"tabindex":"0","role":!_vm.showCheckbox && 'button'},on:{"click":_vm.emitOptionsSelectedEvent,"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.emitOptionsSelectedEvent($event)}}},[(_vm.showCheckbox)?_c('input',{staticClass:"mr-3",attrs:{"id":_vm.option.value,"type":"checkbox","disabled":_vm.option.disabled},domProps:{"checked":_vm.checked,"indeterminate":_vm.indeterminate}}):_vm._e(),_vm._t("default")],2)}
 var BaseOptionvue_type_template_id_0851b99a_scoped_true_staticRenderFns = []
 
@@ -18651,7 +17912,7 @@ var BaseOption_component = normalizeComponent(
 )
 
 /* harmony default export */ var BaseOption = (BaseOption_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BasePopover.vue?vue&type=template&id=7cefe1ed&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BasePopover.vue?vue&type=template&id=7cefe1ed&scoped=true&
 var BasePopovervue_type_template_id_7cefe1ed_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"popover"},[_vm._t("default")],2)}
 var BasePopovervue_type_template_id_7cefe1ed_scoped_true_staticRenderFns = []
 
@@ -18860,12 +18121,12 @@ var BasePopover_component = normalizeComponent(
         var level = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
         return function (acc, candidate) {
           if (_this.isParentOption(candidate)) {
-            return [].concat(_toConsumableArray(acc), [_objectSpread2({}, candidate, {
+            return [].concat(_toConsumableArray(acc), [_objectSpread2(_objectSpread2({}, candidate), {}, {
               level: level
             })], _toConsumableArray(candidate.group.reduce(reducer(level + 1), [])));
           }
 
-          return [].concat(_toConsumableArray(acc), [_objectSpread2({}, candidate, {
+          return [].concat(_toConsumableArray(acc), [_objectSpread2(_objectSpread2({}, candidate), {}, {
             level: level
           })]);
         };
@@ -19133,7 +18394,7 @@ var BaseDropdown_component = normalizeComponent(
 )
 
 /* harmony default export */ var BaseDropdown = (BaseDropdown_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseNotification.vue?vue&type=template&id=0d8b81b4&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseNotification.vue?vue&type=template&id=0d8b81b4&scoped=true&
 var BaseNotificationvue_type_template_id_0d8b81b4_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"notif",class:_vm.classObject},[_c('div',{staticClass:"notif__content-container"},[_c('span',{staticClass:"notif__text"},[_vm._t("default")],2)]),_c('button',{staticClass:"notif__close-icon",attrs:{"type":"button"},on:{"click":_vm.onClose}},[_c('SvgCloseIcon')],1)])}
 var BaseNotificationvue_type_template_id_0d8b81b4_scoped_true_staticRenderFns = []
 
@@ -19253,7 +18514,7 @@ var BaseNotification_component = normalizeComponent(
 )
 
 /* harmony default export */ var BaseNotification = (BaseNotification_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseTag.vue?vue&type=template&id=fcfa7e8c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BaseTag.vue?vue&type=template&id=fcfa7e8c&
 var BaseTagvue_type_template_id_fcfa7e8c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"tag",class:_vm.classObject},[_vm._t("default")],2)}
 var BaseTagvue_type_template_id_fcfa7e8c_staticRenderFns = []
 
@@ -19333,14 +18594,14 @@ var v_tooltip_esm = __webpack_require__("e37d");
   VClosePopover: v_tooltip_esm["a" /* VClosePopover */],
   VTooltip: v_tooltip_esm["c" /* VTooltip */]
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChangeLog.vue?vue&type=template&id=4d2793e0&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChangeLog.vue?vue&type=template&id=4d2793e0&
 var ChangeLogvue_type_template_id_4d2793e0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"update-group"},[_c('BaseDivider',{staticClass:"update-group__divider"},[_vm._v(" "+_vm._s(_vm.updateDate)+" ")]),_c('div',{staticClass:"update-section"},_vm._l((_vm.updates),function(update,key){return _c('div',{key:key,staticClass:"update"},[_c('ChecDataPill',{staticClass:"update__pill",attrs:{"color":_vm.pillColor(update)}},[_vm._v(" "+_vm._s(update.type)+" ")]),_c('p',[_vm._v(" "+_vm._s(update.details)+" "),(update.moreInfoLink)?_c('a',{staticClass:"update__link",attrs:{"href":update.moreInfoLink,"target":"_blank","rel":"noopener nofollow"}},[_vm._v(" Learn more. ")]):_vm._e()])],1)}),0)],1)}
 var ChangeLogvue_type_template_id_4d2793e0_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ChangeLog.vue?vue&type=template&id=4d2793e0&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPill.vue?vue&type=template&id=013e71af&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPill.vue?vue&type=template&id=013e71af&
 var ChecDataPillvue_type_template_id_013e71af_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"data-pill",class:_vm.classObject},[_vm._t("default")],2)}
 var ChecDataPillvue_type_template_id_013e71af_staticRenderFns = []
 
@@ -19509,7 +18770,7 @@ var ChangeLog_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChangeLog = (ChangeLog_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=template&id=d71ec470&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=template&id=d71ec470&
 var ChecAccordionvue_type_template_id_d71ec470_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"accordion",staticClass:"accordion",class:{'accordion--active': _vm.isOpen}},[_c('div',{staticClass:"accordion__heading"},[_c('div',[_c('div',{staticClass:"accordion__title",domProps:{"innerHTML":_vm._s(_vm.title)}}),(_vm.subtitle)?_c('div',{staticClass:"accordion__subtitle",domProps:{"innerHTML":_vm._s(_vm.subtitle)}}):_vm._e()]),_c('div',{staticClass:"accordion__toggle",on:{"click":function($event){_vm.isOpen = !_vm.isOpen}}},[_c('ChecIcon',{attrs:{"icon":"down"}})],1)]),_c('div',{staticClass:"accordion__body-container"},[_c('div',{staticClass:"accordion__body"},[_vm._t("default")],2)])])}
 var ChecAccordionvue_type_template_id_d71ec470_staticRenderFns = []
 
@@ -19600,7 +18861,7 @@ var ChecAccordion_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecAccordion = (ChecAccordion_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAvatar.vue?vue&type=template&id=36951949&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAvatar.vue?vue&type=template&id=36951949&
 var ChecAvatarvue_type_template_id_36951949_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"avatar",class:_vm.classObject,style:(_vm.styleObject)},[(!_vm.image)?_c('UserIcon',{staticClass:"avatar__icon"}):_vm._e()],1)}
 var ChecAvatarvue_type_template_id_36951949_staticRenderFns = []
 
@@ -19689,7 +18950,7 @@ var ChecAvatar_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecAvatar = (ChecAvatar_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard.vue?vue&type=template&id=68220b26&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard.vue?vue&type=template&id=68220b26&
 var ChecCardvue_type_template_id_68220b26_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card",class:_vm.classObject},[_c('div',{staticClass:"card__inner-wrapper",class:[_vm.tailwindClasses, _vm.innerClass]},[_vm._t("default")],2)])}
 var ChecCardvue_type_template_id_68220b26_staticRenderFns = []
 
@@ -19717,12 +18978,8 @@ function _arrayWithHoles(arr) {
 
 
 
-
 function _iterableToArrayLimit(arr, i) {
-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-    return;
-  }
-
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
   var _arr = [];
   var _n = true;
   var _d = false;
@@ -19749,14 +19006,15 @@ function _iterableToArrayLimit(arr, i) {
 }
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
 function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js
 
 
 
+
 function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
 
@@ -19935,15 +19193,12 @@ var ChecCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecCard = (ChecCard_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCheckbox.vue?vue&type=template&id=3bae8dd4&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCheckbox.vue?vue&type=template&id=3bae8dd4&
 var ChecCheckboxvue_type_template_id_3bae8dd4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"checkbox",class:{ 'active' : _vm.isChecked, disabled: _vm.disabled },attrs:{"for":_vm.id}},[_c('input',{staticClass:"checkbox__input",attrs:{"id":_vm.id,"type":"checkbox","name":_vm.name,"disabled":_vm.disabled,"indeterminate":_vm.indeterminate},domProps:{"value":_vm.value,"checked":_vm.isChecked},on:{"input":_vm.handleInput}}),_c('span',{directives:[{name:"show",rawName:"v-show",value:(!_vm.indeterminate && _vm.isChecked),expression:"!indeterminate && isChecked"}],staticClass:"checkbox__check"},[_c('ChecIcon',{attrs:{"icon":"check"}})],1),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.indeterminate),expression:"indeterminate"}],staticClass:"checkbox__minus"},[_c('ChecIcon',{attrs:{"icon":"minus"}})],1),(_vm.label)?_c('div',{staticClass:"checkbox__label",class:{ disabled: _vm.disabled }},[_vm._t("default",[_vm._v(" "+_vm._s(_vm.label)+" ")],null,{ label: _vm.label, isChecked: _vm.isChecked, disabled: _vm.disabled })],2):_vm._e()])}
 var ChecCheckboxvue_type_template_id_3bae8dd4_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ChecCheckbox.vue?vue&type=template&id=3bae8dd4&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
-var es_function_name = __webpack_require__("b0c0");
 
 // EXTERNAL MODULE: ./node_modules/lodash.uniqueid/index.js
 var lodash_uniqueid = __webpack_require__("f5cb");
@@ -20094,7 +19349,7 @@ var ChecCheckbox_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecCheckbox = (ChecCheckbox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPillGroup.vue?vue&type=template&id=2e71b4d5&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPillGroup.vue?vue&type=template&id=2e71b4d5&
 var ChecDataPillGroupvue_type_template_id_2e71b4d5_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"data-pill-group"},[_vm._t("default")],2)}
 var ChecDataPillGroupvue_type_template_id_2e71b4d5_staticRenderFns = []
 
@@ -20187,7 +19442,7 @@ var vue_flatpickr_min_default = /*#__PURE__*/__webpack_require__.n(vue_flatpickr
 var flatpickr = __webpack_require__("cf06");
 var flatpickr_default = /*#__PURE__*/__webpack_require__.n(flatpickr);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=c5270ff8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=c5270ff8&
 var TextFieldvue_type_template_id_c5270ff8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-field",class:_vm.classNames},[(_vm.multiline)?_c('textarea',_vm._b({on:{"input":_vm.handleInput,"focus":_vm.handleFocus}},'textarea',_vm.sharedInputProps,false)):_c('input',_vm._b({style:({ 'padding-right': _vm.hasSlot && (_vm.slotWidth + "px") }),attrs:{"type":_vm.$attrs.type || 'text'},on:{"input":_vm.handleInput,"focus":_vm.handleFocus}},'input',_vm.sharedInputProps,false)),(_vm.label)?_c('label',{staticClass:"text-field__label",class:_vm.scrollable,attrs:{"data-content":_vm.label,"for":_vm.id}},[_c('span',{staticClass:"invisible"},[_vm._v(_vm._s(_vm.label))])]):_vm._e(),(_vm.$slots.default)?_c('div',{ref:"rightContentSlot",staticClass:"text-field__right-content"},[_vm._t("default")],2):_vm._e(),(_vm.actionLabel)?_c('a',{staticClass:"text-field__action-button",on:{"click":_vm.onActionClick}},[_vm._v(" "+_vm._s(_vm.actionLabel)+" ")]):_vm._e()])}
 var TextFieldvue_type_template_id_c5270ff8_staticRenderFns = []
 
@@ -20315,7 +19570,7 @@ var TextFieldvue_type_template_id_c5270ff8_staticRenderFns = []
           variant = this.variant,
           id = this.id,
           $attrs = this.$attrs;
-      return _objectSpread2({}, $attrs, {}, additionalInputAttributes, {
+      return _objectSpread2(_objectSpread2(_objectSpread2({}, $attrs), additionalInputAttributes), {}, {
         placeholder: ' ',
         class: ['text-field__input', this.innerInputClass],
         disabled: variant === 'disabled',
@@ -20437,7 +19692,7 @@ var TextField_component = normalizeComponent(
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDatepicker/NavBar.vue?vue&type=template&id=a6e072fe&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDatepicker/NavBar.vue?vue&type=template&id=a6e072fe&
 var NavBarvue_type_template_id_a6e072fe_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"date-picker-navigation"},[_c('ChecHorizontalSpinner',{staticClass:"date-picker-navigation__spinner",attrs:{"options":_vm.months,"value":_vm.monthName,"value-width":"1.7rem"},on:{"input":_vm.chooseMonth}}),_c('ChecHorizontalSpinner',{staticClass:"date-picker-navigation__spinner",attrs:{"options":_vm.years,"value":("" + _vm.year),"value-width":"2.2rem"},on:{"input":_vm.chooseYear}})],1)}
 var NavBarvue_type_template_id_a6e072fe_staticRenderFns = []
 
@@ -20447,7 +19702,7 @@ var NavBarvue_type_template_id_a6e072fe_staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find-index.js
 var es_array_find_index = __webpack_require__("c740");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHorizontalSpinner.vue?vue&type=template&id=cc8c470c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHorizontalSpinner.vue?vue&type=template&id=cc8c470c&
 var ChecHorizontalSpinnervue_type_template_id_cc8c470c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-horizontal-spinner"},[_c('button',{staticClass:"chec-horizontal-spinner__button",on:{"click":_vm.handlePrevious}},[_c('ChecIcon',{attrs:{"icon":"left"}})],1),_c('span',{staticClass:"chec-horizontal-spinner__value",style:(_vm.computedStyle)},[_vm._v(_vm._s(_vm.value))]),_c('button',{staticClass:"chec-horizontal-spinner__button",on:{"click":_vm.handleNext}},[_c('ChecIcon',{attrs:{"icon":"right"}})],1)])}
 var ChecHorizontalSpinnervue_type_template_id_cc8c470c_staticRenderFns = []
 
@@ -20702,7 +19957,7 @@ function ChecFlatpickrPlugin() {
       } // eslint-disable-next-line vue/require-name-property
 
 
-      var bar = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a(_objectSpread2({}, NavBar, {
+      var bar = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a(_objectSpread2(_objectSpread2({}, NavBar), {}, {
         propsData: {
           picker: fp
         }
@@ -20739,9 +19994,9 @@ var _FlatPickr$props = vue_flatpickr_min_default.a.props,
     parentProps = _objectWithoutProperties(_FlatPickr$props, ["config"]);
 
 flatpickr_default.a.l10ns.default.weekdays.shorthand = ['S', 'M', 'T', 'W', 'TH', 'F', 'S'];
-/* harmony default export */ var ChecDatepicker = (_objectSpread2({}, vue_flatpickr_min_default.a, {
+/* harmony default export */ var ChecDatepicker = (_objectSpread2(_objectSpread2({}, vue_flatpickr_min_default.a), {}, {
   name: 'ChecDatepicker',
-  props: _objectSpread2({}, parentProps, {
+  props: _objectSpread2(_objectSpread2({}, parentProps), {}, {
     /**
      * The label of the input
      * @see TextField
@@ -20805,7 +20060,7 @@ flatpickr_default.a.l10ns.default.weekdays.shorthand = ['S', 'M', 'T', 'W', 'TH'
     })]);
   }
 }));
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHeader.vue?vue&type=template&id=b85d3972&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHeader.vue?vue&type=template&id=b85d3972&
 var ChecHeadervue_type_template_id_b85d3972_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('header',{staticClass:"chec-header",class:("chec-header--" + _vm.variant)},[_c(_vm.actualHeaderTag,{tag:"component",staticClass:"chec-header__title"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.label || _vm.$slots.default)?_c('div',{staticClass:"chec-header-inner"},[(_vm.label)?_c('label',{staticClass:"chec-header-inner__label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e(),_vm._t("default")],2):_vm._e()],1)}
 var ChecHeadervue_type_template_id_b85d3972_staticRenderFns = []
 
@@ -20899,7 +20154,7 @@ var ChecHeader_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecHeader = (ChecHeader_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecLoading.vue?vue&type=template&id=4d6dc30c&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecLoading.vue?vue&type=template&id=4d6dc30c&scoped=true&
 var ChecLoadingvue_type_template_id_4d6dc30c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"loading"},[_c('svg',{staticClass:"loading__animation",attrs:{"xmlns":"http://www.w3.org/2000/svg","shape-rendering":"geometricPrecision","text-rendering":"geometricPrecision","viewBox":"0 0 32 32"}},[_c('ellipse',{attrs:{"rx":"14","ry":"14","fill":"none","stroke":"#f1f6fc","stroke-width":"4","stroke-dashoffset":"400","stroke-dasharray":"100","transform":"translate(16,16) rotate(90)"}}),_c('ellipse',{staticClass:"loading__animation-spinner",attrs:{"rx":"14","ry":"14","fill":"none","stroke":"#34cbad","stroke-width":"4","stroke-dashoffset":"100","stroke-dasharray":"100","transform":"translate(16,16)"}})]),(_vm.message)?_c('div',{staticClass:"loading__message"},[_vm._v(" "+_vm._s(_vm.message)+" ")]):_vm._e()])}
 var ChecLoadingvue_type_template_id_4d6dc30c_scoped_true_staticRenderFns = []
 
@@ -20979,14 +20234,14 @@ var ChecLoading_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecLoading = (ChecLoading_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecModal.vue?vue&type=template&id=4dc07eec&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecModal.vue?vue&type=template&id=4dc07eec&
 var ChecModalvue_type_template_id_4dc07eec_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.form ? 'form' : 'div',{tag:"component",staticClass:"modal__overlay",on:{"click":function($event){if($event.target !== $event.currentTarget){ return null; }return _vm.emitClose($event)}}},[_c('ChecCard',{staticClass:"modal__card",class:("max-w-" + _vm.width),attrs:{"tailwind":"bg-gray-100"}},[(_vm.header)?_c('ChecModalHeader',{attrs:{"undismissible":_vm.undismissible},on:{"close":_vm.emitClose}},[_vm._v(" "+_vm._s(_vm.header)+" ")]):_vm._e(),_vm._t("default"),(_vm.$slots.toolbar)?_c('div',{staticClass:"modal__toolbar"},[_vm._t("toolbar")],2):_vm._e()],2)],1)}
 var ChecModalvue_type_template_id_4dc07eec_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ChecModal.vue?vue&type=template&id=4dc07eec&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecModal/ChecModalHeader.vue?vue&type=template&id=e956f920&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecModal/ChecModalHeader.vue?vue&type=template&id=e956f920&
 var ChecModalHeadervue_type_template_id_e956f920_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-modal-header"},[_c(_vm.tag,{tag:"component"},[_vm._t("default")],2),(!_vm.undismissible)?_c('BaseButton',{staticClass:"chec-modal-header__dismiss-button",attrs:{"variant":"small"},on:{"click":_vm.emitClose},scopedSlots:_vm._u([{key:"icon",fn:function(){return [_c('ChecIcon',{attrs:{"icon":"close"}})]},proxy:true}],null,false,3510134292)}):_vm._e()],1)}
 var ChecModalHeadervue_type_template_id_e956f920_staticRenderFns = []
 
@@ -21209,15 +20464,15 @@ var ChecMarketingIcon_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecMarketingIcon = (ChecMarketingIcon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=4284f452&scoped=true&
-var ChecNavigationvue_type_template_id_4284f452_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"chec-navigation",class:{ 'chec-navigation--expanded': _vm.expanded }},[_c('ChecLogo',{staticClass:"chec-navigation__logo"}),_c('ul',{staticClass:"chec-navigation__links-list"},_vm._l((_vm.navItems),function(ref,i){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=53633dce&
+var ChecNavigationvue_type_template_id_53633dce_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"chec-navigation",class:{ 'chec-navigation--expanded': _vm.expanded }},[_c('ChecLogo',{staticClass:"chec-navigation__logo"}),_c('ul',{staticClass:"chec-navigation__links-list"},_vm._l((_vm.navItems),function(ref,i){
 var meta = ref.meta;
 var path = ref.path;
-return _c('li',{key:i},[_c('router-link',{staticClass:"chec-navigation__link",attrs:{"to":path,"active-class":"chec-navigation__link--active"}},[_c('div',{staticClass:"chec-navigation__icon-wrapper"},[_c('ChecNavIcon',{attrs:{"icon":meta.navItem.iconName}})],1),_c('span',[_vm._v(" "+_vm._s(meta.navItem.label)+" ")])])],1)}),0)],1)}
-var ChecNavigationvue_type_template_id_4284f452_scoped_true_staticRenderFns = []
+return _c('li',{key:i},[_c('router-link',{staticClass:"chec-navigation__link",attrs:{"to":path,"active-class":"chec-navigation__link--active"}},[_c('div',{staticClass:"chec-navigation__icon-wrapper"},[_c('ChecNavIcon',{attrs:{"icon":meta.navItem.iconName}})],1),_c('span',[_vm._v(" "+_vm._s(meta.navItem.label)+" ")])])],1)}),0),(_vm.$slots.default)?_c('div',{staticClass:"chec-navigation__bottom-content"},[_vm._t("default")],2):_vm._e()],1)}
+var ChecNavigationvue_type_template_id_53633dce_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=template&id=4284f452&scoped=true&
+// CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=template&id=53633dce&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavIcon.vue?vue&type=script&lang=js&
 
@@ -21289,6 +20544,9 @@ var ChecNavIcon_component = normalizeComponent(
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ var ChecNavigationvue_type_script_lang_js_ = ({
@@ -21327,8 +20585,8 @@ var ChecNavIcon_component = normalizeComponent(
 });
 // CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_ChecNavigationvue_type_script_lang_js_ = (ChecNavigationvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/ChecNavigation.vue?vue&type=style&index=0&id=4284f452&scoped=true&lang=scss&
-var ChecNavigationvue_type_style_index_0_id_4284f452_scoped_true_lang_scss_ = __webpack_require__("46c5");
+// EXTERNAL MODULE: ./src/components/ChecNavigation.vue?vue&type=style&index=0&lang=scss&
+var ChecNavigationvue_type_style_index_0_lang_scss_ = __webpack_require__("3c3d");
 
 // CONCATENATED MODULE: ./src/components/ChecNavigation.vue
 
@@ -21341,30 +20599,641 @@ var ChecNavigationvue_type_style_index_0_id_4284f452_scoped_true_lang_scss_ = __
 
 var ChecNavigation_component = normalizeComponent(
   components_ChecNavigationvue_type_script_lang_js_,
-  ChecNavigationvue_type_template_id_4284f452_scoped_true_render,
-  ChecNavigationvue_type_template_id_4284f452_scoped_true_staticRenderFns,
+  ChecNavigationvue_type_template_id_53633dce_render,
+  ChecNavigationvue_type_template_id_53633dce_staticRenderFns,
   false,
   null,
-  "4284f452",
+  null,
   null
   
 )
 
 /* harmony default export */ var ChecNavigation = (ChecNavigation_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=a575152a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=a575152a&
 var ChecOptionsMenuvue_type_template_id_a575152a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"menu-el",staticClass:"options-menu"},[_c('BaseButton',_vm._b({ref:"button-el",attrs:{"slot":"reference","variant":"small"},on:{"click":_vm.toggleMenu},slot:"reference",scopedSlots:_vm._u([{key:"icon",fn:function(){return [_c('ChecIcon',{attrs:{"icon":"more"}})]},proxy:true}])},'BaseButton',_vm.$attrs,false)),_c('BasePopover',{directives:[{name:"show",rawName:"v-show",value:(_vm.isOpen),expression:"isOpen"}],ref:"popper-el",on:{"option-selected":_vm.handleSelectOption}},[_vm._t("default")],2)],1)}
 var ChecOptionsMenuvue_type_template_id_a575152a_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=a575152a&
 
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/index.js
-var lib = __webpack_require__("1235");
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
+function getBoundingClientRect(element) {
+  var rect = element.getBoundingClientRect();
+  return {
+    width: rect.width,
+    height: rect.height,
+    top: rect.top,
+    right: rect.right,
+    bottom: rect.bottom,
+    left: rect.left,
+    x: rect.left,
+    y: rect.top
+  };
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindow.js
+/*:: import type { Window } from '../types'; */
 
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindow.js
-var getWindow = __webpack_require__("1fc0");
+/*:: declare function getWindow(node: Node | Window): Window; */
+function getWindow(node) {
+  if (node.toString() !== '[object Window]') {
+    var ownerDocument = node.ownerDocument;
+    return ownerDocument ? ownerDocument.defaultView : window;
+  }
 
+  return node;
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js
+
+function getWindowScroll(node) {
+  var win = getWindow(node);
+  var scrollLeft = win.pageXOffset;
+  var scrollTop = win.pageYOffset;
+  return {
+    scrollLeft: scrollLeft,
+    scrollTop: scrollTop
+  };
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
+
+/*:: declare function isElement(node: mixed): boolean %checks(node instanceof
+  Element); */
+
+function isElement(node) {
+  var OwnElement = getWindow(node).Element;
+  return node instanceof OwnElement || node instanceof Element;
+}
+/*:: declare function isHTMLElement(node: mixed): boolean %checks(node instanceof
+  HTMLElement); */
+
+
+function isHTMLElement(node) {
+  var OwnElement = getWindow(node).HTMLElement;
+  return node instanceof OwnElement || node instanceof HTMLElement;
+}
+
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js
+function getHTMLElementScroll(element) {
+  return {
+    scrollLeft: element.scrollLeft,
+    scrollTop: element.scrollTop
+  };
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js
+
+
+
+
+function getNodeScroll(node) {
+  if (node === getWindow(node) || !isHTMLElement(node)) {
+    return getWindowScroll(node);
+  } else {
+    return getHTMLElementScroll(node);
+  }
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
+function getNodeName(element) {
+  return element ? (element.nodeName || '').toLowerCase() : null;
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js
+
+function getDocumentElement(element) {
+  // $FlowFixMe: assume body is always available
+  return (isElement(element) ? element.ownerDocument : element.document).documentElement;
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js
+
+
+
+function getWindowScrollBarX(element) {
+  // If <html> has a CSS width greater than the viewport, then this will be
+  // incorrect for RTL.
+  // Popper 1 is broken in this case and never had a bug report so let's assume
+  // it's not an issue. I don't think anyone ever specifies width on <html>
+  // anyway.
+  // Browsers where the left scrollbar doesn't cause an issue report `0` for
+  // this (e.g. Edge 2019, IE11, Safari)
+  return getBoundingClientRect(getDocumentElement(element)).left + getWindowScroll(element).scrollLeft;
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
+
+function getComputedStyle(element) {
+  return getWindow(element).getComputedStyle(element);
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js
+
+function isScrollParent(element) {
+  // Firefox wants us to check `-x` and `-y` variations as well
+  var _getComputedStyle = getComputedStyle(element),
+      overflow = _getComputedStyle.overflow,
+      overflowX = _getComputedStyle.overflowX,
+      overflowY = _getComputedStyle.overflowY;
+
+  return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js
+
+
+
+
+
+
+ // Returns the composite rect of an element relative to its offsetParent.
+// Composite means it takes into account transforms as well as layout.
+
+function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
+  if (isFixed === void 0) {
+    isFixed = false;
+  }
+
+  var documentElement = getDocumentElement(offsetParent);
+  var rect = getBoundingClientRect(elementOrVirtualElement);
+  var isOffsetParentAnElement = isHTMLElement(offsetParent);
+  var scroll = {
+    scrollLeft: 0,
+    scrollTop: 0
+  };
+  var offsets = {
+    x: 0,
+    y: 0
+  };
+
+  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+    if (getNodeName(offsetParent) !== 'body' || // https://github.com/popperjs/popper-core/issues/1078
+    isScrollParent(documentElement)) {
+      scroll = getNodeScroll(offsetParent);
+    }
+
+    if (isHTMLElement(offsetParent)) {
+      offsets = getBoundingClientRect(offsetParent);
+      offsets.x += offsetParent.clientLeft;
+      offsets.y += offsetParent.clientTop;
+    } else if (documentElement) {
+      offsets.x = getWindowScrollBarX(documentElement);
+    }
+  }
+
+  return {
+    x: rect.left + scroll.scrollLeft - offsets.x,
+    y: rect.top + scroll.scrollTop - offsets.y,
+    width: rect.width,
+    height: rect.height
+  };
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js
+// Returns the layout rect of an element relative to its offsetParent. Layout
+// means it doesn't take into account transforms.
+function getLayoutRect(element) {
+  return {
+    x: element.offsetLeft,
+    y: element.offsetTop,
+    width: element.offsetWidth,
+    height: element.offsetHeight
+  };
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js
+
+
+function getParentNode(element) {
+  if (getNodeName(element) === 'html') {
+    return element;
+  }
+
+  return (// $FlowFixMe: this is a quicker (but less type safe) way to save quite some bytes from the bundle
+    element.assignedSlot || // step into the shadow DOM of the parent of a slotted node
+    element.parentNode || // DOM Element detected
+    // $FlowFixMe: need a better way to handle this...
+    element.host || // ShadowRoot detected
+    // $FlowFixMe: HTMLElement is a Node
+    getDocumentElement(element) // fallback
+
+  );
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js
+
+
+
+
+function getScrollParent(node) {
+  if (['html', 'body', '#document'].indexOf(getNodeName(node)) >= 0) {
+    // $FlowFixMe: assume body is always available
+    return node.ownerDocument.body;
+  }
+
+  if (isHTMLElement(node) && isScrollParent(node)) {
+    return node;
+  }
+
+  return getScrollParent(getParentNode(node));
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js
+
+
+
+
+
+/*
+given a DOM element, return the list of all scroll parents, up the list of ancesors
+until we get to the top window object. This list is what we attach scroll listeners
+to, because if any of these parent elements scroll, we'll need to re-calculate the 
+reference element's position.
+*/
+
+function listScrollParents(element, list) {
+  if (list === void 0) {
+    list = [];
+  }
+
+  var scrollParent = getScrollParent(element);
+  var isBody = getNodeName(scrollParent) === 'body';
+  var win = getWindow(scrollParent);
+  var target = isBody ? [win].concat(win.visualViewport || [], isScrollParent(scrollParent) ? scrollParent : []) : scrollParent;
+  var updatedList = list.concat(target);
+  return isBody ? updatedList : // $FlowFixMe: isBody tells us target will be an HTMLElement here
+  updatedList.concat(listScrollParents(getParentNode(target)));
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js
+
+function isTableElement(element) {
+  return ['table', 'td', 'th'].indexOf(getNodeName(element)) >= 0;
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js
+
+
+
+
+
+
+
+function getTrueOffsetParent(element) {
+  if (!isHTMLElement(element) || // https://github.com/popperjs/popper-core/issues/837
+  getComputedStyle(element).position === 'fixed') {
+    return null;
+  }
+
+  return element.offsetParent;
+} // `.offsetParent` reports `null` for fixed elements, while absolute elements
+// return the containing block
+
+
+function getContainingBlock(element) {
+  var currentNode = getParentNode(element);
+
+  while (isHTMLElement(currentNode) && ['html', 'body'].indexOf(getNodeName(currentNode)) < 0) {
+    var css = getComputedStyle(currentNode); // This is non-exhaustive but covers the most common CSS properties that
+    // create a containing block.
+
+    if (css.transform !== 'none' || css.perspective !== 'none' || css.willChange !== 'auto') {
+      return currentNode;
+    } else {
+      currentNode = currentNode.parentNode;
+    }
+  }
+
+  return null;
+} // Gets the closest ancestor positioned element. Handles some edge cases,
+// such as table ancestors and cross browser bugs.
+
+
+function getOffsetParent(element) {
+  var window = getWindow(element);
+  var offsetParent = getTrueOffsetParent(element);
+
+  while (offsetParent && isTableElement(offsetParent) && getComputedStyle(offsetParent).position === 'static') {
+    offsetParent = getTrueOffsetParent(offsetParent);
+  }
+
+  if (offsetParent && getNodeName(offsetParent) === 'body' && getComputedStyle(offsetParent).position === 'static') {
+    return window;
+  }
+
+  return offsetParent || getContainingBlock(element) || window;
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/enums.js
+var enums_top = 'top';
+var bottom = 'bottom';
+var right = 'right';
+var left = 'left';
+var auto = 'auto';
+var basePlacements = [enums_top, bottom, right, left];
+var start = 'start';
+var end = 'end';
+var enums_clippingParents = 'clippingParents';
+var viewport = 'viewport';
+var enums_popper = 'popper';
+var enums_reference = 'reference';
+var variationPlacements = /*#__PURE__*/basePlacements.reduce(function (acc, placement) {
+  return acc.concat([placement + "-" + start, placement + "-" + end]);
+}, []);
+var enums_placements = /*#__PURE__*/[].concat(basePlacements, [auto]).reduce(function (acc, placement) {
+  return acc.concat([placement, placement + "-" + start, placement + "-" + end]);
+}, []); // modifiers that need to read the DOM
+
+var beforeRead = 'beforeRead';
+var read = 'read';
+var afterRead = 'afterRead'; // pure-logic modifiers
+
+var beforeMain = 'beforeMain';
+var main = 'main';
+var afterMain = 'afterMain'; // modifier with the purpose to write to the DOM (or write into a framework state)
+
+var beforeWrite = 'beforeWrite';
+var write = 'write';
+var afterWrite = 'afterWrite';
+var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/orderModifiers.js
+ // source: https://stackoverflow.com/questions/49875255
+
+function order(modifiers) {
+  var map = new Map();
+  var visited = new Set();
+  var result = [];
+  modifiers.forEach(function (modifier) {
+    map.set(modifier.name, modifier);
+  }); // On visiting object, check for its dependencies and visit them recursively
+
+  function sort(modifier) {
+    visited.add(modifier.name);
+    var requires = [].concat(modifier.requires || [], modifier.requiresIfExists || []);
+    requires.forEach(function (dep) {
+      if (!visited.has(dep)) {
+        var depModifier = map.get(dep);
+
+        if (depModifier) {
+          sort(depModifier);
+        }
+      }
+    });
+    result.push(modifier);
+  }
+
+  modifiers.forEach(function (modifier) {
+    if (!visited.has(modifier.name)) {
+      // check for visited object
+      sort(modifier);
+    }
+  });
+  return result;
+}
+
+function orderModifiers(modifiers) {
+  // order based on dependencies
+  var orderedModifiers = order(modifiers); // order based on phase
+
+  return modifierPhases.reduce(function (acc, phase) {
+    return acc.concat(orderedModifiers.filter(function (modifier) {
+      return modifier.phase === phase;
+    }));
+  }, []);
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/debounce.js
+function debounce(fn) {
+  var pending;
+  return function () {
+    if (!pending) {
+      pending = new Promise(function (resolve) {
+        Promise.resolve().then(function () {
+          pending = undefined;
+          resolve(fn());
+        });
+      });
+    }
+
+    return pending;
+  };
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/mergeByName.js
+function mergeByName(modifiers) {
+  var merged = modifiers.reduce(function (merged, current) {
+    var existing = merged[current.name];
+    merged[current.name] = existing ? Object.assign(Object.assign(Object.assign({}, existing), current), {}, {
+      options: Object.assign(Object.assign({}, existing.options), current.options),
+      data: Object.assign(Object.assign({}, existing.data), current.data)
+    }) : current;
+    return merged;
+  }, {}); // IE11 does not support Object.values
+
+  return Object.keys(merged).map(function (key) {
+    return merged[key];
+  });
+}
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/index.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var INVALID_ELEMENT_ERROR = 'Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.';
+var INFINITE_LOOP_ERROR = 'Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.';
+var DEFAULT_OPTIONS = {
+  placement: 'bottom',
+  modifiers: [],
+  strategy: 'absolute'
+};
+
+function areValidElements() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return !args.some(function (element) {
+    return !(element && typeof element.getBoundingClientRect === 'function');
+  });
+}
+
+function popperGenerator(generatorOptions) {
+  if (generatorOptions === void 0) {
+    generatorOptions = {};
+  }
+
+  var _generatorOptions = generatorOptions,
+      _generatorOptions$def = _generatorOptions.defaultModifiers,
+      defaultModifiers = _generatorOptions$def === void 0 ? [] : _generatorOptions$def,
+      _generatorOptions$def2 = _generatorOptions.defaultOptions,
+      defaultOptions = _generatorOptions$def2 === void 0 ? DEFAULT_OPTIONS : _generatorOptions$def2;
+  return function createPopper(reference, popper, options) {
+    if (options === void 0) {
+      options = defaultOptions;
+    }
+
+    var state = {
+      placement: 'bottom',
+      orderedModifiers: [],
+      options: Object.assign(Object.assign({}, DEFAULT_OPTIONS), defaultOptions),
+      modifiersData: {},
+      elements: {
+        reference: reference,
+        popper: popper
+      },
+      attributes: {},
+      styles: {}
+    };
+    var effectCleanupFns = [];
+    var isDestroyed = false;
+    var instance = {
+      state: state,
+      setOptions: function setOptions(options) {
+        cleanupModifierEffects();
+        state.options = Object.assign(Object.assign(Object.assign({}, defaultOptions), state.options), options);
+        state.scrollParents = {
+          reference: isElement(reference) ? listScrollParents(reference) : reference.contextElement ? listScrollParents(reference.contextElement) : [],
+          popper: listScrollParents(popper)
+        }; // Orders the modifiers based on their dependencies and `phase`
+        // properties
+
+        var orderedModifiers = orderModifiers(mergeByName([].concat(defaultModifiers, state.options.modifiers))); // Strip out disabled modifiers
+
+        state.orderedModifiers = orderedModifiers.filter(function (m) {
+          return m.enabled;
+        }); // Validate the provided modifiers so that the consumer will get warned
+        // if one of the modifiers is invalid for any reason
+
+        if (false) { var _getComputedStyle, marginTop, marginRight, marginBottom, marginLeft, flipModifier, modifiers; }
+
+        runModifierEffects();
+        return instance.update();
+      },
+      // Sync update – it will always be executed, even if not necessary. This
+      // is useful for low frequency updates where sync behavior simplifies the
+      // logic.
+      // For high frequency updates (e.g. `resize` and `scroll` events), always
+      // prefer the async Popper#update method
+      forceUpdate: function forceUpdate() {
+        if (isDestroyed) {
+          return;
+        }
+
+        var _state$elements = state.elements,
+            reference = _state$elements.reference,
+            popper = _state$elements.popper; // Don't proceed if `reference` or `popper` are not valid elements
+        // anymore
+
+        if (!areValidElements(reference, popper)) {
+          if (false) {}
+
+          return;
+        } // Store the reference and popper rects to be read by modifiers
+
+
+        state.rects = {
+          reference: getCompositeRect(reference, getOffsetParent(popper), state.options.strategy === 'fixed'),
+          popper: getLayoutRect(popper)
+        }; // Modifiers have the ability to reset the current update cycle. The
+        // most common use case for this is the `flip` modifier changing the
+        // placement, which then needs to re-run all the modifiers, because the
+        // logic was previously ran for the previous placement and is therefore
+        // stale/incorrect
+
+        state.reset = false;
+        state.placement = state.options.placement; // On each update cycle, the `modifiersData` property for each modifier
+        // is filled with the initial data specified by the modifier. This means
+        // it doesn't persist and is fresh on each update.
+        // To ensure persistent data, use `${name}#persistent`
+
+        state.orderedModifiers.forEach(function (modifier) {
+          return state.modifiersData[modifier.name] = Object.assign({}, modifier.data);
+        });
+        var __debug_loops__ = 0;
+
+        for (var index = 0; index < state.orderedModifiers.length; index++) {
+          if (false) {}
+
+          if (state.reset === true) {
+            state.reset = false;
+            index = -1;
+            continue;
+          }
+
+          var _state$orderedModifie = state.orderedModifiers[index],
+              fn = _state$orderedModifie.fn,
+              _state$orderedModifie2 = _state$orderedModifie.options,
+              _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2,
+              name = _state$orderedModifie.name;
+
+          if (typeof fn === 'function') {
+            state = fn({
+              state: state,
+              options: _options,
+              name: name,
+              instance: instance
+            }) || state;
+          }
+        }
+      },
+      // Async and optimistically optimized update – it will not be executed if
+      // not necessary (debounced to run at most once-per-tick)
+      update: debounce(function () {
+        return new Promise(function (resolve) {
+          instance.forceUpdate();
+          resolve(state);
+        });
+      }),
+      destroy: function destroy() {
+        cleanupModifierEffects();
+        isDestroyed = true;
+      }
+    };
+
+    if (!areValidElements(reference, popper)) {
+      if (false) {}
+
+      return instance;
+    }
+
+    instance.setOptions(options).then(function (state) {
+      if (!isDestroyed && options.onFirstUpdate) {
+        options.onFirstUpdate(state);
+      }
+    }); // Modifiers have the ability to execute arbitrary code before the first
+    // update cycle runs. They will be executed in the same order as the update
+    // cycle. This is useful when a modifier adds some persistent data that
+    // other modifiers need to use, but the modifier is run after the dependent
+    // one.
+
+    function runModifierEffects() {
+      state.orderedModifiers.forEach(function (_ref3) {
+        var name = _ref3.name,
+            _ref3$options = _ref3.options,
+            options = _ref3$options === void 0 ? {} : _ref3$options,
+            effect = _ref3.effect;
+
+        if (typeof effect === 'function') {
+          var cleanupFn = effect({
+            state: state,
+            name: name,
+            instance: instance,
+            options: options
+          });
+
+          var noopFn = function noopFn() {};
+
+          effectCleanupFns.push(cleanupFn || noopFn);
+        }
+      });
+    }
+
+    function cleanupModifierEffects() {
+      effectCleanupFns.forEach(function (fn) {
+        return fn();
+      });
+      effectCleanupFns = [];
+    }
+
+    return instance;
+  };
+}
+var lib_createPopper = /*#__PURE__*/popperGenerator();
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/modifiers/eventListeners.js
+ // eslint-disable-next-line import/no-unused-modules
 
 var passive = {
   passive: true
@@ -21378,7 +21247,7 @@ function effect(_ref) {
       scroll = _options$scroll === void 0 ? true : _options$scroll,
       _options$resize = options.resize,
       resize = _options$resize === void 0 ? true : _options$resize;
-  var window = Object(getWindow["a" /* default */])(state.elements.popper);
+  var window = getWindow(state.elements.popper);
   var scrollParents = [].concat(state.scrollParents.reference, state.scrollParents.popper);
 
   if (scroll) {
@@ -21402,7 +21271,8 @@ function effect(_ref) {
       window.removeEventListener('resize', instance.update, passive);
     }
   };
-}
+} // eslint-disable-next-line import/no-unused-modules
+
 
 /* harmony default export */ var eventListeners = ({
   name: 'eventListeners',
@@ -21412,9 +21282,11 @@ function effect(_ref) {
   effect: effect,
   data: {}
 });
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/utils/getBasePlacement.js
-var getBasePlacement = __webpack_require__("b50e");
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/getBasePlacement.js
 
+function getBasePlacement(placement) {
+  return placement.split('-')[0];
+}
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/getVariation.js
 function getVariation(placement) {
   return placement.split('-')[1];
@@ -21423,9 +21295,6 @@ function getVariation(placement) {
 function getMainAxisFromPlacement(placement) {
   return ['top', 'bottom'].indexOf(placement) >= 0 ? 'x' : 'y';
 }
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/enums.js
-var enums = __webpack_require__("77f9");
-
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/computeOffsets.js
 
 
@@ -21435,35 +21304,35 @@ function computeOffsets(_ref) {
   var reference = _ref.reference,
       element = _ref.element,
       placement = _ref.placement;
-  var basePlacement = placement ? Object(getBasePlacement["a" /* default */])(placement) : null;
+  var basePlacement = placement ? getBasePlacement(placement) : null;
   var variation = placement ? getVariation(placement) : null;
   var commonX = reference.x + reference.width / 2 - element.width / 2;
   var commonY = reference.y + reference.height / 2 - element.height / 2;
   var offsets;
 
   switch (basePlacement) {
-    case enums["m" /* top */]:
+    case enums_top:
       offsets = {
         x: commonX,
         y: reference.y - element.height
       };
       break;
 
-    case enums["c" /* bottom */]:
+    case bottom:
       offsets = {
         x: commonX,
         y: reference.y + reference.height
       };
       break;
 
-    case enums["k" /* right */]:
+    case right:
       offsets = {
         x: reference.x + reference.width,
         y: commonY
       };
       break;
 
-    case enums["f" /* left */]:
+    case left:
       offsets = {
         x: reference.x - element.width,
         y: commonY
@@ -21483,11 +21352,11 @@ function computeOffsets(_ref) {
     var len = mainAxis === 'y' ? 'height' : 'width';
 
     switch (variation) {
-      case enums["l" /* start */]:
+      case start:
         offsets[mainAxis] = Math.floor(offsets[mainAxis]) - Math.floor(reference[len] / 2 - element[len] / 2);
         break;
 
-      case enums["e" /* end */]:
+      case end:
         offsets[mainAxis] = Math.floor(offsets[mainAxis]) + Math.ceil(reference[len] / 2 - element[len] / 2);
         break;
 
@@ -21513,7 +21382,8 @@ function popperOffsets_popperOffsets(_ref) {
     strategy: 'absolute',
     placement: state.placement
   });
-}
+} // eslint-disable-next-line import/no-unused-modules
+
 
 /* harmony default export */ var modifiers_popperOffsets = ({
   name: 'popperOffsets',
@@ -21522,18 +21392,13 @@ function popperOffsets_popperOffsets(_ref) {
   fn: popperOffsets_popperOffsets,
   data: {}
 });
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js + 1 modules
-var getOffsetParent = __webpack_require__("b62b");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js
-var getDocumentElement = __webpack_require__("ef52");
-
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/modifiers/computeStyles.js
 
 
 
 
 
+ // eslint-disable-next-line import/no-unused-modules
 
 var unsetSides = {
   top: 'auto',
@@ -21572,28 +21437,28 @@ function mapToStyles(_ref2) {
 
   var hasX = offsets.hasOwnProperty('x');
   var hasY = offsets.hasOwnProperty('y');
-  var sideX = enums["f" /* left */];
-  var sideY = enums["m" /* top */];
+  var sideX = left;
+  var sideY = enums_top;
   var win = window;
 
   if (adaptive) {
-    var offsetParent = Object(getOffsetParent["a" /* default */])(popper);
+    var offsetParent = getOffsetParent(popper);
 
-    if (offsetParent === Object(getWindow["a" /* default */])(popper)) {
-      offsetParent = Object(getDocumentElement["a" /* default */])(popper);
+    if (offsetParent === getWindow(popper)) {
+      offsetParent = getDocumentElement(popper);
     } // $FlowFixMe: force type refinement, we compare offsetParent with window above, but Flow doesn't detect it
 
     /*:: offsetParent = (offsetParent: Element); */
 
 
-    if (placement === enums["m" /* top */]) {
-      sideY = enums["c" /* bottom */];
+    if (placement === enums_top) {
+      sideY = bottom;
       y -= offsetParent.clientHeight - popperRect.height;
       y *= gpuAcceleration ? 1 : -1;
     }
 
-    if (placement === enums["f" /* left */]) {
-      sideX = enums["k" /* right */];
+    if (placement === left) {
+      sideX = right;
       x -= offsetParent.clientWidth - popperRect.width;
       x *= gpuAcceleration ? 1 : -1;
     }
@@ -21606,10 +21471,10 @@ function mapToStyles(_ref2) {
   if (gpuAcceleration) {
     var _Object$assign;
 
-    return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? '0' : '', _Object$assign[sideX] = hasX ? '0' : '', _Object$assign.transform = (win.devicePixelRatio || 1) < 2 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
+    return Object.assign(Object.assign({}, commonStyles), {}, (_Object$assign = {}, _Object$assign[sideY] = hasY ? '0' : '', _Object$assign[sideX] = hasX ? '0' : '', _Object$assign.transform = (win.devicePixelRatio || 1) < 2 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
   }
 
-  return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : '', _Object$assign2[sideX] = hasX ? x + "px" : '', _Object$assign2.transform = '', _Object$assign2));
+  return Object.assign(Object.assign({}, commonStyles), {}, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : '', _Object$assign2[sideX] = hasX ? x + "px" : '', _Object$assign2.transform = '', _Object$assign2));
 }
 
 function computeStyles(_ref3) {
@@ -21620,33 +21485,36 @@ function computeStyles(_ref3) {
       _options$adaptive = options.adaptive,
       adaptive = _options$adaptive === void 0 ? true : _options$adaptive;
 
-  if (false) { var _getComputedStyle, transitionProperty; }
+  if (false) { var transitionProperty; }
 
   var commonStyles = {
-    placement: Object(getBasePlacement["a" /* default */])(state.placement),
+    placement: getBasePlacement(state.placement),
     popper: state.elements.popper,
     popperRect: state.rects.popper,
     gpuAcceleration: gpuAcceleration
-  }; // popper offsets are always available
+  };
 
-  state.styles.popper = Object.assign({}, state.styles.popper, {}, mapToStyles(Object.assign({}, commonStyles, {
-    offsets: state.modifiersData.popperOffsets,
-    position: state.options.strategy,
-    adaptive: adaptive
-  }))); // arrow offsets may not be available
+  if (state.modifiersData.popperOffsets != null) {
+    state.styles.popper = Object.assign(Object.assign({}, state.styles.popper), mapToStyles(Object.assign(Object.assign({}, commonStyles), {}, {
+      offsets: state.modifiersData.popperOffsets,
+      position: state.options.strategy,
+      adaptive: adaptive
+    })));
+  }
 
   if (state.modifiersData.arrow != null) {
-    state.styles.arrow = Object.assign({}, state.styles.arrow, {}, mapToStyles(Object.assign({}, commonStyles, {
+    state.styles.arrow = Object.assign(Object.assign({}, state.styles.arrow), mapToStyles(Object.assign(Object.assign({}, commonStyles), {}, {
       offsets: state.modifiersData.arrow,
       position: 'absolute',
       adaptive: false
     })));
   }
 
-  state.attributes.popper = Object.assign({}, state.attributes.popper, {
+  state.attributes.popper = Object.assign(Object.assign({}, state.attributes.popper), {}, {
     'data-popper-placement': state.placement
   });
-}
+} // eslint-disable-next-line import/no-unused-modules
+
 
 /* harmony default export */ var modifiers_computeStyles = ({
   name: 'computeStyles',
@@ -21655,12 +21523,6 @@ function computeStyles(_ref3) {
   fn: computeStyles,
   data: {}
 });
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
-var getNodeName = __webpack_require__("5788");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
-var instanceOf = __webpack_require__("2767");
-
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/modifiers/applyStyles.js
 
  // This modifier takes the styles prepared by the `computeStyles` modifier
@@ -21673,7 +21535,7 @@ function applyStyles(_ref) {
     var attributes = state.attributes[name] || {};
     var element = state.elements[name]; // arrow is optional + virtual elements
 
-    if (!Object(instanceOf["b" /* isHTMLElement */])(element) || !Object(getNodeName["a" /* default */])(element)) {
+    if (!isHTMLElement(element) || !getNodeName(element)) {
       return;
     } // Flow doesn't support to extend this property, but it's the most
     // effective way to apply styles to an HTMLElement
@@ -21697,7 +21559,7 @@ function applyStyles_effect(_ref2) {
   var state = _ref2.state;
   var initialStyles = {
     popper: {
-      position: 'absolute',
+      position: state.options.strategy,
       left: '0',
       top: '0',
       margin: '0'
@@ -21724,7 +21586,7 @@ function applyStyles_effect(_ref2) {
         return style;
       }, {}); // arrow is optional + virtual elements
 
-      if (!Object(instanceOf["b" /* isHTMLElement */])(element) || !Object(getNodeName["a" /* default */])(element)) {
+      if (!isHTMLElement(element) || !getNodeName(element)) {
         return;
       } // Flow doesn't support to extend this property, but it's the most
       // effective way to apply styles to an HTMLElement
@@ -21737,7 +21599,8 @@ function applyStyles_effect(_ref2) {
       });
     });
   };
-}
+} // eslint-disable-next-line import/no-unused-modules
+
 
 /* harmony default export */ var modifiers_applyStyles = ({
   name: 'applyStyles',
@@ -21751,10 +21614,10 @@ function applyStyles_effect(_ref2) {
 
 
 function distanceAndSkiddingToXY(placement, rects, offset) {
-  var basePlacement = Object(getBasePlacement["a" /* default */])(placement);
-  var invertDistance = [enums["f" /* left */], enums["m" /* top */]].indexOf(basePlacement) >= 0 ? -1 : 1;
+  var basePlacement = getBasePlacement(placement);
+  var invertDistance = [left, enums_top].indexOf(basePlacement) >= 0 ? -1 : 1;
 
-  var _ref = typeof offset === 'function' ? offset(Object.assign({}, rects, {
+  var _ref = typeof offset === 'function' ? offset(Object.assign(Object.assign({}, rects), {}, {
     placement: placement
   })) : offset,
       skidding = _ref[0],
@@ -21762,7 +21625,7 @@ function distanceAndSkiddingToXY(placement, rects, offset) {
 
   skidding = skidding || 0;
   distance = (distance || 0) * invertDistance;
-  return [enums["f" /* left */], enums["k" /* right */]].indexOf(basePlacement) >= 0 ? {
+  return [left, right].indexOf(basePlacement) >= 0 ? {
     x: distance,
     y: skidding
   } : {
@@ -21777,17 +21640,22 @@ function offset_offset(_ref2) {
       name = _ref2.name;
   var _options$offset = options.offset,
       offset = _options$offset === void 0 ? [0, 0] : _options$offset;
-  var data = enums["h" /* placements */].reduce(function (acc, placement) {
+  var data = enums_placements.reduce(function (acc, placement) {
     acc[placement] = distanceAndSkiddingToXY(placement, state.rects, offset);
     return acc;
   }, {});
   var _data$state$placement = data[state.placement],
       x = _data$state$placement.x,
       y = _data$state$placement.y;
-  state.modifiersData.popperOffsets.x += x;
-  state.modifiersData.popperOffsets.y += y;
+
+  if (state.modifiersData.popperOffsets != null) {
+    state.modifiersData.popperOffsets.x += x;
+    state.modifiersData.popperOffsets.y += y;
+  }
+
   state.modifiersData[name] = data;
-}
+} // eslint-disable-next-line import/no-unused-modules
+
 
 /* harmony default export */ var modifiers_offset = ({
   name: 'offset',
@@ -21818,99 +21686,72 @@ function getOppositeVariationPlacement(placement) {
     return getOppositeVariationPlacement_hash[matched];
   });
 }
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
-var getBoundingClientRect = __webpack_require__("0f88");
-
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js
 
+
+
 function getViewportRect(element) {
-  var win = Object(getWindow["a" /* default */])(element);
+  var win = getWindow(element);
+  var html = getDocumentElement(element);
+  var visualViewport = win.visualViewport;
+  var width = html.clientWidth;
+  var height = html.clientHeight;
+  var x = 0;
+  var y = 0; // NB: This isn't supported on iOS <= 12. If the keyboard is open, the popper
+  // can be obscured underneath it.
+  // Also, `html.clientHeight` adds the bottom bar height in Safari iOS, even
+  // if it isn't open, so if this isn't available, the popper will be detected
+  // to overflow the bottom of the screen too early.
+
+  if (visualViewport) {
+    width = visualViewport.width;
+    height = visualViewport.height; // Uses Layout Viewport (like Chrome; Safari does not currently)
+    // In Chrome, it returns a value very close to 0 (+/-) but contains rounding
+    // errors due to floating point numbers, so we need to check precision.
+    // Safari returns a number <= 0, usually < -1 when pinch-zoomed
+    // Feature detection fails in mobile emulation mode in Chrome.
+    // Math.abs(win.innerWidth / visualViewport.scale - visualViewport.width) <
+    // 0.001
+    // Fallback here: "Not Safari" userAgent
+
+    if (!/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+      x = visualViewport.offsetLeft;
+      y = visualViewport.offsetTop;
+    }
+  }
+
   return {
-    width: win.innerWidth,
-    height: win.innerHeight,
-    x: 0,
-    y: 0
+    width: width,
+    height: height,
+    x: x + getWindowScrollBarX(element),
+    y: y
   };
 }
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js + 2 modules
-var getCompositeRect = __webpack_require__("d116");
-
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js
-var getWindowScroll = __webpack_require__("a321");
-
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js
 
 
 
+ // Gets the entire size of the scrollable document area, even extending outside
+// of the `<html>` and `<body>` rect bounds if horizontally scrollable
 
 function getDocumentRect(element) {
-  var win = Object(getWindow["a" /* default */])(element);
-  var winScroll = Object(getWindowScroll["a" /* default */])(element);
-  var documentRect = Object(getCompositeRect["a" /* default */])(Object(getDocumentElement["a" /* default */])(element), win);
-  documentRect.height = Math.max(documentRect.height, win.innerHeight);
-  documentRect.width = Math.max(documentRect.width, win.innerWidth);
-  documentRect.x = -winScroll.scrollLeft;
-  documentRect.y = -winScroll.scrollTop;
-  return documentRect;
-}
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js + 2 modules
-var listScrollParents = __webpack_require__("ea1a");
+  var html = getDocumentElement(element);
+  var winScroll = getWindowScroll(element);
+  var body = element.ownerDocument.body;
+  var width = Math.max(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+  var height = Math.max(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+  var x = -winScroll.scrollLeft + getWindowScrollBarX(element);
+  var y = -winScroll.scrollTop;
 
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
-var getComputedStyle = __webpack_require__("b519");
-
-// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getBorders.js
-
-
-
-function toNumber(cssValue) {
-  return parseFloat(cssValue) || 0;
-}
-
-function getBorders(element) {
-  var computedStyle = Object(instanceOf["b" /* isHTMLElement */])(element) ? Object(getComputedStyle["a" /* default */])(element) : {};
-  return {
-    top: toNumber(computedStyle.borderTopWidth),
-    right: toNumber(computedStyle.borderRightWidth),
-    bottom: toNumber(computedStyle.borderBottomWidth),
-    left: toNumber(computedStyle.borderLeftWidth)
-  };
-}
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js
-var getWindowScrollBarX = __webpack_require__("6125");
-
-// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getDecorations.js
-
-
-
- // Borders + scrollbars
-
-function getDecorations(element) {
-  var win = Object(getWindow["a" /* default */])(element);
-  var borders = getBorders(element);
-  var isHTML = Object(getNodeName["a" /* default */])(element) === 'html';
-  var winScrollBarX = Object(getWindowScrollBarX["a" /* default */])(element);
-  var x = element.clientWidth + borders.right;
-  var y = element.clientHeight + borders.bottom; // HACK:
-  // document.documentElement.clientHeight on iOS reports the height of the
-  // viewport including the bottom bar, even if the bottom bar isn't visible.
-  // If the difference between window innerHeight and html clientHeight is more
-  // than 50, we assume it's a mobile bottom bar and ignore scrollbars.
-  // * A 50px thick scrollbar is likely non-existent (macOS is 15px and Windows
-  //   is about 17px)
-  // * The mobile bar is 114px tall
-
-  if (isHTML && win.innerHeight - element.clientHeight > 50) {
-    y = win.innerHeight - borders.bottom;
+  if (getComputedStyle(body || html).direction === 'rtl') {
+    x += Math.max(html.clientWidth, body ? body.clientWidth : 0) - width;
   }
 
   return {
-    top: isHTML ? 0 : element.clientTop,
-    right: // RTL scrollbar (scrolling containers only)
-    element.clientLeft > borders.left ? borders.right : // LTR scrollbar
-    isHTML ? win.innerWidth - x - winScrollBarX : element.offsetWidth - x,
-    bottom: isHTML ? win.innerHeight - y : element.offsetHeight - y,
-    left: isHTML ? winScrollBarX : element.clientLeft
+    width: width,
+    height: height,
+    x: x,
+    y: y
   };
 }
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/contains.js
@@ -21939,7 +21780,7 @@ function contains(parent, child) {
 }
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/rectToClientRect.js
 function rectToClientRect(rect) {
-  return Object.assign({}, rect, {
+  return Object.assign(Object.assign({}, rect), {}, {
     left: rect.x,
     top: rect.y,
     right: rect.x + rect.width,
@@ -21959,26 +21800,38 @@ function rectToClientRect(rect) {
 
 
 
+function getInnerBoundingClientRect(element) {
+  var rect = getBoundingClientRect(element);
+  rect.top = rect.top + element.clientTop;
+  rect.left = rect.left + element.clientLeft;
+  rect.bottom = rect.top + element.clientHeight;
+  rect.right = rect.left + element.clientWidth;
+  rect.width = element.clientWidth;
+  rect.height = element.clientHeight;
+  rect.x = rect.left;
+  rect.y = rect.top;
+  return rect;
+}
 
 function getClientRectFromMixedType(element, clippingParent) {
-  return clippingParent === enums["o" /* viewport */] ? rectToClientRect(getViewportRect(element)) : Object(instanceOf["b" /* isHTMLElement */])(clippingParent) ? Object(getBoundingClientRect["a" /* default */])(clippingParent) : rectToClientRect(getDocumentRect(Object(getDocumentElement["a" /* default */])(element)));
+  return clippingParent === viewport ? rectToClientRect(getViewportRect(element)) : isHTMLElement(clippingParent) ? getInnerBoundingClientRect(clippingParent) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
 } // A "clipping parent" is an overflowable container with the characteristic of
 // clipping (or hiding) overflowing elements with a position different from
 // `initial`
 
 
 function getClippingParents(element) {
-  var clippingParents = Object(listScrollParents["a" /* default */])(element);
-  var canEscapeClipping = ['absolute', 'fixed'].indexOf(Object(getComputedStyle["a" /* default */])(element).position) >= 0;
-  var clipperElement = canEscapeClipping && Object(instanceOf["b" /* isHTMLElement */])(element) ? Object(getOffsetParent["a" /* default */])(element) : element;
+  var clippingParents = listScrollParents(element);
+  var canEscapeClipping = ['absolute', 'fixed'].indexOf(getComputedStyle(element).position) >= 0;
+  var clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
 
-  if (!Object(instanceOf["a" /* isElement */])(clipperElement)) {
+  if (!isElement(clipperElement)) {
     return [];
   } // $FlowFixMe: https://github.com/facebook/flow/issues/1414
 
 
   return clippingParents.filter(function (clippingParent) {
-    return Object(instanceOf["a" /* isElement */])(clippingParent) && contains(clippingParent, clipperElement);
+    return isElement(clippingParent) && contains(clippingParent, clipperElement);
   });
 } // Gets the maximum area that the element is visible in due to any number of
 // clipping parents
@@ -21990,11 +21843,10 @@ function getClippingRect(element, boundary, rootBoundary) {
   var firstClippingParent = clippingParents[0];
   var clippingRect = clippingParents.reduce(function (accRect, clippingParent) {
     var rect = getClientRectFromMixedType(element, clippingParent);
-    var decorations = getDecorations(Object(instanceOf["b" /* isHTMLElement */])(clippingParent) ? clippingParent : Object(getDocumentElement["a" /* default */])(element));
-    accRect.top = Math.max(rect.top + decorations.top, accRect.top);
-    accRect.right = Math.min(rect.right - decorations.right, accRect.right);
-    accRect.bottom = Math.min(rect.bottom - decorations.bottom, accRect.bottom);
-    accRect.left = Math.max(rect.left + decorations.left, accRect.left);
+    accRect.top = Math.max(rect.top, accRect.top);
+    accRect.right = Math.min(rect.right, accRect.right);
+    accRect.bottom = Math.min(rect.bottom, accRect.bottom);
+    accRect.left = Math.max(rect.left, accRect.left);
     return accRect;
   }, getClientRectFromMixedType(element, firstClippingParent));
   clippingRect.width = clippingRect.right - clippingRect.left;
@@ -22015,7 +21867,7 @@ function getFreshSideObject() {
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js
 
 function mergePaddingObject(paddingObject) {
-  return Object.assign({}, getFreshSideObject(), {}, paddingObject);
+  return Object.assign(Object.assign({}, getFreshSideObject()), paddingObject);
 }
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/expandToHashMap.js
 function expandToHashMap(value, keys) {
@@ -22033,6 +21885,7 @@ function expandToHashMap(value, keys) {
 
 
 
+ // eslint-disable-next-line import/no-unused-modules
 
 function detectOverflow(state, options) {
   if (options === void 0) {
@@ -22043,30 +21896,30 @@ function detectOverflow(state, options) {
       _options$placement = _options.placement,
       placement = _options$placement === void 0 ? state.placement : _options$placement,
       _options$boundary = _options.boundary,
-      boundary = _options$boundary === void 0 ? enums["d" /* clippingParents */] : _options$boundary,
+      boundary = _options$boundary === void 0 ? enums_clippingParents : _options$boundary,
       _options$rootBoundary = _options.rootBoundary,
-      rootBoundary = _options$rootBoundary === void 0 ? enums["o" /* viewport */] : _options$rootBoundary,
+      rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary,
       _options$elementConte = _options.elementContext,
-      elementContext = _options$elementConte === void 0 ? enums["i" /* popper */] : _options$elementConte,
+      elementContext = _options$elementConte === void 0 ? enums_popper : _options$elementConte,
       _options$altBoundary = _options.altBoundary,
       altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary,
       _options$padding = _options.padding,
       padding = _options$padding === void 0 ? 0 : _options$padding;
-  var paddingObject = mergePaddingObject(typeof padding !== 'number' ? padding : expandToHashMap(padding, enums["b" /* basePlacements */]));
-  var altContext = elementContext === enums["i" /* popper */] ? enums["j" /* reference */] : enums["i" /* popper */];
+  var paddingObject = mergePaddingObject(typeof padding !== 'number' ? padding : expandToHashMap(padding, basePlacements));
+  var altContext = elementContext === enums_popper ? enums_reference : enums_popper;
   var referenceElement = state.elements.reference;
   var popperRect = state.rects.popper;
   var element = state.elements[altBoundary ? altContext : elementContext];
-  var clippingClientRect = getClippingRect(Object(instanceOf["a" /* isElement */])(element) ? element : Object(getDocumentElement["a" /* default */])(state.elements.popper), boundary, rootBoundary);
-  var referenceClientRect = Object(getBoundingClientRect["a" /* default */])(referenceElement);
+  var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary);
+  var referenceClientRect = getBoundingClientRect(referenceElement);
   var popperOffsets = computeOffsets({
     reference: referenceClientRect,
     element: popperRect,
     strategy: 'absolute',
     placement: placement
   });
-  var popperClientRect = rectToClientRect(Object.assign({}, popperRect, {}, popperOffsets));
-  var elementClientRect = elementContext === enums["i" /* popper */] ? popperClientRect : referenceClientRect; // positive = overflowing the clipping rect
+  var popperClientRect = rectToClientRect(Object.assign(Object.assign({}, popperRect), popperOffsets));
+  var elementClientRect = elementContext === enums_popper ? popperClientRect : referenceClientRect; // positive = overflowing the clipping rect
   // 0 or negative = within the clipping rect
 
   var overflowOffsets = {
@@ -22077,11 +21930,11 @@ function detectOverflow(state, options) {
   };
   var offsetData = state.modifiersData.offset; // Offsets can be applied only to the popper element
 
-  if (elementContext === enums["i" /* popper */] && offsetData) {
+  if (elementContext === enums_popper && offsetData) {
     var offset = offsetData[placement];
     Object.keys(overflowOffsets).forEach(function (key) {
-      var multiply = [enums["k" /* right */], enums["c" /* bottom */]].indexOf(key) >= 0 ? 1 : -1;
-      var axis = [enums["m" /* top */], enums["c" /* bottom */]].indexOf(key) >= 0 ? 'y' : 'x';
+      var multiply = [right, bottom].indexOf(key) >= 0 ? 1 : -1;
+      var axis = [enums_top, bottom].indexOf(key) >= 0 ? 'y' : 'x';
       overflowOffsets[key] += offset[axis] * multiply;
     });
   }
@@ -22093,6 +21946,10 @@ function detectOverflow(state, options) {
 
 
 
+
+/*:: type OverflowsMap = { [ComputedPlacement]: number }; */
+
+/*;; type OverflowsMap = { [key in ComputedPlacement]: number }; */
 function computeAutoPlacement(state, options) {
   if (options === void 0) {
     options = {};
@@ -22103,11 +21960,15 @@ function computeAutoPlacement(state, options) {
       boundary = _options.boundary,
       rootBoundary = _options.rootBoundary,
       padding = _options.padding,
-      flipVariations = _options.flipVariations;
+      flipVariations = _options.flipVariations,
+      _options$allowedAutoP = _options.allowedAutoPlacements,
+      allowedAutoPlacements = _options$allowedAutoP === void 0 ? enums_placements : _options$allowedAutoP;
   var variation = getVariation(placement);
-  var placements = variation ? flipVariations ? enums["n" /* variationPlacements */] : enums["n" /* variationPlacements */].filter(function (placement) {
+  var placements = (variation ? flipVariations ? variationPlacements : variationPlacements.filter(function (placement) {
     return getVariation(placement) === variation;
-  }) : enums["b" /* basePlacements */]; // $FlowFixMe: Flow seems to have problems with two array unions...
+  }) : basePlacements).filter(function (placement) {
+    return allowedAutoPlacements.indexOf(placement) >= 0;
+  }); // $FlowFixMe: Flow seems to have problems with two array unions...
 
   var overflows = placements.reduce(function (acc, placement) {
     acc[placement] = detectOverflow(state, {
@@ -22115,7 +21976,7 @@ function computeAutoPlacement(state, options) {
       boundary: boundary,
       rootBoundary: rootBoundary,
       padding: padding
-    })[Object(getBasePlacement["a" /* default */])(placement)];
+    })[getBasePlacement(placement)];
     return acc;
   }, {});
   return Object.keys(overflows).sort(function (a, b) {
@@ -22129,10 +21990,10 @@ function computeAutoPlacement(state, options) {
 
 
 
-
+ // eslint-disable-next-line import/no-unused-modules
 
 function getExpandedFallbackPlacements(placement) {
-  if (Object(getBasePlacement["a" /* default */])(placement) === enums["a" /* auto */]) {
+  if (getBasePlacement(placement) === auto) {
     return [];
   }
 
@@ -22149,24 +22010,30 @@ function flip(_ref) {
     return;
   }
 
-  var specifiedFallbackPlacements = options.fallbackPlacements,
+  var _options$mainAxis = options.mainAxis,
+      checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis,
+      _options$altAxis = options.altAxis,
+      checkAltAxis = _options$altAxis === void 0 ? true : _options$altAxis,
+      specifiedFallbackPlacements = options.fallbackPlacements,
       padding = options.padding,
       boundary = options.boundary,
       rootBoundary = options.rootBoundary,
       altBoundary = options.altBoundary,
       _options$flipVariatio = options.flipVariations,
-      flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio;
+      flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio,
+      allowedAutoPlacements = options.allowedAutoPlacements;
   var preferredPlacement = state.options.placement;
-  var basePlacement = Object(getBasePlacement["a" /* default */])(preferredPlacement);
+  var basePlacement = getBasePlacement(preferredPlacement);
   var isBasePlacement = basePlacement === preferredPlacement;
   var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [getOppositePlacement(preferredPlacement)] : getExpandedFallbackPlacements(preferredPlacement));
   var placements = [preferredPlacement].concat(fallbackPlacements).reduce(function (acc, placement) {
-    return acc.concat(Object(getBasePlacement["a" /* default */])(placement) === enums["a" /* auto */] ? computeAutoPlacement(state, {
+    return acc.concat(getBasePlacement(placement) === auto ? computeAutoPlacement(state, {
       placement: placement,
       boundary: boundary,
       rootBoundary: rootBoundary,
       padding: padding,
-      flipVariations: flipVariations
+      flipVariations: flipVariations,
+      allowedAutoPlacements: allowedAutoPlacements
     }) : placement);
   }, []);
   var referenceRect = state.rects.reference;
@@ -22178,10 +22045,10 @@ function flip(_ref) {
   for (var i = 0; i < placements.length; i++) {
     var placement = placements[i];
 
-    var _basePlacement = Object(getBasePlacement["a" /* default */])(placement);
+    var _basePlacement = getBasePlacement(placement);
 
-    var isStartVariation = getVariation(placement) === enums["l" /* start */];
-    var isVertical = [enums["m" /* top */], enums["c" /* bottom */]].indexOf(_basePlacement) >= 0;
+    var isStartVariation = getVariation(placement) === start;
+    var isVertical = [enums_top, bottom].indexOf(_basePlacement) >= 0;
     var len = isVertical ? 'width' : 'height';
     var overflow = detectOverflow(state, {
       placement: placement,
@@ -22190,14 +22057,22 @@ function flip(_ref) {
       altBoundary: altBoundary,
       padding: padding
     });
-    var mainVariationSide = isVertical ? isStartVariation ? enums["k" /* right */] : enums["f" /* left */] : isStartVariation ? enums["c" /* bottom */] : enums["m" /* top */];
+    var mainVariationSide = isVertical ? isStartVariation ? right : left : isStartVariation ? bottom : enums_top;
 
     if (referenceRect[len] > popperRect[len]) {
       mainVariationSide = getOppositePlacement(mainVariationSide);
     }
 
     var altVariationSide = getOppositePlacement(mainVariationSide);
-    var checks = [overflow[_basePlacement] <= 0, overflow[mainVariationSide] <= 0, overflow[altVariationSide] <= 0];
+    var checks = [];
+
+    if (checkMainAxis) {
+      checks.push(overflow[_basePlacement] <= 0);
+    }
+
+    if (checkAltAxis) {
+      checks.push(overflow[mainVariationSide] <= 0, overflow[altVariationSide] <= 0);
+    }
 
     if (checks.every(function (check) {
       return check;
@@ -22243,7 +22118,8 @@ function flip(_ref) {
     state.placement = firstFittingPlacement;
     state.reset = true;
   }
-}
+} // eslint-disable-next-line import/no-unused-modules
+
 
 /* harmony default export */ var modifiers_flip = ({
   name: 'flip',
@@ -22263,9 +22139,6 @@ function getAltAxis(axis) {
 function within(min, value, max) {
   return Math.max(min, Math.min(value, max));
 }
-// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js
-var getLayoutRect = __webpack_require__("e2e9");
-
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js
 
 
@@ -22300,7 +22173,7 @@ function preventOverflow(_ref) {
     padding: padding,
     altBoundary: altBoundary
   });
-  var basePlacement = Object(getBasePlacement["a" /* default */])(state.placement);
+  var basePlacement = getBasePlacement(state.placement);
   var variation = getVariation(state.placement);
   var isBasePlacement = !variation;
   var mainAxis = getMainAxisFromPlacement(basePlacement);
@@ -22308,7 +22181,7 @@ function preventOverflow(_ref) {
   var popperOffsets = state.modifiersData.popperOffsets;
   var referenceRect = state.rects.reference;
   var popperRect = state.rects.popper;
-  var tetherOffsetValue = typeof tetherOffset === 'function' ? tetherOffset(Object.assign({}, state.rects, {
+  var tetherOffsetValue = typeof tetherOffset === 'function' ? tetherOffset(Object.assign(Object.assign({}, state.rects), {}, {
     placement: state.placement
   })) : tetherOffset;
   var data = {
@@ -22316,20 +22189,24 @@ function preventOverflow(_ref) {
     y: 0
   };
 
+  if (!popperOffsets) {
+    return;
+  }
+
   if (checkMainAxis) {
-    var mainSide = mainAxis === 'y' ? enums["m" /* top */] : enums["f" /* left */];
-    var altSide = mainAxis === 'y' ? enums["c" /* bottom */] : enums["k" /* right */];
+    var mainSide = mainAxis === 'y' ? enums_top : left;
+    var altSide = mainAxis === 'y' ? bottom : right;
     var len = mainAxis === 'y' ? 'height' : 'width';
     var offset = popperOffsets[mainAxis];
     var min = popperOffsets[mainAxis] + overflow[mainSide];
     var max = popperOffsets[mainAxis] - overflow[altSide];
     var additive = tether ? -popperRect[len] / 2 : 0;
-    var minLen = variation === enums["l" /* start */] ? referenceRect[len] : popperRect[len];
-    var maxLen = variation === enums["l" /* start */] ? -popperRect[len] : -referenceRect[len]; // We need to include the arrow in the calculation so the arrow doesn't go
+    var minLen = variation === start ? referenceRect[len] : popperRect[len];
+    var maxLen = variation === start ? -popperRect[len] : -referenceRect[len]; // We need to include the arrow in the calculation so the arrow doesn't go
     // outside the reference bounds
 
     var arrowElement = state.elements.arrow;
-    var arrowRect = tether && arrowElement ? Object(getLayoutRect["a" /* default */])(arrowElement) : {
+    var arrowRect = tether && arrowElement ? getLayoutRect(arrowElement) : {
       width: 0,
       height: 0
     };
@@ -22344,7 +22221,7 @@ function preventOverflow(_ref) {
     var arrowLen = within(0, referenceRect[len], arrowRect[len]);
     var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - tetherOffsetValue : minLen - arrowLen - arrowPaddingMin - tetherOffsetValue;
     var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + tetherOffsetValue : maxLen + arrowLen + arrowPaddingMax + tetherOffsetValue;
-    var arrowOffsetParent = state.elements.arrow && Object(getOffsetParent["a" /* default */])(state.elements.arrow);
+    var arrowOffsetParent = state.elements.arrow && getOffsetParent(state.elements.arrow);
     var clientOffset = arrowOffsetParent ? mainAxis === 'y' ? arrowOffsetParent.clientTop || 0 : arrowOffsetParent.clientLeft || 0 : 0;
     var offsetModifierValue = state.modifiersData.offset ? state.modifiersData.offset[state.placement][mainAxis] : 0;
     var tetherMin = popperOffsets[mainAxis] + minOffset - offsetModifierValue - clientOffset;
@@ -22355,9 +22232,9 @@ function preventOverflow(_ref) {
   }
 
   if (checkAltAxis) {
-    var _mainSide = mainAxis === 'x' ? enums["m" /* top */] : enums["f" /* left */];
+    var _mainSide = mainAxis === 'x' ? enums_top : left;
 
-    var _altSide = mainAxis === 'x' ? enums["c" /* bottom */] : enums["k" /* right */];
+    var _altSide = mainAxis === 'x' ? bottom : right;
 
     var _offset = popperOffsets[altAxis];
 
@@ -22367,12 +22244,13 @@ function preventOverflow(_ref) {
 
     var _preventedOffset = within(_min, _offset, _max);
 
-    state.modifiersData.popperOffsets[altAxis] = _preventedOffset;
+    popperOffsets[altAxis] = _preventedOffset;
     data[altAxis] = _preventedOffset - _offset;
   }
 
   state.modifiersData[name] = data;
-}
+} // eslint-disable-next-line import/no-unused-modules
+
 
 /* harmony default export */ var modifiers_preventOverflow = ({
   name: 'preventOverflow',
@@ -22391,6 +22269,7 @@ function preventOverflow(_ref) {
 
 
 
+ // eslint-disable-next-line import/no-unused-modules
 
 function arrow(_ref) {
   var _state$modifiersData$;
@@ -22399,30 +22278,33 @@ function arrow(_ref) {
       name = _ref.name;
   var arrowElement = state.elements.arrow;
   var popperOffsets = state.modifiersData.popperOffsets;
-  var basePlacement = Object(getBasePlacement["a" /* default */])(state.placement);
+  var basePlacement = getBasePlacement(state.placement);
   var axis = getMainAxisFromPlacement(basePlacement);
-  var isVertical = [enums["f" /* left */], enums["k" /* right */]].indexOf(basePlacement) >= 0;
+  var isVertical = [left, right].indexOf(basePlacement) >= 0;
   var len = isVertical ? 'height' : 'width';
 
-  if (!arrowElement) {
+  if (!arrowElement || !popperOffsets) {
     return;
   }
 
   var paddingObject = state.modifiersData[name + "#persistent"].padding;
-  var arrowRect = Object(getLayoutRect["a" /* default */])(arrowElement);
-  var minProp = axis === 'y' ? enums["m" /* top */] : enums["f" /* left */];
-  var maxProp = axis === 'y' ? enums["c" /* bottom */] : enums["k" /* right */];
+  var arrowRect = getLayoutRect(arrowElement);
+  var minProp = axis === 'y' ? enums_top : left;
+  var maxProp = axis === 'y' ? bottom : right;
   var endDiff = state.rects.reference[len] + state.rects.reference[axis] - popperOffsets[axis] - state.rects.popper[len];
   var startDiff = popperOffsets[axis] - state.rects.reference[axis];
-  var arrowOffsetParent = state.elements.arrow && Object(getOffsetParent["a" /* default */])(state.elements.arrow);
-  var clientOffset = arrowOffsetParent ? axis === 'y' ? arrowOffsetParent.clientLeft || 0 : arrowOffsetParent.clientTop || 0 : 0;
-  var centerToReference = endDiff / 2 - startDiff / 2 - clientOffset; // Make sure the arrow doesn't overflow the popper if the center point is
+  var arrowOffsetParent = getOffsetParent(arrowElement);
+  var clientSize = arrowOffsetParent ? axis === 'y' ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
+  var centerToReference = endDiff / 2 - startDiff / 2; // Make sure the arrow doesn't overflow the popper if the center point is
   // outside of the popper bounds
 
-  var center = within(paddingObject[minProp], state.rects.popper[len] / 2 - arrowRect[len] / 2 + centerToReference, state.rects.popper[len] - arrowRect[len] - paddingObject[maxProp]); // Prevents breaking syntax highlighting...
+  var min = paddingObject[minProp];
+  var max = clientSize - arrowRect[len] - paddingObject[maxProp];
+  var center = clientSize / 2 - arrowRect[len] / 2 + centerToReference;
+  var offset = within(min, center, max); // Prevents breaking syntax highlighting...
 
   var axisProp = axis;
-  state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = center, _state$modifiersData$);
+  state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset, _state$modifiersData$.centerOffset = offset - center, _state$modifiersData$);
 }
 
 function arrow_effect(_ref2) {
@@ -22432,7 +22314,12 @@ function arrow_effect(_ref2) {
   var _options$element = options.element,
       arrowElement = _options$element === void 0 ? '[data-popper-arrow]' : _options$element,
       _options$padding = options.padding,
-      padding = _options$padding === void 0 ? 0 : _options$padding; // CSS selector
+      padding = _options$padding === void 0 ? 0 : _options$padding;
+
+  if (arrowElement == null) {
+    return;
+  } // CSS selector
+
 
   if (typeof arrowElement === 'string') {
     arrowElement = state.elements.popper.querySelector(arrowElement);
@@ -22442,6 +22329,8 @@ function arrow_effect(_ref2) {
     }
   }
 
+  if (false) {}
+
   if (!contains(state.elements.popper, arrowElement)) {
     if (false) {}
 
@@ -22450,9 +22339,10 @@ function arrow_effect(_ref2) {
 
   state.elements.arrow = arrowElement;
   state.modifiersData[name + "#persistent"] = {
-    padding: mergePaddingObject(typeof padding !== 'number' ? padding : expandToHashMap(padding, enums["b" /* basePlacements */]))
+    padding: mergePaddingObject(typeof padding !== 'number' ? padding : expandToHashMap(padding, basePlacements))
   };
-}
+} // eslint-disable-next-line import/no-unused-modules
+
 
 /* harmony default export */ var modifiers_arrow = ({
   name: 'arrow',
@@ -22484,7 +22374,7 @@ function getSideOffsets(overflow, rect, preventedOffsets) {
 }
 
 function isAnySideFullyClipped(overflow) {
-  return [enums["m" /* top */], enums["k" /* right */], enums["c" /* bottom */], enums["f" /* left */]].some(function (side) {
+  return [enums_top, right, bottom, left].some(function (side) {
     return overflow[side] >= 0;
   });
 }
@@ -22511,11 +22401,12 @@ function hide(_ref) {
     isReferenceHidden: isReferenceHidden,
     hasPopperEscaped: hasPopperEscaped
   };
-  state.attributes.popper = Object.assign({}, state.attributes.popper, {
+  state.attributes.popper = Object.assign(Object.assign({}, state.attributes.popper), {}, {
     'data-popper-reference-hidden': isReferenceHidden,
     'data-popper-escaped': hasPopperEscaped
   });
-}
+} // eslint-disable-next-line import/no-unused-modules
+
 
 /* harmony default export */ var modifiers_hide = ({
   name: 'hide',
@@ -22535,11 +22426,10 @@ function hide(_ref) {
 
 
 
-var defaultModifiers = [eventListeners, modifiers_popperOffsets, modifiers_computeStyles, modifiers_applyStyles, modifiers_offset, modifiers_flip, modifiers_preventOverflow, modifiers_arrow, modifiers_hide];
-var popper_createPopper =
-/*#__PURE__*/
-Object(lib["popperGenerator"])({
-  defaultModifiers: defaultModifiers
+
+var popper_defaultModifiers = [eventListeners, modifiers_popperOffsets, modifiers_computeStyles, modifiers_applyStyles, modifiers_offset, modifiers_flip, modifiers_preventOverflow, modifiers_arrow, modifiers_hide];
+var popper_createPopper = /*#__PURE__*/popperGenerator({
+  defaultModifiers: popper_defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
 
@@ -22730,7 +22620,7 @@ var ChecOptionsMenu_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecOptionsMenu = (ChecOptionsMenu_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPaginate.vue?vue&type=template&id=5d4a7e26&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPaginate.vue?vue&type=template&id=5d4a7e26&
 var ChecPaginatevue_type_template_id_5d4a7e26_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-paginate"},[_c('div',{staticClass:"chec-page-selector"},[_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":"Go to the first page","disabled":_vm.page === 1},on:{"click":function($event){return _vm.choosePage('first')}}},[_c('ChecIcon',{attrs:{"icon":"double-left"}})],1),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":"Go to the previous page","disabled":_vm.page === 1},on:{"click":function($event){return _vm.choosePage('previous')}}},[_c('ChecIcon',{attrs:{"icon":"left"}})],1),_c('span',{staticClass:"chec-page-selector__page-reference"},[_vm._v(_vm._s(_vm.page)+" of "+_vm._s(_vm.pageCount))]),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":"Go to the next page","disabled":_vm.page === _vm.pageCount},on:{"click":function($event){return _vm.choosePage('next')}}},[_c('ChecIcon',{attrs:{"icon":"right"}})],1),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":"Go to the last page","disabled":_vm.page === _vm.pageCount},on:{"click":function($event){return _vm.choosePage('last')}}},[_c('ChecIcon',{attrs:{"icon":"double-right"}})],1)]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.limitOptions.length > 1),expression:"limitOptions.length > 1"}],staticClass:"chec-per-page-control"},[_c('span',{staticClass:"chec-per-page-control__label"},[_vm._v("Showing")]),_vm._l((_vm.limitOptions),function(option){return _c('button',{key:option,staticClass:"chec-per-page-control__option",class:{'chec-per-page-control__option--active': option === _vm.pageSize},attrs:{"title":("Show " + option + " items per page")},on:{"click":function($event){return _vm.choosePageSize(option)}}},[_vm._v(" "+_vm._s(option)+" ")])})],2)])}
 var ChecPaginatevue_type_template_id_5d4a7e26_staticRenderFns = []
 
@@ -22960,7 +22850,7 @@ var ChecPaginate_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecPaginate = (ChecPaginate_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecProgressBar.vue?vue&type=template&id=6b98a2f8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecProgressBar.vue?vue&type=template&id=6b98a2f8&
 var ChecProgressBarvue_type_template_id_6b98a2f8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"progress"},[_c('div',{staticClass:"progress__bar",style:({width: (_vm.percentage + "%")}),attrs:{"role":"progressbar","aria-valuenow":_vm.percentage,"aria-valuemin":"0","aria-valuemax":"100"}})])}
 var ChecProgressBarvue_type_template_id_6b98a2f8_staticRenderFns = []
 
@@ -23023,7 +22913,7 @@ var ChecProgressBar_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecProgressBar = (ChecProgressBar_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=3cf826de&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=3cf826de&
 var ChecSegmentedButtonsGroupvue_type_template_id_3cf826de_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"segmented-btns-group"},_vm._l((_vm.resolvedOptions),function(ref){
 var label = ref.label;
 var optionValue = ref.value;
@@ -23033,7 +22923,7 @@ var ChecSegmentedButtonsGroupvue_type_template_id_3cf826de_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=3cf826de&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButton.vue?vue&type=template&id=33242543&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButton.vue?vue&type=template&id=33242543&
 var ChecSegmentedButtonvue_type_template_id_33242543_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"segmented-btn",class:{ 'segmented-btn--active': _vm.active },attrs:{"type":"button","value":_vm.value},on:{"click":_vm.handleClick,"keydown":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"right",39,$event.key,["Right","ArrowRight"])){ return null; }if('button' in $event && $event.button !== 2){ return null; }return _vm.onKeyDownRight($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"left",37,$event.key,["Left","ArrowLeft"])){ return null; }if('button' in $event && $event.button !== 0){ return null; }return _vm.onKeyDownLeft($event)}]}},[_vm._t("default")],2)}
 var ChecSegmentedButtonvue_type_template_id_33242543_staticRenderFns = []
 
@@ -23247,7 +23137,7 @@ var ChecSegmentedButtonsGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecSegmentedButtonsGroup = (ChecSegmentedButtonsGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSwitch.vue?vue&type=template&id=2ea6e695&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSwitch.vue?vue&type=template&id=2ea6e695&scoped=true&
 var ChecSwitchvue_type_template_id_2ea6e695_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-switch",class:{ 'chec-switch--toggled' : _vm.toggled }},[_c('div',{staticClass:"chec-switch__container",on:{"click":function($event){$event.stopPropagation();return _vm.handleToggle($event)}}},[_c('div',{staticClass:"chec-switch__thumb"},[_c('input',_vm._b({staticClass:"chec-switch__input",attrs:{"type":"checkbox"}},'input',{ id: _vm.id, name: _vm.name, disabled: _vm.disabled, checked: _vm.toggled, required: _vm.required },false))])]),(_vm.$slots.default)?_c('label',{staticClass:"chec-switch__label",attrs:{"for":_vm.id},on:{"click":function($event){$event.preventDefault();return _vm.handleToggle($event)}}},[_vm._t("default")],2):_vm._e()])}
 var ChecSwitchvue_type_template_id_2ea6e695_scoped_true_staticRenderFns = []
 
@@ -23354,7 +23244,7 @@ var ChecSwitch_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecSwitch = (ChecSwitch_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=template&id=9bb2e7b8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=template&id=9bb2e7b8&
 var ChecTabvue_type_template_id_9bb2e7b8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"chec-tab",class:{ 'chec-tab--active': _vm.active },attrs:{"disabled":_vm.disabled},on:{"click":_vm.handleClick}},[_vm._t("default",null,null,{ active: _vm.active, disabled: _vm.disabled })],2)}
 var ChecTabvue_type_template_id_9bb2e7b8_staticRenderFns = []
 
@@ -23428,7 +23318,7 @@ var ChecTab_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTab = (ChecTab_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard/InnerBlock.vue?vue&type=template&id=8e092560&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard/InnerBlock.vue?vue&type=template&id=8e092560&
 var InnerBlockvue_type_template_id_8e092560_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card-inner-block"},[_c('div',[_c(_vm.titleTag,{tag:"component",staticClass:"card-inner-block__title"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),_vm._t("default")],2),(_vm.actionText || _vm.$slots.action)?_c('div',[_vm._t("action"),(!_vm.$slots.action)?_c('BaseButton',{staticClass:"card-inner-block__action",attrs:{"variant":"round","color":_vm.actionColor},on:{"click":_vm.emitAction},scopedSlots:_vm._u([(_vm.$slots.actionIcon)?{key:"icon",fn:function(){return [_vm._t("actionIcon")]},proxy:true}:null],null,true)},[_vm._v(" "+_vm._s(_vm.actionText)+" ")]):_vm._e()],2):_vm._e()])}
 var InnerBlockvue_type_template_id_8e092560_staticRenderFns = []
 
@@ -23540,16 +23430,15 @@ var InnerBlock_component = normalizeComponent(
 )
 
 /* harmony default export */ var InnerBlock = (InnerBlock_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac1b010-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=template&id=e9b12052&
-var PasswordFieldvue_type_template_id_e9b12052_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"password-field"},[_c('TextField',_vm._b({attrs:{"type":_vm.fieldType,"action-label":_vm.showHideText},on:{"action-click":_vm.toggleShowPassword,"input":function (e) { return _vm.$emit('input', e); }}},'TextField',Object.assign({}, _vm.$attrs, _vm.textFieldProps),false)),(_vm.showPasswordStrength)?_c('div',{staticClass:"password-field__strength",class:_vm.strengthClass}):_vm._e()],1)}
-var PasswordFieldvue_type_template_id_e9b12052_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=template&id=6fdb9603&
+var PasswordFieldvue_type_template_id_6fdb9603_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"password-field"},[_c('TextField',_vm._b({attrs:{"type":_vm.fieldType,"action-label":_vm.showHideText},on:{"action-click":_vm.toggleShowPassword,"input":function (e) { return _vm.$emit('input', e); }}},'TextField',Object.assign({}, _vm.$attrs, _vm.textFieldProps),false)),(_vm.showPasswordStrength)?_c('div',{staticClass:"password-field__strength",class:_vm.strengthClass}):_vm._e()],1)}
+var PasswordFieldvue_type_template_id_6fdb9603_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PasswordField.vue?vue&type=template&id=e9b12052&
+// CONCATENATED MODULE: ./src/components/PasswordField.vue?vue&type=template&id=6fdb9603&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=script&lang=js&
 
-//
 //
 //
 //
@@ -23712,8 +23601,8 @@ var PasswordFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("6a04")
 
 var PasswordField_component = normalizeComponent(
   components_PasswordFieldvue_type_script_lang_js_,
-  PasswordFieldvue_type_template_id_e9b12052_render,
-  PasswordFieldvue_type_template_id_e9b12052_staticRenderFns,
+  PasswordFieldvue_type_template_id_6fdb9603_render,
+  PasswordFieldvue_type_template_id_6fdb9603_staticRenderFns,
   false,
   null,
   null,
