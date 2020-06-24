@@ -18,5 +18,4 @@ const makeVariants = (candidateOptions) => {
   );
 };
 
-
 export default makeVariants;
