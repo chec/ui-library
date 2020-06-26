@@ -5,7 +5,7 @@
 ## Licensing
 
 Note that this project is not licensed intentionally. At the moment you will require explicit permission from Chec 
-Platform Ltd. to utilise this repo in your own projects. Please let us know if you're interested.
+Platform Inc. to utilise this repo in your own projects. Please let us know if you're interested.
 
 In the future we may add a license. 
 
