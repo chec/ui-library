@@ -1,6 +1,14 @@
 # Vue.js component UI library using Tailwindcss by Chec
 
 [View the Storybook app](https://chec-ui.netlify.app/)
+
+## Licensing
+
+Note that this project is not licensed intentionally. At the moment you will require explicit permission from Chec 
+Platform Ltd. to utilise this repo in your own projects. Please let us know if you're interested.
+
+In the future we may add a license. 
+
 ## Installation & Usage
 
 You can use either `yarn` or `npm` to install the `ui-library` and it's dependencies from this Github repo.
@@ -19,26 +27,23 @@ npm install github:chec/ui-library
 
 1. Create a [`tailwind.config.js`](https://tailwindcss.com/docs/configuration/#app) file at the root of the app exporting the `ui-library`'s custom `tailwind.config.js` from it.
 
+```js
+module.exports = require('@chec/ui-library/tailwind.config');
+```
 
-    ```js
-    // Example `tailwind.config.js` file
+2. Inject the `ui-library`'s compiled css and Tailwind.css file which includes the @tailwind directives to include the `ui-library` configured Tailwindcss styles/utilities. 
 
-    module.exports = require('@chec/ui-library/tailwind.config');
-    ```
-2. Inject the `ui-library`'s compiled css and Tailwind.css file—which includes the @tailwind directives to include the `ui-library` configured Tailwindcss styles/utilities. 
-    ```css
-    /* example tailwind.css */
+```css
+/*
+ui-library.css compiled css
+*/
+@import '~@chec/ui-library/dist/ui-library.css';
 
-    /*
-    ui-library.css compiled css
-    */
-    @import '~@chec/ui-library/dist/ui-library.css';
-
-    /*
-    tailwind.css, uses the @tailwind directive to inject Tailwind's base, components, and utilities styles into your CSS: 
-    */  
-    @import '~@chec/ui-library/src/assets/tailwind.css';
-    ```
+/*
+tailwind.css, uses the @tailwind directive to inject Tailwind's base, components, and utilities styles into your CSS: 
+*/  
+@import '~@chec/ui-library/src/assets/tailwind.css';
+```
 
 ### Utilizing Sass mixins
 
