@@ -167,3 +167,27 @@ don't provide a sort at all, it will default to 100.**
     }}
   </Story>
 </Preview>
+
+## With external link
+<Preview>
+  <Story
+    name="With external link"
+    decorators={[ StoryRouter({}, { initialEntry: '/orders/55555', routes })]}>
+    {{
+      components: {
+        ChecNavigation
+      },
+      data() {
+        return { links: [{
+          label: 'Spaces',
+          href: 'https://google.com',
+          iconName: 'spaces',
+        }] };
+      },
+      template: `
+      <div class="w-full">
+        <ChecNavigation :additional-links="links" />
+      </div>`
+    }}
+  </Story>
+</Preview>

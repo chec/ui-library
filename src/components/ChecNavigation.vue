@@ -3,21 +3,21 @@
     <ChecLogo class="chec-navigation__logo" />
     <ul class="chec-navigation__links-list">
       <li
-        v-for="({ meta, path }, i) in navItems"
+        v-for="({ component, bind, label, iconName }, i) in navItems"
         :key="i"
       >
-        <router-link :to="path" class="chec-navigation__link" active-class="chec-navigation__link--active">
+        <component :is="component" v-bind="bind" class="chec-navigation__link">
           <div class="chec-navigation__icon-wrapper">
             <ChecNavIcon
-              :icon="meta.navItem.iconName"
+              :icon="iconName"
             />
           </div>
           <span>
             {{
-              meta.navItem.label
+              label
             }}
           </span>
-        </router-link>
+        </component>
       </li>
     </ul>
     <div v-if="$slots.default" class="chec-navigation__bottom-content">
@@ -41,6 +41,10 @@ export default {
      * Expands the nav by default
      */
     expanded: Boolean,
+    additionalLinks: {
+      type: Array,
+      default: () => [],
+    },
   },
   computed: {
     navItems() {
@@ -49,15 +53,36 @@ export default {
       }
       return this.$router.options.routes
         .filter(route => route.meta && route.meta.navItem)
+        .map(({ meta: { navItem: { sort, label, iconName } }, path }) => ({
+          path,
+          sort,
+          label,
+          iconName,
+        }))
+        .concat(this.additionalLinks.filter(link => Boolean(link.href)))
         // Sort the routes by their sort order, if they're provided
         .sort((a, b) => {
-          const sortA = a.meta.navItem.sort || 100;
-          const sortB = b.meta.navItem.sort || 100;
+          const sortA = a.sort || 100;
+          const sortB = b.sort || 100;
           if (sortA < sortB) {
             return -1;
           }
           return sortA > sortB ? 1 : 0;
-        });
+        })
+        .map((route) => ({
+          ...route,
+          component: route.path ? 'router-link' : 'a',
+          bind: route.path
+            ? {
+              to: route.path,
+              'active-class': 'chec-navigation__link--active',
+            }
+            : {
+              href: route.href,
+              target: '_blank',
+              rel: 'noopener',
+            },
+        }));
     },
   },
 };
