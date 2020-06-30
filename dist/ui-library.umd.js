@@ -1285,6 +1285,40 @@ module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 /***/ }),
 
+/***/ "3496":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M4 12.389V19a2 2 0 002 2h4v-4a2 2 0 014 0v4h4a2 2 0 002-2v-6.611c-.28.072-.578.111-.886.111h-1.56a3.5 3.5 0 01-1.8-.499l-.997-.597a.5.5 0 00-.514 0l-.442.265a3.5 3.5 0 01-3.602 0l-.442-.265a.5.5 0 00-.514 0L8.247 12a3.5 3.5 0 01-1.801.499h-1.56c-.309 0-.605-.039-.886-.111zM17.614 3H6.386a2 2 0 00-1.873 1.298l-1.5 4A2.002 2.002 0 004 10.795c.264.13.564.205.886.205h1.56a2 2 0 001.029-.285l.996-.598a2 2 0 012.058 0l.442.266a2 2 0 002.058 0l.442-.266a2 2 0 012.058 0l.996.598a2 2 0 001.029.285h1.56a2 2 0 001.873-2.702l-1.5-4A2 2 0 0017.614 3z","fill":"#41556C"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "35a1":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17225,6 +17259,10 @@ var ic_settings_default = /*#__PURE__*/__webpack_require__.n(ic_settings);
 var ic_categories = __webpack_require__("378b");
 var ic_categories_default = /*#__PURE__*/__webpack_require__.n(ic_categories);
 
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-spaces.svg
+var ic_spaces = __webpack_require__("3496");
+var ic_spaces_default = /*#__PURE__*/__webpack_require__.n(ic_spaces);
+
 // EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-standard.svg
 var ic_standard = __webpack_require__("2bd0");
 var ic_standard_default = /*#__PURE__*/__webpack_require__.n(ic_standard);
@@ -17300,6 +17338,7 @@ var ic_lrg_enterprise_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_enterp
 
 
 
+
  // Marketing icons imports
 
 
@@ -17342,7 +17381,8 @@ var navIcons = {
   developers: ic_developers_default.a,
   logs: ic_logs_default.a,
   settings: ic_settings_default.a,
-  categories: ic_categories_default.a
+  categories: ic_categories_default.a,
+  spaces: ic_spaces_default.a
 };
 var mIcons = {
   standard: ic_standard_default.a,
@@ -20464,15 +20504,17 @@ var ChecMarketingIcon_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecMarketingIcon = (ChecMarketingIcon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=53633dce&
-var ChecNavigationvue_type_template_id_53633dce_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"chec-navigation",class:{ 'chec-navigation--expanded': _vm.expanded }},[_c('ChecLogo',{staticClass:"chec-navigation__logo"}),_c('ul',{staticClass:"chec-navigation__links-list"},_vm._l((_vm.navItems),function(ref,i){
-var meta = ref.meta;
-var path = ref.path;
-return _c('li',{key:i},[_c('router-link',{staticClass:"chec-navigation__link",attrs:{"to":path,"active-class":"chec-navigation__link--active"}},[_c('div',{staticClass:"chec-navigation__icon-wrapper"},[_c('ChecNavIcon',{attrs:{"icon":meta.navItem.iconName}})],1),_c('span',[_vm._v(" "+_vm._s(meta.navItem.label)+" ")])])],1)}),0),(_vm.$slots.default)?_c('div',{staticClass:"chec-navigation__bottom-content"},[_vm._t("default")],2):_vm._e()],1)}
-var ChecNavigationvue_type_template_id_53633dce_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=b37506ac&
+var ChecNavigationvue_type_template_id_b37506ac_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"chec-navigation",class:{ 'chec-navigation--expanded': _vm.expanded }},[_c('ChecLogo',{staticClass:"chec-navigation__logo"}),_c('ul',{staticClass:"chec-navigation__links-list"},_vm._l((_vm.navItems),function(ref,i){
+var component = ref.component;
+var bind = ref.bind;
+var label = ref.label;
+var iconName = ref.iconName;
+return _c('li',{key:i},[_c(component,_vm._b({tag:"component",staticClass:"chec-navigation__link"},'component',bind,false),[_c('div',{staticClass:"chec-navigation__icon-wrapper"},[_c('ChecNavIcon',{attrs:{"icon":iconName}})],1),_c('span',[_vm._v(" "+_vm._s(label)+" ")])])],1)}),0),(_vm.$slots.default)?_c('div',{staticClass:"chec-navigation__bottom-content"},[_vm._t("default")],2):_vm._e()],1)}
+var ChecNavigationvue_type_template_id_b37506ac_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=template&id=53633dce&
+// CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=template&id=b37506ac&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavIcon.vue?vue&type=script&lang=js&
 
@@ -20519,6 +20561,9 @@ var ChecNavIcon_component = normalizeComponent(
 /* harmony default export */ var ChecNavIcon = (ChecNavIcon_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=script&lang=js&
 
+
+
+
 //
 //
 //
@@ -20559,7 +20604,13 @@ var ChecNavIcon_component = normalizeComponent(
     /**
      * Expands the nav by default
      */
-    expanded: Boolean
+    expanded: Boolean,
+    additionalLinks: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    }
   },
   computed: {
     navItems: function navItems() {
@@ -20569,16 +20620,42 @@ var ChecNavIcon_component = normalizeComponent(
 
       return this.$router.options.routes.filter(function (route) {
         return route.meta && route.meta.navItem;
-      }) // Sort the routes by their sort order, if they're provided
+      }).map(function (_ref) {
+        var _ref$meta$navItem = _ref.meta.navItem,
+            sort = _ref$meta$navItem.sort,
+            label = _ref$meta$navItem.label,
+            iconName = _ref$meta$navItem.iconName,
+            path = _ref.path;
+        return {
+          path: path,
+          sort: sort,
+          label: label,
+          iconName: iconName
+        };
+      }).concat(this.additionalLinks.filter(function (link) {
+        return Boolean(link.href);
+      })) // Sort the routes by their sort order, if they're provided
       .sort(function (a, b) {
-        var sortA = a.meta.navItem.sort || 100;
-        var sortB = b.meta.navItem.sort || 100;
+        var sortA = a.sort || 100;
+        var sortB = b.sort || 100;
 
         if (sortA < sortB) {
           return -1;
         }
 
         return sortA > sortB ? 1 : 0;
+      }).map(function (route) {
+        return _objectSpread2(_objectSpread2({}, route), {}, {
+          component: route.path ? 'router-link' : 'a',
+          bind: route.path ? {
+            to: route.path,
+            'active-class': 'chec-navigation__link--active'
+          } : {
+            href: route.href,
+            target: '_blank',
+            rel: 'noopener'
+          }
+        });
       });
     }
   }
@@ -20599,8 +20676,8 @@ var ChecNavigationvue_type_style_index_0_lang_scss_ = __webpack_require__("3c3d"
 
 var ChecNavigation_component = normalizeComponent(
   components_ChecNavigationvue_type_script_lang_js_,
-  ChecNavigationvue_type_template_id_53633dce_render,
-  ChecNavigationvue_type_template_id_53633dce_staticRenderFns,
+  ChecNavigationvue_type_template_id_b37506ac_render,
+  ChecNavigationvue_type_template_id_b37506ac_staticRenderFns,
   false,
   null,
   null,
