@@ -20495,17 +20495,17 @@ var ChecMarketingIcon_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecMarketingIcon = (ChecMarketingIcon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=4ebb3788&
-var ChecNavigationvue_type_template_id_4ebb3788_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"chec-navigation",class:{ 'chec-navigation--expanded': _vm.expanded }},[_c('ChecLogo',{staticClass:"chec-navigation__logo"}),_c('ul',{staticClass:"chec-navigation__links-list"},_vm._l((_vm.navItems),function(ref,i){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9ed4d9e4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=23653c4b&
+var ChecNavigationvue_type_template_id_23653c4b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"chec-navigation",class:_vm.navClasses,on:{"mouseover":function($event){_vm.hovered = true},"mouseleave":function($event){_vm.hovered = false}}},[_c('ChecLogo',{staticClass:"chec-navigation__logo"}),_c('ul',{staticClass:"chec-navigation__links-list"},_vm._l((_vm.navItems),function(ref,i){
 var component = ref.component;
 var bind = ref.bind;
 var label = ref.label;
 var iconName = ref.iconName;
 return _c('li',{key:i},[_c(component,_vm._b({tag:"component",staticClass:"chec-navigation__link"},'component',bind,false),[_c('div',{staticClass:"chec-navigation__icon-wrapper"},[_c('ChecNavIcon',{attrs:{"icon":iconName}})],1),_c('span',[_vm._v(" "+_vm._s(label)+" ")])])],1)}),0),(_vm.$slots.default)?_c('div',{staticClass:"chec-navigation__bottom-content"},[_vm._t("default")],2):_vm._e()],1)}
-var ChecNavigationvue_type_template_id_4ebb3788_staticRenderFns = []
+var ChecNavigationvue_type_template_id_23653c4b_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=template&id=4ebb3788&
+// CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=template&id=23653c4b&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavIcon.vue?vue&type=script&lang=js&
 
@@ -20583,6 +20583,11 @@ var ChecNavIcon_component = normalizeComponent(
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ var ChecNavigationvue_type_script_lang_js_ = ({
@@ -20603,7 +20608,17 @@ var ChecNavIcon_component = normalizeComponent(
       }
     }
   },
+  data: function data() {
+    return {
+      hovered: false
+    };
+  },
   computed: {
+    navClasses: function navClasses() {
+      return {
+        'chec-navigation--expanded': this.expanded || this.hovered
+      };
+    },
     navItems: function navItems() {
       if (!this.$router.options) {
         throw new Error('Could not locate vue-router instance from within <ChecNavigation>');
@@ -20667,8 +20682,8 @@ var ChecNavigationvue_type_style_index_0_lang_scss_ = __webpack_require__("3c3d"
 
 var ChecNavigation_component = normalizeComponent(
   components_ChecNavigationvue_type_script_lang_js_,
-  ChecNavigationvue_type_template_id_4ebb3788_render,
-  ChecNavigationvue_type_template_id_4ebb3788_staticRenderFns,
+  ChecNavigationvue_type_template_id_23653c4b_render,
+  ChecNavigationvue_type_template_id_23653c4b_staticRenderFns,
   false,
   null,
   null,
