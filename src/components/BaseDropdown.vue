@@ -412,7 +412,7 @@ export default {
   }
 
   &__base-popover {
-    @apply overflow-scroll;
+    @apply overflow-y-auto overflow-x-hidden;
 
     max-height: 50vh;
   }
