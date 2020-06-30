@@ -124,7 +124,7 @@ export default {
   }
 
   &__link {
-    @apply relative flex items-center justify-between overflow-hidden w-full rounded;
+    @apply relative flex items-center justify-between overflow-hidden w-full rounded whitespace-no-wrap;
 
     span {
       @apply flex-grow w-0 opacity-0 text-sm text-gray-600 duration-100;
