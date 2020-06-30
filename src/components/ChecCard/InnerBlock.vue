@@ -82,5 +82,9 @@ export default {
   &__title {
     @apply caps-xs mb-2 text-gray-500;
   }
+
+  &__action {
+    @apply break-normal;
+  }
 }
 </style>
