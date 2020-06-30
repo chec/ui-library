@@ -1,5 +1,10 @@
 <template>
-  <nav class="chec-navigation" :class="{ 'chec-navigation--expanded': expanded }">
+  <nav
+    class="chec-navigation"
+    :class="navClasses"
+    @mouseover="hovered = true"
+    @mouseleave="hovered = false"
+  >
     <ChecLogo class="chec-navigation__logo" />
     <ul class="chec-navigation__links-list">
       <li
@@ -46,7 +51,17 @@ export default {
       default: () => [],
     },
   },
+  data() {
+    return {
+      hovered: false,
+    };
+  },
   computed: {
+    navClasses() {
+      return {
+        'chec-navigation--expanded': this.expanded || this.hovered,
+      };
+    },
     navItems() {
       if (!this.$router.options) {
         throw new Error('Could not locate vue-router instance from within <ChecNavigation>');
@@ -134,7 +149,8 @@ export default {
     }
   }
 
-  &--expanded {
+  &--expanded,
+  &:hover {
     width: 15rem;
 
     .chec-navigation__link {
@@ -142,10 +158,6 @@ export default {
         @apply w-auto opacity-100;
       }
     }
-  }
-
-  &:hover {
-    @extend .chec-navigation--expanded;
   }
 }
 </style>
