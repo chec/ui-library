@@ -72,6 +72,7 @@ export default {
 
   &__text {
     @apply flex-grow font-normal text-white text-sm text-center;
+
     svg {
       @apply inline h-4 w-4;
     }
@@ -79,8 +80,9 @@ export default {
 
   &__close-icon {
     @apply ml-4 p-2 bg-transparent rounded text-white cursor-pointer outline-none;
-    margin-top: -2rem;
     margin-bottom: -2rem;
+    margin-top: -2rem;
+
     > svg {
       @apply h-4 w-4;
     }
@@ -101,50 +103,62 @@ export default {
   &--info {
     @apply bg-blue-500 border border-blue-400;
   }
-  &--inline{
+
+  &--inline {
     @apply rounded;
-    .alert__close-icon{
+
+    .alert__close-icon {
       @apply text-gray-600;
     }
-    .alert__text{
+
+    .alert__text {
       @apply text-gray-600 text-left;
-      svg{
+
+      svg {
         @apply h-3 w-3 mr-2 relative;
         top: -1px;
       }
     }
-    &.alert--success{
+
+    &.alert--success {
       @apply bg-green-100;
-      .alert__text{
-        svg{
-          @apply text-green-500
+
+      .alert__text {
+        svg {
+          @apply text-green-500;
         }
       }
 
     }
-    &.alert--error{
+
+    &.alert--error {
       @apply bg-red-100;
-      .alert__text{
-        svg{
-          @apply text-red-500
+
+      .alert__text {
+        svg {
+          @apply text-red-500;
         }
       }
 
     }
-    &.alert--warning{
+
+    &.alert--warning {
       @apply bg-orange-100;
-      .alert__text{
-        svg{
-          @apply text-orange-500
+
+      .alert__text {
+        svg {
+          @apply text-orange-500;
         }
       }
 
     }
-    &.alert--info{
+
+    &.alert--info {
       @apply bg-gray-100;
-      .alert__text{
-        svg{
-          @apply text-gray-500
+
+      .alert__text {
+        svg {
+          @apply text-gray-500;
         }
       }
 
