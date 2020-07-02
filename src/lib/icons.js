@@ -16,6 +16,10 @@ import IcMinus from '../assets/svgs/UiIcons/ic-minus.svg';
 import IcCopy from '../assets/svgs/UiIcons/ic-copy.svg';
 import IcCalendar from '../assets/svgs/UiIcons/ic-calendar.svg';
 import IcRefresh from '../assets/svgs/UiIcons/ic-refresh.svg';
+import IcCloseSquare from '../assets/svgs/UiIcons/ic-close-square.svg';
+import IcCheckSquare from '../assets/svgs/UiIcons/ic-check-square.svg';
+import IcExclamationSquare from '../assets/svgs/UiIcons/ic-exclamation-square.svg';
+import IcInfoSquare from '../assets/svgs/UiIcons/ic-info-square.svg';
 import ChecLogo from '../assets/svgs/chec-logo.svg';
 // Nav icons imports
 import IcOrders from '../assets/svgs/NavIcons/ic-orders.svg';
@@ -59,6 +63,10 @@ export const uiIcons = {
   copy: IcCopy,
   calendar: IcCalendar,
   refresh: IcRefresh,
+  'close-square': IcCloseSquare,
+  'check-square': IcCheckSquare,
+  'exclamation-square': IcExclamationSquare,
+  'info-square': IcInfoSquare,
   chec: ChecLogo,
 };
 

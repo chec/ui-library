@@ -9,7 +9,7 @@
           <slot />
         </span>
       </div>
-      <button type="button" class="alert__close-icon">
+      <button v-if="!disableClose" type="button" class="alert__close-icon">
         <SvgCloseIcon @click="onClose" />
       </button>
     </div>
@@ -35,10 +35,18 @@ export default {
         return ['success', 'error', 'warning', 'info'].includes(value);
       },
     },
+    /**
+     * Enable Inline version.
+     */
+    inline: Boolean,
+    /**
+     * Disable close button.
+     */
+    disableClose: Boolean,
   },
   computed: {
     classObject() {
-      return `alert--${this.variant}`;
+      return `alert--${this.variant} ${this.inline ? 'alert--inline' : ''} ${this.icon ? 'alert--icon' : ''}`;
     },
   },
   methods: {
@@ -54,9 +62,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .alert {
-  @apply flex font-lato justify-between items-center bg-gray-200 p-4 w-full shadow-md z-20;
+  @apply flex font-lato justify-between items-center bg-gray-200 py-4 px-4 w-full shadow-md z-20;
 
   &__content-container {
     @apply flex flex-grow items-center;
@@ -64,11 +72,15 @@ export default {
 
   &__text {
     @apply flex-grow font-normal text-white text-sm text-center;
+    svg {
+      @apply inline h-4 w-4;
+    }
   }
 
   &__close-icon {
     @apply ml-4 p-2 bg-transparent rounded text-white cursor-pointer outline-none;
-
+    margin-top: -2rem;
+    margin-bottom: -2rem;
     > svg {
       @apply h-4 w-4;
     }
@@ -88,6 +100,55 @@ export default {
 
   &--info {
     @apply bg-blue-500 border border-blue-400;
+  }
+  &--inline{
+    @apply rounded;
+    .alert__close-icon{
+      @apply text-gray-600;
+    }
+    .alert__text{
+      @apply text-gray-600 text-left;
+      svg{
+        @apply h-3 w-3 mr-2 relative;
+        top: -1px;
+      }
+    }
+    &.alert--success{
+      @apply bg-green-100;
+      .alert__text{
+        svg{
+          @apply text-green-500
+        }
+      }
+
+    }
+    &.alert--error{
+      @apply bg-red-100;
+      .alert__text{
+        svg{
+          @apply text-red-500
+        }
+      }
+
+    }
+    &.alert--warning{
+      @apply bg-orange-100;
+      .alert__text{
+        svg{
+          @apply text-orange-500
+        }
+      }
+
+    }
+    &.alert--info{
+      @apply bg-gray-100;
+      .alert__text{
+        svg{
+          @apply text-gray-500
+        }
+      }
+
+    }
   }
 }
 

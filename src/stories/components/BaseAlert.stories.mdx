@@ -1,7 +1,8 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
-import { text, select, withKnobs } from '@storybook/addon-knobs';
+import { text, select, boolean, withKnobs } from '@storybook/addon-knobs';
 import BaseAlert from '../../components/BaseAlert.vue';
+import ChecIcon from '../../components/ChecIcon.vue';
 
 <Meta title="Components/Alert" component={BaseAlert} />
 
@@ -13,7 +14,8 @@ import BaseAlert from '../../components/BaseAlert.vue';
   <Story name="Default">
     {{
       components: {
-        BaseAlert
+        BaseAlert,
+        ChecIcon,
       },
       data() {
         return {
@@ -34,14 +36,22 @@ import BaseAlert from '../../components/BaseAlert.vue';
         text: {
           default: text('Text to Alert', 'Text to alert!'),
         },
+        showIcon: {
+          default: boolean('Show Icon', false),
+        },
+        disableClose: {
+          default: boolean('Disable Close Button', false),
+        },
       },
       template: `
         <div class="mx-auto px-16 pt-6">
           <BaseAlert
             v-show="!closed"
             :variant="variant"
+            :disable-close="disableClose"
             @close="close()"
           >
+            <ChecIcon v-if="showIcon" icon="chec"/>
             Text to Alert!
           </BaseAlert>
         </div>`
@@ -88,6 +98,79 @@ import BaseAlert from '../../components/BaseAlert.vue';
             :variant="variant"
             @close="close(variant)"
           >
+            {{content(variant)}}
+          </BaseAlert>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# Inline Variants
+
+<Preview>
+  <Story name="Inline Variants">
+    {{
+      components: {
+        BaseAlert,
+        ChecIcon,
+      },
+      data() {
+        return {
+          variants: ['success', 'error', 'warning', 'info'],
+          closed: [],
+        };
+      },
+      methods: {
+        close(variant) {
+          if (!this.isClosed(variant)) {
+            this.closed.push(variant);
+            setTimeout(() => {
+              this.closed.splice(this.closed.indexOf(variant), 1);
+            }, 3000)
+          }
+        },
+        isClosed(variant) {
+          return this.closed.includes(variant);
+        },
+        content(variant) {
+          return `${variant.substring(0, 1).toUpperCase()}${variant.substring(1)} variant`;
+        },
+        icon(variant) {
+          if (variant == 'success') {
+            return 'check-square';
+          }
+          if (variant == 'error') {
+            return 'close-square';
+          }
+          if (variant == 'warning') {
+            return 'exclamation-square';
+          }
+          if (variant == 'info') {
+            return 'info-square';
+          }
+          return 'info-square';
+        }
+      },
+      props: {
+        showIcon: {
+          default: boolean('Show Icon', true),
+        },
+        disableClose: {
+          default: boolean('Disable Close Button', true),
+        },
+      },
+      template: `
+        <div class="mx-auto px-16 pt-6">
+          <BaseAlert
+            v-for="variant in variants"
+            v-show="!isClosed(variant)"
+            class="my-6"
+            :variant="variant"
+            :inline="true"
+            :disable-close="disableClose"
+            @close="close(variant)"
+          >
+            <ChecIcon v-if="showIcon" :icon="icon(variant)"/>
             {{content(variant)}}
           </BaseAlert>
         </div>`
