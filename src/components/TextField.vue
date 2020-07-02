@@ -4,7 +4,6 @@
       v-if="multiline"
       v-bind="sharedInputProps"
       @input="handleInput"
-      @focus="handleFocus"
     />
     <input
       v-else
@@ -12,7 +11,6 @@
       :type="$attrs.type || 'text'"
       :style="{ 'padding-right': hasSlot && `${slotWidth}px` }"
       @input="handleInput"
-      @focus="handleFocus"
     >
     <label
       v-if="label"
@@ -189,9 +187,6 @@ export default {
        */
       this.autoGrow();
       this.$emit('input', $event.target.value, $event);
-    },
-    handleFocus($event) {
-      $event.target.select();
     },
     adjustSlotWidth() {
       this.hasSlot = this.$refs.rightContentSlot.clientWidth > 0;
