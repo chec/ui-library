@@ -88,12 +88,32 @@ export default {
 </script>
 
 <style lang="scss">
+@use 'sass:map';
 
 $alert-colors: (
   'success': 'green',
   'error': 'red',
   'warning': 'orange',
   'info': 'blue',
+);
+
+$alert-inline-colors: (
+  'success': (
+    'background': 'green',
+    'border': 'green-400',
+  ),
+  'error': (
+    'background': 'red',
+    'border': 'red-400',
+  ),
+  'warning': (
+    'background': 'orange',
+    'border': 'orange-400',
+  ),
+  'info': (
+    'background': 'gray',
+    'border': 'gray-300',
+  ),
 );
 
 .alert {
@@ -139,13 +159,13 @@ $alert-colors: (
         @apply h-3 w-3 mr-2;
       }
     }
-    @each $name, $color in $alert-colors {
+    @each $name, $color in $alert-inline-colors {
       &.alert--#{$name} {
-        @apply bg-#{$color}-100;
+        @apply bg-#{map.get($color, 'background')}-100 border-#{map.get($color, 'border')};
 
         .alert__text {
           svg {
-            @apply text-#{$color}-500;
+            @apply text-#{map.get($color, 'background')}-500;
           }
         }
       }

@@ -45,6 +45,9 @@ import ChecIcon from '../../components/ChecIcon.vue';
         disableClose: {
           default: boolean('Disable Close Button', false),
         },
+        showInline: {
+          default: boolean('Show Inline Version', false),
+        },
       },
       template: `
         <div class="mx-auto px-16 pt-6">
@@ -53,6 +56,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
             :variant="variant"
             :disable-close="disableClose"
             :show-icon="showIcon"
+            :inline="showInline"
             @close="close()"
           >
             <ChecIcon v-if="showSlotIcon" icon="chec"/>
