@@ -26,7 +26,6 @@ export default {
      */
     variant: {
       type: String,
-      default: 'sm',
       validator(value) {
         return ['sm', 'md', 'lg'].includes(value);
       },
@@ -53,9 +52,14 @@ export default {
 </script>
 
 <style lang="scss">
-.avatar {
-  @apply relative rounded-full bg-gray-400 bg-no-repeat bg-cover bg-center;
+@import './src/assets/mixins';
 
+.avatar {
+  @apply relative w-full rounded-full bg-gray-500 bg-no-repeat bg-cover bg-center;
+  /* apply aspect-ratio mixin */
+  @include aspect-ratio(1, 1);
+
+  /* style fall-back element */
   &__icon {
     @apply absolute inset-0 m-auto;
   }
