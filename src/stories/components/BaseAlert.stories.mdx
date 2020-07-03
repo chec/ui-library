@@ -36,8 +36,11 @@ import ChecIcon from '../../components/ChecIcon.vue';
         text: {
           default: text('Text to Alert', 'Text to alert!'),
         },
+        showSlotIcon: {
+          default: boolean('Show Icon Passed Through Slot', false),
+        },
         showIcon: {
-          default: boolean('Show Icon', false),
+          default: boolean('Show Alert Icon', false),
         },
         disableClose: {
           default: boolean('Disable Close Button', false),
@@ -49,9 +52,10 @@ import ChecIcon from '../../components/ChecIcon.vue';
             v-show="!closed"
             :variant="variant"
             :disable-close="disableClose"
+            :show-icon="showIcon"
             @close="close()"
           >
-            <ChecIcon v-if="showIcon" icon="chec"/>
+            <ChecIcon v-if="showSlotIcon" icon="chec"/>
             Text to Alert!
           </BaseAlert>
         </div>`
@@ -112,7 +116,6 @@ import ChecIcon from '../../components/ChecIcon.vue';
     {{
       components: {
         BaseAlert,
-        ChecIcon,
       },
       data() {
         return {
@@ -135,21 +138,6 @@ import ChecIcon from '../../components/ChecIcon.vue';
         content(variant) {
           return `${variant.substring(0, 1).toUpperCase()}${variant.substring(1)} variant`;
         },
-        icon(variant) {
-          if (variant == 'success') {
-            return 'check-square';
-          }
-          if (variant == 'error') {
-            return 'close-square';
-          }
-          if (variant == 'warning') {
-            return 'exclamation-square';
-          }
-          if (variant == 'info') {
-            return 'info-square';
-          }
-          return 'info-square';
-        }
       },
       props: {
         showIcon: {
@@ -157,6 +145,9 @@ import ChecIcon from '../../components/ChecIcon.vue';
         },
         disableClose: {
           default: boolean('Disable Close Button', true),
+        },
+        showIcon: {
+          default: boolean('Show Alert Icon', true),
         },
       },
       template: `
@@ -168,9 +159,9 @@ import ChecIcon from '../../components/ChecIcon.vue';
             :variant="variant"
             :inline="true"
             :disable-close="disableClose"
+            :show-icon="showIcon"
             @close="close(variant)"
           >
-            <ChecIcon v-if="showIcon" :icon="icon(variant)"/>
             {{content(variant)}}
           </BaseAlert>
         </div>`

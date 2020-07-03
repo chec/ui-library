@@ -6,6 +6,7 @@
           @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
         -->
         <span class="alert__text">
+          <ChecIcon v-if="showIcon" :icon="icon" />
           <slot />
         </span>
       </div>
@@ -17,12 +18,14 @@
 </template>
 
 <script>
+import ChecIcon from './ChecIcon.vue';
 import SvgCloseIcon from '../assets/svgs/close-icon.svg';
 
 export default {
   name: 'BaseAlert',
   components: {
     SvgCloseIcon,
+    ChecIcon,
   },
   props: {
     /**
@@ -43,10 +46,29 @@ export default {
      * Disable close button.
      */
     disableClose: Boolean,
+    /**
+     * Show the alert icon.
+     */
+    showIcon: Boolean,
   },
   computed: {
     classObject() {
       return `alert--${this.variant} ${this.inline ? 'alert--inline' : ''} ${this.icon ? 'alert--icon' : ''}`;
+    },
+    icon() {
+      if (this.variant === 'success') {
+        return 'check-square';
+      }
+      if (this.variant === 'error') {
+        return 'close-square';
+      }
+      if (this.variant === 'warning') {
+        return 'exclamation-square';
+      }
+      if (this.variant === 'info') {
+        return 'info-square';
+      }
+      return 'info-square';
     },
   },
   methods: {
@@ -63,6 +85,14 @@ export default {
 </script>
 
 <style lang="scss">
+
+$alert-colors: (
+  'success': 'green',
+  'error': 'red',
+  'warning': 'orange',
+  'info': 'blue',
+);
+
 .alert {
   @apply flex font-lato justify-between items-center bg-gray-200 py-4 px-4 w-full shadow-md z-20;
 
@@ -79,29 +109,16 @@ export default {
   }
 
   &__close-icon {
-    @apply ml-4 p-2 bg-transparent rounded text-white cursor-pointer outline-none;
-    margin-bottom: -2rem;
-    margin-top: -2rem;
+    @apply ml-4 -my-8 p-2 bg-transparent rounded text-white cursor-pointer outline-none;
 
     > svg {
       @apply h-4 w-4;
     }
   }
-
-  &--success {
-    @apply bg-green-500 border border-green-400;
-  }
-
-  &--error {
-    @apply bg-red-500 border border-red-400;
-  }
-
-  &--warning {
-    @apply bg-orange-500 border border-orange-400;
-  }
-
-  &--info {
-    @apply bg-blue-500 border border-blue-400;
+  @each $name, $color in $alert-colors {
+    &--#{$name} {
+      @apply bg-#{$color}-500 border border-#{$color}-400;
+    }
   }
 
   &--inline {
@@ -119,49 +136,16 @@ export default {
         top: -1px;
       }
     }
+    @each $name, $color in $alert-colors {
+      &.alert--#{$name} {
+        @apply bg-#{$color}-100;
 
-    &.alert--success {
-      @apply bg-green-100;
-
-      .alert__text {
-        svg {
-          @apply text-green-500;
+        .alert__text {
+          svg {
+            @apply text-#{$color}-500;
+          }
         }
       }
-
-    }
-
-    &.alert--error {
-      @apply bg-red-100;
-
-      .alert__text {
-        svg {
-          @apply text-red-500;
-        }
-      }
-
-    }
-
-    &.alert--warning {
-      @apply bg-orange-100;
-
-      .alert__text {
-        svg {
-          @apply text-orange-500;
-        }
-      }
-
-    }
-
-    &.alert--info {
-      @apply bg-gray-100;
-
-      .alert__text {
-        svg {
-          @apply text-gray-500;
-        }
-      }
-
     }
   }
 }
