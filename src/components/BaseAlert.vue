@@ -53,7 +53,10 @@ export default {
   },
   computed: {
     classObject() {
-      return `alert--${this.variant} ${this.inline ? 'alert--inline' : ''} ${this.icon ? 'alert--icon' : ''}`;
+      return [`alert--${this.variant}`, {
+        'alert--inline': this.inline,
+        'alert--icon': this.icon,
+      }];
     },
     icon() {
       if (this.variant === 'success') {
