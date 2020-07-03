@@ -1,7 +1,8 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
-import { text, select, withKnobs } from '@storybook/addon-knobs';
+import { text, select, boolean, withKnobs } from '@storybook/addon-knobs';
 import BaseAlert from '../../components/BaseAlert.vue';
+import ChecIcon from '../../components/ChecIcon.vue';
 
 <Meta title="Components/Alert" component={BaseAlert} />
 
@@ -13,7 +14,8 @@ import BaseAlert from '../../components/BaseAlert.vue';
   <Story name="Default">
     {{
       components: {
-        BaseAlert
+        BaseAlert,
+        ChecIcon,
       },
       data() {
         return {
@@ -34,14 +36,30 @@ import BaseAlert from '../../components/BaseAlert.vue';
         text: {
           default: text('Text to Alert', 'Text to alert!'),
         },
+        showSlotIcon: {
+          default: boolean('Show Icon Passed Through Slot', false),
+        },
+        showIcon: {
+          default: boolean('Show Alert Icon', false),
+        },
+        disableClose: {
+          default: boolean('Disable Close Button', false),
+        },
+        showInline: {
+          default: boolean('Show Inline Version', false),
+        },
       },
       template: `
         <div class="mx-auto px-16 pt-6">
           <BaseAlert
             v-show="!closed"
             :variant="variant"
+            :disable-close="disableClose"
+            :show-icon="showIcon"
+            :inline="showInline"
             @close="close()"
           >
+            <ChecIcon v-if="showSlotIcon" icon="chec"/>
             Text to Alert!
           </BaseAlert>
         </div>`
@@ -86,6 +104,66 @@ import BaseAlert from '../../components/BaseAlert.vue';
             v-show="!isClosed(variant)"
             class="my-6"
             :variant="variant"
+            @close="close(variant)"
+          >
+            {{content(variant)}}
+          </BaseAlert>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+# Inline Variants
+
+<Preview>
+  <Story name="Inline Variants">
+    {{
+      components: {
+        BaseAlert,
+      },
+      data() {
+        return {
+          variants: ['success', 'error', 'warning', 'info'],
+          closed: [],
+        };
+      },
+      methods: {
+        close(variant) {
+          if (!this.isClosed(variant)) {
+            this.closed.push(variant);
+            setTimeout(() => {
+              this.closed.splice(this.closed.indexOf(variant), 1);
+            }, 3000)
+          }
+        },
+        isClosed(variant) {
+          return this.closed.includes(variant);
+        },
+        content(variant) {
+          return `${variant.substring(0, 1).toUpperCase()}${variant.substring(1)} variant`;
+        },
+      },
+      props: {
+        showIcon: {
+          default: boolean('Show Icon', true),
+        },
+        disableClose: {
+          default: boolean('Disable Close Button', true),
+        },
+        showIcon: {
+          default: boolean('Show Alert Icon', true),
+        },
+      },
+      template: `
+        <div class="mx-auto px-16 pt-6">
+          <BaseAlert
+            v-for="variant in variants"
+            v-show="!isClosed(variant)"
+            class="my-6"
+            :variant="variant"
+            :inline="true"
+            :disable-close="disableClose"
+            :show-icon="showIcon"
             @close="close(variant)"
           >
             {{content(variant)}}
