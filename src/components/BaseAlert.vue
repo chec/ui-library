@@ -94,7 +94,7 @@ $alert-colors: (
 );
 
 .alert {
-  @apply flex font-lato justify-between items-center bg-gray-200 py-4 px-4 w-full shadow-md z-20;
+  @apply flex font-lato justify-between items-center bg-gray-200 py-4 px-4 w-full  z-20;
 
   &__content-container {
     @apply flex flex-grow items-center;
@@ -104,7 +104,8 @@ $alert-colors: (
     @apply flex-grow font-normal text-white text-sm text-center;
 
     svg {
-      @apply inline h-4 w-4;
+      @apply inline h-4 w-4 relative;
+      top: -1px;
     }
   }
 
@@ -132,8 +133,7 @@ $alert-colors: (
       @apply text-gray-600 text-left;
 
       svg {
-        @apply h-3 w-3 mr-2 relative;
-        top: -1px;
+        @apply h-3 w-3 mr-2;
       }
     }
     @each $name, $color in $alert-colors {
