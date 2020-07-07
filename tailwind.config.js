@@ -17,12 +17,11 @@ const fontSizes = {
 };
 module.exports = {
   purge: {
-    enabled: process.env.NODE_ENV === 'production',
     content: [
       './components/**/*.vue',
       './components/*.vue',
       './components/*.js',
-      './stories//.mdx',
+      './stories/**/*.mdx',
       './tailwind-plugins/**/*.js',
     ],
   },
