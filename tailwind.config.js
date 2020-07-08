@@ -17,13 +17,16 @@ const fontSizes = {
 };
 module.exports = {
   purge: {
-    enabled: true,
     content: [
       './components/**/*.vue',
       './components/*.vue',
       './components/*.js',
+      './stories/**/*.mdx',
       './tailwind-plugins/**/*.js',
     ],
+    options: {
+      whitelist: ['mx-auto', 'px-16', 'pt-6', 'py-16', 'flex', 'justify-center', 'p-16', 'py-8'],
+    }
   },
   theme: {
     fontFamily: {
