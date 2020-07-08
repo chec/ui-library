@@ -3,43 +3,6 @@ const plugin = require('tailwindcss/plugin');
 const checTablesPlugin = require('./tailwind-plugins/tables');
 const checTypeographyPlugin = require('./tailwind-plugins/typography');
 
-// eslint-disable-next-line max-len
-const whitelist = ['block', 'self-center', 'items-center', 'italic', 'absolute', 'pointer-events-none', 'invisible', 'dark-blue', 'hologram'];
-const whitelistPatterns = [
-  /[\w-/:]+(?<!:)/g,
-  /m/,
-  /mx/,
-  /my/,
-  /mt/,
-  /mb/,
-  /ml/,
-  /mr/,
-  /p/,
-  /px/,
-  /py/,
-  /pt/,
-  /w/,
-  /h/,
-  /max/,
-  /text/,
-  /caps/,
-  /justify/,
-  /bg/,
-  /flex/,
-  /font/,
-  /rounded/,
-  /space/,
-  /opacity/,
-  /bottom/,
-  /grid/,
-  /gap/,
-  /border/,
-  /primary/,
-  /gray/,
-  /bottom/,
-  /shadow/,
-];
-
 const fontSizes = {
   xxs: '.625rem',
   xs: '.75rem',
@@ -52,19 +15,16 @@ const fontSizes = {
   '4xl': '2rem',
   '5xl': '2.5rem',
 };
+
 module.exports = {
   purge: {
+    enabled: process.env.PURGE_ENABLED,
     content: [
       './components/**/*.vue',
       './components/*.vue',
       './components/*.js',
-      './stories/**/*.mdx',
       './tailwind-plugins/**/*.js',
     ],
-    options: {
-      whitelistPatterns: [whitelistPatterns],
-      whitelist: [whitelist],
-    },
   },
   theme: {
     fontFamily: {
