@@ -18,7 +18,7 @@ const fontSizes = {
 
 module.exports = {
   purge: {
-    enabled: process.env.PURGE_ENABLED,
+    enabled: Boolean(process.env.PURGE_ENABLED),
     content: [
       './components/**/*.vue',
       './components/*.vue',
