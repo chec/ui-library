@@ -27,12 +27,14 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         name: Install
         with:
-          cmd: install 
+          cmd: install
 
       - uses: borales/actions-yarn@v2.0.0
         name: Build
         with:
           cmd: build-lib
+        env:
+          PURGE_ENABLED: true
 
       - name: Commit
         id: commit

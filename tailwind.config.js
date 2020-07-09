@@ -15,7 +15,17 @@ const fontSizes = {
   '4xl': '2rem',
   '5xl': '2.5rem',
 };
+
 module.exports = {
+  purge: {
+    enabled: Boolean(process.env.PURGE_ENABLED),
+    content: [
+      './components/**/*.vue',
+      './components/*.vue',
+      './components/*.js',
+      './tailwind-plugins/**/*.js',
+    ],
+  },
   theme: {
     fontFamily: {
       lato: [
