@@ -37,6 +37,12 @@ import IcPro from '../assets/svgs/MIcons/ic-pro.svg';
 import IcRise from '../assets/svgs/MIcons/ic-rise.svg';
 import IcGrowth from '../assets/svgs/MIcons/ic-growth.svg';
 import IcEnterprise from '../assets/svgs/MIcons/ic-enterprise.svg';
+import IcColorStart from '../assets/svgs/MIcons/ic-start.svg';
+import IcColorCart from '../assets/svgs/MIcons/ic-cart.svg';
+import IcColorCheckout from '../assets/svgs/MIcons/ic-checkout.svg';
+import IcColorOrders from '../assets/svgs/MIcons/ic-orders.svg';
+import IcColorProducts from '../assets/svgs/MIcons/ic-products.svg';
+import IcColorCategories from '../assets/svgs/MIcons/ic-categories.svg';
 // Circle marketing icons imports
 import IcLrgStandard from '../assets/svgs/MIcons/ic-lrg-standard.svg';
 import IcLrgPlus from '../assets/svgs/MIcons/ic-lrg-plus.svg';
@@ -44,6 +50,22 @@ import IcLrgPro from '../assets/svgs/MIcons/ic-lrg-pro.svg';
 import IcLrgRise from '../assets/svgs/MIcons/ic-lrg-rise.svg';
 import IcLrgGrowth from '../assets/svgs/MIcons/ic-lrg-growth.svg';
 import IcLrgEnterprise from '../assets/svgs/MIcons/ic-lrg-enterprise.svg';
+import IcLrgBackend from '../assets/svgs/MIcons/ic-lrg-backend.svg';
+import IcLrgBusiness from '../assets/svgs/MIcons/ic-lrg-business.svg';
+import IcLrgCheckout from '../assets/svgs/MIcons/ic-lrg-checkout.svg';
+import IcLrgCode from '../assets/svgs/MIcons/ic-lrg-code.svg';
+import IcLrgControl from '../assets/svgs/MIcons/ic-lrg-control.svg';
+import IcLrgDesign from '../assets/svgs/MIcons/ic-lrg-design.svg';
+import IcLrgDials from '../assets/svgs/MIcons/ic-lrg-dials.svg';
+import IcLrgEmbed from '../assets/svgs/MIcons/ic-lrg-embed.svg';
+import IcLrgFrontend from '../assets/svgs/MIcons/ic-lrg-frontend.svg';
+import IcLrgGuide from '../assets/svgs/MIcons/ic-lrg-guide.svg';
+import IcLrgHosted from '../assets/svgs/MIcons/ic-lrg-hosted.svg';
+import IcLrgIterate from '../assets/svgs/MIcons/ic-lrg-iterate.svg';
+import IcLrgPlatforms from '../assets/svgs/MIcons/ic-lrg-platforms.svg';
+import IcLrgScale from '../assets/svgs/MIcons/ic-lrg-scale.svg';
+import IcLrgStorefront from '../assets/svgs/MIcons/ic-lrg-storefront.svg';
+import IcLrgTesting from '../assets/svgs/MIcons/ic-lrg-testing.svg';
 
 export const uiIcons = {
   left: IcLeft,
@@ -94,4 +116,26 @@ export const mIcons = {
   risecircle: IcLrgRise,
   growthcircle: IcLrgGrowth,
   enterprisecircle: IcLrgEnterprise,
+  start: IcColorStart,
+  cart: IcColorCart,
+  checkout: IcColorCheckout,
+  orders: IcColorOrders,
+  products: IcColorProducts,
+  categories: IcColorCategories,
+  backend: IcLrgBackend,
+  business: IcLrgBusiness,
+  'color-checkout': IcLrgCheckout,
+  code: IcLrgCode,
+  control: IcLrgControl,
+  design: IcLrgDesign,
+  dials: IcLrgDials,
+  embed: IcLrgEmbed,
+  frontend: IcLrgFrontend,
+  guide: IcLrgGuide,
+  hosted: IcLrgHosted,
+  iterate: IcLrgIterate,
+  platforms: IcLrgPlatforms,
+  scale: IcLrgScale,
+  storefront: IcLrgStorefront,
+  testing: IcLrgTesting,
 };
