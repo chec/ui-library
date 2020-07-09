@@ -21,6 +21,9 @@ import IcCheckSquare from '../assets/svgs/UiIcons/ic-check-square.svg';
 import IcExclamationSquare from '../assets/svgs/UiIcons/ic-exclamation-square.svg';
 import IcInfoSquare from '../assets/svgs/UiIcons/ic-info-square.svg';
 import ChecLogo from '../assets/svgs/chec-logo.svg';
+import IcFacebook from '../assets/svgs/ic-fb.svg';
+import IcTwitter from '../assets/svgs/ic-twitter.svg';
+import IcGithub from '../assets/svgs/ic-github.svg';
 // Nav icons imports
 import IcOrders from '../assets/svgs/NavIcons/ic-orders.svg';
 import IcProducts from '../assets/svgs/NavIcons/ic-products.svg';
@@ -90,6 +93,9 @@ export const uiIcons = {
   'exclamation-square': IcExclamationSquare,
   'info-square': IcInfoSquare,
   chec: ChecLogo,
+  facebook: IcFacebook,
+  twitter: IcTwitter,
+  github: IcGithub,
 };
 
 export const navIcons = {
@@ -124,7 +130,7 @@ export const mIcons = {
   categories: IcColorCategories,
   backend: IcLrgBackend,
   business: IcLrgBusiness,
-  'color-checkout': IcLrgCheckout,
+  'checkout-lg': IcLrgCheckout,
   code: IcLrgCode,
   control: IcLrgControl,
   design: IcLrgDesign,
