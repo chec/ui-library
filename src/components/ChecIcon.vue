@@ -6,7 +6,7 @@ export default {
   functional: true,
   props: {
     /**
-     * Type of icon
+     * Name of the icon ie. `icon="left"`
      */
     icon: {
       type: String,
