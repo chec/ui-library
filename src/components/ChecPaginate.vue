@@ -27,7 +27,7 @@
         <ChecIcon icon="right" />
       </button>
       <button
-        :title="$t('paginate.toToLast')"
+        :title="$t('paginate.goToLast')"
         class="chec-page-selector__control"
         :disabled="page === pageCount"
         @click="choosePage('last')"
