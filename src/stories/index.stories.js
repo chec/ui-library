@@ -1,6 +1,5 @@
 import '../assets/tailwind.css';
 import Vue from 'vue';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { BaseTooltip } from '../index';
 
 Vue.directive('tooltip', BaseTooltip.VTooltip);
