@@ -89,6 +89,14 @@ Mixins
     }
     ```
 
+### Translating
+
+We use the `vue-i18n` library for this. See `lang/*.js` for the dictionaries. See the dashboard repo's
+`lang/README.md` for a detailed guide for using the library. TL;DRs:
+
+* `<p>{{ $t('paginate.goToFirst') }}</p>` renders "Go to the first page"
+* `this.$t(...)` from component instance methods
+
 ## Project setup
 
 ```

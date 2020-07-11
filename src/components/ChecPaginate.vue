@@ -2,7 +2,7 @@
   <div class="chec-paginate">
     <div class="chec-page-selector">
       <button
-        title="Go to the first page"
+        :title="$t('paginate.goToFirst')"
         class="chec-page-selector__control"
         :disabled="page === 1"
         @click="choosePage('first')"
@@ -10,16 +10,16 @@
         <ChecIcon icon="double-left" />
       </button>
       <button
-        title="Go to the previous page"
+        :title="$t('paginate.goToPrevious')"
         class="chec-page-selector__control"
         :disabled="page === 1"
         @click="choosePage('previous')"
       >
         <ChecIcon icon="left" />
       </button>
-      <span class="chec-page-selector__page-reference">{{ page }} of {{ pageCount }}</span>
+      <span class="chec-page-selector__page-reference">{{ $t('paginate.of', { x: page, y: pageCount }) }}</span>
       <button
-        title="Go to the next page"
+        :title="$t('paginate.goToNext')"
         class="chec-page-selector__control"
         :disabled="page === pageCount"
         @click="choosePage('next')"
@@ -27,7 +27,7 @@
         <ChecIcon icon="right" />
       </button>
       <button
-        title="Go to the last page"
+        :title="$t('paginate.toToLast')"
         class="chec-page-selector__control"
         :disabled="page === pageCount"
         @click="choosePage('last')"
@@ -36,7 +36,7 @@
       </button>
     </div>
     <div v-show="limitOptions.length > 1" class="chec-per-page-control">
-      <span class="chec-per-page-control__label">Showing</span>
+      <span class="chec-per-page-control__label">{{ $t('paginate.showing') }}</span>
       <button
         v-for="option in limitOptions"
         :key="option"
