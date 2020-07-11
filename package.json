@@ -58,6 +58,9 @@
     "vue-svg-loader": "^0.16.0",
     "vue-template-compiler": "^2.6.10"
   },
+  "peerDependencies": {
+    "vue-i18n": "8.x"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions"
