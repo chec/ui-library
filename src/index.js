@@ -32,6 +32,7 @@ import InnerBlock from './components/ChecCard/InnerBlock.vue';
 import PasswordField from './components/PasswordField.vue';
 import SvgIcons from './assets/svgs';
 import TextField from './components/TextField.vue';
+import Lang from './lang/index';
 
 export {
   BaseAlert,
@@ -66,6 +67,7 @@ export {
   ChecTab,
   SvgIcons as Icons,
   InnerBlock,
+  Lang,
   PasswordField,
   TextField,
 };

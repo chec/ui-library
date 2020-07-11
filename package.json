@@ -53,9 +53,13 @@
     "stylelint-webpack-plugin": "^2.0.0",
     "tailwindcss-plugins": "^0.3.0",
     "vue-cli-plugin-storybook": "^1.2.0",
+    "vue-i18n": "^8.18.2",
     "vue-router": "^3.1.5",
     "vue-svg-loader": "^0.16.0",
     "vue-template-compiler": "^2.6.10"
+  },
+  "peerDependencies": {
+    "vue-i18n": "8.x"
   },
   "browserslist": [
     "> 1%",
