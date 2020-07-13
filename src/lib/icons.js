@@ -24,6 +24,7 @@ import ChecLogo from '../assets/svgs/chec-logo.svg';
 import IcFacebook from '../assets/svgs/ic-fb.svg';
 import IcTwitter from '../assets/svgs/ic-twitter.svg';
 import IcGithub from '../assets/svgs/ic-github.svg';
+import IcLink from '../assets/svgs/UiIcons/ic-link.svg';
 // Nav icons imports
 import IcOrders from '../assets/svgs/NavIcons/ic-orders.svg';
 import IcProducts from '../assets/svgs/NavIcons/ic-products.svg';
@@ -96,6 +97,7 @@ export const uiIcons = {
   facebook: IcFacebook,
   twitter: IcTwitter,
   github: IcGithub,
+  link: IcLink,
 };
 
 export const navIcons = {
