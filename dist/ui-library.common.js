@@ -5263,6 +5263,40 @@ if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
 
 /***/ }),
 
+/***/ "b2a5":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M11 9V5m0 0l-6 6m6-6H7","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "b5c4":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -17914,6 +17948,10 @@ var ic_twitter_default = /*#__PURE__*/__webpack_require__.n(ic_twitter);
 var ic_github = __webpack_require__("11c4");
 var ic_github_default = /*#__PURE__*/__webpack_require__.n(ic_github);
 
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-link.svg
+var ic_link = __webpack_require__("b2a5");
+var ic_link_default = /*#__PURE__*/__webpack_require__.n(ic_link);
+
 // EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-orders.svg
 var ic_orders = __webpack_require__("21ed");
 var ic_orders_default = /*#__PURE__*/__webpack_require__.n(ic_orders);
@@ -18108,6 +18146,7 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
 
+
  // Nav icons imports
 
 
@@ -18179,7 +18218,8 @@ var uiIcons = {
   chec: chec_logo_default.a,
   facebook: ic_fb_default.a,
   twitter: ic_twitter_default.a,
-  github: ic_github_default.a
+  github: ic_github_default.a,
+  link: ic_link_default.a
 };
 var navIcons = {
   orders: ic_orders_default.a,
