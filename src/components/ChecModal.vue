@@ -1,5 +1,5 @@
 <template>
-  <component :is="form ? 'form' : 'div'" class="modal__overlay" @click.self="emitClose">
+  <component :is="form ? 'form' : 'div'" class="modal__overlay">
     <ChecCard class="modal__card" :class="`max-w-${width}`" tailwind="bg-gray-100">
       <ChecModalHeader v-if="header" :undismissible="undismissible" @close="emitClose">
         {{ header }}
