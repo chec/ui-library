@@ -65,7 +65,7 @@ export default {
   }
 
   &--card &__title {
-    @apply rounded-full caps-xxs bg-gray-200 px-2 py-1 text-gray-500;
+    @apply caps-xxs font-black py-1 text-gray-600 border-b border-gray-300;
   }
 
   &-inner {
