@@ -89,9 +89,6 @@ export default {
   &__overlay {
     @apply fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center overflow-scroll;
     background-color: rgba(255, 255, 255, 0.95);
-    &--light{
-      background-color: rgba(255, 255, 255, 0.95);
-    }
     &--dark{
       background-color: rgba(65, 85, 108, 0.9);
     }
