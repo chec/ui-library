@@ -1975,6 +1975,74 @@ module.exports = {};
 
 /***/ }),
 
+/***/ "40fb":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M11.698 12.354c-.405-.031-.367-.406.015-.476.635-.117.914-.457.914-.772 0-.264-.198-.511-.549-.59-.418-.095-.332-.379.016-.406.566-.045.844-.383.844-.705 0-.283-.213-.554-.631-.61-.428-.058-.289-.367.015-.461.261-.08.678-.25.678-.755 0-.337-.25-.781-1.136-.745-.614.025-1.834-.1-2.49-.443C9.829 4.562 9.72 2 8.531 2c-.797 0-.948.904-1.188 1.735C6.484 6.719 4.766 7.264 3 7.536V12.5c3.344 0 4.25 1.5 6.752 1.5 1.6 0 2.426-.867 2.426-1.333 0-.167-.136-.286-.48-.313z","fill":"currentColor"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
+/***/ "40fc":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M10.829 6.586L8 3.757m0 0v8.486m0-8.486L5.172 6.586","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "4160":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2523,6 +2591,40 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
+/***/ "585f":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M4 12h8M4 8h8M4 4h8","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "5899":
 /***/ (function(module, exports) {
 
@@ -2642,6 +2744,40 @@ module.exports = function (bitmap, value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "5fc9":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M5.172 9.414L8 12.243m0 0V3.757m0 8.486l2.828-2.829","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      }
+    
 
 /***/ }),
 
@@ -3503,6 +3639,40 @@ module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSour
 
 /***/ }),
 
+/***/ "80ff":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('g',{attrs:{"clip-path":"url(#clip0)","stroke":"currentColor","stroke-width":"2"}},[_c('circle',{attrs:{"cx":"5.879","cy":"5.879","r":"4","transform":"rotate(45 5.879 5.879)"}}),_c('path',{attrs:{"d":"M8.707 8.707l4.243 4.243","stroke-linecap":"round"}})]),_c('defs',[_c('clipPath',{attrs:{"id":"clip0"}},[_c('path',{attrs:{"fill":"#fff","d":"M0 0h16v16H0z"}})])])])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "825a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4246,6 +4416,40 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
 /***/ }),
 
+/***/ "9b38":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M6.586 5.172L3.757 8m0 0h8.486M3.757 8l2.829 2.828","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "9bdd":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4405,6 +4609,40 @@ $({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
   }
 });
 
+
+/***/ }),
+
+/***/ "a30e":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M4.302 3.646c.405.031.366.406-.016.476-.634.117-.913.458-.913.772 0 .264.198.511.549.59.418.095.332.379-.016.407-.566.045-.844.381-.844.705 0 .282.213.553.63.61.429.057.29.366-.015.46-.26.08-.677.25-.677.755 0 .337.25.782 1.136.745.614-.024 1.833.1 2.489.443C6.172 11.438 6.281 14 7.469 14c.797 0 .948-.903 1.187-1.735.859-2.984 2.578-3.53 4.343-3.801V3.5C9.656 3.5 8.75 2 6.247 2c-1.6 0-2.426.868-2.426 1.333 0 .167.137.286.48.313z","fill":"currentColor"}})])
+          )
+        }
+      }
+    
 
 /***/ }),
 
@@ -8483,6 +8721,40 @@ module.exports = function (key, value) {
 
 }));
 
+
+/***/ }),
+
+/***/ "cf86":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M9.414 10.828L12.243 8m0 0H3.757m8.486 0L9.414 5.172","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round"}})])
+          )
+        }
+      }
+    
 
 /***/ }),
 
@@ -17952,6 +18224,38 @@ var ic_github_default = /*#__PURE__*/__webpack_require__.n(ic_github);
 var ic_link = __webpack_require__("b2a5");
 var ic_link_default = /*#__PURE__*/__webpack_require__.n(ic_link);
 
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-right-arrow.svg
+var ic_right_arrow = __webpack_require__("cf86");
+var ic_right_arrow_default = /*#__PURE__*/__webpack_require__.n(ic_right_arrow);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-left-arrow.svg
+var ic_left_arrow = __webpack_require__("9b38");
+var ic_left_arrow_default = /*#__PURE__*/__webpack_require__.n(ic_left_arrow);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-up-arrow.svg
+var ic_up_arrow = __webpack_require__("40fc");
+var ic_up_arrow_default = /*#__PURE__*/__webpack_require__.n(ic_up_arrow);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-down-arrow.svg
+var ic_down_arrow = __webpack_require__("5fc9");
+var ic_down_arrow_default = /*#__PURE__*/__webpack_require__.n(ic_down_arrow);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-hamburger.svg
+var ic_hamburger = __webpack_require__("585f");
+var ic_hamburger_default = /*#__PURE__*/__webpack_require__.n(ic_hamburger);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-search.svg
+var ic_search = __webpack_require__("80ff");
+var ic_search_default = /*#__PURE__*/__webpack_require__.n(ic_search);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-thumbs-up.svg
+var ic_thumbs_up = __webpack_require__("40fb");
+var ic_thumbs_up_default = /*#__PURE__*/__webpack_require__.n(ic_thumbs_up);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-thumbs-down.svg
+var ic_thumbs_down = __webpack_require__("a30e");
+var ic_thumbs_down_default = /*#__PURE__*/__webpack_require__.n(ic_thumbs_down);
+
 // EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-orders.svg
 var ic_orders = __webpack_require__("21ed");
 var ic_orders_default = /*#__PURE__*/__webpack_require__.n(ic_orders);
@@ -18147,6 +18451,14 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
 
+
+
+
+
+
+
+
+
  // Nav icons imports
 
 
@@ -18204,22 +18516,30 @@ var uiIcons = {
   close: ic_close_default.a,
   check: ic_check_default.a,
   more: ic_more_default.a,
+  link: ic_link_default.a,
+  'right-arrow': ic_right_arrow_default.a,
+  'left-arrow': ic_left_arrow_default.a,
+  'up-arrow': ic_up_arrow_default.a,
+  'down-arrow': ic_down_arrow_default.a,
   download: ic_download_default.a,
   upload: ic_upload_default.a,
   grip: ic_grip_default.a,
+  hamburger: ic_hamburger_default.a,
   minus: ic_minus_default.a,
   copy: ic_copy_default.a,
   calendar: ic_calendar_default.a,
+  search: ic_search_default.a,
   refresh: ic_refresh_default.a,
   'close-square': ic_close_square_default.a,
   'check-square': ic_check_square_default.a,
   'exclamation-square': ic_exclamation_square_default.a,
   'info-square': ic_info_square_default.a,
+  'thumbs-up': ic_thumbs_up_default.a,
+  'thumbs-down': ic_thumbs_down_default.a,
   chec: chec_logo_default.a,
   facebook: ic_fb_default.a,
   twitter: ic_twitter_default.a,
-  github: ic_github_default.a,
-  link: ic_link_default.a
+  github: ic_github_default.a
 };
 var navIcons = {
   orders: ic_orders_default.a,
