@@ -25,6 +25,15 @@ import IcFacebook from '../assets/svgs/ic-fb.svg';
 import IcTwitter from '../assets/svgs/ic-twitter.svg';
 import IcGithub from '../assets/svgs/ic-github.svg';
 import IcLink from '../assets/svgs/UiIcons/ic-link.svg';
+import IcRightArrow from '../assets/svgs/UiIcons/ic-right-arrow.svg';
+import IcLeftArrow from '../assets/svgs/UiIcons/ic-left-arrow.svg';
+import IcUpArrow from '../assets/svgs/UiIcons/ic-up-arrow.svg';
+import IcDownArrow from '../assets/svgs/UiIcons/ic-down-arrow.svg';
+import IcHamburger from '../assets/svgs/UiIcons/ic-hamburger.svg';
+import IcSearch from '../assets/svgs/UiIcons/ic-search.svg';
+import IcThumbsUp from '../assets/svgs/UiIcons/ic-thumbs-up.svg';
+import IcThumbsDown from '../assets/svgs/UiIcons/ic-thumbs-down.svg';
+
 // Nav icons imports
 import IcOrders from '../assets/svgs/NavIcons/ic-orders.svg';
 import IcProducts from '../assets/svgs/NavIcons/ic-products.svg';
@@ -82,22 +91,30 @@ export const uiIcons = {
   close: IcClose,
   check: IcCheck,
   more: IcMore,
+  link: IcLink,
+  'right-arrow': IcRightArrow,
+  'left-arrow': IcLeftArrow,
+  'up-arrow': IcUpArrow,
+  'down-arrow': IcDownArrow,
   download: IcDownload,
   upload: IcUpload,
   grip: IcGrip,
+  hamburger: IcHamburger,
   minus: IcMinus,
   copy: IcCopy,
   calendar: IcCalendar,
+  search: IcSearch,
   refresh: IcRefresh,
   'close-square': IcCloseSquare,
   'check-square': IcCheckSquare,
   'exclamation-square': IcExclamationSquare,
   'info-square': IcInfoSquare,
+  'thumbs-up': IcThumbsUp,
+  'thumbs-down': IcThumbsDown,
   chec: ChecLogo,
   facebook: IcFacebook,
   twitter: IcTwitter,
   github: IcGithub,
-  link: IcLink,
 };
 
 export const navIcons = {
