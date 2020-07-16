@@ -1,7 +1,6 @@
 <template>
   <component
     :is="form ? 'form' : 'div'"
-    class="modal__overlay"
     :class="classObject"
   >
     <ChecCard class="modal__card" :class="`max-w-${width}`" tailwind="bg-gray-100">
@@ -62,7 +61,7 @@ export default {
   },
   computed: {
     classObject() {
-      return `modal__overlay--${this.overlay}`;
+      return `modal__overlay modal__overlay--${this.overlay}`;
     },
   },
   mounted() {
