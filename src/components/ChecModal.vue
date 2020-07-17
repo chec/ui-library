@@ -1,7 +1,7 @@
 <template>
   <component
     :is="form ? 'form' : 'div'"
-    :class="classObject"
+    :class="`modal__overlay modal__overlay--${overlay}`"
   >
     <ChecCard class="modal__card" :class="`max-w-${width}`" tailwind="bg-gray-100">
       <ChecModalHeader v-if="header" :undismissible="undismissible" @close="emitClose">
@@ -59,11 +59,6 @@ export default {
       },
     },
   },
-  computed: {
-    classObject() {
-      return `modal__overlay modal__overlay--${this.overlay}`;
-    },
-  },
   mounted() {
     document.body.style.overflow = 'hidden';
   },
@@ -88,9 +83,11 @@ export default {
 .modal {
   &__overlay {
     @apply fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center overflow-scroll;
+    // Special / overlay
     background-color: rgba(255, 255, 255, 0.95);
 
     &--dark {
+      // Special / overlay
       background-color: rgba(65, 85, 108, 0.9);
     }
   }
