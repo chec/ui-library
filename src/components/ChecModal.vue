@@ -1,5 +1,8 @@
 <template>
-  <component :is="form ? 'form' : 'div'" class="modal__overlay">
+  <component
+    :is="form ? 'form' : 'div'"
+    :class="`modal__overlay modal__overlay--${overlay}`"
+  >
     <ChecCard class="modal__card" :class="`max-w-${width}`" tailwind="bg-gray-100">
       <ChecModalHeader v-if="header" :undismissible="undismissible" @close="emitClose">
         {{ header }}
@@ -48,6 +51,13 @@ export default {
      * Prevent the close button from rendering when using the "header" prop
      */
     undismissible: Boolean,
+    overlay: {
+      type: String,
+      default: 'light',
+      validator(value) {
+        return ['light', 'dark'].includes(value);
+      },
+    },
   },
   mounted() {
     document.body.style.overflow = 'hidden';
@@ -74,11 +84,16 @@ export default {
   &__overlay {
     @apply fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center overflow-scroll;
     // Special / overlay
-    background-color: rgba(65, 85, 108, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
+
+    &--dark {
+      // Special / overlay
+      background-color: rgba(65, 85, 108, 0.9);
+    }
   }
 
   &__card {
-    @apply w-full;
+    @apply w-full shadow-lg;
 
     > .card__inner-wrapper {
       padding-bottom: 2.375rem;
