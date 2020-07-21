@@ -59,10 +59,10 @@ export default {
 
 <style lang="scss">
 .accordion {
-  @apply rounded bg-gray-100 p-4;
+  @apply rounded bg-gray-100;
 
   &__heading {
-    @apply text-gray-500 flex justify-between items-center;
+    @apply text-gray-500 flex justify-between items-center p-4;
   }
 
   &__title {
@@ -84,16 +84,17 @@ export default {
   &__body-container {
     @apply max-h-0 overflow-hidden;
 
-    transition: max-height 700ms cubic-bezier(0, 1, 0, 1);
+    transition: max-height 700ms cubic-bezier(0, 1, 0, 1),
+      margin-top 300ms linear 300ms;
   }
 
   &__body {
-    @apply mt-4;
+    @apply p-4;
   }
 
   &--active {
     .accordion__body-container {
-      @apply max-h-full-px;
+      @apply max-h-full-px -mt-4;
 
       transition: max-height 1200ms cubic-bezier(1, 0, 0, 1);
     }
