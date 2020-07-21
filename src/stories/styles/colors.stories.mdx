@@ -29,7 +29,7 @@ import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
   <Story name="Grays (Product & Marketing)">
     {{
       data: () => ({
-        colors: ['black'].concat([6,5,4,3,2,1].map(n => `gray-${n}00`)).concat(['white', 'gray-gradient']),
+        colors: ['black'].concat([6,5,4,3,2,1].map(n => `gray-${n}00`)).concat(['white', 'gray-gradient', 'dark-gray-gradient']),
       }),
       template: `
         <div class="py-16 flex justify-center space-x-2">
@@ -49,7 +49,7 @@ import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
   <Story name="Colors - Dashboard">
     {{
       data: () => ({
-        colors: ['purple', 'red', 'orange', 'green', 'blue'],
+        colors: ['red', 'orange', 'green', 'blue', 'purple'],
       }),
       methods: {
         makeTones(color) {
