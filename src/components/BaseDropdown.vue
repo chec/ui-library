@@ -358,8 +358,16 @@ export default {
     width: inherit;
 
     &__label {
-      @apply text-left absolute inline-block origin-top-left transition-transform duration-150
+      @apply
+        text-left
+        absolute
+        inline-block
+        origin-top-left
+        transition-transform
+        duration-150
+        cursor-pointer
         truncate w-10/12;
+
       backface-visibility: hidden;
 
       transform: translate3d(0, 0.5rem, 0) scale3d(1, 1, 1);
@@ -427,7 +435,7 @@ export default {
     @apply flex flex-col justify-center w-4 h-4;
 
     svg {
-      @apply transition-transform duration-500;
+      @apply transition-transform duration-200;
     }
   }
 
