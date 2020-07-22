@@ -77,7 +77,7 @@ export default {
     @apply rounded p-2 bg-white h-8 w-8 cursor-pointer;
 
     svg {
-      @apply transition-transform duration-500;
+      @apply transition-transform duration-200;
     }
   }
 
