@@ -29,8 +29,11 @@
           {{ shownValue }}
         </span>
       </div>
-      <div class="dropdown__down-arrow">
-        <SvgDownArrow />
+      <div
+        class="dropdown__down-arrow"
+        @click="toggleDropdown"
+      >
+        <ChecIcon icon="down" />
       </div>
     </div>
     <BasePopover v-show="showDropdown" class="dropdown__base-popover" :style="{ width: `${dropdownElWidth}px` }">
@@ -51,15 +54,14 @@
 </template>
 
 <script>
-import SvgDownArrow from '../assets/svgs/down-arrow.svg';
-
 import BaseOption from './BaseOption.vue';
 import BasePopover from './BasePopover.vue';
+import ChecIcon from './ChecIcon.vue';
 
 export default {
   name: 'BaseDropdown',
   components: {
-    SvgDownArrow,
+    ChecIcon,
     BaseOption,
     BasePopover,
   },
@@ -356,8 +358,16 @@ export default {
     width: inherit;
 
     &__label {
-      @apply text-left absolute inline-block origin-top-left transition-transform duration-150
+      @apply
+        text-left
+        absolute
+        inline-block
+        origin-top-left
+        transition-transform
+        duration-150
+        cursor-pointer
         truncate w-10/12;
+
       backface-visibility: hidden;
 
       transform: translate3d(0, 0.5rem, 0) scale3d(1, 1, 1);
@@ -400,6 +410,10 @@ export default {
 
     &--open {
       @apply border border-gray-500;
+
+      .dropdown__down-arrow svg {
+        @apply transform -rotate-180;
+      }
     }
   }
 
@@ -418,7 +432,11 @@ export default {
   }
 
   &__down-arrow {
-    @apply flex flex-col justify-center w-4 h-4 fill-current text-gray-600;
+    @apply flex flex-col justify-center w-4 h-4;
+
+    svg {
+      @apply transition-transform duration-200;
+    }
   }
 
   &--with-inline-label {
