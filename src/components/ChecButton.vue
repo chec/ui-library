@@ -11,7 +11,7 @@ export default {
     tagType: {
       type: String,
       validate(type) {
-        return ['link', 'button'].includes(type);
+        return ['link', 'button', 'route'].includes(type);
       },
       default: 'button',
     },
@@ -93,6 +93,15 @@ export default {
     hasIcon() {
       return this.icon || (this.$slots.icon && Boolean(this.$slots.icon.length));
     },
+    tag() {
+      if (this.tagType === 'link') {
+        return 'a';
+      }
+      if (this.tagType === 'route') {
+        return 'router-link';
+      }
+      return 'button';
+    },
   },
   methods: {
     handleClick(event) {
@@ -104,7 +113,6 @@ export default {
     },
   },
   render(createElement) {
-    const tag = this.tagType === 'link' ? 'a' : 'button';
     // Get the children. For an "icon" variant, if an icon slot is specified, use that instead of the default slot
     // Note that this would not be ideal usage. Just providing the icon to the default slot is preferred.
     const children = [createElement('span', { class: ['button__content'] }, this.$slots.default)];
@@ -122,17 +130,25 @@ export default {
     }
 
     const domProps = { disabled: this.disabled };
-
     if (this.tagType === 'button') {
       domProps.type = this.buttonType;
     }
 
-    return createElement(tag, {
+    const props = {};
+    if (this.tagType === 'route') {
+      props.to = this.$attrs.to;
+    }
+
+    return createElement(this.tag, {
       class: this.classNames,
-      domProps,
+      domProps: {
+        disabled: this.disabled,
+        type: this.tagType === 'button' ? this.buttonType : null,
+      },
       on: {
         click: this.handleClick,
       },
+      props,
     }, children);
   },
 };
