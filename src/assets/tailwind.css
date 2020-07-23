@@ -13,20 +13,33 @@ body {
 h1 {
   @apply text-2xl;
 }
+
 h2 {
   @apply text-xl;
 }
+
 h3 {
   @apply text-lg;
 }
+
 h4 {
   @apply text-sm;
 }
+
 h5 {
   @apply text-xs;
 }
+
 h6 {
   @apply text-xxs;
+}
+
+a {
+  @apply text-gray-500;
+}
+
+a:hover {
+  @apply text-gray-600;
 }
 
 @tailwind components;
