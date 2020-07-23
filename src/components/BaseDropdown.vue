@@ -36,7 +36,14 @@
         <ChecIcon icon="down" />
       </div>
     </div>
-    <BasePopover v-show="showDropdown" class="dropdown__base-popover" :style="{ width: `${dropdownElWidth}px` }">
+    <BasePopover
+      v-show="showDropdown"
+      ref="popper-el"
+      class="dropdown__base-popover"
+      :style="{
+        width: `${dropdownElWidth}px`,
+      }"
+    >
       <BaseOption
         v-for="option in renderableOptions"
         :key="option.value"
@@ -54,6 +61,7 @@
 </template>
 
 <script>
+import { createPopper } from '@popperjs/core';
 import BaseOption from './BaseOption.vue';
 import BasePopover from './BasePopover.vue';
 import ChecIcon from './ChecIcon.vue';
@@ -228,6 +236,38 @@ export default {
     window.removeEventListener('resize', this.setDropdownElWidth);
   },
   methods: {
+    /**
+     * Destroys the popper.js instance
+     */
+    destroyPopper() {
+      if (this.$popper) {
+        this.$popper.destroy();
+        this.$popper = null;
+      }
+    },
+    /**
+     * Create the popper.js instance
+     */
+    createPopper() {
+      this.$popper = createPopper(this.$refs['dropdown-el'], this.$refs['popper-el'].$el, {
+        placement: 'bottom-start',
+        modifiers: [
+          {
+            name: 'flip',
+            options: {
+              rootBoundary: 'window',
+              fallbackPlacements: ['top-start', 'bottom-start'],
+            },
+          },
+          {
+            name: 'preventOverflow',
+            options: {
+              rootBoundary: 'window',
+            },
+          },
+        ],
+      });
+    },
     /** Method used to size set the root element's width in the state */
     setDropdownElWidth() {
       // set BasePopover width to match root's width since this component is has a 'static' position by default to
@@ -303,6 +343,13 @@ export default {
      * Toggles visibility of the dropdown
      */
     toggleDropdown() {
+      this.$nextTick(() => {
+        if (this.showDropdown) {
+          this.createPopper();
+        } else {
+          this.destroyPopper();
+        }
+      });
       this.showDropdown = !this.showDropdown;
     },
     /**
@@ -427,8 +474,7 @@ export default {
 
   &__base-popover {
     @apply overflow-y-auto overflow-x-hidden;
-
-    max-height: 50vh;
+    max-height: 40vh;
   }
 
   &__down-arrow {
