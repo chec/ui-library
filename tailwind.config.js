@@ -2,6 +2,7 @@ const gradientsPlugin = require('tailwindcss-plugins/gradients');
 const plugin = require('tailwindcss/plugin');
 const checTablesPlugin = require('./tailwind-plugins/tables');
 const checTypeographyPlugin = require('./tailwind-plugins/typography');
+const checIconSizePlugin = require('./tailwind-plugins/iconSize');
 
 const fontSizes = {
   xxs: '.625rem',
@@ -148,6 +149,7 @@ module.exports = {
   plugins: [
     checTablesPlugin,
     checTypeographyPlugin,
+    checIconSizePlugin,
     gradientsPlugin,
     plugin(({ addUtilities }) => addUtilities({
       '.bg-hologram': {
