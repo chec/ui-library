@@ -18608,6 +18608,14 @@ var mIcons = {
     icon: {
       type: String,
       required: true
+    },
+
+    /**
+     * The size of the icon if it matches font size
+     */
+    size: {
+      type: String,
+      default: null
     }
   },
   render: function render(createElement, _ref) {
@@ -18618,7 +18626,13 @@ var mIcons = {
       throw Error('Required param "icon" was not valid');
     }
 
-    return createElement(uiIcons[props.icon], data);
+    var updatedData = data;
+
+    if (props.size) {
+      updatedData.class = ["icon-".concat(props.size), data.class];
+    }
+
+    return createElement(uiIcons[props.icon], updatedData);
   }
 });
 // CONCATENATED MODULE: ./src/components/ChecIcon.vue?vue&type=script&lang=js&
