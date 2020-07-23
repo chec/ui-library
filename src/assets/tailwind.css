@@ -1,11 +1,11 @@
 @tailwind base;
 
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
 body {
   font-family: lato, sans-serif;
-  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: antialiased;
   font-smooth: always;
   -moz-osx-font-smoothing: grayscale;
 }
