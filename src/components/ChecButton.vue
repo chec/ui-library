@@ -6,7 +6,7 @@ export default {
   name: 'ChecButton',
   props: {
     /**
-     * The type of HTML element tag to use as the button. One of "link", or "button".
+     * The type of HTML tag or Vue component to use for the button. One of "link", "button", or "route".
      */
     tagType: {
       type: String,
