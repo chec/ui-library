@@ -86,9 +86,9 @@ export default {
 
   &__content-container {
     @apply flex items-center;
-    padding-bottom: 3px;
     // Manual tweaks to keep single line text vertically centered with the close button
-    padding-top: 3px;
+    padding-bottom: 0.3rem;
+    padding-top: 0.3rem;
   }
 
   &__text {
