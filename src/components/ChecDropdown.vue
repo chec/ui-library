@@ -32,31 +32,34 @@
       </div>
     </div>
     <ChecIcon icon="down" class="dropdown__down-arrow" />
-    <ChecPopover
-      v-show="showDropdown"
-      ref="popper-el"
-      class="dropdown__base-popover"
-      :style="{
-        width: `${dropdownElWidth}px`,
-      }"
-    >
-      <ChecOption
-        v-for="option in renderableOptions"
-        :key="option.value"
-        :class="checOptionClass"
-        :option="option"
-        :show-checkbox="multiselect"
-        :checked="multiselect && !isIndeterminate(option) && isChecked(option)"
-        :indeterminate="multiselect && isIndeterminate(option)"
-        @option-selected="onChecOptionSelect"
+    <Portal>
+      <ChecPopover
+        v-show="showDropdown"
+        ref="popper-el"
+        class="dropdown__popover"
+        :style="{
+          width: `${dropdownElWidth}px`,
+        }"
       >
-        {{ option.label }}
-      </ChecOption>
-    </ChecPopover>
+        <ChecOption
+          v-for="option in renderableOptions"
+          :key="option.value"
+          :class="checOptionClass"
+          :option="option"
+          :show-checkbox="multiselect"
+          :checked="multiselect && !isIndeterminate(option) && isChecked(option)"
+          :indeterminate="multiselect && isIndeterminate(option)"
+          @option-selected="onChecOptionSelect"
+        >
+          {{ option.label }}
+        </ChecOption>
+      </ChecPopover>
+    </Portal>
   </div>
 </template>
 
 <script>
+import { Portal } from '@linusborg/vue-simple-portal';
 import { createPopper } from '@popperjs/core';
 import ChecOption from './ChecOption.vue';
 import ChecPopover from './ChecPopover.vue';
@@ -68,6 +71,7 @@ export default {
     ChecIcon,
     ChecOption,
     ChecPopover,
+    Portal,
   },
   props: {
     /**
@@ -122,6 +126,7 @@ export default {
       isFocus: false,
       showDropdown: false,
       dropdownElWidth: 0,
+      popper: null,
     };
   },
   computed: {
@@ -236,16 +241,16 @@ export default {
      * Destroys the popper.js instance
      */
     destroyPopper() {
-      if (this.$popper) {
-        this.$popper.destroy();
-        this.$popper = null;
+      if (this.popper) {
+        this.popper.destroy();
+        this.popper = null;
       }
     },
     /**
      * Create the popper.js instance
      */
     createPopper() {
-      this.$popper = createPopper(this.$refs['dropdown-el'], this.$refs['popper-el'].$el, {
+      this.popper = createPopper(this.$refs['dropdown-el'], this.$refs['popper-el'].$el, {
         placement: 'bottom-start',
         modifiers: [
           {
@@ -362,7 +367,11 @@ export default {
      * @param {Event} event
      */
     onOutsideClick(event) {
-      if (!this.$refs['dropdown-el'].contains(event.target) && this.showDropdown) {
+      if (
+        !this.$refs['dropdown-el'].contains(event.target)
+        && !this.$refs['popper-el'].$el.contains(event.target)
+        && this.showDropdown
+      ) {
         this.toggleDropdown();
       }
     },
@@ -431,7 +440,7 @@ export default {
     }
   }
 
-  &__base-popover {
+  &__popover {
     @apply overflow-y-auto overflow-x-hidden;
     max-height: 40vh;
   }

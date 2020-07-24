@@ -12,6 +12,6 @@ export default {
 
 <style lang="scss" scoped>
 .popover {
-  @apply absolute bg-white border border-gray-300 rounded overflow-hidden z-50 shadow-md;
+  @apply absolute bg-white border border-gray-300 rounded z-50 shadow-md;
 }
 </style>

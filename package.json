@@ -17,6 +17,7 @@
   "dependencies": {
     "@chec/eslint-config": "^0.0.0",
     "@chec/stylelint-config": "^0.0.0",
+    "@linusborg/vue-simple-portal": "^0.1.4",
     "@popperjs/core": "^2.1.1",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "autoprefixer": "^9.7.4",
