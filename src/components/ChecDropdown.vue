@@ -2,7 +2,10 @@
   <div
     ref="dropdown-el"
     class="dropdown"
-    :class="{ 'dropdown--with-inline-label': isFocus && label }"
+    :class="{
+      'dropdown--with-inline-label': isFocus && label,
+      'dropdown--open': showDropdown,
+    }"
     @click="toggleDropdown"
     @keyup="onKeyPress"
   >
@@ -420,14 +423,6 @@ export default {
     @apply border border-gray-500;
   }
 
-  &--open {
-    @apply border border-gray-500;
-
-    .dropdown__down-arrow {
-      @apply transform -rotate-180;
-    }
-  }
-
   &__option {
     @apply text-sm text-gray-600 px-4 py-3;
 
@@ -442,7 +437,15 @@ export default {
   }
 
   &__down-arrow {
-    @apply flex flex-col justify-center w-4 h-4 transition-transform duration-200;
+    @apply flex flex-col justify-center w-4 h-4 transform transition-transform duration-200;
+  }
+
+  &--open {
+    @apply border border-gray-500;
+
+    .dropdown__down-arrow {
+      @apply -rotate-180;
+    }
   }
 
   &--with-inline-label {
