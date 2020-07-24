@@ -1,0 +1,47 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info'
+import TextField from '../components/TextField.vue';
+import ChecDropdown from '../components/ChecDropdown.vue';
+
+<Meta title="Form fields" component={TextField} />
+
+# Form fields
+
+<Preview>
+  <Story name="Overview">
+    {{
+      data() {
+        return {
+          inputValue: '',
+          option: '',
+          options: [
+            { value: 't2', label: 'T2 Ticket' },
+            { value: 't1', label: 'T1 Ticket (Coming Soon)', disabled: true }
+          ],
+        };
+      },
+      components: {
+        ChecDropdown,
+        TextField,
+      },
+      template: `
+        <div class="py-16 flex justify-center">
+          <div class="max-w-3xl w-full mx-auto grid grid-cols-2 gap-1">
+            <TextField
+              name="input-name"
+              label="Text field"
+              placeholder="Example Placeholder"
+              v-model="inputValue"
+            />
+            <ChecDropdown
+               label="Dropdown"
+               v-model="option"
+               :options="options"
+            />
+          </div>
+        </div>`,
+    }}
+  </Story>
+</Preview>

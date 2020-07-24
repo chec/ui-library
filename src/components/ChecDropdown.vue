@@ -1,5 +1,14 @@
 <template>
-  <div ref="dropdown-el" class="dropdown" :class="{ 'dropdown--with-inline-label': isFocus && label }">
+  <div
+    ref="dropdown-el"
+    class="dropdown"
+    :class="{
+      'dropdown--with-inline-label': isFocus && label,
+      'dropdown--open': showDropdown,
+    }"
+    @click="toggleDropdown"
+    @keyup="onKeyPress"
+  >
     <input
       v-if="!multiselect"
       :value="value"
@@ -14,53 +23,43 @@
       :name="`${name}[]`"
       :value="optionValue"
     >
-    <div
-      class="dropdown__control"
-      :class="{ 'dropdown__control--open': showDropdown}"
-      tabindex="0"
-      @click="toggleDropdown"
-      @keyup="onKeyPress"
-    >
-      <div class="dropdown-inner">
-        <label v-if="label || placeholder" class="dropdown-inner__label">
-          {{ shownLabel }}
-        </label>
-        <span class="dropdown-inner__value">
-          {{ shownValue }}
-        </span>
-      </div>
-      <div
-        class="dropdown__down-arrow"
-        @click="toggleDropdown"
-      >
-        <ChecIcon icon="down" />
+    <div>
+      <label v-if="label || placeholder" class="dropdown__label">
+        {{ shownLabel }}
+      </label>
+      <div class="dropdown__value">
+        {{ shownValue }}
       </div>
     </div>
-    <ChecPopover
-      v-show="showDropdown"
-      ref="popper-el"
-      class="dropdown__base-popover"
-      :style="{
-        width: `${dropdownElWidth}px`,
-      }"
-    >
-      <ChecOption
-        v-for="option in renderableOptions"
-        :key="option.value"
-        :class="ChecOptionClass"
-        :option="option"
-        :show-checkbox="multiselect"
-        :checked="multiselect && !isIndeterminate(option) && isChecked(option)"
-        :indeterminate="multiselect && isIndeterminate(option)"
-        @option-selected="onChecOptionSelect"
+    <ChecIcon icon="down" class="dropdown__down-arrow" />
+    <Portal>
+      <ChecPopover
+        v-show="showDropdown"
+        ref="popper-el"
+        class="dropdown__popover"
+        :style="{
+          width: `${dropdownElWidth}px`,
+        }"
       >
-        {{ option.label }}
-      </ChecOption>
-    </ChecPopover>
+        <ChecOption
+          v-for="option in renderableOptions"
+          :key="option.value"
+          :class="checOptionClass"
+          :option="option"
+          :show-checkbox="multiselect"
+          :checked="multiselect && !isIndeterminate(option) && isChecked(option)"
+          :indeterminate="multiselect && isIndeterminate(option)"
+          @option-selected="onChecOptionSelect"
+        >
+          {{ option.label }}
+        </ChecOption>
+      </ChecPopover>
+    </Portal>
   </div>
 </template>
 
 <script>
+import { Portal } from '@linusborg/vue-simple-portal';
 import { createPopper } from '@popperjs/core';
 import ChecOption from './ChecOption.vue';
 import ChecPopover from './ChecPopover.vue';
@@ -72,6 +71,7 @@ export default {
     ChecIcon,
     ChecOption,
     ChecPopover,
+    Portal,
   },
   props: {
     /**
@@ -97,7 +97,7 @@ export default {
     /**
      * Class to pass to inner options
      */
-    ChecOptionClass: {
+    checOptionClass: {
       type: String,
     },
     /**
@@ -126,6 +126,7 @@ export default {
       isFocus: false,
       showDropdown: false,
       dropdownElWidth: 0,
+      popper: null,
     };
   },
   computed: {
@@ -240,16 +241,16 @@ export default {
      * Destroys the popper.js instance
      */
     destroyPopper() {
-      if (this.$popper) {
-        this.$popper.destroy();
-        this.$popper = null;
+      if (this.popper) {
+        this.popper.destroy();
+        this.popper = null;
       }
     },
     /**
      * Create the popper.js instance
      */
     createPopper() {
-      this.$popper = createPopper(this.$refs['dropdown-el'], this.$refs['popper-el'].$el, {
+      this.popper = createPopper(this.$refs['dropdown-el'], this.$refs['popper-el'].$el, {
         placement: 'bottom-start',
         modifiers: [
           {
@@ -263,6 +264,7 @@ export default {
             name: 'preventOverflow',
             options: {
               rootBoundary: 'window',
+              tether: false,
             },
           },
         ],
@@ -365,7 +367,11 @@ export default {
      * @param {Event} event
      */
     onOutsideClick(event) {
-      if (!this.$refs['dropdown-el'].contains(event.target) && this.showDropdown) {
+      if (
+        !this.$refs['dropdown-el'].contains(event.target)
+        && !this.$refs['popper-el'].$el.contains(event.target)
+        && this.showDropdown
+      ) {
         this.toggleDropdown();
       }
     },
@@ -396,72 +402,34 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .dropdown {
-  @apply static w-full text-gray-500;
+  @apply relative flex items-center w-full text-gray-500 bg-white rounded outline-none cursor-pointer border
+    border-gray-300 px-4 flex items-center justify-between text-left;
 
-  &-inner {
-    @apply flex flex-col;
-    width: inherit;
+  &__label {
+    @apply absolute pointer-events-none ml-5 mt-4 leading-tight text-gray-500
+      transition-transform duration-150 origin-top-left truncate w-10/12;
 
-    &__label {
-      @apply
-        text-left
-        absolute
-        inline-block
-        origin-top-left
-        transition-transform
-        duration-150
-        cursor-pointer
-        truncate w-10/12;
+    // Counteract the border width. Text-field doesn't have this problem becuase the label is relative to a parent that
+    // doesn't have a border
+    left: -1px;
+    top: -1px;
 
-      backface-visibility: hidden;
-
-      transform: translate3d(0, 0.5rem, 0) scale3d(1, 1, 1);
-    }
-
-    &__value {
-      @apply py-2 text-sm;
-    }
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
   }
 
-  &__control {
-    @apply
-      relative
-      left-0
-      w-full
-      bg-white
-      shadow-sm
-      rounded
-      outline-none
-      transition-all
-      ease-in
-      duration-200
-      cursor-pointer
-      border
-      border-transparent
-      py-2
-      px-4
-      flex
-      items-center
-      justify-between;
+  &__value {
+    @apply leading-tight py-4 text-sm;
+  }
 
-    &:hover {
-      @apply border border-gray-400;
-    }
+  &:hover {
+    @apply border border-gray-400;
+  }
 
-    &:focus,
-    &:active {
-      @apply border border-gray-500;
-    }
-
-    &--open {
-      @apply border border-gray-500;
-
-      .dropdown__down-arrow svg {
-        @apply transform -rotate-180;
-      }
-    }
+  &:focus,
+  &:active {
+    @apply border border-gray-500;
   }
 
   &__option {
@@ -472,28 +440,30 @@ export default {
     }
   }
 
-  &__base-popover {
+  &__popover {
     @apply overflow-y-auto overflow-x-hidden;
     max-height: 40vh;
   }
 
   &__down-arrow {
-    @apply flex flex-col justify-center w-4 h-4;
+    @apply flex flex-col justify-center w-4 h-4 transform transition-transform duration-200;
+  }
 
-    svg {
-      @apply transition-transform duration-200;
+  &--open {
+    @apply border border-gray-500;
+
+    .dropdown__down-arrow {
+      @apply -rotate-180;
     }
   }
 
   &--with-inline-label {
-    .dropdown-inner {
-      .dropdown-inner__value {
-        @apply pt-4 pb-0;
-      }
+    .dropdown__label {
+      transform: translate(-0.2rem, -0.5rem) scale(0.8, 0.8);
+    }
 
-      .dropdown-inner__label {
-        transform: translate3d(0, 0, 0) scale3d(0.8, 0.8, 1);
-      }
+    .dropdown__value {
+      @apply pt-6 pb-2;
     }
   }
 }
