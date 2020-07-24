@@ -1,5 +1,10 @@
 <template>
   <div class="text-field" :class="classNames">
+    <div
+      v-if="isScrollable"
+      class="text-field__label-underlay"
+      :class="{ 'text-field__label-underlay--scrolled-to-top': isScrolledToTop }"
+    />
     <textarea
       v-if="multiline"
       v-bind="sharedInputProps"
@@ -15,11 +20,10 @@
     <label
       v-if="label"
       class="text-field__label"
-      :class="scrollable"
       :data-content="label"
       :for="id"
     >
-      <span class="invisible">{{ label }}</span>
+      {{ label }}
     </label>
     <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
       <slot />
@@ -94,6 +98,7 @@ export default {
   data() {
     return {
       isScrollable: false,
+      isScrolledToTop: true,
       slotObserver: null,
       id: uniqueId(this.name, this.value, 'chec-switch')(),
       slotWidth: 0,
@@ -138,17 +143,19 @@ export default {
         'text-field--multiline': multiline,
       };
     },
-    scrollable() {
-      return {
-        'text-field__label--scrollable': this.isScrollable,
-      };
-    },
   },
   watch: {
     value() {
       this.$nextTick(() => {
         this.autoGrow();
       });
+    },
+    isScrollable(scrollable) {
+      if (scrollable) {
+        this.$refs.input.addEventListener('scroll', this.handleScroll);
+      } else {
+        this.$refs.input.removeEventListener('scroll', this.handleScroll);
+      }
     },
   },
   mounted() {
@@ -197,11 +204,14 @@ export default {
         return;
       }
       /**
-       * Allows the text area to grow to mtch the value as the user is typing.
+       * Allows the text area to grow to match the value as the user is typing.
        */
       this.$refs.input.style.height = '  5rem';
       this.$refs.input.style.height = `${this.$refs.input.scrollHeight + 2}px`;
       this.isScrollable = this.$refs.input.scrollHeight > 160;
+    },
+    handleScroll() {
+      this.isScrolledToTop = this.$refs.input.scrollTop === 0;
     },
   },
 };
@@ -211,29 +221,18 @@ export default {
 .text-field {
   @apply relative;
 
+  %filled-transformation {
+    transform: translate(-0.2rem, -0.5rem) scale(0.8, 0.8);
+  }
+
   &__action-button {
     @apply caps-xxs text-blue-500 float-right mt-1 cursor-pointer;
   }
 
   &__label {
-    @apply absolute top-0 left-0 h-12 cursor-text;
-
-    &::before {
-      @apply
-        relative
-        text-gray-500
-        inline-block
-        origin-top-left
-        transition-transform
-        duration-150
-        pl-5
-        py-4
-        leading-tight;
-      backface-visibility: hidden;
-
-      content: attr(data-content);
-      transform: translate(0, -0.3rem) scale(0.8, 0.8);
-    }
+    @apply absolute top-0 left-0 pointer-events-none ml-5 mt-4 leading-tight text-gray-500
+      transition-transform duration-150 origin-top-left;
+    @extend %filled-transformation;
   }
 
   &__input {
@@ -260,9 +259,7 @@ export default {
       @apply py-4;
 
       + .text-field__label {
-        &::before {
-          transform: scale(1, 1);
-        }
+        transform: scale(1, 1);
       }
     }
 
@@ -283,6 +280,17 @@ export default {
     @apply cursor-default text-gray-500 caps-xxs;
   }
 
+  &__label-underlay {
+    @apply absolute rounded bg-vertical-transparent-gradient h-12 transition-opacity duration-300;
+    left: 1px;
+    top: 1px;
+    width: calc(100% - 6px);
+
+    &--scrolled-to-top {
+      @apply opacity-0;
+    }
+  }
+
   &--disabled {
     .text-field__input {
       @apply opacity-50;
@@ -298,7 +306,7 @@ export default {
       @apply opacity-50;
     }
 
-    .text-field__label::before {
+    .text-field__label {
       @apply transition-opacity duration-300 ease-in-out opacity-50;
     }
   }
@@ -335,20 +343,7 @@ export default {
   }
 
   &--multiline {
-    .text-field__label {
-      @apply absolute left-0 top-0  h-10 rounded pointer-events-none;
-
-      margin: 1px;
-
-      .text-field--scrollable & {
-        @apply bg-vertical-transparent-gradient;
-
-        width: calc(100% - 10px);
-      }
-    }
-
     .text-field__input {
-
       max-height: 10rem;
       scroll-margin: 50px 0 0 50px;
 
@@ -373,8 +368,8 @@ export default {
   &:not(.text-field--disabled) .text-field__input {
     &:focus,
     &:active {
-      + .text-field__label::before {
-        transform: translate(0, -0.3rem) scale(0.8, 0.8);
+      + .text-field__label {
+        @extend %filled-transformation;
       }
     }
   }
