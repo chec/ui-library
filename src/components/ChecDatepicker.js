@@ -13,6 +13,7 @@ baseFlatpickr.l10ns.default.weekdays.shorthand = ['S', 'M', 'T', 'W', 'TH', 'F',
 
 export default {
   ...FlatPickr,
+  inheritAttrs: false,
   name: 'ChecDatepicker',
   props: {
     ...parentProps,
@@ -57,6 +58,7 @@ export default {
     return h(
       TextField,
       {
+        attrs: this.$attrs,
         props: {
           label,
           variant,
