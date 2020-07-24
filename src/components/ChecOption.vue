@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'BaseOption',
+  name: 'ChecOption',
   props: {
     /**
      * Set's the option as a selectable option

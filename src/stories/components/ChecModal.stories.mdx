@@ -1,7 +1,7 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
 import { select, boolean } from '@storybook/addon-knobs';
-import BaseButton from '../../components/BaseButton.vue';
+import ChecButton from '../../components/ChecButton.vue';
 import ChecLoading from '../../components/ChecLoading.vue';
 import ChecModal from '../../components/ChecModal.vue';
 import TextField from '../../components/TextField.vue';
@@ -85,7 +85,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
   <Story name="With a form">
     {{
       components: {
-        BaseButton,
+        ChecButton,
         ChecModal,
         TextField,
       },
@@ -122,7 +122,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
             <label class="block mb-4">
               <TextField label="Email address" value="lezlie@example.com" class="w-full" />
             </label>
-            <BaseButton color="red" class="mt-8" @click="hideModal">Close</BaseButton>
+            <ChecButton color="red" class="mt-8" @click="hideModal">Close</ChecButton>
           </ChecModal>
           <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
           <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
@@ -140,7 +140,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
   <Story name="With action toolbar">
     {{
       components: {
-        BaseButton,
+        ChecButton,
         ChecModal,
         TextField,
       },
@@ -178,12 +178,12 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
               <TextField label="Email address" value="lezlie@example.com" class="w-full" />
             </label>
             <template v-slot:toolbar>
-              <BaseButton color="red">
+              <ChecButton color="red">
                 Cancel
-              </BaseButton>
-              <BaseButton color="green">
+              </ChecButton>
+              <ChecButton color="green">
                 Save
-              </BaseButton>
+              </ChecButton>
             </template>
           </ChecModal>
           <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>

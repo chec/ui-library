@@ -22,7 +22,7 @@ import ChecIcon from './ChecIcon.vue';
 import SvgCloseIcon from '../assets/svgs/close-icon.svg';
 
 export default {
-  name: 'BaseAlert',
+  name: 'ChecAlert',
   components: {
     SvgCloseIcon,
     ChecIcon,

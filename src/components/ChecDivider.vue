@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'BaseDivider',
+  name: 'ChecDivider',
 };
 </script>
 

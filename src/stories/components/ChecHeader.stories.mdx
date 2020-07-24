@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions";
 import { withKnobs, text, select } from '@storybook/addon-knobs';
 import { withInfo } from 'storybook-addon-vue-info';
 import ChecHeader from '@/components/ChecHeader.vue';
-import BaseButton from '@/components/BaseButton.vue';
+import ChecButton from '@/components/ChecButton.vue';
 
 <Meta title="Components" component={ ChecHeader } />
 
@@ -16,7 +16,7 @@ import BaseButton from '@/components/BaseButton.vue';
     {{
       components: {
         ChecHeader,
-        BaseButton,
+        ChecButton,
       },
       props: {
         title: {
@@ -43,9 +43,9 @@ import BaseButton from '@/components/BaseButton.vue';
             :variant="variant"
             :header-tag="headerTag"
           >
-            <BaseButton v-if="withButtonSlot" color="primary" variant="round">
+            <ChecButton v-if="withButtonSlot" color="primary" variant="round">
               Button Texts
-            </BaseButton>
+            </ChecButton>
           </ChecHeader>
         </div>`,
     }}

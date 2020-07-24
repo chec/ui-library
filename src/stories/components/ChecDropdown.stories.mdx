@@ -1,12 +1,12 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs';
-import BaseDropdown from '../../components/BaseDropdown.vue';
-import BaseOption from '../../components/BaseOption.vue';
+import ChecDropdown from '../../components/ChecDropdown.vue';
+import ChecOption from '../../components/ChecOption.vue';
 import ChecModal from '../../components/ChecModal.vue';
 const onClick = action('option selected');
 
-<Meta title="Form fields/Dropdown" component={BaseDropdown} />
+<Meta title="Form fields/Dropdown" component={ChecDropdown} />
 
 # Dropdown
 
@@ -20,7 +20,7 @@ Todo list
 
 </details>
 
-<Props of={BaseDropdown} />
+<Props of={ChecDropdown} />
 
 # Default:
 
@@ -28,7 +28,7 @@ Todo list
   <Story name="Default">
     {{
       components: {
-        BaseDropdown,
+        ChecDropdown,
       },
       data() {
         return {
@@ -47,7 +47,7 @@ Todo list
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
-          <BaseDropdown
+          <ChecDropdown
             :label="label"
             name="example-1"
             class="max-w-md"
@@ -66,7 +66,7 @@ Todo list
   <Story name="No label">
     {{
       components: {
-        BaseDropdown,
+        ChecDropdown,
       },
       data() {
         return {
@@ -85,7 +85,7 @@ Todo list
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
-          <BaseDropdown
+          <ChecDropdown
             :label="label"
             name="example-1"
             class="max-w-md"
@@ -104,7 +104,7 @@ Todo list
   <Story name="In context and required">
     {{
       components: {
-        BaseDropdown,
+        ChecDropdown,
       },
       data() {
         return {
@@ -124,13 +124,13 @@ Todo list
       template: `
         <div class="p-16 bg-gray-100 text-center">
           <div>Some content</div>
-          <BaseDropdown
+          <ChecDropdown
             name="example-3"
             :label="label"
             class="max-w-md mx-auto"
             v-model="option"
             :options="options"
-            baseOptionClass="text-left"
+            ChecOptionClass="text-left"
             :required="true"
             @input="onClick"
             />
@@ -146,7 +146,7 @@ Todo list
   <Story name="As multi-select">
     {{
       components: {
-        BaseDropdown,
+        ChecDropdown,
       },
       data() {
         return {
@@ -179,14 +179,14 @@ Todo list
       },
       template: `
         <div class="my-8 p-16 bg-gray-100 text-center">
-          <BaseDropdown
+          <ChecDropdown
             name="example-4"
             class="max-w-md mx-auto"
             :label="label"
             v-model="selected"
             :options="options"
             :multiselect="true"
-            baseOptionClass="text-left"
+            ChecOptionClass="text-left"
             @input="onClick"
             />
         </div>`
@@ -201,7 +201,7 @@ Todo list
     {{
       components: {
         ChecModal,
-        BaseDropdown,
+        ChecDropdown,
       },
       data() {
         return {
@@ -218,7 +218,7 @@ Todo list
           >
             <div>
               <h2 class="mb-4">Event(s)</h2>
-              <BaseDropdown
+              <ChecDropdown
                 v-model="events"
                 name="example-dropdown"
                 :options="options"

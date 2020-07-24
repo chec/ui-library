@@ -1,6 +1,6 @@
 <template>
   <div ref="menu-el" class="options-menu">
-    <BaseButton
+    <ChecButton
       slot="reference"
       ref="button-el"
       variant="small"
@@ -10,31 +10,31 @@
       <template #icon>
         <ChecIcon icon="more" />
       </template>
-    </BaseButton>
-    <BasePopover
+    </ChecButton>
+    <ChecPopover
       v-show="isOpen"
       ref="popper-el"
       @option-selected="handleSelectOption"
     >
       <!--
-        @slot Provide BaseOption instances here
+        @slot Provide ChecOption instances here
       -->
       <slot />
-    </BasePopover>
+    </ChecPopover>
   </div>
 </template>
 
 <script>
 import { createPopper } from '@popperjs/core';
-import BaseButton from './BaseButton.vue';
-import BasePopover from './BasePopover.vue';
+import ChecButton from './ChecButton.vue';
+import ChecPopover from './ChecPopover.vue';
 import ChecIcon from './ChecIcon.vue';
 
 export default {
   name: 'ChecOptionsMenu',
   components: {
-    BaseButton,
-    BasePopover,
+    ChecButton,
+    ChecPopover,
     ChecIcon,
   },
   inheritAttrs: false,

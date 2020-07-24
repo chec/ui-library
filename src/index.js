@@ -1,13 +1,13 @@
-import BaseAlert from './components/BaseAlert.vue';
-import BaseBreadcrumbs from './components/BaseBreadcrumbs.vue';
-import BaseButton from './components/BaseButton.vue';
-import BaseDivider from './components/BaseDivider.vue';
-import BaseDropdown from './components/BaseDropdown.vue';
-import BaseNotification from './components/BaseNotification.vue';
-import BaseOption from './components/BaseOption.vue';
-import BasePopover from './components/BasePopover.vue';
-import BaseTag from './components/BaseTag.vue';
-import BaseTooltip from './directives/BaseTooltip';
+import ChecAlert from './components/ChecAlert.vue';
+import ChecBreadcrumbs from './components/ChecBreadcrumbs.vue';
+import ChecButton from './components/ChecButton.vue';
+import ChecDivider from './components/ChecDivider.vue';
+import ChecDropdown from './components/ChecDropdown.vue';
+import ChecNotification from './components/ChecNotification.vue';
+import ChecOption from './components/ChecOption.vue';
+import ChecPopover from './components/ChecPopover.vue';
+import ChecTag from './components/ChecTag.vue';
+import ChecTooltip from './directives/ChecTooltip';
 import ChangeLog from './components/ChangeLog.vue';
 import ChecAccordion from './components/ChecAccordion.vue';
 import ChecAvatar from './components/ChecAvatar.vue';
@@ -35,16 +35,16 @@ import TextField from './components/TextField.vue';
 import Lang from './lang/index';
 
 export {
-  BaseAlert,
-  BaseBreadcrumbs,
-  BaseButton,
-  BaseDivider,
-  BaseDropdown,
-  BaseNotification,
-  BaseOption,
-  BasePopover,
-  BaseTag,
-  BaseTooltip,
+  ChecAlert,
+  ChecBreadcrumbs,
+  ChecButton,
+  ChecDivider,
+  ChecDropdown,
+  ChecNotification,
+  ChecOption,
+  ChecPopover,
+  ChecTag,
+  ChecTooltip,
   ChangeLog,
   ChecCard,
   ChecAccordion,

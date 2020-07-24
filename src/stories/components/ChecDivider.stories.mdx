@@ -1,18 +1,18 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 import { text } from '@storybook/addon-knobs';
-import BaseDivider from '../../components/BaseDivider.vue';
+import ChecDivider from '../../components/ChecDivider.vue';
 
-<Meta title="Components" component={BaseDivider} />
+<Meta title="Components" component={ChecDivider} />
 
 # Divider
 
-<Props of={BaseDivider} />
+<Props of={ChecDivider} />
 
 <Preview>
   <Story name="Divider">
     {{
       components: {
-        BaseDivider
+        ChecDivider
       },
       props: {
         label: {
@@ -24,9 +24,9 @@ import BaseDivider from '../../components/BaseDivider.vue';
       },
       template: `
       <div :class="containerClasses">
-        <BaseDivider>
+        <ChecDivider>
           {{ label }}
-        </BaseDivider>
+        </ChecDivider>
       </div>`
     }}
   </Story>

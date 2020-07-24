@@ -36,7 +36,7 @@
         <ChecIcon icon="down" />
       </div>
     </div>
-    <BasePopover
+    <ChecPopover
       v-show="showDropdown"
       ref="popper-el"
       class="dropdown__base-popover"
@@ -44,34 +44,34 @@
         width: `${dropdownElWidth}px`,
       }"
     >
-      <BaseOption
+      <ChecOption
         v-for="option in renderableOptions"
         :key="option.value"
-        :class="baseOptionClass"
+        :class="ChecOptionClass"
         :option="option"
         :show-checkbox="multiselect"
         :checked="multiselect && !isIndeterminate(option) && isChecked(option)"
         :indeterminate="multiselect && isIndeterminate(option)"
-        @option-selected="onBaseOptionSelect"
+        @option-selected="onChecOptionSelect"
       >
         {{ option.label }}
-      </BaseOption>
-    </BasePopover>
+      </ChecOption>
+    </ChecPopover>
   </div>
 </template>
 
 <script>
 import { createPopper } from '@popperjs/core';
-import BaseOption from './BaseOption.vue';
-import BasePopover from './BasePopover.vue';
+import ChecOption from './ChecOption.vue';
+import ChecPopover from './ChecPopover.vue';
 import ChecIcon from './ChecIcon.vue';
 
 export default {
-  name: 'BaseDropdown',
+  name: 'ChecDropdown',
   components: {
     ChecIcon,
-    BaseOption,
-    BasePopover,
+    ChecOption,
+    ChecPopover,
   },
   props: {
     /**
@@ -97,7 +97,7 @@ export default {
     /**
      * Class to pass to inner options
      */
-    baseOptionClass: {
+    ChecOptionClass: {
       type: String,
     },
     /**
@@ -270,7 +270,7 @@ export default {
     },
     /** Method used to size set the root element's width in the state */
     setDropdownElWidth() {
-      // set BasePopover width to match root's width since this component is has a 'static' position by default to
+      // set ChecPopover width to match root's width since this component is has a 'static' position by default to
       // allow for popping out of scrollable overflow
       const dropdownEl = this.$refs['dropdown-el'];
       this.dropdownElWidth = dropdownEl.clientWidth;
@@ -289,7 +289,7 @@ export default {
      *
      * @param {Object} option
      */
-    onBaseOptionSelect(option) {
+    onChecOptionSelect(option) {
       const { value } = option;
       // Normal selects are easy...
       if (!this.multiselect) {
@@ -370,7 +370,7 @@ export default {
       }
     },
     /**
-     * Determines whether an option is "checked" - used for filling the prop of `BaseOption`
+     * Determines whether an option is "checked" - used for filling the prop of `ChecOption`
      *
      * @param {Object} option
      */
@@ -381,7 +381,7 @@ export default {
       return option.group.every(candidate => this.isChecked(candidate));
     },
     /**
-     * Determines whether an option is "indeterminate" - used for filling the prop of `BaseOption`
+     * Determines whether an option is "indeterminate" - used for filling the prop of `ChecOption`
      *
      * @param {Object} option
      */

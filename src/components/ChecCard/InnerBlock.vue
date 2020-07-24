@@ -11,7 +11,7 @@
     </div>
     <div v-if="actionText || $slots.action">
       <slot name="action" />
-      <BaseButton
+      <ChecButton
         v-if="!$slots.action"
         class="card-inner-block__action"
         variant="round"
@@ -25,17 +25,17 @@
         <template v-if="$slots.actionIcon" #icon>
           <slot name="actionIcon" />
         </template>
-      </BaseButton>
+      </ChecButton>
     </div>
   </div>
 </template>
 
 <script>
-import BaseButton from '../BaseButton.vue';
+import ChecButton from '../ChecButton.vue';
 
 export default {
   name: 'InnerBlock',
-  components: { BaseButton },
+  components: { ChecButton },
   props: {
     /**
      * The title of the inner block

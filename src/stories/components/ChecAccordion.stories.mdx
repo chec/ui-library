@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { select, text, number } from '@storybook/addon-knobs';
 import ChecAccordion from '../../components/ChecAccordion.vue';
 import ChecCard from '../../components/ChecCard.vue';
-import BaseButton from '../../components/BaseButton.vue';
+import ChecButton from '../../components/ChecButton.vue';
 import TextField from '../../components/TextField.vue';
 
 <Meta title="Components/Accordion" component={ChecAccordion} />
@@ -48,7 +48,7 @@ import TextField from '../../components/TextField.vue';
     {{
       components: {
         ChecAccordion,
-        BaseButton,
+        ChecButton,
         TextField,
       },
       props: {
@@ -79,7 +79,7 @@ import TextField from '../../components/TextField.vue';
               Email address
               <TextField value="lezlie@example.com" class="w-full" />
             </label>
-            <BaseButton color="green" class="mt-8">Submit</BaseButton>
+            <ChecButton color="green" class="mt-8">Submit</ChecButton>
           </ChecAccordion>
         </div>`
     }}
@@ -129,7 +129,7 @@ import TextField from '../../components/TextField.vue';
     {{
       components: {
         ChecAccordion,
-        BaseButton,
+        ChecButton,
         TextField,
       },
       props: {
@@ -165,7 +165,7 @@ import TextField from '../../components/TextField.vue';
       components: {
         ChecAccordion,
         ChecCard,
-        BaseButton,
+        ChecButton,
         TextField,
       },
       props: {

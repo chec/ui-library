@@ -1,8 +1,8 @@
 <template>
   <div class="update-group">
-    <BaseDivider class="update-group__divider">
+    <ChecDivider class="update-group__divider">
       {{ updateDate }}
-    </BaseDivider>
+    </ChecDivider>
     <div class="update-section">
       <div v-for="(update, key) in updates" :key="key" class="update">
         <ChecDataPill :color="pillColor(update)" class="update__pill">
@@ -27,12 +27,12 @@
 
 <script>
 import ChecDataPill from './ChecDataPill.vue';
-import BaseDivider from './BaseDivider.vue';
+import ChecDivider from './ChecDivider.vue';
 
 export default {
   name: 'ChangeLog',
   components: {
-    BaseDivider,
+    ChecDivider,
     ChecDataPill,
   },
   props: {

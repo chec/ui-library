@@ -2,12 +2,12 @@ import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
 import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
 import { withInfo } from 'storybook-addon-vue-info'
-import BaseButton from '../../components/BaseButton.vue';
+import ChecButton from '../../components/ChecButton.vue';
 import CloseIcon from '../../assets/svgs/close-icon.svg';
 import ChecIcon from '../../components/ChecIcon.vue';
 import makeVariants from '../helpers/makeVariants';
 
-<Meta title="Form fields/Button" component={BaseButton} />
+<Meta title="Form fields/Button" component={ChecButton} />
 
 # Button
 
@@ -22,7 +22,7 @@ Todo list
 
 </details>
 
-<Props of={BaseButton} />
+<Props of={ChecButton} />
 
 ## Default
 
@@ -30,7 +30,7 @@ Todo list
   <Story name="Defaults">
     {{
       components: {
-        BaseButton,
+        ChecButton,
         ChecIcon
       },
       props: {
@@ -58,7 +58,7 @@ Todo list
       },
       template: `
         <div class="py-16 flex justify-center">
-          <base-button
+          <chec-button
             :color="color"
             :variant="variant"
             :icon-position="iconPosition"
@@ -66,7 +66,7 @@ Todo list
             :icon="hasIcon ? icon : null"
           >
             {{text}}
-          </base-button>
+          </chec-button>
         </div>
       `,
       methods: { action: action("clicked") }
@@ -93,14 +93,14 @@ This is a button modified using the Color and Variant props.
         }
       },
       components: {
-        BaseButton
+        ChecButton
       },
       template: `
         <div class="py-16 grid grid-cols-4 gap-4 justify-center mx-20">
           <div v-for="{ color, variant, label } in possibilities">
-            <base-button class="mx-auto capitalize" :color="color" :variant="variant">
+            <chec-button class="mx-auto capitalize" :color="color" :variant="variant">
               {{ label }}
-            </base-button>
+            </chec-button>
           </div>
         </div>`,
         methods: { action: action("clicked") }
@@ -114,13 +114,13 @@ This is a button modified using the Color and Variant props.
   <Story name="Full width">
     {{
       components: {
-        BaseButton,
+        ChecButton,
       },
       template: `
       <div class="py-16 px-8 justify-center">
-        <base-button class="w-full" color="primary">
+        <chec-button class="w-full" color="primary">
           Full width
-        </base-button>
+        </chec-button>
       </div>`,
     }}
   </Story>
@@ -132,7 +132,7 @@ This is a button modified using the Color and Variant props.
   <Story name="With icons" decorators={[withKnobs()]}>
     {{
       components: {
-        BaseButton,
+        ChecButton,
         CloseIcon
       },
       props: {
@@ -148,18 +148,18 @@ This is a button modified using the Color and Variant props.
       },
       template: `
         <div class="py-16 justify-center">
-          <base-button class="mx-auto mb-4" :color="color" :variant="variant">
+          <chec-button class="mx-auto mb-4" :color="color" :variant="variant">
             Bigger, amazing
             <template v-if="hasIcon" v-slot:icon>
               <CloseIcon />
             </template>
-          </base-button>
-          <base-button class="mx-auto" :color="color" :variant="variant" icon-position="after">
+          </chec-button>
+          <chec-button class="mx-auto" :color="color" :variant="variant" icon-position="after">
             Bigger, amazing
             <template v-if="hasIcon" v-slot:icon>
               <CloseIcon />
             </template>
-          </base-button>
+          </chec-button>
         </div>`,
         methods: { action: action("clicked") }
     }}
@@ -172,7 +172,7 @@ This is a button modified using the Color and Variant props.
   <Story name="Icon only" decorators={[withKnobs()]}>
     {{
       components: {
-        BaseButton,
+        ChecButton,
         CloseIcon
       },
       props: {
@@ -182,11 +182,11 @@ This is a button modified using the Color and Variant props.
       },
       template: `
         <div class="py-16 justify-center">
-          <base-button class="mx-auto mb-4" :color="color" variant="small">
+          <chec-button class="mx-auto mb-4" :color="color" variant="small">
             <template v-slot:icon>
               <CloseIcon />
             </template>
-          </base-button>
+          </chec-button>
         </div>`,
         methods: { action: action("clicked") }
     }}
@@ -199,7 +199,7 @@ This is a button modified using the Color and Variant props.
   <Story name="Slot Content" decorators={[withKnobs({escapeHTML: false})]}>
     {{
       components: {
-        BaseButton
+        ChecButton
       },
       props: {
         color: {
@@ -217,8 +217,8 @@ This is a button modified using the Color and Variant props.
       },
       template: `
         <div class="py-16 flex justify-center">
-          <base-button :color="color" :variant="variant" :disabled="disabled" v-html="text">
-          </base-button>
+          <chec-button :color="color" :variant="variant" :disabled="disabled" v-html="text">
+          </chec-button>
         </div>
       `,
       methods: { action: action("clicked") }
