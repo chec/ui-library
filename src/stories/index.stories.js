@@ -1,9 +1,9 @@
 import '../assets/tailwind.css';
 import Vue from 'vue';
-import { BaseTooltip } from '../index';
+import { ChecTooltip } from '../index';
 
-Vue.directive('tooltip', BaseTooltip.VTooltip);
-Vue.directive('close-popover', BaseTooltip.VClosePopover);
+Vue.directive('tooltip', ChecTooltip.VTooltip);
+Vue.directive('close-popover', ChecTooltip.VClosePopover);
 
 // eslint-disable-next-line vue/match-component-file-name
-Vue.component('VPopover', BaseTooltip.VPopover);
+Vue.component('VPopover', ChecTooltip.VPopover);

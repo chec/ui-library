@@ -6,7 +6,7 @@
       -->
       <slot />
     </component>
-    <BaseButton
+    <ChecButton
       v-if="!undismissible"
       variant="small"
       class="chec-modal-header__dismiss-button"
@@ -15,17 +15,17 @@
       <template #icon>
         <ChecIcon icon="close" />
       </template>
-    </BaseButton>
+    </ChecButton>
   </div>
 </template>
 
 <script>
-import BaseButton from '../BaseButton.vue';
+import ChecButton from '../ChecButton.vue';
 import ChecIcon from '../ChecIcon.vue';
 
 export default {
   name: 'ChecModalHeader',
-  components: { ChecIcon, BaseButton },
+  components: { ChecIcon, ChecButton },
   props: {
     /**
      * The tag to use for the tag that wraps the header

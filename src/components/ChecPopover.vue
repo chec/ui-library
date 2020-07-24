@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'BasePopover',
+  name: 'ChecPopover',
 };
 </script>
 

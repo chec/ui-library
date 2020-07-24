@@ -17,7 +17,7 @@
 import SvgRightArrow from '../assets/svgs/right-arrow.svg';
 
 export default {
-  name: 'BaseBreadcrumbs',
+  name: 'ChecBreadcrumbs',
   components: {
     SvgRightArrow,
   },

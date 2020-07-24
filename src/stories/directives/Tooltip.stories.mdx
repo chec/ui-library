@@ -1,6 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
-import { BaseButton } from '../../index';
+import { ChecButton } from '../../index';
 
 <Meta title="Directives/Tooltips" />
 
@@ -10,19 +10,19 @@ import { BaseButton } from '../../index';
   <Story name="Default">
     {{
       components: {
-        BaseButton,
+        ChecButton,
       },
       template: `
       <div class="flex relative w-full mx-auto max-w-lg m-10">
-        <BaseButton v-tooltip="{
+        <ChecButton v-tooltip="{
             content: 'I am the automatic position for a tooltip',
             show: true,
             autoHide: false,
-        }">Default</BaseButton>
-        <BaseButton v-tooltip.left="'On the left of the target'">Left</BaseButton>
-        <BaseButton v-tooltip.right="'Positioned on the right of the BaseButton'">Right</BaseButton>
-        <BaseButton v-tooltip.top="'Above the target'">Top</BaseButton>
-        <BaseButton v-tooltip.bottom="'Popover is shown below the target'">Bottom</BaseButton>
+        }">Default</ChecButton>
+        <ChecButton v-tooltip.left="'On the left of the target'">Left</ChecButton>
+        <ChecButton v-tooltip.right="'Positioned on the right of the ChecButton'">Right</ChecButton>
+        <ChecButton v-tooltip.top="'Above the target'">Top</ChecButton>
+        <ChecButton v-tooltip.bottom="'Popover is shown below the target'">Bottom</ChecButton>
       </div>`
     }}
   </Story>

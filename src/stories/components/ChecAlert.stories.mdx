@@ -1,20 +1,20 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
 import { text, select, boolean, withKnobs } from '@storybook/addon-knobs';
-import BaseAlert from '../../components/BaseAlert.vue';
+import ChecAlert from '../../components/ChecAlert.vue';
 import ChecIcon from '../../components/ChecIcon.vue';
 
-<Meta title="Components/Alert" component={BaseAlert} />
+<Meta title="Components/Alert" component={ChecAlert} />
 
 # Alert
 
-<Props of={BaseAlert} />
+<Props of={ChecAlert} />
 
 <Preview>
   <Story name="Default">
     {{
       components: {
-        BaseAlert,
+        ChecAlert,
         ChecIcon,
       },
       data() {
@@ -51,7 +51,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
       },
       template: `
         <div class="mx-auto px-16 pt-6">
-          <BaseAlert
+          <ChecAlert
             v-show="!closed"
             :variant="variant"
             :disable-close="disableClose"
@@ -61,7 +61,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
           >
             <ChecIcon v-if="showSlotIcon" icon="chec"/>
             Text to Alert!
-          </BaseAlert>
+          </ChecAlert>
         </div>`
     }}
   </Story>
@@ -73,7 +73,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
   <Story name="Variants">
     {{
       components: {
-        BaseAlert
+        ChecAlert
       },
       data() {
         return {
@@ -99,7 +99,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
       },
       template: `
         <div class="mx-auto px-16 pt-6">
-          <BaseAlert
+          <ChecAlert
             v-for="variant in variants"
             v-show="!isClosed(variant)"
             class="my-6"
@@ -107,7 +107,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
             @close="close(variant)"
           >
             {{content(variant)}}
-          </BaseAlert>
+          </ChecAlert>
         </div>`
     }}
   </Story>
@@ -119,7 +119,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
   <Story name="Inline Variants">
     {{
       components: {
-        BaseAlert,
+        ChecAlert,
       },
       data() {
         return {
@@ -156,7 +156,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
       },
       template: `
         <div class="mx-auto px-16 pt-6">
-          <BaseAlert
+          <ChecAlert
             v-for="variant in variants"
             v-show="!isClosed(variant)"
             class="my-6"
@@ -167,7 +167,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
             @close="close(variant)"
           >
             {{content(variant)}}
-          </BaseAlert>
+          </ChecAlert>
         </div>`
     }}
   </Story>

@@ -1,13 +1,13 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { withInfo } from 'storybook-addon-vue-info';
-import BaseBreadcrumbs from '../../components/BaseBreadcrumbs.vue';
+import ChecBreadcrumbs from '../../components/ChecBreadcrumbs.vue';
 import StoryRouter from 'storybook-vue-router';
 
-<Meta title="Components" component={BaseBreadcrumbs} />
+<Meta title="Components" component={ChecBreadcrumbs} />
 
 # Breadcrumbs
 
-<Props of={BaseBreadcrumbs} />
+<Props of={ChecBreadcrumbs} />
 
 # Default:
 
@@ -43,11 +43,11 @@ Set to iterate breadcrumbs based on `this.$route.matched`; works well with  a gl
   })]}>
     {{
       components: {
-        BaseBreadcrumbs
+        ChecBreadcrumbs
       },
       template: `
         <div class="py-16 flex justify-center">
-          <BaseBreadcrumbs />
+          <ChecBreadcrumbs />
         </div>`
     }}
   </Story>

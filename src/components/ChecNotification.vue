@@ -18,7 +18,7 @@
 import SvgCloseIcon from '../assets/svgs/close-icon.svg';
 
 export default {
-  name: 'BaseNotification',
+  name: 'ChecNotification',
   components: {
     SvgCloseIcon,
   },

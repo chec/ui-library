@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'BaseTag',
+  name: 'ChecTag',
   props: {
     /**
      * The style variant for the tag. One of "default", "success", "error", "warning", "info". Default is "default"

@@ -1,7 +1,7 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import { select } from '@storybook/addon-knobs';
-import BaseOption from '../../components/BaseOption.vue';
+import ChecOption from '../../components/ChecOption.vue';
 import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
 
 <Meta title="Components/Options menu" component={ChecOptionsMenu} />
@@ -16,7 +16,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
   <Story name="Default">
     {{
       components: {
-        BaseOption,
+        ChecOption,
         ChecOptionsMenu,
       },
       props: {
@@ -77,36 +77,36 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
                 </td>
                 <td class="flex justify-end">
                   <ChecOptionsMenu :open="true" :menu-placement="menuPlacement">
-                    <BaseOption @option-selected="action">
+                    <ChecOption @option-selected="action">
                       Edit record
-                    </BaseOption>
-                    <BaseOption @option-selected="action">
+                    </ChecOption>
+                    <ChecOption @option-selected="action">
                       Check for changes
-                    </BaseOption>
-                    <BaseOption @option-selected="confirm('Are you sure?')" destructive>
+                    </ChecOption>
+                    <ChecOption @option-selected="confirm('Are you sure?')" destructive>
                       Delete record
-                    </BaseOption>
-                    <BaseOption :option="{ disabled: true }">
+                    </ChecOption>
+                    <ChecOption :option="{ disabled: true }">
                       Disabled action
-                    </BaseOption>
+                    </ChecOption>
                   </ChecOptionsMenu>
                 </td>
               </tr>
             </tbody>
           </table>
           <ChecOptionsMenu :open="true" :menu-placement="menuPlacement">
-            <BaseOption @option-selected="action">
+            <ChecOption @option-selected="action">
               Edit record
-            </BaseOption>
-            <BaseOption @option-selected="action">
+            </ChecOption>
+            <ChecOption @option-selected="action">
               Check for changes
-            </BaseOption>
-            <BaseOption @option-selected="confirm('Are you sure?')" destructive>
+            </ChecOption>
+            <ChecOption @option-selected="confirm('Are you sure?')" destructive>
               Delete record
-            </BaseOption>
-            <BaseOption :option="{ disabled: true }">
+            </ChecOption>
+            <ChecOption :option="{ disabled: true }">
               Disabled action
-            </BaseOption>
+            </ChecOption>
           </ChecOptionsMenu>
         </div>
       </div>`
@@ -120,7 +120,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
   <Story name="Right aligned">
     {{
       components: {
-        BaseOption,
+        ChecOption,
         ChecOptionsMenu,
       },
       methods: {
@@ -130,18 +130,18 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
       <div class="p-16 flex justify-center font-lato w-full text-gray-500">
          <div class="w-64 relative">
           <ChecOptionsMenu position="right" :open="false">
-            <BaseOption @option-selected="action">
+            <ChecOption @option-selected="action">
               Edit record
-            </BaseOption>
-            <BaseOption @option-selected="action">
+            </ChecOption>
+            <ChecOption @option-selected="action">
               Check for changes
-            </BaseOption>
-            <BaseOption @option-selected="action" destructive>
+            </ChecOption>
+            <ChecOption @option-selected="action" destructive>
               Delete record
-            </BaseOption>
-            <BaseOption :option="{ disabled: true }">
+            </ChecOption>
+            <ChecOption :option="{ disabled: true }">
               Disabled action
-            </BaseOption>
+            </ChecOption>
           </ChecOptionsMenu>
         </div>
       </div>`

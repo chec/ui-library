@@ -3,7 +3,7 @@ import { uiIcons } from '@/lib/icons';
 import ChecIcon from './ChecIcon.vue';
 
 export default {
-  name: 'BaseButton',
+  name: 'ChecButton',
   props: {
     /**
      * The type of HTML element tag to use as the button. One of "link", or "button".

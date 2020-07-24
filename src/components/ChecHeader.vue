@@ -9,7 +9,7 @@
         {{ label }}
       </label>
       <!--
-        @slot - Slot to distribute a <BaseButton> to
+        @slot - Slot to distribute a <ChecButton> to
         ! -->
       <slot />
     </div>

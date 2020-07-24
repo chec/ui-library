@@ -1,19 +1,19 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
 import { text, select } from '@storybook/addon-knobs';
-import BaseNotification from '../../components/BaseNotification.vue';
+import ChecNotification from '../../components/ChecNotification.vue';
 
-<Meta title="Components/Notifications" component={BaseNotification} />
+<Meta title="Components/Notifications" component={ChecNotification} />
 
 # Notification
 
-<Props of={BaseNotification} />
+<Props of={ChecNotification} />
 
 <Preview>
   <Story name="Default">
     {{
       components: {
-        BaseNotification
+        ChecNotification
       },
       data() {
         return {
@@ -37,14 +37,14 @@ import BaseNotification from '../../components/BaseNotification.vue';
       },
       template: `
         <div class="w-1/2 mx-auto pt-6 font-lato">
-          <BaseNotification
+          <ChecNotification
             v-if="!closed"
             :variant="variant"
             @close="close()"
             persist
           >
             {{text}}
-          </BaseNotification>
+          </ChecNotification>
         </div>`
     }}
   </Story>
@@ -56,7 +56,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
   <Story name="Variants">
     {{
       components: {
-        BaseNotification
+        ChecNotification
       },
       data() {
         return {
@@ -82,7 +82,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
       },
       template: `
         <div class="w-1/2 mx-auto pt-6 font-lato">
-          <BaseNotification
+          <ChecNotification
             v-for="variant in variants"
             v-if="!isClosed(variant)"
             class="mb-2"
@@ -91,7 +91,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
             persist
           >
             {{content(variant)}}
-          </BaseNotification>
+          </ChecNotification>
         </div>`
     }}
   </Story>
@@ -103,7 +103,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
   <Story name="Formatted alert text">
     {{
       components: {
-        BaseNotification
+        ChecNotification
       },
       data() {
         return {
@@ -124,7 +124,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
       },
       template: `
         <div class="w-1/2 mx-auto pt-6 font-lato">
-          <BaseNotification
+          <ChecNotification
             v-if="!closed"
             :variant="variant"
             @close="close()"
@@ -133,7 +133,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
             <p class="font-bold text-red-200 text-xs italic">
               Formatted alert text.
             </p>
-          </BaseNotification>
+          </ChecNotification>
         </div>`
     }}
   </Story>
@@ -145,7 +145,7 @@ import BaseNotification from '../../components/BaseNotification.vue';
   <Story name="Hide on timer">
     {{
       components: {
-        BaseNotification
+        ChecNotification
       },
       data() {
         return {
@@ -166,14 +166,14 @@ import BaseNotification from '../../components/BaseNotification.vue';
       },
       template: `
         <div class="w-1/2 mx-auto font-lato">
-          <BaseNotification
+          <ChecNotification
             v-if="!closed"
             :variant="variant"
             @close="close()"
             :hideTime="3000"
           >
             I will disappear after 3 seconds
-          </BaseNotification>
+          </ChecNotification>
         </div>`
     }}
   </Story>
