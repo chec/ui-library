@@ -120,12 +120,16 @@ export default {
         children.push(icon);
       }
     }
+
+    const domProps = { disabled: this.disabled };
+
+    if (this.tagType === 'button') {
+      domProps.type = this.buttonType;
+    }
+
     return createElement(tag, {
       class: this.classNames,
-      domProps: {
-        disabled: this.disabled,
-        type: this.tagType === 'button' ? this.buttonType : null,
-      },
+      domProps,
       on: {
         click: this.handleClick,
       },

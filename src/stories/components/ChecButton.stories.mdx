@@ -55,6 +55,9 @@ Todo list
         iconPosition: {
           default: select('Icon Position', ['before', 'after'], 'before'),
         },
+        tagType: {
+          default: select('Tag type', ['button', 'link'], 'button'),
+        },
       },
       template: `
         <div class="py-16 flex justify-center">
@@ -64,6 +67,7 @@ Todo list
             :icon-position="iconPosition"
             :disabled="disabled"
             :icon="hasIcon ? icon : null"
+            :tag-type="tagType"
           >
             {{text}}
           </chec-button>
