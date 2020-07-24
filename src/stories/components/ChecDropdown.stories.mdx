@@ -43,6 +43,12 @@ Todo list
         placeholder: {
           default: text('Placeholder', ''),
         },
+        errored: {
+          default: boolean('Errored', false)
+        },
+        disabled: {
+          default: boolean('Disabled', false)
+        },
       },
       data() {
         return {
@@ -81,6 +87,9 @@ Todo list
             this.value = value;
           },
         },
+        variant() {
+          return this.disabled ? 'disabled' : this.errored ? 'error' : '';
+        }
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
@@ -89,6 +98,7 @@ Todo list
             :required="required"
             :multiselect="multiselect"
             :placeholder="placeholder"
+            :variant="variant"
             name="example-1"
             class="max-w-md"
             v-model="model"

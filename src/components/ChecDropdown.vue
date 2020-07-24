@@ -5,6 +5,7 @@
     :class="{
       'dropdown--with-inline-label': isFocus && label,
       'dropdown--open': showDropdown,
+      [`dropdown--${variant}`]: variant !== '',
     }"
     @click="toggleDropdown"
     @keyup="onKeyPress"
@@ -82,6 +83,13 @@ export default {
      * Indicates that multiple options may be selected. In this case the bound v-model will be an array of values
      */
     multiselect: Boolean,
+    /**
+     * The state of the text field. One of "disabled", "error".
+     */
+    variant: {
+      type: String,
+      default: '',
+    },
     /**
      * Placeholder used when no option has been selected
      */
@@ -345,6 +353,10 @@ export default {
      * Toggles visibility of the dropdown
      */
     toggleDropdown() {
+      if (this.variant === 'disabled') {
+        return;
+      }
+
       this.$nextTick(() => {
         if (this.showDropdown) {
           this.createPopper();
@@ -464,6 +476,26 @@ export default {
 
     .dropdown__value {
       @apply pt-6 pb-2;
+    }
+  }
+
+  &--disabled {
+    @apply opacity-50 cursor-not-allowed;
+
+    &:hover,
+    &:focus,
+    &:active {
+      @apply border-gray-300 transition-opacity duration-300 ease-in-out opacity-50;
+    }
+  }
+
+  &--error {
+    @apply border-red-400;
+
+    &:hover,
+    &:focus,
+    &:active {
+      @apply border-red-300;
     }
   }
 }

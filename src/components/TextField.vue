@@ -313,12 +313,12 @@ export default {
 
   &--error &__input,
   &:not(.text-field--empty) &__input:invalid {
-    @apply border-red-300;
+    @apply border-red-400;
 
     &:hover,
     &:focus,
     &:active {
-      @apply border-red-200;
+      @apply border-red-300;
     }
   }
 
