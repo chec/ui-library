@@ -140,6 +140,7 @@ export default {
         'text-field--empty': value === '',
         'text-field--inline-label': label,
         'text-field--modified': label ? !!value : false,
+        'text-field--without-inline-label': !label,
         'text-field--multiline': multiline,
       };
     },
@@ -248,8 +249,7 @@ export default {
       border-gray-300
       outline-none
       pb-2
-      pt-6
-    ;
+      pt-6;
 
     &::placeholder {
       color: rgba(0, 0, 0, 0);
@@ -329,6 +329,12 @@ export default {
 
     .text-field__input {
       @apply pb-2 pt-6;
+    }
+  }
+
+  &--without-inline-label {
+    .text-field__input {
+      @apply py-4;
     }
   }
 
