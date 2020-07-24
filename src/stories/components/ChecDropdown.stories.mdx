@@ -1,6 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import ChecDropdown from '../../components/ChecDropdown.vue';
 import ChecOption from '../../components/ChecOption.vue';
 import ChecModal from '../../components/ChecModal.vue';
@@ -30,28 +30,78 @@ Todo list
       components: {
         ChecDropdown,
       },
+      props: {
+        label: {
+          default: text('Label', 'Label'),
+        },
+        required: {
+          default: boolean('Required', false)
+        },
+        multiselect: {
+          default: boolean('Multiselect', false)
+        },
+        placeholder: {
+          default: text('Placeholder', ''),
+        },
+        errored: {
+          default: boolean('Errored', false)
+        },
+        disabled: {
+          default: boolean('Disabled', false)
+        },
+      },
       data() {
         return {
-          option: "",
+          value: null,
           options: [
-            { value: 't2', label: 'T2 Ticket' },
-            { value: 't1', label: 'T1 Ticket (Coming Soon)', disabled: true }
+            { value: 'steak', label: 'Steak' },
+            { value: 'chicken', label: 'Chicken' },
+            { value: 'fish', label: 'Fish' },
+            { value: 'apple', label: 'Apple (Sold Out)', disabled: true },
+            { value: 'pear', label: 'Pear' },
+            { value: 'kiwi', label: 'Kiwis' },
+            { value: 'blueberry', label: 'Blueberries' },
+            { value: 'bread', label: 'Bread' },
           ],
           onClick,
         }
       },
-      props: {
-        label: {
-          default: text('Label', 'Label'),
+      computed: {
+        model: {
+          get() {
+            if (this.multiselect) {
+              if (Array.isArray(this.value)) {
+                return this.value;
+              }
+              if (!this.value) {
+                return [];
+              }
+              return [this.value];
+            }
+            if (Array.isArray(this.value) && this.value.length > 0) {
+              return this.value[0];
+            }
+            return typeof this.value === 'string' ? this.value : '';
+          },
+          set(value) {
+            this.value = value;
+          },
+        },
+        variant() {
+          return this.disabled ? 'disabled' : this.errored ? 'error' : '';
         }
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
           <ChecDropdown
             :label="label"
+            :required="required"
+            :multiselect="multiselect"
+            :placeholder="placeholder"
+            :variant="variant"
             name="example-1"
             class="max-w-md"
-            v-model="option"
+            v-model="model"
             :options="options"
             @input="onClick"
             />
