@@ -239,7 +239,7 @@ export default {
     @apply
       leading-tight
       text-sm
-      text-gray-600
+      text-gray-500
       w-full
       px-4
       bg-white
