@@ -19510,12 +19510,17 @@ var es_string_includes = __webpack_require__("2532");
       }
     }
 
+    var domProps = {
+      disabled: this.disabled
+    };
+
+    if (this.tagType === 'button') {
+      domProps.type = this.buttonType;
+    }
+
     return createElement(tag, {
       class: this.classNames,
-      domProps: {
-        disabled: this.disabled,
-        type: this.tagType === 'button' ? this.buttonType : null
-      },
+      domProps: domProps,
       on: {
         click: this.handleClick
       }
