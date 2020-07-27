@@ -17,7 +17,6 @@
   "dependencies": {
     "@chec/eslint-config": "^0.0.0",
     "@chec/stylelint-config": "^0.0.0",
-    "@linusborg/vue-simple-portal": "^0.1.4",
     "@popperjs/core": "^2.1.1",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "autoprefixer": "^9.7.4",
@@ -25,6 +24,7 @@
     "eslint-plugin-vue": "^7.0.0-alpha.6",
     "flatpickr": "^4.6.3",
     "lodash.uniqueid": "^4.0.1",
+    "portal-vue": "^2.1.7",
     "postcss-assets": "^5.0.0",
     "tailwindcss": "^1.4.6",
     "tailwindcss-plugins": "^0.3.0",
