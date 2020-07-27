@@ -41,14 +41,14 @@
           :class="section.classes"
           @mouseover="() => handleOpenSection(section)"
         >
-          <BaseButton
+          <ChecButton
             :tag-type="section.buttonTag"
             v-bind="section.bind"
             variant="small"
             @touchstart.prevent="() => handleOpenSection(section)"
           >
             <ChecNavIcon :icon="section.icon" />
-          </BaseButton>
+          </ChecButton>
         </li>
       </ul>
       <div @mouseover="() => handleOpenSection(user)">
@@ -71,14 +71,14 @@
 import ChecAvatar from '@/components/ChecAvatar';
 import ChecLogo from '@/assets/svgs/chec-logo.svg';
 import ChecNavIcon from '@/components/ChecNavIcon';
-import BaseButton from '@/components/BaseButton';
+import ChecButton from '@/components/ChecButton';
 import ChecIcon from '@/components/ChecIcon';
 
 export default {
   name: 'ChecNavigation',
   components: {
     ChecIcon,
-    BaseButton,
+    ChecButton,
     ChecAvatar,
     ChecLogo,
     ChecNavIcon,

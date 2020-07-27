@@ -1,5 +1,5 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import BaseButton from '../../components/BaseButton.vue';
+import ChecButton from '../../components/ChecButton.vue';
 import ChecNavigation from '../../components/ChecNavigation.vue';
 import StoryRouter from 'storybook-vue-router';
 import { boolean } from '@storybook/addon-knobs';
@@ -33,7 +33,7 @@ the order of the "tree" that it is given
   <Story name="Default" decorators={[ StoryRouter({}, { routes })]}>
     {{
       components: {
-        BaseButton,
+        ChecButton,
         ChecNavigation
       },
       props: {
@@ -109,7 +109,7 @@ the order of the "tree" that it is given
               Leslie Lawless<br />
               <small class="text-gray-400 mt-1">#123</small>
             </div>
-            <BaseButton icon="link" variant="small" />
+            <ChecButton icon="link" variant="small" />
           </div>
         </ChecNavigation>
       </div>`
