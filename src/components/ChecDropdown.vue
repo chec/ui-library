@@ -33,7 +33,7 @@
       </div>
     </div>
     <ChecIcon icon="down" class="dropdown__down-arrow" />
-    <Portal>
+    <MountingPortal mount-to="body" :name="name || 'dropdown'" append>
       <ChecPopover
         v-show="showDropdown"
         ref="popper-el"
@@ -55,12 +55,12 @@
           {{ option.label }}
         </ChecOption>
       </ChecPopover>
-    </Portal>
+    </MountingPortal>
   </div>
 </template>
 
 <script>
-import { Portal } from '@linusborg/vue-simple-portal';
+import { MountingPortal } from 'portal-vue';
 import { createPopper } from '@popperjs/core';
 import ChecOption from './ChecOption.vue';
 import ChecPopover from './ChecPopover.vue';
@@ -72,7 +72,7 @@ export default {
     ChecIcon,
     ChecOption,
     ChecPopover,
-    Portal,
+    MountingPortal,
   },
   props: {
     /**
