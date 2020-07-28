@@ -37,7 +37,13 @@ export default {
      * A "compact" variant that reduces border width and radius
      */
     compact: Boolean,
+    /**
+     * allows card to apply the css class '.card--active' on pointer hovers
+     */
     hoverable: Boolean,
+    /**
+     * sets card to active, applying the css class '.card--active' by default
+     */
     active: Boolean,
   },
   computed: {
