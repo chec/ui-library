@@ -20177,12 +20177,12 @@ var ChecButton_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecButton = (ChecButton_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard.vue?vue&type=template&id=68220b26&
-var ChecCardvue_type_template_id_68220b26_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card",class:_vm.classObject},[_c('div',{staticClass:"card__inner-wrapper",class:[_vm.tailwindClasses, _vm.innerClass]},[_vm._t("default")],2)])}
-var ChecCardvue_type_template_id_68220b26_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard.vue?vue&type=template&id=0edd2b23&
+var ChecCardvue_type_template_id_0edd2b23_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card",class:_vm.classObject},[_c('div',{staticClass:"card__inner-wrapper",class:[_vm.tailwindClasses, _vm.innerClass]},[_vm._t("default")],2)])}
+var ChecCardvue_type_template_id_0edd2b23_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecCard.vue?vue&type=template&id=68220b26&
+// CONCATENATED MODULE: ./src/components/ChecCard.vue?vue&type=template&id=0edd2b23&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -20479,7 +20479,17 @@ function _typeof(obj) {
     /**
      * A "compact" variant that reduces border width and radius
      */
-    compact: Boolean
+    compact: Boolean,
+
+    /**
+     * allows card to apply the css class '.card--active' on pointer hovers
+     */
+    hoverable: Boolean,
+
+    /**
+     * sets card to active, applying the css class '.card--active' by default
+     */
+    active: Boolean
   },
   computed: {
     /**
@@ -20489,7 +20499,9 @@ function _typeof(obj) {
      */
     classObject: function classObject() {
       return ["card--border-".concat(this.borders), {
-        'card--compact': this.compact
+        'card--compact': this.compact,
+        'card--hoverable': this.hoverable,
+        'card--active': this.active
       }];
     }
   }
@@ -20510,8 +20522,8 @@ var ChecCardvue_type_style_index_0_lang_scss_ = __webpack_require__("b5c4");
 
 var ChecCard_component = normalizeComponent(
   components_ChecCardvue_type_script_lang_js_,
-  ChecCardvue_type_template_id_68220b26_render,
-  ChecCardvue_type_template_id_68220b26_staticRenderFns,
+  ChecCardvue_type_template_id_0edd2b23_render,
+  ChecCardvue_type_template_id_0edd2b23_staticRenderFns,
   false,
   null,
   null,
