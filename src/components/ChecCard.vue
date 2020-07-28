@@ -37,6 +37,14 @@ export default {
      * A "compact" variant that reduces border width and radius
      */
     compact: Boolean,
+    /**
+     * allows card to apply the css class '.card--active' on pointer hovers
+     */
+    hoverable: Boolean,
+    /**
+     * sets card to active, applying the css class '.card--active' by default
+     */
+    active: Boolean,
   },
   computed: {
     /**
@@ -47,7 +55,11 @@ export default {
     classObject() {
       return [
         `card--border-${this.borders}`,
-        { 'card--compact': this.compact },
+        {
+          'card--compact': this.compact,
+          'card--hoverable': this.hoverable,
+          'card--active': this.active,
+        },
       ];
     },
   },
@@ -57,6 +69,14 @@ export default {
 <style lang="scss">
 .card {
   @apply relative shadow-sm rounded-lg p-1 bg-hologram;
+
+  &--hoverable {
+    @apply transition duration-200 ease-in-out;
+
+    &:hover {
+      @extend .card--active;
+    }
+  }
 
   &__inner-wrapper {
     @apply rounded-md h-full;
@@ -90,6 +110,10 @@ export default {
     .card__inner-wrapper {
       @apply rounded-none;
     }
+  }
+
+  &--active {
+    @apply shadow-holo;
   }
 }
 </style>
