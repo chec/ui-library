@@ -44,10 +44,13 @@ Todo list
           default: text('Placeholder', ''),
         },
         errored: {
-          default: boolean('Errored', false)
+          default: boolean('Errored', false),
         },
         disabled: {
-          default: boolean('Disabled', false)
+          default: boolean('Disabled', false),
+        },
+        loading: {
+          default: boolean('Loading', false),
         },
         showSearch: {
           default: boolean('Show search', false),
@@ -112,12 +115,13 @@ Todo list
             :show-search="showSearch"
             :search-value="search"
             @search="handleSearch"
+            :loading="loading"
             name="example-1"
             class="max-w-md"
             v-model="model"
             :options="options"
             @input="onClick"
-            />
+          />
         </div>`
     }}
   </Story>

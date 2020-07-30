@@ -7,22 +7,30 @@
     @click="emitOptionsSelectedEvent"
     @keyup.enter="emitOptionsSelectedEvent"
   >
-    <input
-      v-if="showCheckbox"
-      :id="option.value"
-      type="checkbox"
-      class="mr-3"
-      :checked="checked"
-      :disabled="option.disabled"
-      :indeterminate.prop="indeterminate"
-    >
-    <slot />
+    <div v-if="loading" class="option__loading-container">
+      <ChecLoading />
+    </div>
+    <template v-else>
+      <input
+        v-if="showCheckbox"
+        :id="option.value"
+        type="checkbox"
+        class="mr-3"
+        :checked="checked"
+        :disabled="option.disabled"
+        :indeterminate.prop="indeterminate"
+      >
+      <slot />
+    </template>
   </div>
 </template>
 
 <script>
+import ChecLoading from './ChecLoading.vue';
+
 export default {
   name: 'ChecOption',
+  components: { ChecLoading },
   props: {
     /**
      * Set's the option as a selectable option
@@ -47,9 +55,13 @@ export default {
       }),
     },
     /**
-     * Whether the option is destructure, i.e. that it deletes something
+     * Whether the option is destructive, i.e. that it deletes something
      */
     destructive: Boolean,
+    /**
+     * Whether the content should be replaced with a loading indicator
+     */
+    loading: Boolean,
   },
   computed: {
     level() {
@@ -68,6 +80,7 @@ export default {
         {
           'option--disabled': this.option.disabled,
           'option--destructive': this.destructive,
+          'option--loading': this.loading,
         },
         `option--level-${this.level}`,
       ];
@@ -89,17 +102,23 @@ export default {
 .option {
   @apply w-full flex items-center text-sm px-4 py-3 outline-none cursor-pointer bg-white;
 
-  &:hover {
+  &:hover:not(.option--loading) {
     @apply bg-gray-100;
   }
 
   &:focus,
   &:active {
-    @apply bg-gray-100;
+    &:not(.option--loading) {
+      @apply bg-gray-100;
+    }
   }
 
   &:not(:last-child) {
     @apply border-b border-gray-200;
+  }
+
+  &__loading-container {
+    @apply relative w-full h-4;
   }
 
   &--disabled {
@@ -110,6 +129,10 @@ export default {
     &:focus {
       @apply bg-white;
     }
+  }
+
+  &--loading {
+    @apply cursor-default;
   }
 
   &--destructive {

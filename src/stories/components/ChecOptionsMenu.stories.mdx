@@ -10,7 +10,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
 
 <Props of={ChecOptionsMenu} />
 
-# Default
+## Default
 
 <Preview>
   <Story name="Default">
@@ -42,13 +42,43 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
       },
       methods: {
         action: action('option-selected'),
-        confirm(message) {
-          if (confirm(message)) {
-            this.action();
-            return true;
-          }
-          return false;
-        }
+      },
+      template: `
+        <div class="w-full h-screen bg-gray-200 flex items-center justify-around">
+          <ChecOptionsMenu :menu-placement="menuPlacement">
+            <ChecOption @option-selected="action">
+              Edit record
+            </ChecOption>
+            <ChecOption @option-selected="action">
+              Check for changes
+            </ChecOption>
+            <ChecOption @option-selected="action" destructive>
+              Delete record
+            </ChecOption>
+            <ChecOption :option="{ disabled: true }">
+              Disabled action
+            </ChecOption>
+            <ChecOption loading>
+              Loading
+            </ChecOption>
+          </ChecOptionsMenu>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Within a table
+
+<Preview>
+  <Story name="Within table">
+    {{
+      components: {
+        ChecOption,
+        ChecOptionsMenu,
+      },
+      methods: {
+        action: action('option-selected'),
       },
       template: `
       <div class="p-16 flex justify-center font-lato w-full text-gray-500">
@@ -94,27 +124,13 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
               </tr>
             </tbody>
           </table>
-          <ChecOptionsMenu :open="true" :menu-placement="menuPlacement">
-            <ChecOption @option-selected="action">
-              Edit record
-            </ChecOption>
-            <ChecOption @option-selected="action">
-              Check for changes
-            </ChecOption>
-            <ChecOption @option-selected="confirm('Are you sure?')" destructive>
-              Delete record
-            </ChecOption>
-            <ChecOption :option="{ disabled: true }">
-              Disabled action
-            </ChecOption>
-          </ChecOptionsMenu>
         </div>
       </div>`
     }}
   </Story>
 </Preview>
 
-# Right aligned
+## Right aligned
 
 <Preview>
   <Story name="Right aligned">
