@@ -160,10 +160,6 @@ export default {
 .button {
   @apply font-bold shadow-sm border border-0 flex justify-center items-center text-center;
 
-  &:focus {
-    @apply outline-none;
-  }
-
   &--has-icon-before {
     .button__content:not(:empty) {
       @apply ml-1;

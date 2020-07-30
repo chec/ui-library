@@ -2,7 +2,7 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import ChecButton from '../../components/ChecButton.vue';
 import ChecNavigation from '../../components/ChecNavigation.vue';
 import StoryRouter from 'storybook-vue-router';
-import { boolean } from '@storybook/addon-knobs';
+import { boolean, select } from '@storybook/addon-knobs';
 import { action } from "@storybook/addon-actions";
 const routes = [
   {
@@ -45,6 +45,10 @@ the order of the "tree" that it is given
           type: Boolean,
           default: boolean('"Controlled" mode', false),
         },
+        activeSection: {
+          type: String,
+          default: select('Active section', ['Orders', 'Products', 'Spaces storefront'], 'Orders'),
+        }
       },
       data() {
         return {
@@ -103,15 +107,24 @@ the order of the "tree" that it is given
       },
       template: `
       <div class="w-full">
-        <ChecNavigation :tree="tree" :user-section="user" :open="open" :controlled="controlled">
+        <ChecNavigation
+          :active-label="activeSection"
+          :tree="tree"
+          :user-section="user"
+          :open="open"
+          :controlled="controlled"
+          homeLink="/"
+        >
           <div class="h-12 flex items-center justify-between">
             <div class="leading-none">
               Leslie Lawless<br />
               <small class="text-gray-400 mt-1">#123</small>
             </div>
-            <ChecButton icon="link" variant="small" />
+            <ChecButton icon="link" variant="small" @click.prevent tabindex="-1" />
           </div>
         </ChecNavigation>
+        <input type="text" id="main" class="ml-32 border" />
+        <input type="text" class="border" />
       </div>`
     }}
   </Story>
