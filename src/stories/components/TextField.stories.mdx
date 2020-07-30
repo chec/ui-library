@@ -6,6 +6,7 @@ import TextField from '../../components/TextField.vue';
 import ChecIcon from '../../components/ChecIcon.vue';
 import ChecSwitch from '../../components/ChecSwitch.vue';
 import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGroup.vue';
+import { uiIcons } from '../../lib/icons';
 
 <Meta title="Form fields/Text field" component={TextField} />
 
@@ -19,9 +20,6 @@ import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGrou
   <Story name="Defaults">
     {{
       props: {
-        inputValue: {
-          default: text('Input Value', '')
-        },
         errored: {
           default: boolean('Errored', false)
         },
@@ -37,6 +35,12 @@ import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGrou
         type: {
           default: select('Type', ['text', 'email', 'password', 'number', 'date', 'color', 'month', 'search', 'tel', 'url', 'week'], 'text')
         },
+        icon: {
+          default: select('Icon', [null, ...Object.keys(uiIcons)]),
+        },
+      },
+      data() {
+        return { inputValue: '' };
       },
       computed: {
         variant() {
@@ -56,6 +60,7 @@ import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGrou
             v-model="inputValue"
             :variant="variant"
             :type="type"
+            :icon="icon"
             class="w-full max-w-sm"
           />
         </div>`,

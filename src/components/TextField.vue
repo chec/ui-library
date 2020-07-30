@@ -1,5 +1,8 @@
 <template>
   <div class="text-field" :class="classNames">
+    <div v-if="icon" class="text-field__icon">
+      <ChecIcon :icon="icon" size="base" />
+    </div>
     <div
       v-if="isScrollable"
       class="text-field__label-underlay"
@@ -40,9 +43,11 @@
 
 <script>
 import uniqueId from '@/lib/helpers/createUniqueId';
+import ChecIcon from '@/components/ChecIcon.vue';
 
 export default {
   name: 'TextField',
+  components: { ChecIcon },
   inheritAttrs: false,
   props: {
     /**
@@ -94,6 +99,13 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    /**
+     * The name of the icon to show on the left before the label. (Use a slot for an icon on the right side)
+     */
+    icon: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
@@ -140,7 +152,7 @@ export default {
         'text-field--empty': value === '',
         'text-field--inline-label': label,
         'text-field--modified': label ? !!value : false,
-        'text-field--without-inline-label': !label,
+        'text-field--has-icon': Boolean(this.icon),
         'text-field--multiline': multiline,
       };
     },
@@ -223,7 +235,13 @@ export default {
   @apply relative;
 
   %filled-transformation {
-    transform: translate(-0.2rem, -0.5rem) scale(0.8, 0.8);
+    transform: translate(0.05rem, -0.5rem) scale(0.8, 0.8);
+  }
+
+  &__icon {
+    @apply absolute flex ml-4 h-full items-center text-gray-400;
+    // Offset for the inputs border:
+    left: 1px;
   }
 
   &__action-button {
@@ -231,7 +249,7 @@ export default {
   }
 
   &__label {
-    @apply absolute top-0 left-0 pointer-events-none ml-5 mt-4 leading-tight text-gray-500
+    @apply absolute top-0 left-0 pointer-events-none ml-4 mt-4 leading-tight text-gray-500
       transition-transform duration-150 origin-top-left;
     @extend %filled-transformation;
   }
@@ -248,8 +266,7 @@ export default {
       border
       border-gray-300
       outline-none
-      pb-2
-      pt-6;
+      py-4;
 
     &::placeholder {
       color: rgba(0, 0, 0, 0);
@@ -282,6 +299,7 @@ export default {
 
   &__label-underlay {
     @apply absolute rounded bg-vertical-transparent-gradient h-12 transition-opacity duration-300;
+    // Offset for the inputs border:
     left: 1px;
     top: 1px;
     width: calc(100% - 6px);
@@ -332,19 +350,25 @@ export default {
     }
   }
 
-  &--without-inline-label {
-    .text-field__input {
-      @apply py-4;
-    }
-  }
-
   &--inline-label {
-    .text-field__input:focus {
+    .text-field__input {
       @apply pb-2 pt-6;
+    }
 
+    .text-field__input:focus {
       .text-field__label {
         @apply opacity-100;
       }
+    }
+  }
+
+  &--has-icon {
+    .text-field__label {
+      left: 1.5rem;
+    }
+
+    .text-field__input {
+      @apply pl-10;
     }
   }
 
