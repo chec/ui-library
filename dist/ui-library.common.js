@@ -2865,6 +2865,58 @@ $({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
 
 /***/ }),
 
+/***/ "466d":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var fixRegExpWellKnownSymbolLogic = __webpack_require__("d784");
+var anObject = __webpack_require__("825a");
+var toLength = __webpack_require__("50c4");
+var requireObjectCoercible = __webpack_require__("1d80");
+var advanceStringIndex = __webpack_require__("8aa5");
+var regExpExec = __webpack_require__("14c3");
+
+// @@match logic
+fixRegExpWellKnownSymbolLogic('match', 1, function (MATCH, nativeMatch, maybeCallNative) {
+  return [
+    // `String.prototype.match` method
+    // https://tc39.github.io/ecma262/#sec-string.prototype.match
+    function match(regexp) {
+      var O = requireObjectCoercible(this);
+      var matcher = regexp == undefined ? undefined : regexp[MATCH];
+      return matcher !== undefined ? matcher.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
+    },
+    // `RegExp.prototype[@@match]` method
+    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@match
+    function (regexp) {
+      var res = maybeCallNative(nativeMatch, regexp, this);
+      if (res.done) return res.value;
+
+      var rx = anObject(regexp);
+      var S = String(this);
+
+      if (!rx.global) return regExpExec(rx, S);
+
+      var fullUnicode = rx.unicode;
+      rx.lastIndex = 0;
+      var A = [];
+      var n = 0;
+      var result;
+      while ((result = regExpExec(rx, S)) !== null) {
+        var matchStr = String(result[0]);
+        A[n] = matchStr;
+        if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
+        n++;
+      }
+      return n === 0 ? null : A;
+    }
+  ];
+});
+
+
+/***/ }),
+
 /***/ "4735":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -20017,12 +20069,12 @@ var es_string_includes = __webpack_require__("2532");
   name: 'ChecButton',
   props: {
     /**
-     * The type of HTML element tag to use as the button. One of "link", or "button".
+     * The type of HTML tag or Vue component to use for the button. One of "link", "button", or "route".
      */
     tagType: {
       type: String,
       validate: function validate(type) {
-        return ['link', 'button'].includes(type);
+        return ['link', 'button', 'route'].includes(type);
       },
       default: 'button'
     },
@@ -20098,6 +20150,17 @@ var es_string_includes = __webpack_require__("2532");
     },
     hasIcon: function hasIcon() {
       return this.icon || this.$slots.icon && Boolean(this.$slots.icon.length);
+    },
+    tag: function tag() {
+      if (this.tagType === 'link') {
+        return 'a';
+      }
+
+      if (this.tagType === 'route') {
+        return 'router-link';
+      }
+
+      return 'button';
     }
   },
   methods: {
@@ -20110,9 +20173,8 @@ var es_string_includes = __webpack_require__("2532");
     }
   },
   render: function render(createElement) {
-    var tag = this.tagType === 'link' ? 'a' : 'button'; // Get the children. For an "icon" variant, if an icon slot is specified, use that instead of the default slot
+    // Get the children. For an "icon" variant, if an icon slot is specified, use that instead of the default slot
     // Note that this would not be ideal usage. Just providing the icon to the default slot is preferred.
-
     var children = [createElement('span', {
       class: ['button__content']
     }, this.$slots.default)];
@@ -20142,12 +20204,22 @@ var es_string_includes = __webpack_require__("2532");
       domProps.type = this.buttonType;
     }
 
-    return createElement(tag, {
+    var props = {};
+
+    if (this.tagType === 'route') {
+      props.to = this.$attrs.to;
+    }
+
+    return createElement(this.tag, {
       class: this.classNames,
-      domProps: domProps,
+      domProps: {
+        disabled: this.disabled,
+        type: this.tagType === 'button' ? this.buttonType : null
+      },
       on: {
         click: this.handleClick
-      }
+      },
+      props: props
     }, children);
   }
 });
@@ -24394,17 +24466,21 @@ var ChecModal_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecModal = (ChecModal_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=65f59f55&
-var ChecNavigationvue_type_template_id_65f59f55_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"chec-navigation",class:_vm.navClasses,on:{"mouseover":function($event){_vm.hovered = true},"mouseleave":function($event){_vm.hovered = false}}},[_c('ChecLogo',{staticClass:"chec-navigation__logo"}),_c('ul',{staticClass:"chec-navigation__links-list"},_vm._l((_vm.navItems),function(ref,i){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=457df5f0&
+var ChecNavigationvue_type_template_id_457df5f0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"chec-navigation",on:{"focusout":_vm.handleLoseFocus}},[_c('a',{staticClass:"chec-navigation__skip",attrs:{"href":"#main"}},[_vm._v(" "+_vm._s(_vm.$t('navigation.skip'))+" ")]),_c('div',{staticClass:"chec-navigation__drawer",class:_vm.deepNavClasses,attrs:{"tabindex":"-1"},on:{"mouseleave":_vm.handleCloseDrawer}},[_c('div',{staticClass:"chec-navigation__section-navigation"},[_c('header',{staticClass:"chec-navigation__section-title"},[_vm._v(" "+_vm._s(_vm.activeSection.label)+" ")]),_c('ul',{ref:"sectionList",staticClass:"chec-navigation__section-links"},_vm._l((_vm.activeSection.links),function(ref){
 var component = ref.component;
 var bind = ref.bind;
+var external = ref.external;
 var label = ref.label;
-var iconName = ref.iconName;
-return _c('li',{key:i},[_c(component,_vm._b({tag:"component",staticClass:"chec-navigation__link"},'component',bind,false),[_c('div',{staticClass:"chec-navigation__icon-wrapper"},[_c('ChecNavIcon',{attrs:{"icon":iconName}})],1),_c('span',[_vm._v(" "+_vm._s(label)+" ")])])],1)}),0),(_vm.$slots.default)?_c('div',{staticClass:"chec-navigation__bottom-content"},[_vm._t("default")],2):_vm._e()],1)}
-var ChecNavigationvue_type_template_id_65f59f55_staticRenderFns = []
+var on = ref.on;
+return _c('li',{key:label,on:{"keydown":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }return _vm.focusNextLink($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }return _vm.focusPreviousLink($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"tab",9,$event.key,"Tab")){ return null; }if($event.ctrlKey||$event.shiftKey||$event.altKey||$event.metaKey){ return null; }$event.preventDefault();return _vm.focusNextSection($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"tab",9,$event.key,"Tab")){ return null; }if(!$event.shiftKey){ return null; }$event.preventDefault();return _vm.focusPreviousSection($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"left",37,$event.key,["Left","ArrowLeft"])){ return null; }if('button' in $event && $event.button !== 0){ return null; }return _vm.focusCurrentSection($event)}]}},[_c(component,_vm._g(_vm._b({ref:"listItem",refInFor:true,tag:"component",staticClass:"chec-navigation__section-link",attrs:{"tabindex":"-1"}},'component',bind,false),on),[_vm._v(" "+_vm._s(label)+" "),(external)?_c('ChecIcon',{attrs:{"size":"base","icon":"link"}}):_vm._e()],1)],1)}),0),(_vm.user && _vm.$slots.default)?_c('div',{on:{"mouseenter":function($event){return _vm.handleOpenSection(_vm.user)}}},[_c(_vm.user.component,_vm._b({tag:"component",attrs:{"tabindex":"-1"}},'component',_vm.user.bind,false),[_vm._t("default")],2)],1):_vm._e()])]),_c('div',{staticClass:"chec-navigation__top-navigation",on:{"keyup":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }return _vm.focusNextSection($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }return _vm.focusPreviousSection($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"right",39,$event.key,["Right","ArrowRight"])){ return null; }if('button' in $event && $event.button !== 2){ return null; }return _vm.focusList($event)}]}},[_c(_vm.homeLink ? 'router-link' : 'div',_vm._b({ref:"logo",tag:"component"},'component',_vm.homeLinkAttrs,false),[_c('ChecLogo',{staticClass:"chec-navigation__logo"})],1),_c('ul',{staticClass:"chec-navigation__links-list"},_vm._l((_vm.compiledTree),function(section){return _c('li',{key:section.icon,staticClass:"chec-navigation__section",class:[section.classes, { 'chec-navigation__section--active': section.label === _vm.activeLabel }],on:{"mouseover":function () { return _vm.handleOpenSection(section); }}},[_c('ChecButton',_vm._b({ref:"sectionButton",refInFor:true,attrs:{"tag-type":section.buttonTag,"variant":"small"},on:{"touchstart":function($event){$event.preventDefault();return (function () { return _vm.handleOpenSection(section); })($event)}},nativeOn:{"focus":function($event){return (function () { return _vm.handleOpenSection(section); })($event)}}},'ChecButton',section.bind,false),[_c('ChecNavIcon',{attrs:{"icon":section.icon}})],1)],1)}),0),_c('div',{on:{"mouseover":function () { return _vm.handleOpenSection(_vm.user); }}},[(_vm.user)?_c(_vm.user.component,_vm._b({ref:"user",tag:"component",nativeOn:{"focus":function($event){return (function () { return _vm.handleOpenSection(_vm.user); })($event)}}},'component',_vm.user.bind,false),[_c('ChecAvatar',{staticClass:"chec-navigation__avatar",attrs:{"image":_vm.user.avatar}})],1):_vm._e()],1)],1)])}
+var ChecNavigationvue_type_template_id_457df5f0_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=template&id=65f59f55&
+// CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=template&id=457df5f0&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
+var es_string_match = __webpack_require__("466d");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavIcon.vue?vue&type=script&lang=js&
 
@@ -24454,6 +24530,7 @@ var ChecNavIcon_component = normalizeComponent(
 
 
 
+
 //
 //
 //
@@ -24487,81 +24564,416 @@ var ChecNavIcon_component = normalizeComponent(
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 
 
 /* harmony default export */ var ChecNavigationvue_type_script_lang_js_ = ({
   name: 'ChecNavigation',
   components: {
+    ChecIcon: ChecIcon,
+    ChecButton: ChecButton,
+    ChecAvatar: ChecAvatar,
     ChecLogo: chec_logo_default.a,
     ChecNavIcon: ChecNavIcon
   },
   props: {
     /**
-     * Expands the nav by default
+     * The label of the section that is currently considered "active"
      */
-    expanded: Boolean,
-    additionalLinks: {
+    activeLabel: {
+      type: String,
+      default: null
+    },
+
+    /**
+     * A path to be used as a "home" link for the navigation.
+     */
+    homeLink: {
+      type: String,
+      default: null
+    },
+
+    /**
+     * The navigation tree. This should be an array of objects with keys for "label", "icon", and "links". "links" must
+     * be an array of objects with links to appear as sub-navigation items.
+     */
+    tree: {
       type: Array,
-      default: function _default() {
-        return [];
-      }
-    }
+      required: true
+    },
+
+    /**
+     * A separate section of the "tree" that applies to the user. Also accepts an "avatar" key for an image to show
+     */
+    userSection: {
+      type: Object,
+      default: null
+    },
+
+    /**
+     * Force the drawer to remain open
+     */
+    open: Boolean,
+
+    /**
+     * Indicates that when the `open` prop is not true that the drawer should _never_ be open. This puts the nav drawer
+     * into a "controlled" state, where visibility is entirely controlled through props
+     */
+    controlled: Boolean
   },
   data: function data() {
+    var compiledTree = this.tree.map(this.parseSection);
     return {
-      hovered: false
+      showDeepNav: false,
+      compiledTree: compiledTree,
+      activeSection: compiledTree[0],
+      listItemFocus: null
     };
   },
   computed: {
-    navClasses: function navClasses() {
+    deepNavClasses: function deepNavClasses() {
       return {
-        'chec-navigation--expanded': this.expanded || this.hovered
+        'chec-navigation__drawer--open': this.open || !this.controlled && this.showDeepNav
       };
     },
-    navItems: function navItems() {
-      if (!this.$router.options) {
-        throw new Error('Could not locate vue-router instance from within <ChecNavigation>');
+    homeLinkAttrs: function homeLinkAttrs() {
+      if (!this.homeLink) {
+        return {};
       }
 
-      return this.$router.options.routes.filter(function (route) {
-        return route.meta && route.meta.navItem;
-      }).map(function (_ref) {
-        var _ref$meta$navItem = _ref.meta.navItem,
-            sort = _ref$meta$navItem.sort,
-            label = _ref$meta$navItem.label,
-            iconName = _ref$meta$navItem.iconName,
-            path = _ref.path;
-        return {
-          path: path,
-          sort: sort,
-          label: label,
-          iconName: iconName
-        };
-      }).concat(this.additionalLinks.filter(function (link) {
-        return Boolean(link.href);
-      })) // Sort the routes by their sort order, if they're provided
-      .sort(function (a, b) {
-        var sortA = a.sort || 100;
-        var sortB = b.sort || 100;
+      return {
+        to: this.homeLink,
+        title: this.$t('navigation.returnToHome')
+      };
+    },
+    user: function user() {
+      return this.userSection && this.parseSection(this.userSection);
+    }
+  },
+  methods: {
+    /**
+     * Parse the sections of the given tree and add resolved details used to render the tree.
+     *
+     * @param {Object} section
+     * @return {Object}
+     */
+    parseSection: function parseSection(section) {
+      var _this = this;
 
-        if (sortA < sortB) {
-          return -1;
+      // Run through links within the section
+      var compiledLinks = section.links.map(function (link) {
+        return _objectSpread2(_objectSpread2({}, link), {}, {
+          external: _this.isExternal(link)
+        }, _this.resolveComponentAndBind(link));
+      }); // Use the first link in the section as the action for clicking the section button
+
+      return _objectSpread2(_objectSpread2(_objectSpread2({}, section), {}, {
+        links: compiledLinks,
+        buttonTag: compiledLinks[0].external ? 'link' : 'route'
+      }, this.resolveComponentAndBind(compiledLinks[0])), {}, {
+        classes: {
+          'chec-navigation__section--divided': section.divider
+        }
+      });
+    },
+
+    /**
+     * Determine if the given link object describes an external link
+     *
+     * @param {Object} candidateLink
+     * @returns {Boolean}
+     */
+    isExternal: function isExternal(candidateLink) {
+      if (candidateLink.external !== undefined) {
+        return Boolean(candidateLink.external);
+      }
+
+      return candidateLink.to && candidateLink.to.match(/^https?:\/\//);
+    },
+
+    /**
+     * Given an object that represents a link somewhere, resolve the component (a, button, etc) that should be used and
+     * any `v-bind` and `v-on` attributes that should be applied
+     *
+     * @param {Object} link
+     * @returns {Object}
+     */
+    resolveComponentAndBind: function resolveComponentAndBind(link) {
+      var to = link.to;
+
+      if (to) {
+        if (this.isExternal(link)) {
+          return {
+            component: 'a',
+            bind: {
+              href: to,
+              target: '_blank',
+              rel: 'noopener'
+            }
+          };
         }
 
-        return sortA > sortB ? 1 : 0;
-      }).map(function (route) {
-        return _objectSpread2(_objectSpread2({}, route), {}, {
-          component: route.path ? 'router-link' : 'a',
-          bind: route.path ? {
-            to: route.path,
-            'active-class': 'chec-navigation__link--active'
-          } : {
-            href: route.href,
-            target: '_blank',
-            rel: 'noopener'
+        return {
+          component: 'router-link',
+          bind: {
+            to: to
           }
-        });
+        };
+      }
+
+      return {
+        component: 'button',
+        on: {
+          click: link.handle
+        }
+      };
+    },
+
+    /**
+     * Handle tracking state updates when the user prompts a section to open
+     *
+     * @param {Object} section
+     */
+    handleOpenSection: function handleOpenSection(section) {
+      this.showDeepNav = true;
+      this.activeSection = section;
+      this.listItemFocus = null;
+    },
+
+    /**
+     * Handle the user prompting the drawer (with sub-navigation) to hide
+     */
+    handleCloseDrawer: function handleCloseDrawer() {
+      this.showDeepNav = false;
+    },
+
+    /**
+     * Handle an event that triggers a specific list to be focused
+     *
+     * @param event
+     */
+    focusList: function focusList(event) {
+      // Special case for ignoring this event when focused on the logo
+      if (event.target === this.$refs.logo.$el) {
+        return;
+      }
+
+      this.listItemFocus = 0;
+      this.focusLink(0);
+    },
+
+    /**
+     * Handle an event that should highlight a link in the navigation, based off the "listItemFocus" state that's stored
+     */
+    focusLink: function focusLink() {
+      var _this2 = this;
+
+      this.$nextTick(function () {
+        var ref = _this2.$refs.listItem[_this2.listItemFocus];
+
+        if (!ref) {
+          return;
+        }
+
+        if (!ref.focus) {
+          ref.$el.focus();
+          return;
+        }
+
+        ref.focus();
       });
+    },
+
+    /**
+     * Handle an event that should focus the next link in the active section
+     */
+    focusNextLink: function focusNextLink() {
+      var linkCount = this.$refs.listItem.length;
+
+      if (this.listItemFocus === linkCount - 1) {
+        this.listItemFocus = 0;
+      } else {
+        this.listItemFocus += 1;
+      }
+
+      this.focusLink();
+    },
+
+    /**
+     * Handle an event that should focus the previous link in the active section
+     */
+    focusPreviousLink: function focusPreviousLink() {
+      var linkCount = this.$refs.listItem.length;
+
+      if (this.listItemFocus === 0) {
+        this.listItemFocus = linkCount - 1;
+      } else {
+        this.listItemFocus -= 1;
+      }
+
+      this.focusLink();
+    },
+
+    /**
+     * Handle an event that should focus the next section in the nav
+     */
+    focusNextSection: function focusNextSection(event) {
+      var _this3 = this;
+
+      // Special case for focusing next element when the logo is active
+      if (event.target === this.$refs.logo.$el) {
+        this.$refs.sectionButton[0].$el.focus();
+        return;
+      }
+
+      var currentIndex = this.compiledTree.findIndex(function (section) {
+        return section.label === _this3.activeSection.label;
+      }); // No current section means that we must be on the user section, so we'll just focus the current section - there's
+      // no easy way to tell JS to just "tab to the next thing"
+
+      if (currentIndex < 0) {
+        this.focusCurrentSection();
+        return;
+      } // If we're already on the last section, the next section to focus will be the user
+
+
+      if (currentIndex === this.compiledTree.length - 1) {
+        if (!this.user) {
+          this.focusCurrentSection();
+          return;
+        }
+
+        this.$refs.user.$el.focus();
+        return;
+      }
+
+      this.$refs.sectionButton[currentIndex + 1].$el.focus();
+    },
+
+    /**
+     * Handle an event that should focus the previous section in the nav
+     */
+    focusPreviousSection: function focusPreviousSection() {
+      var _this4 = this;
+
+      var currentIndex = this.compiledTree.findIndex(function (section) {
+        return section.label === _this4.activeSection.label;
+      }); // No current section means that we must be on the user section
+
+      if (currentIndex < 0) {
+        this.$refs.sectionButton[this.compiledTree.length - 1].$el.focus();
+        return;
+      }
+
+      if (currentIndex === 0) {
+        this.$refs.logo.$el.focus();
+        return;
+      }
+
+      this.$refs.sectionButton[currentIndex - 1].$el.focus();
+    },
+
+    /**
+     * Handle an event that should focus the current section in the nav (eg. for taking away focus from links within a
+     * section)
+     */
+    focusCurrentSection: function focusCurrentSection() {
+      var _this5 = this;
+
+      var currentIndex = this.compiledTree.findIndex(function (section) {
+        return section.label === _this5.activeSection.label;
+      });
+
+      if (currentIndex < 0) {
+        this.$refs.user.$el.focus();
+        return;
+      }
+
+      this.$refs.sectionButton[currentIndex].$el.focus();
+    },
+
+    /**
+     * Handle an event which might cause the nav to lose focus.
+     */
+    handleLoseFocus: function handleLoseFocus(event) {
+      // Assert the focus is actually lost from this component
+      if (this.$el.contains(event.relatedTarget)) {
+        return;
+      }
+
+      this.handleCloseDrawer();
     }
   }
 });
@@ -24581,8 +24993,8 @@ var ChecNavigationvue_type_style_index_0_lang_scss_ = __webpack_require__("3c3d"
 
 var ChecNavigation_component = normalizeComponent(
   components_ChecNavigationvue_type_script_lang_js_,
-  ChecNavigationvue_type_template_id_65f59f55_render,
-  ChecNavigationvue_type_template_id_65f59f55_staticRenderFns,
+  ChecNavigationvue_type_template_id_457df5f0_render,
+  ChecNavigationvue_type_template_id_457df5f0_staticRenderFns,
   false,
   null,
   null,
@@ -25802,6 +26214,10 @@ var InnerBlock_component = normalizeComponent(
       goToLast: 'Go to the last page',
       showing: 'Showing',
       of: '{x} of {y}'
+    },
+    navigation: {
+      returnToHome: 'Return to the home page',
+      skip: 'Skip navigation'
     }
   }
 });
