@@ -266,12 +266,24 @@ Todo list
         ChecModal,
         ChecDropdown,
       },
+      props: {
+        showSearch: {
+          default: boolean('Show search', true),
+        },
+      },
       data() {
         return {
           events: [],
+          search: '',
           options:  ["api-keys.create","api-keys.delete","api-keys.update","assets.create","assets.delete","checkouts.capture","developer.logs.delete","discounts.create","discounts.delete","giftcards.create","giftcards.redeem","orders.fulfill.digital","orders.fulfill.physical","orders.refund","orders.update","products.assets.create","products.assets.delete","products.assets.update","products.create","products.delete","products.update"]
-          .map(option => ({ value: option, label: option})),
+          .map(option => ({ value: option, label: option}))
         }
+      },
+      methods: {
+        handleSearch(...attrs) {
+          action('Search')(...attrs);
+          this.search = attrs[0];
+        },
       },
       template: `
           <ChecModal
@@ -285,7 +297,10 @@ Todo list
                 v-model="events"
                 name="example-dropdown"
                 :options="options"
+                :show-search="showSearch"
+                :search-value="search"
                 multiselect
+                @search="handleSearch"
               />
             </div>
           </ChecModal>
