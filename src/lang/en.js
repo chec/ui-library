@@ -8,5 +8,9 @@ export default {
       showing: 'Showing',
       of: '{x} of {y}',
     },
+    navigation: {
+      returnToHome: 'Return to the home page',
+      skip: 'Skip navigation',
+    },
   },
 };
