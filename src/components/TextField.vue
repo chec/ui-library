@@ -11,6 +11,7 @@
     <textarea
       v-if="multiline"
       v-bind="sharedInputProps"
+      v-on="nonInputListeners"
       @input="handleInput"
     />
     <input
@@ -18,6 +19,7 @@
       v-bind="sharedInputProps"
       :type="$attrs.type || 'text'"
       :style="{ 'padding-right': hasSlot && `${slotWidth}px` }"
+      v-on="nonInputListeners"
       @input="handleInput"
     >
     <label
@@ -108,6 +110,8 @@ export default {
     },
   },
   data() {
+    const { input, ...nonInputListeners } = this.$listeners;
+
     return {
       isScrollable: false,
       isScrolledToTop: true,
@@ -115,6 +119,7 @@ export default {
       id: uniqueId(this.name, this.value, 'chec-switch')(),
       slotWidth: 0,
       hasSlot: false,
+      nonInputListeners,
     };
   },
   computed: {
