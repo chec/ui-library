@@ -42,18 +42,31 @@
           width: `${dropdownElWidth}px`,
         }"
       >
-        <ChecOption
-          v-for="option in renderableOptions"
-          :key="option.value"
-          :class="checOptionClass"
-          :option="option"
-          :show-checkbox="multiselect"
-          :checked="multiselect && !isIndeterminate(option) && isChecked(option)"
-          :indeterminate="multiselect && isIndeterminate(option)"
-          @option-selected="onChecOptionSelect"
-        >
-          {{ option.label }}
-        </ChecOption>
+        <div v-if="showSearch" class="dropdown__option-search">
+          <TextField
+            ref="search"
+            label="Search"
+            icon="search"
+            :value="searchValue"
+            @input="handleSearch"
+            @focusin="handleSearchFocusIn"
+            @focusout="handleSearchFocusOut"
+          />
+        </div>
+        <div class="dropdown__options">
+          <ChecOption
+            v-for="option in renderableOptions"
+            :key="option.value"
+            :class="checOptionClass"
+            :option="option"
+            :show-checkbox="multiselect"
+            :checked="multiselect && !isIndeterminate(option) && isChecked(option)"
+            :indeterminate="multiselect && isIndeterminate(option)"
+            @option-selected="onChecOptionSelect"
+          >
+            {{ option.label }}
+          </ChecOption>
+        </div>
       </ChecPopover>
     </MountingPortal>
   </div>
@@ -62,6 +75,7 @@
 <script>
 import { MountingPortal } from 'portal-vue';
 import { createPopper } from '@popperjs/core';
+import TextField from '@/components/TextField';
 import ChecOption from './ChecOption.vue';
 import ChecPopover from './ChecPopover.vue';
 import ChecIcon from './ChecIcon.vue';
@@ -69,6 +83,7 @@ import ChecIcon from './ChecIcon.vue';
 export default {
   name: 'ChecDropdown',
   components: {
+    TextField,
     ChecIcon,
     ChecOption,
     ChecPopover,
@@ -128,6 +143,17 @@ export default {
       type: String,
       default: '',
     },
+    /**
+     * Whether to show a search box that is fixed above the list of options
+     */
+    showSearch: Boolean,
+    /**
+     * The value within the search field (if shown)
+     */
+    searchValue: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -135,6 +161,7 @@ export default {
       showDropdown: false,
       dropdownElWidth: 0,
       popper: null,
+      searchIsFocused: false,
     };
   },
   computed: {
@@ -276,7 +303,42 @@ export default {
             },
           },
         ],
+        onFirstUpdate: () => {
+          if (this.showSearch) {
+            this.$refs.search.$el.querySelector('input').focus();
+          }
+        },
       });
+    },
+    /**
+     * Handle the search field losing focus
+     */
+    handleSearchFocusOut() {
+      // Delay the focus update for a bit for double-clicks and event ordering
+      setTimeout(() => {
+        this.searchIsFocused = false;
+      }, 200);
+    },
+    /**
+     * Handle the search field gaining focus
+     */
+    handleSearchFocusIn() {
+      this.searchIsFocused = true;
+    },
+    /**
+     * Handle the "input" event of the search field
+     * @param args
+     */
+    handleSearch(...args) {
+      /**
+       * Emitted when the search field (if shown) is typed into
+       *
+       * @event input
+       * @type {String}
+       * @property {String} - The new value of the underlying text field
+       * @property {Event} - The original input event.
+       */
+      this.$emit('search', ...args);
     },
     /** Method used to size set the root element's width in the state */
     setDropdownElWidth() {
@@ -364,6 +426,7 @@ export default {
           this.destroyPopper();
         }
       });
+
       this.showDropdown = !this.showDropdown;
     },
     /**
@@ -379,13 +442,19 @@ export default {
      * @param {Event} event
      */
     onOutsideClick(event) {
-      if (
-        !this.$refs['dropdown-el'].contains(event.target)
-        && !this.$refs['popper-el'].$el.contains(event.target)
-        && this.showDropdown
-      ) {
-        this.toggleDropdown();
+      if (this.searchIsFocused) {
+        return;
       }
+
+      if (!this.showDropdown) {
+        return;
+      }
+
+      if (this.$refs['dropdown-el'].contains(event.target) || this.$refs['popper-el'].$el.contains(event.target)) {
+        return;
+      }
+
+      this.toggleDropdown();
     },
     /**
      * Determines whether an option is "checked" - used for filling the prop of `ChecOption`
@@ -452,13 +521,17 @@ export default {
     }
   }
 
-  &__popover {
+  &__options {
     @apply overflow-y-auto overflow-x-hidden;
     max-height: 40vh;
   }
 
   &__down-arrow {
     @apply flex flex-col justify-center w-4 h-4 transform transition-transform duration-200;
+  }
+
+  &__option-search {
+    @apply px-4 py-3 border-b border-gray-200 w-full bg-white;
   }
 
   &--open {

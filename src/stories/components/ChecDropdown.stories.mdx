@@ -49,10 +49,14 @@ Todo list
         disabled: {
           default: boolean('Disabled', false)
         },
+        showSearch: {
+          default: boolean('Show search', false),
+        },
       },
       data() {
         return {
           value: null,
+          search: '',
           options: [
             { value: 'steak', label: 'Steak' },
             { value: 'chicken', label: 'Chicken' },
@@ -91,6 +95,12 @@ Todo list
           return this.disabled ? 'disabled' : this.errored ? 'error' : '';
         }
       },
+      methods: {
+        handleSearch(...attrs) {
+          action('Search')(...attrs);
+          this.search = attrs[0];
+        },
+      },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
           <ChecDropdown
@@ -99,6 +109,9 @@ Todo list
             :multiselect="multiselect"
             :placeholder="placeholder"
             :variant="variant"
+            :show-search="showSearch"
+            :search-value="search"
+            @search="handleSearch"
             name="example-1"
             class="max-w-md"
             v-model="model"
