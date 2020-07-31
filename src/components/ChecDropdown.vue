@@ -45,7 +45,7 @@
         <div v-if="showSearch" class="dropdown__option-search">
           <TextField
             ref="search"
-            label="Search"
+            :label="$t('general.search')"
             icon="search"
             :value="searchValue"
             @input="handleSearch"
