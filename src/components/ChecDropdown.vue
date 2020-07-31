@@ -66,6 +66,7 @@
           >
             {{ option.label }}
           </ChecOption>
+          <ChecOption v-if="loading" loading />
         </div>
       </ChecPopover>
     </MountingPortal>
@@ -154,6 +155,10 @@ export default {
       type: String,
       default: '',
     },
+    /**
+     * Whether to append a loading row to the existing options in the dropdown
+     */
+    loading: Boolean,
   },
   data() {
     return {
