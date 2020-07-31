@@ -21609,19 +21609,19 @@ flatpickr_default.a.l10ns.default.weekdays.shorthand = ['S', 'M', 'T', 'W', 'TH'
     })]);
   }
 }));
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDropdown.vue?vue&type=template&id=79a2bdfc&
-var ChecDropdownvue_type_template_id_79a2bdfc_render = function () {
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDropdown.vue?vue&type=template&id=38776b3b&
+var ChecDropdownvue_type_template_id_38776b3b_render = function () {
 var _obj;
 var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"dropdown-el",staticClass:"dropdown",class:( _obj = {
     'dropdown--with-inline-label': _vm.isFocus && _vm.label,
     'dropdown--open': _vm.showDropdown
   }, _obj[("dropdown--" + _vm.variant)] = _vm.variant !== '', _obj ),on:{"click":_vm.toggleDropdown,"keyup":_vm.onKeyPress}},[(!_vm.multiselect)?_c('input',{attrs:{"type":"hidden","name":_vm.name},domProps:{"value":_vm.value}}):_vm._l((_vm.value),function(optionValue){return _c('input',{key:optionValue,attrs:{"type":"hidden","name":(_vm.name + "[]")},domProps:{"value":optionValue}})}),_c('div',[(_vm.label || _vm.placeholder)?_c('label',{staticClass:"dropdown__label"},[_vm._v(" "+_vm._s(_vm.shownLabel)+" ")]):_vm._e(),_c('div',{staticClass:"dropdown__value"},[_vm._v(" "+_vm._s(_vm.shownValue)+" ")])]),_c('ChecIcon',{staticClass:"dropdown__down-arrow",attrs:{"icon":"down"}}),_c('MountingPortal',{attrs:{"mount-to":"body","name":_vm.name || 'dropdown',"append":""}},[_c('ChecPopover',{directives:[{name:"show",rawName:"v-show",value:(_vm.showDropdown),expression:"showDropdown"}],ref:"popper-el",staticClass:"dropdown__popover",style:({
         width: (_vm.dropdownElWidth + "px"),
-      })},[(_vm.showSearch)?_c('div',{staticClass:"dropdown__option-search"},[_c('TextField',{ref:"search",attrs:{"label":"Search","icon":"search","value":_vm.searchValue},on:{"input":_vm.handleSearch,"focusin":_vm.handleSearchFocusIn,"focusout":_vm.handleSearchFocusOut}})],1):_vm._e(),_c('div',{staticClass:"dropdown__options"},_vm._l((_vm.renderableOptions),function(option){return _c('ChecOption',{key:option.value,class:_vm.checOptionClass,attrs:{"option":option,"show-checkbox":_vm.multiselect,"checked":_vm.multiselect && !_vm.isIndeterminate(option) && _vm.isChecked(option),"indeterminate":_vm.multiselect && _vm.isIndeterminate(option)},on:{"option-selected":_vm.onChecOptionSelect}},[_vm._v(" "+_vm._s(option.label)+" ")])}),1)])],1)],2)}
-var ChecDropdownvue_type_template_id_79a2bdfc_staticRenderFns = []
+      })},[(_vm.showSearch)?_c('div',{staticClass:"dropdown__option-search"},[_c('TextField',{ref:"search",attrs:{"label":_vm.$t('general.search'),"icon":"search","value":_vm.searchValue},on:{"input":_vm.handleSearch,"focusin":_vm.handleSearchFocusIn,"focusout":_vm.handleSearchFocusOut}})],1):_vm._e(),_c('div',{staticClass:"dropdown__options"},_vm._l((_vm.renderableOptions),function(option){return _c('ChecOption',{key:option.value,class:_vm.checOptionClass,attrs:{"option":option,"show-checkbox":_vm.multiselect,"checked":_vm.multiselect && !_vm.isIndeterminate(option) && _vm.isChecked(option),"indeterminate":_vm.multiselect && _vm.isIndeterminate(option)},on:{"option-selected":_vm.onChecOptionSelect}},[_vm._v(" "+_vm._s(option.label)+" ")])}),1)])],1)],2)}
+var ChecDropdownvue_type_template_id_38776b3b_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecDropdown.vue?vue&type=template&id=79a2bdfc&
+// CONCATENATED MODULE: ./src/components/ChecDropdown.vue?vue&type=template&id=38776b3b&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.every.js
 var es_array_every = __webpack_require__("a623");
@@ -24209,8 +24209,8 @@ var ChecDropdownvue_type_style_index_0_lang_scss_ = __webpack_require__("013e");
 
 var ChecDropdown_component = normalizeComponent(
   components_ChecDropdownvue_type_script_lang_js_,
-  ChecDropdownvue_type_template_id_79a2bdfc_render,
-  ChecDropdownvue_type_template_id_79a2bdfc_staticRenderFns,
+  ChecDropdownvue_type_template_id_38776b3b_render,
+  ChecDropdownvue_type_template_id_38776b3b_staticRenderFns,
   false,
   null,
   null,
@@ -26375,6 +26375,13 @@ var InnerBlock_component = normalizeComponent(
 // CONCATENATED MODULE: ./src/lang/en.js
 /* harmony default export */ var en = ({
   en: {
+    general: {
+      search: 'Search'
+    },
+    navigation: {
+      returnToHome: 'Return to the home page',
+      skip: 'Skip navigation'
+    },
     paginate: {
       goToFirst: 'Go to the first page',
       goToNext: 'Go to the next page',
@@ -26382,10 +26389,6 @@ var InnerBlock_component = normalizeComponent(
       goToLast: 'Go to the last page',
       showing: 'Showing',
       of: '{x} of {y}'
-    },
-    navigation: {
-      returnToHome: 'Return to the home page',
-      skip: 'Skip navigation'
     }
   }
 });
