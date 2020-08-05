@@ -85,10 +85,14 @@ export default {
   },
   computed: {
     resolvedButtonLabel() {
-      return this.buttonLabel || (this.variant === 'switch'
-        ? this.$t('accordion.switchLabel')
-        : this.$t('accordion.toggleLabel')
-      );
+      if (this.buttonLabel) {
+        return this.buttonLabel;
+      }
+
+      const type = this.variant === 'switch' ? 'switchLabel' : 'toggleLabel';
+      const state = this.isOpen ? 'open' : 'closed';
+
+      return this.$t(`accordion.${type}.${state}`);
     },
   },
 };

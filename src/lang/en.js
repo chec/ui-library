@@ -16,8 +16,14 @@ export default {
       of: '{x} of {y}',
     },
     accordion: {
-      switchLabel: 'Enabled',
-      toggleLabel: 'Show/hide this section',
+      switchLabel: {
+        open: 'Enabled',
+        closed: 'Disabled',
+      },
+      toggleLabel: {
+        open: 'Hide this section',
+        closed: 'Show this section',
+      },
     },
   },
 };
