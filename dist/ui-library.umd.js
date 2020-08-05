@@ -4063,13 +4063,6 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "7bac":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "7c73":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4397,6 +4390,17 @@ module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSour
         }
       }
     
+
+/***/ }),
+
+/***/ "81da":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecSwitch_vue_vue_type_style_index_0_id_1a0f9d73_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("be2a");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecSwitch_vue_vue_type_style_index_0_id_1a0f9d73_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecSwitch_vue_vue_type_style_index_0_id_1a0f9d73_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecSwitch_vue_vue_type_style_index_0_id_1a0f9d73_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -6463,6 +6467,13 @@ module.exports = {
 /***/ }),
 
 /***/ "bdd5":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "be2a":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
@@ -10006,17 +10017,6 @@ module.exports =
         }
       }
     
-
-/***/ }),
-
-/***/ "db51":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecSwitch_vue_vue_type_style_index_0_id_2ea6e695_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7bac");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecSwitch_vue_vue_type_style_index_0_id_2ea6e695_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecSwitch_vue_vue_type_style_index_0_id_2ea6e695_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecSwitch_vue_vue_type_style_index_0_id_2ea6e695_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -19194,12 +19194,15 @@ var ChangeLog_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChangeLog = (ChangeLog_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=template&id=6ae353f8&
-var ChecAccordionvue_type_template_id_6ae353f8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"accordion",staticClass:"accordion",class:{'accordion--active': _vm.isOpen}},[_c('div',{staticClass:"accordion__heading"},[_c('div',[_c('div',{staticClass:"accordion__title",domProps:{"innerHTML":_vm._s(_vm.title)}}),(_vm.subtitle)?_c('div',{staticClass:"accordion__subtitle",domProps:{"innerHTML":_vm._s(_vm.subtitle)}}):_vm._e()]),_c('div',{staticClass:"accordion__toggle",on:{"click":function($event){_vm.isOpen = !_vm.isOpen}}},[_c('ChecIcon',{attrs:{"icon":"down"}})],1)]),_c('div',{staticClass:"accordion__body-container"},[_c('div',{staticClass:"accordion__body"},[_vm._t("default")],2)])])}
-var ChecAccordionvue_type_template_id_6ae353f8_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=template&id=e33f8dec&
+var ChecAccordionvue_type_template_id_e33f8dec_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"accordion",staticClass:"accordion",class:{'accordion--active': _vm.isOpen}},[_c('div',{staticClass:"accordion__heading"},[_c('div',[_c('div',{staticClass:"accordion__title",domProps:{"innerHTML":_vm._s(_vm.title)}}),(_vm.subtitle)?_c('div',{staticClass:"accordion__subtitle",domProps:{"innerHTML":_vm._s(_vm.subtitle)}}):_vm._e()]),(_vm.variant === 'switch')?_c('ChecSwitch',{attrs:{"prefix-label":""},model:{value:(_vm.isOpen),callback:function ($$v) {_vm.isOpen=$$v},expression:"isOpen"}},[_vm._v(" "+_vm._s(_vm.resolvedButtonLabel)+" ")]):_c('div',{staticClass:"accordion__toggle",attrs:{"title":_vm.resolvedButtonLabel},on:{"click":function($event){_vm.isOpen = !_vm.isOpen}}},[_c('ChecIcon',{attrs:{"icon":"down"}})],1)],1),_c('div',{staticClass:"accordion__body-container"},[_c('div',{staticClass:"accordion__body"},[_vm._t("default")],2)])])}
+var ChecAccordionvue_type_template_id_e33f8dec_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecAccordion.vue?vue&type=template&id=6ae353f8&
+// CONCATENATED MODULE: ./src/components/ChecAccordion.vue?vue&type=template&id=e33f8dec&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
+var es_array_concat = __webpack_require__("99af");
 
 // EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-left.svg
 var ic_left = __webpack_require__("025b");
@@ -19729,7 +19732,39 @@ var ChecIcon_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecIcon = (ChecIcon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSwitch.vue?vue&type=template&id=1a0f9d73&scoped=true&
+var ChecSwitchvue_type_template_id_1a0f9d73_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-switch",class:{ 'chec-switch--toggled' : _vm.toggled }},[(_vm.$slots.default && _vm.prefixLabel)?_c('label',{staticClass:"chec-switch__label chec-switch__label--prefixed",attrs:{"for":_vm.id},on:{"click":function($event){$event.preventDefault();return _vm.handleToggle($event)}}},[_vm._t("default")],2):_vm._e(),_c('div',{staticClass:"chec-switch__container",on:{"click":function($event){$event.stopPropagation();return _vm.handleToggle($event)}}},[_c('div',{staticClass:"chec-switch__thumb"},[_c('input',_vm._b({staticClass:"chec-switch__input",attrs:{"type":"checkbox"}},'input',{ id: _vm.id, name: _vm.name, disabled: _vm.disabled, checked: _vm.toggled, required: _vm.required },false))])]),(_vm.$slots.default && !_vm.prefixLabel)?_c('label',{staticClass:"chec-switch__label",attrs:{"for":_vm.id},on:{"click":function($event){$event.preventDefault();return _vm.handleToggle($event)}}},[_vm._t("default")],2):_vm._e()])}
+var ChecSwitchvue_type_template_id_1a0f9d73_scoped_true_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecSwitch.vue?vue&type=template&id=1a0f9d73&scoped=true&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
+var es_function_name = __webpack_require__("b0c0");
+
+// EXTERNAL MODULE: ./node_modules/lodash.uniqueid/index.js
+var lodash_uniqueid = __webpack_require__("f5cb");
+var lodash_uniqueid_default = /*#__PURE__*/__webpack_require__.n(lodash_uniqueid);
+
+// CONCATENATED MODULE: ./src/lib/helpers/createUniqueId.js
+
+ // generates unique id concating id, name, value
+
+/* harmony default export */ var createUniqueId = (function (name, value) {
+  var defaultName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  return function () {
+    return lodash_uniqueid_default()("".concat(name || defaultName, "_").concat(value, "_"));
+  };
+});
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSwitch.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19754,10 +19789,131 @@ var ChecIcon_component = normalizeComponent(
 //
 //
 
+/* harmony default export */ var ChecSwitchvue_type_script_lang_js_ = ({
+  name: 'ChecSwitch',
+  model: {
+    prop: 'toggled',
+    event: 'input'
+  },
+  props: {
+    /**
+     * Name of the checkbox
+     */
+    name: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Used to determine if the switch is toggled
+     */
+    value: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * States whether element is required
+     */
+    required: Boolean,
+
+    /**
+     * Disables the switch
+     */
+    disabled: Boolean,
+
+    /**
+     * Check if checkbox is checked.
+     */
+    toggled: Boolean,
+
+    /**
+     * Whether to prefix the label (rather than display it after the switch)
+     */
+    prefixLabel: Boolean
+  },
+  computed: {
+    id: function id() {
+      return createUniqueId(this.name, this.value, 'chec-switch')();
+    }
+  },
+  methods: {
+    handleToggle: function handleToggle() {
+      this.$emit('input', !this.toggled);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecSwitch.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecSwitchvue_type_script_lang_js_ = (ChecSwitchvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecSwitch.vue?vue&type=style&index=0&id=1a0f9d73&scoped=true&lang=scss&
+var ChecSwitchvue_type_style_index_0_id_1a0f9d73_scoped_true_lang_scss_ = __webpack_require__("81da");
+
+// CONCATENATED MODULE: ./src/components/ChecSwitch.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ChecSwitch_component = normalizeComponent(
+  components_ChecSwitchvue_type_script_lang_js_,
+  ChecSwitchvue_type_template_id_1a0f9d73_scoped_true_render,
+  ChecSwitchvue_type_template_id_1a0f9d73_scoped_true_staticRenderFns,
+  false,
+  null,
+  "1a0f9d73",
+  null
+  
+)
+
+/* harmony default export */ var ChecSwitch = (ChecSwitch_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=script&lang=js&
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ var ChecAccordionvue_type_script_lang_js_ = ({
   name: 'ChecAccordion',
   components: {
-    ChecIcon: ChecIcon
+    ChecIcon: ChecIcon,
+    ChecSwitch: ChecSwitch
   },
   props: {
     /**
@@ -19779,12 +19935,44 @@ var ChecIcon_component = normalizeComponent(
     /**
     * Set the accordion to open on load. Default: False.
     */
-    open: Boolean
+    open: Boolean,
+
+    /**
+     * The "variant" for the toggle of the accordion
+     */
+    variant: {
+      type: String,
+      validate: function validate(variant) {
+        return ['switch', 'button'].includes(variant);
+      },
+      default: function _default() {
+        return 'button';
+      }
+    },
+
+    /**
+     * The label to show
+     */
+    buttonLabel: {
+      type: String,
+      default: null
+    }
   },
   data: function data() {
     return {
       isOpen: this.open
     };
+  },
+  computed: {
+    resolvedButtonLabel: function resolvedButtonLabel() {
+      if (this.buttonLabel) {
+        return this.buttonLabel;
+      }
+
+      var type = this.variant === 'switch' ? 'switchLabel' : 'toggleLabel';
+      var state = this.isOpen ? 'open' : 'closed';
+      return this.$t("accordion.".concat(type, ".").concat(state));
+    }
   }
 });
 // CONCATENATED MODULE: ./src/components/ChecAccordion.vue?vue&type=script&lang=js&
@@ -19803,8 +19991,8 @@ var ChecAccordionvue_type_style_index_0_lang_scss_ = __webpack_require__("bc8e")
 
 var ChecAccordion_component = normalizeComponent(
   components_ChecAccordionvue_type_script_lang_js_,
-  ChecAccordionvue_type_template_id_6ae353f8_render,
-  ChecAccordionvue_type_template_id_6ae353f8_staticRenderFns,
+  ChecAccordionvue_type_template_id_e33f8dec_render,
+  ChecAccordionvue_type_template_id_e33f8dec_staticRenderFns,
   false,
   null,
   null,
@@ -20320,9 +20508,6 @@ var ChecCardvue_type_template_id_0edd2b23_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/ChecCard.vue?vue&type=template&id=0edd2b23&
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
-var es_array_concat = __webpack_require__("99af");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
 var es_array_filter = __webpack_require__("4de4");
 
@@ -20394,9 +20579,6 @@ function _iterableToArray(iter) {
 }
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
 var es_array_slice = __webpack_require__("fb6a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
-var es_function_name = __webpack_require__("b0c0");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
 var es_regexp_to_string = __webpack_require__("25f0");
@@ -20675,20 +20857,6 @@ var ChecCheckboxvue_type_template_id_3bae8dd4_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/ChecCheckbox.vue?vue&type=template&id=3bae8dd4&
 
-// EXTERNAL MODULE: ./node_modules/lodash.uniqueid/index.js
-var lodash_uniqueid = __webpack_require__("f5cb");
-var lodash_uniqueid_default = /*#__PURE__*/__webpack_require__.n(lodash_uniqueid);
-
-// CONCATENATED MODULE: ./src/lib/helpers/createUniqueId.js
-
- // generates unique id concating id, name, value
-
-/* harmony default export */ var createUniqueId = (function (name, value) {
-  var defaultName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-  return function () {
-    return lodash_uniqueid_default()("".concat(name || defaultName, "_").concat(value, "_"));
-  };
-});
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCheckbox.vue?vue&type=script&lang=js&
 
 //
@@ -26029,113 +26197,6 @@ var ChecSegmentedButtonsGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecSegmentedButtonsGroup = (ChecSegmentedButtonsGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSwitch.vue?vue&type=template&id=2ea6e695&scoped=true&
-var ChecSwitchvue_type_template_id_2ea6e695_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-switch",class:{ 'chec-switch--toggled' : _vm.toggled }},[_c('div',{staticClass:"chec-switch__container",on:{"click":function($event){$event.stopPropagation();return _vm.handleToggle($event)}}},[_c('div',{staticClass:"chec-switch__thumb"},[_c('input',_vm._b({staticClass:"chec-switch__input",attrs:{"type":"checkbox"}},'input',{ id: _vm.id, name: _vm.name, disabled: _vm.disabled, checked: _vm.toggled, required: _vm.required },false))])]),(_vm.$slots.default)?_c('label',{staticClass:"chec-switch__label",attrs:{"for":_vm.id},on:{"click":function($event){$event.preventDefault();return _vm.handleToggle($event)}}},[_vm._t("default")],2):_vm._e()])}
-var ChecSwitchvue_type_template_id_2ea6e695_scoped_true_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/components/ChecSwitch.vue?vue&type=template&id=2ea6e695&scoped=true&
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSwitch.vue?vue&type=script&lang=js&
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ var ChecSwitchvue_type_script_lang_js_ = ({
-  name: 'ChecSwitch',
-  model: {
-    prop: 'toggled',
-    event: 'input'
-  },
-  props: {
-    /**
-     * Name of the checkbox
-     */
-    name: {
-      type: String,
-      default: ''
-    },
-
-    /**
-     * Used to determine if the switch is toggled
-     */
-    value: {
-      type: String,
-      default: ''
-    },
-
-    /**
-     * States whether element is required
-     */
-    required: Boolean,
-
-    /**
-     * Disables the switch
-     */
-    disabled: Boolean,
-
-    /**
-     * Check if checkbox is checked.
-     */
-    toggled: Boolean
-  },
-  computed: {
-    id: function id() {
-      return createUniqueId(this.name, this.value, 'chec-switch')();
-    }
-  },
-  methods: {
-    handleToggle: function handleToggle() {
-      this.$emit('input', !this.toggled);
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/components/ChecSwitch.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_ChecSwitchvue_type_script_lang_js_ = (ChecSwitchvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/ChecSwitch.vue?vue&type=style&index=0&id=2ea6e695&scoped=true&lang=scss&
-var ChecSwitchvue_type_style_index_0_id_2ea6e695_scoped_true_lang_scss_ = __webpack_require__("db51");
-
-// CONCATENATED MODULE: ./src/components/ChecSwitch.vue
-
-
-
-
-
-
-/* normalize component */
-
-var ChecSwitch_component = normalizeComponent(
-  components_ChecSwitchvue_type_script_lang_js_,
-  ChecSwitchvue_type_template_id_2ea6e695_scoped_true_render,
-  ChecSwitchvue_type_template_id_2ea6e695_scoped_true_staticRenderFns,
-  false,
-  null,
-  "2ea6e695",
-  null
-  
-)
-
-/* harmony default export */ var ChecSwitch = (ChecSwitch_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44ae3faa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=template&id=9bb2e7b8&
 var ChecTabvue_type_template_id_9bb2e7b8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"chec-tab",class:{ 'chec-tab--active': _vm.active },attrs:{"disabled":_vm.disabled},on:{"click":_vm.handleClick}},[_vm._t("default",null,null,{ active: _vm.active, disabled: _vm.disabled })],2)}
 var ChecTabvue_type_template_id_9bb2e7b8_staticRenderFns = []
@@ -26419,6 +26480,16 @@ var InnerBlock_component = normalizeComponent(
       goToLast: 'Go to the last page',
       showing: 'Showing',
       of: '{x} of {y}'
+    },
+    accordion: {
+      switchLabel: {
+        open: 'Enabled',
+        closed: 'Disabled'
+      },
+      toggleLabel: {
+        open: 'Hide this section',
+        closed: 'Show this section'
+      }
     }
   }
 });
