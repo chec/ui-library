@@ -27,12 +27,16 @@ import TextField from '../../components/TextField.vue';
         subtitle: {
           default: text('Subtitle', 'Accordion Subtitle'),
         },
+        variant: {
+          default: select('Variant', ['button', 'switch'], 'button'),
+        },
       },
       template: `
         <div class="p-16 flex justify-center w-full">
           <ChecAccordion
             :title="title"
             :subtitle="subtitle"
+            :variant="variant"
             class="w-1/2"
           >
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor imperdiet pellentesque. Mauris quam enim, vehicula ac felis vel, tempus tincidunt massa.</p>

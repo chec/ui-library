@@ -9,7 +9,19 @@
         <div class="accordion__title" v-html="title" />
         <div v-if="subtitle" class="accordion__subtitle" v-html="subtitle" />
       </div>
-      <div class="accordion__toggle" @click="isOpen = !isOpen">
+      <ChecSwitch
+        v-if="variant === 'switch'"
+        v-model="isOpen"
+        prefix-label
+      >
+        {{ resolvedButtonLabel }}
+      </ChecSwitch>
+      <div
+        v-else
+        class="accordion__toggle"
+        :title="resolvedButtonLabel"
+        @click="isOpen = !isOpen"
+      >
         <ChecIcon icon="down" />
       </div>
     </div>
@@ -23,11 +35,13 @@
 
 <script>
 import ChecIcon from './ChecIcon.vue';
+import ChecSwitch from './ChecSwitch.vue';
 
 export default {
   name: 'ChecAccordion',
   components: {
     ChecIcon,
+    ChecSwitch,
   },
   props: {
     /**
@@ -48,11 +62,34 @@ export default {
     * Set the accordion to open on load. Default: False.
     */
     open: Boolean,
+    /**
+     * The "variant" for the toggle of the accordion
+     */
+    variant: {
+      type: String,
+      validate: (variant) => ['switch', 'button'].includes(variant),
+      default: () => 'button',
+    },
+    /**
+     * The label to show
+     */
+    buttonLabel: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
       isOpen: this.open,
     };
+  },
+  computed: {
+    resolvedButtonLabel() {
+      return this.buttonLabel || (this.variant === 'switch'
+        ? this.$t('accordion.switchLabel')
+        : this.$t('accordion.toggleLabel')
+      );
+    },
   },
 };
 </script>
@@ -62,7 +99,7 @@ export default {
   @apply rounded bg-gray-100;
 
   &__heading {
-    @apply text-gray-500 flex justify-between items-center p-4;
+    @apply text-gray-500 flex justify-between items-center p-4 pb-0;
   }
 
   &__title {
@@ -82,21 +119,27 @@ export default {
   }
 
   &__body-container {
-    @apply max-h-0 overflow-hidden;
+    @apply max-h-0 overflow-hidden mb-4;
 
     transition: max-height 700ms cubic-bezier(0, 1, 0, 1),
-      margin-top 300ms linear 300ms;
+      margin-bottom 100ms linear 200ms;
   }
 
   &__body {
-    @apply p-4;
+    @apply p-4 pb-0;
+
+    transition: padding-bottom 100ms linear 200ms;
   }
 
   &--active {
     .accordion__body-container {
-      @apply max-h-full-px -mt-4;
+      @apply max-h-full-px mb-0;
 
       transition: max-height 1200ms cubic-bezier(1, 0, 0, 1);
+    }
+
+    .accordion__body {
+      @apply pb-4;
     }
 
     .accordion__toggle svg {

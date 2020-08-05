@@ -15,5 +15,9 @@ export default {
       showing: 'Showing',
       of: '{x} of {y}',
     },
+    accordion: {
+      switchLabel: 'Enabled',
+      toggleLabel: 'Show/hide this section',
+    },
   },
 };
