@@ -1,5 +1,13 @@
 <template>
   <div class="chec-switch" :class="{ 'chec-switch--toggled' : toggled }">
+    <label
+      v-if="$slots.default && prefixLabel"
+      :for="id"
+      class="chec-switch__label chec-switch__label--prefixed"
+      @click.prevent="handleToggle"
+    >
+      <slot />
+    </label>
     <div class="chec-switch__container" @click.stop="handleToggle">
       <div class="chec-switch__thumb">
         <input
@@ -10,7 +18,7 @@
       </div>
     </div>
     <label
-      v-if="$slots.default"
+      v-if="$slots.default && !prefixLabel"
       :for="id"
       class="chec-switch__label"
       @click.prevent="handleToggle"
@@ -56,6 +64,10 @@ export default {
      * Check if checkbox is checked.
      */
     toggled: Boolean,
+    /**
+     * Whether to prefix the label (rather than display it after the switch)
+     */
+    prefixLabel: Boolean,
   },
   computed: {
     id() {
@@ -83,7 +95,11 @@ export default {
   }
 
   &__label {
-    @apply relative pl-2 cursor-pointer;
+    @apply relative pl-2 cursor-pointer caps-xxs;
+
+    &--prefixed {
+      @apply pl-0 pr-2;
+    }
   }
 
   &__input {
