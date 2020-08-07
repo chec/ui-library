@@ -1,0 +1,75 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import ChecFileUploader from '../../components/ChecFileUploader.vue';
+import FileRow from '../../components/ChecFileUploader/FileRow.vue';
+
+<Meta title="Form fields/File uploader" component={ChecFileUploader} />
+
+# Dropdown
+
+<details>
+
+</details>
+
+<Props of={ChecFileUploader} />
+
+# Default:
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecFileUploader,
+      },
+      props: {
+        endpoint: {
+          default: text('endpoint', 'https://httpbin.org/post'),
+        },
+      },
+      methods: {
+        fileAddedEvent: action('file-added'),
+        fileRemovedEvent: action('file-removed'),
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full h-full bg-white py-20">
+          <ChecFileUploader
+            @file-added="fileAddedEvent"
+            @file-removed="fileRemovedEvent"
+            :endpoint="endpoint" />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+
+# File row
+
+<Preview>
+  <Story name="FileRow">
+    {{
+      components: {
+        FileRow,
+      },
+      props: {
+        error: {
+          default: boolean('error', false)
+        },
+        loading: {
+          default: boolean('loading', false)
+        },
+      },
+      methods: {
+        removeFileEvent: action('remove-file'),
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full h-full bg-white py-20">
+          <FileRow
+            :loading="loading"
+            :error="error"
+            @remove-file="removeFileEvent"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
