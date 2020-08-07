@@ -80,7 +80,7 @@ export default {
 
 <style lang="scss" scoped>
 .notif {
-  @apply flex justify-between items-start bg-gray-200 rounded-md p-4 shadow-md;
+  @apply flex justify-between items-start bg-gray-200 rounded-md py-3 px-4 shadow-md;
 
   min-width: 7.25rem;
 
@@ -93,6 +93,10 @@ export default {
 
   &__text {
     @apply text-primary-blue text-sm;
+
+    .button {
+      @apply mt-2;
+    }
   }
 
   &__close-icon {
