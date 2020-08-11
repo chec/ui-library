@@ -1,12 +1,14 @@
 <template>
   <div class="chec-file-uploader">
     <div class="chec-file-uploader__inner" data-dropzone-clickable>
-      <div v-if="Object.keys(files).length" class="file-rows-container" @click.stop>
+      <div v-if="files" class="file-rows-container" @click.stop>
         <FileRow
-          v-for="(file, key) in files"
-          :key="key"
+          v-for="file in files"
+          :key="file.upload.uuid"
           :loading="file.upload.progress !== null && file.upload.progress < 100"
-          :file="file"
+          :file-name="file.name"
+          :file-size="file.size"
+          :mime-type="file.type"
           @remove-file="() => handleRemovingFile(file)"
         />
       </div>
@@ -32,6 +34,10 @@ export default {
     FileRow,
   },
   props: {
+    files: {
+      type: Array,
+      default: () => [],
+    },
     endpoint: {
       type: String,
       default: '/',
@@ -39,7 +45,7 @@ export default {
   },
   data() {
     return {
-      files: {},
+      inProgressFiles: [],
     };
   },
   mounted() {
@@ -52,42 +58,33 @@ export default {
     });
     const vm = this;
     this.dropzone.on('complete', (file) => {
-      vm.files[file.upload.uuid] = {
-        ...file,
-        upload:
-          { ...file.upload, progress: null },
-        type: file.type,
-        size: file.size,
-        name: file.name,
-      };
+      vm.inProgressFiles = [
+        ...vm.inProgressFiles,
+        file,
+      ];
       vm.$forceUpdate();
-      this.$emit('file-added', vm.files[file.upload.uuid]);
+      this.$emit('file-uploading-complete', file);
     });
     this.dropzone.on('addedfile', (file) => {
-      vm.files[file.upload.uuid] = {
-        ...file,
-        type: file.type,
-        size: file.size,
-        name: file.name,
-      };
+      vm.inProgressFiles = [
+        ...vm.inProgressFiles,
+        file,
+      ];
+      this.$emit('file-added', file);
       vm.$forceUpdate();
     });
     this.dropzone.on('uploadprogress', (file) => {
-      vm.files[file.upload.uuid] = {
-        ...file,
-        type: file.type,
-        size: file.size,
-        name: file.name,
-      };
+      vm.inProgressFiles = [
+        ...vm.inProgressFiles,
+        file,
+      ];
+      this.$emit('file-uploading', file);
       vm.$forceUpdate();
     });
   },
   methods: {
     handleRemovingFile(file) {
-      const files = { ...this.files };
-      delete files[file.upload.uuid];
-      this.files = { ...files };
-      this.$emit('file-removed', file);
+      this.$emit('remove-file', file);
     },
   },
 };

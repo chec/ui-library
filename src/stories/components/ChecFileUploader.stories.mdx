@@ -22,20 +22,35 @@ import FileRow from '../../components/ChecFileUploader/FileRow.vue';
       components: {
         ChecFileUploader,
       },
+      data() {
+        return {
+          files: [],
+        };
+      },
       props: {
         endpoint: {
           default: text('endpoint', 'https://httpbin.org/post'),
         },
       },
       methods: {
-        fileAddedEvent: action('file-added'),
-        fileRemovedEvent: action('file-removed'),
+        addedFile(file) {
+          action('added-file');
+          this.files = [ ...this.files, file ];
+        },
+        removeFile(file) {
+          action('remove-file');
+          this.files = [ ...this.files.filter((f) => f.upload.uuid !== file.upload.uuid)];
+        },
+        uploadingFile: action('uploading-file'),
       },
       template: `
         <div class="p-16 flex justify-center w-full h-full bg-white py-20">
           <ChecFileUploader
-            @file-added="fileAddedEvent"
-            @file-removed="fileRemovedEvent"
+            :files="files"
+            @file-added="addedFile"
+            @file-uploading-complete="uploadingFileComplete"
+            @remove-file="removeFile"
+            @file-uploading="uploadingFile"
             :endpoint="endpoint" />
         </div>`
     }}
