@@ -1,6 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
-import { text } from '@storybook/addon-knobs';
+import { text, boolean, select } from '@storybook/addon-knobs';
 import ChecLoading from '../../components/ChecLoading.vue';
 const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', 'full', 'screen-sm', 'screen-md', 'screen-lg', 'screen-xl', 'none'];
 
@@ -20,14 +20,22 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
         message: {
           default: text('Message', ''),
         },
+        toggleBackground: {
+          default: boolean('Remove background overlay', false),
+        },
+        variant: {
+          default: select('Variant', ['default', 'light', 'dark'], 'dark'),
+        },
       },
       template: `
         <div class="font-lato">
-          <ChecLoading :message="message" />
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget elementum quam. Sed vitae nulla malesuada, suscipit purus non, mollis risus.</p>
-          <p>Etiam eu odio pharetra, porttitor nisi eget, gravida tellus. Aliquam consequat urna sed cursus imperdiet.</p>
-          <p>Duis lobortis, diam eget tempor feugiat, dolor ipsum vulputate tortor, vitae aliquet lorem erat in velit. Duis suscipit consequat neque, pretium congue risus condimentum malesuada.</p>
-          <p>Duis sed interdum felis, sit amet varius massa. Suspendisse commodo enim id lobortis tristique.</p>
+          <ChecLoading :variant="variant" :withoutBackground="toggleBackground" class="w-5 h-5 mx-auto" :message="message" />
+          <template>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget elementum quam. Sed vitae nulla malesuada, suscipit purus non, mollis risus.</p>
+            <p>Etiam eu odio pharetra, porttitor nisi eget, gravida tellus. Aliquam consequat urna sed cursus imperdiet.</p>
+            <p>Duis lobortis, diam eget tempor feugiat, dolor ipsum vulputate tortor, vitae aliquet lorem erat in velit. Duis suscipit consequat neque, pretium congue risus condimentum malesuada.</p>
+            <p>Duis sed interdum felis, sit amet varius massa. Suspendisse commodo enim id lobortis tristique.</p>
+          </template>
         </div>`
     }}
   </Story>
