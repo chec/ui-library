@@ -74,7 +74,7 @@ export default {
 
   &__animation-spinner {
     @apply text-gray-500 stroke-current;
-    animation: 2.4s linear infinite both a0_t, 2.4s linear infinite both a0_do;
+    animation: 2.4s linear infinite both a0_do, 2.4s linear infinite both a0_t;
   }
 
   &__message {
@@ -118,23 +118,23 @@ export default {
 // Loading animations
 @keyframes a0_t {
   0% {
-    transform: translate(16px, 16px) rotate(0deg);
+    transform: translate(16px, 16px) rotate(-360deg);
   }
 
   100% {
-    transform: translate(16px, 16px) rotate(-360deg);
+    transform: translate(16px, 16px) rotate(0deg);
   }
 }
 
 @keyframes a0_do {
   0% {
     animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-    stroke-dashoffset: 100;
+    stroke-dashoffset: 500;
   }
 
   25% {
     animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-    stroke-dashoffset: 200;
+    stroke-dashoffset: 400;
   }
 
   50% {
@@ -144,11 +144,11 @@ export default {
 
   75% {
     animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-    stroke-dashoffset: 400;
+    stroke-dashoffset: 200;
   }
 
   100% {
-    stroke-dashoffset: 500;
+    stroke-dashoffset: 100;
   }
 }
 </style>
