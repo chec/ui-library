@@ -9,6 +9,7 @@
           :file-name="file.name"
           :file-size="file.size"
           :mime-type="file.type"
+          :progress="file.upload.progress"
           @remove-file="() => handleRemovingFile(file)"
         />
       </div>
@@ -63,14 +64,14 @@ export default {
         file,
       ];
       vm.$forceUpdate();
-      this.$emit('file-uploading-complete', file);
+      this.$emit('file-uploading-complete', this.getNonReactiveFileObject(file));
     });
     this.dropzone.on('addedfile', (file) => {
       vm.inProgressFiles = [
         ...vm.inProgressFiles,
         file,
       ];
-      this.$emit('file-added', file);
+      this.$emit('file-added', this.getNonReactiveFileObject(file));
       vm.$forceUpdate();
     });
     this.dropzone.on('uploadprogress', (file) => {
@@ -78,13 +79,18 @@ export default {
         ...vm.inProgressFiles,
         file,
       ];
-      this.$emit('file-uploading', file);
+      this.$emit('file-uploading', this.getNonReactiveFileObject(file));
       vm.$forceUpdate();
     });
   },
   methods: {
     handleRemovingFile(file) {
       this.$emit('remove-file', file);
+    },
+    getNonReactiveFileObject(file) {
+      return {
+        upload: { ...file.upload }, name: file.name, size: file.size, type: file.type,
+      };
     },
   },
 };

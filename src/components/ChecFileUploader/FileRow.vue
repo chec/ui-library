@@ -2,7 +2,7 @@
   <div class="chec-file-row" :class="{ 'chec-file-row--error': error }">
     <div class="chec-file-row__left">
       <div v-if="loading" class="chec-file-row__loading-icon">
-        <ChecLoading />
+        <ChecLoading variant="light" />
       </div>
       <div v-else class="chec-file-row__icon">
         <ChecIcon
@@ -19,12 +19,17 @@
       </p>
     </div>
     <div class="chec-file-row__right">
-      <p v-if="!error" class="chec-file-row__type">
-        {{ mimeType }}
+      <p v-if="loading" class="chec-file-row__progress">
+        {{ progressPercent }}
       </p>
-      <p v-if="!error" class="chec-file-row__size">
-        {{ size }}
-      </p>
+      <template v-else>
+        <p v-if="!error" class="chec-file-row__type">
+          {{ mimeType }}
+        </p>
+        <p v-if="!error" class="chec-file-row__size">
+          {{ size }}
+        </p>
+      </template>
       <button class="chec-file-row__remove-button" @click="() => $emit('remove-file')">
         <ChecIcon
           icon="close"
@@ -46,6 +51,10 @@ export default {
     ChecLoading,
   },
   props: {
+    progress: {
+      type: Number,
+      default: 0,
+    },
     loading: {
       type: Boolean,
     },
@@ -68,6 +77,9 @@ export default {
   computed: {
     size() {
       return filesize(this.fileSize);
+    },
+    progressPercent() {
+      return `${(this.progress).toFixed()}%`;
     },
   },
 };
@@ -111,7 +123,7 @@ export default {
     letter-spacing: 1px;
   }
 
-  &__size {
+  &__size, &__progress {
     @apply text-white caps-xxs mr-1;
     letter-spacing: 1px;
   }
