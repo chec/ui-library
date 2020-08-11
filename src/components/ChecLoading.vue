@@ -44,9 +44,7 @@ export default {
         return ['dark', 'light'].includes(value);
       },
     },
-    withoutBackground: {
-      type: Boolean,
-    },
+    withoutBackground: Boolean,
   },
   computed: {
     classObject() {
