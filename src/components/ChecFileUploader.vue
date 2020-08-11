@@ -63,7 +63,6 @@ export default {
         ...vm.inProgressFiles,
         file,
       ];
-      vm.$forceUpdate();
       this.$emit('file-uploading-complete', this.getNonReactiveFileObject(file));
     });
     this.dropzone.on('addedfile', (file) => {
@@ -72,7 +71,6 @@ export default {
         file,
       ];
       this.$emit('file-added', this.getNonReactiveFileObject(file));
-      vm.$forceUpdate();
     });
     this.dropzone.on('uploadprogress', (file) => {
       vm.inProgressFiles = [
@@ -80,7 +78,6 @@ export default {
         file,
       ];
       this.$emit('file-uploading', this.getNonReactiveFileObject(file));
-      vm.$forceUpdate();
     });
   },
   methods: {

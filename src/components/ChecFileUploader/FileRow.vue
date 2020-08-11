@@ -2,7 +2,7 @@
   <div class="chec-file-row" :class="{ 'chec-file-row--error': error }">
     <div class="chec-file-row__left">
       <div v-if="loading" class="chec-file-row__loading-icon">
-        <ChecLoading variant="light" />
+        <ChecLoading without-background variant="dark" />
       </div>
       <div v-else class="chec-file-row__icon">
         <ChecIcon
@@ -123,7 +123,8 @@ export default {
     letter-spacing: 1px;
   }
 
-  &__size, &__progress {
+  &__size,
+  &__progress {
     @apply text-white caps-xxs mr-1;
     letter-spacing: 1px;
   }
