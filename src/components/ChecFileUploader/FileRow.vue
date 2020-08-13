@@ -1,7 +1,7 @@
 <template>
   <div class="chec-file-row" :class="{ 'chec-file-row--error': error }">
     <div class="chec-file-row__left">
-      <div v-if="loading" class="chec-file-row__loading-icon">
+      <div v-if="loading && !error" class="chec-file-row__loading-icon">
         <ChecLoading without-background variant="dark" />
       </div>
       <div v-else class="chec-file-row__icon">
@@ -14,8 +14,11 @@
           icon="check"
         />
       </div>
-      <p class="chec-file-row__label">
+      <p v-if="!error" class="chec-file-row__label">
         {{ fileName || '--' }}
+      </p>
+      <p v-else class="chec-file-row__label">
+        {{ `${fileName || '' } - ${errorMessage || 'Failed' }` }}
       </p>
     </div>
     <div class="chec-file-row__right">
@@ -51,27 +54,45 @@ export default {
     ChecLoading,
   },
   props: {
+    /**
+     * The uploading progress percentage
+     */
     progress: {
       type: Number,
       default: 0,
     },
-    loading: {
-      type: Boolean,
-    },
-    error: {
-      type: Boolean,
-    },
+    /**
+     * Boolean to indicate a loading state
+     */
+    loading: Boolean,
+    /**
+     * Boolean to render the error state
+     */
+    error: Boolean,
+    /**
+     * Optional error message
+     */
+    errorMessage: String,
+    /**
+     * The name of the file
+     */
     fileName: {
       type: String,
       default: '',
     },
+    /**
+     * The file's media type
+     */
     mimeType: {
       type: String,
       default: '',
     },
+    /**
+     * The file's size, rendered as human readable file size string using the npm lib. filesize
+     */
     fileSize: {
-      type: String,
-      default: '',
+      type: Number,
+      default: 0,
     },
   },
   computed: {
@@ -119,13 +140,13 @@ export default {
   }
 
   &__type {
-    @apply text-white caps-xxs mr-1;
+    @apply text-white caps-xxs mr-4;
     letter-spacing: 1px;
   }
 
   &__size,
   &__progress {
-    @apply text-white caps-xxs mr-1;
+    @apply text-white caps-xxs mr-4;
     letter-spacing: 1px;
   }
 

@@ -1,10 +1,11 @@
 <template>
   <div class="chec-file-uploader">
     <div class="chec-file-uploader__inner" data-dropzone-clickable>
-      <div v-if="files" class="file-rows-container" @click.stop>
+      <div v-if="files.length" class="file-rows-container space-y-2" @click.stop>
         <FileRow
           v-for="file in files"
           :key="file.upload.uuid"
+          :error="file.status === 'error'"
           :loading="file.upload.progress !== null && file.upload.progress < 100"
           :file-name="file.name"
           :file-size="file.size"
@@ -35,10 +36,16 @@ export default {
     FileRow,
   },
   props: {
+    /**
+     * The files that will be rendered as <file-row> components
+     */
     files: {
       type: Array,
       default: () => [],
     },
+    /**
+     * The endpoint to upload files to
+     */
     endpoint: {
       type: String,
       default: '/',
@@ -63,31 +70,62 @@ export default {
         ...vm.inProgressFiles,
         file,
       ];
-      this.$emit('file-uploading-complete', this.getNonReactiveFileObject(file));
+      this.emitFileUploadingComplete(file);
     });
     this.dropzone.on('addedfile', (file) => {
       vm.inProgressFiles = [
         ...vm.inProgressFiles,
         file,
       ];
-      this.$emit('file-added', this.getNonReactiveFileObject(file));
+      this.emitFileAdded(file);
     });
     this.dropzone.on('uploadprogress', (file) => {
       vm.inProgressFiles = [
         ...vm.inProgressFiles,
         file,
       ];
-      this.$emit('file-uploading', this.getNonReactiveFileObject(file));
+      this.emitFileUploading(file);
     });
   },
   methods: {
     handleRemovingFile(file) {
-      this.$emit('remove-file', file);
+      /**
+       * Emitted when the file has been removed
+       *
+       * @event remove-file
+       * @type {Object}
+       */
+      this.$emit('remove-file', this.getNonReactiveFileObject(file));
     },
     getNonReactiveFileObject(file) {
       return {
-        upload: { ...file.upload }, name: file.name, size: file.size, type: file.type,
+        upload: { ...file.upload }, name: file.name, size: file.size, type: file.type, status: file.status,
       };
+    },
+    emitFileUploading(file) {
+      /**
+       * Emitted when the file has begun uploading, derived from Dropzone.js' uploadprogress event
+       *
+       * @event file-uploading
+       * @type {Object}
+       */
+      this.$emit('file-uploading', this.getNonReactiveFileObject(file));
+    },
+    emitFileAdded(file) {
+      /**
+       * Emitted when the file has been initially added, derived from Dropzone.js' addedfile event
+       * @event file-added
+       * @type {$event}
+       */
+      this.$emit('file-added', this.getNonReactiveFileObject(file));
+    },
+    emitFileUploadingComplete(file) {
+      /**
+       * Emitted when the file has completed uploading, derived from Dropzone.js' file-uploading-complete event
+       * @event file-uploading-complete
+       * @type {$event}
+       */
+      this.$emit('file-uploading-complete', this.getNonReactiveFileObject(file));
     },
   },
 };
@@ -108,13 +146,9 @@ export default {
   &__input {
     display: none;
   }
+}
 
-  .file-rows-container {
-    @apply w-full flex flex-col mb-2;
-
-    .chec-file-row {
-      @apply mb-2;
-    }
-  }
+.file-rows-container {
+  @apply w-full flex flex-col mb-2;
 }
 </style>

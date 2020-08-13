@@ -35,11 +35,11 @@ import FileRow from '../../components/ChecFileUploader/FileRow.vue';
       methods: {
         addedFile(file) {
           action('added-file');
-          this.files[file.upload.uuid] = file;
+          this.files = { ...this.files, [file.upload.uuid]: file };
         },
         removeFile(file) {
           action('remove-file');
-          if (file.upload.progress < 100) {
+          if (file.upload.progress < 100 && file.status !== 'error') {
             return;
           }
           const files = { ...this.files };
@@ -48,16 +48,21 @@ import FileRow from '../../components/ChecFileUploader/FileRow.vue';
         },
         uploadingFile(file) {
           action('uploading-file');
-          this.files[file.upload.uuid] = file;
+          this.files = { ...this.files, [file.upload.uuid]: file };
+        },
+       uploadingFileComplete(file) {
+          action('uploading-file-complete');
+          this.files = { ...this.files, [file.upload.uuid]: file };
         },
       },
       template: `
         <div class="p-16 flex justify-center w-full h-full bg-white py-20">
           <ChecFileUploader
-            :files="files"
+            :files="Object.values(files)"
             @file-added="addedFile"
             @remove-file="removeFile"
             @file-uploading="uploadingFile"
+            @file-uploading-complete="uploadingFileComplete"
             :endpoint="endpoint"
           />
         </div>`
