@@ -30,7 +30,12 @@
       :for="id"
     >
       {{ label }}
-      <span v-if="required">(required)</span>
+      <span
+        v-if="required"
+        class="text-field__required-text"
+      >
+        (required)
+      </span>
     </label>
     <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
       <slot />
@@ -411,7 +416,7 @@ export default {
   }
 
   &--required {
-    .text-field__label span {
+    .text-field__required-text {
       @apply text-gray-400;
     }
   }
