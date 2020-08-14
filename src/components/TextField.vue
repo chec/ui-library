@@ -16,6 +16,7 @@
     />
     <input
       v-else
+      :required="required"
       v-bind="sharedInputProps"
       :type="$attrs.type || 'text'"
       :style="{ 'padding-right': hasSlot && `${slotWidth}px` }"
@@ -29,6 +30,12 @@
       :for="id"
     >
       {{ label }}
+      <span
+        v-if="required"
+        class="text-field__required-text"
+      >
+        {{ $t('general.required') }}
+      </span>
     </label>
     <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
       <slot />
@@ -107,6 +114,12 @@ export default {
     icon: {
       type: String,
       default: null,
+    },
+    /**
+     * Allows for toggling of html attribute of "required" in label
+     */
+    required: {
+      type: Boolean,
     },
   },
   data() {
@@ -257,6 +270,10 @@ export default {
     @apply absolute top-0 left-0 pointer-events-none ml-4 mt-4 leading-tight text-gray-500
       transition-transform duration-150 origin-top-left;
     @extend %filled-transformation;
+  }
+
+  &__required-text {
+    @apply text-gray-400;
   }
 
   &__input {

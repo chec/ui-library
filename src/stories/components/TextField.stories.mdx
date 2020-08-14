@@ -32,6 +32,9 @@ import { uiIcons } from '../../lib/icons';
         multiline: {
           default: boolean('Multiline', false)
         },
+        required: {
+          default: boolean('Required', false)
+        },
         type: {
           default: select('Type', ['text', 'email', 'password', 'number', 'date', 'color', 'month', 'search', 'tel', 'url', 'week'], 'text')
         },
@@ -61,6 +64,7 @@ import { uiIcons } from '../../lib/icons';
             :variant="variant"
             :type="type"
             :icon="icon"
+            :required="required"
             class="w-full max-w-sm"
           />
         </div>`,

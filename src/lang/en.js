@@ -2,6 +2,7 @@ export default {
   en: {
     general: {
       search: 'Search',
+      required: '(required)',
     },
     navigation: {
       returnToHome: 'Return to the home page',
