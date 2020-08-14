@@ -34,7 +34,7 @@
         v-if="required"
         class="text-field__required-text"
       >
-        (required)
+        {{ $t('general.required') }}
       </span>
     </label>
     <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
@@ -162,7 +162,6 @@ export default {
         multiline,
         value,
         variant,
-        required,
       } = this;
 
       return {
@@ -173,7 +172,6 @@ export default {
         'text-field--modified': label ? !!value : false,
         'text-field--has-icon': Boolean(this.icon),
         'text-field--multiline': multiline,
-        'text-field--required': required,
       };
     },
   },
@@ -272,6 +270,10 @@ export default {
     @apply absolute top-0 left-0 pointer-events-none ml-4 mt-4 leading-tight text-gray-500
       transition-transform duration-150 origin-top-left;
     @extend %filled-transformation;
+  }
+
+  &__required-text {
+    @apply text-gray-400;
   }
 
   &__input {
@@ -412,12 +414,6 @@ export default {
         @apply w-1 bg-gray-300 rounded;
       }
       @apply resize-none overflow-auto h-20;
-    }
-  }
-
-  &--required {
-    .text-field__required-text {
-      @apply text-gray-400;
     }
   }
 
