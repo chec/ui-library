@@ -41,7 +41,7 @@ export default {
       type: String,
       default: 'default',
       validator: function validator(value) {
-        return ['dark', 'light'].includes(value);
+        return ['dark', 'light', 'default'].includes(value);
       },
     },
     withoutBackground: Boolean,
