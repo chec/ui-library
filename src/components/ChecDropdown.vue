@@ -312,6 +312,21 @@ export default {
           if (this.showSearch) {
             this.$refs.search.$el.querySelector('input').focus();
           }
+
+          this.$refs['popper-el']
+            .$el
+            .querySelector('.dropdown__options')
+            .addEventListener('scroll', ({ target: element }) => {
+              if (
+                element.scrollHeight !== element.clientHeight
+                && element.scrollHeight - element.scrollTop === element.clientHeight
+              ) {
+                /**
+                 * Emitted when the user scrolls the list of options to the bottom
+                 */
+                this.$emit('scroll-to-bottom');
+              }
+            });
         },
       });
     },
