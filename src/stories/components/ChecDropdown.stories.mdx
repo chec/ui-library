@@ -103,6 +103,9 @@ Todo list
           action('Search')(...attrs);
           this.search = attrs[0];
         },
+        handleScrolledToBottom() {
+          action('Reached the bottom of the options list')();
+        }
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
@@ -121,6 +124,7 @@ Todo list
             v-model="model"
             :options="options"
             @input="onClick"
+            @scroll-to-bottom="handleScrolledToBottom"
           />
         </div>`
     }}
@@ -150,6 +154,11 @@ Todo list
           default: text('Label', ''),
         }
       },
+      methods: {
+        handleScrolledToBottom() {
+          action('Reached the bottom of the options list')();
+        },
+      },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
           <ChecDropdown
@@ -159,6 +168,7 @@ Todo list
             v-model="option"
             :options="options"
             @input="onClick"
+            @scroll-to-bottom="handleScrolledToBottom"
             />
         </div>`
     }}
@@ -288,6 +298,9 @@ Todo list
           action('Search')(...attrs);
           this.search = attrs[0];
         },
+        handleScrolledToBottom() {
+          action('Reached the bottom of the options list')();
+        }
       },
       template: `
           <ChecModal
@@ -305,6 +318,7 @@ Todo list
                 :search-value="search"
                 multiselect
                 @search="handleSearch"
+                @scroll-to-bottom="handleScrolledToBottom"
               />
             </div>
           </ChecModal>
