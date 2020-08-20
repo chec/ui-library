@@ -1,12 +1,12 @@
 <template>
-  <div class="chec-file-uploader">
+  <form method="post" enctype="multipart/form-data" class="chec-file-uploader">
     <div class="chec-file-uploader__inner" data-dropzone-clickable>
       <div v-if="files.length" class="file-rows-container space-y-2" @click.stop>
         <FileRow
           v-for="file in files"
           :key="file.upload.uuid"
           :error="file.status === 'error'"
-          :loading="file.upload.progress !== null && file.upload.progress < 100"
+          :loading="['added', 'queued', 'uploading'].includes(file.status)"
           :file-name="file.name"
           :file-size="file.size"
           :mime-type="file.type"
@@ -17,9 +17,9 @@
       <ChecButton data-dropzone-clickable @click.stop>
         Choose file(s)
       </ChecButton>
-      <input class="chec-file-uploader__input" type="file" name="file">
+      <input class="chec-file-uploader__input" type="file">
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -44,10 +44,11 @@ export default {
       default: () => [],
     },
     /**
-     * The endpoint to upload files to
+     * The endpoint to upload files to. This can be provided as a string, or a promise that will resolve a URL given a
+     * file object (provided by Dropzone). Note that this file object can be mutated to add a `formData` key.
      */
     endpoint: {
-      type: String,
+      type: [String, Function],
       default: '/',
     },
   },
@@ -57,14 +58,51 @@ export default {
     };
   },
   mounted() {
+    const { endpoint } = this;
+    const vm = this;
+
     this.dropzone = new Dropzone(this.$el, {
-      url: this.endpoint,
+      // Note that this option _can't_ be empty, even if you update the URL dynamically
+      url: typeof this.endpoint === 'string' ? this.endpoint : '-',
       createImageThumbnails: false,
       previewsContainer: false,
       clickable: '[data-dropzone-clickable]',
       hiddenInputContainer: this.$el,
+      // Allows asynchronous processing of added files for the purpose of "accepting" them as valid files
+      accept(file, done) {
+        if (typeof endpoint === 'function') {
+          endpoint(file)
+            .then((url) => {
+              if (url && typeof url === 'string') {
+                // Note that this is intended usage of the file object in Dropzone.
+                // eslint-disable-next-line no-param-reassign
+                file.uploadUrl = url;
+              }
+              done();
+            })
+            .catch((message) => done(message));
+          return;
+        }
+        done();
+      },
     });
-    const vm = this;
+
+    // Update the form data sent with the file - if some has been set on the file object
+    this.dropzone.on('sending', (file, _, formData) => {
+      if (typeof file.formData === 'object') {
+        Object.entries(file.formData).forEach(([key, value]) => {
+          formData.set(key, value);
+        });
+      }
+    });
+
+    // Update the URL for an individual file (See https://github.com/enyo/dropzone/wiki/Set-URL-dynamically)
+    this.dropzone.on('processing', function processing(file) {
+      if (file.uploadUrl) {
+        this.options.url = file.uploadUrl;
+      }
+    });
+
     this.dropzone.on('complete', (file) => {
       vm.inProgressFiles = [
         ...vm.inProgressFiles,
@@ -72,6 +110,7 @@ export default {
       ];
       this.emitFileUploadingComplete(file);
     });
+
     this.dropzone.on('addedfile', (file) => {
       vm.inProgressFiles = [
         ...vm.inProgressFiles,
@@ -79,6 +118,7 @@ export default {
       ];
       this.emitFileAdded(file);
     });
+
     this.dropzone.on('uploadprogress', (file) => {
       vm.inProgressFiles = [
         ...vm.inProgressFiles,
@@ -115,7 +155,7 @@ export default {
       /**
        * Emitted when the file has been initially added, derived from Dropzone.js' addedfile event
        * @event file-added
-       * @type {$event}
+       * @type {Object}
        */
       this.$emit('file-added', this.getNonReactiveFileObject(file));
     },
@@ -123,7 +163,7 @@ export default {
       /**
        * Emitted when the file has completed uploading, derived from Dropzone.js' file-uploading-complete event
        * @event file-uploading-complete
-       * @type {$event}
+       * @type {Object}
        */
       this.$emit('file-uploading-complete', this.getNonReactiveFileObject(file));
     },
@@ -133,7 +173,7 @@ export default {
 
 <style lang="scss">
 .chec-file-uploader {
-  @apply relative flex flex-col w-full h-auto flex rounded shadow-inner bg-gray-gradient flex justify-center;
+  @apply block relative flex flex-col w-full h-auto flex rounded shadow-inner bg-gray-gradient flex justify-center;
 
   &__inner {
     @apply relative border border-dashed border-gray-400 rounded m-2 p-8;
