@@ -207,7 +207,7 @@ export default {
 
     &-round,
     &-tag {
-      @apply py-2 px-4 rounded-full;
+      @apply py-2 px-4 rounded-full leading-tight;
 
       .button__content {
         @apply caps-xxs;
@@ -218,9 +218,8 @@ export default {
       }
     }
 
-    &-round {
+    &-tag {
       // Snowflake styles
-      border: 1px solid transparent;
       padding-bottom: 7px;
       padding-top: 7px;
     }

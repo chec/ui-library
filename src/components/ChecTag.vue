@@ -82,7 +82,7 @@ export default {
 }
 
 .tag {
-  @apply py-1 px-3 rounded-full font-bold text-sm border;
+  @apply py-1 px-3 rounded-full font-bold text-sm border leading-tight;
 
   &--active {
     @extend %active;
