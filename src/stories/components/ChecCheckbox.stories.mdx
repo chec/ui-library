@@ -29,6 +29,15 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
           default: boolean("Disable", false, "Props")
         },
       },
+      data() {
+        return { values: {
+          apple: true,
+          orange: false,
+          pear: false,
+          disabled: false,
+          indeterminate: false
+        } };
+      },
       template: `
         <div class="py-16 flex justify-center bg-gray-100 font-lato">
           <ChecCheckbox
@@ -36,7 +45,8 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
             name="apple"
             :label="label"
             value="apple"
-            checked
+            :checked="values.apple"
+            @input="values.apple = !values.apple"
             :disabled="disabled"
           />
           <ChecCheckbox
@@ -44,6 +54,7 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
             name="orange"
             label="Orange"
             value="orange"
+            v-model="values.orange"
             :disabled="disabled"
           />
           <ChecCheckbox
@@ -51,6 +62,7 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
             name="pear"
             label="Pear"
             value="pear"
+            v-model="values.pear"
             :disabled="disabled"
           />
           <ChecCheckbox
@@ -58,6 +70,7 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
             name="disabled"
             label="Disabled"
             value="disabled"
+            v-model="values.disabled"
             disabled="disabled"
           />
           <ChecCheckbox
@@ -66,7 +79,8 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
             label="Indeterminate"
             value="indeterminate"
             :disabled="disabled"
-            indeterminate="indeterminate"
+            v-model="values.indeterminate"
+            indeterminate
           />
         </div>`,
     }}

@@ -11,15 +11,15 @@
       <ChecLoading />
     </div>
     <template v-else>
-      <input
+      <ChecCheckbox
         v-if="showCheckbox"
         :id="option.value"
         type="checkbox"
         class="mr-3"
         :checked="checked"
         :disabled="option.disabled"
-        :indeterminate.prop="indeterminate"
-      >
+        :indeterminate="indeterminate"
+      />
       <slot />
     </template>
   </div>
@@ -27,10 +27,11 @@
 
 <script>
 import ChecLoading from './ChecLoading.vue';
+import ChecCheckbox from './ChecCheckbox.vue';
 
 export default {
   name: 'ChecOption',
-  components: { ChecLoading },
+  components: { ChecCheckbox, ChecLoading },
   props: {
     /**
      * Set's the option as a selectable option

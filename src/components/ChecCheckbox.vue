@@ -1,35 +1,35 @@
 <template>
-  <label :for="id" class="checkbox" :class="{ 'active' : isChecked, disabled }">
+  <label :for="id" class="chec-checkbox" :class="labelClasses">
     <input
       :id="id"
       type="checkbox"
       :name="name"
       :value="value"
-      :checked="isChecked"
+      :checked="checked"
       :disabled="disabled"
-      class="checkbox__input"
-      :indeterminate="indeterminate"
+      class="chec-checkbox__input"
+      :indeterminate.prop="indeterminate"
       @input="handleInput"
     >
     <!-- Display none check icon and display when checked -->
-    <span v-show="!indeterminate && isChecked" class="checkbox__check">
+    <span v-show="!indeterminate && checked" class="chec-checkbox__check">
       <ChecIcon icon="check" />
     </span>
     <!-- Display none minus icon and display when indeterminate -->
-    <span v-show="indeterminate" class="checkbox__minus">
+    <span v-show="indeterminate" class="chec-checkbox__minus">
       <ChecIcon icon="minus" />
     </span>
     <!--
       @slot Custom label slot
       @bind label string
-      @bind isChecked boolean
+      @bind checked boolean
       @bind disabled boolean
     -->
-    <div v-if="label" class="checkbox__label" :class="{ disabled: disabled }">
-      <slot v-bind="{ label, isChecked, disabled }">
+    <span v-if="label" class="chec-checkbox__label" :class="{ disabled: disabled }">
+      <slot v-bind="{ label, checked, disabled }">
         {{ label }}
       </slot>
-    </div>
+    </span>
   </label>
 </template>
 
@@ -82,11 +82,17 @@ export default {
     checked: Boolean,
   },
   computed: {
-    isChecked() {
-      return this.checked;
-    },
     id() {
-      return uniqueId(this.name, this.value, 'checkbox')();
+      return this.$attrs.id || uniqueId(this.name, this.value, 'checkbox')();
+    },
+    labelClasses() {
+      const { checked, disabled, indeterminate } = this;
+
+      return {
+        'chec-checkbox--active': checked,
+        'chec-checkbox--disabled': disabled,
+        'chec-checkbox--indeterminate': indeterminate,
+      };
     },
   },
   methods: {
@@ -95,10 +101,7 @@ export default {
        * Emitted when input is checked.
        * @event input
        */
-      // See issue #123
-      // eslint-disable-next-line vue/no-mutating-props
-      this.checked = !this.checked;
-      this.$emit('input', this.checked);
+      this.$emit('input', !this.checked);
     },
   },
 };
@@ -106,7 +109,7 @@ export default {
 
 <style lang="scss">
 
-.checkbox {
+.chec-checkbox {
   @apply cursor-pointer flex items-center text-sm text-gray-600 cursor-pointer;
 
   &__input {
@@ -146,11 +149,13 @@ export default {
       @apply bg-gray-500 border-none;
     }
 
-    &:indeterminate::after {
+    &:indeterminate::after,
+    .chec-checkbox--indeterminate &::after {
       @apply text-white absolute;
     }
 
-    &:indeterminate {
+    &:indeterminate,
+    .chec-checkbox--indeterminate & {
       @apply bg-gray-500 border-none;
     }
   }
