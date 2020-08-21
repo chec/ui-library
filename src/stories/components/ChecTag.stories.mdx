@@ -84,10 +84,10 @@ import ChecTagGroup from '../../components/ChecTagGroup';
       template: `
         <div class="mx-auto max-w-4xl pt-6">
           <ChecTagGroup :hide-reset="hideReset" @reset="handleReset">
-            <ChecTag :color="color" :disabled="disabled" :undismissible="undismissible" @dismiss="handleDismiss">
+            <ChecTag :color="color" :undismissible="undismissible" @dismiss="handleDismiss">
               Marketing
             </ChecTag>
-            <ChecTag :color="color" :disabled="disabled" :undismissible="undismissible" active @dismiss="handleDismiss">
+            <ChecTag :color="color" :undismissible="undismissible" active @dismiss="handleDismiss">
               Developers and designers
             </ChecTag>
             <ChecTag :color="color" :undismissible="undismissible" active disabled @dismiss="handleDismiss">
@@ -96,7 +96,7 @@ import ChecTagGroup from '../../components/ChecTagGroup';
             <ChecTag :color="color" :undismissible="undismissible" disabled @dismiss="handleDismiss">
               Guides &amp; tutorials
             </ChecTag>
-            <ChecTag :color="color" :disabled="disabled" :undismissible="undismissible" @dismiss="handleDismiss">
+            <ChecTag :color="color" :undismissible="undismissible" @dismiss="handleDismiss">
               Developers and designers
             </ChecTag>
           </ChecTagGroup>
