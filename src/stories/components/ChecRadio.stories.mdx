@@ -34,8 +34,7 @@ import ChecRadio from '../../components/ChecRadio.vue';
       },
       data(){
         return {
-          checked: false,
-          value: 'test',
+          checked: '',
         };
       },
       template: `
@@ -43,9 +42,9 @@ import ChecRadio from '../../components/ChecRadio.vue';
         <ul>
           <li>
             <ChecRadio
-              :name="name"
+              name="one"
               :label="label"
-              :value="value"
+              value="a"
               :disabled="disabled"
               :required="required"
               v-model="checked"
@@ -54,7 +53,7 @@ import ChecRadio from '../../components/ChecRadio.vue';
           <li>
             <ChecRadio
               label="Option 2"
-              :name="name"
+              name="two"
               value="b"
               :disabled="disabled"
               :required="required"
@@ -64,7 +63,7 @@ import ChecRadio from '../../components/ChecRadio.vue';
           <li>
             <ChecRadio
               label="Option 3"
-              :name="name"
+              name="three"
               value="c"
               :disabled="disabled"
               :required="required"
@@ -74,7 +73,7 @@ import ChecRadio from '../../components/ChecRadio.vue';
           <li>
             <ChecRadio
               label="Disabled"
-              :name="name"
+              name="four"
               value="d"
               disabled="disabled"
               :required="required"
