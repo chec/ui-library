@@ -3,7 +3,7 @@
     <slot />
 
     <button
-      v-if="!hideDismiss"
+      v-if="!undismissible"
       type="button"
       class="tag__dismiss"
       :disabled="disabled"
@@ -44,9 +44,9 @@ export default {
      */
     disabled: Boolean,
     /**
-     * Whether to hide the dismiss tag button
+     * If the tag is undismissible, it will not render a small "X" button to trigger a dismiss event
      */
-    hideDismiss: Boolean,
+    undismissible: Boolean,
   },
   computed: {
     /**
