@@ -37,16 +37,10 @@
           </li>
         </ul>
         <div v-if="user && $slots.default" @mouseenter="handleOpenSection(user)">
-          <component
-            :is="user.component"
-            v-bind="user.bind"
-            tabindex="-1"
-          >
-            <!--
-              @slot Detail to display at the bottom of the "drawer" that opens on hover
-            -->
-            <slot />
-          </component>
+          <!--
+            @slot Detail to display at the bottom of the "drawer" that opens on hover
+          -->
+          <slot />
         </div>
       </div>
     </div>
