@@ -1,6 +1,8 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
-import { text, select } from '@storybook/addon-knobs';
-import Tag from '../../components/ChecTag';
+import { text, select, boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import ChecTag from '../../components/ChecTag';
+import ChecTagGroup from '../../components/ChecTagGroup';
 
 <Meta title="Components/Tag" component={Tag} />
 
@@ -12,44 +14,92 @@ import Tag from '../../components/ChecTag';
   <Story name="Default">
     {{
       components: {
-        Tag,
+        ChecTag,
       },
       props: {
-        variant: {
-          default: select('Variant', ['default', 'success', 'error', 'warning', 'info']),
+        color: {
+          default: select('Color', ['light-grey', 'dark-grey', 'white']),
         },
         tagText: {
-          default: text('Text within tag', 'Yay')
+          default: text('Tag text', 'I am tag')
         },
+        active: {
+          type: Boolean,
+          default: () => boolean('Active', false),
+        },
+        disabled: {
+          type: Boolean,
+          default: () => boolean('Disabled', false),
+        },
+        hideDismiss: {
+          type: Boolean,
+          default: () => boolean('Hide dismiss', false),
+        },
+      },
+      methods: {
+        handleDismiss: action('dismiss'),
       },
       template: `
         <div class="mx-auto max-w-lg pt-6">
-          <Tag :variant="variant">{{ tagText }}</Tag>
+          <ChecTag
+            :color="color"
+            :active="active"
+            :disabled="disabled"
+            :hide-dismiss="hideDismiss"
+            @dismiss="handleDismiss"
+          >
+            {{ tagText }}
+          </ChecTag>
         </div>`
     }}
   </Story>
 </Preview>
 
-# Variants
+## Group
 
 <Preview>
-  <Story name="Variants">
+  <Story name="Group">
     {{
       components: {
-        Tag,
+        ChecTag,
+        ChecTagGroup,
       },
-      data() {
-        return {
-          variants: ['default', 'success', 'error', 'warning', 'info'],
-        };
+      props: {
+        color: {
+          default: select('Color', ['light-grey', 'dark-grey', 'white']),
+        },
+        hideDismiss: {
+          type: Boolean,
+          default: () => boolean('Hide dismiss', false),
+        },
+        hideReset: {
+          type: Boolean,
+          default: () => boolean('Hide reset', false),
+        },
+      },
+      methods: {
+        handleDismiss: action('dismiss'),
+        handleReset: action('reset'),
       },
       template: `
-        <div class="mx-auto max-w-lg pt-6">
-          <Tag
-            v-for="variant in variants"
-            class="mb-2"
-            :variant="variant"
-          >{{ variant }}</Tag>
+        <div class="mx-auto max-w-4xl pt-6">
+          <ChecTagGroup :hide-reset="hideReset" @reset="handleReset">
+            <ChecTag :color="color" :disabled="disabled" :hide-dismiss="hideDismiss" @dismiss="handleDismiss">
+              Marketing
+            </ChecTag>
+            <ChecTag :color="color" :disabled="disabled" :hide-dismiss="hideDismiss" active @dismiss="handleDismiss">
+              Developers and designers
+            </ChecTag>
+            <ChecTag :color="color" :hide-dismiss="hideDismiss" active disabled @dismiss="handleDismiss">
+              Come and talk to us now, we will solve all of your problems!
+            </ChecTag>
+            <ChecTag :color="color" :hide-dismiss="hideDismiss" disabled @dismiss="handleDismiss">
+              Guides &amp; tutorials
+            </ChecTag>
+            <ChecTag :color="color" :disabled="disabled" :hide-dismiss="hideDismiss" @dismiss="handleDismiss">
+              Developers and designers
+            </ChecTag>
+          </ChecTagGroup>
         </div>`
     }}
   </Story>
