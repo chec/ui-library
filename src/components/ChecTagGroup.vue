@@ -5,7 +5,7 @@
     <ChecButton
       v-if="!hideReset"
       color="primary"
-      variant="round"
+      variant="tag"
       @click="handleReset"
     >
       {{ $t('tag.reset') }}
