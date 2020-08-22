@@ -26,5 +26,9 @@ export default {
         closed: 'Show this section',
       },
     },
+    tag: {
+      dismiss: 'Dismiss',
+      reset: 'Reset',
+    },
   },
 };

@@ -44,12 +44,13 @@ export default {
       default: 'secondary',
     },
     /**
-     * The style variant of the button. Includes size, border radius, etc. One of 'large', 'regular', 'small', 'round'
+     * The style variant of the button. Includes size, border radius, etc. One of 'large', 'regular', 'small',
+     * 'round', 'tag'
      */
     variant: {
       type: String,
       validate(variant) {
-        return ['large', 'regular', 'small', 'round'].includes(variant);
+        return ['large', 'regular', 'small', 'round', 'tag'].includes(variant);
       },
       default: 'regular',
     },
@@ -204,8 +205,9 @@ export default {
       }
     }
 
-    &-round {
-      @apply py-2 px-4 rounded-full;
+    &-round,
+    &-tag {
+      @apply py-2 px-4 rounded-full leading-tight;
 
       .button__content {
         @apply caps-xxs;
@@ -214,6 +216,12 @@ export default {
       .button__icon {
         @apply w-xxs;
       }
+    }
+
+    &-tag {
+      // Snowflake styles
+      padding-bottom: 7px;
+      padding-top: 7px;
     }
   }
 
