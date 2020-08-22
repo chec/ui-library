@@ -20346,12 +20346,13 @@ var es_string_includes = __webpack_require__("2532");
     },
 
     /**
-     * The style variant of the button. Includes size, border radius, etc. One of 'large', 'regular', 'small', 'round'
+     * The style variant of the button. Includes size, border radius, etc. One of 'large', 'regular', 'small',
+     * 'round', 'tag'
      */
     variant: {
       type: String,
       validate: function validate(variant) {
-        return ['large', 'regular', 'small', 'round'].includes(variant);
+        return ['large', 'regular', 'small', 'round', 'tag'].includes(variant);
       },
       default: 'regular'
     },
@@ -26295,43 +26296,83 @@ var ChecTab_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTab = (ChecTab_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f5ec275-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=template&id=97d0c154&
-var ChecTagvue_type_template_id_97d0c154_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"tag",class:_vm.classObject},[_vm._t("default")],2)}
-var ChecTagvue_type_template_id_97d0c154_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f5ec275-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=template&id=20ffbed0&
+var ChecTagvue_type_template_id_20ffbed0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"tag",class:_vm.classObject},[_vm._t("default"),(!_vm.undismissible)?_c('button',{staticClass:"tag__dismiss",attrs:{"type":"button","disabled":_vm.disabled,"title":_vm.$t('tag.dismiss')},on:{"click":_vm.handleDismiss}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1):_vm._e()],2)}
+var ChecTagvue_type_template_id_20ffbed0_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecTag.vue?vue&type=template&id=97d0c154&
+// CONCATENATED MODULE: ./src/components/ChecTag.vue?vue&type=template&id=20ffbed0&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=script&lang=js&
 
+
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ var ChecTagvue_type_script_lang_js_ = ({
   name: 'ChecTag',
+  components: {
+    ChecIcon: ChecIcon
+  },
   props: {
     /**
-     * The style variant for the tag. One of "default", "success", "error", "warning", "info". Default is "default"
+     * The color of the tag. One of "light-grey", "dark-grey",  or "white". Default is "light-grey".
      */
-    variant: {
+    color: {
       type: String,
-      default: 'default',
+      default: 'light-grey',
       validator: function validator(value) {
-        return ['default', 'success', 'error', 'warning', 'info'].includes(value);
+        return ['light-grey', 'dark-grey', 'white'].includes(value);
       }
-    }
+    },
+
+    /**
+     * Whether the tag is "active", which shows it as highlighted. This is the same as the browser
+     * :active pseudo-state.
+     */
+    active: Boolean,
+
+    /**
+     * Whether the tag is disabled
+     */
+    disabled: Boolean,
+
+    /**
+     * If the tag is undismissible, it will not render a small "X" button to trigger a dismiss event
+     */
+    undismissible: Boolean
   },
   computed: {
     /**
      * Returns the computed class name for the variant type, e.g. `tag--success`
      *
-     * @returns {string}
+     * @returns {Object}
      */
     classObject: function classObject() {
-      return this.variant === 'default' ? '' : "tag--".concat(this.variant);
+      var _ref;
+
+      // To avoid specificity problems in CSS, the disabled state takes priority over others
+      return _ref = {}, _defineProperty(_ref, "tag--".concat(this.color), !this.active), _defineProperty(_ref, 'tag--disabled', this.disabled), _defineProperty(_ref, 'tag--active', this.active), _ref;
+    }
+  },
+  methods: {
+    handleDismiss: function handleDismiss() {
+      this.$emit('dismiss');
     }
   }
 });
@@ -26351,8 +26392,8 @@ var ChecTagvue_type_style_index_0_lang_scss_ = __webpack_require__("2dfe");
 
 var ChecTag_component = normalizeComponent(
   components_ChecTagvue_type_script_lang_js_,
-  ChecTagvue_type_template_id_97d0c154_render,
-  ChecTagvue_type_template_id_97d0c154_staticRenderFns,
+  ChecTagvue_type_template_id_20ffbed0_render,
+  ChecTagvue_type_template_id_20ffbed0_staticRenderFns,
   false,
   null,
   null,
@@ -26515,6 +26556,10 @@ var InnerBlock_component = normalizeComponent(
         open: 'Hide this section',
         closed: 'Show this section'
       }
+    },
+    tag: {
+      dismiss: 'Dismiss',
+      reset: 'Reset'
     }
   }
 });
