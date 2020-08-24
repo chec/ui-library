@@ -1,0 +1,57 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import StoryRouter from 'storybook-vue-router';
+import { boolean } from '@storybook/addon-knobs';
+import { action } from "@storybook/addon-actions";
+
+import ChecVerticalNavigation from '../../components/ChecVerticalNavigation.vue';
+
+<Meta title="Components/Vertical Navigation" component={ChecVerticalNavigation} />
+
+# Vertical Navigation
+
+The Vertical Navigation component...
+
+<Props of={ChecVerticalNavigation} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecVerticalNavigation
+      },
+      data() {
+        return {
+          options: [
+            {
+              label: 'Details',
+              link: '',
+              active: true,
+            },
+            {
+              label: 'Price',
+              link: '',
+            },
+            {
+              label: 'Images',
+              link: '',
+            },
+            {
+              label: 'Extra fields',
+              link: '',
+            },
+            {
+              label: 'Digital delivery',
+              link: '',
+            }
+          ]
+        };
+      },
+      template: `
+      <div class="py-16 flex bg-gray-200 justify-center">
+        <ChecVerticalNavigation
+          :options="options"
+        />
+      </div>`
+    }}
+  </Story>
+</Preview>
