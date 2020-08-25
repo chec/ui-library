@@ -1,18 +1,23 @@
 <template>
-  <li
-    class="vertical-navigation-item"
-    :class="{ 'vertical-navigation-item--active': active }"
-    @keyup.down="focusNextItem"
-    @keyup.up="focusPreviousItem"
-    @click="handleClick"
+  <router-link
+    v-slot="{ href, isActive }"
+    class="vertical-navigation__item"
+    :to="to"
   >
-    <a :href="link">
-      <!--
-        @slot Label to display as the navigation item label
-      -->
-      <slot v-bind="{ active, disabled }" />
-    </a>
-  </li>
+    <li
+      :disabled="disabled"
+      :class="[currentPath.includes(`${to}`) ? activeClass : '', isActive && 'router-link-active']"
+      @keydown.down="selectNext"
+      @keydown.up="selectPrev"
+    >
+      <a :href="href">
+        <!--
+          @slot Label to display as the navigation item label
+        -->
+        <slot />
+      </a>
+    </li>
+  </router-link>
 </template>
 
 <script>
@@ -20,52 +25,53 @@ export default {
   name: 'ChecVerticalNavItem',
   props: {
     /**
-     * Determines the link of the navigation item
+     * Determines the path of the route
      */
-    link: {
+    to: {
       type: String,
       required: true,
     },
     /**
-     * If this navigation item should appear selected (active)
+     * If this navigation item should appear disabled
      */
-    active: Boolean,
     disabled: Boolean,
   },
-  methods: {
+  data() {
+    return {
+      activeClass: 'active',
+    };
+  },
+  computed: {
     /**
-     * Emitted the navigation item is clicked
-     * @event click
-     * @type {$event}
+     * Get the current active path
      */
-    handleClick() {
-      this.$emit('click');
+    currentPath() {
+      return this.$route.path;
     },
-    // focusNextItem() {
-
-    // },
-    // focusPreviousItem() {
-
-    // }
   },
 };
 </script>
 
 <style lang="scss">
-.vertical-navigation-item {
-  @apply px-2 py-3 border-gray-200 border-b rounded cursor-pointer;
+.vertical-navigation {
+  &__item {
+    @apply px-2 py-3 border-gray-200 border-b rounded cursor-pointer;
 
-  &:hover {
-    @apply bg-gray-100;
+    &:active,
+    &:focus {
+      @apply bg-gray-200 font-bold;
+    }
+
+    &:hover {
+      @apply bg-gray-100;
+    }
+
+    &:disabled {
+      @apply opacity-50 cursor-not-allowed;
+    }
   }
 
-  &:disabled {
-    @apply opacity-50 cursor-not-allowed;
-  }
-
-  &--active,
-  &:active,
-  &:focus {
+  .active {
     @apply bg-gray-200 font-bold;
   }
 }
