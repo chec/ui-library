@@ -50,6 +50,8 @@ module.exports = {
       sm: '0px 0px 1px rgba(40, 51, 65, 0.2), 0px 1px 4px rgba(40, 51, 65, 0.1)',
       md: '0px 3px 12px rgba(40, 51, 65, 0.1), 0px 0px 1px rgba(40, 51, 65, 0.2)',
       lg: '0px 4px 16px rgba(40, 51, 65, 0.1), 0px 0px 1px rgba(40, 51, 65, 0.2)',
+      light: '0px 0px 0px 4px #D6E4F7',
+      dark: '0px 0px 0px 4px #41546C',
       inner: 'inset 0px 1px 2px rgba(40, 51, 65, 0.1)',
       none: 'none',
       holo: '4px -4px 16px rgba(156, 139, 218, 0.1), -4px -4px 16px rgba(115, 200, 242, 0.1),'
