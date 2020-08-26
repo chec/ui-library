@@ -7,10 +7,8 @@
     <li
       :disabled="disabled"
       :class="[currentPath.includes(`${to}`) ? activeClass : '', isActive && 'router-link-active']"
-      @keydown.down="selectNext"
-      @keydown.up="selectPrev"
     >
-      <a :href="href">
+      <a class="vertical-navigation__link" :href="href">
         <!--
           @slot Label to display as the navigation item label
         -->
@@ -55,7 +53,11 @@ export default {
 <style lang="scss">
 .vertical-navigation {
   &__item {
-    @apply px-2 py-3 border-gray-200 border-b rounded cursor-pointer;
+    @apply border-gray-200 rounded text-sm leading-tight;
+
+    & + & {
+      @apply border-t;
+    }
 
     &:active,
     &:focus {
@@ -69,6 +71,10 @@ export default {
     &:disabled {
       @apply opacity-50 cursor-not-allowed;
     }
+  }
+
+  &__link {
+    @apply block px-2 py-3;
   }
 
   .active {
