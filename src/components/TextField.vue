@@ -325,15 +325,18 @@ export default {
       @apply transition duration-150 border-gray-400;
     }
   }
-  &--dark{
+
+  &--dark {
     .text-field__label {
       @apply text-gray-300;
     }
+
     .text-field__input {
       @apply
         text-white
         border-gray-600
         bg-gray-600;
+
       &::placeholder {
         color: rgba(0, 0, 0, 0);
       }
@@ -356,6 +359,7 @@ export default {
       }
     }
   }
+
   &__right-content {
     // Alignment & spacing
     @apply absolute flex items-center h-full right-0 top-0 mx-4;
@@ -407,7 +411,7 @@ export default {
 
     &:focus,
     &:active {
-      box-shadow: 0px 0px 0px 4px rgb(231, 126, 143, 0.3);
+      box-shadow: 0 0 0 4px rgb(231, 126, 143, 0.3);
     }
 
   }
