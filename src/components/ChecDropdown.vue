@@ -530,7 +530,7 @@ export default {
 
   &:focus,
   &:active {
-    @apply border border-gray-500;
+    @apply border border-gray-500 shadow-light;
   }
 
   &__option {
