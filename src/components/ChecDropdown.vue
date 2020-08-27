@@ -588,6 +588,7 @@ export default {
     &.dropdown--open {
       @apply shadow-error-focus;
     }
+
     &:hover,
     &:focus,
     &:active {
