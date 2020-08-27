@@ -121,6 +121,16 @@ export default {
     required: {
       type: Boolean,
     },
+    /**
+     * The style variant for the text Input. One of "light" or "dark"
+     */
+    styleVariant: {
+      type: String,
+      default: 'light',
+      validator(value) {
+        return ['light', 'dark'].includes(value);
+      },
+    },
   },
   data() {
     const { input, ...nonInputListeners } = this.$listeners;
@@ -161,6 +171,7 @@ export default {
         label,
         multiline,
         value,
+        styleVariant,
         variant,
       } = this;
 
@@ -172,6 +183,7 @@ export default {
         'text-field--modified': label ? !!value : false,
         'text-field--has-icon': Boolean(this.icon),
         'text-field--multiline': multiline,
+        [`text-field--${styleVariant}`]: styleVariant !== '',
       };
     },
   },
@@ -286,8 +298,11 @@ export default {
       bg-white
       rounded
       border
-      border-gray-300
+      border-gray-200
+      duration-150
       outline-none
+      transition
+      shadow-sm
       py-4;
 
     &::placeholder {
@@ -304,11 +319,33 @@ export default {
 
     &:focus,
     &:active {
-      @apply border-gray-500;
+      @apply transition duration-150 border-gray-500 shadow-light-focus;
     }
 
     &:hover {
-      @apply border-gray-400;
+      @apply transition duration-150 border-gray-400;
+    }
+  }
+
+  &--dark {
+    .text-field__label {
+      @apply text-gray-300;
+    }
+
+    .text-field__input {
+      @apply
+        text-white
+        border-gray-600
+        bg-gray-600;
+
+      &:focus,
+      &:active {
+        @apply border-gray-400 shadow-dark-focus;
+      }
+
+      &:hover {
+        @apply border-gray-400;
+      }
     }
   }
 
@@ -333,7 +370,7 @@ export default {
 
   &--disabled {
     .text-field__input {
-      @apply opacity-50;
+      @apply opacity-40;
 
       &:hover,
       &:focus,
@@ -360,6 +397,12 @@ export default {
     &:active {
       @apply border-red-300;
     }
+
+    &:focus,
+    &:active {
+      @apply shadow-error-focus;
+    }
+
   }
 
   &--modified {

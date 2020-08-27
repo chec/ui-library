@@ -41,6 +41,12 @@ import { uiIcons } from '../../lib/icons';
         icon: {
           default: select('Icon', [null, ...Object.keys(uiIcons)]),
         },
+        styleVariant: {
+          default: select('Style Variant', ['light', 'dark']),
+        },
+        background: {
+          default: select('Background Color', ['light', 'dark']),
+        },
       },
       data() {
         return { inputValue: '' };
@@ -54,7 +60,7 @@ import { uiIcons } from '../../lib/icons';
         TextField
       },
       template: `
-        <div class="py-16 flex justify-center">
+        <div class="py-16 flex justify-center" :class="{'bg-gray-700': background === 'dark'}">
           <TextField
             name="input-name"
             :label="label"
@@ -62,6 +68,7 @@ import { uiIcons } from '../../lib/icons';
             placeholder="Example Placeholder"
             v-model="inputValue"
             :variant="variant"
+            :style-variant="styleVariant"
             :type="type"
             :icon="icon"
             :required="required"
@@ -139,6 +146,54 @@ import { uiIcons } from '../../lib/icons';
             :label="label"
             placeholder="Text Field Placeholder"
             variant="disabled"
+          />
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+# Dark Variant
+
+<Preview>
+  <Story name="Dark Style Variant">
+    {{
+      components: {
+        TextField
+      },
+      props: {
+        label: {
+          default: text('Label', 'Label')
+        },
+        errored: {
+          default: boolean('Errored', false)
+        },
+        disabled: {
+          default: boolean('Disabled', false)
+        },
+        multiline: {
+          default: boolean('Multiline', false)
+        },
+        required: {
+          default: boolean('Required', false)
+        },
+      },
+      computed: {
+        variant() {
+          return this.disabled ? 'disabled' : this.errored ? 'error' : '';
+        }
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-700">
+          <TextField
+            name="input-name"
+            class="w-full max-w-sm"
+            :label="label"
+            :style-variant="'dark'"
+            placeholder="Text Field Placeholder"
+            :multiline="multiline"
+            :variant="variant"
+            :required="required"
+            bg-gray-700
           />
         </div>`,
     }}

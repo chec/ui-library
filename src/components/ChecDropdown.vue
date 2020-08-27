@@ -506,7 +506,7 @@ export default {
 <style lang="scss">
 .dropdown {
   @apply relative flex items-center w-full text-gray-500 bg-white rounded outline-none cursor-pointer border
-    border-gray-300 px-4 flex items-center justify-between text-left;
+    border-gray-200 px-4 flex items-center shadow-sm justify-between text-left;
 
   &__label {
     @apply absolute pointer-events-none ml-5 mt-4 leading-tight text-gray-500
@@ -530,7 +530,7 @@ export default {
 
   &:focus,
   &:active {
-    @apply border border-gray-500;
+    @apply border border-gray-500 shadow-light-focus;
   }
 
   &__option {
@@ -555,7 +555,7 @@ export default {
   }
 
   &--open {
-    @apply border border-gray-500;
+    @apply border border-gray-500 shadow-light-focus;
 
     .dropdown__down-arrow {
       @apply -rotate-180;
@@ -585,10 +585,19 @@ export default {
   &--error {
     @apply border-red-400;
 
+    &.dropdown--open {
+      @apply shadow-error-focus;
+    }
+
     &:hover,
     &:focus,
     &:active {
       @apply border-red-300;
+    }
+
+    &:focus,
+    &:active {
+      @apply shadow-error-focus;
     }
   }
 }
