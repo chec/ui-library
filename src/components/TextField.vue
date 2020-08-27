@@ -302,6 +302,7 @@ export default {
       duration-150
       outline-none
       transition
+      shadow-sm
       py-4;
 
     &::placeholder {
@@ -318,7 +319,7 @@ export default {
 
     &:focus,
     &:active {
-      @apply transition duration-150 border-gray-500 shadow-light;
+      @apply transition duration-150 border-gray-500 shadow-light-focus;
     }
 
     &:hover {
@@ -337,21 +338,9 @@ export default {
         border-gray-600
         bg-gray-600;
 
-      &::placeholder {
-        color: rgba(0, 0, 0, 0);
-      }
-
-      &:placeholder-shown {
-        @apply py-4;
-
-        + .text-field__label {
-          transform: scale(1, 1);
-        }
-      }
-
       &:focus,
       &:active {
-        @apply border-gray-400 shadow-dark;
+        @apply border-gray-400 shadow-dark-focus;
       }
 
       &:hover {
@@ -411,7 +400,7 @@ export default {
 
     &:focus,
     &:active {
-      box-shadow: 0 0 0 4px rgb(231, 126, 143, 0.3);
+      @apply shadow-error-focus;
     }
 
   }
