@@ -38,7 +38,7 @@
       </span>
     </label>
     <div class="text-field__currency">
-      $
+      {{ currencySymbol }}
     </div>
     <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
       <slot />
@@ -102,6 +102,13 @@ export default {
     */
     currency: {
       type: Boolean,
+    },
+    /**
+    * Currency symbol
+    */
+    currencySymbol: {
+      type: String,
+      default: '$',
     },
     /**
      * Text for action button beneath input
@@ -379,7 +386,7 @@ export default {
     }
   }
 
-  &__currency{
+  &__currency {
     @apply hidden absolute text-sm text-gray-500 top-0 pl-4 opacity-0 transition-opacity duration-150;
     padding-top: 1.45rem;
   }
@@ -425,15 +432,17 @@ export default {
     .text-field__label {
       @apply opacity-100;
     }
-    .text-field__currency{
+
+    .text-field__currency {
       @apply opacity-100 transition-opacity duration-150;
     }
 
     .text-field__input {
       @apply pb-2 pt-6;
     }
-    &.text-field--disabled{
-      .text-field__currency{
+
+    &.text-field--disabled {
+      .text-field__currency {
         @apply opacity-50 transition-opacity duration-150;
       }
     }
@@ -480,16 +489,19 @@ export default {
       &::-webkit-scrollbar-thumb {
         @apply w-1 bg-gray-300 rounded;
       }
+
       @apply resize-none overflow-auto h-20;
     }
   }
+
   &--currency {
-      .text-field__currency{
-        @apply block;
-      }
-      .text-field__input{
-        @apply pl-6;
-      }
+    .text-field__currency {
+      @apply block;
+    }
+
+    .text-field__input {
+      @apply pl-6;
+    }
   }
 
   &:not(.text-field--disabled) .text-field__input {
@@ -498,7 +510,8 @@ export default {
       + .text-field__label {
         @extend %filled-transformation;
       }
-      ~ .text-field__currency{
+
+      ~ .text-field__currency {
         @apply opacity-100 transition-opacity duration-150;
       }
     }
