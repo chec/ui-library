@@ -37,6 +37,9 @@
         {{ $t('general.required') }}
       </span>
     </label>
+    <div class="text-field__currency">
+      $
+    </div>
     <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
       <slot />
     </div>
@@ -92,6 +95,12 @@ export default {
     * Display multiline text field
     */
     multiline: {
+      type: Boolean,
+    },
+    /**
+    * Display currency text field
+    */
+    currency: {
       type: Boolean,
     },
     /**
@@ -168,6 +177,7 @@ export default {
     },
     classNames() {
       const {
+        currency,
         label,
         multiline,
         value,
@@ -176,6 +186,7 @@ export default {
       } = this;
 
       return {
+        'text-field--currency': currency,
         'text-field--disabled': variant === 'disabled',
         'text-field--error': variant === 'error',
         'text-field--empty': value === '',
@@ -368,6 +379,11 @@ export default {
     }
   }
 
+  &__currency{
+    @apply hidden absolute text-sm text-gray-500 top-0 pl-4 opacity-0 transition-opacity duration-150;
+    padding-top: 1.45rem;
+  }
+
   &--disabled {
     .text-field__input {
       @apply opacity-40;
@@ -409,9 +425,17 @@ export default {
     .text-field__label {
       @apply opacity-100;
     }
+    .text-field__currency{
+      @apply opacity-100 transition-opacity duration-150;
+    }
 
     .text-field__input {
       @apply pb-2 pt-6;
+    }
+    &.text-field--disabled{
+      .text-field__currency{
+        @apply opacity-50 transition-opacity duration-150;
+      }
     }
   }
 
@@ -459,12 +483,23 @@ export default {
       @apply resize-none overflow-auto h-20;
     }
   }
+  &--currency {
+      .text-field__currency{
+        @apply block;
+      }
+      .text-field__input{
+        @apply pl-6;
+      }
+  }
 
   &:not(.text-field--disabled) .text-field__input {
     &:focus,
     &:active {
       + .text-field__label {
         @extend %filled-transformation;
+      }
+      ~ .text-field__currency{
+        @apply opacity-100 transition-opacity duration-150;
       }
     }
   }
