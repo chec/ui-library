@@ -94,15 +94,11 @@ export default {
     /**
     * Display multiline text field
     */
-    multiline: {
-      type: Boolean,
-    },
+    multiline: Boolean,
     /**
     * Display currency text field
     */
-    currency: {
-      type: Boolean,
-    },
+    currency: Boolean,
     /**
     * Currency symbol
     */
@@ -134,9 +130,7 @@ export default {
     /**
      * Allows for toggling of html attribute of "required" in label
      */
-    required: {
-      type: Boolean,
-    },
+    required: Boolean,
     /**
      * The style variant for the text Input. One of "light" or "dark"
      */
