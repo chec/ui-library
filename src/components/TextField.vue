@@ -37,6 +37,9 @@
         {{ $t('general.required') }}
       </span>
     </label>
+    <div class="text-field__currency">
+      {{ currencySymbol }}
+    </div>
     <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
       <slot />
     </div>
@@ -91,8 +94,17 @@ export default {
     /**
     * Display multiline text field
     */
-    multiline: {
-      type: Boolean,
+    multiline: Boolean,
+    /**
+    * Display text field in currency mode
+    */
+    currency: Boolean,
+    /**
+    * Currency symbol for use in currency mode
+    */
+    currencySymbol: {
+      type: String,
+      default: '$',
     },
     /**
      * Text for action button beneath input
@@ -118,9 +130,7 @@ export default {
     /**
      * Allows for toggling of html attribute of "required" in label
      */
-    required: {
-      type: Boolean,
-    },
+    required: Boolean,
     /**
      * The style variant for the text Input. One of "light" or "dark"
      */
@@ -168,6 +178,7 @@ export default {
     },
     classNames() {
       const {
+        currency,
         label,
         multiline,
         value,
@@ -176,6 +187,7 @@ export default {
       } = this;
 
       return {
+        'text-field--currency': currency,
         'text-field--disabled': variant === 'disabled',
         'text-field--error': variant === 'error',
         'text-field--empty': value === '',
@@ -332,6 +344,10 @@ export default {
       @apply text-gray-300;
     }
 
+    .text-field__currency {
+      @apply text-white;
+    }
+
     .text-field__input {
       @apply
         text-white
@@ -366,6 +382,11 @@ export default {
     &--scrolled-to-top {
       @apply opacity-0;
     }
+  }
+
+  &__currency {
+    @apply hidden absolute text-sm text-gray-500 top-0 pl-4 opacity-0 transition-opacity duration-150;
+    padding-top: 1.45rem;
   }
 
   &--disabled {
@@ -410,8 +431,18 @@ export default {
       @apply opacity-100;
     }
 
+    .text-field__currency {
+      @apply opacity-100 transition-opacity duration-150;
+    }
+
     .text-field__input {
       @apply pb-2 pt-6;
+    }
+
+    &.text-field--disabled {
+      .text-field__currency {
+        @apply opacity-50 transition-opacity duration-150;
+      }
     }
   }
 
@@ -456,7 +487,18 @@ export default {
       &::-webkit-scrollbar-thumb {
         @apply w-1 bg-gray-300 rounded;
       }
+
       @apply resize-none overflow-auto h-20;
+    }
+  }
+
+  &--currency {
+    .text-field__currency {
+      @apply block;
+    }
+
+    .text-field__input {
+      @apply pl-6;
     }
   }
 
@@ -465,6 +507,10 @@ export default {
     &:active {
       + .text-field__label {
         @extend %filled-transformation;
+      }
+
+      ~ .text-field__currency {
+        @apply opacity-100 transition-opacity duration-150;
       }
     }
   }

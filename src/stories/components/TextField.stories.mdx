@@ -32,6 +32,9 @@ import { uiIcons } from '../../lib/icons';
         multiline: {
           default: boolean('Multiline', false)
         },
+        currency: {
+          default: boolean('Currency', false)
+        },
         required: {
           default: boolean('Required', false)
         },
@@ -46,6 +49,9 @@ import { uiIcons } from '../../lib/icons';
         },
         background: {
           default: select('Background Color', ['light', 'dark']),
+        },
+        currencySymbol: {
+          default: select('Curency Symbol', ['$', '£', '€', '¥', '₹', '฿']),
         },
       },
       data() {
@@ -69,6 +75,8 @@ import { uiIcons } from '../../lib/icons';
             v-model="inputValue"
             :variant="variant"
             :style-variant="styleVariant"
+            :currency="currency"
+            :currencySymbol="currencySymbol"
             :type="type"
             :icon="icon"
             :required="required"
@@ -337,6 +345,49 @@ import { uiIcons } from '../../lib/icons';
               v-model="selected"
             />
           </TextField>
+        </div>`,
+    }}
+  </Story>
+</Preview>
+
+# Currency
+
+<Preview>
+  <Story name="Currency">
+    {{
+      props: {
+        inputValue: {
+          default: text('Input Value', '')
+        },
+        label: {
+          default: text('Label', 'Label')
+        },
+        errored: {
+          default: boolean('Errored', false)
+        },
+        disabled: {
+          default: boolean('Disabled', false)
+        },
+      },
+      computed: {
+        variant() {
+          return this.disabled ? 'disabled' : this.errored ? 'error' : '';
+        }
+      },
+      components: {
+        TextField
+      },
+      template: `
+        <div class="py-16 flex justify-center">
+          <TextField
+            name="input-name"
+            :label="label"
+            class="w-full max-w-sm"
+            placeholder="Text Field Placeholder"
+            :variant="variant"
+            currency="true"
+            v-model="inputValue"
+          />
         </div>`,
     }}
   </Story>
