@@ -50,6 +50,9 @@ import { uiIcons } from '../../lib/icons';
         background: {
           default: select('Background Color', ['light', 'dark']),
         },
+        currencySymbol: {
+          default: select('Curency Symbol', ['$', '£', '€', '¥', '₹', '฿']),
+        },
       },
       data() {
         return { inputValue: '' };
@@ -73,6 +76,7 @@ import { uiIcons } from '../../lib/icons';
             :variant="variant"
             :style-variant="styleVariant"
             :currency="currency"
+            :currencySymbol="currencySymbol"
             :type="type"
             :icon="icon"
             :required="required"

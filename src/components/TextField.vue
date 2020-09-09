@@ -96,11 +96,11 @@ export default {
     */
     multiline: Boolean,
     /**
-    * Display currency text field
+    * Display text field in currency mode
     */
     currency: Boolean,
     /**
-    * Currency symbol
+    * Currency symbol for use in currency mode
     */
     currencySymbol: {
       type: String,
@@ -343,6 +343,7 @@ export default {
     .text-field__label {
       @apply text-gray-300;
     }
+
     .text-field__currency {
       @apply text-white;
     }
