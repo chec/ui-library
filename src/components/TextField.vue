@@ -343,6 +343,9 @@ export default {
     .text-field__label {
       @apply text-gray-300;
     }
+    .text-field__currency {
+      @apply text-white;
+    }
 
     .text-field__input {
       @apply
