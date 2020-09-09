@@ -62,7 +62,8 @@ export default {
   @apply relative;
   top: -2px;
 
-  a, span {
+  a,
+  span {
     @apply caps-xxs text-gray-500 mt-1;
   }
 
@@ -70,7 +71,7 @@ export default {
     @apply text-blue-500 cursor-pointer;
   }
 
-  svg{
+  svg {
     @apply relative inline;
     top: -1px; //Line height override for icon.
   }
