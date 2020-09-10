@@ -4,7 +4,7 @@ import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs
 import { withInfo } from 'storybook-addon-vue-info'
 import TextField from '../../components/TextField.vue';
 import ChecIcon from '../../components/ChecIcon.vue';
-import ChecFormFieldActionPrepend from '../../components/ChecFormFieldActionPrepend.vue';
+import ChecFormField from '../../components/ChecFormField.vue';
 import ChecSwitch from '../../components/ChecSwitch.vue';
 import ChecSegmentedButtonsGroup from '../../components/ChecSegmentedButtonsGroup.vue';
 import { uiIcons } from '../../lib/icons';
@@ -51,9 +51,16 @@ import { uiIcons } from '../../lib/icons';
         background: {
           default: select('Background Color', ['light', 'dark']),
         },
+
         currencySymbol: {
           default: select('Curency Symbol', ['$', '£', '€', '¥', '₹', '฿']),
         },
+        actionLabel: {
+          default: text('Action label', 'Click me'),
+        },
+        tooltip: {
+          default: text('Tooltip copy', 'Lorem Ipsum Dolor'),
+        }
       },
       data() {
         return { inputValue: '' };
@@ -64,25 +71,37 @@ import { uiIcons } from '../../lib/icons';
         }
       },
       components: {
-        TextField
+        ChecFormField,
+        TextField,
+      },
+      methods: {
+        handleClick(e, value) {
+          return action(`Text field action button was clicked with: ${value}`)();
+        }
       },
       template: `
         <div class="py-16 flex justify-center" :class="{'bg-gray-700': background === 'dark'}">
-          <TextField
-            name="input-name"
-            :label="label"
-            :multiline="multiline"
-            placeholder="Example Placeholder"
-            v-model="inputValue"
-            :variant="variant"
-            :style-variant="styleVariant"
-            :currency="currency"
-            :currencySymbol="currencySymbol"
-            :type="type"
+          <ChecFormField
+            :prependLabel="actionLabel"
+            :tooltip="tooltip"
             :icon="icon"
-            :required="required"
+            @action-click="handleClick"
             class="w-full max-w-sm"
-          />
+          >
+            <TextField
+              name="input-name"
+              :label="label"
+              :multiline="multiline"
+              placeholder="Example Placeholder"
+              v-model="inputValue"
+              :variant="variant"
+              :style-variant="styleVariant"
+              :type="type"
+              :required="required"
+              :currency="currency"
+              :currencySymbol="currencySymbol"
+              />
+          </ChecFormField>
         </div>`,
     }}
   </Story>
@@ -116,19 +135,23 @@ import { uiIcons } from '../../lib/icons';
         }
       },
       components: {
+        ChecFormField,
         TextField
       },
       template: `
         <div class="py-16 flex justify-center">
-          <TextField
-            name="input-name"
-            :label="label"
-            :multiline="multiline"
-            placeholder="Example Placeholder"
-            v-model="inputValue"
-            :variant="variant"
+          <ChecFormField
             class="w-full max-w-sm"
-          />
+          >
+            <TextField
+              name="input-name"
+              :label="label"
+              :multiline="multiline"
+              placeholder="Example Placeholder"
+              v-model="inputValue"
+              :variant="variant"
+            />
+          </ChecFormField>
         </div>`,
     }}
   </Story>
@@ -140,6 +163,7 @@ import { uiIcons } from '../../lib/icons';
   <Story name="Disabled">
     {{
       components: {
+        ChecFormField,
         TextField
       },
       props: {
@@ -149,13 +173,16 @@ import { uiIcons } from '../../lib/icons';
       },
       template: `
         <div class="py-16 flex justify-center">
-          <TextField
-            name="input-name"
+          <ChecFormField
             class="w-full max-w-sm"
-            :label="label"
-            placeholder="Text Field Placeholder"
-            variant="disabled"
-          />
+          >
+            <TextField
+              name="input-name"
+              :label="label"
+              placeholder="Text Field Placeholder"
+              variant="disabled"
+            />
+          </ChecFormField>
         </div>`,
     }}
   </Story>
@@ -167,6 +194,7 @@ import { uiIcons } from '../../lib/icons';
   <Story name="Dark Style Variant">
     {{
       components: {
+        ChecFormField,
         TextField
       },
       props: {
@@ -193,17 +221,20 @@ import { uiIcons } from '../../lib/icons';
       },
       template: `
         <div class="py-16 flex justify-center bg-gray-700">
-          <TextField
-            name="input-name"
+          <ChecFormField
             class="w-full max-w-sm"
-            :label="label"
-            :style-variant="'dark'"
-            placeholder="Text Field Placeholder"
-            :multiline="multiline"
-            :variant="variant"
-            :required="required"
-            bg-gray-700
-          />
+          >
+            <TextField
+              name="input-name"
+              :label="label"
+              :style-variant="'dark'"
+              placeholder="Text Field Placeholder"
+              :multiline="multiline"
+              :variant="variant"
+              :required="required"
+              bg-gray-700
+            />
+          </ChecFormField>
         </div>`,
     }}
   </Story>
@@ -223,18 +254,23 @@ import { uiIcons } from '../../lib/icons';
         },
       },
       components: {
+        ChecFormField,
         TextField
       },
       template: `
         <div class="py-16 flex justify-center">
-          <TextField
-            name="input-name"
-            :label="label"
+          <ChecFormField
             class="w-full max-w-sm"
-            placeholder="Text Field Placeholder"
-            variant="error"
-            v-model="inputValue"
-          />
+          >
+            <TextField
+              name="input-name"
+              :label="label"
+              class="w-full max-w-sm"
+              placeholder="Text Field Placeholder"
+              variant="error"
+              v-model="inputValue"
+            />
+          </ChecFormField>
         </div>`,
     }}
   </Story>
@@ -266,26 +302,21 @@ import { uiIcons } from '../../lib/icons';
       },
       components: {
         TextField,
-        ChecFormFieldActionPrepend
+        ChecFormField
       },
       template: `
         <div class="py-16 flex justify-center">
-          <div>
-            <ChecFormFieldActionPrepend
-              class="text-right"
-              :label="actionLabel"
-              :tooltip="tooltip"
-            />
+          <ChecFormField
+            class="w-full max-w-sm"
+            :prependLabel="actionLabel"
+            :tooltip="tooltip"
+            @action-click="handleClick"
+          >
             <TextField
-              :label="label"
-              v-model="inputValue"
-            />
-            <ChecFormFieldActionPrepend
-              class="text-right"
-              :label="actionLabel"
-              @action-click="handleClick"
-            />
-          </div>
+                :label="label"
+                v-model="inputValue"
+              />
+          </ChecFormField>
         </div>
       `
     }}
@@ -299,6 +330,7 @@ import { uiIcons } from '../../lib/icons';
     {{
       components: {
         TextField,
+        ChecFormField,
         ChecIcon,
         ChecSwitch,
         ChecSegmentedButtonsGroup
@@ -313,10 +345,10 @@ import { uiIcons } from '../../lib/icons';
           inputValue: '',
           switchState: false,
           options: [
-            { label: 'Label', value:'1' },
+            { label: 'Label', value: '1' },
             { label: 'Label', value: '2' },
           ],
-          selected: null,
+          selected: '1',
         }
       },
       template: `

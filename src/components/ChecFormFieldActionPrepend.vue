@@ -1,9 +1,9 @@
 <template>
   <div class="form-field-action-prepend">
     <component
-      :is="hasClickEvent ? 'a' : 'span'"
+      :is="clickable ? 'a' : 'span'"
       v-tooltip="tooltip"
-      @click="onActionClick"
+      @click="$emit('prepend-click')"
     >
       {{ label }}
       <transition name="fade">
@@ -17,7 +17,7 @@
 import ChecIcon from '@/components/ChecIcon.vue';
 
 export default {
-  name: 'ChecFormFieldExtend',
+  name: 'ChecFormFieldPrepend',
   components: { ChecIcon },
   props: {
     /**
@@ -34,32 +34,17 @@ export default {
       type: String,
       default: '',
     },
-  },
-  computed: {
-    hasClickEvent() {
-      /**
-       * Returns true if an action-click listener is present.
-       */
-      return this.$listeners
-        && typeof (this.$listeners['action-click']) !== 'undefined';
-    },
-  },
-  methods: {
-    onActionClick(e) {
-      /**
-       * Emitted when action button is clicked
-       * @event click
-       * @type {e}
-       */
-      this.$emit('action-click', e, this.value);
-    },
+    /**
+     * Has a click event.
+     */
+    clickable: Boolean,
   },
 };
 </script>
 
 <style lang="scss">
 .form-field-action-prepend {
-  @apply relative;
+  @apply relative text-right;
   top: -2px;
 
   a,

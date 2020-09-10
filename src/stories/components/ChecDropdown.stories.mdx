@@ -1,9 +1,11 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import ChecDropdown from '../../components/ChecDropdown.vue';
+import ChecFormField from '../../components/ChecFormField.vue';
 import ChecOption from '../../components/ChecOption.vue';
 import ChecModal from '../../components/ChecModal.vue';
+import { uiIcons } from '../../lib/icons';
 const onClick = action('option selected');
 
 <Meta title="Form fields/Dropdown" component={ChecDropdown} />
@@ -29,6 +31,7 @@ Todo list
     {{
       components: {
         ChecDropdown,
+        ChecFormField
       },
       props: {
         label: {
@@ -55,6 +58,15 @@ Todo list
         showSearch: {
           default: boolean('Show search', false),
         },
+        icon: {
+          default: select('Icon', [null, ...Object.keys(uiIcons)]),
+        },
+        actionLabel: {
+          default: text('Action label', 'Click me'),
+        },
+        tooltip: {
+          default: text('Tooltip copy', 'Lorem Ipsum Dolor'),
+        }
       },
       data() {
         return {
@@ -105,27 +117,38 @@ Todo list
         },
         handleScrolledToBottom() {
           action('Reached the bottom of the options list')();
+        },
+        handleClick(e, value) {
+          return action(`Text field action button was clicked with: ${value}`)();
         }
       },
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
-          <ChecDropdown
-            :label="label"
-            :required="required"
-            :multiselect="multiselect"
-            :placeholder="placeholder"
-            :variant="variant"
-            :show-search="showSearch"
-            :search-value="search"
-            @search="handleSearch"
-            :loading="loading"
-            name="example-1"
-            class="max-w-md"
-            v-model="model"
-            :options="options"
-            @input="onClick"
-            @scroll-to-bottom="handleScrolledToBottom"
-          />
+          <ChecFormField
+            :prependLabel="actionLabel"
+            :tooltip="tooltip"
+            :icon="icon"
+            @action-click="handleClick"
+            class="w-full max-w-sm"
+          >
+            <ChecDropdown
+              :label="label"
+              :required="required"
+              :multiselect="multiselect"
+              :placeholder="placeholder"
+              :variant="variant"
+              :show-search="showSearch"
+              :search-value="search"
+              @search="handleSearch"
+              :loading="loading"
+              name="example-1"
+              class="max-w-md"
+              v-model="model"
+              :options="options"
+              @input="onClick"
+              @scroll-to-bottom="handleScrolledToBottom"
+            />
+          </ChecFormField>
         </div>`
     }}
   </Story>
