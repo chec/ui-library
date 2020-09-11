@@ -9,23 +9,23 @@
         <ChecIcon :icon="icon" size="base" />
       </div>
     </div>
-    <ChecFormFieldActionPrepend
+    <ChecFormFieldActionAppend
       :label="prependLabel"
       :tooltip="tooltip"
       :clickable="hasClickEvent"
-      @prepend-click="onActionClick"
+      @append-click="onActionClick"
     />
   </div>
 </template>
 
 <script>
-import ChecFormFieldActionPrepend from '@/components/ChecFormFieldActionPrepend.vue';
+import ChecFormFieldActionAppend from '@/components/ChecFormFieldActionAppend.vue';
 import ChecIcon from '@/components/ChecIcon.vue';
 
 export default {
   name: 'ChecFormField',
   components: {
-    ChecFormFieldActionPrepend,
+    ChecFormFieldActionAppend,
     ChecIcon,
   },
   props: {

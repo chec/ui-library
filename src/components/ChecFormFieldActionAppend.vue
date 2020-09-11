@@ -1,13 +1,19 @@
 <template>
-  <div class="form-field-action-prepend">
+  <div class="form-field-action-append">
     <component
       :is="clickable ? 'a' : 'span'"
       v-tooltip="tooltip"
-      @click="$emit('prepend-click')"
+      :class="[ clickable ? 'form-field-action-append__action' : 'form-field-action-append__helper' ]"
+      @click="$emit('append-click')"
     >
       {{ label }}
       <transition name="fade">
-        <ChecIcon v-if="tooltip" icon="question-mark-square" size="xs" />
+        <ChecIcon
+          v-if="tooltip"
+          icon="question-mark-square"
+          size="xs"
+          class="form-field-action-append__icon"
+        />
       </transition>
     </component>
   </div>
@@ -17,7 +23,7 @@
 import ChecIcon from '@/components/ChecIcon.vue';
 
 export default {
-  name: 'ChecFormFieldPrepend',
+  name: 'ChecFormFieldAppend',
   components: { ChecIcon },
   props: {
     /**
@@ -43,20 +49,20 @@ export default {
 </script>
 
 <style lang="scss">
-.form-field-action-prepend {
+.form-field-action-append {
   @apply relative text-right;
   top: -2px;
 
-  a,
-  span {
+  &__action,
+  &__helper {
     @apply caps-xxs text-gray-500 mt-1;
   }
 
-  a {
+  &__action {
     @apply text-blue-500 cursor-pointer;
   }
 
-  svg {
+  &__icon {
     @apply relative inline;
     top: -1px; //Line height override for icon.
   }

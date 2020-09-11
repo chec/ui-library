@@ -251,10 +251,6 @@ export default {
     left: 1px;
   }
 
-  &__action-button {
-    @apply caps-xxs text-blue-500 float-right mt-1 cursor-pointer;
-  }
-
   &__label {
     @apply absolute top-0 left-0 pointer-events-none ml-4 mt-4 leading-tight text-gray-500
       transition-transform duration-150 origin-top-left;
