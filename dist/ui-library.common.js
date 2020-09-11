@@ -3750,6 +3750,17 @@ module.exports = {
 
 /***/ }),
 
+/***/ "6e91":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecFormField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("b578");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecFormField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecFormField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecFormField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "6eeb":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4701,6 +4712,13 @@ module.exports = require("vue");
 
 /***/ }),
 
+/***/ "8d93":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "8e3f":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4920,6 +4938,40 @@ if (PATCH) {
 
 module.exports = patchedExec;
 
+
+/***/ }),
+
+/***/ "9265":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M2 0a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V2a2 2 0 00-2-2H2zm4.037 10c.503 0 .908-.373.908-.833 0-.46-.405-.834-.908-.834-.5 0-.908.374-.908.834 0 .46.407.833.908.833zM3.5 4.667C3.5 2.897 4.602 2 6.066 2 7.5 2 8.516 2.812 8.5 4.133c-.013.907-.614 1.502-1.098 1.98-.675.668-.672 1.02-.669 1.455v.099H5.302v-.108c-.002-.972-.002-1.397 1.023-2.291l.002-.001c.408-.357.73-.638.686-1.193-.042-.528-.522-.804-.976-.804-.77 0-1.099.629-1.099 1.397H3.5z","fill":"currentColor"}})])
+          )
+        }
+      }
+    
 
 /***/ }),
 
@@ -6274,6 +6326,13 @@ if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
         }
       }
     
+
+/***/ }),
+
+/***/ "b578":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -15726,6 +15785,17 @@ module.exports = function (it) {
 
 /***/ }),
 
+/***/ "eadd":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecFormFieldActionAppend_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("8d93");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecFormFieldActionAppend_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecFormFieldActionAppend_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecFormFieldActionAppend_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "eee6":
 /***/ (function(module, exports) {
 
@@ -19275,6 +19345,10 @@ var ic_check_square_default = /*#__PURE__*/__webpack_require__.n(ic_check_square
 var ic_exclamation_square = __webpack_require__("515a");
 var ic_exclamation_square_default = /*#__PURE__*/__webpack_require__.n(ic_exclamation_square);
 
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-question-mark-square.svg
+var ic_question_mark_square = __webpack_require__("9265");
+var ic_question_mark_square_default = /*#__PURE__*/__webpack_require__.n(ic_question_mark_square);
+
 // EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-info-square.svg
 var ic_info_square = __webpack_require__("7eab");
 var ic_info_square_default = /*#__PURE__*/__webpack_require__.n(ic_info_square);
@@ -19534,6 +19608,7 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
 
+
  // Nav icons imports
 
 
@@ -19608,6 +19683,7 @@ var uiIcons = {
   'close-square': ic_close_square_default.a,
   'check-square': ic_check_square_default.a,
   'exclamation-square': ic_exclamation_square_default.a,
+  'question-mark-square': ic_question_mark_square_default.a,
   'info-square': ic_info_square_default.a,
   'thumbs-up': ic_thumbs_up_default.a,
   'thumbs-down': ic_thumbs_down_default.a,
@@ -21130,12 +21206,12 @@ var vue_flatpickr_min_default = /*#__PURE__*/__webpack_require__.n(vue_flatpickr
 var flatpickr = __webpack_require__("cf06");
 var flatpickr_default = /*#__PURE__*/__webpack_require__.n(flatpickr);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f5ec275-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=3321117e&
-var TextFieldvue_type_template_id_3321117e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-field",class:_vm.classNames},[(_vm.icon)?_c('div',{staticClass:"text-field__icon"},[_c('ChecIcon',{attrs:{"icon":_vm.icon,"size":"base"}})],1):_vm._e(),(_vm.isScrollable)?_c('div',{staticClass:"text-field__label-underlay",class:{ 'text-field__label-underlay--scrolled-to-top': _vm.isScrolledToTop }}):_vm._e(),(_vm.multiline)?_c('textarea',_vm._g(_vm._b({on:{"input":_vm.handleInput}},'textarea',_vm.sharedInputProps,false),_vm.nonInputListeners)):_c('input',_vm._g(_vm._b({style:({ 'padding-right': _vm.hasSlot && (_vm.slotWidth + "px") }),attrs:{"required":_vm.required,"type":_vm.$attrs.type || 'text'},on:{"input":_vm.handleInput}},'input',_vm.sharedInputProps,false),_vm.nonInputListeners)),(_vm.label)?_c('label',{staticClass:"text-field__label",attrs:{"data-content":_vm.label,"for":_vm.id}},[_vm._v(" "+_vm._s(_vm.label)+" "),(_vm.required)?_c('span',{staticClass:"text-field__required-text"},[_vm._v(" "+_vm._s(_vm.$t('general.required'))+" ")]):_vm._e()]):_vm._e(),_c('div',{staticClass:"text-field__currency"},[_vm._v(" "+_vm._s(_vm.currencySymbol)+" ")]),(_vm.$slots.default)?_c('div',{ref:"rightContentSlot",staticClass:"text-field__right-content"},[_vm._t("default")],2):_vm._e(),(_vm.actionLabel)?_c('a',{staticClass:"text-field__action-button",on:{"click":_vm.onActionClick}},[_vm._v(" "+_vm._s(_vm.actionLabel)+" ")]):_vm._e()])}
-var TextFieldvue_type_template_id_3321117e_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f5ec275-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=1e4ec702&
+var TextFieldvue_type_template_id_1e4ec702_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-field",class:_vm.classNames},[(_vm.isScrollable)?_c('div',{staticClass:"text-field__label-underlay",class:{ 'text-field__label-underlay--scrolled-to-top': _vm.isScrolledToTop }}):_vm._e(),(_vm.multiline)?_c('textarea',_vm._g(_vm._b({on:{"input":_vm.handleInput}},'textarea',_vm.sharedInputProps,false),_vm.nonInputListeners)):_c('input',_vm._g(_vm._b({style:({ 'padding-right': _vm.hasSlot && (_vm.slotWidth + "px") }),attrs:{"required":_vm.required,"type":_vm.$attrs.type || 'text'},on:{"input":_vm.handleInput}},'input',_vm.sharedInputProps,false),_vm.nonInputListeners)),(_vm.label)?_c('label',{staticClass:"text-field__label",attrs:{"data-content":_vm.label,"for":_vm.id}},[_vm._v(" "+_vm._s(_vm.label)+" "),(_vm.required)?_c('span',{staticClass:"text-field__required-text"},[_vm._v(" "+_vm._s(_vm.$t('general.required'))+" ")]):_vm._e()]):_vm._e(),_c('div',{staticClass:"text-field__currency"},[_vm._v(" "+_vm._s(_vm.currencySymbol)+" ")]),(_vm.$slots.default)?_c('div',{ref:"rightContentSlot",staticClass:"text-field__right-content"},[_vm._t("default")],2):_vm._e()])}
+var TextFieldvue_type_template_id_1e4ec702_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/TextField.vue?vue&type=template&id=3321117e&
+// CONCATENATED MODULE: ./src/components/TextField.vue?vue&type=template&id=1e4ec702&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -21192,23 +21268,9 @@ var es_number_constructor = __webpack_require__("a9e3");
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 /* harmony default export */ var TextFieldvue_type_script_lang_js_ = ({
   name: 'TextField',
-  components: {
-    ChecIcon: ChecIcon
-  },
   inheritAttrs: false,
   props: {
     /**
@@ -21263,14 +21325,6 @@ var es_number_constructor = __webpack_require__("a9e3");
     },
 
     /**
-     * Text for action button beneath input
-     */
-    actionLabel: {
-      type: String,
-      default: ''
-    },
-
-    /**
      * Additional input attributes that should be applied to the native input
      */
     additionalInputAttributes: {
@@ -21278,14 +21332,6 @@ var es_number_constructor = __webpack_require__("a9e3");
       default: function _default() {
         return {};
       }
-    },
-
-    /**
-     * The name of the icon to show on the left before the label. (Use a slot for an icon on the right side)
-     */
-    icon: {
-      type: String,
-      default: null
     },
 
     /**
@@ -21349,7 +21395,6 @@ var es_number_constructor = __webpack_require__("a9e3");
         'text-field--empty': value === '',
         'text-field--inline-label': label,
         'text-field--modified': label ? !!value : false,
-        'text-field--has-icon': Boolean(this.icon),
         'text-field--multiline': multiline
       }, "text-field--".concat(styleVariant), styleVariant !== '');
     }
@@ -21385,14 +21430,6 @@ var es_number_constructor = __webpack_require__("a9e3");
     }
   },
   methods: {
-    onActionClick: function onActionClick(e) {
-      /**
-       * Emitted when action button is clicked
-       * @event click
-       * @type {e}
-       */
-      this.$emit('action-click', e, this.value);
-    },
     handleInput: function handleInput($event) {
       /**
        * Emitted when the `<input>`'s 'input' event bubbles up. The v-model directive uses this to function.
@@ -21440,8 +21477,8 @@ var TextFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("2b23");
 
 var TextField_component = normalizeComponent(
   components_TextFieldvue_type_script_lang_js_,
-  TextFieldvue_type_template_id_3321117e_render,
-  TextFieldvue_type_template_id_3321117e_staticRenderFns,
+  TextFieldvue_type_template_id_1e4ec702_render,
+  TextFieldvue_type_template_id_1e4ec702_staticRenderFns,
   false,
   null,
   null,
@@ -26609,13 +26646,208 @@ var InnerBlock_component = normalizeComponent(
 
 
 /* harmony default export */ var lang = (_objectSpread2(_objectSpread2({}, en), pt));
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f5ec275-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=template&id=6fdb9603&
-var PasswordFieldvue_type_template_id_6fdb9603_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"password-field"},[_c('TextField',_vm._b({attrs:{"type":_vm.fieldType,"action-label":_vm.showHideText},on:{"action-click":_vm.toggleShowPassword,"input":function (e) { return _vm.$emit('input', e); }}},'TextField',Object.assign({}, _vm.$attrs, _vm.textFieldProps),false)),(_vm.showPasswordStrength)?_c('div',{staticClass:"password-field__strength",class:_vm.strengthClass}):_vm._e()],1)}
-var PasswordFieldvue_type_template_id_6fdb9603_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f5ec275-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=template&id=39ccbab2&
+var PasswordFieldvue_type_template_id_39ccbab2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"password-field"},[_c('ChecFormField',{attrs:{"append-label":_vm.showHideText},on:{"action-click":_vm.toggleShowPassword}},[_c('TextField',_vm._b({attrs:{"type":_vm.fieldType},on:{"input":function (e) { return _vm.$emit('input', e); }}},'TextField',Object.assign({}, _vm.$attrs, _vm.textFieldProps),false)),(_vm.showPasswordStrength)?_c('div',{staticClass:"password-field__strength",class:_vm.strengthClass}):_vm._e()],1)],1)}
+var PasswordFieldvue_type_template_id_39ccbab2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PasswordField.vue?vue&type=template&id=6fdb9603&
+// CONCATENATED MODULE: ./src/components/PasswordField.vue?vue&type=template&id=39ccbab2&
 
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f5ec275-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFormField.vue?vue&type=template&id=0b15b3f0&
+var ChecFormFieldvue_type_template_id_0b15b3f0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-field",class:_vm.classNames},[_c('div',{staticClass:"relative"},[_vm._t("default"),(_vm.icon)?_c('div',{staticClass:"form-field__icon"},[_c('ChecIcon',{attrs:{"icon":_vm.icon,"size":"base"}})],1):_vm._e()],2),_c('ChecFormFieldActionAppend',{attrs:{"label":_vm.appendLabel,"tooltip":_vm.tooltip,"clickable":_vm.hasClickEvent},on:{"append-click":_vm.onActionClick}})],1)}
+var ChecFormFieldvue_type_template_id_0b15b3f0_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecFormField.vue?vue&type=template&id=0b15b3f0&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f5ec275-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFormFieldActionAppend.vue?vue&type=template&id=2c540e04&
+var ChecFormFieldActionAppendvue_type_template_id_2c540e04_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-field-action-append"},[_c(_vm.clickable ? 'a' : 'span',{directives:[{name:"tooltip",rawName:"v-tooltip",value:(_vm.tooltip),expression:"tooltip"}],tag:"component",class:[ _vm.clickable ? 'form-field-action-append__action' : 'form-field-action-append__helper' ],on:{"click":function($event){return _vm.$emit('append-click')}}},[_vm._v(" "+_vm._s(_vm.label)+" "),_c('transition',{attrs:{"name":"fade"}},[(_vm.tooltip)?_c('ChecIcon',{staticClass:"form-field-action-append__icon",attrs:{"icon":"question-mark-square","size":"xs"}}):_vm._e()],1)],1)],1)}
+var ChecFormFieldActionAppendvue_type_template_id_2c540e04_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecFormFieldActionAppend.vue?vue&type=template&id=2c540e04&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFormFieldActionAppend.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var ChecFormFieldActionAppendvue_type_script_lang_js_ = ({
+  name: 'ChecFormFieldAppend',
+  components: {
+    ChecIcon: ChecIcon
+  },
+  props: {
+    /**
+     * Text for extend label
+     */
+    label: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Tooltip Text
+     */
+    tooltip: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Has a click event.
+     */
+    clickable: Boolean
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecFormFieldActionAppend.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecFormFieldActionAppendvue_type_script_lang_js_ = (ChecFormFieldActionAppendvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecFormFieldActionAppend.vue?vue&type=style&index=0&lang=scss&
+var ChecFormFieldActionAppendvue_type_style_index_0_lang_scss_ = __webpack_require__("eadd");
+
+// CONCATENATED MODULE: ./src/components/ChecFormFieldActionAppend.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ChecFormFieldActionAppend_component = normalizeComponent(
+  components_ChecFormFieldActionAppendvue_type_script_lang_js_,
+  ChecFormFieldActionAppendvue_type_template_id_2c540e04_render,
+  ChecFormFieldActionAppendvue_type_template_id_2c540e04_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChecFormFieldActionAppend = (ChecFormFieldActionAppend_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFormField.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var ChecFormFieldvue_type_script_lang_js_ = ({
+  name: 'ChecFormField',
+  components: {
+    ChecFormFieldActionAppend: ChecFormFieldActionAppend,
+    ChecIcon: ChecIcon
+  },
+  props: {
+    /**
+     * The name of the icon to show on the left before the label. (Use a slot for an icon on the right side)
+     */
+    icon: {
+      type: String,
+      default: null
+    },
+
+    /**
+     * Text for extend label
+     */
+    appendLabel: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Tooltip Text
+     */
+    tooltip: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    classNames: function classNames() {
+      return {
+        'form-field--has-icon': Boolean(this.icon)
+      };
+    },
+    hasClickEvent: function hasClickEvent() {
+      /**
+       * Returns true if an action-click listener is present.
+       */
+      return this.$listeners && typeof this.$listeners['action-click'] !== 'undefined';
+    }
+  },
+  methods: {
+    onActionClick: function onActionClick(e) {
+      /**
+       * Emitted when action button is clicked
+       * @event click
+       * @type {e}
+       */
+      this.$emit('action-click', e);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecFormField.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecFormFieldvue_type_script_lang_js_ = (ChecFormFieldvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecFormField.vue?vue&type=style&index=0&lang=scss&
+var ChecFormFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("6e91");
+
+// CONCATENATED MODULE: ./src/components/ChecFormField.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ChecFormField_component = normalizeComponent(
+  components_ChecFormFieldvue_type_script_lang_js_,
+  ChecFormFieldvue_type_template_id_0b15b3f0_render,
+  ChecFormFieldvue_type_template_id_0b15b3f0_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChecFormField = (ChecFormField_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=script&lang=js&
 
 //
@@ -26631,10 +26863,15 @@ var PasswordFieldvue_type_template_id_6fdb9603_staticRenderFns = []
 //
 //
 //
+//
+//
+//
+
 
 /* harmony default export */ var PasswordFieldvue_type_script_lang_js_ = ({
   name: 'PasswordField',
   components: {
+    ChecFormField: ChecFormField,
     TextField: TextField
   },
   inheritAttrs: false,
@@ -26780,8 +27017,8 @@ var PasswordFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("6a04")
 
 var PasswordField_component = normalizeComponent(
   components_PasswordFieldvue_type_script_lang_js_,
-  PasswordFieldvue_type_template_id_6fdb9603_render,
-  PasswordFieldvue_type_template_id_6fdb9603_staticRenderFns,
+  PasswordFieldvue_type_template_id_39ccbab2_render,
+  PasswordFieldvue_type_template_id_39ccbab2_staticRenderFns,
   false,
   null,
   null,
