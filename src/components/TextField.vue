@@ -1,8 +1,5 @@
 <template>
   <div class="text-field" :class="classNames">
-    <div v-if="icon" class="text-field__icon">
-      <ChecIcon :icon="icon" size="base" />
-    </div>
     <div
       v-if="isScrollable"
       class="text-field__label-underlay"
@@ -43,23 +40,14 @@
     <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
       <slot />
     </div>
-    <a
-      v-if="actionLabel"
-      class="text-field__action-button"
-      @click="onActionClick"
-    >
-      {{ actionLabel }}
-    </a>
   </div>
 </template>
 
 <script>
 import uniqueId from '@/lib/helpers/createUniqueId';
-import ChecIcon from '@/components/ChecIcon.vue';
 
 export default {
   name: 'TextField',
-  components: { ChecIcon },
   inheritAttrs: false,
   props: {
     /**
@@ -107,25 +95,11 @@ export default {
       default: '$',
     },
     /**
-     * Text for action button beneath input
-     */
-    actionLabel: {
-      type: String,
-      default: '',
-    },
-    /**
      * Additional input attributes that should be applied to the native input
      */
     additionalInputAttributes: {
       type: Object,
       default: () => ({}),
-    },
-    /**
-     * The name of the icon to show on the left before the label. (Use a slot for an icon on the right side)
-     */
-    icon: {
-      type: String,
-      default: null,
     },
     /**
      * Allows for toggling of html attribute of "required" in label
@@ -193,7 +167,6 @@ export default {
         'text-field--empty': value === '',
         'text-field--inline-label': label,
         'text-field--modified': label ? !!value : false,
-        'text-field--has-icon': Boolean(this.icon),
         'text-field--multiline': multiline,
         [`text-field--${styleVariant}`]: styleVariant !== '',
       };
@@ -233,14 +206,6 @@ export default {
     }
   },
   methods: {
-    onActionClick(e) {
-      /**
-       * Emitted when action button is clicked
-       * @event click
-       * @type {e}
-       */
-      this.$emit('action-click', e, this.value);
-    },
     handleInput($event) {
       /**
        * Emitted when the `<input>`'s 'input' event bubbles up. The v-model directive uses this to function.
@@ -284,10 +249,6 @@ export default {
     @apply absolute flex ml-4 h-full items-center text-gray-400;
     // Offset for the inputs border:
     left: 1px;
-  }
-
-  &__action-button {
-    @apply caps-xxs text-blue-500 float-right mt-1 cursor-pointer;
   }
 
   &__label {
@@ -455,16 +416,6 @@ export default {
       .text-field__label {
         @apply opacity-100;
       }
-    }
-  }
-
-  &--has-icon {
-    .text-field__label {
-      left: 1.5rem;
-    }
-
-    .text-field__input {
-      @apply pl-10;
     }
   }
 
