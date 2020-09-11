@@ -1,22 +1,27 @@
 <template>
   <div class="password-field">
-    <TextField
-      v-bind="{...$attrs, ...textFieldProps}"
-      :type="fieldType"
-      :action-label="showHideText"
+    <ChecFormField
+      :append-label="showHideText"
       @action-click="toggleShowPassword"
-      @input="e => $emit('input', e)"
-    />
-    <div v-if="showPasswordStrength" class="password-field__strength" :class="strengthClass" />
+    >
+      <TextField
+        v-bind="{...$attrs, ...textFieldProps}"
+        :type="fieldType"
+        @input="e => $emit('input', e)"
+      />
+      <div v-if="showPasswordStrength" class="password-field__strength" :class="strengthClass" />
+    </ChecFormField>
   </div>
 </template>
 
 <script>
+import ChecFormField from './ChecFormField.vue';
 import TextField from './TextField.vue';
 
 export default {
   name: 'PasswordField',
   components: {
+    ChecFormField,
     TextField,
   },
   inheritAttrs: false,
