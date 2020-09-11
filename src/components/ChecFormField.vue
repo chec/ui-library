@@ -10,7 +10,7 @@
       </div>
     </div>
     <ChecFormFieldActionAppend
-      :label="prependLabel"
+      :label="appendLabel"
       :tooltip="tooltip"
       :clickable="hasClickEvent"
       @append-click="onActionClick"
@@ -39,7 +39,7 @@ export default {
     /**
      * Text for extend label
      */
-    prependLabel: {
+    appendLabel: {
       type: String,
       default: '',
     },

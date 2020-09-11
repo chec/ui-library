@@ -61,7 +61,7 @@ Todo list
         icon: {
           default: select('Icon', [null, ...Object.keys(uiIcons)]),
         },
-        actionLabel: {
+        appendLabel: {
           default: text('Action label', 'Click me'),
         },
         tooltip: {
@@ -125,7 +125,7 @@ Todo list
       template: `
         <div class="p-16 flex justify-center w-full bg-gray-100">
           <ChecFormField
-            :prependLabel="actionLabel"
+            :appendLabel="appendLabel"
             :tooltip="tooltip"
             :icon="icon"
             @action-click="handleClick"

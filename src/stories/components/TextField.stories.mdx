@@ -54,8 +54,8 @@ import { uiIcons } from '../../lib/icons';
         currencySymbol: {
           default: select('Curency Symbol', ['$', '£', '€', '¥', '₹', '฿']),
         },
-        actionLabel: {
-          default: text('Action label', 'Click me'),
+        appendLabel: {
+          default: text('Append label', 'Click me'),
         },
         tooltip: {
           default: text('Tooltip copy', 'Lorem Ipsum Dolor'),
@@ -81,7 +81,7 @@ import { uiIcons } from '../../lib/icons';
       template: `
         <div class="py-16 flex justify-center" :class="{'bg-gray-700': background === 'dark'}">
           <ChecFormField
-            :prependLabel="actionLabel"
+            :appendLabel="appendLabel"
             :tooltip="tooltip"
             :icon="icon"
             @action-click="handleClick"
@@ -287,8 +287,8 @@ import { uiIcons } from '../../lib/icons';
         label: {
           default: text('Label', 'Enter your greeting')
         },
-        actionLabel: {
-          default: text('Action label', 'Click me'),
+        appendLabel: {
+          default: text('Append label', 'Click me'),
         },
         tooltip: {
           default: text('Tooltip copy', 'Lorem Ipsum Dolor'),
@@ -307,7 +307,7 @@ import { uiIcons } from '../../lib/icons';
         <div class="py-16 flex justify-center">
           <ChecFormField
             class="w-full max-w-sm"
-            :prependLabel="actionLabel"
+            :appendLabel="appendLabel"
             :tooltip="tooltip"
             @action-click="handleClick"
           >
