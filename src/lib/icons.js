@@ -11,6 +11,7 @@ import IcCheck from '../assets/svgs/UiIcons/ic-check.svg';
 import IcMore from '../assets/svgs/UiIcons/ic-more.svg';
 import IcDownload from '../assets/svgs/UiIcons/ic-download.svg';
 import IcUpload from '../assets/svgs/UiIcons/ic-upload.svg';
+import IcImage from '../assets/svgs/UiIcons/ic-image.svg';
 import IcGrip from '../assets/svgs/UiIcons/ic-grip.svg';
 import IcMinus from '../assets/svgs/UiIcons/ic-minus.svg';
 import IcCopy from '../assets/svgs/UiIcons/ic-copy.svg';
@@ -34,6 +35,8 @@ import IcHamburger from '../assets/svgs/UiIcons/ic-hamburger.svg';
 import IcSearch from '../assets/svgs/UiIcons/ic-search.svg';
 import IcThumbsUp from '../assets/svgs/UiIcons/ic-thumbs-up.svg';
 import IcThumbsDown from '../assets/svgs/UiIcons/ic-thumbs-down.svg';
+import IcTrash from '../assets/svgs/UiIcons/ic-trash.svg';
+import IcDrag from '../assets/svgs/UiIcons/ic-drag.svg';
 
 // Nav icons imports
 import IcOrders from '../assets/svgs/NavIcons/ic-orders.svg';
@@ -117,6 +120,9 @@ export const uiIcons = {
   facebook: IcFacebook,
   twitter: IcTwitter,
   github: IcGithub,
+  image: IcImage,
+  trash: IcTrash,
+  drag: IcDrag,
 };
 
 export const navIcons = {
