@@ -1,23 +1,25 @@
 <template>
-  <div class="chec-file-uploader">
-    <div class="chec-file-uploader__inner" data-dropzone-clickable>
-      <div v-if="files.length" class="file-rows-container space-y-2" @click.stop>
+  <div class="chec-image-manager">
+    <div class="chec-image-manager__inner" data-dropzone-clickable>
+      <div v-if="files.length" class="image-rows-container" @click.stop>
         <ImageBlock
-          v-for="file in files"
+          v-for="(file, index) in files"
           :key="file.upload.uuid"
+          :index="index"
           :error="file.status === 'error'"
           :loading="file.upload.progress !== null && file.upload.progress < 100"
-          :file-name="file.name"
-          :file-size="file.size"
-          :mime-type="file.type"
+          :thumbnail="file.thumb"
           :progress="file.upload.progress"
           @remove-file="() => handleRemovingFile(file)"
         />
       </div>
       <ChecButton data-dropzone-clickable @click.stop>
-        Choose file(s)
+        <ChecIcon class="chec-image-manager__icon" icon="image" size="base" /> Choose images(s)
       </ChecButton>
-      <input class="chec-file-uploader__input" type="file" name="file">
+      <div class="chec-image-manager__helper">
+        PNG, JPG, & GIFS accepted
+      </div>
+      <input class="chec-image-manager__input" type="file" name="file">
     </div>
   </div>
 </template>
@@ -25,14 +27,16 @@
 <script>
 import Dropzone from 'dropzone';
 import ChecButton from './ChecButton';
-import ImageBlock from './ChecImageUploader/ImageBlock.vue';
+import ChecIcon from './ChecIcon';
+import ImageBlock from './ChecImageManager/ImageBlock.vue';
 
 Dropzone.autoDiscover = false;
 
 export default {
-  name: 'ChecImageUploader',
+  name: 'ChecImageManager',
   components: {
     ChecButton,
+    ChecIcon,
     ImageBlock,
   },
   props: {
@@ -50,6 +54,13 @@ export default {
       type: String,
       default: '/',
     },
+    /**
+     * Accepted File Types, copmma seperated
+     */
+    fileTypes: {
+      type: String,
+      default: 'image/*',
+    },
   },
   data() {
     return {
@@ -58,9 +69,9 @@ export default {
   },
   mounted() {
     this.dropzone = new Dropzone(this.$el, {
+      acceptedFiles: this.fileTypes,
       url: this.endpoint,
-      createImageThumbnails: false,
-      previewsContainer: false,
+      createImageThumbnails: true,
       clickable: '[data-dropzone-clickable]',
       hiddenInputContainer: this.$el,
     });
@@ -99,7 +110,12 @@ export default {
     },
     getNonReactiveFileObject(file) {
       return {
-        upload: { ...file.upload }, name: file.name, size: file.size, type: file.type, status: file.status,
+        upload: { ...file.upload },
+        name: file.name,
+        thumb: file.dataURL,
+        size: file.size,
+        type: file.type,
+        status: file.status,
       };
     },
     emitFileUploading(file) {
@@ -132,7 +148,7 @@ export default {
 </script>
 
 <style lang="scss">
-.chec-file-uploader {
+.chec-image-manager {
   @apply relative flex flex-col w-full h-auto flex rounded shadow-inner bg-gray-gradient flex justify-center;
 
   &__inner {
@@ -146,9 +162,23 @@ export default {
   &__input {
     display: none;
   }
+
+  &__helper {
+    @apply text-gray-400 uppercase text-center mt-4;
+  }
+
+  &__icon {
+    @apply inline relative;
+    top: -1px;
+  }
 }
 
-.file-rows-container {
-  @apply w-full flex flex-col mb-2;
+.image-rows-container {
+  @apply grid grid-cols-4 gap-4 mb-4;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.dz-preview {
+  @apply hidden;
 }
 </style>

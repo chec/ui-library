@@ -1,10 +1,9 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-import ChecImageUploader from '../../components/ChecImageUploader.vue';
-import ImageBlock from '../../components/ChecImageUploader/ImageBlock.vue';
+import ChecImageManager from '../../components/ChecImageManager.vue';
 
-<Meta title="Form fields/Image Uploader" component={ChecImageUploader} />
+<Meta title="Form fields/Image Manager" component={ChecImageManager} />
 
 # Dropdown
 
@@ -12,7 +11,7 @@ import ImageBlock from '../../components/ChecImageUploader/ImageBlock.vue';
 
 </details>
 
-<Props of={ChecImageUploader} />
+<Props of={ChecImageManager} />
 
 # Default:
 
@@ -20,7 +19,7 @@ import ImageBlock from '../../components/ChecImageUploader/ImageBlock.vue';
   <Story name="Default">
     {{
       components: {
-        ChecImageUploader,
+        ChecImageManager,
       },
       data() {
         return {
@@ -57,45 +56,13 @@ import ImageBlock from '../../components/ChecImageUploader/ImageBlock.vue';
       },
       template: `
         <div class="p-16 flex justify-center w-full h-full bg-white py-20">
-          <ChecImageUploader
+          <ChecImageManager
             :files="Object.values(files)"
             @file-added="addedFile"
             @remove-file="removeFile"
             @file-uploading="uploadingFile"
             @file-uploading-complete="uploadingFileComplete"
             :endpoint="endpoint"
-          />
-        </div>`
-    }}
-  </Story>
-</Preview>
-
-
-# File row
-
-<Preview>
-  <Story name="ImageBlock">
-    {{
-      components: {
-        ImageBlock,
-      },
-      props: {
-        error: {
-          default: boolean('error', false)
-        },
-        loading: {
-          default: boolean('loading', false)
-        },
-      },
-      methods: {
-        removeFileEvent: action('remove-file'),
-      },
-      template: `
-        <div class="p-16 flex justify-center w-full h-full bg-white py-20">
-          <ImageBlock
-            :loading="loading"
-            :error="error"
-            @remove-file="removeFileEvent"
           />
         </div>`
     }}
