@@ -22,7 +22,10 @@
       />
       <p>{{ `${errorMessage || 'Failed' }` }}</p>
     </div>
-    <div class="chec-image-item__actions">
+    <div
+      class="chec-image-item__actions"
+      @click="() => $emit('click-image')"
+    >
       <div class="chec-image-item__drag">
         <ChecIcon
           icon="drag"

@@ -11,6 +11,7 @@
           :thumbnail="file.thumb"
           :progress="file.upload.progress"
           @remove-file="() => handleRemovingFile(file)"
+          @click-image="() => handleClick(file)"
         />
       </div>
       <ChecButton data-dropzone-clickable @click.stop>
@@ -107,6 +108,9 @@ export default {
        * @type {Object}
        */
       this.$emit('remove-file', this.getNonReactiveFileObject(file));
+    },
+    handleClick(file) {
+      this.$emit('handle-click', this.getNonReactiveFileObject(file));
     },
     getNonReactiveFileObject(file) {
       return {

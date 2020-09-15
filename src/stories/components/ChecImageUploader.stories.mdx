@@ -32,6 +32,9 @@ import ChecImageManager from '../../components/ChecImageManager.vue';
         },
       },
       methods: {
+        handleClick(file) {
+          console.log(file);
+        },
         addedFile(file) {
           action('added-file');
           this.files = { ...this.files, [file.upload.uuid]: file };
@@ -58,6 +61,7 @@ import ChecImageManager from '../../components/ChecImageManager.vue';
         <div class="p-16 flex justify-center w-full h-full bg-white py-20">
           <ChecImageManager
             :files="Object.values(files)"
+            @handle-click="handleClick"
             @file-added="addedFile"
             @remove-file="removeFile"
             @file-uploading="uploadingFile"
