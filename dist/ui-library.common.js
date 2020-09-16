@@ -5313,6 +5313,40 @@ exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, A
 
 /***/ }),
 
+/***/ "9e5e":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M14 8A6 6 0 112 8a6 6 0 0112 0zm-3.47-2.53a.75.75 0 010 1.06L9.06 8l1.47 1.47a.75.75 0 11-1.06 1.06L8 9.06l-1.47 1.47a.75.75 0 11-1.06-1.06L6.94 8 5.47 6.53a.75.75 0 011.06-1.06L8 6.94l1.47-1.47a.75.75 0 011.06 0z","fill":"currentColor"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "9ed3":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19353,6 +19387,10 @@ var ic_question_mark_square_default = /*#__PURE__*/__webpack_require__.n(ic_ques
 var ic_info_square = __webpack_require__("7eab");
 var ic_info_square_default = /*#__PURE__*/__webpack_require__.n(ic_info_square);
 
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-delete.svg
+var ic_delete = __webpack_require__("9e5e");
+var ic_delete_default = /*#__PURE__*/__webpack_require__.n(ic_delete);
+
 // EXTERNAL MODULE: ./src/assets/svgs/chec-logo.svg
 var chec_logo = __webpack_require__("9a47");
 var chec_logo_default = /*#__PURE__*/__webpack_require__.n(chec_logo);
@@ -19609,6 +19647,7 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
 
+
  // Nav icons imports
 
 
@@ -19685,6 +19724,7 @@ var uiIcons = {
   'exclamation-square': ic_exclamation_square_default.a,
   'question-mark-square': ic_question_mark_square_default.a,
   'info-square': ic_info_square_default.a,
+  delete: ic_delete_default.a,
   'thumbs-up': ic_thumbs_up_default.a,
   'thumbs-down': ic_thumbs_down_default.a,
   chec: chec_logo_default.a,
