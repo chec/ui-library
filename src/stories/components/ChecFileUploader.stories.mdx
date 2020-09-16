@@ -34,11 +34,11 @@ import FileRow from '../../components/ChecFileUploader/FileRow.vue';
       },
       methods: {
         addedFile(file) {
-          action('added-file');
+          action('added-file')(file);
           this.files = { ...this.files, [file.upload.uuid]: file };
         },
         removeFile(file) {
-          action('remove-file');
+          action('remove-file')(file);
           if (file.upload.progress < 100 && file.status !== 'error') {
             return;
           }
@@ -47,11 +47,11 @@ import FileRow from '../../components/ChecFileUploader/FileRow.vue';
           this.files = { ...files };
         },
         uploadingFile(file) {
-          action('uploading-file');
+          action('uploading-file-progress')(file);
           this.files = { ...this.files, [file.upload.uuid]: file };
         },
-       uploadingFileComplete(file) {
-          action('uploading-file-complete');
+        uploadingFileComplete(file) {
+          action('uploading-file-complete')(file);
           this.files = { ...this.files, [file.upload.uuid]: file };
         },
       },
