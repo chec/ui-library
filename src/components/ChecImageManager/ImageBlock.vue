@@ -87,7 +87,8 @@ export default {
 
 <style lang="scss">
 .chec-image-item {
-  @apply flex relative justify-between p-4 rounded bg-white bg-cover;
+  @apply flex relative justify-between p-4 rounded
+    bg-white bg-cover shadow-sm;
 
   &__index {
     @apply w-4 h-4 absolute text-white text-xxs font-bold
