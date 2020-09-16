@@ -21,6 +21,7 @@ import IcCheckSquare from '../assets/svgs/UiIcons/ic-check-square.svg';
 import IcExclamationSquare from '../assets/svgs/UiIcons/ic-exclamation-square.svg';
 import IcQuestionMarkSquare from '../assets/svgs/UiIcons/ic-question-mark-square.svg';
 import IcInfoSquare from '../assets/svgs/UiIcons/ic-info-square.svg';
+import IcDelete from '../assets/svgs/UiIcons/ic-delete.svg';
 import ChecLogo from '../assets/svgs/chec-logo.svg';
 import IcFacebook from '../assets/svgs/ic-fb.svg';
 import IcTwitter from '../assets/svgs/ic-twitter.svg';
@@ -111,6 +112,7 @@ export const uiIcons = {
   'exclamation-square': IcExclamationSquare,
   'question-mark-square': IcQuestionMarkSquare,
   'info-square': IcInfoSquare,
+  delete: IcDelete,
   'thumbs-up': IcThumbsUp,
   'thumbs-down': IcThumbsDown,
   chec: ChecLogo,
