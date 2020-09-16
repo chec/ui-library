@@ -7,6 +7,11 @@
     <div class="chec-image-item__index">
       {{ index + 1 }}
     </div>
+    <div v-if="!thumbnail" class="chec-image-item__no-thumbnail">
+      <ChecIcon
+        icon="chec"
+      />
+    </div>
     <div v-if="loading && !error" class="chec-image-item__loading-icon">
       <div class="chec-image-item__progress">
         <ChecLoading without-background variant="dark" />
@@ -100,6 +105,14 @@ export default {
   &__loading-icon {
     @apply absolute inset-0 bg-overlay-gray rounded-sm
       flex flex-col items-center content-center justify-center;
+  }
+
+  &__no-thumbnail {
+    @apply absolute inset-0 flex items-center justify-center text-gray-200;
+
+    svg {
+      @apply w-1/2;
+    }
   }
 
   &__percentage {

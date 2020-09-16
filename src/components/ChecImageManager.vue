@@ -26,12 +26,10 @@
 </template>
 
 <script>
-import Dropzone from 'dropzone';
+import dropzone from '../mixins/dropzone.js';
 import ChecButton from './ChecButton';
 import ChecIcon from './ChecIcon';
 import ImageBlock from './ChecImageManager/ImageBlock.vue';
-
-Dropzone.autoDiscover = false;
 
 export default {
   name: 'ChecImageManager',
@@ -40,6 +38,7 @@ export default {
     ChecIcon,
     ImageBlock,
   },
+  mixins: [dropzone],
   props: {
     /**
      * The files that will be rendered as <file-row> components
@@ -47,105 +46,6 @@ export default {
     files: {
       type: Array,
       default: () => [],
-    },
-    /**
-     * The endpoint to upload files to
-     */
-    endpoint: {
-      type: String,
-      default: '/',
-    },
-    /**
-     * Accepted File Types, copmma seperated
-     */
-    fileTypes: {
-      type: String,
-      default: 'image/*',
-    },
-  },
-  data() {
-    return {
-      inProgressFiles: [],
-    };
-  },
-  mounted() {
-    this.dropzone = new Dropzone(this.$el, {
-      acceptedFiles: this.fileTypes,
-      url: this.endpoint,
-      createImageThumbnails: true,
-      clickable: '[data-dropzone-clickable]',
-      hiddenInputContainer: this.$el,
-    });
-    const vm = this;
-    this.dropzone.on('complete', (file) => {
-      vm.inProgressFiles = [
-        ...vm.inProgressFiles,
-        file,
-      ];
-      this.emitFileUploadingComplete(file);
-    });
-    this.dropzone.on('addedfile', (file) => {
-      vm.inProgressFiles = [
-        ...vm.inProgressFiles,
-        file,
-      ];
-      this.emitFileAdded(file);
-    });
-    this.dropzone.on('uploadprogress', (file) => {
-      vm.inProgressFiles = [
-        ...vm.inProgressFiles,
-        file,
-      ];
-      this.emitFileUploading(file);
-    });
-  },
-  methods: {
-    handleRemovingFile(file) {
-      /**
-       * Emitted when the file has been removed
-       *
-       * @event remove-file
-       * @type {Object}
-       */
-      this.$emit('remove-file', this.getNonReactiveFileObject(file));
-    },
-    handleClick(file) {
-      this.$emit('handle-click', this.getNonReactiveFileObject(file));
-    },
-    getNonReactiveFileObject(file) {
-      return {
-        upload: { ...file.upload },
-        name: file.name,
-        thumb: file.dataURL,
-        size: file.size,
-        type: file.type,
-        status: file.status,
-      };
-    },
-    emitFileUploading(file) {
-      /**
-       * Emitted when the file has begun uploading, derived from Dropzone.js' uploadprogress event
-       *
-       * @event file-uploading
-       * @type {Object}
-       */
-      this.$emit('file-uploading', this.getNonReactiveFileObject(file));
-    },
-    emitFileAdded(file) {
-      /**
-       * Emitted when the file has been initially added, derived from Dropzone.js' addedfile event
-       * @event file-added
-       * @type {$event}
-       */
-      this.$emit('file-added', this.getNonReactiveFileObject(file));
-    },
-    emitFileUploadingComplete(file) {
-      /**
-       * Emitted when the file has completed uploading, derived from Dropzone.js' file-uploading-complete event
-       * @event file-uploading-complete
-       * @type {$event}
-       */
-      this.$emit('file-uploading-complete', this.getNonReactiveFileObject(file));
     },
   },
 };
@@ -179,7 +79,6 @@ export default {
 
 .image-rows-container {
   @apply grid grid-cols-4 gap-4 mb-4;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .dz-preview {
