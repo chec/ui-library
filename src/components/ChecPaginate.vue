@@ -82,7 +82,9 @@ export default {
     },
 
     /**
-     * A list of page size options to provide.
+     * A list of page size options to provide. Note that if the total count is higher than
+     * some of these options, they will be filtered out. For example, a list with 18 records
+     * would show 15 and 30, but not 50 or above.
      */
     pageSizeOptions: {
       type: Array,
