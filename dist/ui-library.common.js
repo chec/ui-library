@@ -26006,12 +26006,12 @@ var ChecOptionsMenu_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecOptionsMenu = (ChecOptionsMenu_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f5ec275-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPaginate.vue?vue&type=template&id=05dfc03b&
-var ChecPaginatevue_type_template_id_05dfc03b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-paginate"},[_c('div',{staticClass:"chec-page-selector"},[_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToFirst'),"disabled":_vm.page === 1},on:{"click":function($event){return _vm.choosePage('first')}}},[_c('ChecIcon',{attrs:{"icon":"double-left"}})],1),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToPrevious'),"disabled":_vm.page === 1},on:{"click":function($event){return _vm.choosePage('previous')}}},[_c('ChecIcon',{attrs:{"icon":"left"}})],1),_c('span',{staticClass:"chec-page-selector__page-reference"},[_vm._v(_vm._s(_vm.$t('paginate.of', { x: _vm.page, y: _vm.pageCount })))]),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToNext'),"disabled":_vm.page === _vm.pageCount},on:{"click":function($event){return _vm.choosePage('next')}}},[_c('ChecIcon',{attrs:{"icon":"right"}})],1),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToLast'),"disabled":_vm.page === _vm.pageCount},on:{"click":function($event){return _vm.choosePage('last')}}},[_c('ChecIcon',{attrs:{"icon":"double-right"}})],1)]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.limitOptions.length > 1),expression:"limitOptions.length > 1"}],staticClass:"chec-per-page-control"},[_c('span',{staticClass:"chec-per-page-control__label"},[_vm._v(_vm._s(_vm.$t('paginate.showing')))]),_vm._l((_vm.limitOptions),function(option){return _c('button',{key:option,staticClass:"chec-per-page-control__option",class:{'chec-per-page-control__option--active': option === _vm.pageSize},attrs:{"title":("Show " + option + " items per page")},on:{"click":function($event){return _vm.choosePageSize(option)}}},[_vm._v(" "+_vm._s(option)+" ")])})],2)])}
-var ChecPaginatevue_type_template_id_05dfc03b_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f5ec275-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPaginate.vue?vue&type=template&id=42a2dd02&
+var ChecPaginatevue_type_template_id_42a2dd02_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-paginate"},[_c('div',{staticClass:"chec-page-selector"},[_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToFirst'),"disabled":_vm.page === 1},on:{"click":function($event){return _vm.choosePage('first')}}},[_c('ChecIcon',{attrs:{"icon":"double-left"}})],1),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToPrevious'),"disabled":_vm.page === 1},on:{"click":function($event){return _vm.choosePage('previous')}}},[_c('ChecIcon',{attrs:{"icon":"left"}})],1),_c('span',{staticClass:"chec-page-selector__page-reference"},[_vm._v(_vm._s(_vm.$t('paginate.of', { x: _vm.page, y: _vm.pageCount })))]),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToNext'),"disabled":_vm.page === _vm.pageCount},on:{"click":function($event){return _vm.choosePage('next')}}},[_c('ChecIcon',{attrs:{"icon":"right"}})],1),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToLast'),"disabled":_vm.page === _vm.pageCount},on:{"click":function($event){return _vm.choosePage('last')}}},[_c('ChecIcon',{attrs:{"icon":"double-right"}})],1)]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.limitOptions.length > 1),expression:"limitOptions.length > 1"}],staticClass:"chec-per-page-control"},[_c('span',{staticClass:"chec-per-page-control__label"},[_vm._v(_vm._s(_vm.$t('paginate.showing')))]),_vm._l((_vm.limitOptions),function(option){return _c('button',{key:option,staticClass:"chec-per-page-control__option",class:{'chec-per-page-control__option--active': option === _vm.pageSize},attrs:{"title":("Show " + option + " items per page")},on:{"click":function($event){return _vm.choosePageSize(option)}}},[_vm._v(" "+_vm._s(option)+" ")])})],2)])}
+var ChecPaginatevue_type_template_id_42a2dd02_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecPaginate.vue?vue&type=template&id=05dfc03b&
+// CONCATENATED MODULE: ./src/components/ChecPaginate.vue?vue&type=template&id=42a2dd02&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPaginate.vue?vue&type=script&lang=js&
 
@@ -26104,7 +26104,9 @@ var ChecPaginatevue_type_template_id_05dfc03b_staticRenderFns = []
     },
 
     /**
-     * A list of page size options to provide.
+     * A list of page size options to provide. Note that if the total count is higher than
+     * some of these options, they will be filtered out. For example, a list with 18 records
+     * would show 15 and 30, but not 50 or above.
      */
     pageSizeOptions: {
       type: Array,
@@ -26226,8 +26228,8 @@ var ChecPaginatevue_type_style_index_0_lang_scss_ = __webpack_require__("19ac");
 
 var ChecPaginate_component = normalizeComponent(
   components_ChecPaginatevue_type_script_lang_js_,
-  ChecPaginatevue_type_template_id_05dfc03b_render,
-  ChecPaginatevue_type_template_id_05dfc03b_staticRenderFns,
+  ChecPaginatevue_type_template_id_42a2dd02_render,
+  ChecPaginatevue_type_template_id_42a2dd02_staticRenderFns,
   false,
   null,
   null,
