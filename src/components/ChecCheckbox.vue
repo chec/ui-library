@@ -110,7 +110,7 @@ export default {
 <style lang="scss">
 
 .chec-checkbox {
-  @apply cursor-pointer flex items-center text-sm text-gray-600 cursor-pointer;
+  @apply cursor-pointer flex items-center text-sm text-gray-600 cursor-pointer relative;
 
   &__input {
     @apply
