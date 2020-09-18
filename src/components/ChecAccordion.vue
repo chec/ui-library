@@ -4,7 +4,10 @@
     class="accordion"
     :class="{'accordion--active': isOpen}"
   >
-    <div class="accordion__heading">
+    <div
+      class="accordion__heading"
+      :class="{'accordion__heading--active': isOpen}"
+    >
       <div>
         <div class="accordion__title" v-html="title" />
         <div v-if="subtitle" class="accordion__subtitle" v-html="subtitle" />
@@ -103,7 +106,11 @@ export default {
   @apply rounded bg-gray-100;
 
   &__heading {
-    @apply text-gray-500 flex justify-between items-center p-4 pb-0;
+    @apply text-gray-500 flex justify-between items-center p-4;
+
+    &--active {
+      @apply pb-0;
+    }
   }
 
   &__title {
