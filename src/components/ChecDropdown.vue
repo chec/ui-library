@@ -263,6 +263,8 @@ export default {
     if (this.value !== '' && this.value.length !== 0) {
       this.isFocus = true;
     }
+    this.validateValue();
+
     // add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
     // update this.dropdownElWidth on resize
@@ -277,6 +279,23 @@ export default {
     window.removeEventListener('resize', this.setDropdownElWidth);
   },
   methods: {
+    /**
+     * Ensures the provided value attribute is acceptable, given the options provided
+     */
+    validateValue() {
+      if (this.value === '' || this.value.length === 0) {
+        return;
+      }
+
+      const values = Array.isArray(this.value) ? this.value : [this.value];
+      const optionValues = this.options.map((option) => option.value);
+
+      values.forEach((value) => {
+        if (!optionValues.includes(value)) {
+          throw new Error(`Provided value ${value} must be one of the provided options.`);
+        }
+      });
+    },
     /**
      * Destroys the popper.js instance
      */
