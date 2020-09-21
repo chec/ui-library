@@ -100,6 +100,8 @@ module.exports = {
       'gray-300': '#D6E4F7',
       'gray-200': '#F1F6FC',
       'gray-100': '#F8FAFD',
+      'overlay-gray': 'rgba(65, 85, 108, 0.9)',
+      'overlay-white': 'rgba(255, 255, 255, 0.95)',
       white: '#FFFFFF',
       black: '#000000',
     },

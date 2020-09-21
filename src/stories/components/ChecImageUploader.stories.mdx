@@ -1,0 +1,74 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import ChecImageManager from '../../components/ChecImageManager.vue';
+
+<Meta title="Form fields/Image manager" component={ChecImageManager} />
+
+# Dropdown
+
+<details>
+
+</details>
+
+<Props of={ChecImageManager} />
+
+# Default:
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecImageManager,
+      },
+      data() {
+        return {
+          files: {},
+        };
+      },
+      props: {
+        endpoint: {
+          default: text('endpoint', 'https://httpbin.org/post'),
+        },
+      },
+      methods: {
+        handleClick(file) {
+          console.log(file);
+        },
+        addedFile(file) {
+          action('added-file');
+          this.files = { ...this.files, [file.upload.uuid]: file };
+        },
+        removeFile(file) {
+          action('remove-file');
+          if (file.upload.progress < 100 && file.status !== 'error') {
+            return;
+          }
+          const files = { ...this.files };
+          delete files[file.upload.uuid];
+          this.files = { ...files };
+        },
+        uploadingFile(file) {
+          action('uploading-file');
+          this.files = { ...this.files, [file.upload.uuid]: file };
+        },
+       uploadingFileComplete(file) {
+          action('uploading-file-complete');
+          this.files = { ...this.files, [file.upload.uuid]: file };
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center max-w-6xl mx-auto w-full h-full bg-white py-20">
+          <ChecImageManager
+            :files="Object.values(files)"
+            @handle-click="handleClick"
+            @file-added="addedFile"
+            @remove-file="removeFile"
+            @file-uploading="uploadingFile"
+            @file-uploading-complete="uploadingFileComplete"
+            :endpoint="endpoint"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
