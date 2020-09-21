@@ -68,7 +68,7 @@ export default {
   }
 
   &__helper {
-    @apply text-gray-400 uppercase text-center mt-4;
+    @apply text-gray-400 caps-xxs text-center mt-4;
   }
 
   &__icon {
