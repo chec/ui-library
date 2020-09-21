@@ -3655,6 +3655,40 @@ module.exports = function (originalArray, length) {
 
 /***/ }),
 
+/***/ "66a6":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M11 4L8 1m0 0v5m0-5L5 4","stroke":"currentColor","stroke-width":"1.5","stroke-linejoin":"round"}}),_c('path',{attrs:{"d":"M8 15l-.53.53a.75.75 0 001.06 0L8 15zm-3.53-2.47l3 3 1.06-1.06-3-3-1.06 1.06zM8.75 15v-5h-1.5v5h1.5zm-.22.53l3-3-1.06-1.06-3 3 1.06 1.06z","fill":"currentColor"}}),_c('path',{attrs:{"d":"M12 11l3-3m0 0h-5m5 0l-3-3M4 5L1 8m0 0h5M1 8l3 3","stroke":"currentColor","stroke-width":"1.5","stroke-linejoin":"round"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "6716":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3666,6 +3700,40 @@ module.exports = function (originalArray, length) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "6965":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 10 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M.5 3L2 12h6l1.5-9h-9zM10 1v1H0V1h2.856c.45 0 .815-.55.815-1h2.658c0 .45.365 1 .816 1H10z","fill":"currentColor"}})])
+          )
+        }
+      }
+    
 
 /***/ }),
 
@@ -15721,6 +15789,40 @@ $({ target: 'Object', stat: true, forced: FORCED, sham: !DESCRIPTORS }, {
 
 /***/ }),
 
+/***/ "e49a":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 12 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M2 0a2 2 0 00-2 2v7.999L3.294 7.41l.434-.34.454.312 2.314 1.59 2.726-2.826.54-.56.54.56L12 7.907V2a2 2 0 00-2-2H2zm0 12a1.994 1.994 0 01-1.396-.568L3.787 8.93l1.654 1.136L3.577 12H2zm9.999-1.933l-2.237-2.32L5.66 12H10a2 2 0 001.999-1.933zM3.5 5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z","fill":"currentColor"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "e538":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19357,6 +19459,10 @@ var ic_download_default = /*#__PURE__*/__webpack_require__.n(ic_download);
 var ic_upload = __webpack_require__("f880");
 var ic_upload_default = /*#__PURE__*/__webpack_require__.n(ic_upload);
 
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-image.svg
+var ic_image = __webpack_require__("e49a");
+var ic_image_default = /*#__PURE__*/__webpack_require__.n(ic_image);
+
 // EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-grip.svg
 var ic_grip = __webpack_require__("2e39");
 var ic_grip_default = /*#__PURE__*/__webpack_require__.n(ic_grip);
@@ -19452,6 +19558,14 @@ var ic_thumbs_up_default = /*#__PURE__*/__webpack_require__.n(ic_thumbs_up);
 // EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-thumbs-down.svg
 var ic_thumbs_down = __webpack_require__("a30e");
 var ic_thumbs_down_default = /*#__PURE__*/__webpack_require__.n(ic_thumbs_down);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-trash.svg
+var ic_trash = __webpack_require__("6965");
+var ic_trash_default = /*#__PURE__*/__webpack_require__.n(ic_trash);
+
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-drag.svg
+var ic_drag = __webpack_require__("66a6");
+var ic_drag_default = /*#__PURE__*/__webpack_require__.n(ic_drag);
 
 // EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-orders.svg
 var ic_orders = __webpack_require__("21ed");
@@ -19658,6 +19772,9 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
 
+
+
+
  // Nav icons imports
 
 
@@ -19740,7 +19857,10 @@ var uiIcons = {
   chec: chec_logo_default.a,
   facebook: ic_fb_default.a,
   twitter: ic_twitter_default.a,
-  github: ic_github_default.a
+  github: ic_github_default.a,
+  image: ic_image_default.a,
+  trash: ic_trash_default.a,
+  drag: ic_drag_default.a
 };
 var navIcons = {
   orders: ic_orders_default.a,
