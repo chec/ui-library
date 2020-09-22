@@ -162,7 +162,7 @@ export default {
 
   &__drag {
     @apply absolute inset-0 m-auto text-center
-      w-4 h-4 text-white cursor-pointer;
+      w-4 h-4 text-white;
   }
 
   &__remove-button {
