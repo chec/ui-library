@@ -1,19 +1,18 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { text, number } from '@storybook/addon-knobs';
 import ChecImageManager from '../../components/ChecImageManager.vue';
+import ImageBlock from '@/components/ChecImageManager/ImageBlock';
 
 <Meta title="Form fields/Image manager" component={ChecImageManager} />
 
-# Dropdown
+# Image manager
 
 <details>
 
 </details>
 
 <Props of={ChecImageManager} />
-
-# Default:
 
 <Preview>
   <Story name="Default">
@@ -32,9 +31,6 @@ import ChecImageManager from '../../components/ChecImageManager.vue';
         },
       },
       methods: {
-        handleClick(file) {
-          console.log(file);
-        },
         addedFile(file) {
           action('added-file');
           this.files = { ...this.files, [file.upload.uuid]: file };
@@ -52,23 +48,75 @@ import ChecImageManager from '../../components/ChecImageManager.vue';
           action('uploading-file');
           this.files = { ...this.files, [file.upload.uuid]: file };
         },
-       uploadingFileComplete(file) {
+        uploadingFileComplete(file) {
           action('uploading-file-complete');
           this.files = { ...this.files, [file.upload.uuid]: file };
         },
+        reorder(files) {
+          this.files = files.reduce((acc, file) => ({
+            ...acc,
+            [file.upload.uuid]: file,
+          }), {});
+        }
       },
       template: `
         <div class="p-16 flex justify-center max-w-6xl mx-auto w-full h-full bg-white py-20">
           <ChecImageManager
+            footnote="PNG, JPG, & GIFS accepted"
             :files="Object.values(files)"
-            @handle-click="handleClick"
             @file-added="addedFile"
             @remove-file="removeFile"
+            @reorder="reorder"
             @file-uploading="uploadingFile"
             @file-uploading-complete="uploadingFileComplete"
             :endpoint="endpoint"
           />
         </div>`
+    }}
+  </Story>
+</Preview>
+
+## Image block
+
+<Props of={ImageBlock} />
+
+<Preview>
+  <Story name="Image block">
+    {{
+      components: {
+        ImageBlock,
+      },
+      props: {
+        index: {
+          default: number('index', 1),
+        },
+        thumb: {
+          default: text('Thumbnail', 'https://www.fillmurray.com/640/640')
+        },
+        progress: {
+          default: number('Loading percentage', 100, { range: true, min: 0, max: 100, step: 1 }),
+        },
+        error: {
+          default: text('Error message', ''),
+        },
+      },
+      methods: {
+        handleClick: action('click'),
+        handleDelete: action('delete'),
+      },
+      template: `
+        <ImageBlock
+          class="mx-auto w-1/4 mt-2"
+          :index="index"
+          :thumbnail="thumb"
+          :loading="progress < 100"
+          :progress="progress"
+          :error="error.length > 0"
+          :error-message="error"
+          @click="handleClick"
+          @remove="handleDelete"
+        />
+      `,
     }}
   </Story>
 </Preview>

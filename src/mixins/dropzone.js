@@ -12,7 +12,7 @@ export default {
       default: '/',
     },
     /**
-     * Accepted File Types, comma seperated or null
+     * Accepted File Types, comma separated or null
      */
     fileTypes: {
       type: String,
@@ -101,9 +101,6 @@ export default {
        * @type {Object}
        */
       this.$emit('remove-file', this.getNonReactiveFileObject(file));
-    },
-    handleClick(file) {
-      this.$emit('handle-click', this.getNonReactiveFileObject(file));
     },
     getNonReactiveFileObject(file) {
       return {

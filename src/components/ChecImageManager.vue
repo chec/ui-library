@@ -1,24 +1,33 @@
 <template>
   <div class="chec-image-manager">
-    <div class="chec-image-manager__inner" data-dropzone-clickable>
-      <div v-if="files.length" class="image-rows-container" @click.stop>
+    <div class="chec-image-manager__inner">
+      <Draggable
+        v-if="files.length"
+        class="image-rows-container"
+        :class="{ 'image-rows-container--dragging': dragging }"
+        :value="files"
+        @input="reorder"
+        @click.stop
+        @start="dragging = true"
+        @end="dragging = false"
+      >
         <ImageBlock
           v-for="(file, index) in files"
           :key="file.upload.uuid"
-          :index="index"
+          :index="index + 1"
           :error="file.status === 'error'"
           :loading="file.upload.progress !== null && file.upload.progress < 100"
           :thumbnail="file.thumb"
+          :thing="file.test"
           :progress="file.upload.progress"
-          @remove-file="() => handleRemovingFile(file)"
-          @click-image="() => handleClick(file)"
+          @remove="() => handleRemovingFile(file)"
         />
-      </div>
+      </Draggable>
       <ChecButton data-dropzone-clickable @click.stop>
-        <ChecIcon class="chec-image-manager__icon" icon="image" size="base" /> Choose images(s)
+        <ChecIcon class="chec-image-manager__icon" icon="image" size="base" /> {{ $t('imageManager.chooseImages') }}
       </ChecButton>
-      <div class="chec-image-manager__helper">
-        PNG, JPG, & GIFS accepted
+      <div v-if="footnote" class="chec-image-manager__helper">
+        {{ footnote }}
       </div>
       <input class="chec-image-manager__input" type="file" name="file">
     </div>
@@ -26,6 +35,7 @@
 </template>
 
 <script>
+import Draggable from 'vuedraggable';
 import dropzone from '../mixins/dropzone.js';
 import ChecButton from './ChecButton';
 import ChecIcon from './ChecIcon';
@@ -36,6 +46,7 @@ export default {
   components: {
     ChecButton,
     ChecIcon,
+    Draggable,
     ImageBlock,
   },
   mixins: [dropzone],
@@ -46,6 +57,24 @@ export default {
     files: {
       type: Array,
       default: () => [],
+    },
+    footnote: {
+      type: String,
+      default: null,
+    },
+  },
+  data() {
+    return {
+      dragging: false,
+    };
+  },
+  methods: {
+    reorder(newFiles) {
+      /**
+       * Triggered when the user finishes moving an item. Provides the existing files in the new order
+       * @type {Event}
+       */
+      this.$emit('reorder', newFiles);
     },
   },
 };
@@ -79,6 +108,26 @@ export default {
 
 .image-rows-container {
   @apply grid grid-cols-4 gap-4 mb-4;
+
+  > * {
+    cursor: grab;
+  }
+
+  &--dragging {
+    > * {
+      cursor: grabbing;
+    }
+
+    .chec-image-item {
+      &__actions {
+        display: none;
+      }
+
+      &__index {
+        @apply hidden;
+      }
+    }
+  }
 }
 
 .dz-preview {

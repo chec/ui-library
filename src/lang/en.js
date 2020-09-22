@@ -1,5 +1,18 @@
 export default {
   en: {
+    accordion: {
+      switchLabel: {
+        open: 'Enabled',
+        closed: 'Disabled',
+      },
+      toggleLabel: {
+        open: 'Hide this section',
+        closed: 'Show this section',
+      },
+    },
+    imageManager: {
+      chooseImages: 'Choose images(s)',
+    },
     general: {
       search: 'Search',
       required: '(required)',
@@ -15,16 +28,6 @@ export default {
       goToLast: 'Go to the last page',
       showing: 'Showing',
       of: '{x} of {y}',
-    },
-    accordion: {
-      switchLabel: {
-        open: 'Enabled',
-        closed: 'Disabled',
-      },
-      toggleLabel: {
-        open: 'Hide this section',
-        closed: 'Show this section',
-      },
     },
     tag: {
       dismiss: 'Dismiss',
