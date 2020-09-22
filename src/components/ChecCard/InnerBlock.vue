@@ -1,7 +1,7 @@
 <template>
   <div class="card-inner-block">
     <div>
-      <component :is="titleTag" class="card-inner-block__title">
+      <component v-if="title" :is="titleTag" class="card-inner-block__title">
         {{ title }}
       </component>
       <!--
@@ -42,7 +42,6 @@ export default {
      */
     title: {
       type: String,
-      required: true,
     },
     /**
      * The HTML tag to use for the title of the block
