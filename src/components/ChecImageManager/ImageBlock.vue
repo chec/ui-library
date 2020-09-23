@@ -1,16 +1,17 @@
 <template>
   <div
-    :style="{ backgroundImage: `url('${thumbnail}')` }"
     class="chec-image-item"
     :class="{ 'chec-image-item--error': error }"
   >
     <div class="chec-image-item__index">
-      {{ index + 1 }}
+      {{ index }}
     </div>
-    <div v-if="!thumbnail" class="chec-image-item__no-thumbnail">
-      <ChecIcon
-        icon="chec"
-      />
+    <div
+      class="chec-image-item__thumbnail"
+      :class="{ 'chec-image-item__thumbnail--placeholder': !thumbnail }"
+    >
+      <img v-if="thumbnail" :src="thumbnail">
+      <ChecIcon v-else icon="chec" />
     </div>
     <div v-if="loading && !error" class="chec-image-item__loading-icon">
       <div class="chec-image-item__progress">
@@ -29,14 +30,14 @@
     </div>
     <div
       class="chec-image-item__actions"
-      @click="() => $emit('click-image')"
+      @click="handleClick"
     >
       <div class="chec-image-item__drag">
         <ChecIcon
           icon="drag"
         />
       </div>
-      <button class="chec-image-item__remove-button" @click="() => $emit('remove-file')">
+      <button class="chec-image-item__remove-button" @click.stop="handleRemove">
         <ChecIcon
           icon="trash"
         />
@@ -57,6 +58,28 @@ export default {
   },
   props: {
     /**
+     * Boolean to render the error state
+     */
+    error: Boolean,
+    /**
+     * Optional error message
+     */
+    errorMessage: {
+      type: String,
+      default: null,
+    },
+    /**
+     * The number that this image appears in the order of all image
+     */
+    index: {
+      type: Number,
+      required: true,
+    },
+    /**
+     * Boolean to indicate a loading state
+     */
+    loading: Boolean,
+    /**
      * The uploading progress percentage
      */
     progress: {
@@ -64,22 +87,11 @@ export default {
       default: 0,
     },
     /**
-     * Boolean to indicate a loading state
+     * A string that is a valid value for the `src` prop of an image tag
      */
-    loading: Boolean,
-    /**
-     * Boolean to render the error state
-     */
-    error: Boolean,
-    /**
-     * Optional error message
-     */
-    errorMessage: String,
     thumbnail: {
       type: String,
-    },
-    index: {
-      type: Number,
+      default: null,
     },
   },
   computed: {
@@ -87,13 +99,28 @@ export default {
       return `${(this.progress).toFixed()}%`;
     },
   },
+  methods: {
+    handleClick(event) {
+      /**
+       * Triggered when this element is clicked
+       * @type {Event}
+       */
+      this.$emit('click', event);
+    },
+    handleRemove(event) {
+      /**
+       * Triggered when the user clicks the delete button on this block
+       * @type {Event}
+       */
+      this.$emit('remove', event);
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .chec-image-item {
-  @apply flex relative justify-between p-4 rounded
-    bg-white bg-cover shadow-sm;
+  @apply flex relative justify-between p-4 rounded bg-white shadow-sm;
 
   &__index {
     @apply w-4 h-4 absolute text-white text-xxs font-bold
@@ -107,11 +134,17 @@ export default {
       flex flex-col items-center content-center justify-center;
   }
 
-  &__no-thumbnail {
-    @apply absolute inset-0 flex items-center justify-center text-gray-200;
+  &__thumbnail {
+    @apply absolute inset-0 flex items-center justify-center text-gray-200 bg-cover overflow-hidden;
 
-    svg {
-      @apply w-1/2;
+    img {
+      @apply w-full h-full object-contain;
+    }
+
+    &--placeholder {
+      svg {
+        @apply w-1/2;
+      }
     }
   }
 
@@ -129,7 +162,7 @@ export default {
 
   &__drag {
     @apply absolute inset-0 m-auto text-center
-      w-4 h-4 text-white cursor-pointer;
+      w-4 h-4 text-white;
   }
 
   &__remove-button {
@@ -168,6 +201,11 @@ export default {
 
   &:first-of-type {
     @apply col-span-2 row-span-2;
+
+    &.sortable-drag .chec-image-item__thumbnail {
+      @apply w-1/2;
+      height: 50%;
+    }
   }
 
   &::before {
@@ -179,6 +217,29 @@ export default {
   &:hover {
     .chec-image-item__actions {
       @apply transition-opacity opacity-100 visible duration-300;
+    }
+  }
+
+  &.sortable-drag {
+    @apply transition-none bg-transparent shadow-none;
+
+    .chec-image-item {
+      &__actions,
+      &__index {
+        @apply hidden;
+      }
+
+      &__thumbnail {
+        @apply opacity-50;
+      }
+    }
+  }
+
+  &.sortable-ghost {
+    @apply bg-gray-300 rounded-lg shadow-none;
+
+    .chec-image-item__thumbnail > * {
+      @apply hidden;
     }
   }
 }
