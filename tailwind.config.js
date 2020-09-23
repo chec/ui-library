@@ -177,6 +177,9 @@ module.exports = {
       '.bg-hologram': {
         backgroundImage: 'inline("../assets/media/hologram-bg.png")',
       },
+      '.bg-code-block': {
+        backgroundImage: 'inline("../assets/svgs/code-bg.svg")',
+      },
     })),
   ],
 };
