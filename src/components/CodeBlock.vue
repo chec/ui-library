@@ -37,8 +37,8 @@ export default {
 
 <style lang="scss">
 // Basic formatting
-code.code-example[class*="language-"],
-pre.code-example[class*="language-"] {
+code.code-example[class*='language-'],
+pre.code-example[class*='language-'] {
   @apply bg-code-block text-white;
 }
 
@@ -163,6 +163,7 @@ pre.code-example[class*="language-"] {
   .token.url {
     @apply text-orange-400 bg-transparent;
   }
+
   .token.atrule,
   .token.attr-value,
   .token.keyword,
@@ -175,19 +176,22 @@ pre.code-example[class*="language-"] {
   .token.variable {
     @apply text-orange-300;
   }
+
   .token.bold,
   .token.important {
     font-weight: bold;
   }
+
   .token.italic {
     font-style: italic;
   }
+
   .token.entity {
     cursor: help;
   }
+
   .token.function {
     @apply text-purple-300;
   }
 }
-
 </style>
