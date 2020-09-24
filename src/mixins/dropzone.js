@@ -5,11 +5,12 @@ Dropzone.autoDiscover = false;
 export default {
   props: {
     /**
-     * The endpoint to upload files to
+     * The endpoint to upload files to. This can be provided as a string, or a promise that will resolve a URL given a
+     * file object (provided by Dropzone). Note that this file object can be mutated to add a `formData` key.
      */
     endpoint: {
-      type: String,
-      default: '/',
+      type: [String, Promise],
+      required: true,
     },
     /**
      * Accepted File Types, comma separated or null
