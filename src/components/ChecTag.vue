@@ -5,7 +5,7 @@
     <button
       v-if="!undismissible"
       type="button"
-      class="tag__dismiss"
+      class="chec-tag__dismiss"
       :disabled="disabled"
       :title="$t('tag.dismiss')"
       @click="handleDismiss"
@@ -50,16 +50,16 @@ export default {
   },
   computed: {
     /**
-     * Returns the computed class name for the variant type, e.g. `tag--success`
+     * Returns the computed class name for the variant type, e.g. `chec-tag--success`
      *
      * @returns {Object}
      */
     classObject() {
       // To avoid specificity problems in CSS, the disabled state takes priority over others
       return {
-        [`tag--${this.color}`]: !this.active,
-        'tag--disabled': this.disabled,
-        'tag--active': this.active,
+        [`chec-tag--${this.color}`]: !this.active,
+        'chec-tag--disabled': this.disabled,
+        'chec-tag--active': this.active,
       };
     },
   },
