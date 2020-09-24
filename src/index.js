@@ -29,6 +29,7 @@ import ChecSwitch from './components/ChecSwitch.vue';
 import ChecTab from './components/ChecTab.vue';
 import ChecTag from './components/ChecTag.vue';
 import ChecTooltip from './directives/ChecTooltip';
+import CodeBlock from './components/CodeBlock.vue';
 import InnerBlock from './components/ChecCard/InnerBlock.vue';
 import Lang from './lang/index';
 import PasswordField from './components/PasswordField.vue';
@@ -67,6 +68,7 @@ export {
   ChecTab,
   ChecTag,
   ChecTooltip,
+  CodeBlock,
   InnerBlock,
   Lang,
   PasswordField,
