@@ -1,5 +1,5 @@
 <template>
-  <div class="tag-group">
+  <div class="chec-tag-group">
     <slot />
 
     <ChecButton
@@ -36,14 +36,14 @@ export default {
 </script>
 
 <style lang="scss">
-.tag-group {
+.chec-tag-group {
   @apply flex flex-wrap items-center;
 
-  .tag:not(:last-child) {
+  .chec-tag:not(:last-child) {
     @apply mr-2;
   }
 
-  .tag {
+  .chec-tag {
     @apply mb-2 inline-block;
   }
 

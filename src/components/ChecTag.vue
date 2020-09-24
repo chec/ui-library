@@ -1,5 +1,5 @@
 <template>
-  <span class="tag" :class="classObject">
+  <span class="chec-tag" :class="classObject">
     <slot />
 
     <button
@@ -76,12 +76,12 @@ export default {
 %active {
   @apply bg-gray-500 text-white border-gray-500;
 
-  .tag__dismiss {
+  .chec-tag__dismiss {
     @apply bg-white text-gray-500;
   }
 }
 
-.tag {
+.chec-tag {
   @apply py-1 px-3 rounded-full font-bold text-sm border leading-tight;
 
   &--active {
@@ -91,7 +91,7 @@ export default {
   &--disabled {
     @apply opacity-40 cursor-not-allowed border-none;
 
-    .tag__dismiss {
+    .chec-tag__dismiss {
       @apply cursor-not-allowed;
     }
   }
@@ -99,7 +99,7 @@ export default {
   &--light-grey {
     @apply bg-gray-200 text-gray-500 border-gray-200;
 
-    .tag__dismiss {
+    .chec-tag__dismiss {
       @apply bg-gray-500 text-gray-200;
     }
   }
@@ -107,7 +107,7 @@ export default {
   &--dark-grey {
     @apply bg-gray-600 text-white border-gray-600;
 
-    .tag__dismiss {
+    .chec-tag__dismiss {
       @apply bg-white text-gray-600;
     }
   }
@@ -115,13 +115,13 @@ export default {
   &--white {
     @apply bg-white text-gray-500 border-gray-200;
 
-    .tag__dismiss {
+    .chec-tag__dismiss {
       @apply bg-gray-500 text-white;
     }
   }
 
   // All colours share the same active, hover/focus, and disabled styles
-  &:not(.tag--disabled) {
+  &:not(.chec-tag--disabled) {
     &:active {
       @extend %active;
     }
@@ -130,7 +130,7 @@ export default {
     &:focus {
       @apply bg-gray-400 text-white border-gray-400;
 
-      .tag__dismiss {
+      .chec-tag__dismiss {
         @apply bg-white text-gray-400;
       }
     }
