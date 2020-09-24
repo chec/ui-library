@@ -11,9 +11,11 @@ import ChecDataPillGroup from './components/ChecDataPillGroup.vue';
 import ChecDatepicker from './components/ChecDatepicker';
 import ChecDivider from './components/ChecDivider.vue';
 import ChecDropdown from './components/ChecDropdown.vue';
+import ChecFileUploader from './components/ChecFileUploader.vue';
 import ChecFormField from './components/ChecFormField.vue';
 import ChecHeader from './components/ChecHeader.vue';
 import ChecIcon from './components/ChecIcon.vue';
+import ChecImageManager from './components/ChecImageManager.vue';
 import ChecLoading from './components/ChecLoading.vue';
 import ChecMarketingIcon from './components/ChecMarketingIcon.vue';
 import ChecModal from './components/ChecModal.vue';
@@ -50,9 +52,11 @@ export {
   ChecDatepicker,
   ChecDivider,
   ChecDropdown,
+  ChecFileUploader,
   ChecFormField,
   ChecHeader,
   ChecIcon,
+  ChecImageManager,
   ChecLoading,
   ChecMarketingIcon,
   ChecModal,
