@@ -1,0 +1,31 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { select, text } from '@storybook/addon-knobs';
+import CodeBlock from '../../components/CodeBlock.vue';
+
+<Meta title="Components/Code Block" component={CodeBlock} />
+
+# Code Block component
+
+<Props of={CodeBlock} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        CodeBlock,
+      },
+      props: {
+        language: {
+          default: select('Language', ['none', 'javascript', 'json', 'jsx', 'php']),
+        },
+        code: {
+          default: text('Code', "// Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);"),
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-1/2 m-auto bg-gray-100">
+          <CodeBlock :language="language">{{ code }}</CodeBlock>
+        </div>`
+    }}
+  </Story>
+</Preview>

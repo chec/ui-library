@@ -1,3 +1,7 @@
 {
-  "extends": "@chec/stylelint-config"
+  "extends": "@chec/stylelint-config",
+  "ignoreFiles": [
+    "node_modules",
+    "src/components/CodeBlock.vue"
+  ]
 }
