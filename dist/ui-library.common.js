@@ -28957,12 +28957,12 @@ var ChecTab_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTab = (ChecTab_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"172686aa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=template&id=20ffbed0&
-var ChecTagvue_type_template_id_20ffbed0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"tag",class:_vm.classObject},[_vm._t("default"),(!_vm.undismissible)?_c('button',{staticClass:"tag__dismiss",attrs:{"type":"button","disabled":_vm.disabled,"title":_vm.$t('tag.dismiss')},on:{"click":_vm.handleDismiss}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1):_vm._e()],2)}
-var ChecTagvue_type_template_id_20ffbed0_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"172686aa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=template&id=4701f678&
+var ChecTagvue_type_template_id_4701f678_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"chec-tag",class:_vm.classObject},[_vm._t("default"),(!_vm.undismissible)?_c('button',{staticClass:"chec-tag__dismiss",attrs:{"type":"button","disabled":_vm.disabled,"title":_vm.$t('tag.dismiss')},on:{"click":_vm.handleDismiss}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1):_vm._e()],2)}
+var ChecTagvue_type_template_id_4701f678_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecTag.vue?vue&type=template&id=20ffbed0&
+// CONCATENATED MODULE: ./src/components/ChecTag.vue?vue&type=template&id=4701f678&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=script&lang=js&
 
@@ -29020,7 +29020,7 @@ var ChecTagvue_type_template_id_20ffbed0_staticRenderFns = []
   },
   computed: {
     /**
-     * Returns the computed class name for the variant type, e.g. `tag--success`
+     * Returns the computed class name for the variant type, e.g. `chec-tag--success`
      *
      * @returns {Object}
      */
@@ -29028,7 +29028,7 @@ var ChecTagvue_type_template_id_20ffbed0_staticRenderFns = []
       var _ref;
 
       // To avoid specificity problems in CSS, the disabled state takes priority over others
-      return _ref = {}, _defineProperty(_ref, "tag--".concat(this.color), !this.active), _defineProperty(_ref, 'tag--disabled', this.disabled), _defineProperty(_ref, 'tag--active', this.active), _ref;
+      return _ref = {}, _defineProperty(_ref, "chec-tag--".concat(this.color), !this.active), _defineProperty(_ref, 'chec-tag--disabled', this.disabled), _defineProperty(_ref, 'chec-tag--active', this.active), _ref;
     }
   },
   methods: {
@@ -29053,8 +29053,8 @@ var ChecTagvue_type_style_index_0_lang_scss_ = __webpack_require__("2dfe");
 
 var ChecTag_component = normalizeComponent(
   components_ChecTagvue_type_script_lang_js_,
-  ChecTagvue_type_template_id_20ffbed0_render,
-  ChecTagvue_type_template_id_20ffbed0_staticRenderFns,
+  ChecTagvue_type_template_id_4701f678_render,
+  ChecTagvue_type_template_id_4701f678_staticRenderFns,
   false,
   null,
   null,
