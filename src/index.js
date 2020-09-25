@@ -31,6 +31,8 @@ import ChecSwitch from './components/ChecSwitch.vue';
 import ChecTab from './components/ChecTab.vue';
 import ChecTag from './components/ChecTag.vue';
 import ChecTooltip from './directives/ChecTooltip';
+import ChecVerticalNavigation from './components/ChecVerticalNavigation';
+import ChecVerticalNavItem from './components/ChecVerticalNavItem';
 import CodeBlock from './components/CodeBlock.vue';
 import InnerBlock from './components/ChecCard/InnerBlock.vue';
 import Lang from './lang/index';
@@ -72,6 +74,8 @@ export {
   ChecTab,
   ChecTag,
   ChecTooltip,
+  ChecVerticalNavigation,
+  ChecVerticalNavItem,
   CodeBlock,
   InnerBlock,
   Lang,
