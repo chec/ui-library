@@ -164,7 +164,7 @@ export default {
         variant,
         minimizedLabel,
       } = this;
-      console.log(minimizedLabel);
+
       return {
         'text-field--currency': currency,
         'text-field--disabled': variant === 'disabled',
