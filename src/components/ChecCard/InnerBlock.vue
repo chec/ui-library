@@ -1,7 +1,7 @@
 <template>
   <div class="card-inner-block">
     <div>
-      <component v-if="title" :is="titleTag" class="card-inner-block__title">
+      <component :is="titleTag" v-if="title" class="card-inner-block__title">
         {{ title }}
       </component>
       <!--
