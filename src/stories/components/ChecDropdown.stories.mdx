@@ -66,7 +66,10 @@ Todo list
         },
         tooltip: {
           default: text('Tooltip copy', 'Lorem Ipsum Dolor'),
-        }
+        },
+        minimizedLabel: {
+          default: boolean('Minimized Label Override', false)
+        },
       },
       data() {
         return {
@@ -145,6 +148,7 @@ Todo list
               class="max-w-md"
               v-model="model"
               :options="options"
+              :minimized-label="minimizedLabel"
               @input="onClick"
               @scroll-to-bottom="handleScrolledToBottom"
             />

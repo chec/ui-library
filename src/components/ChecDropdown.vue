@@ -2,11 +2,7 @@
   <div
     ref="dropdown-el"
     class="dropdown"
-    :class="{
-      'dropdown--with-inline-label': isFocus && label,
-      'dropdown--open': showDropdown,
-      [`dropdown--${variant}`]: variant !== '',
-    }"
+    :class="classNames"
     @click="toggleDropdown"
     @keyup="onKeyPress"
   >
@@ -107,6 +103,10 @@ export default {
       default: '',
     },
     /**
+    * Force label to always be in the minimized position.
+    */
+    minimizedLabel: Boolean,
+    /**
      * Placeholder used when no option has been selected
      */
     placeholder: {
@@ -170,6 +170,22 @@ export default {
     };
   },
   computed: {
+    classNames() {
+      const {
+        isFocus,
+        label,
+        showDropdown,
+        variant,
+        minimizedLabel,
+      } = this;
+
+      return {
+        'dropdown--with-inline-label': isFocus && label,
+        'dropdown--open': showDropdown,
+        'dropdown--minimized-label': minimizedLabel,
+        [`dropdown--${variant}`]: variant !== '',
+      };
+    },
     /**
      * Flattens the provided options into an ordered list, and adds a "level" prop to show what level of indentation
      * a child option will need.
@@ -617,6 +633,12 @@ export default {
     &:focus,
     &:active {
       @apply shadow-error-focus;
+    }
+  }
+
+  &--minimized-label {
+    .dropdown__label {
+      transform: translate(-0.2rem, -0.5rem) scale(0.8, 0.8);
     }
   }
 }

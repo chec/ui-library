@@ -59,7 +59,10 @@ import { uiIcons } from '../../lib/icons';
         },
         tooltip: {
           default: text('Tooltip copy', 'Lorem Ipsum Dolor'),
-        }
+        },
+        minimizedLabel: {
+          default: boolean('Minimized Label Override', false)
+        },
       },
       data() {
         return { inputValue: '' };
@@ -97,6 +100,7 @@ import { uiIcons } from '../../lib/icons';
               :style-variant="styleVariant"
               :type="type"
               :required="required"
+              :minimized-label="minimizedLabel"
               :currency="currency"
               :currencySymbol="currencySymbol"
               />

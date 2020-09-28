@@ -84,6 +84,10 @@ export default {
     */
     multiline: Boolean,
     /**
+    * Force label to always be in the minimized position.
+    */
+    minimizedLabel: Boolean,
+    /**
     * Display text field in currency mode
     */
     currency: Boolean,
@@ -158,6 +162,7 @@ export default {
         value,
         styleVariant,
         variant,
+        minimizedLabel,
       } = this;
 
       return {
@@ -168,6 +173,7 @@ export default {
         'text-field--inline-label': label,
         'text-field--modified': label ? !!value : false,
         'text-field--multiline': multiline,
+        'text-field--minimized-label': minimizedLabel,
         [`text-field--${styleVariant}`]: styleVariant !== '',
       };
     },
@@ -407,6 +413,14 @@ export default {
     }
   }
 
+  &--minimized-label {
+    .text-field__label {
+      @apply opacity-100;
+
+      @extend %filled-transformation;
+    }
+  }
+
   &--inline-label {
     .text-field__input {
       @apply pb-2 pt-6;
@@ -463,6 +477,17 @@ export default {
       ~ .text-field__currency {
         @apply opacity-100 transition-opacity duration-150;
       }
+    }
+  }
+
+  &--minimized-label {
+    .text-field__label {
+      @apply opacity-100;
+      transform: translate(0.05rem, -0.5rem) scale(0.8, 0.8) !important;
+    }
+
+    .text-field__currency {
+      @apply opacity-100 transition-opacity duration-150;
     }
   }
 }
