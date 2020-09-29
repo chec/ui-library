@@ -1,21 +1,13 @@
 <template>
-  <router-link
-    v-slot="{ href, isActive }"
-    class="vertical-navigation__item"
-    :to="to"
-  >
-    <li
+  <li class="vertical-navigation__item">
+    <router-link
+      class="vertical-navigation__link"
+      :to="to"
       :disabled="disabled"
-      :class="[currentPath.includes(`${to}`) ? activeClass : '', isActive && 'router-link-active']"
     >
-      <a class="vertical-navigation__link" :href="href">
-        <!--
-          @slot Label to display as the navigation item label
-        -->
-        <slot />
-      </a>
-    </li>
-  </router-link>
+      <slot />
+    </router-link>
+  </li>
 </template>
 
 <script>
@@ -33,19 +25,6 @@ export default {
      * If this navigation item should appear disabled
      */
     disabled: Boolean,
-  },
-  data() {
-    return {
-      activeClass: 'active',
-    };
-  },
-  computed: {
-    /**
-     * Get the current active path
-     */
-    currentPath() {
-      return this.$route.path;
-    },
   },
 };
 </script>
@@ -77,7 +56,7 @@ export default {
     @apply block px-2 py-3;
   }
 
-  .active {
+  .router-link-active {
     @apply bg-gray-200 font-bold;
   }
 }
