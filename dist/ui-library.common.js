@@ -36121,25 +36121,14 @@ var ChecVerticalNavigation_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecVerticalNavigation = (ChecVerticalNavigation_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"172686aa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavItem.vue?vue&type=template&id=5c9eb7dc&
-var ChecVerticalNavItemvue_type_template_id_5c9eb7dc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('router-link',{staticClass:"vertical-navigation__item",attrs:{"to":_vm.to},scopedSlots:_vm._u([{key:"default",fn:function(ref){
-var href = ref.href;
-var isActive = ref.isActive;
-return [_c('li',{class:[_vm.currentPath.includes(("" + _vm.to)) ? _vm.activeClass : '', isActive && 'router-link-active'],attrs:{"disabled":_vm.disabled}},[_c('a',{staticClass:"vertical-navigation__link",attrs:{"href":href}},[_vm._t("default")],2)])]}}],null,true)})}
-var ChecVerticalNavItemvue_type_template_id_5c9eb7dc_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"172686aa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavItem.vue?vue&type=template&id=3ae5da98&
+var ChecVerticalNavItemvue_type_template_id_3ae5da98_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"vertical-navigation__item"},[_c('router-link',{staticClass:"vertical-navigation__link",attrs:{"to":_vm.to,"disabled":_vm.disabled}},[_vm._t("default")],2)],1)}
+var ChecVerticalNavItemvue_type_template_id_3ae5da98_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecVerticalNavItem.vue?vue&type=template&id=5c9eb7dc&
+// CONCATENATED MODULE: ./src/components/ChecVerticalNavItem.vue?vue&type=template&id=3ae5da98&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavItem.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -36167,19 +36156,6 @@ var ChecVerticalNavItemvue_type_template_id_5c9eb7dc_staticRenderFns = []
      * If this navigation item should appear disabled
      */
     disabled: Boolean
-  },
-  data: function data() {
-    return {
-      activeClass: 'active'
-    };
-  },
-  computed: {
-    /**
-     * Get the current active path
-     */
-    currentPath: function currentPath() {
-      return this.$route.path;
-    }
   }
 });
 // CONCATENATED MODULE: ./src/components/ChecVerticalNavItem.vue?vue&type=script&lang=js&
@@ -36198,8 +36174,8 @@ var ChecVerticalNavItemvue_type_style_index_0_lang_scss_ = __webpack_require__("
 
 var ChecVerticalNavItem_component = normalizeComponent(
   components_ChecVerticalNavItemvue_type_script_lang_js_,
-  ChecVerticalNavItemvue_type_template_id_5c9eb7dc_render,
-  ChecVerticalNavItemvue_type_template_id_5c9eb7dc_staticRenderFns,
+  ChecVerticalNavItemvue_type_template_id_3ae5da98_render,
+  ChecVerticalNavItemvue_type_template_id_3ae5da98_staticRenderFns,
   false,
   null,
   null,
