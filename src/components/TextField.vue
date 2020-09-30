@@ -88,12 +88,17 @@ export default {
     */
     minimizedLabel: Boolean,
     /**
-    * Display text field in currency mode
-    */
+     * An optional placeholder which will appear below the label as the current value when the field has no value.
+     * Appears like a value in the field, but acts like a traditional placeholder.
+     */
+    placeholder: String,
+    /**
+     * Display text field in currency mode
+     */
     currency: Boolean,
     /**
-    * Currency symbol for use in currency mode
-    */
+     * Currency symbol for use in currency mode
+     */
     currencySymbol: {
       type: String,
       default: '$',
@@ -146,8 +151,10 @@ export default {
       return {
         ...$attrs,
         ...additionalInputAttributes,
-        placeholder: ' ',
-        class: ['text-field__input', this.innerInputClass],
+        placeholder: this.hasPlaceholder ? this.placeholder : ' ',
+        class: ['text-field__input', this.innerInputClass, {
+          'text-field__input--has-placeholder': this.hasPlaceholder,
+        }],
         disabled: variant === 'disabled',
         id,
         ref: 'input',
@@ -176,6 +183,9 @@ export default {
         'text-field--minimized-label': minimizedLabel,
         [`text-field--${styleVariant}`]: styleVariant !== '',
       };
+    },
+    hasPlaceholder() {
+      return typeof this.placeholder === 'string' && this.placeholder.length > 0;
     },
   },
   watch: {
@@ -271,7 +281,7 @@ export default {
     @apply
       leading-tight
       text-sm
-      text-gray-500
+      text-gray-600
       w-full
       px-4
       bg-white
@@ -285,14 +295,22 @@ export default {
       py-4;
 
     &::placeholder {
-      color: rgba(0, 0, 0, 0);
+      @apply text-gray-400;
     }
 
     &:placeholder-shown {
       @apply py-4;
+    }
 
-      + .text-field__label {
-        transform: scale(1, 1);
+    &:not(&--has-placeholder) {
+      &::placeholder {
+        @apply text-transparent;
+      }
+
+      &:placeholder-shown {
+        + .text-field__label {
+          transform: scale(1, 1);
+        }
       }
     }
 
