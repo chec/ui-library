@@ -42,6 +42,9 @@ import { uiIcons } from '../../lib/icons';
         type: {
           default: select('Type', ['text', 'email', 'password', 'number', 'date', 'color', 'month', 'search', 'tel', 'url', 'week'], 'text')
         },
+        placeholder: {
+          default: text('Placeholder', ''),
+        },
         icon: {
           default: select('Icon', [null, ...Object.keys(uiIcons)]),
         },
@@ -99,6 +102,7 @@ import { uiIcons } from '../../lib/icons';
               :variant="variant"
               :style-variant="styleVariant"
               :type="type"
+              :placeholder="placeholder"
               :required="required"
               :minimized-label="minimizedLabel"
               :currency="currency"
