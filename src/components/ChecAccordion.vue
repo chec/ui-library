@@ -12,6 +12,7 @@
       <ChecSwitch
         v-if="variant === 'switch'"
         v-model="isOpen"
+        @input="emitToggle"
         prefix-label
       >
         {{ resolvedButtonLabel }}
@@ -93,6 +94,16 @@ export default {
       const state = this.isOpen ? 'open' : 'closed';
 
       return this.$t(`accordion.${type}.${state}`);
+    },
+  },
+  methods: {
+    emitToggle() {
+      /**
+       * Emitted when the accordion is opened or closed. Emits the new state of the accordion - true if it is open
+       *
+       * @type {Boolean}
+       */
+      this.$emit('toggled', this.isOpen);
     },
   },
 };
