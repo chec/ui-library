@@ -22,7 +22,7 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
       },
       data() {
         return {
-          files: {},
+          files: [],
         };
       },
       props: {
@@ -31,26 +31,11 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
         },
       },
       methods: {
-        addedFile(file) {
-          action('added-file');
-          this.files = { ...this.files, [file.upload.uuid]: file };
+        change(files) {
+          action('change')(files);
         },
-        removeFile(file) {
-          action('remove-file');
-          if (file.upload.progress < 100 && file.status !== 'error') {
-            return;
-          }
-          const files = { ...this.files };
-          delete files[file.upload.uuid];
-          this.files = { ...files };
-        },
-        uploadingFile(file) {
-          action('uploading-file');
-          this.files = { ...this.files, [file.upload.uuid]: file };
-        },
-        uploadingFileComplete(file) {
-          action('uploading-file-complete');
-          this.files = { ...this.files, [file.upload.uuid]: file };
+        dropzoneEvent(eventName, ...args) {
+          action('dropzone-event')(eventName, args);
         },
         reorder(files) {
           this.files = files.reduce((acc, file) => ({
@@ -63,12 +48,10 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
         <div class="p-16 flex justify-center max-w-6xl mx-auto w-full h-full bg-white py-20">
           <ChecImageManager
             footnote="PNG, JPG, & GIFS accepted"
-            :files="Object.values(files)"
-            @file-added="addedFile"
-            @remove-file="removeFile"
             @reorder="reorder"
-            @file-uploading="uploadingFile"
-            @file-uploading-complete="uploadingFileComplete"
+            v-model="files"
+            @dropzone-event="dropzoneEvent"
+            @change="change"
             :endpoint="endpoint"
           />
         </div>`

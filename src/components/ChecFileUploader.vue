@@ -1,9 +1,9 @@
 <template>
   <form method="post" enctype="multipart/form-data" class="chec-file-uploader">
-    <div class="chec-file-uploader__inner" data-dropzone-clickable>
-      <div v-if="files.length" class="file-rows-container space-y-2" @click.stop>
+    <div class="chec-file-uploader__inner">
+      <div v-if="allFiles.length" class="file-rows-container space-y-2" @click.stop>
         <FileRow
-          v-for="file in files"
+          v-for="file in allFiles"
           :key="file.upload.uuid"
           :error="file.status === 'error'"
           :loading="['added', 'queued', 'uploading'].includes(file.status)"
@@ -34,15 +34,6 @@ export default {
     FileRow,
   },
   mixins: [dropzone],
-  props: {
-    /**
-     * The files that will be rendered as <file-row> components
-     */
-    files: {
-      type: Array,
-      default: () => [],
-    },
-  },
 };
 </script>
 

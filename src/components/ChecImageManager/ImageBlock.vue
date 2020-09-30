@@ -1,7 +1,7 @@
 <template>
   <div
     class="chec-image-item"
-    :class="{ 'chec-image-item--error': error }"
+    :class="{ 'chec-image-item--error': error, 'chec-image-item--loading': loading && !error }"
   >
     <div class="chec-image-item__index">
       {{ index }}
@@ -32,7 +32,7 @@
       class="chec-image-item__actions"
       @click="handleClick"
     >
-      <div class="chec-image-item__drag">
+      <div v-if="!loading && !error" class="chec-image-item__drag">
         <ChecIcon
           icon="drag"
         />
