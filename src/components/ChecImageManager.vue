@@ -2,23 +2,23 @@
   <div class="chec-image-manager">
     <div class="chec-image-manager__inner">
       <Draggable
-        v-if="files.length"
+        v-if="allFiles.length"
         class="image-rows-container"
         :class="{ 'image-rows-container--dragging': dragging }"
-        :value="files"
+        :value="allFiles"
+        filter=".chec-image-item--loading"
         @input="reorder"
         @click.stop
         @start="dragging = true"
         @end="dragging = false"
       >
         <ImageBlock
-          v-for="(file, index) in files"
+          v-for="(file, index) in allFiles"
           :key="file.upload.uuid"
           :index="index + 1"
           :error="file.status === 'error'"
           :loading="file.upload.progress !== null && file.upload.progress < 100"
           :thumbnail="file.thumb"
-          :thing="file.test"
           :progress="file.upload.progress"
           @remove="() => handleRemovingFile(file)"
         />
@@ -51,13 +51,6 @@ export default {
   },
   mixins: [dropzone],
   props: {
-    /**
-     * The files that will be rendered as <file-row> components
-     */
-    files: {
-      type: Array,
-      default: () => [],
-    },
     footnote: {
       type: String,
       default: null,
@@ -70,11 +63,10 @@ export default {
   },
   methods: {
     reorder(newFiles) {
-      /**
-       * Triggered when the user finishes moving an item. Provides the existing files in the new order
-       * @type {Event}
-       */
-      this.$emit('reorder', newFiles);
+      // Map the files that have been reordered (all files) back to the files in the format they were given in props
+      this.handleFilesChange(newFiles
+        .map((newFile) => this.files.find((candidate) => candidate.id === newFile.upload.uuid))
+        .filter((file) => file !== undefined));
     },
   },
 };
