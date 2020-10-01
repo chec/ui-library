@@ -12,8 +12,8 @@
       <ChecSwitch
         v-if="variant === 'switch'"
         v-model="isOpen"
-        @input="emitToggle"
         prefix-label
+        @input="emitToggle"
       >
         {{ resolvedButtonLabel }}
       </ChecSwitch>
