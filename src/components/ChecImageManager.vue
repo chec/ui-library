@@ -15,6 +15,7 @@
         <ImageBlock
           v-for="(file, index) in allFiles"
           :key="file.upload.uuid"
+          v-tooltip="file.name"
           :index="index + 1"
           :error="file.status === 'error'"
           :loading="file.upload.progress !== null && file.upload.progress < 100"
