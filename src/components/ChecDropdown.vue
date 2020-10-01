@@ -21,8 +21,8 @@
       :value="optionValue"
     >
     <div>
-      <label v-if="label || placeholder" class="dropdown__label">
-        {{ shownLabel }}
+      <label v-if="label" class="dropdown__label">
+        {{ label }}
       </label>
       <div class="dropdown__value">
         {{ shownValue }}
@@ -107,11 +107,9 @@ export default {
     */
     minimizedLabel: Boolean,
     /**
-     * Placeholder used when no option has been selected
+     * Optional placeholder used when no option has been selected
      */
-    placeholder: {
-      type: String,
-    },
+    placeholder: String,
     /**
      * Used as name attribute on hidden input
      */
@@ -175,12 +173,14 @@ export default {
         isFocus,
         label,
         showDropdown,
+        showingPlaceholder,
         variant,
         minimizedLabel,
       } = this;
 
       return {
         'dropdown--with-inline-label': isFocus && label,
+        'dropdown--showing-placeholder': showingPlaceholder,
         'dropdown--open': showDropdown,
         'dropdown--minimized-label': minimizedLabel,
         [`dropdown--${variant}`]: variant !== '',
@@ -230,13 +230,8 @@ export default {
       }
       return this.renderableOptions.filter(candidate => this.value.includes(candidate.value));
     },
-    /**
-     * The Label that should be shown if placeholder supplied
-     *
-     * @returns {string|*}
-     */
     shownValue() {
-      const emptyLabel = '\xa0';
+      const emptyLabel = this.hasPlaceholder ? this.placeholder : '\xa0';
       if (!this.multiselect) {
         // Note: \xa0 is the hex code for a non-breaking space. This is used so Vue will still render it.
         return this.selectedOptions && this.selectedOptions.label.trim()
@@ -258,16 +253,19 @@ export default {
         ` and ${validOptions.length - 2} more`,
       ].join(', ');
     },
-    /**
-     * The Label that should be shown
-     *
-     * @returns {string|*}
-     */
-    shownLabel() {
-      if (!this.isFocus) {
-        return this.placeholder || this.label;
+    hasPlaceholder() {
+      return typeof this.placeholder === 'string' && this.placeholder.length > 0;
+    },
+    showingPlaceholder() {
+      if (!this.hasPlaceholder) {
+        return false;
       }
-      return this.label;
+
+      if (Array.isArray(this.selectedOptions)) {
+        return this.selectedOptions.length === 0;
+      }
+
+      return !this.selectedOptions || !this.selectedOptions.label.trim();
     },
   },
   watch: {
@@ -556,7 +554,7 @@ export default {
   }
 
   &__value {
-    @apply leading-tight py-4 text-sm;
+    @apply leading-tight py-4 text-sm text-gray-600;
   }
 
   &:hover {
@@ -597,13 +595,20 @@ export default {
     }
   }
 
-  &--with-inline-label {
+  &--with-inline-label,
+  &--showing-placeholder {
     .dropdown__label {
       transform: translate(-0.2rem, -0.5rem) scale(0.8, 0.8);
     }
 
     .dropdown__value {
       @apply pt-6 pb-2;
+    }
+  }
+
+  &--showing-placeholder {
+    .dropdown__value {
+      @apply text-gray-400;
     }
   }
 
