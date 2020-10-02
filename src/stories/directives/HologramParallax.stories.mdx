@@ -1,0 +1,31 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import HologramParallax from '../../directives/HologramParallax';
+
+<Meta title="Directives/HologramParallax" />
+
+# Default:
+
+<Preview>
+  <Story name="Default">
+    {{
+      directives: { HologramParallax },
+      template: `
+        <div class="flex w-full bg-gray-600">
+          <div class="max-w-4xl w-full mx-auto p-16">
+            <div class="bg-hologram h-64 rounded-lg w-full" v-hologram-parallax />
+            <div
+              class="mt-32 text-5xl bg-hologram font-bold text-center"
+              style="
+                -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+                -moz-background-clip: text; -moz-text-fill-color: transparent;
+              "
+              v-hologram-parallax
+            >
+              Some holographic text with a parallax
+            </div>
+          </div>
+        </div>
+      `
+    }}
+  </Story>
+</Preview>

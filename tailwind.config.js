@@ -175,7 +175,20 @@ module.exports = {
     gradientsPlugin,
     plugin(({ addUtilities }) => addUtilities({
       '.bg-hologram': {
-        backgroundImage: 'inline("../assets/media/hologram-bg.png")',
+        backgroundImage: `
+          linear-gradient(132.37deg,
+            rgba(214, 228, 247, 0.83) 13.76%,
+            rgba(214, 228, 247, 0.46) 85.32%
+          ),
+          linear-gradient(135deg,
+            #ACC9DA 10.42%,
+            #E7AED2 20.31%,
+            #FF9ECA 31.77%,
+            #6EFFFB 47.92%,
+            #BCFFDF 53.65%,
+            #FF9FB4 69.27%,
+            #ACB8DA 91.86%
+          )`,
       },
       '.bg-code-block': {
         backgroundImage: 'inline("../assets/svgs/code-bg.svg")',
