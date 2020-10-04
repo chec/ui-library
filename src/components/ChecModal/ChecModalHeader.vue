@@ -50,8 +50,6 @@ export default {
 
 <style lang="scss">
 .chec-modal-header {
-  @apply flex justify-between text-gray-500 font-lato;
-
-  margin-bottom: 2.375rem;
+  @apply flex justify-between text-gray-500 font-lato mb-8;
 }
 </style>
