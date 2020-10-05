@@ -1,4 +1,4 @@
-import Dropzone from 'dropzone';
+const Dropzone = typeof window !== 'undefined' ? require('dropzone') : {};
 
 Dropzone.autoDiscover = false;
 
@@ -73,6 +73,7 @@ export default {
   },
   data() {
     return {
+      dropzone: null,
       incompleteFiles: [],
     };
   },
