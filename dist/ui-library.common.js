@@ -34983,10 +34983,6 @@ function _asyncToGenerator(fn) {
     });
   };
 }
-// EXTERNAL MODULE: ./node_modules/dropzone/dist/dropzone.js
-var dropzone = __webpack_require__("79e3");
-var dropzone_default = /*#__PURE__*/__webpack_require__.n(dropzone);
-
 // CONCATENATED MODULE: ./src/mixins/dropzone.js
 
 
@@ -35006,9 +35002,9 @@ var dropzone_default = /*#__PURE__*/__webpack_require__.n(dropzone);
 
 
 
-
-dropzone_default.a.autoDiscover = false;
-/* harmony default export */ var mixins_dropzone = ({
+var Dropzone = typeof window !== 'undefined' ? __webpack_require__("79e3") : {};
+Dropzone.autoDiscover = false;
+/* harmony default export */ var dropzone = ({
   model: {
     prop: 'files',
     event: 'change'
@@ -35090,6 +35086,7 @@ dropzone_default.a.autoDiscover = false;
   },
   data: function data() {
     return {
+      dropzone: null,
       incompleteFiles: []
     };
   },
@@ -35121,7 +35118,7 @@ dropzone_default.a.autoDiscover = false;
     var _this2 = this;
 
     var endpoint = this.endpoint;
-    this.dropzone = new dropzone_default.a(this.$el, _objectSpread2(_objectSpread2({
+    this.dropzone = new Dropzone(this.$el, _objectSpread2(_objectSpread2({
       chunkSize: 5000000,
       createImageThumbnails: true
     }, this.additionalDropzoneOptions), {}, {
@@ -35472,7 +35469,7 @@ var FileRow_component = normalizeComponent(
     ChecButton: ChecButton,
     FileRow: FileRow
   },
-  mixins: [mixins_dropzone]
+  mixins: [dropzone]
 });
 // CONCATENATED MODULE: ./src/components/ChecFileUploader.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_ChecFileUploadervue_type_script_lang_js_ = (ChecFileUploadervue_type_script_lang_js_); 
@@ -36011,7 +36008,7 @@ var ImageBlock_component = normalizeComponent(
     Draggable: vuedraggable_common_default.a,
     ImageBlock: ImageBlock
   },
-  mixins: [mixins_dropzone],
+  mixins: [dropzone],
   props: {
     footnote: {
       type: String,
