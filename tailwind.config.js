@@ -18,6 +18,10 @@ const fontSizes = {
 };
 
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
   purge: {
     enabled: Boolean(process.env.PURGE_ENABLED),
     content: [
