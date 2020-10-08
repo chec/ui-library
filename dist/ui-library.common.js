@@ -16588,6 +16588,40 @@ module.exports = function (it) {
 
 /***/ }),
 
+/***/ "ccf8":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M14.594 8.469H9.875c-.775 0-1.406.63-1.406 1.406 0 .775.63 1.406 1.406 1.406h4.719c.775 0 1.406-.63 1.406-1.406 0-.775-.63-1.406-1.406-1.406zM6.125 4.719H1.406C.631 4.719 0 5.349 0 6.125 0 6.9.63 7.531 1.406 7.531h4.719c.775 0 1.406-.63 1.406-1.406 0-.775-.63-1.406-1.406-1.406zM9.875 7.531c.775 0 1.406-.63 1.406-1.406V1.406C11.281.631 10.651 0 9.875 0 9.1 0 8.469.63 8.469 1.406v4.719c0 .775.63 1.406 1.406 1.406zM6.125 8.469c-.775 0-1.406.63-1.406 1.406v4.719c0 .775.63 1.406 1.406 1.406.775 0 1.406-.63 1.406-1.406V9.875c0-.775-.63-1.406-1.406-1.406zM12.719 7.531h1.406A1.877 1.877 0 0016 5.656a1.877 1.877 0 00-1.875-1.875 1.877 1.877 0 00-1.875 1.875v1.407c0 .258.21.468.469.468zM3.281 8.469H1.875A1.877 1.877 0 000 10.344c0 1.034.841 1.875 1.875 1.875a1.877 1.877 0 001.875-1.875V8.938a.469.469 0 00-.469-.47zM5.656 0a1.877 1.877 0 00-1.875 1.875c0 1.034.841 1.875 1.875 1.875h1.407c.258 0 .468-.21.468-.469V1.875A1.877 1.877 0 005.656 0zM10.344 12.25H8.938a.469.469 0 00-.47.469v1.406c0 1.034.842 1.875 1.876 1.875a1.877 1.877 0 001.875-1.875 1.877 1.877 0 00-1.875-1.875z","fill":"currentColor"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "cdf9":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -29632,6 +29666,10 @@ var ic_twitter_default = /*#__PURE__*/__webpack_require__.n(ic_twitter);
 var ic_github = __webpack_require__("11c4");
 var ic_github_default = /*#__PURE__*/__webpack_require__.n(ic_github);
 
+// EXTERNAL MODULE: ./src/assets/svgs/ic-slack.svg
+var ic_slack = __webpack_require__("ccf8");
+var ic_slack_default = /*#__PURE__*/__webpack_require__.n(ic_slack);
+
 // EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-link.svg
 var ic_link = __webpack_require__("b2a5");
 var ic_link_default = /*#__PURE__*/__webpack_require__.n(ic_link);
@@ -29884,6 +29922,7 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
 
+
  // Nav icons imports
 
 
@@ -29967,6 +30006,7 @@ var uiIcons = {
   facebook: ic_fb_default.a,
   twitter: ic_twitter_default.a,
   github: ic_github_default.a,
+  slack: ic_slack_default.a,
   image: ic_image_default.a,
   trash: ic_trash_default.a,
   drag: ic_drag_default.a
