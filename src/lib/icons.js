@@ -28,6 +28,7 @@ import IcFacebook from '../assets/svgs/ic-fb.svg';
 import IcTwitter from '../assets/svgs/ic-twitter.svg';
 import IcGithub from '../assets/svgs/ic-github.svg';
 import IcSlack from '../assets/svgs/ic-slack.svg';
+import IcYouTube from '../assets/svgs/ic-youtube.svg';
 import IcLink from '../assets/svgs/UiIcons/ic-link.svg';
 import IcRightArrow from '../assets/svgs/UiIcons/ic-right-arrow.svg';
 import IcLeftArrow from '../assets/svgs/UiIcons/ic-left-arrow.svg';
@@ -124,6 +125,7 @@ export const uiIcons = {
   twitter: IcTwitter,
   github: IcGithub,
   slack: IcSlack,
+  youtube: IcYouTube,
   image: IcImage,
   trash: IcTrash,
   drag: IcDrag,
