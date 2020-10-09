@@ -6891,6 +6891,40 @@ module.exports = {
 
 /***/ }),
 
+/***/ "6c08":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('g',{attrs:{"clip-path":"url(#clip0)"}},[_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M15.128 2.858c.248.248.427.558.519.897.528 2.127.406 5.486.01 7.696a2.011 2.011 0 01-1.416 1.416c-1.242.338-6.239.338-6.239.338s-4.997 0-6.239-.338A2.012 2.012 0 01.347 11.45c-.531-2.118-.386-5.48-.01-7.686a2.011 2.011 0 011.416-1.416C2.995 2.01 7.992 2 7.992 2s4.997 0 6.239.339c.339.091.648.27.897.519zm-4.581 4.745l-4.146 2.4V5.203l4.146 2.4z","fill":"currentColor"}})]),_c('defs',[_c('clipPath',{attrs:{"id":"clip0"}},[_c('path',{attrs:{"fill":"currentColor","d":"M0 0h16v16H0z"}})])])])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "6e91":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -29670,6 +29704,10 @@ var ic_github_default = /*#__PURE__*/__webpack_require__.n(ic_github);
 var ic_slack = __webpack_require__("ccf8");
 var ic_slack_default = /*#__PURE__*/__webpack_require__.n(ic_slack);
 
+// EXTERNAL MODULE: ./src/assets/svgs/ic-youtube.svg
+var ic_youtube = __webpack_require__("6c08");
+var ic_youtube_default = /*#__PURE__*/__webpack_require__.n(ic_youtube);
+
 // EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-link.svg
 var ic_link = __webpack_require__("b2a5");
 var ic_link_default = /*#__PURE__*/__webpack_require__.n(ic_link);
@@ -29923,6 +29961,7 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
 
+
  // Nav icons imports
 
 
@@ -30007,6 +30046,7 @@ var uiIcons = {
   twitter: ic_twitter_default.a,
   github: ic_github_default.a,
   slack: ic_slack_default.a,
+  youtube: ic_youtube_default.a,
   image: ic_image_default.a,
   trash: ic_trash_default.a,
   drag: ic_drag_default.a
