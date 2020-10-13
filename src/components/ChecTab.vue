@@ -1,7 +1,7 @@
 <template>
   <button
     class="chec-tab"
-    :class="{ 'chec-tab--active': active }"
+    :class="{ 'chec-tab--active': active, 'chec-tab--dark': dark }"
     :disabled="disabled"
     @click="handleClick"
   >
@@ -26,6 +26,10 @@ export default {
      * Disables the tab (but not the click handler)
      */
     disabled: Boolean,
+    /**
+     * Show the dark-mode variant of a tab
+     */
+    dark: Boolean,
   },
   methods: {
     handleClick() {
@@ -42,11 +46,11 @@ export default {
 
 <style lang="scss">
 .chec-tab {
-  @apply px-6 py-2 border-b-2 border-gray-300;
-  @apply font-bold font-lato text-sm text-gray-400;
+  // Spacing
+  @apply border-b-2 px-4 py-3 font-bold font-lato caps-xxs border-white bg-white text-gray-500;
 
   &:hover:enabled {
-    @apply text-gray-500 border-gray-400;
+    @apply border-gray-300 bg-gray-100 text-gray-600;
   }
 
   &:disabled {
@@ -57,7 +61,23 @@ export default {
   &:active,
   &:focus {
     &:enabled {
-      @apply outline-none text-gray-500 border-gray-500;
+      @apply outline-none border-gray-500 text-gray-600;
+    }
+  }
+
+  &--dark {
+    @apply border-gray-500 bg-gray-500 text-gray-300;
+
+    &:hover:enabled {
+      @apply border-gray-400 bg-gray-600 text-white;
+    }
+
+    &.chec-tab--active,
+    &:active,
+    &:focus {
+      &:enabled {
+        @apply border-white text-white;
+      }
     }
   }
 }
