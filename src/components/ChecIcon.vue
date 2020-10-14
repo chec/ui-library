@@ -22,7 +22,7 @@ export default {
   },
   render(createElement, { props, data }) {
     if (!uiIcons[props.icon]) {
-      throw Error('Required param "icon" was not valid');
+      throw Error(`Required param "icon" was not valid (${props.icon} given)`);
     }
 
     const updatedData = data;
