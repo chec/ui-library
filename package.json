@@ -1,6 +1,6 @@
 {
   "name": "@chec/ui-library",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "license": "BSD-3-Clause",
   "main": "dist/ui-library.common.js",
   "homepage": "https://github.com/chec/ui-library",
