@@ -10,12 +10,17 @@ export default {
         closed: 'Show this section',
       },
     },
-    imageManager: {
-      chooseImages: 'Choose images(s)',
-    },
     general: {
       search: 'Search',
       required: '(required)',
+    },
+    fileManager: {
+      chooseFiles: 'Choose file(s)',
+      deleteFile: 'Delete file',
+    },
+    imageManager: {
+      chooseImages: 'Choose images(s)',
+      deleteImage: 'Delete image',
     },
     navigation: {
       returnToHome: 'Return to the home page',

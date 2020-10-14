@@ -21,7 +21,7 @@
           :loading="file.upload.progress !== null && file.upload.progress < 100"
           :thumbnail="file.thumb"
           :progress="file.upload.progress"
-          @remove="() => handleRemovingFile(file)"
+          @remove="() => removeFile(file)"
         />
       </Draggable>
       <ChecButton data-dropzone-clickable @click.stop>
@@ -63,6 +63,11 @@ export default {
     };
   },
   methods: {
+    /**
+     * Set a new sort order for the files
+     *
+     * @param {array} newFiles
+     */
     reorder(newFiles) {
       // Map the files that have been reordered (all files) back to the files in the format they were given in props
       this.handleFilesChange(newFiles
