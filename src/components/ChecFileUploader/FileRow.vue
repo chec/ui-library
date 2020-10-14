@@ -33,7 +33,12 @@
           {{ size }}
         </p>
       </template>
-      <button class="chec-file-row__remove-button" @click="() => $emit('remove-file')">
+      <button
+        type="button"
+        class="chec-file-row__remove-button"
+        :title="$t('fileManager.deleteFile')"
+        @click="() => $emit('remove')"
+      >
         <ChecIcon
           icon="close"
         />

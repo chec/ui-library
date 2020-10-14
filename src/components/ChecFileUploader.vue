@@ -11,11 +11,11 @@
           :file-size="file.size"
           :mime-type="file.type"
           :progress="file.upload.progress"
-          @remove-file="() => handleRemovingFile(file)"
+          @remove="() => removeFile(file)"
         />
       </div>
       <ChecButton data-dropzone-clickable @click.stop>
-        Choose file(s)
+        {{ $t('fileManager.chooseFiles') }}
       </ChecButton>
       <input class="chec-file-uploader__input" type="file">
     </div>

@@ -37,7 +37,12 @@
           icon="drag"
         />
       </div>
-      <button class="chec-image-item__remove-button" @click.stop="handleRemove">
+      <button
+        :title="$t('imageManager.deleteImage')"
+        type="button"
+        class="chec-image-item__remove-button"
+        @click.stop="handleRemove"
+      >
         <ChecIcon
           icon="trash"
         />

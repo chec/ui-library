@@ -211,7 +211,11 @@ export default {
         return;
       }
 
-      const realIndex = this.files.findIndex((candidate) => candidate.id === file.id);
+      const realIndex = this.files.findIndex((candidate) => {
+        // Saved files will have an ID, unsaved files will not
+        const fileId = typeof file.id !== 'undefined' ? file.id : file.upload.uuid;
+        return candidate.id === fileId;
+      });
       this.handleFilesChange([
         ...this.files.slice(0, realIndex),
         ...this.files.slice(realIndex + 1),
