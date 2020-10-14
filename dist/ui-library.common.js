@@ -35390,12 +35390,12 @@ Dropzone.autoDiscover = false;
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"72dcd96e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFileUploader/FileRow.vue?vue&type=template&id=007e70f7&
-var FileRowvue_type_template_id_007e70f7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-file-row",class:{ 'chec-file-row--error': _vm.error }},[_c('div',{staticClass:"chec-file-row__left"},[(_vm.loading && !_vm.error)?_c('div',{staticClass:"chec-file-row__loading-icon"},[_c('ChecLoading',{attrs:{"without-background":"","variant":"dark"}})],1):_c('div',{staticClass:"chec-file-row__icon"},[(_vm.error)?_c('ChecIcon',{attrs:{"icon":"close"}}):_c('ChecIcon',{attrs:{"icon":"check"}})],1),(!_vm.error)?_c('p',{staticClass:"chec-file-row__label"},[_vm._v(" "+_vm._s(_vm.fileName || '--')+" ")]):_c('p',{staticClass:"chec-file-row__label"},[_vm._v(" "+_vm._s(((_vm.fileName || '') + " - " + (_vm.errorMessage || 'Failed')))+" ")])]),_c('div',{staticClass:"chec-file-row__right"},[(_vm.loading)?_c('p',{staticClass:"chec-file-row__progress"},[_vm._v(" "+_vm._s(_vm.progressPercent)+" ")]):[(!_vm.error)?_c('p',{staticClass:"chec-file-row__type"},[_vm._v(" "+_vm._s(_vm.mimeType)+" ")]):_vm._e(),(!_vm.error)?_c('p',{staticClass:"chec-file-row__size"},[_vm._v(" "+_vm._s(_vm.size)+" ")]):_vm._e()],_c('button',{staticClass:"chec-file-row__remove-button",attrs:{"type":"button","title":_vm.$t('fileManager.deleteFile')},on:{"click":function () { return _vm.$emit('remove'); }}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1)],2)])}
-var FileRowvue_type_template_id_007e70f7_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"72dcd96e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFileUploader/FileRow.vue?vue&type=template&id=5e789e73&
+var FileRowvue_type_template_id_5e789e73_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-file-row",class:{ 'chec-file-row--error': _vm.error }},[_c('div',{staticClass:"chec-file-row__left"},[(_vm.loading && !_vm.error)?_c('div',{staticClass:"chec-file-row__loading-icon"},[_c('ChecLoading',{attrs:{"without-background":"","variant":"dark"}})],1):_c('div',{staticClass:"chec-file-row__icon"},[(_vm.error)?_c('ChecIcon',{attrs:{"icon":"close"}}):_c('ChecIcon',{attrs:{"icon":"check"}})],1),(!_vm.error)?_c('p',{staticClass:"chec-file-row__label"},[_vm._v(" "+_vm._s(_vm.fileName || '--')+" ")]):_c('p',{staticClass:"chec-file-row__label"},[_vm._v(" "+_vm._s(((_vm.fileName || '') + " - " + (_vm.errorMessage || 'Failed')))+" ")])]),_c('div',{staticClass:"chec-file-row__right"},[(_vm.loading)?_c('p',{staticClass:"chec-file-row__progress"},[_vm._v(" "+_vm._s(_vm.progressPercent)+" ")]):[(!_vm.error)?_c('p',{staticClass:"chec-file-row__type"},[_vm._v(" "+_vm._s(_vm.mimeType)+" ")]):_vm._e(),(!_vm.error)?_c('p',{staticClass:"chec-file-row__size"},[_vm._v(" "+_vm._s(_vm.size)+" ")]):_vm._e()],(!_vm.loading)?_c('button',{staticClass:"chec-file-row__remove-button",attrs:{"type":"button","title":_vm.$t('fileManager.deleteFile')},on:{"click":function () { return _vm.$emit('remove'); }}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1):_vm._e()],2)])}
+var FileRowvue_type_template_id_5e789e73_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecFileUploader/FileRow.vue?vue&type=template&id=007e70f7&
+// CONCATENATED MODULE: ./src/components/ChecFileUploader/FileRow.vue?vue&type=template&id=5e789e73&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.to-fixed.js
 var es_number_to_fixed = __webpack_require__("b680");
@@ -35407,6 +35407,7 @@ var filesize_min_default = /*#__PURE__*/__webpack_require__.n(filesize_min);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFileUploader/FileRow.vue?vue&type=script&lang=js&
 
 
+//
 //
 //
 //
@@ -35538,8 +35539,8 @@ var FileRowvue_type_style_index_0_lang_scss_ = __webpack_require__("4076");
 
 var FileRow_component = normalizeComponent(
   ChecFileUploader_FileRowvue_type_script_lang_js_,
-  FileRowvue_type_template_id_007e70f7_render,
-  FileRowvue_type_template_id_007e70f7_staticRenderFns,
+  FileRowvue_type_template_id_5e789e73_render,
+  FileRowvue_type_template_id_5e789e73_staticRenderFns,
   false,
   null,
   null,
@@ -35910,16 +35911,17 @@ var ChecImageManagervue_type_template_id_7e597cb4_staticRenderFns = []
 var vuedraggable_common = __webpack_require__("310e");
 var vuedraggable_common_default = /*#__PURE__*/__webpack_require__.n(vuedraggable_common);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"72dcd96e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecImageManager/ImageBlock.vue?vue&type=template&id=71f57d4f&
-var ImageBlockvue_type_template_id_71f57d4f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-image-item",class:{ 'chec-image-item--error': _vm.error, 'chec-image-item--loading': _vm.loading && !_vm.error }},[_c('div',{staticClass:"chec-image-item__index"},[_vm._v(" "+_vm._s(_vm.index)+" ")]),_c('div',{staticClass:"chec-image-item__thumbnail",class:{ 'chec-image-item__thumbnail--placeholder': !_vm.thumbnail }},[(_vm.thumbnail)?_c('img',{attrs:{"src":_vm.thumbnail}}):_c('ChecIcon',{attrs:{"icon":"chec"}})],1),(_vm.loading && !_vm.error)?_c('div',{staticClass:"chec-image-item__loading-icon"},[_c('div',{staticClass:"chec-image-item__progress"},[_c('ChecLoading',{attrs:{"without-background":"","variant":"dark"}}),_c('p',{staticClass:"chec-image-item__percentage"},[_vm._v(" "+_vm._s(_vm.progressPercent)+" ")])],1)]):_vm._e(),(_vm.error)?_c('div',{staticClass:"chec-image-item__label space-y-2"},[_c('ChecIcon',{attrs:{"size":"base","icon":"exclamation-square"}}),_c('p',[_vm._v(_vm._s(("" + (_vm.errorMessage || 'Failed'))))])],1):_vm._e(),_c('div',{staticClass:"chec-image-item__actions",on:{"click":_vm.handleClick}},[(!_vm.loading && !_vm.error)?_c('div',{staticClass:"chec-image-item__drag"},[_c('ChecIcon',{attrs:{"icon":"drag"}})],1):_vm._e(),_c('button',{staticClass:"chec-image-item__remove-button",attrs:{"title":_vm.$t('imageManager.deleteImage'),"type":"button"},on:{"click":function($event){$event.stopPropagation();return _vm.handleRemove($event)}}},[_c('ChecIcon',{attrs:{"icon":"trash"}})],1)])])}
-var ImageBlockvue_type_template_id_71f57d4f_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"72dcd96e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecImageManager/ImageBlock.vue?vue&type=template&id=2e437953&
+var ImageBlockvue_type_template_id_2e437953_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-image-item",class:{ 'chec-image-item--error': _vm.error, 'chec-image-item--loading': _vm.loading && !_vm.error }},[_c('div',{staticClass:"chec-image-item__index"},[_vm._v(" "+_vm._s(_vm.index)+" ")]),_c('div',{staticClass:"chec-image-item__thumbnail",class:{ 'chec-image-item__thumbnail--placeholder': !_vm.thumbnail }},[(_vm.thumbnail)?_c('img',{attrs:{"src":_vm.thumbnail}}):_c('ChecIcon',{attrs:{"icon":"chec"}})],1),(_vm.loading && !_vm.error)?_c('div',{staticClass:"chec-image-item__loading-icon"},[_c('div',{staticClass:"chec-image-item__progress"},[_c('ChecLoading',{attrs:{"without-background":"","variant":"dark"}}),_c('p',{staticClass:"chec-image-item__percentage"},[_vm._v(" "+_vm._s(_vm.progressPercent)+" ")])],1)]):_vm._e(),(_vm.error)?_c('div',{staticClass:"chec-image-item__label space-y-2"},[_c('ChecIcon',{attrs:{"size":"base","icon":"exclamation-square"}}),_c('p',[_vm._v(_vm._s(("" + (_vm.errorMessage || 'Failed'))))])],1):_vm._e(),_c('div',{staticClass:"chec-image-item__actions",on:{"click":_vm.handleClick}},[(!_vm.loading && !_vm.error)?_c('div',{staticClass:"chec-image-item__drag"},[_c('ChecIcon',{attrs:{"icon":"drag"}})],1):_vm._e(),(!_vm.loading)?_c('button',{staticClass:"chec-image-item__remove-button",attrs:{"title":_vm.$t('imageManager.deleteImage'),"type":"button"},on:{"click":function($event){$event.stopPropagation();return _vm.handleRemove($event)}}},[_c('ChecIcon',{attrs:{"icon":"trash"}})],1):_vm._e()])])}
+var ImageBlockvue_type_template_id_2e437953_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecImageManager/ImageBlock.vue?vue&type=template&id=71f57d4f&
+// CONCATENATED MODULE: ./src/components/ChecImageManager/ImageBlock.vue?vue&type=template&id=2e437953&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecImageManager/ImageBlock.vue?vue&type=script&lang=js&
 
 
+//
 //
 //
 //
@@ -36062,8 +36064,8 @@ var ImageBlockvue_type_style_index_0_lang_scss_ = __webpack_require__("1846");
 
 var ImageBlock_component = normalizeComponent(
   ChecImageManager_ImageBlockvue_type_script_lang_js_,
-  ImageBlockvue_type_template_id_71f57d4f_render,
-  ImageBlockvue_type_template_id_71f57d4f_staticRenderFns,
+  ImageBlockvue_type_template_id_2e437953_render,
+  ImageBlockvue_type_template_id_2e437953_staticRenderFns,
   false,
   null,
   null,
