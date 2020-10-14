@@ -38,6 +38,7 @@
         />
       </div>
       <button
+        v-if="!loading"
         :title="$t('imageManager.deleteImage')"
         type="button"
         class="chec-image-item__remove-button"

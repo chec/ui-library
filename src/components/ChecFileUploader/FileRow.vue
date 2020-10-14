@@ -34,6 +34,7 @@
         </p>
       </template>
       <button
+        v-if="!loading"
         type="button"
         class="chec-file-row__remove-button"
         :title="$t('fileManager.deleteFile')"
