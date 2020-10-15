@@ -33,6 +33,7 @@ import ChecTag from './components/ChecTag.vue';
 import ChecTooltip from './directives/ChecTooltip';
 import ChecVerticalNavigation from './components/ChecVerticalNavigation';
 import ChecVerticalNavItem from './components/ChecVerticalNavItem';
+import ChecWysiwyg from './components/ChecWysiwyg';
 import CodeBlock from './components/CodeBlock.vue';
 import InnerBlock from './components/ChecCard/InnerBlock.vue';
 import Lang from './lang/index';
@@ -76,6 +77,7 @@ export {
   ChecTooltip,
   ChecVerticalNavigation,
   ChecVerticalNavItem,
+  ChecWysiwyg,
   CodeBlock,
   InnerBlock,
   Lang,

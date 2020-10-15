@@ -1,0 +1,91 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info'
+import ChecWysiwyg from '../../components/ChecWysiwyg.vue';
+import ChecFormField from '../../components/ChecFormField.vue';
+import { uiIcons } from '../../lib/icons';
+
+<Meta title="Form fields/WYSIWYG" component={ChecWysiwyg} />
+
+# Text Field
+
+<Props of={ChecWysiwyg} />
+
+# Default
+
+<Preview>
+  <Story name="Defaults">
+    {{
+      components: {
+        ChecFormField,
+        ChecWysiwyg,
+      },
+      props: {
+        errored: {
+          default: boolean('Errored', false)
+        },
+        disabled: {
+          default: boolean('Disabled', false)
+        },
+        label: {
+          default: text('Label', 'Label')
+        },
+        required: {
+          default: boolean('Required', false)
+        },
+        placeholder: {
+          default: text('Placeholder', 'Test placeholder'),
+        },
+        styleVariant: {
+          default: select('Style Variant', ['light', 'dark']),
+        },
+        background: {
+          default: select('Background Color', ['light', 'dark']),
+        },
+        appendLabel: {
+          default: text('Append label', 'Click me'),
+        },
+        tooltip: {
+          default: text('Tooltip copy', 'Lorem Ipsum Dolor'),
+        },
+        wysiwygRows: {
+          default: select('Set WYSIWYG Size', ['sm', 'md', 'lg', 'auto']),
+        },
+      },
+      data() {
+        return { inputValue: '<p>Some initial <b>html</b> content</p>' };
+      },
+      computed: {
+        variant() {
+          return this.disabled ? 'disabled' : this.errored ? 'error' : '';
+        }
+      },
+      methods: {
+        handleClick(e, value) {
+          return action(`Text field action button was clicked with: ${value}`)();
+        }
+      },
+      template: `
+        <div class="py-16 w-full flex justify-around" :class="{'bg-gray-700': background === 'dark'}">
+          <ChecFormField
+            :appendLabel="appendLabel"
+            :tooltip="tooltip"
+            @action-click="handleClick"
+            class="w-full max-w-sm"
+          >
+            <ChecWysiwyg
+              name="input-name"
+              :label="label"
+              v-model="inputValue"
+              :variant="variant"
+              :style-variant="styleVariant"
+              :placeholder="placeholder"
+              :required="required"
+              :size="wysiwygRows"
+            />
+          </ChecFormField>
+        </div>`,
+    }}
+  </Story>
+</Preview>

@@ -39,6 +39,8 @@
     "prismjs": "^1.21.0",
     "tailwindcss": "^1.8.12",
     "tailwindcss-plugins": "^0.3.0",
+    "tiptap": "^1.30.0",
+    "tiptap-extensions": "^1.33.1",
     "v-tooltip": "akryum/v-tooltip",
     "vue": "^2.6.10",
     "vue-flatpickr-component": "^8.1.5",
@@ -74,6 +76,9 @@
   },
   "peerDependencies": {
     "vue-i18n": "8.x"
+  },
+  "resolutions": {
+    "prosemirror-model": "1.11.2"
   },
   "browserslist": [
     "> 1%",

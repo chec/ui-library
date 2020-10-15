@@ -40,6 +40,10 @@ import IcThumbsUp from '../assets/svgs/UiIcons/ic-thumbs-up.svg';
 import IcThumbsDown from '../assets/svgs/UiIcons/ic-thumbs-down.svg';
 import IcTrash from '../assets/svgs/UiIcons/ic-trash.svg';
 import IcDrag from '../assets/svgs/UiIcons/ic-drag.svg';
+import IcBold from '../assets/svgs/UiIcons/ic-bold.svg';
+import IcItalic from '../assets/svgs/UiIcons/ic-italic.svg';
+import IcBulletList from '../assets/svgs/UiIcons/ic-bullet-list.svg';
+import IcQuote from '../assets/svgs/UiIcons/ic-quote.svg';
 
 // Nav icons imports
 import IcOrders from '../assets/svgs/NavIcons/ic-orders.svg';
@@ -129,6 +133,10 @@ export const uiIcons = {
   image: IcImage,
   trash: IcTrash,
   drag: IcDrag,
+  bold: IcBold,
+  italic: IcItalic,
+  'bullet-list': IcBulletList,
+  quote: IcQuote,
 };
 
 export const navIcons = {
