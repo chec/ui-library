@@ -45,16 +45,14 @@ export default {
 $colors: 'green', 'orange', 'purple', 'red', 'blue';
 
 .data-pill {
-  $this: &;
-
   @apply py-1 px-2 rounded-full caps-xxs;
 
   @each $color in $colors {
     &--#{$color} {
       @apply bg-#{$color}-100 text-#{$color}-600;
 
-      &#{$this}--filled {
-        @apply bg-#{$color}-600 text-white;
+      &.data-pill--filled {
+        @apply bg-#{$color}-500 text-#{$color}-100;
       }
     }
   }
@@ -63,7 +61,7 @@ $colors: 'green', 'orange', 'purple', 'red', 'blue';
   &--gray {
     @apply bg-gray-200 text-gray-500;
 
-    &#{$this}--filled {
+    &.data-pill--filled {
       @apply bg-gray-400 text-white;
     }
   }
