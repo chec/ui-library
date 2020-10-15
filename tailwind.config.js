@@ -39,7 +39,7 @@ module.exports = {
         'sans-serif',
       ],
       mono: [
-        'Roboto Mono',
+        'Source Code Pro',
         'monospace',
       ],
     },
