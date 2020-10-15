@@ -15,6 +15,7 @@ const fontSizes = {
   '3xl': '1.688rem',
   '4xl': '2rem',
   '5xl': '2.5rem',
+  '6xl': '2.75rem',
 };
 
 module.exports = {
@@ -99,7 +100,7 @@ module.exports = {
       'blue-100': '#F1F9FE',
       'gray-700': '#151B23',
       'gray-600': '#283341',
-      'gray-500': '#41556C',
+      'gray-500': '#41546C',
       'gray-400': '#7187A5',
       'gray-300': '#D6E4F7',
       'gray-200': '#F1F6FC',
