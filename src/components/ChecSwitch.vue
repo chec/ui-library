@@ -87,7 +87,7 @@ export default {
   @apply relative w-auto flex items-center cursor-pointer;
 
   &__container {
-    @apply relative flex items-center w-10 h-5 rounded-full bg-gray-300 p-px;
+    @apply relative flex items-center w-10 h-5 rounded-full bg-gray-300 p-px shadow-inner;
   }
 
   &__thumb {
