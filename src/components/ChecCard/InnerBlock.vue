@@ -1,6 +1,6 @@
 <template>
   <div class="card-inner-block">
-    <div>
+    <div class="card-inner-block__container">
       <component :is="titleTag" v-if="title" class="card-inner-block__title">
         {{ title }}
       </component>
@@ -84,6 +84,10 @@ export default {
 
   &__action {
     @apply break-normal;
+  }
+
+  &__container {
+    @apply flex-grow;
   }
 }
 </style>
