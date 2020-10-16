@@ -172,7 +172,7 @@ export default {
         minimizedLabel,
       } = this;
 
-      return {
+      const classes = {
         'text-field--currency': currency,
         'text-field--disabled': variant === 'disabled',
         'text-field--error': variant === 'error',
@@ -183,6 +183,15 @@ export default {
         'text-field--minimized-label': minimizedLabel,
         [`text-field--${styleVariant}`]: styleVariant !== '',
       };
+
+      /**
+       * If the input is a currency field, allow 0 to show in the modified state.
+       */
+      if (currency && value === 0) {
+        classes['text-field--modified'] = true;
+      }
+
+      return classes;
     },
     hasPlaceholder() {
       return typeof this.placeholder === 'string' && this.placeholder.length > 0;
