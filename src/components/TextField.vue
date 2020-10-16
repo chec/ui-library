@@ -240,13 +240,13 @@ export default {
       this.hasSlot = this.$refs.rightContentSlot.clientWidth > 0;
       this.slotWidth = this.$refs.rightContentSlot.scrollWidth;
     },
+    /**
+     * Allows the input padding to grow to match the width of the currency symbol container.
+     */
     adjustCurrencyPadding() {
       if (!this.currency) {
         return;
       }
-      /**
-       * Allows the input padding to grow to match the width of the currency symbol container.
-       */
       this.$refs.input.style.paddingLeft = `${this.$refs.currency.offsetWidth}px`;
     },
     autoGrow() {
