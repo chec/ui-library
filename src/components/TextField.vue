@@ -34,7 +34,7 @@
         {{ $t('general.required') }}
       </span>
     </label>
-    <div class="text-field__currency">
+    <div ref="currency" class="text-field__currency">
       {{ currencySymbol }}
     </div>
     <div v-if="$slots.default" ref="rightContentSlot" class="text-field__right-content">
@@ -194,6 +194,11 @@ export default {
         this.autoGrow();
       });
     },
+    currencySymbol() {
+      this.$nextTick(() => {
+        this.adjustCurrencyPadding();
+      });
+    },
     isScrollable(scrollable) {
       if (scrollable) {
         this.$refs.input.addEventListener('scroll', this.handleScroll);
@@ -204,7 +209,7 @@ export default {
   },
   mounted() {
     this.autoGrow();
-
+    this.adjustCurrencyPadding();
     if (!this.multiline && this.$slots.default) {
       this.slotObserver = new MutationObserver(this.adjustSlotWidth);
 
@@ -234,6 +239,12 @@ export default {
     adjustSlotWidth() {
       this.hasSlot = this.$refs.rightContentSlot.clientWidth > 0;
       this.slotWidth = this.$refs.rightContentSlot.scrollWidth;
+    },
+    adjustCurrencyPadding() {
+      if (!this.currency) {
+        return;
+      }
+      this.$refs.input.style.paddingLeft = `${this.$refs.currency.offsetWidth}px`;
     },
     autoGrow() {
       if (!this.multiline) {

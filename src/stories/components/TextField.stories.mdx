@@ -55,7 +55,7 @@ import { uiIcons } from '../../lib/icons';
           default: select('Background Color', ['light', 'dark']),
         },
         currencySymbol: {
-          default: select('Curency Symbol', ['$', '£', '€', '¥', '₹', '฿']),
+          default: select('Curency Symbol', ['$', '£', '€', '¥', '₹', '฿', 'CHF', 'lei']),
         },
         appendLabel: {
           default: text('Append label', 'Click me'),
@@ -422,6 +422,12 @@ import { uiIcons } from '../../lib/icons';
         disabled: {
           default: boolean('Disabled', false)
         },
+        currency: {
+          default: boolean('Currency', true)
+        },
+        currencySymbol: {
+          default: select('Curency Symbol', ['$', '£', '€', '¥', '₹', '฿', 'CHF', 'lei']),
+        },
       },
       computed: {
         variant() {
@@ -437,10 +443,10 @@ import { uiIcons } from '../../lib/icons';
             name="input-name"
             :label="label"
             class="w-full max-w-sm"
-            placeholder="Text Field Placeholder"
             :variant="variant"
-            currency="true"
+            :currency="currency"
             v-model="inputValue"
+            :currencySymbol="'CHF'"
           />
         </div>`,
     }}
