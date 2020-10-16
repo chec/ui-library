@@ -1,6 +1,6 @@
 <template>
   <div class="card-inner-block">
-    <div>
+    <div class="flex-grow">
       <component :is="titleTag" v-if="title" class="card-inner-block__title">
         {{ title }}
       </component>
