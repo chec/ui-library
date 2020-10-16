@@ -15,6 +15,7 @@ const fontSizes = {
   '3xl': '1.688rem',
   '4xl': '2rem',
   '5xl': '2.5rem',
+  '6xl': '2.75rem',
 };
 
 module.exports = {
@@ -38,7 +39,7 @@ module.exports = {
         'sans-serif',
       ],
       mono: [
-        'Roboto Mono',
+        'Source Code Pro',
         'monospace',
       ],
     },
@@ -57,7 +58,9 @@ module.exports = {
       'light-focus': '0px 0px 0px 4px #D6E4F7',
       'dark-focus': '0px 0px 0px 4px #41546C',
       'error-focus': '0 0 0 4px rgba(231, 126, 143, 0.3)',
-      inner: 'inset 0px 1px 2px rgba(40, 51, 65, 0.1)',
+      inner: 'inset 0px 0px 1px rgba(40, 51, 65, 0.2), '
+        + 'inset 0px 1px 1px rgba(40, 51, 65, 0.1), '
+        + 'inset 0px 2px 2px rgba(40, 51, 65, 0.1)',
       none: 'none',
       holo: '4px -4px 16px rgba(156, 139, 218, 0.1), -4px -4px 16px rgba(115, 200, 242, 0.1),'
       + '-4px 4px 16px rgba(133, 224, 206, 0.1), 4px 4px 16px rgba(231, 126, 144, 0.1),'
@@ -99,7 +102,7 @@ module.exports = {
       'blue-100': '#F1F9FE',
       'gray-700': '#151B23',
       'gray-600': '#283341',
-      'gray-500': '#41556C',
+      'gray-500': '#41546C',
       'gray-400': '#7187A5',
       'gray-300': '#D6E4F7',
       'gray-200': '#F1F6FC',

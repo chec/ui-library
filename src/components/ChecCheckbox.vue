@@ -122,7 +122,7 @@ export default {
       bg-white
       rounded
       border border-gray-400
-      shadow-sm
+      shadow-inner
       h-4 w-4;
 
     &:focus {
