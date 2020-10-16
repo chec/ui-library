@@ -244,6 +244,9 @@ export default {
       if (!this.currency) {
         return;
       }
+      /**
+       * Allows the input padding to grow to match the width of the currency symbol container.
+       */
       this.$refs.input.style.paddingLeft = `${this.$refs.currency.offsetWidth}px`;
     },
     autoGrow() {
