@@ -178,18 +178,10 @@ export default {
         'text-field--error': variant === 'error',
         'text-field--empty': value === '',
         'text-field--inline-label': label,
-        'text-field--filled': label ? !!value : false,
         'text-field--multiline': multiline,
         'text-field--minimized-label': minimizedLabel,
         [`text-field--${styleVariant}`]: styleVariant !== '',
       };
-
-      /**
-       * If the input is a currency field, allow 0 to show in the filled state.
-       */
-      if (currency && value === 0) {
-        classes['text-field--filled'] = true;
-      }
 
       return classes;
     },
@@ -204,6 +196,11 @@ export default {
       });
     },
     currencySymbol() {
+      this.$nextTick(() => {
+        this.adjustCurrencyPadding();
+      });
+    },
+    currency() {
       this.$nextTick(() => {
         this.adjustCurrencyPadding();
       });
@@ -254,6 +251,7 @@ export default {
      */
     adjustCurrencyPadding() {
       if (!this.currency) {
+        this.$refs.input.style.paddingLeft = '1rem';
         return;
       }
       this.$refs.input.style.paddingLeft = `${this.$refs.currency.offsetWidth}px`;
@@ -434,7 +432,7 @@ export default {
 
   }
 
-  &--filled {
+  &:not(.text-field--empty) {
     .text-field__label {
       @apply opacity-100;
     }
