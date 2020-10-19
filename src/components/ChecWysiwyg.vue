@@ -33,7 +33,7 @@
           :title="$t('wysiwyg.bold')"
           :disabled="disabled"
           class="chec-wysiwyg__menubar--button"
-          :class="{ 'chec-wysiwyg__menubar--button--is-active': isActive.bold() }"
+          :class="{ 'chec-wysiwyg__menubar--button-is-active': isActive.bold() }"
           @click="commands.bold"
         >
           <ChecIcon icon="bold" size="base" />
@@ -42,7 +42,7 @@
           type="button"
           :title="$t('wysiwyg.italic')"
           class="chec-wysiwyg__menubar--button"
-          :class="{ 'chec-wysiwyg__menubar--button--is-active': isActive.italic() }"
+          :class="{ 'chec-wysiwyg__menubar--button-is-active': isActive.italic() }"
           :disabled="disabled"
           @click="commands.italic"
         >
@@ -52,7 +52,7 @@
           type="button"
           :title="$t('wysiwyg.h1')"
           class="chec-wysiwyg__menubar--button"
-          :class="{ 'chec-wysiwyg__menubar--button--is-active': isActive.heading({ level: 1 }) }"
+          :class="{ 'chec-wysiwyg__menubar--button-is-active': isActive.heading({ level: 1 }) }"
           :disabled="disabled"
           @click="commands.heading({ level: 1 })"
         >
@@ -72,7 +72,7 @@
           type="button"
           :title="$t('wysiwyg.h3')"
           class="chec-wysiwyg__menubar--button"
-          :class="{ 'chec-wysiwyg__menubar--button--is-active': isActive.heading({ level: 3 }) }"
+          :class="{ 'chec-wysiwyg__menubar--button-is-active': isActive.heading({ level: 3 }) }"
           :disabled="disabled"
           @click="commands.heading({ level: 3 })"
         >
@@ -92,7 +92,7 @@
           type="button"
           :title="$t('wysiwyg.blockquote')"
           class="chec-wysiwyg__menubar--button"
-          :class="{ 'chec-wysiwyg__menubar--button--is-active': isActive.blockquote() }"
+          :class="{ 'chec-wysiwyg__menubar--button-is-active': isActive.blockquote() }"
           :disabled="disabled"
           @click="commands.blockquote"
         >
@@ -388,7 +388,7 @@ export default {
       }
     }
 
-    &--button--is-active {
+    &--button-is-active {
       @apply bg-gray-500;
     }
   }
@@ -482,8 +482,9 @@ export default {
 
     .chec-wysiwyg__menubar {
       @apply bg-gray-300 text-gray-500;
-      .chec-wysiwyg__menubar--button--is-active{
-        @apply text-gray-200
+
+      .chec-wysiwyg__menubar--button-is-active {
+        @apply text-gray-200;
       }
     }
   }
