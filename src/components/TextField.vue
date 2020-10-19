@@ -172,17 +172,18 @@ export default {
         minimizedLabel,
       } = this;
 
-      return {
+      const classes = {
         'text-field--currency': currency,
         'text-field--disabled': variant === 'disabled',
         'text-field--error': variant === 'error',
         'text-field--empty': value === '',
         'text-field--inline-label': label,
-        'text-field--modified': label ? !!value : false,
         'text-field--multiline': multiline,
         'text-field--minimized-label': minimizedLabel,
         [`text-field--${styleVariant}`]: styleVariant !== '',
       };
+
+      return classes;
     },
     hasPlaceholder() {
       return typeof this.placeholder === 'string' && this.placeholder.length > 0;
@@ -195,6 +196,11 @@ export default {
       });
     },
     currencySymbol() {
+      this.$nextTick(() => {
+        this.adjustCurrencyPadding();
+      });
+    },
+    currency() {
       this.$nextTick(() => {
         this.adjustCurrencyPadding();
       });
@@ -245,6 +251,7 @@ export default {
      */
     adjustCurrencyPadding() {
       if (!this.currency) {
+        this.$refs.input.style.paddingLeft = '1rem';
         return;
       }
       this.$refs.input.style.paddingLeft = `${this.$refs.currency.offsetWidth}px`;
@@ -425,7 +432,7 @@ export default {
 
   }
 
-  &--modified {
+  &:not(.text-field--empty) {
     .text-field__label {
       @apply opacity-100;
     }
