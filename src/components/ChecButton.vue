@@ -159,7 +159,7 @@ export default {
 @use 'sass:map';
 
 .button {
-  @apply font-bold shadow-sm border border-0 flex justify-center items-center text-center;
+  @apply font-bold shadow-sm border border-0 flex justify-center items-center text-center cursor-pointer;
 
   &--has-icon-before {
     .button__content:not(:empty) {
@@ -241,7 +241,7 @@ export default {
       ),
       'secondary': (
         'default': 'bg-white',
-        'hover': 'bg-gray-100',
+        'hover': 'bg-gray-200',
         'active': 'bg-gray-300',
         'text': 'text-gray-500',
       ),
@@ -268,7 +268,7 @@ export default {
         &:not(:disabled):hover {
           // Override any gradient background
           background-image: none;
-          @apply #{map.get($config, 'hover')};
+          @apply #{map.get($config, 'hover')} #{map.get($config, 'text')};
         }
 
         &:not(.button--disabled):active,
