@@ -611,6 +611,7 @@ export default {
     .dropdown__value {
       @apply text-gray-400;
     }
+
     &.dropdown--labeless {
       .dropdown__value {
         @apply py-4;
