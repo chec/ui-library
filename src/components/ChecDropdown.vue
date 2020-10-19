@@ -182,6 +182,7 @@ export default {
         'dropdown--with-inline-label': isFocus && label,
         'dropdown--showing-placeholder': showingPlaceholder,
         'dropdown--open': showDropdown,
+        'dropdown--labeless': !label,
         'dropdown--minimized-label': minimizedLabel,
         [`dropdown--${variant}`]: variant !== '',
       };
@@ -609,6 +610,12 @@ export default {
   &--showing-placeholder {
     .dropdown__value {
       @apply text-gray-400;
+    }
+
+    &.dropdown--labeless {
+      .dropdown__value {
+        @apply py-4;
+      }
     }
   }
 
