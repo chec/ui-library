@@ -407,7 +407,7 @@ export default {
       rounded
       overflow-auto
       h-40
-      py-6
+      py-4
       pb-16;
 
     max-height: 16rem;
@@ -482,6 +482,9 @@ export default {
 
     .chec-wysiwyg__menubar {
       @apply bg-gray-300 text-gray-500;
+      .chec-wysiwyg__menubar--button--is-active{
+        @apply text-gray-200
+      }
     }
   }
 
