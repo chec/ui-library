@@ -178,17 +178,17 @@ export default {
         'text-field--error': variant === 'error',
         'text-field--empty': value === '',
         'text-field--inline-label': label,
-        'text-field--modified': label ? !!value : false,
+        'text-field--filled': label ? !!value : false,
         'text-field--multiline': multiline,
         'text-field--minimized-label': minimizedLabel,
         [`text-field--${styleVariant}`]: styleVariant !== '',
       };
 
       /**
-       * If the input is a currency field, allow 0 to show in the modified state.
+       * If the input is a currency field, allow 0 to show in the filled state.
        */
       if (currency && value === 0) {
-        classes['text-field--modified'] = true;
+        classes['text-field--filled'] = true;
       }
 
       return classes;
@@ -434,7 +434,7 @@ export default {
 
   }
 
-  &--modified {
+  &--filled {
     .text-field__label {
       @apply opacity-100;
     }
