@@ -19,7 +19,7 @@ export default {
       deleteFile: 'Delete file',
     },
     imageManager: {
-      chooseImages: 'Choose images(s)',
+      chooseImages: 'Choose image(s)',
       deleteImage: 'Delete image',
     },
     navigation: {
