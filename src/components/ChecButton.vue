@@ -71,7 +71,7 @@ export default {
     /**
      * Changes the button to a transparent button with coloured text that matches the chosen colour.
      */
-    text: Boolean,
+    textOnly: Boolean,
     /**
      * Disables the button
      */
@@ -92,7 +92,7 @@ export default {
         `button--color-${this.color}`,
         `button--variant-${this.variant}`,
         {
-          'button--text': this.text,
+          'button--text-only': this.textOnly,
           'button--disabled': this.disabled,
           'button--has-icon': this.hasIcon,
           [`button--has-icon-${this.iconPosition}`]: this.hasIcon,
@@ -289,7 +289,7 @@ export default {
           @apply bg-#{map.get($config, 'active')};
         }
 
-        &.button--text {
+        &.button--text-only {
           // Handle the one gradient that can't be text
           $default-color: #{map.get($config, 'default')};
           @if ($default-color == 'primary-gradient') {
@@ -314,7 +314,7 @@ export default {
     }
   }
 
-  &--text {
+  &--text-only {
     @apply border-0 shadow-none;
 
     &:focus {

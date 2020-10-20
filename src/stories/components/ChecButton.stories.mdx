@@ -43,8 +43,8 @@ Todo list
         disabled: {
           default: boolean('Disabled', false),
         },
-        text: {
-          default: boolean('"Text" variant', false),
+        textOnly: {
+          default: boolean('"Text only" variant', false),
         },
         label: {
           default: text('Label', 'Button text'),
@@ -79,7 +79,7 @@ Todo list
             :disabled="disabled"
             :icon="hasIcon ? icon : null"
             :tag-type="tagType"
-            :text="text"
+            :text-only="textOnly"
           >
             {{label}}
           </chec-button>
