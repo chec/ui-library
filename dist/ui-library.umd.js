@@ -69657,7 +69657,7 @@ var InnerBlock_component = normalizeComponent(
       deleteFile: 'Delete file'
     },
     imageManager: {
-      chooseImages: 'Choose images(s)',
+      chooseImages: 'Choose image(s)',
       deleteImage: 'Delete image'
     },
     navigation: {
