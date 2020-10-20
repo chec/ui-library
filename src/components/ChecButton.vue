@@ -39,18 +39,21 @@ export default {
           'blue',
           'green',
           'red',
+          'purple',
+          'orange',
+          'white',
+          'gray',
         ].includes(color);
       },
       default: 'secondary',
     },
     /**
-     * The style variant of the button. Includes size, border radius, etc. One of 'large', 'regular', 'small',
-     * 'round', 'tag'
+     * The style variant of the button. Includes size, border radius, etc. One of 'regular', 'small', 'round', 'tag'
      */
     variant: {
       type: String,
       validate(variant) {
-        return ['large', 'regular', 'small', 'round', 'tag'].includes(variant);
+        return ['regular', 'small', 'round', 'text', 'tag'].includes(variant);
       },
       default: 'regular',
     },
@@ -65,6 +68,10 @@ export default {
       },
       default: 'before',
     },
+    /**
+     * Changes the button to a transparent button with coloured text that matches the chosen colour.
+     */
+    textOnly: Boolean,
     /**
      * Disables the button
      */
@@ -85,6 +92,7 @@ export default {
         `button--color-${this.color}`,
         `button--variant-${this.variant}`,
         {
+          'button--text-only': this.textOnly,
           'button--disabled': this.disabled,
           'button--has-icon': this.hasIcon,
           [`button--has-icon-${this.iconPosition}`]: this.hasIcon,
@@ -228,54 +236,89 @@ export default {
   &--color {
     $button-colors: (
       'brand': (
-        'default': 'bg-primary-gradient',
-        'hover': 'bg-primary-blue',
-        'active': 'bg-dark-blue',
+        'default': 'primary-gradient',
+        'hover': 'primary-blue',
+        'active': 'dark-blue',
         'text': 'text-white',
       ),
       'primary': (
-        'default': 'bg-gray-600',
-        'hover': 'bg-gray-500',
-        'active': 'bg-gray-400',
+        'default': 'gray-600',
+        'hover': 'gray-500',
+        'active': 'gray-400',
         'text': 'text-white',
       ),
       'secondary': (
-        'default': 'bg-white',
-        'hover': 'bg-gray-200',
-        'active': 'bg-gray-300',
+        'default': 'white',
+        'hover': 'gray-200',
+        'active': 'gray-300',
         'text': 'text-gray-500',
       ),
     );
 
     $colors: 'green', 'orange', 'purple', 'red', 'blue';
-
     @each $color in $colors {
       $button-colors: map.merge($button-colors, (
         '#{$color}': (
-          'default': 'bg-#{$color}-500',
-          'hover': 'bg-#{$color}-400',
-          'active': 'bg-#{$color}-600',
+          'default': '#{$color}-500',
+          'hover': '#{$color}-400',
+          'active': '#{$color}-600',
           'text': 'text-white',
         )
       ));
     }
 
+    // Allow "gray" and "white"
+    $button-colors: map.merge($button-colors, (
+      'gray': map.get($button-colors, 'primary'),
+      'white': map.get($button-colors, 'secondary'),
+    ));
+
     @each $name, $config in $button-colors {
       &-#{$name} {
-        @apply #{map.get($config, 'default')} #{map.get($config, 'text')};
+        @apply bg-#{map.get($config, 'default')} #{map.get($config, 'text')};
 
         &:not(.button--disabled):hover,
         &:not(:disabled):hover {
           // Override any gradient background
           background-image: none;
-          @apply #{map.get($config, 'hover')} #{map.get($config, 'text')};
+          @apply bg-#{map.get($config, 'hover')} #{map.get($config, 'text')};
         }
 
         &:not(.button--disabled):active,
         &:not(:disabled):active {
-          @apply #{map.get($config, 'active')};
+          @apply bg-#{map.get($config, 'active')};
+        }
+
+        &.button--text-only {
+          // Handle the one gradient that can't be text
+          $default-color: #{map.get($config, 'default')};
+          @if ($default-color == 'primary-gradient') {
+            $default-color: 'dark-blue';
+          }
+
+          // Override any gradient background
+          background-image: none;
+          @apply bg-transparent text-#{$default-color};
+
+          &:not(.button--disabled):hover,
+          &:not(:disabled):hover {
+            @apply bg-transparent text-#{map.get($config, 'hover')};
+          }
+
+          &:not(.button--disabled):active,
+          &:not(:disabled):active {
+            @apply bg-transparent text-#{map.get($config, 'active')};
+          }
         }
       }
+    }
+  }
+
+  &--text-only {
+    @apply border-0 shadow-none;
+
+    &:focus {
+      @apply outline-none;
     }
   }
 
