@@ -35,22 +35,25 @@ Todo list
       },
       props: {
         color: {
-          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'], 'secondary'),
+          default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange', 'gray', 'white'], 'secondary'),
         },
         variant: {
-          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
+          default: select('Variant', ['regular', 'small', 'round', 'tag'], 'regular'),
         },
         disabled: {
           default: boolean('Disabled', false),
         },
         text: {
-          default: text('Text', 'Button text'),
+          default: boolean('"Text" variant', false),
+        },
+        label: {
+          default: text('Label', 'Button text'),
         },
         hasIcon: {
           default: boolean('Show Icon', true),
         },
         icon: {
-          default: select('Icon', ['left', 'right', 'down', 'up', 'plus', 'close', 'check', 'more', 'download', 'upload', 'grip', 'minus', 'copy',], 'plus'),
+          default: select('Icon', ['left', 'right', 'down', 'up', 'plus', 'close', 'check', 'more', 'download', 'upload', 'grip', 'minus', 'copy', 'trash'], 'plus'),
         },
         iconPosition: {
           default: select('Icon Position', ['before', 'after'], 'before'),
@@ -58,9 +61,17 @@ Todo list
         tagType: {
           default: select('Tag type', ['button', 'link'], 'button'),
         },
+        background: {
+          default: select('Background', ['light', 'dark'], 'light'),
+        },
+      },
+      computed: {
+        bgClass() {
+          return this.background === 'dark' ? 'bg-gray-600' : 'bg-white'
+        },
       },
       template: `
-        <div class="py-16 flex justify-center">
+        <div class="p-16 flex justify-center" :class="bgClass">
           <chec-button
             :color="color"
             :variant="variant"
@@ -68,8 +79,9 @@ Todo list
             :disabled="disabled"
             :icon="hasIcon ? icon : null"
             :tag-type="tagType"
+            :text="text"
           >
-            {{text}}
+            {{label}}
           </chec-button>
         </div>
       `,
@@ -89,7 +101,7 @@ This is a button modified using the Color and Variant props.
         possibilities() {
           return makeVariants({
             color: ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'],
-            variant: ['large', 'regular', 'small', 'round'],
+            variant: ['regular', 'small', 'round', 'tag'],
           }).map(possibility => ({
             ...possibility,
             label: `${possibility.color} - ${possibility.variant}`,
@@ -144,7 +156,7 @@ This is a button modified using the Color and Variant props.
           default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'], 'secondary'),
         },
         variant: {
-          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
+          default: select('Variant', ['regular', 'small', 'round'], 'regular'),
         },
         hasIcon: {
           default: boolean('Show Icon', true),
@@ -210,7 +222,7 @@ This is a button modified using the Color and Variant props.
           default: select('Color', ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange'], 'secondary'),
         },
         variant: {
-          default: select('Variant', ['large', 'regular', 'small', 'round'], 'regular'),
+          default: select('Variant', ['regular', 'small', 'round'], 'regular'),
         },
         disabled: {
           default: select('Disabled', [true, false], false),
