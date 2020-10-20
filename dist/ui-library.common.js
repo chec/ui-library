@@ -49907,19 +49907,18 @@ var es_string_includes = __webpack_require__("2532");
     color: {
       type: String,
       validate: function validate(color) {
-        return ['brand', 'primary', 'secondary', 'blue', 'green', 'red'].includes(color);
+        return ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange', 'white', 'gray'].includes(color);
       },
       default: 'secondary'
     },
 
     /**
-     * The style variant of the button. Includes size, border radius, etc. One of 'large', 'regular', 'small',
-     * 'round', 'tag'
+     * The style variant of the button. Includes size, border radius, etc. One of 'regular', 'small', 'round', 'tag'
      */
     variant: {
       type: String,
       validate: function validate(variant) {
-        return ['large', 'regular', 'small', 'round', 'tag'].includes(variant);
+        return ['regular', 'small', 'round', 'text', 'tag'].includes(variant);
       },
       default: 'regular'
     },
@@ -49935,6 +49934,11 @@ var es_string_includes = __webpack_require__("2532");
       },
       default: 'before'
     },
+
+    /**
+     * Changes the button to a transparent button with coloured text that matches the chosen colour.
+     */
+    textOnly: Boolean,
 
     /**
      * Disables the button
@@ -49955,6 +49959,7 @@ var es_string_includes = __webpack_require__("2532");
   computed: {
     classNames: function classNames() {
       return ['button', "button--color-".concat(this.color), "button--variant-".concat(this.variant), _defineProperty({
+        'button--text-only': this.textOnly,
         'button--disabled': this.disabled,
         'button--has-icon': this.hasIcon
       }, "button--has-icon-".concat(this.iconPosition), this.hasIcon)];
