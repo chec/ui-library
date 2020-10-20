@@ -31,7 +31,7 @@
         v-if="required"
         class="text-field__required-text"
       >
-        {{ $t('general.required') }}
+        {{ $t('general.requiredInline') }}
       </span>
     </label>
     <div ref="currency" class="text-field__currency">

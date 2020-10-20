@@ -12,7 +12,7 @@ export default {
     },
     general: {
       search: 'Search',
-      required: '(required)',
+      requiredInline: '(required)', // Appended to required form field labels
     },
     fileManager: {
       chooseFiles: 'Choose file(s)',
