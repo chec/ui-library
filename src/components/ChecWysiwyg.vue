@@ -23,7 +23,7 @@
         v-if="required"
         class="chec-wysiwyg__required-text"
       >
-        {{ $t('general.required') }}
+        {{ $t('general.requiredInline') }}
       </span>
     </label>
     <EditorMenuBar v-slot="{ commands, isActive }" :editor="editor">
