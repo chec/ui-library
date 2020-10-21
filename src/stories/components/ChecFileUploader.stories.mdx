@@ -82,3 +82,61 @@ import FileRow from '../../components/ChecFileUploader/FileRow.vue';
     }}
   </Story>
 </Preview>
+
+<Preview>
+  <Story name="Multiple fields">
+    {{
+      components: {
+        ChecFileUploader,
+      },
+      data() {
+        return {
+          filesA: [],
+          filesB: [],
+          filesC: [],
+          filesD: [],
+        };
+      },
+      props: {
+        endpoint: {
+          default: text('endpoint', 'https://httpbin.org/post'),
+        },
+      },
+      methods: {
+        change(files) {
+          action('change')(files);
+        },
+        dropzoneEvent(eventName, ...args) {
+          action('dropzone-event')(eventName, args);
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full h-full bg-white py-20">
+          <ChecFileUploader
+            v-model="filesA"
+            @dropzone-event="dropzoneEvent"
+            @change="change"
+            :endpoint="endpoint"
+          />
+          <ChecFileUploader
+            v-model="filesB"
+            @dropzone-event="dropzoneEvent"
+            @change="change"
+            :endpoint="endpoint"
+          />
+          <ChecFileUploader
+            v-model="filesC"
+            @dropzone-event="dropzoneEvent"
+            @change="change"
+            :endpoint="endpoint"
+          />
+          <ChecFileUploader
+            v-model="filesD"
+            @dropzone-event="dropzoneEvent"
+            @change="change"
+            :endpoint="endpoint"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>

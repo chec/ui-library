@@ -14,7 +14,7 @@
           @remove="() => removeFile(file)"
         />
       </div>
-      <ChecButton data-dropzone-clickable @click.stop>
+      <ChecButton @click="openDialog">
         {{ $t('fileManager.chooseFiles') }}
       </ChecButton>
       <input class="chec-file-uploader__input" type="file">
