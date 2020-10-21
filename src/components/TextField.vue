@@ -251,7 +251,7 @@ export default {
      */
     adjustCurrencyPadding() {
       if (!this.currency) {
-        this.$refs.input.style.paddingLeft = '1rem';
+        this.$refs.input.style.removeProperty('padding-left');
         return;
       }
       this.$refs.input.style.paddingLeft = `${this.$refs.currency.offsetWidth}px`;
