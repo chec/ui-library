@@ -29,6 +29,7 @@ import ChecProgressBar from './components/ChecProgressBar.vue';
 import ChecSegmentedButtonsGroup from './components/ChecSegmentedButtonsGroup.vue';
 import ChecSwitch from './components/ChecSwitch.vue';
 import ChecTab from './components/ChecTab.vue';
+import ChecTable from './components/ChecTable.vue';
 import ChecTag from './components/ChecTag.vue';
 import ChecTooltip from './directives/ChecTooltip';
 import ChecVerticalNavigation from './components/ChecVerticalNavigation';
@@ -73,6 +74,7 @@ export {
   ChecSegmentedButtonsGroup,
   ChecSwitch,
   ChecTab,
+  ChecTable,
   ChecTag,
   ChecTooltip,
   ChecVerticalNavigation,
