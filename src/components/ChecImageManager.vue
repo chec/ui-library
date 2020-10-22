@@ -24,7 +24,7 @@
           @remove="() => removeFile(file)"
         />
       </Draggable>
-      <ChecButton data-dropzone-clickable @click.stop>
+      <ChecButton @click="openDialog">
         <ChecIcon class="chec-image-manager__icon" icon="image" size="base" /> {{ $t('imageManager.chooseImages') }}
       </ChecButton>
       <div v-if="footnote" class="chec-image-manager__helper">

@@ -111,7 +111,6 @@ export default {
       ...this.additionalDropzoneOptions,
 
       acceptedFiles: this.fileTypes,
-      clickable: '[data-dropzone-clickable]',
       hiddenInputContainer: this.$el,
       url: typeof this.endpoint === 'string' ? this.endpoint : '-',
       // Allows asynchronous processing of added files for the purpose of "accepting" them as valid files
@@ -228,6 +227,9 @@ export default {
        * @type {Array<Object>}
        */
       this.$emit('change', newFiles);
+    },
+    openDialog() {
+      this.dropzone.hiddenFileInput.click();
     },
   },
 };
