@@ -1,0 +1,179 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
+import ChecTable from '../../components/ChecTable.vue';
+import TextField from '../../components/TextField.vue';
+import ChecButton from '../../components/ChecButton.vue';
+
+<Meta title="Components/Table" component={ChecTable} />
+
+# Table component
+
+# Default
+
+<Props of={ChecTable} />
+
+<Preview>
+  <Story name="default">
+    {{
+      components: {
+        ChecTable,
+      },
+      props: {
+        background: {
+          default: select('Background Color', ['light', 'dark']),
+        },
+      },
+      template: `
+      <div class="flex justify-center items-center h-screen font-lato" :class="{'bg-gray-600': background === 'dark'}">
+        <div>
+          <ChecTable table-class="table-fixed">
+            <thead>
+              <tr>
+                <th class="w-1/2">Title</th>
+                <th class="w-1/2">Author</th>
+                <th class="w-1/2">Views</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+                <td>Adam</td>
+                <td>858</td>
+              </tr>
+              <tr>
+                <td>Intro to CSS</td>
+                <td>Adam</td>
+                <td>858</td>
+              </tr>
+              <tr>
+                <td>Intro to CSS</td>
+                <td>Adam</td>
+                <td>858</td>
+              </tr>
+            </tbody>
+          </ChecTable>
+        </div>
+      </div>
+      `
+    }}
+  </Story>
+</Preview>
+
+
+# With table prepend
+
+<Preview>
+  <Story name="With prepend">
+    {{
+      components: {
+        ChecTable,
+      },
+      props: {
+        background: {
+          default: select('Background Color', ['light', 'dark']),
+        },
+        showPrepend: {
+          default: boolean('Show Prepend', true)
+        },
+      },
+      template: `
+      <div class="flex justify-center items-center h-screen font-lato" :class="{'bg-gray-600': background === 'dark'}">
+        <div>
+          <ChecTable table-class="table-fixed">
+            <template v-if="showPrepend" v-slot:prepend>
+              <h3>Prepended Table</h3>
+            </template>
+            <thead>
+              <tr>
+                <th class="w-1/2">Title</th>
+                <th class="w-1/2">Author</th>
+                <th class="w-1/2">Views</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+                <td>Adam</td>
+                <td>858</td>
+              </tr>
+              <tr>
+                <td>Intro to CSS</td>
+                <td>Adam</td>
+                <td>858</td>
+              </tr>
+              <tr>
+                <td>Intro to CSS</td>
+                <td>Adam</td>
+                <td>858</td>
+              </tr>
+            </tbody>
+          </ChecTable>
+        </div>
+      </div>
+      `
+    }}
+  </Story>
+</Preview>
+
+# With Search Prepend
+
+<Props of={ChecTable} />
+
+<Preview>
+  <Story name="With prepend components">
+    {{
+      components: {
+        ChecTable,
+        TextField,
+        ChecButton,
+      },
+      props: {
+        background: {
+          default: select('Background Color', ['light', 'dark']),
+        },
+        showPrepend: {
+          default: boolean('Show Prepend', true)
+        },
+      },
+      template: `
+      <div class="flex justify-center items-center h-screen font-lato" :class="{'bg-gray-600': background === 'dark'}">
+        <div>
+          <ChecTable table-class="table-fixed">
+            <template v-if="showPrepend" v-slot:prepend>
+              <div class="flex gap-4">
+                <TextField label="Search Criteria" class="w-full" />
+                <ChecButton color="green">Search</ChecButton>
+              </div>
+            </template>
+            <thead>
+              <tr>
+                <th class="w-1/2">Title</th>
+                <th class="w-1/2">Author</th>
+                <th class="w-1/2">Views</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+                <td>Adam</td>
+                <td>858</td>
+              </tr>
+              <tr>
+                <td>Intro to CSS</td>
+                <td>Adam</td>
+                <td>858</td>
+              </tr>
+              <tr>
+                <td>Intro to CSS</td>
+                <td>Adam</td>
+                <td>858</td>
+              </tr>
+            </tbody>
+          </ChecTable>
+        </div>
+      </div>
+      `
+    }}
+  </Story>
+</Preview>
