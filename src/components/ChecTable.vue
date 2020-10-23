@@ -8,7 +8,7 @@
         <slot name="prepend" />
       </div>
     </div>
-    <table class="table" :class="tableClass">
+    <table class="chec-table__table" :class="innerClass">
       <!--
         @slot Table content
       -->
@@ -24,9 +24,9 @@ export default {
     /**
      * Class to pass to table
      */
-    tableClass: {
+    innerClass: {
       type: String,
-      default: 'table-auto',
+      default: '',
     },
   },
   computed: {
@@ -45,22 +45,20 @@ export default {
 .chec-table {
   &__prepend {
     @apply relative px-4 rounded-t-md bg-gray-200;
-    z-index: 1;
   }
 
   &__inner-wrapper {
     @apply bg-gray-200 py-4 border-b border-solid border-gray-300;
   }
 
-  .table {
+  &__table {
     @apply relative;
-    z-index: 2;
   }
 
   &--prepended {
     @apply shadow rounded;
 
-    .table {
+    .chec-table__table {
       @apply shadow-none rounded-t-none;
     }
   }
