@@ -145,7 +145,7 @@ export default {
   padding-bottom: 1px;
 
   &__heading {
-    @apply text-gray-500 flex justify-between items-center p-4 pb-0;
+    @apply text-gray-600 flex justify-between items-center p-4 pb-0;
   }
 
   &__title {
