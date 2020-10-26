@@ -74,25 +74,33 @@ export default {
 <style lang="scss">
 
 %active {
-  @apply bg-gray-500 text-white border-gray-500;
+  @apply bg-gray-400 text-white border-gray-400;
 
   .chec-tag__dismiss {
-    @apply bg-white text-gray-500;
+    @apply bg-white text-gray-400;
   }
 }
 
 .chec-tag {
-  @apply py-1 px-3 rounded-full font-bold text-sm border leading-tight;
+  @apply py-1 px-2 rounded shadow-sm font-bold text-sm border leading-tight;
 
   &--active {
     @extend %active;
   }
 
   &--disabled {
-    @apply opacity-40 cursor-not-allowed border-none;
+    @apply opacity-40 bg-white text-gray-500 cursor-not-allowed border-none;
 
     .chec-tag__dismiss {
-      @apply cursor-not-allowed;
+      @apply cursor-not-allowed bg-gray-500 text-white ;
+    }
+
+    &.chec-tag--dark-grey {
+      @apply bg-gray-600 text-white;
+
+      .chec-tag__dismiss {
+        @apply text-gray-600;
+      }
     }
   }
 
@@ -128,10 +136,10 @@ export default {
 
     &:hover,
     &:focus {
-      @apply bg-gray-400 text-white border-gray-400;
+      @apply bg-gray-500 text-white border-gray-500;
 
       .chec-tag__dismiss {
-        @apply bg-white text-gray-400;
+        @apply bg-white text-gray-500;
       }
     }
   }
