@@ -94,6 +94,14 @@ export default {
     .chec-tag__dismiss {
       @apply cursor-not-allowed bg-gray-500 text-white ;
     }
+
+    &.chec-tag--dark-grey {
+      @apply bg-gray-600 text-white;
+
+      .chec-tag__dismiss {
+        @apply text-gray-600;
+      }
+    }
   }
 
   &--light-grey {
@@ -109,14 +117,6 @@ export default {
 
     .chec-tag__dismiss {
       @apply bg-white text-gray-600;
-    }
-
-    &.chec-tag--disabled {
-      @apply bg-gray-600 text-white cursor-not-allowed border-none;
-
-      .chec-tag__dismiss {
-        @apply cursor-not-allowed text-gray-600;
-      }
     }
   }
 
