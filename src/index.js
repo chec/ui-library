@@ -31,6 +31,7 @@ import ChecSwitch from './components/ChecSwitch.vue';
 import ChecTab from './components/ChecTab.vue';
 import ChecTable from './components/ChecTable.vue';
 import ChecTag from './components/ChecTag.vue';
+import ChecTagGroup from './components/ChecTagGroup.vue';
 import ChecTooltip from './directives/ChecTooltip';
 import ChecVerticalNavigation from './components/ChecVerticalNavigation';
 import ChecVerticalNavItem from './components/ChecVerticalNavItem';
@@ -76,6 +77,7 @@ export {
   ChecTab,
   ChecTable,
   ChecTag,
+  ChecTagGroup,
   ChecTooltip,
   ChecVerticalNavigation,
   ChecVerticalNavItem,
