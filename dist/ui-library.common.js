@@ -7915,6 +7915,13 @@ function doc(options) {
 
 /***/ }),
 
+/***/ "3070":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "3085":
 /***/ (function(module, exports) {
 
@@ -44617,6 +44624,17 @@ $({ target: 'Object', stat: true, forced: FORCED, sham: !DESCRIPTORS }, {
 
 /***/ }),
 
+/***/ "e52e":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecTagGroup_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("3070");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecTagGroup_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecTagGroup_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecTagGroup_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "e538":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48296,6 +48314,7 @@ __webpack_require__.d(__webpack_exports__, "ChecSwitch", function() { return /* 
 __webpack_require__.d(__webpack_exports__, "ChecTab", function() { return /* reexport */ ChecTab; });
 __webpack_require__.d(__webpack_exports__, "ChecTable", function() { return /* reexport */ ChecTable; });
 __webpack_require__.d(__webpack_exports__, "ChecTag", function() { return /* reexport */ ChecTag; });
+__webpack_require__.d(__webpack_exports__, "ChecTagGroup", function() { return /* reexport */ ChecTagGroup; });
 __webpack_require__.d(__webpack_exports__, "ChecTooltip", function() { return /* reexport */ ChecTooltip; });
 __webpack_require__.d(__webpack_exports__, "ChecVerticalNavigation", function() { return /* reexport */ ChecVerticalNavigation; });
 __webpack_require__.d(__webpack_exports__, "ChecVerticalNavItem", function() { return /* reexport */ ChecVerticalNavItem; });
@@ -57197,6 +57216,73 @@ var ChecTag_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTag = (ChecTag_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagGroup.vue?vue&type=template&id=10ecd98e&
+var ChecTagGroupvue_type_template_id_10ecd98e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-tag-group"},[_vm._t("default"),(!_vm.hideReset)?_c('ChecButton',{attrs:{"color":"primary","variant":"tag"},on:{"click":_vm.handleReset}},[_vm._v(" "+_vm._s(_vm.$t('tag.reset'))+" ")]):_vm._e()],2)}
+var ChecTagGroupvue_type_template_id_10ecd98e_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecTagGroup.vue?vue&type=template&id=10ecd98e&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagGroup.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var ChecTagGroupvue_type_script_lang_js_ = ({
+  name: 'ChecTagGroup',
+  components: {
+    ChecButton: ChecButton
+  },
+  props: {
+    /**
+     * Whether to hide the "Reset" button on the right hand side of the tag list
+     */
+    hideReset: Boolean
+  },
+  methods: {
+    handleReset: function handleReset() {
+      this.$emit('reset');
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecTagGroup.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecTagGroupvue_type_script_lang_js_ = (ChecTagGroupvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecTagGroup.vue?vue&type=style&index=0&lang=scss&
+var ChecTagGroupvue_type_style_index_0_lang_scss_ = __webpack_require__("e52e");
+
+// CONCATENATED MODULE: ./src/components/ChecTagGroup.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ChecTagGroup_component = normalizeComponent(
+  components_ChecTagGroupvue_type_script_lang_js_,
+  ChecTagGroupvue_type_template_id_10ecd98e_render,
+  ChecTagGroupvue_type_template_id_10ecd98e_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChecTagGroup = (ChecTagGroup_component.exports);
 // EXTERNAL MODULE: ./src/assets/tooltips.scss
 var tooltips = __webpack_require__("5f09");
 
@@ -69998,6 +70084,7 @@ var down_arrow_default = /*#__PURE__*/__webpack_require__.n(down_arrow);
   checLogo: chec_logo_default.a
 });
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
