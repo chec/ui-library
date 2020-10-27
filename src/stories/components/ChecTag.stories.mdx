@@ -18,7 +18,7 @@ import ChecTagGroup from '../../components/ChecTagGroup';
       },
       props: {
         color: {
-          default: select('Color', ['light-grey', 'dark-grey', 'white']),
+          default: select('Color', ['dark-grey', 'white']),
         },
         tagText: {
           default: text('Tag text', 'I am tag')
@@ -90,7 +90,7 @@ import ChecTagGroup from '../../components/ChecTagGroup';
       },
       computed: {
         colors() {
-          return ['light-grey', 'dark-grey', 'white'];
+          return ['dark-grey', 'white'];
         }
       },
       methods: {
@@ -125,7 +125,7 @@ import ChecTagGroup from '../../components/ChecTagGroup';
       },
       props: {
         color: {
-          default: select('Color', ['light-grey', 'dark-grey', 'white']),
+          default: select('Color', ['dark-grey', 'white']),
         },
         undismissible: {
           type: Boolean,
