@@ -228,6 +228,10 @@ export default {
     &-tag {
       @apply py-2 px-4 rounded leading-tight;
 
+      // Tag button padding override
+      padding-bottom: 0.625rem;
+      padding-top: 0.625rem;
+
       .button__content {
         @apply caps-xxs;
       }
@@ -235,10 +239,6 @@ export default {
       .button__icon {
         @apply w-xxs;
       }
-
-      // Tag button padding override
-      padding-bottom: 0.625rem;
-      padding-top: 0.625rem;
     }
   }
 
