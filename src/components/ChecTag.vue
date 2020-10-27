@@ -73,10 +73,12 @@ export default {
 
 <style lang="scss">
 .chec-tag {
-  @apply py-1 px-2 rounded shadow-sm font-bold text-sm border border-gray-200 leading-tight;
+  @apply py-1 px-2 rounded shadow-sm font-bold text-xs border border-white leading-tight;
 
   .chec-tag__dismiss {
-    @apply bg-gray-500 text-white;
+    @apply relative bg-gray-500 text-white;
+
+    top: 2px;
   }
 
   &--active {
@@ -84,7 +86,7 @@ export default {
   }
 
   &--disabled {
-    @apply opacity-40 bg-white text-gray-500 cursor-not-allowed border-none;
+    @apply opacity-40 bg-white text-gray-500 cursor-not-allowed;
 
     .chec-tag__dismiss {
       @apply cursor-not-allowed bg-gray-500 text-white ;
