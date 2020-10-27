@@ -57110,12 +57110,12 @@ var ChecTable_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTable = (ChecTable_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=template&id=08378ab7&
-var ChecTagvue_type_template_id_08378ab7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"chec-tag",class:_vm.classObject},[_vm._t("default"),(!_vm.undismissible)?_c('button',{staticClass:"chec-tag__dismiss",attrs:{"type":"button","disabled":_vm.disabled,"title":_vm.$t('tag.dismiss')},on:{"click":_vm.handleDismiss}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1):_vm._e()],2)}
-var ChecTagvue_type_template_id_08378ab7_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=template&id=7d522662&
+var ChecTagvue_type_template_id_7d522662_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"chec-tag",class:_vm.classObject},[_vm._t("default"),(!_vm.undismissible)?_c('button',{staticClass:"chec-tag__dismiss",attrs:{"type":"button","disabled":_vm.disabled,"title":_vm.$t('tag.dismiss')},on:{"click":_vm.handleDismiss}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1):_vm._e()],2)}
+var ChecTagvue_type_template_id_7d522662_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecTag.vue?vue&type=template&id=08378ab7&
+// CONCATENATED MODULE: ./src/components/ChecTag.vue?vue&type=template&id=7d522662&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=script&lang=js&
 
@@ -57206,8 +57206,8 @@ var ChecTagvue_type_style_index_0_lang_scss_ = __webpack_require__("2dfe");
 
 var ChecTag_component = normalizeComponent(
   components_ChecTagvue_type_script_lang_js_,
-  ChecTagvue_type_template_id_08378ab7_render,
-  ChecTagvue_type_template_id_08378ab7_staticRenderFns,
+  ChecTagvue_type_template_id_7d522662_render,
+  ChecTagvue_type_template_id_7d522662_staticRenderFns,
   false,
   null,
   null,
