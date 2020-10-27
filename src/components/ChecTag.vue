@@ -72,24 +72,21 @@ export default {
 </script>
 
 <style lang="scss">
-
-%active {
-  @apply bg-gray-400 text-white border-gray-400;
+.chec-tag {
+  @apply py-1 px-2 rounded shadow-sm font-bold text-xs border border-white leading-tight;
 
   .chec-tag__dismiss {
-    @apply bg-white text-gray-400;
-  }
-}
+    @apply relative bg-gray-500 text-white;
 
-.chec-tag {
-  @apply py-1 px-2 rounded shadow-sm font-bold text-sm border leading-tight;
+    top: 2px;
+  }
 
   &--active {
     @extend %active;
   }
 
   &--disabled {
-    @apply opacity-40 bg-white text-gray-500 cursor-not-allowed border-none;
+    @apply opacity-40 bg-white text-gray-500 cursor-not-allowed;
 
     .chec-tag__dismiss {
       @apply cursor-not-allowed bg-gray-500 text-white ;
@@ -104,27 +101,11 @@ export default {
     }
   }
 
-  &--light-grey {
-    @apply bg-gray-200 text-gray-500 border-gray-200;
-
-    .chec-tag__dismiss {
-      @apply bg-gray-500 text-gray-200;
-    }
-  }
-
   &--dark-grey {
     @apply bg-gray-600 text-white border-gray-600;
 
     .chec-tag__dismiss {
       @apply bg-white text-gray-600;
-    }
-  }
-
-  &--white {
-    @apply bg-white text-gray-500 border-gray-200;
-
-    .chec-tag__dismiss {
-      @apply bg-gray-500 text-white;
     }
   }
 
@@ -146,6 +127,14 @@ export default {
 
   &__dismiss {
     @apply ml-1 w-3 h-3 rounded-full;
+  }
+}
+
+%active {
+  @apply bg-gray-400 text-white border-gray-400;
+
+  .chec-tag__dismiss {
+    @apply bg-white text-gray-400;
   }
 }
 </style>
