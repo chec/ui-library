@@ -1,0 +1,13 @@
+<svg viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 3C1 1.89543 1.89543 1 3 1H29C30.1046 1 31 1.89543 31 3V23C31 24.1046 30.1046 25 29 25H3C1.89543 25 1 24.1046 1 23V3Z" fill="#BDB2E6" stroke="#5138AE" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1 3C1 1.89543 1.89543 1 3 1H29C30.1046 1 31 1.89543 31 3V7H1V3Z" fill="white" stroke="#5138AE" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="4" cy="4" r="0.5" stroke="#9C8BDA"/>
+<circle cx="7" cy="4" r="0.5" stroke="#9C8BDA"/>
+<circle cx="10" cy="4" r="0.5" stroke="#9C8BDA"/>
+<path d="M17 7H31V23C31 24.1046 30.1046 25 29 25H17V7Z" fill="#7B65CD" stroke="#5138AE"/>
+<path d="M22 12L26 12" stroke="#F5F3FB" stroke-linecap="round"/>
+<path d="M23 15H25" stroke="#F5F3FB" stroke-linecap="round"/>
+<rect x="21" y="18" width="6" height="3" rx="1.5" fill="#9C8BDA" stroke="#F5F3FB"/>
+<rect x="5" y="15" width="8" height="5" rx="1" fill="white" stroke="#5138AE"/>
+<rect x="7" y="12" width="4" height="3" rx="1" fill="#9C8BDA" stroke="#5138AE"/>
+</svg>
