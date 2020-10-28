@@ -67,6 +67,9 @@ import IcColorCheckout from '../assets/svgs/MIcons/ic-checkout.svg';
 import IcColorOrders from '../assets/svgs/MIcons/ic-orders.svg';
 import IcColorProducts from '../assets/svgs/MIcons/ic-products.svg';
 import IcColorCategories from '../assets/svgs/MIcons/ic-categories.svg';
+import IcColorCodeFlat from '../assets/svgs/MIcons/ic-code-flat.svg';
+import IcColorCheckoutFlat from '../assets/svgs/MIcons/ic-checkout-flat.svg';
+import IcColorHostedFlat from '../assets/svgs/MIcons/ic-hosted-flat.svg';
 // Circle marketing icons imports
 import IcLrgStandard from '../assets/svgs/MIcons/ic-lrg-standard.svg';
 import IcLrgPlus from '../assets/svgs/MIcons/ic-lrg-plus.svg';
@@ -185,4 +188,7 @@ export const mIcons = {
   scale: IcLrgScale,
   storefront: IcLrgStorefront,
   testing: IcLrgTesting,
+  'code-flat': IcColorCodeFlat,
+  'checkout-flat': IcColorCheckoutFlat,
+  'hosted-flat': IcColorHostedFlat,
 };
