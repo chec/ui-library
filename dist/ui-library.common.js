@@ -25569,6 +25569,40 @@ function keydownHandler(bindings) {
 
 /***/ }),
 
+/***/ "7f3e":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 32 26","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M1 3a2 2 0 012-2h26a2 2 0 012 2v20a2 2 0 01-2 2H3a2 2 0 01-2-2V3z","fill":"#BDB2E6","stroke":"#5138AE","stroke-miterlimit":"10","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('path',{attrs:{"d":"M1 3a2 2 0 012-2h26a2 2 0 012 2v4H1V3z","fill":"#fff","stroke":"#5138AE","stroke-miterlimit":"10","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('circle',{attrs:{"cx":"4","cy":"4","r":".5","stroke":"#9C8BDA"}}),_c('circle',{attrs:{"cx":"7","cy":"4","r":".5","stroke":"#9C8BDA"}}),_c('circle',{attrs:{"cx":"10","cy":"4","r":".5","stroke":"#9C8BDA"}}),_c('path',{attrs:{"d":"M17 7h14v16a2 2 0 01-2 2H17V7z","fill":"#7B65CD","stroke":"#5138AE"}}),_c('path',{attrs:{"d":"M22 12h4M23 15h2","stroke":"#F5F3FB","stroke-linecap":"round"}}),_c('rect',{attrs:{"x":"21","y":"18","width":"6","height":"3","rx":"1.5","fill":"#9C8BDA","stroke":"#F5F3FB"}}),_c('rect',{attrs:{"x":"5","y":"15","width":"8","height":"5","rx":"1","fill":"#fff","stroke":"#5138AE"}}),_c('rect',{attrs:{"x":"7","y":"12","width":"4","height":"3","rx":"1","fill":"#9C8BDA","stroke":"#5138AE"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "7f9a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26431,6 +26465,40 @@ module.exports = patchedExec;
               ...rest,
             },
             children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M2 0a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V2a2 2 0 00-2-2H2zm4.037 10c.503 0 .908-.373.908-.833 0-.46-.405-.834-.908-.834-.5 0-.908.374-.908.834 0 .46.407.833.908.833zM3.5 4.667C3.5 2.897 4.602 2 6.066 2 7.5 2 8.516 2.812 8.5 4.133c-.013.907-.614 1.502-1.098 1.98-.675.668-.672 1.02-.669 1.455v.099H5.302v-.108c-.002-.972-.002-1.397 1.023-2.291l.002-.001c.408-.357.73-.638.686-1.193-.042-.528-.522-.804-.976-.804-.77 0-1.099.629-1.099 1.397H3.5z","fill":"currentColor"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
+/***/ "92c6":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 32 26","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M1 3a2 2 0 012-2h26a2 2 0 012 2v20a2 2 0 01-2 2H3a2 2 0 01-2-2V3z","fill":"#EFA9B5","stroke":"#C2243F","stroke-miterlimit":"10","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('path',{attrs:{"d":"M1 3a2 2 0 012-2h26a2 2 0 012 2v4H1V3z","fill":"#fff","stroke":"#C2243F","stroke-miterlimit":"10","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('circle',{attrs:{"cx":"4","cy":"4","r":".5","fill":"#F9A86C","stroke":"#EFA9B5"}}),_c('circle',{attrs:{"cx":"7","cy":"4","r":".5","fill":"#F9A86C","stroke":"#EFA9B5"}}),_c('circle',{attrs:{"cx":"10","cy":"4","r":".5","fill":"#F9A86C","stroke":"#EFA9B5"}}),_c('path',{attrs:{"d":"M17 7h14v16a2 2 0 01-2 2H17V7z","fill":"#fff","stroke":"#C2243F"}}),_c('path',{attrs:{"d":"M20 11h4","stroke":"#C2243F","stroke-linecap":"round"}}),_c('rect',{attrs:{"x":"20","y":"13","width":"6","height":"2","rx":"1","fill":"#EFA9B5","stroke":"#C2243F"}}),_c('path',{attrs:{"d":"M20 17h8","stroke":"#C2243F","stroke-linecap":"round"}}),_c('rect',{attrs:{"x":"20","y":"19","width":"8","height":"2","rx":"1","fill":"#EFA9B5","stroke":"#C2243F"}}),_c('path',{attrs:{"d":"M6 15h7l-1 4H7l-1-4z","fill":"#fff","stroke":"#C2243F","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('path',{attrs:{"d":"M7 13.5L8.5 12M10.5 12l1.5 1.5","stroke":"#C2243F","stroke-linecap":"round","stroke-linejoin":"round"}})])
           )
         }
       }
@@ -47907,6 +47975,40 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 
+/***/ "f2e4":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 32 26","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M1 3a2 2 0 012-2h26a2 2 0 012 2v20a2 2 0 01-2 2H3a2 2 0 01-2-2V3z","fill":"#A1DAF7","stroke":"#1493D2","stroke-miterlimit":"10","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('path',{attrs:{"d":"M1 3a2 2 0 012-2h26a2 2 0 012 2v4H1V3z","fill":"#fff","stroke":"#1493D2","stroke-miterlimit":"10","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('circle',{attrs:{"cx":"4","cy":"4","r":".5","stroke":"#73C8F2"}}),_c('circle',{attrs:{"cx":"7","cy":"4","r":".5","stroke":"#73C8F2"}}),_c('circle',{attrs:{"cx":"10","cy":"4","r":".5","stroke":"#73C8F2"}}),_c('path',{attrs:{"d":"M11 12l-5 4 5 4M21 20l5-4-5-4","stroke":"#1493D2","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('path',{attrs:{"d":"M14 22l4-12","stroke":"#1493D2","stroke-linecap":"round"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "f393":
 /***/ (function(module, exports) {
 
@@ -48957,6 +49059,18 @@ var MIcons_ic_products_default = /*#__PURE__*/__webpack_require__.n(MIcons_ic_pr
 var MIcons_ic_categories = __webpack_require__("707b");
 var MIcons_ic_categories_default = /*#__PURE__*/__webpack_require__.n(MIcons_ic_categories);
 
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-code-flat.svg
+var ic_code_flat = __webpack_require__("f2e4");
+var ic_code_flat_default = /*#__PURE__*/__webpack_require__.n(ic_code_flat);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-checkout-flat.svg
+var ic_checkout_flat = __webpack_require__("92c6");
+var ic_checkout_flat_default = /*#__PURE__*/__webpack_require__.n(ic_checkout_flat);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-hosted-flat.svg
+var ic_hosted_flat = __webpack_require__("7f3e");
+var ic_hosted_flat_default = /*#__PURE__*/__webpack_require__.n(ic_hosted_flat);
+
 // EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-standard.svg
 var ic_lrg_standard = __webpack_require__("74ec");
 var ic_lrg_standard_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_standard);
@@ -49113,6 +49227,9 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
 
+
+
+
  // Circle marketing icons imports
 
 
@@ -49228,7 +49345,10 @@ var mIcons = {
   platforms: ic_lrg_platforms_default.a,
   scale: ic_lrg_scale_default.a,
   storefront: ic_lrg_storefront_default.a,
-  testing: ic_lrg_testing_default.a
+  testing: ic_lrg_testing_default.a,
+  'code-flat': ic_code_flat_default.a,
+  'checkout-flat': ic_checkout_flat_default.a,
+  'hosted-flat': ic_hosted_flat_default.a
 };
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecIcon.vue?vue&type=script&lang=js&
 
