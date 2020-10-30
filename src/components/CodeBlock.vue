@@ -1,35 +1,98 @@
 <template>
-  <Prism
+  <PrismEditor
+    v-model="code"
     class="code-example"
-    :class="{ 'language-none': language === 'none' ? 'language-none' : '' }"
-    :language="language !== 'none' ? language : 'javascript'"
+    :class="classNames"
+    :highlight="highlighter"
+    :line-numbers="lineNumbers"
+    :readonly="!editable"
   >
+    <!--
+      @slot Codeblock content
+    -->
     <slot />
-  </Prism>
+  </PrismEditor>
 </template>
 
 <script>
-// Base Prism import
-import 'prismjs';
-// Extra language configuration
-import 'prismjs/components/prism-markup-templating';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-php';
 // Vue component for Prism
-import Prism from 'vue-prism-component';
+import { PrismEditor } from 'vue-prism-editor';
+import 'vue-prism-editor/dist/prismeditor.min.css';
+// Prism core
+import { highlight, languages } from 'prismjs/components/prism-core';
+// Used as a basis for langauge packs.
+import 'prismjs/components/prism-clike';
+// Import supported languages
+import 'prismjs/components/prism-markup-templating';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-php';
 
 import 'prismjs/themes/prism.css';
 
 export default {
   name: 'CodeComponent',
   components: {
-    Prism,
+    PrismEditor,
   },
   props: {
+    /**
+     * The language for syntax highlighting.
+     *  Accepts either none, javascript, json, jsx or php.
+     */
     language: {
       type: String,
+      validate(type) {
+        return ['none', 'javascript', 'json', 'jsx', 'php'].includes(type);
+      },
       default: 'none',
+    },
+    /**
+     * Display codeblock line numbers.
+     */
+    lineNumbers: Boolean,
+    /**
+     * Allow the codeblock to grow or shrink with the content
+     */
+    grow: Boolean,
+    /**
+     * Toggles on the editable mode.
+     */
+    editable: Boolean,
+  },
+  data() {
+    return {
+      code: '',
+    };
+  },
+  computed: {
+    classNames() {
+      const {
+        language,
+        lineNumbers,
+      } = this;
+
+      const classes = {
+        'code-example--line-numbered': lineNumbers,
+        'code-example--fixed': !this.grow,
+        'language-none': language === 'none',
+      };
+
+      return classes;
+    },
+  },
+  mounted() {
+    // On mount, add the slot data to the data object.
+    this.code = this.$slots.default[0].text;
+  },
+  methods: {
+    highlighter(code) {
+      if (this.language === 'none') {
+        return highlight(code, languages.markup);
+      }
+      return highlight(code, languages[this.language]);
     },
   },
 };
@@ -44,7 +107,7 @@ pre.code-example[class*='language-'] {
 
 // Theme
 .code-example {
-  @apply bg-code-block rounded-md px-5 overflow-auto font-mono bg-gray-600 text-gray-100 w-full;
+  @apply bg-code-block rounded-md px-5 py-6 overflow-auto font-mono bg-gray-600 text-gray-100 w-full;
 
   pre {
     margin: 0.5em 0;
@@ -52,6 +115,28 @@ pre.code-example[class*='language-'] {
 
   code {
     white-space: pre-wrap; // override prism.js tomorrow-theme default
+  }
+
+  &--line-numbered {
+    @apply pl-0;
+  }
+
+  &--fixed {
+    // Min and max height allowed for the codeblock component.
+    min-height: 20rem;
+    max-height: 35rem;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      @apply my-2 bg-transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @apply bg-blue-300 rounded-full;
+    }
   }
 
   pre[class*='language-'],
