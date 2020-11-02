@@ -89,7 +89,7 @@ export default {
 <style lang="scss">
 
 .radio-btn {
-  @apply p-3 cursor-pointer flex text-sm text-gray-600 items-center;
+  @apply cursor-pointer flex text-sm text-gray-600 items-center;
 
   &.disabled {
     @apply text-gray-400 cursor-not-allowed;
