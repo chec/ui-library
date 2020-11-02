@@ -1,41 +1,15 @@
 <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_i)">
-<path d="M1 6C1 4.89543 1.89543 4 3 4H29C30.1046 4 31 4.89543 31 6V26C31 27.1046 30.1046 28 29 28H3C1.89543 28 1 27.1046 1 26V6Z" fill="#E77E90"/>
-</g>
-<path d="M1 6C1 4.89543 1.89543 4 3 4H29C30.1046 4 31 4.89543 31 6V26C31 27.1046 30.1046 28 29 28H3C1.89543 28 1 27.1046 1 26V6Z" stroke="#283341" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1 6C1 4.89543 1.89543 4 3 4H29C30.1046 4 31 4.89543 31 6V10H1V6Z" fill="#F1F6FC" stroke="#283341" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="4" cy="7" r="0.5" fill="#F9A86C" stroke="#283341"/>
-<circle cx="7" cy="7" r="0.5" fill="#F9A86C" stroke="#283341"/>
-<circle cx="10" cy="7" r="0.5" fill="#F9A86C" stroke="#283341"/>
-<g filter="url(#filter1_i)">
-<path d="M17 10H31V26C31 27.1046 30.1046 28 29 28H17V10Z" fill="white"/>
-</g>
-<path d="M17 10H31V26C31 27.1046 30.1046 28 29 28H17V10Z" stroke="#283341"/>
-<path d="M20 14L24 14" stroke="#283341" stroke-linecap="round"/>
-<rect x="20" y="16" width="6" height="2" rx="1" fill="#E77E90" stroke="#283341"/>
-<path d="M20 20L28 20" stroke="#283341" stroke-linecap="round"/>
-<rect x="20" y="22" width="8" height="2" rx="1" fill="#E77E90" stroke="#283341"/>
-<path d="M6 18H13L12 22H7L6 18Z" fill="#F1F6FC" stroke="#283341" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M7 16.5L8.5 15" stroke="#283341" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10.5 15L12 16.5" stroke="#283341" stroke-linecap="round" stroke-linejoin="round"/>
-<defs>
-<filter id="filter0_i" x="0.5" y="3.5" width="31" height="25" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="6"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
-</filter>
-<filter id="filter1_i" x="16.5" y="9.5" width="15" height="19" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="-6"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
-</filter>
-</defs>
+<path d="M1 6C1 4.89543 1.89543 4 3 4H29C30.1046 4 31 4.89543 31 6V26C31 27.1046 30.1046 28 29 28H3C1.89543 28 1 27.1046 1 26V6Z" fill="#EFA9B5" stroke="#C2243F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1 6C1 4.89543 1.89543 4 3 4H29C30.1046 4 31 4.89543 31 6V10H1V6Z" fill="white" stroke="#C2243F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="4" cy="7" r="0.5" fill="#F9A86C" stroke="#EFA9B5"/>
+<circle cx="7" cy="7" r="0.5" fill="#F9A86C" stroke="#EFA9B5"/>
+<circle cx="10" cy="7" r="0.5" fill="#F9A86C" stroke="#EFA9B5"/>
+<path d="M17 10H31V26C31 27.1046 30.1046 28 29 28H17V10Z" fill="white" stroke="#C2243F"/>
+<path d="M20 14L24 14" stroke="#C2243F" stroke-linecap="round"/>
+<rect x="20" y="16" width="6" height="2" rx="1" fill="#EFA9B5" stroke="#C2243F"/>
+<path d="M20 20L28 20" stroke="#C2243F" stroke-linecap="round"/>
+<rect x="20" y="22" width="8" height="2" rx="1" fill="#EFA9B5" stroke="#C2243F"/>
+<path d="M6 18H13L12 22H7L6 18Z" fill="white" stroke="#C2243F" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 16.5L8.5 15" stroke="#C2243F" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.5 15L12 16.5" stroke="#C2243F" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
