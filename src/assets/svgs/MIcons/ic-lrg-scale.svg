@@ -1,22 +1,5 @@
 <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="40" cy="40" r="40" fill="#F1F6FC"/>
-<circle cx="22" cy="37" r="6" fill="white"/>
-<circle cx="49.5" cy="29.5" r="9.5" fill="white"/>
-<circle cx="40" cy="56" r="8" fill="white"/>
-<path d="M27.5 46.5L34.7376 39.2609C35.1253 38.8731 35.753 38.8699 36.1447 39.2537L40.4292 43.4519C40.8291 43.8437 41.4726 43.831 41.8566 43.4237L46.5 38.5" stroke="#283341" stroke-linecap="round" stroke-linejoin="round"/>
-<g filter="url(#filter0_i)">
-<path d="M51 33H43.5866C42.6726 33 42.2376 34.1251 42.9139 34.7399L50.3273 41.4794C50.9697 42.0634 52 41.6076 52 40.7394V34C52 33.4477 51.5523 33 51 33Z" fill="#85E0CE"/>
-</g>
-<path d="M51 33H43.5866C42.6726 33 42.2376 34.1251 42.9139 34.7399L50.3273 41.4794C50.9697 42.0634 52 41.6076 52 40.7394V34C52 33.4477 51.5523 33 51 33Z" stroke="#283341"/>
-<defs>
-<filter id="filter0_i" x="42.0836" y="32.5" width="10.4164" height="9.7424" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="-4"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
-</filter>
-</defs>
+<path d="M0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40Z" fill="#F3FCFA"/>
+<path d="M27.5 46.5L34.7376 39.2609C35.1253 38.8731 35.753 38.8699 36.1447 39.2537L40.4292 43.4519C40.8291 43.8437 41.4726 43.831 41.8566 43.4238L46.5 38.5" stroke="#29A38A" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M51 33H43.5866C42.6726 33 42.2376 34.1251 42.9139 34.7399L50.3273 41.4794C50.9697 42.0634 52 41.6076 52 40.7394V34C52 33.4477 51.5523 33 51 33Z" fill="#AEEADE" stroke="#29A38A"/>
 </svg>
