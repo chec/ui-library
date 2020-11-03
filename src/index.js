@@ -26,6 +26,7 @@ import ChecOptionsMenu from './components/ChecOptionsMenu.vue';
 import ChecPaginate from './components/ChecPaginate.vue';
 import ChecPopover from './components/ChecPopover.vue';
 import ChecProgressBar from './components/ChecProgressBar.vue';
+import ChecRadio from './components/ChecRadio.vue';
 import ChecSegmentedButtonsGroup from './components/ChecSegmentedButtonsGroup.vue';
 import ChecSwitch from './components/ChecSwitch.vue';
 import ChecTab from './components/ChecTab.vue';
@@ -72,6 +73,7 @@ export {
   ChecPaginate,
   ChecPopover,
   ChecProgressBar,
+  ChecRadio,
   ChecSegmentedButtonsGroup,
   ChecSwitch,
   ChecTab,
