@@ -13,7 +13,6 @@
     />
     <input
       v-else
-      :required="required"
       v-bind="sharedInputProps"
       :type="$attrs.type || 'text'"
       :style="{ 'padding-right': hasSlot && `${slotWidth}px` }"
@@ -142,22 +141,24 @@ export default {
     sharedInputProps() {
       const {
         additionalInputAttributes,
+        id,
+        required,
         value,
         variant,
-        id,
         $attrs,
       } = this;
 
       return {
         ...$attrs,
         ...additionalInputAttributes,
-        placeholder: this.hasPlaceholder ? this.placeholder : ' ',
         class: ['text-field__input', this.innerInputClass, {
           'text-field__input--has-placeholder': this.hasPlaceholder,
         }],
         disabled: variant === 'disabled',
         id,
+        placeholder: this.hasPlaceholder ? this.placeholder : ' ',
         ref: 'input',
+        required,
         value,
       };
     },
