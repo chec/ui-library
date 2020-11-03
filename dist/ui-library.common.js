@@ -3399,6 +3399,13 @@ module.exports = function (CONSTRUCTOR_NAME) {
 
 /***/ }),
 
+/***/ "2763":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "288b":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -36863,6 +36870,17 @@ $({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
 
 /***/ }),
 
+/***/ "dd66":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecRadio_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2763");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecRadio_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecRadio_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecRadio_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "dd95":
 /***/ (function(module, exports) {
 
@@ -48411,6 +48429,7 @@ __webpack_require__.d(__webpack_exports__, "ChecOptionsMenu", function() { retur
 __webpack_require__.d(__webpack_exports__, "ChecPaginate", function() { return /* reexport */ ChecPaginate; });
 __webpack_require__.d(__webpack_exports__, "ChecPopover", function() { return /* reexport */ ChecPopover; });
 __webpack_require__.d(__webpack_exports__, "ChecProgressBar", function() { return /* reexport */ ChecProgressBar; });
+__webpack_require__.d(__webpack_exports__, "ChecRadio", function() { return /* reexport */ ChecRadio; });
 __webpack_require__.d(__webpack_exports__, "ChecSegmentedButtonsGroup", function() { return /* reexport */ ChecSegmentedButtonsGroup; });
 __webpack_require__.d(__webpack_exports__, "ChecSwitch", function() { return /* reexport */ ChecSwitch; });
 __webpack_require__.d(__webpack_exports__, "ChecTab", function() { return /* reexport */ ChecTab; });
@@ -56854,6 +56873,130 @@ var ChecProgressBar_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecProgressBar = (ChecProgressBar_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecRadio.vue?vue&type=template&id=739874dd&
+var ChecRadiovue_type_template_id_739874dd_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"radio-btn",class:{ 'active' : _vm.isChecked, disabled: _vm.disabled },attrs:{"for":_vm.id}},[_c('input',{staticClass:"radio-btn__input",attrs:{"id":_vm.id,"type":"radio","name":_vm.name,"disabled":_vm.disabled},domProps:{"value":_vm.value,"checked":_vm.isChecked},on:{"input":_vm.handleInput}}),_c('span',{staticClass:"radio-btn__fill"}),_vm._t("label",[(_vm.label)?_c('div',{staticClass:"radio-btn__label"},[_vm._v(_vm._s(_vm.label))]):_vm._e()],null,{ label: _vm.label, isChecked: _vm.isChecked, disabled: _vm.disabled })],2)}
+var ChecRadiovue_type_template_id_739874dd_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecRadio.vue?vue&type=template&id=739874dd&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecRadio.vue?vue&type=script&lang=js&
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var ChecRadiovue_type_script_lang_js_ = ({
+  name: 'ChecRadio',
+  model: {
+    prop: 'selected',
+    event: 'input'
+  },
+  props: {
+    /**
+     * Name of the radio button
+     */
+    name: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * The value of the radio button
+     */
+    value: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Sets the label for the input option.
+     */
+    label: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Disables the radio button
+     */
+    disabled: Boolean,
+
+    /**
+     * Check if radio button is selected.
+     */
+    selected: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    isChecked: function isChecked() {
+      return this.value === this.selected;
+    },
+    id: function id() {
+      return lodash_uniqueid_default()("".concat(this.name || 'radio', "_").concat(this.value, "_"));
+    }
+  },
+  methods: {
+    handleInput: function handleInput() {
+      /**
+       * Emitted when input is selected.
+       * @event input
+       */
+      this.$emit('input', this.value);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecRadio.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecRadiovue_type_script_lang_js_ = (ChecRadiovue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecRadio.vue?vue&type=style&index=0&lang=scss&
+var ChecRadiovue_type_style_index_0_lang_scss_ = __webpack_require__("dd66");
+
+// CONCATENATED MODULE: ./src/components/ChecRadio.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ChecRadio_component = normalizeComponent(
+  components_ChecRadiovue_type_script_lang_js_,
+  ChecRadiovue_type_template_id_739874dd_render,
+  ChecRadiovue_type_template_id_739874dd_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChecRadio = (ChecRadio_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=3cf826de&
 var ChecSegmentedButtonsGroupvue_type_template_id_3cf826de_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"segmented-btns-group"},_vm._l((_vm.resolvedOptions),function(ref){
 var label = ref.label;
@@ -70204,6 +70347,7 @@ var down_arrow_default = /*#__PURE__*/__webpack_require__.n(down_arrow);
   checLogo: chec_logo_default.a
 });
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
