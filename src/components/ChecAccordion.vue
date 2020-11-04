@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import ResizeObserver from 'resize-observer-polyfill';
 import ChecIcon from './ChecIcon.vue';
 import ChecSwitch from './ChecSwitch.vue';
 
