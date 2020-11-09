@@ -45,7 +45,7 @@ import ChecOptionsMenu from '../../components/ChecOptionsMenu.vue';
       },
       template: `
         <div class="w-full h-screen bg-gray-200 flex items-center justify-around">
-          <ChecOptionsMenu :menu-placement="menuPlacement">
+          <ChecOptionsMenu :menu-placement="menuPlacement" prevent-toggle>
             <ChecOption @option-selected="action">
               Edit record
             </ChecOption>

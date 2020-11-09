@@ -1,41 +1,37 @@
 <template>
-  <div ref="menu-el" class="options-menu">
+  <div ref="container">
     <ChecButton
       slot="reference"
-      ref="button-el"
+      ref="button"
       variant="small"
+      icon="more"
       v-bind="$attrs"
       @click="toggleMenu"
-    >
-      <template #icon>
-        <ChecIcon icon="more" />
-      </template>
-    </ChecButton>
+    />
     <ChecPopover
-      v-show="isOpen"
-      ref="popper-el"
-      @option-selected="handleSelectOption"
+      target-ref="button"
+      :open="isOpen"
+      :placement="menuPlacement"
     >
-      <!--
-        @slot Provide ChecOption instances here
-      -->
-      <slot />
+      <div ref="menu" class="options-menu">
+        <!--
+          @slot Provide ChecOption instances here
+        -->
+        <slot />
+      </div>
     </ChecPopover>
   </div>
 </template>
 
 <script>
-import { createPopper } from '@popperjs/core';
 import ChecButton from './ChecButton.vue';
 import ChecPopover from './ChecPopover.vue';
-import ChecIcon from './ChecIcon.vue';
 
 export default {
   name: 'ChecOptionsMenu',
   components: {
     ChecButton,
     ChecPopover,
-    ChecIcon,
   },
   inheritAttrs: false,
   props: {
@@ -44,7 +40,7 @@ export default {
      */
     open: Boolean,
     /**
-     *  Describes the preferred placement of the options menu.
+     * Describes the preferred placement of the options menu.
      */
     menuPlacement: {
       type: String,
@@ -68,82 +64,24 @@ export default {
           'left-end'].includes(placement);
       },
     },
+    /**
+     * Whether choosing an option in the menu should toggle the menu
+     */
+    preventToggle: Boolean,
   },
   data() {
     return {
       isOpen: this.open,
     };
   },
-  watch: {
-    isOpen(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        if (newVal) {
-          this.show();
-        } else {
-          this.hide();
-        }
-      }
-    },
-  },
   created() {
     // add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.createPopper();
-    });
-  },
   beforeDestroy() {
-    // remove event listeners
     window.removeEventListener('click', this.onOutsideClick);
   },
   methods: {
-    /**
-     * Show the popper.js
-     */
-    show() {
-      this.$refs['button-el'].$el.setAttribute('data-show', '');
-      this.createPopper();
-    },
-    /**
-     * Hide the popper
-     */
-    hide() {
-      this.$refs['popper-el'].$el.removeAttribute('data-show');
-      this.destroyPopper();
-    },
-    /**
-     * Create the popper.js instance
-     */
-    createPopper() {
-      this.$popper = createPopper(this.$refs['button-el'].$el, this.$refs['popper-el'].$el, {
-        placement: this.menuPlacement,
-        modifiers: [
-          {
-            name: 'flip',
-            options: {
-              fallbackPlacements: ['top', 'bottom'],
-            },
-          },
-          {
-            name: 'preventOverflow',
-            options: {
-              rootBoundary: 'document',
-            },
-          },
-        ],
-      });
-    },
-    /**
-     * Destroys the popper.js instance
-     */
-    destroyPopper() {
-      if (this.$popper) {
-        this.$popper.destroy();
-        this.$popper = null;
-      }
-    },
     /**
      * Toggles the menu between open and closed
      */
@@ -156,14 +94,21 @@ export default {
      * @param {Event} event
      */
     onOutsideClick(event) {
-      if (!this.$refs['menu-el'].contains(event.target) && this.isOpen) {
-        this.isOpen = false;
+      // Only do anything if the popover is open
+      if (!this.isOpen) {
+        return;
       }
-    },
-    /**
-     * When an option is selected, close the menu
-     */
-    handleSelectOption() {
+
+      // Check that the button isn't being clicked
+      if (this.$refs.container.contains(event.target)) {
+        return;
+      }
+
+      // Check if an option in the menu is being clicked
+      if (this.preventToggle && this.$refs.menu.contains(event.target)) {
+        return;
+      }
+
       this.isOpen = false;
     },
   },
@@ -172,10 +117,7 @@ export default {
 
 <style lang="scss">
 .options-menu {
-  @apply static;
-
-  .popover {
-    min-width: 10rem;
-  }
+  @apply bg-white border border-gray-300 rounded z-50 shadow-md mt-2;
+  min-width: 10rem;
 }
 </style>

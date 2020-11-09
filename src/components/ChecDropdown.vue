@@ -1,6 +1,6 @@
 <template>
   <div
-    ref="dropdown-el"
+    ref="container"
     class="dropdown"
     :class="classNames"
     @click="toggleDropdown"
@@ -29,10 +29,14 @@
       </div>
     </div>
     <ChecIcon icon="down" class="dropdown__down-arrow" />
-    <MountingPortal mount-to="body" :name="name || 'dropdown'" append>
-      <ChecPopover
-        v-show="showDropdown"
-        ref="popper-el"
+    <ChecPopover
+      target-ref="container"
+      :open="showDropdown"
+      placement="bottom-end"
+      :popper-options="popoverOptions"
+    >
+      <div
+        ref="popper"
         class="dropdown__popover"
         :style="{
           width: `${dropdownElWidth}px`,
@@ -49,7 +53,7 @@
             @focusout="handleSearchFocusOut"
           />
         </div>
-        <div class="dropdown__options">
+        <div ref="options" class="dropdown__options">
           <ChecOption
             v-for="option in renderableOptions"
             :key="option.value"
@@ -64,14 +68,12 @@
           </ChecOption>
           <ChecOption v-if="loading" loading />
         </div>
-      </ChecPopover>
-    </MountingPortal>
+      </div>
+    </ChecPopover>
   </div>
 </template>
 
 <script>
-import { MountingPortal } from 'portal-vue';
-import { createPopper } from '@popperjs/core';
 import TextField from '@/components/TextField';
 import ChecOption from './ChecOption.vue';
 import ChecPopover from './ChecPopover.vue';
@@ -84,7 +86,6 @@ export default {
     ChecIcon,
     ChecOption,
     ChecPopover,
-    MountingPortal,
   },
   props: {
     /**
@@ -163,8 +164,27 @@ export default {
       isFocus: false,
       showDropdown: false,
       dropdownElWidth: 0,
-      popper: null,
       searchIsFocused: false,
+      popoverOptions: {
+        onFirstUpdate: () => {
+          if (this.showSearch) {
+            this.$refs.search.$el.querySelector('input').focus();
+          }
+
+          this.$refs.options
+            .addEventListener('scroll', ({ target: element }) => {
+              if (
+                element.scrollHeight !== element.clientHeight
+                && element.scrollHeight - element.scrollTop === element.clientHeight
+              ) {
+                /**
+                 * Emitted when the user scrolls the list of options to the bottom
+                 */
+                this.$emit('scroll-to-bottom');
+              }
+            });
+        },
+      },
     };
   },
   computed: {
@@ -312,59 +332,6 @@ export default {
       });
     },
     /**
-     * Destroys the popper.js instance
-     */
-    destroyPopper() {
-      if (this.popper) {
-        this.popper.destroy();
-        this.popper = null;
-      }
-    },
-    /**
-     * Create the popper.js instance
-     */
-    createPopper() {
-      this.popper = createPopper(this.$refs['dropdown-el'], this.$refs['popper-el'].$el, {
-        placement: 'bottom-start',
-        modifiers: [
-          {
-            name: 'flip',
-            options: {
-              rootBoundary: 'window',
-              fallbackPlacements: ['top-start', 'bottom-start'],
-            },
-          },
-          {
-            name: 'preventOverflow',
-            options: {
-              rootBoundary: 'window',
-              tether: false,
-            },
-          },
-        ],
-        onFirstUpdate: () => {
-          if (this.showSearch) {
-            this.$refs.search.$el.querySelector('input').focus();
-          }
-
-          this.$refs['popper-el']
-            .$el
-            .querySelector('.dropdown__options')
-            .addEventListener('scroll', ({ target: element }) => {
-              if (
-                element.scrollHeight !== element.clientHeight
-                && element.scrollHeight - element.scrollTop === element.clientHeight
-              ) {
-                /**
-                 * Emitted when the user scrolls the list of options to the bottom
-                 */
-                this.$emit('scroll-to-bottom');
-              }
-            });
-        },
-      });
-    },
-    /**
      * Handle the search field losing focus
      */
     handleSearchFocusOut() {
@@ -398,7 +365,7 @@ export default {
     setDropdownElWidth() {
       // set ChecPopover width to match root's width since this component is has a 'static' position by default to
       // allow for popping out of scrollable overflow
-      const dropdownEl = this.$refs['dropdown-el'];
+      const dropdownEl = this.$refs.container;
       this.dropdownElWidth = dropdownEl.clientWidth;
     },
     /**
@@ -473,14 +440,6 @@ export default {
         return;
       }
 
-      this.$nextTick(() => {
-        if (this.showDropdown) {
-          this.createPopper();
-        } else {
-          this.destroyPopper();
-        }
-      });
-
       this.showDropdown = !this.showDropdown;
     },
     /**
@@ -504,7 +463,7 @@ export default {
         return;
       }
 
-      if (this.$refs['dropdown-el'].contains(event.target) || this.$refs['popper-el'].$el.contains(event.target)) {
+      if (this.$refs.container.contains(event.target) || this.$refs.popper.contains(event.target)) {
         return;
       }
 
@@ -552,6 +511,10 @@ export default {
     top: -1px;
 
     transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+
+  &__popover {
+    @apply static bg-white border border-gray-300 rounded-md z-50 shadow-md overflow-hidden;
   }
 
   &__value {

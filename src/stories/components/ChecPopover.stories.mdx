@@ -1,0 +1,75 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { select } from '@storybook/addon-knobs';
+import ChecButton from '../../components/ChecButton.vue';
+import ChecCard from '../../components/ChecCard.vue';
+import ChecHeader from '../../components/ChecHeader.vue';
+import ChecPopover from '../../components/ChecPopover.vue';
+
+<Meta title="Components" component={ChecPopover} />
+
+# Popover
+
+<Props of={ChecPopover} />
+
+This component powers the functionality of the `ChecOptionsMenu` and `ChecDropdown` components. It allows for an
+arbitrary template to pop over existing content on the page using the `popper.js` library for positioning/collision.
+
+## Popover with card example
+
+<Preview>
+  <Story name="Popover">
+    {{
+      components: {
+        ChecButton,
+        ChecCard,
+        ChecHeader,
+        ChecPopover,
+      },
+      props: {
+        placement: {
+          default: select('Menu placement', [
+            'auto',
+            'auto-start',
+            'auto-end',
+            'top',
+            'top-start',
+            'top-end',
+            'bottom',
+            'bottom-start',
+            'bottom-end',
+            'right',
+            'right-start',
+            'right-end',
+            'left',
+            'left-start',
+            'left-end'
+          ], 'bottom'),
+        },
+      },
+      data() {
+        return {
+          popoverOpen: false,
+        };
+      },
+      computed: {
+        margin() {
+          return this.placement.match(/top|bottom/) ? 'my-2' : 'mx-2';
+        },
+      },
+      template: `
+        <div class="flex flex-col items-center justify-around pt-40">
+          <div class="my-4">Content above</div>
+          <ChecButton ref="button" @click="popoverOpen = !popoverOpen">Click me</ChecButton>
+          <div class="my-4">Content below</div>
+          <ChecPopover targetRef="button" :open="popoverOpen" :placement="placement">
+            <ChecCard borders="full" :class="margin">
+              <ChecHeader variant="card" title="A popover card" />
+              Woah, some content for this card
+            </ChecCard>
+          </ChecPopover>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
