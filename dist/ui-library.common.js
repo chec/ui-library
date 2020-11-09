@@ -246,6 +246,17 @@ module.exports = function (fn, that, length) {
 
 /***/ }),
 
+/***/ "04cf":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecPopover_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("c648");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecPopover_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecPopover_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecPopover_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "057f":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11029,17 +11040,6 @@ function noop() {}
 
 /***/ }),
 
-/***/ "3e8c":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecPopover_vue_vue_type_style_index_0_id_f1a06510_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("4934");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecPopover_vue_vue_type_style_index_0_id_f1a06510_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecPopover_vue_vue_type_style_index_0_id_f1a06510_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecPopover_vue_vue_type_style_index_0_id_f1a06510_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
 /***/ "3f55":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11451,13 +11451,6 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
   return !String(Symbol());
 });
 
-
-/***/ }),
-
-/***/ "4934":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -34219,6 +34212,13 @@ module.exports = false;
 
 /***/ }),
 
+/***/ "c648":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "c6a7":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52523,14 +52523,14 @@ flatpickr_default.a.l10ns.default.weekdays.shorthand = ['S', 'M', 'T', 'W', 'TH'
     })]);
   }
 }));
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDropdown.vue?vue&type=template&id=60aba536&
-var ChecDropdownvue_type_template_id_60aba536_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"dropdown-el",staticClass:"dropdown",class:_vm.classNames,on:{"click":_vm.toggleDropdown,"keyup":_vm.onKeyPress}},[(!_vm.multiselect)?_c('input',{attrs:{"type":"hidden","name":_vm.name},domProps:{"value":_vm.value}}):_vm._l((_vm.value),function(optionValue){return _c('input',{key:optionValue,attrs:{"type":"hidden","name":(_vm.name + "[]")},domProps:{"value":optionValue}})}),_c('div',[(_vm.label)?_c('label',{staticClass:"dropdown__label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e(),_c('div',{staticClass:"dropdown__value"},[_vm._v(" "+_vm._s(_vm.shownValue)+" ")])]),_c('ChecIcon',{staticClass:"dropdown__down-arrow",attrs:{"icon":"down"}}),_c('MountingPortal',{attrs:{"mount-to":"body","name":_vm.name || 'dropdown',"append":""}},[_c('ChecPopover',{directives:[{name:"show",rawName:"v-show",value:(_vm.showDropdown),expression:"showDropdown"}],ref:"popper-el",staticClass:"dropdown__popover",style:({
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDropdown.vue?vue&type=template&id=53f404c0&
+var ChecDropdownvue_type_template_id_53f404c0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"container",staticClass:"dropdown",class:_vm.classNames,on:{"click":_vm.toggleDropdown,"keyup":_vm.onKeyPress}},[(!_vm.multiselect)?_c('input',{attrs:{"type":"hidden","name":_vm.name},domProps:{"value":_vm.value}}):_vm._l((_vm.value),function(optionValue){return _c('input',{key:optionValue,attrs:{"type":"hidden","name":(_vm.name + "[]")},domProps:{"value":optionValue}})}),_c('div',[(_vm.label)?_c('label',{staticClass:"dropdown__label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e(),_c('div',{staticClass:"dropdown__value"},[_vm._v(" "+_vm._s(_vm.shownValue)+" ")])]),_c('ChecIcon',{staticClass:"dropdown__down-arrow",attrs:{"icon":"down"}}),_c('ChecPopover',{attrs:{"target-ref":"container","open":_vm.showDropdown,"placement":"bottom-end","popper-options":_vm.popoverOptions}},[_c('div',{ref:"popper",staticClass:"dropdown__popover",style:({
         width: (_vm.dropdownElWidth + "px"),
-      })},[(_vm.showSearch)?_c('div',{staticClass:"dropdown__option-search"},[_c('TextField',{ref:"search",attrs:{"label":_vm.$t('general.search'),"icon":"search","value":_vm.searchValue},on:{"input":_vm.handleSearch,"focusin":_vm.handleSearchFocusIn,"focusout":_vm.handleSearchFocusOut}})],1):_vm._e(),_c('div',{staticClass:"dropdown__options"},[_vm._l((_vm.renderableOptions),function(option){return _c('ChecOption',{key:option.value,class:_vm.checOptionClass,attrs:{"option":option,"show-checkbox":_vm.multiselect,"checked":_vm.multiselect && !_vm.isIndeterminate(option) && _vm.isChecked(option),"indeterminate":_vm.multiselect && _vm.isIndeterminate(option)},on:{"option-selected":_vm.onChecOptionSelect}},[_vm._v(" "+_vm._s(option.label)+" ")])}),(_vm.loading)?_c('ChecOption',{attrs:{"loading":""}}):_vm._e()],2)])],1)],2)}
-var ChecDropdownvue_type_template_id_60aba536_staticRenderFns = []
+      })},[(_vm.showSearch)?_c('div',{staticClass:"dropdown__option-search"},[_c('TextField',{ref:"search",attrs:{"label":_vm.$t('general.search'),"icon":"search","value":_vm.searchValue},on:{"input":_vm.handleSearch,"focusin":_vm.handleSearchFocusIn,"focusout":_vm.handleSearchFocusOut}})],1):_vm._e(),_c('div',{ref:"options",staticClass:"dropdown__options"},[_vm._l((_vm.renderableOptions),function(option){return _c('ChecOption',{key:option.value,class:_vm.checOptionClass,attrs:{"option":option,"show-checkbox":_vm.multiselect,"checked":_vm.multiselect && !_vm.isIndeterminate(option) && _vm.isChecked(option),"indeterminate":_vm.multiselect && _vm.isIndeterminate(option)},on:{"option-selected":_vm.onChecOptionSelect}},[_vm._v(" "+_vm._s(option.label)+" ")])}),(_vm.loading)?_c('ChecOption',{attrs:{"loading":""}}):_vm._e()],2)])])],2)}
+var ChecDropdownvue_type_template_id_53f404c0_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecDropdown.vue?vue&type=template&id=60aba536&
+// CONCATENATED MODULE: ./src/components/ChecDropdown.vue?vue&type=template&id=53f404c0&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.every.js
 var es_array_every = __webpack_require__("a623");
@@ -52549,6 +52549,241 @@ var es_string_search = __webpack_require__("841c");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
 var es_string_trim = __webpack_require__("498a");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOption.vue?vue&type=template&id=7dff7cac&scoped=true&
+var ChecOptionvue_type_template_id_7dff7cac_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"option",class:_vm.classNames,attrs:{"tabindex":"0","role":!_vm.showCheckbox && 'button'},on:{"click":_vm.emitOptionsSelectedEvent,"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.emitOptionsSelectedEvent($event)}}},[(_vm.loading)?_c('div',{staticClass:"option__loading-container"},[_c('ChecLoading')],1):[(_vm.showCheckbox)?_c('ChecCheckbox',{staticClass:"mr-3",attrs:{"id":_vm.option.value,"type":"checkbox","checked":_vm.checked,"disabled":_vm.option.disabled,"indeterminate":_vm.indeterminate}}):_vm._e(),_vm._t("default")]],2)}
+var ChecOptionvue_type_template_id_7dff7cac_scoped_true_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecOption.vue?vue&type=template&id=7dff7cac&scoped=true&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecLoading.vue?vue&type=template&id=76153738&scoped=true&
+var ChecLoadingvue_type_template_id_76153738_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"loading",class:_vm.classObject},[_c('svg',{staticClass:"loading__animation",attrs:{"viewBox":"0 0 32 32","fill":"none"}},[_c('path',{staticClass:"loading__spinner-background",attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28C22.6274 28 28 22.6274 28 16C28\n      9.37258 22.6274 4 16 4ZM0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366\n      24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z"}}),_c('ellipse',{staticClass:"loading__animation-spinner",attrs:{"rx":"14","ry":"14","stroke-width":"4","stroke-dashoffset":"100","stroke-dasharray":"100","transform":"translate(16,16)"}})]),(_vm.message)?_c('div',{staticClass:"loading__message"},[_vm._v(" "+_vm._s(_vm.message)+" ")]):_vm._e()])}
+var ChecLoadingvue_type_template_id_76153738_scoped_true_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecLoading.vue?vue&type=template&id=76153738&scoped=true&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecLoading.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var ChecLoadingvue_type_script_lang_js_ = ({
+  name: 'ChecLoading',
+  props: {
+    message: {
+      type: String,
+      default: ''
+    },
+    variant: {
+      type: String,
+      default: 'default',
+      validator: function validator(value) {
+        return ['dark', 'light', 'default'].includes(value);
+      }
+    },
+    withoutBackground: Boolean
+  },
+  computed: {
+    classObject: function classObject() {
+      return [this.withoutBackground ? 'loading--without-background' : 'loading--with-background', this.variant !== 'default' ? "loading--".concat(this.variant) : ''];
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecLoading.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecLoadingvue_type_script_lang_js_ = (ChecLoadingvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecLoading.vue?vue&type=style&index=0&id=76153738&scoped=true&lang=scss&
+var ChecLoadingvue_type_style_index_0_id_76153738_scoped_true_lang_scss_ = __webpack_require__("8fb4");
+
+// CONCATENATED MODULE: ./src/components/ChecLoading.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ChecLoading_component = normalizeComponent(
+  components_ChecLoadingvue_type_script_lang_js_,
+  ChecLoadingvue_type_template_id_76153738_scoped_true_render,
+  ChecLoadingvue_type_template_id_76153738_scoped_true_staticRenderFns,
+  false,
+  null,
+  "76153738",
+  null
+  
+)
+
+/* harmony default export */ var ChecLoading = (ChecLoading_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOption.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var ChecOptionvue_type_script_lang_js_ = ({
+  name: 'ChecOption',
+  components: {
+    ChecCheckbox: ChecCheckbox,
+    ChecLoading: ChecLoading
+  },
+  props: {
+    /**
+     * Set's the option as a selectable option
+     */
+    showCheckbox: Boolean,
+
+    /**
+     * Indicate the checkbox (if shown) should be checked
+     */
+    checked: Boolean,
+
+    /**
+     * Indicate the checkbox (if shown) should have an indeterminate state
+     */
+    indeterminate: Boolean,
+
+    /**
+     * The option object
+     */
+    option: {
+      type: Object,
+      default: function _default() {
+        return {
+          value: null,
+          disabled: false
+        };
+      }
+    },
+
+    /**
+     * Whether the option is destructive, i.e. that it deletes something
+     */
+    destructive: Boolean,
+
+    /**
+     * Whether the content should be replaced with a loading indicator
+     */
+    loading: Boolean
+  },
+  computed: {
+    level: function level() {
+      var level = this.option.level;
+
+      if (!level || typeof level !== 'number') {
+        return 0;
+      }
+
+      if (level > 3) {
+        return 3;
+      }
+
+      return level;
+    },
+    classNames: function classNames() {
+      return [{
+        'option--disabled': this.option.disabled,
+        'option--destructive': this.destructive,
+        'option--loading': this.loading
+      }, "option--level-".concat(this.level)];
+    }
+  },
+  methods: {
+    emitOptionsSelectedEvent: function emitOptionsSelectedEvent() {
+      if (!this.option.disabled) {
+        this.$emit('option-selected', this.option); // When used in slots, parent components can attach handlers to this
+
+        this.$parent.$emit('option-selected', this.option);
+      }
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecOption.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecOptionvue_type_script_lang_js_ = (ChecOptionvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecOption.vue?vue&type=style&index=0&id=7dff7cac&lang=scss&scoped=true&
+var ChecOptionvue_type_style_index_0_id_7dff7cac_lang_scss_scoped_true_ = __webpack_require__("4abf");
+
+// CONCATENATED MODULE: ./src/components/ChecOption.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ChecOption_component = normalizeComponent(
+  components_ChecOptionvue_type_script_lang_js_,
+  ChecOptionvue_type_template_id_7dff7cac_scoped_true_render,
+  ChecOptionvue_type_template_id_7dff7cac_scoped_true_staticRenderFns,
+  false,
+  null,
+  "7dff7cac",
+  null
+  
+)
+
+/* harmony default export */ var ChecOption = (ChecOption_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPopover.vue?vue&type=template&id=25a92121&
+var ChecPopovervue_type_template_id_25a92121_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('MountingPortal',{attrs:{"mount-to":_vm.mountTarget,"name":_vm.name,"append":""}},[_c('div',{ref:"popperRef",class:_vm.classNames},[_vm._t("default")],2)])}
+var ChecPopovervue_type_template_id_25a92121_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecPopover.vue?vue&type=template&id=25a92121&
 
 // EXTERNAL MODULE: ./node_modules/portal-vue/dist/portal-vue.common.js
 var portal_vue_common = __webpack_require__("2b88");
@@ -54370,118 +54605,8 @@ var popper_createPopper = /*#__PURE__*/popperGenerator({
 }); // eslint-disable-next-line import/no-unused-modules
 
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOption.vue?vue&type=template&id=7dff7cac&scoped=true&
-var ChecOptionvue_type_template_id_7dff7cac_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"option",class:_vm.classNames,attrs:{"tabindex":"0","role":!_vm.showCheckbox && 'button'},on:{"click":_vm.emitOptionsSelectedEvent,"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.emitOptionsSelectedEvent($event)}}},[(_vm.loading)?_c('div',{staticClass:"option__loading-container"},[_c('ChecLoading')],1):[(_vm.showCheckbox)?_c('ChecCheckbox',{staticClass:"mr-3",attrs:{"id":_vm.option.value,"type":"checkbox","checked":_vm.checked,"disabled":_vm.option.disabled,"indeterminate":_vm.indeterminate}}):_vm._e(),_vm._t("default")]],2)}
-var ChecOptionvue_type_template_id_7dff7cac_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPopover.vue?vue&type=script&lang=js&
 
-
-// CONCATENATED MODULE: ./src/components/ChecOption.vue?vue&type=template&id=7dff7cac&scoped=true&
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecLoading.vue?vue&type=template&id=76153738&scoped=true&
-var ChecLoadingvue_type_template_id_76153738_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"loading",class:_vm.classObject},[_c('svg',{staticClass:"loading__animation",attrs:{"viewBox":"0 0 32 32","fill":"none"}},[_c('path',{staticClass:"loading__spinner-background",attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28C22.6274 28 28 22.6274 28 16C28\n      9.37258 22.6274 4 16 4ZM0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366\n      24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z"}}),_c('ellipse',{staticClass:"loading__animation-spinner",attrs:{"rx":"14","ry":"14","stroke-width":"4","stroke-dashoffset":"100","stroke-dasharray":"100","transform":"translate(16,16)"}})]),(_vm.message)?_c('div',{staticClass:"loading__message"},[_vm._v(" "+_vm._s(_vm.message)+" ")]):_vm._e()])}
-var ChecLoadingvue_type_template_id_76153738_scoped_true_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/components/ChecLoading.vue?vue&type=template&id=76153738&scoped=true&
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecLoading.vue?vue&type=script&lang=js&
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ var ChecLoadingvue_type_script_lang_js_ = ({
-  name: 'ChecLoading',
-  props: {
-    message: {
-      type: String,
-      default: ''
-    },
-    variant: {
-      type: String,
-      default: 'default',
-      validator: function validator(value) {
-        return ['dark', 'light', 'default'].includes(value);
-      }
-    },
-    withoutBackground: Boolean
-  },
-  computed: {
-    classObject: function classObject() {
-      return [this.withoutBackground ? 'loading--without-background' : 'loading--with-background', this.variant !== 'default' ? "loading--".concat(this.variant) : ''];
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/components/ChecLoading.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_ChecLoadingvue_type_script_lang_js_ = (ChecLoadingvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/ChecLoading.vue?vue&type=style&index=0&id=76153738&scoped=true&lang=scss&
-var ChecLoadingvue_type_style_index_0_id_76153738_scoped_true_lang_scss_ = __webpack_require__("8fb4");
-
-// CONCATENATED MODULE: ./src/components/ChecLoading.vue
-
-
-
-
-
-
-/* normalize component */
-
-var ChecLoading_component = normalizeComponent(
-  components_ChecLoadingvue_type_script_lang_js_,
-  ChecLoadingvue_type_template_id_76153738_scoped_true_render,
-  ChecLoadingvue_type_template_id_76153738_scoped_true_staticRenderFns,
-  false,
-  null,
-  "76153738",
-  null
-  
-)
-
-/* harmony default export */ var ChecLoading = (ChecLoading_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOption.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -54495,130 +54620,129 @@ var ChecLoading_component = normalizeComponent(
 //
 
 
-/* harmony default export */ var ChecOptionvue_type_script_lang_js_ = ({
-  name: 'ChecOption',
+
+/* harmony default export */ var ChecPopovervue_type_script_lang_js_ = ({
+  name: 'ChecPopover',
   components: {
-    ChecCheckbox: ChecCheckbox,
-    ChecLoading: ChecLoading
+    MountingPortal: portal_vue_common["MountingPortal"]
   },
+  inheritAttrs: false,
   props: {
     /**
-     * Set's the option as a selectable option
+     * The ref within the current component to where the popover should be placed
      */
-    showCheckbox: Boolean,
+    targetRef: {
+      type: String,
+      required: true
+    },
 
     /**
-     * Indicate the checkbox (if shown) should be checked
+     * Optionally mount the popover by appending it to the given selector. Defaults to appending it to the body
      */
-    checked: Boolean,
+    mountTarget: {
+      type: String,
+      default: 'body'
+    },
 
     /**
-     * Indicate the checkbox (if shown) should have an indeterminate state
+     * If a name is given, existing popovers with the same name will be removed and replaced with this popover. This
+     * is passed through to `vue-portal`'s `MountingPortal` component. You can read more in the docs for `vue-portal`
      */
-    indeterminate: Boolean,
+    name: String,
 
     /**
-     * The option object
+     * Whether the popover is "open" (and shown)
      */
-    option: {
+    open: {
+      type: Boolean,
+      required: true
+    },
+
+    /**
+     * The placement of this popover, relative to its target. The options available match the placement options with
+     * popper.js
+     */
+    placement: {
+      type: String,
+      default: 'bottom'
+    },
+
+    /**
+     * Options to pass through to `popper.js`
+     */
+    popperOptions: {
       type: Object,
       default: function _default() {
-        return {
-          value: null,
-          disabled: false
-        };
+        return {};
       }
-    },
-
-    /**
-     * Whether the option is destructive, i.e. that it deletes something
-     */
-    destructive: Boolean,
-
-    /**
-     * Whether the content should be replaced with a loading indicator
-     */
-    loading: Boolean
+    }
+  },
+  data: function data() {
+    return {
+      popper: null
+    };
   },
   computed: {
-    level: function level() {
-      var level = this.option.level;
-
-      if (!level || typeof level !== 'number') {
-        return 0;
-      }
-
-      if (level > 3) {
-        return 3;
-      }
-
-      return level;
-    },
     classNames: function classNames() {
-      return [{
-        'option--disabled': this.option.disabled,
-        'option--destructive': this.destructive,
-        'option--loading': this.loading
-      }, "option--level-".concat(this.level)];
+      return ['chec-popover', {
+        'chec-popover--open': this.open
+      }];
+    }
+  },
+  watch: {
+    open: function open(_open) {
+      var _this = this;
+
+      if (_open) {
+        this.$nextTick(function () {
+          return _this.createPopper();
+        });
+        return;
+      }
+
+      this.$nextTick(function () {
+        return _this.destroyPopper();
+      });
     }
   },
   methods: {
-    emitOptionsSelectedEvent: function emitOptionsSelectedEvent() {
-      if (!this.option.disabled) {
-        this.$emit('option-selected', this.option); // When used in slots, parent components can attach handlers to this
-
-        this.$parent.$emit('option-selected', this.option);
+    createPopper: function createPopper() {
+      var targetRef = this.targetRef,
+          placement = this.placement,
+          popperOptions = this.popperOptions;
+      var targetNode = this.$parent.$refs[targetRef];
+      var targetEl = targetNode instanceof external_commonjs_vue_commonjs2_vue_root_Vue_default.a ? targetNode.$el : targetNode;
+      this.popper = popper_createPopper(targetEl, this.$refs.popperRef, _objectSpread2(_objectSpread2({
+        modifiers: [{
+          name: 'flip',
+          options: {
+            fallbackPlacements: ['top-start', 'bottom-start']
+          }
+        }, {
+          name: 'preventOverflow',
+          options: {
+            rootBoundary: 'document',
+            tether: false
+          }
+        }]
+      }, popperOptions), {}, {
+        placement: placement
+      }));
+    },
+    destroyPopper: function destroyPopper() {
+      if (!this.popper) {
+        return;
       }
+
+      this.popper.destroy();
+      this.popper = null;
     }
   }
 });
-// CONCATENATED MODULE: ./src/components/ChecOption.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_ChecOptionvue_type_script_lang_js_ = (ChecOptionvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/ChecOption.vue?vue&type=style&index=0&id=7dff7cac&lang=scss&scoped=true&
-var ChecOptionvue_type_style_index_0_id_7dff7cac_lang_scss_scoped_true_ = __webpack_require__("4abf");
-
-// CONCATENATED MODULE: ./src/components/ChecOption.vue
-
-
-
-
-
-
-/* normalize component */
-
-var ChecOption_component = normalizeComponent(
-  components_ChecOptionvue_type_script_lang_js_,
-  ChecOptionvue_type_template_id_7dff7cac_scoped_true_render,
-  ChecOptionvue_type_template_id_7dff7cac_scoped_true_staticRenderFns,
-  false,
-  null,
-  "7dff7cac",
-  null
-  
-)
-
-/* harmony default export */ var ChecOption = (ChecOption_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPopover.vue?vue&type=template&id=f1a06510&scoped=true&
-var ChecPopovervue_type_template_id_f1a06510_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"popover"},[_vm._t("default")],2)}
-var ChecPopovervue_type_template_id_f1a06510_scoped_true_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/components/ChecPopover.vue?vue&type=template&id=f1a06510&scoped=true&
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPopover.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-/* harmony default export */ var ChecPopovervue_type_script_lang_js_ = ({
-  name: 'ChecPopover'
-});
 // CONCATENATED MODULE: ./src/components/ChecPopover.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_ChecPopovervue_type_script_lang_js_ = (ChecPopovervue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/ChecPopover.vue?vue&type=style&index=0&id=f1a06510&lang=scss&scoped=true&
-var ChecPopovervue_type_style_index_0_id_f1a06510_lang_scss_scoped_true_ = __webpack_require__("3e8c");
+// EXTERNAL MODULE: ./src/components/ChecPopover.vue?vue&type=style&index=0&lang=scss&
+var ChecPopovervue_type_style_index_0_lang_scss_ = __webpack_require__("04cf");
 
 // CONCATENATED MODULE: ./src/components/ChecPopover.vue
 
@@ -54631,11 +54755,11 @@ var ChecPopovervue_type_style_index_0_id_f1a06510_lang_scss_scoped_true_ = __web
 
 var ChecPopover_component = normalizeComponent(
   components_ChecPopovervue_type_script_lang_js_,
-  ChecPopovervue_type_template_id_f1a06510_scoped_true_render,
-  ChecPopovervue_type_template_id_f1a06510_scoped_true_staticRenderFns,
+  ChecPopovervue_type_template_id_25a92121_render,
+  ChecPopovervue_type_template_id_25a92121_staticRenderFns,
   false,
   null,
-  "f1a06510",
+  null,
   null
   
 )
@@ -54732,8 +54856,10 @@ var ChecPopover_component = normalizeComponent(
 //
 //
 //
-
-
+//
+//
+//
+//
 
 
 
@@ -54744,8 +54870,7 @@ var ChecPopover_component = normalizeComponent(
     TextField: TextField,
     ChecIcon: ChecIcon,
     ChecOption: ChecOption,
-    ChecPopover: ChecPopover,
-    MountingPortal: portal_vue_common["MountingPortal"]
+    ChecPopover: ChecPopover
   },
   props: {
     /**
@@ -54832,12 +54957,31 @@ var ChecPopover_component = normalizeComponent(
     loading: Boolean
   },
   data: function data() {
+    var _this = this;
+
     return {
       isFocus: false,
       showDropdown: false,
       dropdownElWidth: 0,
-      popper: null,
-      searchIsFocused: false
+      searchIsFocused: false,
+      popoverOptions: {
+        onFirstUpdate: function onFirstUpdate() {
+          if (_this.showSearch) {
+            _this.$refs.search.$el.querySelector('input').focus();
+          }
+
+          _this.$refs.options.addEventListener('scroll', function (_ref) {
+            var element = _ref.target;
+
+            if (element.scrollHeight !== element.clientHeight && element.scrollHeight - element.scrollTop === element.clientHeight) {
+              /**
+               * Emitted when the user scrolls the list of options to the bottom
+               */
+              _this.$emit('scroll-to-bottom');
+            }
+          });
+        }
+      }
     };
   },
   computed: {
@@ -54864,7 +55008,7 @@ var ChecPopover_component = normalizeComponent(
      * @returns {Array<Object>}
      */
     renderableOptions: function renderableOptions() {
-      var _this = this;
+      var _this2 = this;
 
       var options = _toConsumableArray(this.options);
 
@@ -54882,7 +55026,7 @@ var ChecPopover_component = normalizeComponent(
       var reducer = function reducer() {
         var level = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
         return function (acc, candidate) {
-          if (_this.isParentOption(candidate)) {
+          if (_this2.isParentOption(candidate)) {
             return [].concat(_toConsumableArray(acc), [_objectSpread2(_objectSpread2({}, candidate), {}, {
               level: level
             })], _toConsumableArray(candidate.group.reduce(reducer(level + 1), [])));
@@ -54904,20 +55048,20 @@ var ChecPopover_component = normalizeComponent(
      * @returns {Array<Object>}
      */
     selectedOptions: function selectedOptions() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (!this.multiselect) {
         return this.options.find(function (candidate) {
-          return candidate.value === _this2.value;
+          return candidate.value === _this3.value;
         });
       }
 
       return this.renderableOptions.filter(function (candidate) {
-        return _this2.value.includes(candidate.value);
+        return _this3.value.includes(candidate.value);
       });
     },
     shownValue: function shownValue() {
-      var _this3 = this;
+      var _this4 = this;
 
       var emptyLabel = this.hasPlaceholder ? this.placeholder : '\xa0';
 
@@ -54931,7 +55075,7 @@ var ChecPopover_component = normalizeComponent(
       }
 
       var validOptions = this.selectedOptions.filter(function (option) {
-        return !_this3.isParentOption(option);
+        return !_this4.isParentOption(option);
       });
 
       if (validOptions.length <= 2) {
@@ -55004,56 +55148,6 @@ var ChecPopover_component = normalizeComponent(
     },
 
     /**
-     * Destroys the popper.js instance
-     */
-    destroyPopper: function destroyPopper() {
-      if (this.popper) {
-        this.popper.destroy();
-        this.popper = null;
-      }
-    },
-
-    /**
-     * Create the popper.js instance
-     */
-    createPopper: function createPopper() {
-      var _this4 = this;
-
-      this.popper = popper_createPopper(this.$refs['dropdown-el'], this.$refs['popper-el'].$el, {
-        placement: 'bottom-start',
-        modifiers: [{
-          name: 'flip',
-          options: {
-            rootBoundary: 'window',
-            fallbackPlacements: ['top-start', 'bottom-start']
-          }
-        }, {
-          name: 'preventOverflow',
-          options: {
-            rootBoundary: 'window',
-            tether: false
-          }
-        }],
-        onFirstUpdate: function onFirstUpdate() {
-          if (_this4.showSearch) {
-            _this4.$refs.search.$el.querySelector('input').focus();
-          }
-
-          _this4.$refs['popper-el'].$el.querySelector('.dropdown__options').addEventListener('scroll', function (_ref2) {
-            var element = _ref2.target;
-
-            if (element.scrollHeight !== element.clientHeight && element.scrollHeight - element.scrollTop === element.clientHeight) {
-              /**
-               * Emitted when the user scrolls the list of options to the bottom
-               */
-              _this4.$emit('scroll-to-bottom');
-            }
-          });
-        }
-      });
-    },
-
-    /**
      * Handle the search field losing focus
      */
     handleSearchFocusOut: function handleSearchFocusOut() {
@@ -55096,7 +55190,7 @@ var ChecPopover_component = normalizeComponent(
     setDropdownElWidth: function setDropdownElWidth() {
       // set ChecPopover width to match root's width since this component is has a 'static' position by default to
       // allow for popping out of scrollable overflow
-      var dropdownEl = this.$refs['dropdown-el'];
+      var dropdownEl = this.$refs.container;
       this.dropdownElWidth = dropdownEl.clientWidth;
     },
 
@@ -55177,19 +55271,10 @@ var ChecPopover_component = normalizeComponent(
      * Toggles visibility of the dropdown
      */
     toggleDropdown: function toggleDropdown() {
-      var _this7 = this;
-
       if (this.variant === 'disabled') {
         return;
       }
 
-      this.$nextTick(function () {
-        if (_this7.showDropdown) {
-          _this7.createPopper();
-        } else {
-          _this7.destroyPopper();
-        }
-      });
       this.showDropdown = !this.showDropdown;
     },
 
@@ -55215,7 +55300,7 @@ var ChecPopover_component = normalizeComponent(
         return;
       }
 
-      if (this.$refs['dropdown-el'].contains(event.target) || this.$refs['popper-el'].$el.contains(event.target)) {
+      if (this.$refs.container.contains(event.target) || this.$refs.popper.contains(event.target)) {
         return;
       }
 
@@ -55228,14 +55313,14 @@ var ChecPopover_component = normalizeComponent(
      * @param {Object} option
      */
     isChecked: function isChecked(option) {
-      var _this8 = this;
+      var _this7 = this;
 
       if (!this.isParentOption(option)) {
         return this.value.includes(option.value);
       }
 
       return option.group.every(function (candidate) {
-        return _this8.isChecked(candidate);
+        return _this7.isChecked(candidate);
       });
     },
 
@@ -55245,14 +55330,14 @@ var ChecPopover_component = normalizeComponent(
      * @param {Object} option
      */
     isIndeterminate: function isIndeterminate(option) {
-      var _this9 = this;
+      var _this8 = this;
 
       if (!this.isParentOption(option)) {
         return false;
       }
 
       return option.group.some(function (candidate) {
-        return _this9.isChecked(candidate);
+        return _this8.isChecked(candidate);
       }) && !this.isChecked(option);
     }
   }
@@ -55273,8 +55358,8 @@ var ChecDropdownvue_type_style_index_0_lang_scss_ = __webpack_require__("013e");
 
 var ChecDropdown_component = normalizeComponent(
   components_ChecDropdownvue_type_script_lang_js_,
-  ChecDropdownvue_type_template_id_60aba536_render,
-  ChecDropdownvue_type_template_id_60aba536_staticRenderFns,
+  ChecDropdownvue_type_template_id_53f404c0_render,
+  ChecDropdownvue_type_template_id_53f404c0_staticRenderFns,
   false,
   null,
   null,
@@ -57326,12 +57411,12 @@ var ChecNotification_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecNotification = (ChecNotification_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=8bd91f9e&
-var ChecOptionsMenuvue_type_template_id_8bd91f9e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"menu-el",staticClass:"options-menu"},[_c('ChecButton',_vm._b({ref:"button-el",attrs:{"slot":"reference","variant":"small"},on:{"click":_vm.toggleMenu},slot:"reference",scopedSlots:_vm._u([{key:"icon",fn:function(){return [_c('ChecIcon',{attrs:{"icon":"more"}})]},proxy:true}])},'ChecButton',_vm.$attrs,false)),_c('ChecPopover',{directives:[{name:"show",rawName:"v-show",value:(_vm.isOpen),expression:"isOpen"}],ref:"popper-el",on:{"option-selected":_vm.handleSelectOption}},[_vm._t("default")],2)],1)}
-var ChecOptionsMenuvue_type_template_id_8bd91f9e_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=36364fd4&
+var ChecOptionsMenuvue_type_template_id_36364fd4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"container"},[_c('ChecButton',_vm._b({ref:"button",attrs:{"slot":"reference","variant":"small","icon":"more"},on:{"click":_vm.toggleMenu},slot:"reference"},'ChecButton',_vm.$attrs,false)),_c('ChecPopover',{attrs:{"target-ref":"button","open":_vm.isOpen,"placement":_vm.menuPlacement}},[_c('div',{ref:"menu",staticClass:"options-menu"},[_vm._t("default")],2)])],1)}
+var ChecOptionsMenuvue_type_template_id_36364fd4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=8bd91f9e&
+// CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=36364fd4&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=script&lang=js&
 
@@ -57360,17 +57445,13 @@ var ChecOptionsMenuvue_type_template_id_8bd91f9e_staticRenderFns = []
 //
 //
 //
-//
-
-
 
 
 /* harmony default export */ var ChecOptionsMenuvue_type_script_lang_js_ = ({
   name: 'ChecOptionsMenu',
   components: {
     ChecButton: ChecButton,
-    ChecPopover: ChecPopover,
-    ChecIcon: ChecIcon
+    ChecPopover: ChecPopover
   },
   inheritAttrs: false,
   props: {
@@ -57380,7 +57461,7 @@ var ChecOptionsMenuvue_type_template_id_8bd91f9e_staticRenderFns = []
     open: Boolean,
 
     /**
-     *  Describes the preferred placement of the options menu.
+     * Describes the preferred placement of the options menu.
      */
     menuPlacement: {
       type: String,
@@ -57388,86 +57469,26 @@ var ChecOptionsMenuvue_type_template_id_8bd91f9e_staticRenderFns = []
       validate: function validate(placement) {
         return ['auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end', 'left', 'left-start', 'left-end'].includes(placement);
       }
-    }
+    },
+
+    /**
+     * Whether choosing an option in the menu should toggle the menu
+     */
+    preventToggle: Boolean
   },
   data: function data() {
     return {
       isOpen: this.open
     };
   },
-  watch: {
-    isOpen: function isOpen(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        if (newVal) {
-          this.show();
-        } else {
-          this.hide();
-        }
-      }
-    }
-  },
   created: function created() {
     // add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    this.$nextTick(function () {
-      _this.createPopper();
-    });
-  },
   beforeDestroy: function beforeDestroy() {
-    // remove event listeners
     window.removeEventListener('click', this.onOutsideClick);
   },
   methods: {
-    /**
-     * Show the popper.js
-     */
-    show: function show() {
-      this.$refs['button-el'].$el.setAttribute('data-show', '');
-      this.createPopper();
-    },
-
-    /**
-     * Hide the popper
-     */
-    hide: function hide() {
-      this.$refs['popper-el'].$el.removeAttribute('data-show');
-      this.destroyPopper();
-    },
-
-    /**
-     * Create the popper.js instance
-     */
-    createPopper: function createPopper() {
-      this.$popper = popper_createPopper(this.$refs['button-el'].$el, this.$refs['popper-el'].$el, {
-        placement: this.menuPlacement,
-        modifiers: [{
-          name: 'flip',
-          options: {
-            fallbackPlacements: ['top', 'bottom']
-          }
-        }, {
-          name: 'preventOverflow',
-          options: {
-            rootBoundary: 'document'
-          }
-        }]
-      });
-    },
-
-    /**
-     * Destroys the popper.js instance
-     */
-    destroyPopper: function destroyPopper() {
-      if (this.$popper) {
-        this.$popper.destroy();
-        this.$popper = null;
-      }
-    },
-
     /**
      * Toggles the menu between open and closed
      */
@@ -57481,15 +57502,21 @@ var ChecOptionsMenuvue_type_template_id_8bd91f9e_staticRenderFns = []
      * @param {Event} event
      */
     onOutsideClick: function onOutsideClick(event) {
-      if (!this.$refs['menu-el'].contains(event.target) && this.isOpen) {
-        this.isOpen = false;
-      }
-    },
+      // Only do anything if the popover is open
+      if (!this.isOpen) {
+        return;
+      } // Check that the button isn't being clicked
 
-    /**
-     * When an option is selected, close the menu
-     */
-    handleSelectOption: function handleSelectOption() {
+
+      if (this.$refs.container.contains(event.target)) {
+        return;
+      } // Check if an option in the menu is being clicked
+
+
+      if (this.preventToggle && this.$refs.menu.contains(event.target)) {
+        return;
+      }
+
       this.isOpen = false;
     }
   }
@@ -57510,8 +57537,8 @@ var ChecOptionsMenuvue_type_style_index_0_lang_scss_ = __webpack_require__("a4fe
 
 var ChecOptionsMenu_component = normalizeComponent(
   components_ChecOptionsMenuvue_type_script_lang_js_,
-  ChecOptionsMenuvue_type_template_id_8bd91f9e_render,
-  ChecOptionsMenuvue_type_template_id_8bd91f9e_staticRenderFns,
+  ChecOptionsMenuvue_type_template_id_36364fd4_render,
+  ChecOptionsMenuvue_type_template_id_36364fd4_staticRenderFns,
   false,
   null,
   null,
