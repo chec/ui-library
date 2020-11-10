@@ -45,7 +45,7 @@
     "v-tooltip": "akryum/v-tooltip",
     "vue": "^2.6.10",
     "vue-flatpickr-component": "^8.1.5",
-    "vue-prism-component": "^1.2.0",
+    "vue-prism-editor": "^1.2.2",
     "vuedraggable": "^2.24.1"
   },
   "devDependencies": {

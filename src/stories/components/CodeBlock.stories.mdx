@@ -1,12 +1,15 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
-import { select, text } from '@storybook/addon-knobs';
+import { select, text, boolean } from '@storybook/addon-knobs';
 import CodeBlock from '../../components/CodeBlock.vue';
+import CodeBlockGroup from '../../components/CodeBlockGroup.vue';
 
 <Meta title="Components/Code Block" component={CodeBlock} />
 
 # Code Block component
 
 <Props of={CodeBlock} />
+
+## Code Block
 
 <Preview>
   <Story name="Default">
@@ -18,13 +21,66 @@ import CodeBlock from '../../components/CodeBlock.vue';
         language: {
           default: select('Language', ['none', 'javascript', 'json', 'jsx', 'php']),
         },
-        code: {
-          default: text('Code', "// Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);"),
+        lineNumbers: {
+          default: boolean('Line numbers', true),
+        },
+        editable: {
+          default: boolean('Editable block', false),
+        },
+        background: {
+          default: select('Background color', ['light', 'dark']),
+        },
+        grow: {
+          default: boolean('Allow Grow', false),
         },
       },
       template: `
-        <div class="p-16 flex justify-center w-1/2 m-auto bg-gray-100">
-          <CodeBlock :language="language">{{ code }}</CodeBlock>
+        <div class="p-16 flex justify-center w-1/2 m-auto" :class="{'bg-gray-500': background === 'dark'}">
+          <CodeBlock :grow="grow" :language="language" :editable="editable" :line-numbers="lineNumbers">// Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);</CodeBlock>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+## Code Block Group
+### Required attributes
+`Title` The tabs in the tab group will be generated based on the titles passed to each codeblock.
+
+`Key` The key is required for proper rerendering of components when switching active blocks.
+
+### Example implementation
+```
+<CodeBlockGroup>
+  <CodeBlock title="Javascript Example" key="1" language="javascript">
+    console.log('Testing');
+  </CodeBlock>
+  <CodeBlock title="PHP Example" key="2" language="php">
+    var_dump('Testing');
+  </CodeBlock>
+</CodeBlockGroup>
+```
+
+
+
+<Preview>
+  <Story name="Code Block Group">
+    {{
+      components: {
+        CodeBlock,
+        CodeBlockGroup,
+      },
+      props: {
+        background: {
+          default: select('Background color', ['light', 'dark']),
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-1/2 m-auto" :class="{'bg-gray-500': background === 'dark'}">
+          <CodeBlockGroup>
+            <CodeBlock title="Option 1" key="1" language="javascript" line-numbers>// Option 1 - Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);</CodeBlock>
+            <CodeBlock title="Option 2" key="2" language="javascript" line-numbers>// Option 2 - Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);</CodeBlock>
+            <CodeBlock title="Option 3" key="3" language="javascript" line-numbers>// Option 3 - Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);</CodeBlock>
+          </CodeBlockGroup>
         </div>`
     }}
   </Story>
