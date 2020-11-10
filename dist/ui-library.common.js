@@ -11172,6 +11172,104 @@ $({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
 
 /***/ }),
 
+/***/ "416b":
+/***/ (function(module, exports) {
+
+Prism.languages.javascript = Prism.languages.extend('clike', {
+	'class-name': [
+		Prism.languages.clike['class-name'],
+		{
+			pattern: /(^|[^$\w\xA0-\uFFFF])[_$A-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\.(?:prototype|constructor))/,
+			lookbehind: true
+		}
+	],
+	'keyword': [
+		{
+			pattern: /((?:^|})\s*)(?:catch|finally)\b/,
+			lookbehind: true
+		},
+		{
+			pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|for|from|function|(?:get|set)(?=\s*[\[$\w\xA0-\uFFFF])|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
+			lookbehind: true
+		},
+	],
+	'number': /\b(?:(?:0[xX](?:[\dA-Fa-f](?:_[\dA-Fa-f])?)+|0[bB](?:[01](?:_[01])?)+|0[oO](?:[0-7](?:_[0-7])?)+)n?|(?:\d(?:_\d)?)+n|NaN|Infinity)\b|(?:\b(?:\d(?:_\d)?)+\.?(?:\d(?:_\d)?)*|\B\.(?:\d(?:_\d)?)+)(?:[Ee][+-]?(?:\d(?:_\d)?)+)?/,
+	// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
+	'function': /#?[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,
+	'operator': /--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/
+});
+
+Prism.languages.javascript['class-name'][0].pattern = /(\b(?:class|interface|extends|implements|instanceof|new)\s+)[\w.\\]+/;
+
+Prism.languages.insertBefore('javascript', 'keyword', {
+	'regex': {
+		pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[gimyus]{0,6}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
+		lookbehind: true,
+		greedy: true
+	},
+	// This must be declared before keyword because we use "function" inside the look-forward
+	'function-variable': {
+		pattern: /#?[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/,
+		alias: 'function'
+	},
+	'parameter': [
+		{
+			pattern: /(function(?:\s+[_$A-Za-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)?\s*\(\s*)(?!\s)(?:[^()]|\([^()]*\))+?(?=\s*\))/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*=>)/i,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /(\(\s*)(?!\s)(?:[^()]|\([^()]*\))+?(?=\s*\)\s*=>)/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:[_$A-Za-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()]|\([^()]*\))+?(?=\s*\)\s*\{)/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		}
+	],
+	'constant': /\b[A-Z](?:[A-Z_]|\dx?)*\b/
+});
+
+Prism.languages.insertBefore('javascript', 'string', {
+	'template-string': {
+		pattern: /`(?:\\[\s\S]|\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}|(?!\${)[^\\`])*`/,
+		greedy: true,
+		inside: {
+			'template-punctuation': {
+				pattern: /^`|`$/,
+				alias: 'string'
+			},
+			'interpolation': {
+				pattern: /((?:^|[^\\])(?:\\{2})*)\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}/,
+				lookbehind: true,
+				inside: {
+					'interpolation-punctuation': {
+						pattern: /^\${|}$/,
+						alias: 'punctuation'
+					},
+					rest: Prism.languages.javascript
+				}
+			},
+			'string': /[\s\S]+/
+		}
+	}
+});
+
+if (Prism.languages.markup) {
+	Prism.languages.markup.tag.addInlined('script', 'javascript');
+}
+
+Prism.languages.js = Prism.languages.javascript;
+
+
+/***/ }),
+
 /***/ "4199":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -21200,6 +21298,143 @@ module.exports = {
 
 /***/ }),
 
+/***/ "6cf3":
+/***/ (function(module, exports) {
+
+Prism.languages.markup = {
+	'comment': /<!--[\s\S]*?-->/,
+	'prolog': /<\?[\s\S]+?\?>/,
+	'doctype': {
+		// https://www.w3.org/TR/xml/#NT-doctypedecl
+		pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,
+		greedy: true,
+		inside: {
+			'internal-subset': {
+				pattern: /(\[)[\s\S]+(?=\]>$)/,
+				lookbehind: true,
+				greedy: true,
+				inside: null // see below
+			},
+			'string': {
+				pattern: /"[^"]*"|'[^']*'/,
+				greedy: true
+			},
+			'punctuation': /^<!|>$|[[\]]/,
+			'doctype-tag': /^DOCTYPE/,
+			'name': /[^\s<>'"]+/
+		}
+	},
+	'cdata': /<!\[CDATA\[[\s\S]*?]]>/i,
+	'tag': {
+		pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
+		greedy: true,
+		inside: {
+			'tag': {
+				pattern: /^<\/?[^\s>\/]+/,
+				inside: {
+					'punctuation': /^<\/?/,
+					'namespace': /^[^\s>\/:]+:/
+				}
+			},
+			'attr-value': {
+				pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
+				inside: {
+					'punctuation': [
+						{
+							pattern: /^=/,
+							alias: 'attr-equals'
+						},
+						/"|'/
+					]
+				}
+			},
+			'punctuation': /\/?>/,
+			'attr-name': {
+				pattern: /[^\s>\/]+/,
+				inside: {
+					'namespace': /^[^\s>\/:]+:/
+				}
+			}
+
+		}
+	},
+	'entity': [
+		{
+			pattern: /&[\da-z]{1,8};/i,
+			alias: 'named-entity'
+		},
+		/&#x?[\da-f]{1,8};/i
+	]
+};
+
+Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
+	Prism.languages.markup['entity'];
+Prism.languages.markup['doctype'].inside['internal-subset'].inside = Prism.languages.markup;
+
+// Plugin to make entity title show the real entity, idea by Roman Komarov
+Prism.hooks.add('wrap', function (env) {
+
+	if (env.type === 'entity') {
+		env.attributes['title'] = env.content.replace(/&amp;/, '&');
+	}
+});
+
+Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
+	/**
+	 * Adds an inlined language to markup.
+	 *
+	 * An example of an inlined language is CSS with `<style>` tags.
+	 *
+	 * @param {string} tagName The name of the tag that contains the inlined language. This name will be treated as
+	 * case insensitive.
+	 * @param {string} lang The language key.
+	 * @example
+	 * addInlined('style', 'css');
+	 */
+	value: function addInlined(tagName, lang) {
+		var includedCdataInside = {};
+		includedCdataInside['language-' + lang] = {
+			pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,
+			lookbehind: true,
+			inside: Prism.languages[lang]
+		};
+		includedCdataInside['cdata'] = /^<!\[CDATA\[|\]\]>$/i;
+
+		var inside = {
+			'included-cdata': {
+				pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+				inside: includedCdataInside
+			}
+		};
+		inside['language-' + lang] = {
+			pattern: /[\s\S]+/,
+			inside: Prism.languages[lang]
+		};
+
+		var def = {};
+		def[tagName] = {
+			pattern: RegExp(/(<__[\s\S]*?>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function () { return tagName; }), 'i'),
+			lookbehind: true,
+			greedy: true,
+			inside: inside
+		};
+
+		Prism.languages.insertBefore('markup', 'cdata', def);
+	}
+});
+
+Prism.languages.html = Prism.languages.markup;
+Prism.languages.mathml = Prism.languages.markup;
+Prism.languages.svg = Prism.languages.markup;
+
+Prism.languages.xml = Prism.languages.extend('markup', {});
+Prism.languages.ssml = Prism.languages.xml;
+Prism.languages.atom = Prism.languages.xml;
+Prism.languages.rss = Prism.languages.xml;
+
+
+/***/ }),
+
 /***/ "6dd8":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -26871,6 +27106,1195 @@ module.exports = require("vue");
 
 /***/ }),
 
+/***/ "8c7a":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {/// <reference lib="WebWorker"/>
+
+var _self = (typeof window !== 'undefined')
+	? window   // if in browser
+	: (
+		(typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)
+		? self // if in worker
+		: {}   // if in node js
+	);
+
+/**
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ *
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author Lea Verou <https://lea.verou.me>
+ * @namespace
+ * @public
+ */
+var Prism = (function (_self){
+
+// Private helper vars
+var lang = /\blang(?:uage)?-([\w-]+)\b/i;
+var uniqueId = 0;
+
+
+var _ = {
+	/**
+	 * By default, Prism will attempt to highlight all code elements (by calling {@link Prism.highlightAll}) on the
+	 * current page after the page finished loading. This might be a problem if e.g. you wanted to asynchronously load
+	 * additional languages or plugins yourself.
+	 *
+	 * By setting this value to `true`, Prism will not automatically highlight all code elements on the page.
+	 *
+	 * You obviously have to change this value before the automatic highlighting started. To do this, you can add an
+	 * empty Prism object into the global scope before loading the Prism script like this:
+	 *
+	 * ```js
+	 * window.Prism = window.Prism || {};
+	 * Prism.manual = true;
+	 * // add a new <script> to load Prism's script
+	 * ```
+	 *
+	 * @default false
+	 * @type {boolean}
+	 * @memberof Prism
+	 * @public
+	 */
+	manual: _self.Prism && _self.Prism.manual,
+	disableWorkerMessageHandler: _self.Prism && _self.Prism.disableWorkerMessageHandler,
+
+	/**
+	 * A namespace for utility methods.
+	 *
+	 * All function in this namespace that are not explicitly marked as _public_ are for __internal use only__ and may
+	 * change or disappear at any time.
+	 *
+	 * @namespace
+	 * @memberof Prism
+	 */
+	util: {
+		encode: function encode(tokens) {
+			if (tokens instanceof Token) {
+				return new Token(tokens.type, encode(tokens.content), tokens.alias);
+			} else if (Array.isArray(tokens)) {
+				return tokens.map(encode);
+			} else {
+				return tokens.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\u00a0/g, ' ');
+			}
+		},
+
+		/**
+		 * Returns the name of the type of the given value.
+		 *
+		 * @param {any} o
+		 * @returns {string}
+		 * @example
+		 * type(null)      === 'Null'
+		 * type(undefined) === 'Undefined'
+		 * type(123)       === 'Number'
+		 * type('foo')     === 'String'
+		 * type(true)      === 'Boolean'
+		 * type([1, 2])    === 'Array'
+		 * type({})        === 'Object'
+		 * type(String)    === 'Function'
+		 * type(/abc+/)    === 'RegExp'
+		 */
+		type: function (o) {
+			return Object.prototype.toString.call(o).slice(8, -1);
+		},
+
+		/**
+		 * Returns a unique number for the given object. Later calls will still return the same number.
+		 *
+		 * @param {Object} obj
+		 * @returns {number}
+		 */
+		objId: function (obj) {
+			if (!obj['__id']) {
+				Object.defineProperty(obj, '__id', { value: ++uniqueId });
+			}
+			return obj['__id'];
+		},
+
+		/**
+		 * Creates a deep clone of the given object.
+		 *
+		 * The main intended use of this function is to clone language definitions.
+		 *
+		 * @param {T} o
+		 * @param {Record<number, any>} [visited]
+		 * @returns {T}
+		 * @template T
+		 */
+		clone: function deepClone(o, visited) {
+			visited = visited || {};
+
+			var clone, id;
+			switch (_.util.type(o)) {
+				case 'Object':
+					id = _.util.objId(o);
+					if (visited[id]) {
+						return visited[id];
+					}
+					clone = /** @type {Record<string, any>} */ ({});
+					visited[id] = clone;
+
+					for (var key in o) {
+						if (o.hasOwnProperty(key)) {
+							clone[key] = deepClone(o[key], visited);
+						}
+					}
+
+					return /** @type {any} */ (clone);
+
+				case 'Array':
+					id = _.util.objId(o);
+					if (visited[id]) {
+						return visited[id];
+					}
+					clone = [];
+					visited[id] = clone;
+
+					(/** @type {Array} */(/** @type {any} */(o))).forEach(function (v, i) {
+						clone[i] = deepClone(v, visited);
+					});
+
+					return /** @type {any} */ (clone);
+
+				default:
+					return o;
+			}
+		},
+
+		/**
+		 * Returns the Prism language of the given element set by a `language-xxxx` or `lang-xxxx` class.
+		 *
+		 * If no language is set for the element or the element is `null` or `undefined`, `none` will be returned.
+		 *
+		 * @param {Element} element
+		 * @returns {string}
+		 */
+		getLanguage: function (element) {
+			while (element && !lang.test(element.className)) {
+				element = element.parentElement;
+			}
+			if (element) {
+				return (element.className.match(lang) || [, 'none'])[1].toLowerCase();
+			}
+			return 'none';
+		},
+
+		/**
+		 * Returns the script element that is currently executing.
+		 *
+		 * This does __not__ work for line script element.
+		 *
+		 * @returns {HTMLScriptElement | null}
+		 */
+		currentScript: function () {
+			if (typeof document === 'undefined') {
+				return null;
+			}
+			if ('currentScript' in document && 1 < 2 /* hack to trip TS' flow analysis */) {
+				return /** @type {any} */ (document.currentScript);
+			}
+
+			// IE11 workaround
+			// we'll get the src of the current script by parsing IE11's error stack trace
+			// this will not work for inline scripts
+
+			try {
+				throw new Error();
+			} catch (err) {
+				// Get file src url from stack. Specifically works with the format of stack traces in IE.
+				// A stack will look like this:
+				//
+				// Error
+				//    at _.util.currentScript (http://localhost/components/prism-core.js:119:5)
+				//    at Global code (http://localhost/components/prism-core.js:606:1)
+
+				var src = (/at [^(\r\n]*\((.*):.+:.+\)$/i.exec(err.stack) || [])[1];
+				if (src) {
+					var scripts = document.getElementsByTagName('script');
+					for (var i in scripts) {
+						if (scripts[i].src == src) {
+							return scripts[i];
+						}
+					}
+				}
+				return null;
+			}
+		},
+
+		/**
+		 * Returns whether a given class is active for `element`.
+		 *
+		 * The class can be activated if `element` or one of its ancestors has the given class and it can be deactivated
+		 * if `element` or one of its ancestors has the negated version of the given class. The _negated version_ of the
+		 * given class is just the given class with a `no-` prefix.
+		 *
+		 * Whether the class is active is determined by the closest ancestor of `element` (where `element` itself is
+		 * closest ancestor) that has the given class or the negated version of it. If neither `element` nor any of its
+		 * ancestors have the given class or the negated version of it, then the default activation will be returned.
+		 *
+		 * In the paradoxical situation where the closest ancestor contains __both__ the given class and the negated
+		 * version of it, the class is considered active.
+		 *
+		 * @param {Element} element
+		 * @param {string} className
+		 * @param {boolean} [defaultActivation=false]
+		 * @returns {boolean}
+		 */
+		isActive: function (element, className, defaultActivation) {
+			var no = 'no-' + className;
+
+			while (element) {
+				var classList = element.classList;
+				if (classList.contains(className)) {
+					return true;
+				}
+				if (classList.contains(no)) {
+					return false;
+				}
+				element = element.parentElement;
+			}
+			return !!defaultActivation;
+		}
+	},
+
+	/**
+	 * This namespace contains all currently loaded languages and the some helper functions to create and modify languages.
+	 *
+	 * @namespace
+	 * @memberof Prism
+	 * @public
+	 */
+	languages: {
+		/**
+		 * Creates a deep copy of the language with the given id and appends the given tokens.
+		 *
+		 * If a token in `redef` also appears in the copied language, then the existing token in the copied language
+		 * will be overwritten at its original position.
+		 *
+		 * ## Best practices
+		 *
+		 * Since the position of overwriting tokens (token in `redef` that overwrite tokens in the copied language)
+		 * doesn't matter, they can technically be in any order. However, this can be confusing to others that trying to
+		 * understand the language definition because, normally, the order of tokens matters in Prism grammars.
+		 *
+		 * Therefore, it is encouraged to order overwriting tokens according to the positions of the overwritten tokens.
+		 * Furthermore, all non-overwriting tokens should be placed after the overwriting ones.
+		 *
+		 * @param {string} id The id of the language to extend. This has to be a key in `Prism.languages`.
+		 * @param {Grammar} redef The new tokens to append.
+		 * @returns {Grammar} The new language created.
+		 * @public
+		 * @example
+		 * Prism.languages['css-with-colors'] = Prism.languages.extend('css', {
+		 *     // Prism.languages.css already has a 'comment' token, so this token will overwrite CSS' 'comment' token
+		 *     // at its original position
+		 *     'comment': { ... },
+		 *     // CSS doesn't have a 'color' token, so this token will be appended
+		 *     'color': /\b(?:red|green|blue)\b/
+		 * });
+		 */
+		extend: function (id, redef) {
+			var lang = _.util.clone(_.languages[id]);
+
+			for (var key in redef) {
+				lang[key] = redef[key];
+			}
+
+			return lang;
+		},
+
+		/**
+		 * Inserts tokens _before_ another token in a language definition or any other grammar.
+		 *
+		 * ## Usage
+		 *
+		 * This helper method makes it easy to modify existing languages. For example, the CSS language definition
+		 * not only defines CSS highlighting for CSS documents, but also needs to define highlighting for CSS embedded
+		 * in HTML through `<style>` elements. To do this, it needs to modify `Prism.languages.markup` and add the
+		 * appropriate tokens. However, `Prism.languages.markup` is a regular JavaScript object literal, so if you do
+		 * this:
+		 *
+		 * ```js
+		 * Prism.languages.markup.style = {
+		 *     // token
+		 * };
+		 * ```
+		 *
+		 * then the `style` token will be added (and processed) at the end. `insertBefore` allows you to insert tokens
+		 * before existing tokens. For the CSS example above, you would use it like this:
+		 *
+		 * ```js
+		 * Prism.languages.insertBefore('markup', 'cdata', {
+		 *     'style': {
+		 *         // token
+		 *     }
+		 * });
+		 * ```
+		 *
+		 * ## Special cases
+		 *
+		 * If the grammars of `inside` and `insert` have tokens with the same name, the tokens in `inside`'s grammar
+		 * will be ignored.
+		 *
+		 * This behavior can be used to insert tokens after `before`:
+		 *
+		 * ```js
+		 * Prism.languages.insertBefore('markup', 'comment', {
+		 *     'comment': Prism.languages.markup.comment,
+		 *     // tokens after 'comment'
+		 * });
+		 * ```
+		 *
+		 * ## Limitations
+		 *
+		 * The main problem `insertBefore` has to solve is iteration order. Since ES2015, the iteration order for object
+		 * properties is guaranteed to be the insertion order (except for integer keys) but some browsers behave
+		 * differently when keys are deleted and re-inserted. So `insertBefore` can't be implemented by temporarily
+		 * deleting properties which is necessary to insert at arbitrary positions.
+		 *
+		 * To solve this problem, `insertBefore` doesn't actually insert the given tokens into the target object.
+		 * Instead, it will create a new object and replace all references to the target object with the new one. This
+		 * can be done without temporarily deleting properties, so the iteration order is well-defined.
+		 *
+		 * However, only references that can be reached from `Prism.languages` or `insert` will be replaced. I.e. if
+		 * you hold the target object in a variable, then the value of the variable will not change.
+		 *
+		 * ```js
+		 * var oldMarkup = Prism.languages.markup;
+		 * var newMarkup = Prism.languages.insertBefore('markup', 'comment', { ... });
+		 *
+		 * assert(oldMarkup !== Prism.languages.markup);
+		 * assert(newMarkup === Prism.languages.markup);
+		 * ```
+		 *
+		 * @param {string} inside The property of `root` (e.g. a language id in `Prism.languages`) that contains the
+		 * object to be modified.
+		 * @param {string} before The key to insert before.
+		 * @param {Grammar} insert An object containing the key-value pairs to be inserted.
+		 * @param {Object<string, any>} [root] The object containing `inside`, i.e. the object that contains the
+		 * object to be modified.
+		 *
+		 * Defaults to `Prism.languages`.
+		 * @returns {Grammar} The new grammar object.
+		 * @public
+		 */
+		insertBefore: function (inside, before, insert, root) {
+			root = root || /** @type {any} */ (_.languages);
+			var grammar = root[inside];
+			/** @type {Grammar} */
+			var ret = {};
+
+			for (var token in grammar) {
+				if (grammar.hasOwnProperty(token)) {
+
+					if (token == before) {
+						for (var newToken in insert) {
+							if (insert.hasOwnProperty(newToken)) {
+								ret[newToken] = insert[newToken];
+							}
+						}
+					}
+
+					// Do not insert token which also occur in insert. See #1525
+					if (!insert.hasOwnProperty(token)) {
+						ret[token] = grammar[token];
+					}
+				}
+			}
+
+			var old = root[inside];
+			root[inside] = ret;
+
+			// Update references in other language definitions
+			_.languages.DFS(_.languages, function(key, value) {
+				if (value === old && key != inside) {
+					this[key] = ret;
+				}
+			});
+
+			return ret;
+		},
+
+		// Traverse a language definition with Depth First Search
+		DFS: function DFS(o, callback, type, visited) {
+			visited = visited || {};
+
+			var objId = _.util.objId;
+
+			for (var i in o) {
+				if (o.hasOwnProperty(i)) {
+					callback.call(o, i, o[i], type || i);
+
+					var property = o[i],
+					    propertyType = _.util.type(property);
+
+					if (propertyType === 'Object' && !visited[objId(property)]) {
+						visited[objId(property)] = true;
+						DFS(property, callback, null, visited);
+					}
+					else if (propertyType === 'Array' && !visited[objId(property)]) {
+						visited[objId(property)] = true;
+						DFS(property, callback, i, visited);
+					}
+				}
+			}
+		}
+	},
+
+	plugins: {},
+
+	/**
+	 * This is the most high-level function in Prism’s API.
+	 * It fetches all the elements that have a `.language-xxxx` class and then calls {@link Prism.highlightElement} on
+	 * each one of them.
+	 *
+	 * This is equivalent to `Prism.highlightAllUnder(document, async, callback)`.
+	 *
+	 * @param {boolean} [async=false] Same as in {@link Prism.highlightAllUnder}.
+	 * @param {HighlightCallback} [callback] Same as in {@link Prism.highlightAllUnder}.
+	 * @memberof Prism
+	 * @public
+	 */
+	highlightAll: function(async, callback) {
+		_.highlightAllUnder(document, async, callback);
+	},
+
+	/**
+	 * Fetches all the descendants of `container` that have a `.language-xxxx` class and then calls
+	 * {@link Prism.highlightElement} on each one of them.
+	 *
+	 * The following hooks will be run:
+	 * 1. `before-highlightall`
+	 * 2. All hooks of {@link Prism.highlightElement} for each element.
+	 *
+	 * @param {ParentNode} container The root element, whose descendants that have a `.language-xxxx` class will be highlighted.
+	 * @param {boolean} [async=false] Whether each element is to be highlighted asynchronously using Web Workers.
+	 * @param {HighlightCallback} [callback] An optional callback to be invoked on each element after its highlighting is done.
+	 * @memberof Prism
+	 * @public
+	 */
+	highlightAllUnder: function(container, async, callback) {
+		var env = {
+			callback: callback,
+			container: container,
+			selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
+		};
+
+		_.hooks.run('before-highlightall', env);
+
+		env.elements = Array.prototype.slice.apply(env.container.querySelectorAll(env.selector));
+
+		_.hooks.run('before-all-elements-highlight', env);
+
+		for (var i = 0, element; element = env.elements[i++];) {
+			_.highlightElement(element, async === true, env.callback);
+		}
+	},
+
+	/**
+	 * Highlights the code inside a single element.
+	 *
+	 * The following hooks will be run:
+	 * 1. `before-sanity-check`
+	 * 2. `before-highlight`
+	 * 3. All hooks of {@link Prism.highlight}. These hooks will only be run by the current worker if `async` is `true`.
+	 * 4. `before-insert`
+	 * 5. `after-highlight`
+	 * 6. `complete`
+	 *
+	 * @param {Element} element The element containing the code.
+	 * It must have a class of `language-xxxx` to be processed, where `xxxx` is a valid language identifier.
+	 * @param {boolean} [async=false] Whether the element is to be highlighted asynchronously using Web Workers
+	 * to improve performance and avoid blocking the UI when highlighting very large chunks of code. This option is
+	 * [disabled by default](https://prismjs.com/faq.html#why-is-asynchronous-highlighting-disabled-by-default).
+	 *
+	 * Note: All language definitions required to highlight the code must be included in the main `prism.js` file for
+	 * asynchronous highlighting to work. You can build your own bundle on the
+	 * [Download page](https://prismjs.com/download.html).
+	 * @param {HighlightCallback} [callback] An optional callback to be invoked after the highlighting is done.
+	 * Mostly useful when `async` is `true`, since in that case, the highlighting is done asynchronously.
+	 * @memberof Prism
+	 * @public
+	 */
+	highlightElement: function(element, async, callback) {
+		// Find language
+		var language = _.util.getLanguage(element);
+		var grammar = _.languages[language];
+
+		// Set language on the element, if not present
+		element.className = element.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+
+		// Set language on the parent, for styling
+		var parent = element.parentElement;
+		if (parent && parent.nodeName.toLowerCase() === 'pre') {
+			parent.className = parent.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+		}
+
+		var code = element.textContent;
+
+		var env = {
+			element: element,
+			language: language,
+			grammar: grammar,
+			code: code
+		};
+
+		function insertHighlightedCode(highlightedCode) {
+			env.highlightedCode = highlightedCode;
+
+			_.hooks.run('before-insert', env);
+
+			env.element.innerHTML = env.highlightedCode;
+
+			_.hooks.run('after-highlight', env);
+			_.hooks.run('complete', env);
+			callback && callback.call(env.element);
+		}
+
+		_.hooks.run('before-sanity-check', env);
+
+		if (!env.code) {
+			_.hooks.run('complete', env);
+			callback && callback.call(env.element);
+			return;
+		}
+
+		_.hooks.run('before-highlight', env);
+
+		if (!env.grammar) {
+			insertHighlightedCode(_.util.encode(env.code));
+			return;
+		}
+
+		if (async && _self.Worker) {
+			var worker = new Worker(_.filename);
+
+			worker.onmessage = function(evt) {
+				insertHighlightedCode(evt.data);
+			};
+
+			worker.postMessage(JSON.stringify({
+				language: env.language,
+				code: env.code,
+				immediateClose: true
+			}));
+		}
+		else {
+			insertHighlightedCode(_.highlight(env.code, env.grammar, env.language));
+		}
+	},
+
+	/**
+	 * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
+	 * and the language definitions to use, and returns a string with the HTML produced.
+	 *
+	 * The following hooks will be run:
+	 * 1. `before-tokenize`
+	 * 2. `after-tokenize`
+	 * 3. `wrap`: On each {@link Token}.
+	 *
+	 * @param {string} text A string with the code to be highlighted.
+	 * @param {Grammar} grammar An object containing the tokens to use.
+	 *
+	 * Usually a language definition like `Prism.languages.markup`.
+	 * @param {string} language The name of the language definition passed to `grammar`.
+	 * @returns {string} The highlighted HTML.
+	 * @memberof Prism
+	 * @public
+	 * @example
+	 * Prism.highlight('var foo = true;', Prism.languages.javascript, 'javascript');
+	 */
+	highlight: function (text, grammar, language) {
+		var env = {
+			code: text,
+			grammar: grammar,
+			language: language
+		};
+		_.hooks.run('before-tokenize', env);
+		env.tokens = _.tokenize(env.code, env.grammar);
+		_.hooks.run('after-tokenize', env);
+		return Token.stringify(_.util.encode(env.tokens), env.language);
+	},
+
+	/**
+	 * This is the heart of Prism, and the most low-level function you can use. It accepts a string of text as input
+	 * and the language definitions to use, and returns an array with the tokenized code.
+	 *
+	 * When the language definition includes nested tokens, the function is called recursively on each of these tokens.
+	 *
+	 * This method could be useful in other contexts as well, as a very crude parser.
+	 *
+	 * @param {string} text A string with the code to be highlighted.
+	 * @param {Grammar} grammar An object containing the tokens to use.
+	 *
+	 * Usually a language definition like `Prism.languages.markup`.
+	 * @returns {TokenStream} An array of strings and tokens, a token stream.
+	 * @memberof Prism
+	 * @public
+	 * @example
+	 * let code = `var foo = 0;`;
+	 * let tokens = Prism.tokenize(code, Prism.languages.javascript);
+	 * tokens.forEach(token => {
+	 *     if (token instanceof Prism.Token && token.type === 'number') {
+	 *         console.log(`Found numeric literal: ${token.content}`);
+	 *     }
+	 * });
+	 */
+	tokenize: function(text, grammar) {
+		var rest = grammar.rest;
+		if (rest) {
+			for (var token in rest) {
+				grammar[token] = rest[token];
+			}
+
+			delete grammar.rest;
+		}
+
+		var tokenList = new LinkedList();
+		addAfter(tokenList, tokenList.head, text);
+
+		matchGrammar(text, tokenList, grammar, tokenList.head, 0);
+
+		return toArray(tokenList);
+	},
+
+	/**
+	 * @namespace
+	 * @memberof Prism
+	 * @public
+	 */
+	hooks: {
+		all: {},
+
+		/**
+		 * Adds the given callback to the list of callbacks for the given hook.
+		 *
+		 * The callback will be invoked when the hook it is registered for is run.
+		 * Hooks are usually directly run by a highlight function but you can also run hooks yourself.
+		 *
+		 * One callback function can be registered to multiple hooks and the same hook multiple times.
+		 *
+		 * @param {string} name The name of the hook.
+		 * @param {HookCallback} callback The callback function which is given environment variables.
+		 * @public
+		 */
+		add: function (name, callback) {
+			var hooks = _.hooks.all;
+
+			hooks[name] = hooks[name] || [];
+
+			hooks[name].push(callback);
+		},
+
+		/**
+		 * Runs a hook invoking all registered callbacks with the given environment variables.
+		 *
+		 * Callbacks will be invoked synchronously and in the order in which they were registered.
+		 *
+		 * @param {string} name The name of the hook.
+		 * @param {Object<string, any>} env The environment variables of the hook passed to all callbacks registered.
+		 * @public
+		 */
+		run: function (name, env) {
+			var callbacks = _.hooks.all[name];
+
+			if (!callbacks || !callbacks.length) {
+				return;
+			}
+
+			for (var i=0, callback; callback = callbacks[i++];) {
+				callback(env);
+			}
+		}
+	},
+
+	Token: Token
+};
+_self.Prism = _;
+
+
+// Typescript note:
+// The following can be used to import the Token type in JSDoc:
+//
+//   @typedef {InstanceType<import("./prism-core")["Token"]>} Token
+
+/**
+ * Creates a new token.
+ *
+ * @param {string} type See {@link Token#type type}
+ * @param {string | TokenStream} content See {@link Token#content content}
+ * @param {string|string[]} [alias] The alias(es) of the token.
+ * @param {string} [matchedStr=""] A copy of the full string this token was created from.
+ * @class
+ * @global
+ * @public
+ */
+function Token(type, content, alias, matchedStr) {
+	/**
+	 * The type of the token.
+	 *
+	 * This is usually the key of a pattern in a {@link Grammar}.
+	 *
+	 * @type {string}
+	 * @see GrammarToken
+	 * @public
+	 */
+	this.type = type;
+	/**
+	 * The strings or tokens contained by this token.
+	 *
+	 * This will be a token stream if the pattern matched also defined an `inside` grammar.
+	 *
+	 * @type {string | TokenStream}
+	 * @public
+	 */
+	this.content = content;
+	/**
+	 * The alias(es) of the token.
+	 *
+	 * @type {string|string[]}
+	 * @see GrammarToken
+	 * @public
+	 */
+	this.alias = alias;
+	// Copy of the full string this token was created from
+	this.length = (matchedStr || '').length | 0;
+}
+
+/**
+ * A token stream is an array of strings and {@link Token Token} objects.
+ *
+ * Token streams have to fulfill a few properties that are assumed by most functions (mostly internal ones) that process
+ * them.
+ *
+ * 1. No adjacent strings.
+ * 2. No empty strings.
+ *
+ *    The only exception here is the token stream that only contains the empty string and nothing else.
+ *
+ * @typedef {Array<string | Token>} TokenStream
+ * @global
+ * @public
+ */
+
+/**
+ * Converts the given token or token stream to an HTML representation.
+ *
+ * The following hooks will be run:
+ * 1. `wrap`: On each {@link Token}.
+ *
+ * @param {string | Token | TokenStream} o The token or token stream to be converted.
+ * @param {string} language The name of current language.
+ * @returns {string} The HTML representation of the token or token stream.
+ * @memberof Token
+ * @static
+ */
+Token.stringify = function stringify(o, language) {
+	if (typeof o == 'string') {
+		return o;
+	}
+	if (Array.isArray(o)) {
+		var s = '';
+		o.forEach(function (e) {
+			s += stringify(e, language);
+		});
+		return s;
+	}
+
+	var env = {
+		type: o.type,
+		content: stringify(o.content, language),
+		tag: 'span',
+		classes: ['token', o.type],
+		attributes: {},
+		language: language
+	};
+
+	var aliases = o.alias;
+	if (aliases) {
+		if (Array.isArray(aliases)) {
+			Array.prototype.push.apply(env.classes, aliases);
+		} else {
+			env.classes.push(aliases);
+		}
+	}
+
+	_.hooks.run('wrap', env);
+
+	var attributes = '';
+	for (var name in env.attributes) {
+		attributes += ' ' + name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
+	}
+
+	return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + attributes + '>' + env.content + '</' + env.tag + '>';
+};
+
+/**
+ * @param {string} text
+ * @param {LinkedList<string | Token>} tokenList
+ * @param {any} grammar
+ * @param {LinkedListNode<string | Token>} startNode
+ * @param {number} startPos
+ * @param {RematchOptions} [rematch]
+ * @returns {void}
+ * @private
+ *
+ * @typedef RematchOptions
+ * @property {string} cause
+ * @property {number} reach
+ */
+function matchGrammar(text, tokenList, grammar, startNode, startPos, rematch) {
+	for (var token in grammar) {
+		if (!grammar.hasOwnProperty(token) || !grammar[token]) {
+			continue;
+		}
+
+		var patterns = grammar[token];
+		patterns = Array.isArray(patterns) ? patterns : [patterns];
+
+		for (var j = 0; j < patterns.length; ++j) {
+			if (rematch && rematch.cause == token + ',' + j) {
+				return;
+			}
+
+			var patternObj = patterns[j],
+				inside = patternObj.inside,
+				lookbehind = !!patternObj.lookbehind,
+				greedy = !!patternObj.greedy,
+				lookbehindLength = 0,
+				alias = patternObj.alias;
+
+			if (greedy && !patternObj.pattern.global) {
+				// Without the global flag, lastIndex won't work
+				var flags = patternObj.pattern.toString().match(/[imsuy]*$/)[0];
+				patternObj.pattern = RegExp(patternObj.pattern.source, flags + 'g');
+			}
+
+			/** @type {RegExp} */
+			var pattern = patternObj.pattern || patternObj;
+
+			for ( // iterate the token list and keep track of the current token/string position
+				var currentNode = startNode.next, pos = startPos;
+				currentNode !== tokenList.tail;
+				pos += currentNode.value.length, currentNode = currentNode.next
+			) {
+
+				if (rematch && pos >= rematch.reach) {
+					break;
+				}
+
+				var str = currentNode.value;
+
+				if (tokenList.length > text.length) {
+					// Something went terribly wrong, ABORT, ABORT!
+					return;
+				}
+
+				if (str instanceof Token) {
+					continue;
+				}
+
+				var removeCount = 1; // this is the to parameter of removeBetween
+
+				if (greedy && currentNode != tokenList.tail.prev) {
+					pattern.lastIndex = pos;
+					var match = pattern.exec(text);
+					if (!match) {
+						break;
+					}
+
+					var from = match.index + (lookbehind && match[1] ? match[1].length : 0);
+					var to = match.index + match[0].length;
+					var p = pos;
+
+					// find the node that contains the match
+					p += currentNode.value.length;
+					while (from >= p) {
+						currentNode = currentNode.next;
+						p += currentNode.value.length;
+					}
+					// adjust pos (and p)
+					p -= currentNode.value.length;
+					pos = p;
+
+					// the current node is a Token, then the match starts inside another Token, which is invalid
+					if (currentNode.value instanceof Token) {
+						continue;
+					}
+
+					// find the last node which is affected by this match
+					for (
+						var k = currentNode;
+						k !== tokenList.tail && (p < to || typeof k.value === 'string');
+						k = k.next
+					) {
+						removeCount++;
+						p += k.value.length;
+					}
+					removeCount--;
+
+					// replace with the new match
+					str = text.slice(pos, p);
+					match.index -= pos;
+				} else {
+					pattern.lastIndex = 0;
+
+					var match = pattern.exec(str);
+				}
+
+				if (!match) {
+					continue;
+				}
+
+				if (lookbehind) {
+					lookbehindLength = match[1] ? match[1].length : 0;
+				}
+
+				var from = match.index + lookbehindLength,
+					matchStr = match[0].slice(lookbehindLength),
+					to = from + matchStr.length,
+					before = str.slice(0, from),
+					after = str.slice(to);
+
+				var reach = pos + str.length;
+				if (rematch && reach > rematch.reach) {
+					rematch.reach = reach;
+				}
+
+				var removeFrom = currentNode.prev;
+
+				if (before) {
+					removeFrom = addAfter(tokenList, removeFrom, before);
+					pos += before.length;
+				}
+
+				removeRange(tokenList, removeFrom, removeCount);
+
+				var wrapped = new Token(token, inside ? _.tokenize(matchStr, inside) : matchStr, alias, matchStr);
+				currentNode = addAfter(tokenList, removeFrom, wrapped);
+
+				if (after) {
+					addAfter(tokenList, currentNode, after);
+				}
+
+				if (removeCount > 1) {
+					// at least one Token object was removed, so we have to do some rematching
+					// this can only happen if the current pattern is greedy
+					matchGrammar(text, tokenList, grammar, currentNode.prev, pos, {
+						cause: token + ',' + j,
+						reach: reach
+					});
+				}
+			}
+		}
+	}
+}
+
+/**
+ * @typedef LinkedListNode
+ * @property {T} value
+ * @property {LinkedListNode<T> | null} prev The previous node.
+ * @property {LinkedListNode<T> | null} next The next node.
+ * @template T
+ * @private
+ */
+
+/**
+ * @template T
+ * @private
+ */
+function LinkedList() {
+	/** @type {LinkedListNode<T>} */
+	var head = { value: null, prev: null, next: null };
+	/** @type {LinkedListNode<T>} */
+	var tail = { value: null, prev: head, next: null };
+	head.next = tail;
+
+	/** @type {LinkedListNode<T>} */
+	this.head = head;
+	/** @type {LinkedListNode<T>} */
+	this.tail = tail;
+	this.length = 0;
+}
+
+/**
+ * Adds a new node with the given value to the list.
+ * @param {LinkedList<T>} list
+ * @param {LinkedListNode<T>} node
+ * @param {T} value
+ * @returns {LinkedListNode<T>} The added node.
+ * @template T
+ */
+function addAfter(list, node, value) {
+	// assumes that node != list.tail && values.length >= 0
+	var next = node.next;
+
+	var newNode = { value: value, prev: node, next: next };
+	node.next = newNode;
+	next.prev = newNode;
+	list.length++;
+
+	return newNode;
+}
+/**
+ * Removes `count` nodes after the given node. The given node will not be removed.
+ * @param {LinkedList<T>} list
+ * @param {LinkedListNode<T>} node
+ * @param {number} count
+ * @template T
+ */
+function removeRange(list, node, count) {
+	var next = node.next;
+	for (var i = 0; i < count && next !== list.tail; i++) {
+		next = next.next;
+	}
+	node.next = next;
+	next.prev = node;
+	list.length -= i;
+}
+/**
+ * @param {LinkedList<T>} list
+ * @returns {T[]}
+ * @template T
+ */
+function toArray(list) {
+	var array = [];
+	var node = list.head.next;
+	while (node !== list.tail) {
+		array.push(node.value);
+		node = node.next;
+	}
+	return array;
+}
+
+
+if (!_self.document) {
+	if (!_self.addEventListener) {
+		// in Node.js
+		return _;
+	}
+
+	if (!_.disableWorkerMessageHandler) {
+		// In worker
+		_self.addEventListener('message', function (evt) {
+			var message = JSON.parse(evt.data),
+				lang = message.language,
+				code = message.code,
+				immediateClose = message.immediateClose;
+
+			_self.postMessage(_.highlight(code, _.languages[lang], lang));
+			if (immediateClose) {
+				_self.close();
+			}
+		}, false);
+	}
+
+	return _;
+}
+
+// Get current script and highlight
+var script = _.util.currentScript();
+
+if (script) {
+	_.filename = script.src;
+
+	if (script.hasAttribute('data-manual')) {
+		_.manual = true;
+	}
+}
+
+function highlightAutomaticallyCallback() {
+	if (!_.manual) {
+		_.highlightAll();
+	}
+}
+
+if (!_.manual) {
+	// If the document state is "loading", then we'll use DOMContentLoaded.
+	// If the document state is "interactive" and the prism.js script is deferred, then we'll also use the
+	// DOMContentLoaded event because there might be some plugins or languages which have also been deferred and they
+	// might take longer one animation frame to execute which can create a race condition where only some plugins have
+	// been loaded when Prism.highlightAll() is executed, depending on how fast resources are loaded.
+	// See https://github.com/PrismJS/prism/issues/2102
+	var readyState = document.readyState;
+	if (readyState === 'loading' || readyState === 'interactive' && script && script.defer) {
+		document.addEventListener('DOMContentLoaded', highlightAutomaticallyCallback);
+	} else {
+		if (window.requestAnimationFrame) {
+			window.requestAnimationFrame(highlightAutomaticallyCallback);
+		} else {
+			window.setTimeout(highlightAutomaticallyCallback, 16);
+		}
+	}
+}
+
+return _;
+
+})(_self);
+
+if ( true && module.exports) {
+	module.exports = Prism;
+}
+
+// hack for components to work correctly in node.js
+if (typeof global !== 'undefined') {
+	global.Prism = Prism;
+}
+
+// some additional documentation/types
+
+/**
+ * The expansion of a simple `RegExp` literal to support additional properties.
+ *
+ * @typedef GrammarToken
+ * @property {RegExp} pattern The regular expression of the token.
+ * @property {boolean} [lookbehind=false] If `true`, then the first capturing group of `pattern` will (effectively)
+ * behave as a lookbehind group meaning that the captured text will not be part of the matched text of the new token.
+ * @property {boolean} [greedy=false] Whether the token is greedy.
+ * @property {string|string[]} [alias] An optional alias or list of aliases.
+ * @property {Grammar} [inside] The nested grammar of this token.
+ *
+ * The `inside` grammar will be used to tokenize the text value of each token of this kind.
+ *
+ * This can be used to make nested and even recursive language definitions.
+ *
+ * Note: This can cause infinite recursion. Be careful when you embed different languages or even the same language into
+ * each another.
+ * @global
+ * @public
+*/
+
+/**
+ * @typedef Grammar
+ * @type {Object<string, RegExp | GrammarToken | Array<RegExp | GrammarToken>>}
+ * @property {Grammar} [rest] An optional grammar object that will be appended to this grammar.
+ * @global
+ * @public
+ */
+
+/**
+ * A function which will invoked after an element was successfully highlighted.
+ *
+ * @callback HighlightCallback
+ * @param {Element} element The element successfully highlighted.
+ * @returns {void}
+ * @global
+ * @public
+*/
+
+/**
+ * @callback HookCallback
+ * @param {Object<string, any>} env The environment variables of the hook.
+ * @returns {void}
+ * @global
+ * @public
+ */
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
+
+/***/ }),
+
 /***/ "8cbf":
 /***/ (function(module, exports) {
 
@@ -26902,76 +28326,6 @@ module.exports = require("vue");
         }
       }
     
-
-/***/ }),
-
-/***/ "8d51":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var Prism = _interopDefault(__webpack_require__("c197"));
-
-function assign(obj) {
-  for (var i = 1; i < arguments.length; i++) {
-    // eslint-disable-next-line guard-for-in, prefer-rest-params
-    for (var p in arguments[i]) {
-      obj[p] = arguments[i][p];
-    }
-  }
-
-  return obj;
-}
-
-var index = {
-  functional: true,
-  props: {
-    code: {
-      type: String
-    },
-    inline: {
-      type: Boolean,
-      "default": false
-    },
-    language: {
-      type: String,
-      "default": 'markup'
-    }
-  },
-  render: function render(h, ctx) {
-    var code = ctx.props.code || (ctx.children && ctx.children.length > 0 ? ctx.children[0].text : '');
-    var inline = ctx.props.inline;
-    var language = ctx.props.language;
-    var prismLanguage = Prism.languages[language];
-    var className = "language-".concat(language);
-
-    if (false) {}
-
-    if (inline) {
-      return h('code', assign({}, ctx.data, {
-        "class": [ctx.data["class"], className],
-        domProps: assign({}, ctx.data.domProps, {
-          innerHTML: Prism.highlight(code, prismLanguage)
-        })
-      }));
-    }
-
-    return h('pre', assign({}, ctx.data, {
-      "class": [ctx.data["class"], className]
-    }), [h('code', {
-      "class": className,
-      domProps: {
-        innerHTML: Prism.highlight(code, prismLanguage)
-      }
-    })]);
-  }
-};
-
-module.exports = index;
-
 
 /***/ }),
 
@@ -32457,1694 +33811,6 @@ module.exports = function (input, PREFERRED_STRING) {
 
 /***/ }),
 
-/***/ "c197":
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {
-/* **********************************************
-     Begin prism-core.js
-********************************************** */
-
-/// <reference lib="WebWorker"/>
-
-var _self = (typeof window !== 'undefined')
-	? window   // if in browser
-	: (
-		(typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)
-		? self // if in worker
-		: {}   // if in node js
-	);
-
-/**
- * Prism: Lightweight, robust, elegant syntax highlighting
- *
- * @license MIT <https://opensource.org/licenses/MIT>
- * @author Lea Verou <https://lea.verou.me>
- * @namespace
- * @public
- */
-var Prism = (function (_self){
-
-// Private helper vars
-var lang = /\blang(?:uage)?-([\w-]+)\b/i;
-var uniqueId = 0;
-
-
-var _ = {
-	/**
-	 * By default, Prism will attempt to highlight all code elements (by calling {@link Prism.highlightAll}) on the
-	 * current page after the page finished loading. This might be a problem if e.g. you wanted to asynchronously load
-	 * additional languages or plugins yourself.
-	 *
-	 * By setting this value to `true`, Prism will not automatically highlight all code elements on the page.
-	 *
-	 * You obviously have to change this value before the automatic highlighting started. To do this, you can add an
-	 * empty Prism object into the global scope before loading the Prism script like this:
-	 *
-	 * ```js
-	 * window.Prism = window.Prism || {};
-	 * Prism.manual = true;
-	 * // add a new <script> to load Prism's script
-	 * ```
-	 *
-	 * @default false
-	 * @type {boolean}
-	 * @memberof Prism
-	 * @public
-	 */
-	manual: _self.Prism && _self.Prism.manual,
-	disableWorkerMessageHandler: _self.Prism && _self.Prism.disableWorkerMessageHandler,
-
-	/**
-	 * A namespace for utility methods.
-	 *
-	 * All function in this namespace that are not explicitly marked as _public_ are for __internal use only__ and may
-	 * change or disappear at any time.
-	 *
-	 * @namespace
-	 * @memberof Prism
-	 */
-	util: {
-		encode: function encode(tokens) {
-			if (tokens instanceof Token) {
-				return new Token(tokens.type, encode(tokens.content), tokens.alias);
-			} else if (Array.isArray(tokens)) {
-				return tokens.map(encode);
-			} else {
-				return tokens.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\u00a0/g, ' ');
-			}
-		},
-
-		/**
-		 * Returns the name of the type of the given value.
-		 *
-		 * @param {any} o
-		 * @returns {string}
-		 * @example
-		 * type(null)      === 'Null'
-		 * type(undefined) === 'Undefined'
-		 * type(123)       === 'Number'
-		 * type('foo')     === 'String'
-		 * type(true)      === 'Boolean'
-		 * type([1, 2])    === 'Array'
-		 * type({})        === 'Object'
-		 * type(String)    === 'Function'
-		 * type(/abc+/)    === 'RegExp'
-		 */
-		type: function (o) {
-			return Object.prototype.toString.call(o).slice(8, -1);
-		},
-
-		/**
-		 * Returns a unique number for the given object. Later calls will still return the same number.
-		 *
-		 * @param {Object} obj
-		 * @returns {number}
-		 */
-		objId: function (obj) {
-			if (!obj['__id']) {
-				Object.defineProperty(obj, '__id', { value: ++uniqueId });
-			}
-			return obj['__id'];
-		},
-
-		/**
-		 * Creates a deep clone of the given object.
-		 *
-		 * The main intended use of this function is to clone language definitions.
-		 *
-		 * @param {T} o
-		 * @param {Record<number, any>} [visited]
-		 * @returns {T}
-		 * @template T
-		 */
-		clone: function deepClone(o, visited) {
-			visited = visited || {};
-
-			var clone, id;
-			switch (_.util.type(o)) {
-				case 'Object':
-					id = _.util.objId(o);
-					if (visited[id]) {
-						return visited[id];
-					}
-					clone = /** @type {Record<string, any>} */ ({});
-					visited[id] = clone;
-
-					for (var key in o) {
-						if (o.hasOwnProperty(key)) {
-							clone[key] = deepClone(o[key], visited);
-						}
-					}
-
-					return /** @type {any} */ (clone);
-
-				case 'Array':
-					id = _.util.objId(o);
-					if (visited[id]) {
-						return visited[id];
-					}
-					clone = [];
-					visited[id] = clone;
-
-					(/** @type {Array} */(/** @type {any} */(o))).forEach(function (v, i) {
-						clone[i] = deepClone(v, visited);
-					});
-
-					return /** @type {any} */ (clone);
-
-				default:
-					return o;
-			}
-		},
-
-		/**
-		 * Returns the Prism language of the given element set by a `language-xxxx` or `lang-xxxx` class.
-		 *
-		 * If no language is set for the element or the element is `null` or `undefined`, `none` will be returned.
-		 *
-		 * @param {Element} element
-		 * @returns {string}
-		 */
-		getLanguage: function (element) {
-			while (element && !lang.test(element.className)) {
-				element = element.parentElement;
-			}
-			if (element) {
-				return (element.className.match(lang) || [, 'none'])[1].toLowerCase();
-			}
-			return 'none';
-		},
-
-		/**
-		 * Returns the script element that is currently executing.
-		 *
-		 * This does __not__ work for line script element.
-		 *
-		 * @returns {HTMLScriptElement | null}
-		 */
-		currentScript: function () {
-			if (typeof document === 'undefined') {
-				return null;
-			}
-			if ('currentScript' in document && 1 < 2 /* hack to trip TS' flow analysis */) {
-				return /** @type {any} */ (document.currentScript);
-			}
-
-			// IE11 workaround
-			// we'll get the src of the current script by parsing IE11's error stack trace
-			// this will not work for inline scripts
-
-			try {
-				throw new Error();
-			} catch (err) {
-				// Get file src url from stack. Specifically works with the format of stack traces in IE.
-				// A stack will look like this:
-				//
-				// Error
-				//    at _.util.currentScript (http://localhost/components/prism-core.js:119:5)
-				//    at Global code (http://localhost/components/prism-core.js:606:1)
-
-				var src = (/at [^(\r\n]*\((.*):.+:.+\)$/i.exec(err.stack) || [])[1];
-				if (src) {
-					var scripts = document.getElementsByTagName('script');
-					for (var i in scripts) {
-						if (scripts[i].src == src) {
-							return scripts[i];
-						}
-					}
-				}
-				return null;
-			}
-		},
-
-		/**
-		 * Returns whether a given class is active for `element`.
-		 *
-		 * The class can be activated if `element` or one of its ancestors has the given class and it can be deactivated
-		 * if `element` or one of its ancestors has the negated version of the given class. The _negated version_ of the
-		 * given class is just the given class with a `no-` prefix.
-		 *
-		 * Whether the class is active is determined by the closest ancestor of `element` (where `element` itself is
-		 * closest ancestor) that has the given class or the negated version of it. If neither `element` nor any of its
-		 * ancestors have the given class or the negated version of it, then the default activation will be returned.
-		 *
-		 * In the paradoxical situation where the closest ancestor contains __both__ the given class and the negated
-		 * version of it, the class is considered active.
-		 *
-		 * @param {Element} element
-		 * @param {string} className
-		 * @param {boolean} [defaultActivation=false]
-		 * @returns {boolean}
-		 */
-		isActive: function (element, className, defaultActivation) {
-			var no = 'no-' + className;
-
-			while (element) {
-				var classList = element.classList;
-				if (classList.contains(className)) {
-					return true;
-				}
-				if (classList.contains(no)) {
-					return false;
-				}
-				element = element.parentElement;
-			}
-			return !!defaultActivation;
-		}
-	},
-
-	/**
-	 * This namespace contains all currently loaded languages and the some helper functions to create and modify languages.
-	 *
-	 * @namespace
-	 * @memberof Prism
-	 * @public
-	 */
-	languages: {
-		/**
-		 * Creates a deep copy of the language with the given id and appends the given tokens.
-		 *
-		 * If a token in `redef` also appears in the copied language, then the existing token in the copied language
-		 * will be overwritten at its original position.
-		 *
-		 * ## Best practices
-		 *
-		 * Since the position of overwriting tokens (token in `redef` that overwrite tokens in the copied language)
-		 * doesn't matter, they can technically be in any order. However, this can be confusing to others that trying to
-		 * understand the language definition because, normally, the order of tokens matters in Prism grammars.
-		 *
-		 * Therefore, it is encouraged to order overwriting tokens according to the positions of the overwritten tokens.
-		 * Furthermore, all non-overwriting tokens should be placed after the overwriting ones.
-		 *
-		 * @param {string} id The id of the language to extend. This has to be a key in `Prism.languages`.
-		 * @param {Grammar} redef The new tokens to append.
-		 * @returns {Grammar} The new language created.
-		 * @public
-		 * @example
-		 * Prism.languages['css-with-colors'] = Prism.languages.extend('css', {
-		 *     // Prism.languages.css already has a 'comment' token, so this token will overwrite CSS' 'comment' token
-		 *     // at its original position
-		 *     'comment': { ... },
-		 *     // CSS doesn't have a 'color' token, so this token will be appended
-		 *     'color': /\b(?:red|green|blue)\b/
-		 * });
-		 */
-		extend: function (id, redef) {
-			var lang = _.util.clone(_.languages[id]);
-
-			for (var key in redef) {
-				lang[key] = redef[key];
-			}
-
-			return lang;
-		},
-
-		/**
-		 * Inserts tokens _before_ another token in a language definition or any other grammar.
-		 *
-		 * ## Usage
-		 *
-		 * This helper method makes it easy to modify existing languages. For example, the CSS language definition
-		 * not only defines CSS highlighting for CSS documents, but also needs to define highlighting for CSS embedded
-		 * in HTML through `<style>` elements. To do this, it needs to modify `Prism.languages.markup` and add the
-		 * appropriate tokens. However, `Prism.languages.markup` is a regular JavaScript object literal, so if you do
-		 * this:
-		 *
-		 * ```js
-		 * Prism.languages.markup.style = {
-		 *     // token
-		 * };
-		 * ```
-		 *
-		 * then the `style` token will be added (and processed) at the end. `insertBefore` allows you to insert tokens
-		 * before existing tokens. For the CSS example above, you would use it like this:
-		 *
-		 * ```js
-		 * Prism.languages.insertBefore('markup', 'cdata', {
-		 *     'style': {
-		 *         // token
-		 *     }
-		 * });
-		 * ```
-		 *
-		 * ## Special cases
-		 *
-		 * If the grammars of `inside` and `insert` have tokens with the same name, the tokens in `inside`'s grammar
-		 * will be ignored.
-		 *
-		 * This behavior can be used to insert tokens after `before`:
-		 *
-		 * ```js
-		 * Prism.languages.insertBefore('markup', 'comment', {
-		 *     'comment': Prism.languages.markup.comment,
-		 *     // tokens after 'comment'
-		 * });
-		 * ```
-		 *
-		 * ## Limitations
-		 *
-		 * The main problem `insertBefore` has to solve is iteration order. Since ES2015, the iteration order for object
-		 * properties is guaranteed to be the insertion order (except for integer keys) but some browsers behave
-		 * differently when keys are deleted and re-inserted. So `insertBefore` can't be implemented by temporarily
-		 * deleting properties which is necessary to insert at arbitrary positions.
-		 *
-		 * To solve this problem, `insertBefore` doesn't actually insert the given tokens into the target object.
-		 * Instead, it will create a new object and replace all references to the target object with the new one. This
-		 * can be done without temporarily deleting properties, so the iteration order is well-defined.
-		 *
-		 * However, only references that can be reached from `Prism.languages` or `insert` will be replaced. I.e. if
-		 * you hold the target object in a variable, then the value of the variable will not change.
-		 *
-		 * ```js
-		 * var oldMarkup = Prism.languages.markup;
-		 * var newMarkup = Prism.languages.insertBefore('markup', 'comment', { ... });
-		 *
-		 * assert(oldMarkup !== Prism.languages.markup);
-		 * assert(newMarkup === Prism.languages.markup);
-		 * ```
-		 *
-		 * @param {string} inside The property of `root` (e.g. a language id in `Prism.languages`) that contains the
-		 * object to be modified.
-		 * @param {string} before The key to insert before.
-		 * @param {Grammar} insert An object containing the key-value pairs to be inserted.
-		 * @param {Object<string, any>} [root] The object containing `inside`, i.e. the object that contains the
-		 * object to be modified.
-		 *
-		 * Defaults to `Prism.languages`.
-		 * @returns {Grammar} The new grammar object.
-		 * @public
-		 */
-		insertBefore: function (inside, before, insert, root) {
-			root = root || /** @type {any} */ (_.languages);
-			var grammar = root[inside];
-			/** @type {Grammar} */
-			var ret = {};
-
-			for (var token in grammar) {
-				if (grammar.hasOwnProperty(token)) {
-
-					if (token == before) {
-						for (var newToken in insert) {
-							if (insert.hasOwnProperty(newToken)) {
-								ret[newToken] = insert[newToken];
-							}
-						}
-					}
-
-					// Do not insert token which also occur in insert. See #1525
-					if (!insert.hasOwnProperty(token)) {
-						ret[token] = grammar[token];
-					}
-				}
-			}
-
-			var old = root[inside];
-			root[inside] = ret;
-
-			// Update references in other language definitions
-			_.languages.DFS(_.languages, function(key, value) {
-				if (value === old && key != inside) {
-					this[key] = ret;
-				}
-			});
-
-			return ret;
-		},
-
-		// Traverse a language definition with Depth First Search
-		DFS: function DFS(o, callback, type, visited) {
-			visited = visited || {};
-
-			var objId = _.util.objId;
-
-			for (var i in o) {
-				if (o.hasOwnProperty(i)) {
-					callback.call(o, i, o[i], type || i);
-
-					var property = o[i],
-					    propertyType = _.util.type(property);
-
-					if (propertyType === 'Object' && !visited[objId(property)]) {
-						visited[objId(property)] = true;
-						DFS(property, callback, null, visited);
-					}
-					else if (propertyType === 'Array' && !visited[objId(property)]) {
-						visited[objId(property)] = true;
-						DFS(property, callback, i, visited);
-					}
-				}
-			}
-		}
-	},
-
-	plugins: {},
-
-	/**
-	 * This is the most high-level function in Prism’s API.
-	 * It fetches all the elements that have a `.language-xxxx` class and then calls {@link Prism.highlightElement} on
-	 * each one of them.
-	 *
-	 * This is equivalent to `Prism.highlightAllUnder(document, async, callback)`.
-	 *
-	 * @param {boolean} [async=false] Same as in {@link Prism.highlightAllUnder}.
-	 * @param {HighlightCallback} [callback] Same as in {@link Prism.highlightAllUnder}.
-	 * @memberof Prism
-	 * @public
-	 */
-	highlightAll: function(async, callback) {
-		_.highlightAllUnder(document, async, callback);
-	},
-
-	/**
-	 * Fetches all the descendants of `container` that have a `.language-xxxx` class and then calls
-	 * {@link Prism.highlightElement} on each one of them.
-	 *
-	 * The following hooks will be run:
-	 * 1. `before-highlightall`
-	 * 2. All hooks of {@link Prism.highlightElement} for each element.
-	 *
-	 * @param {ParentNode} container The root element, whose descendants that have a `.language-xxxx` class will be highlighted.
-	 * @param {boolean} [async=false] Whether each element is to be highlighted asynchronously using Web Workers.
-	 * @param {HighlightCallback} [callback] An optional callback to be invoked on each element after its highlighting is done.
-	 * @memberof Prism
-	 * @public
-	 */
-	highlightAllUnder: function(container, async, callback) {
-		var env = {
-			callback: callback,
-			container: container,
-			selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
-		};
-
-		_.hooks.run('before-highlightall', env);
-
-		env.elements = Array.prototype.slice.apply(env.container.querySelectorAll(env.selector));
-
-		_.hooks.run('before-all-elements-highlight', env);
-
-		for (var i = 0, element; element = env.elements[i++];) {
-			_.highlightElement(element, async === true, env.callback);
-		}
-	},
-
-	/**
-	 * Highlights the code inside a single element.
-	 *
-	 * The following hooks will be run:
-	 * 1. `before-sanity-check`
-	 * 2. `before-highlight`
-	 * 3. All hooks of {@link Prism.highlight}. These hooks will only be run by the current worker if `async` is `true`.
-	 * 4. `before-insert`
-	 * 5. `after-highlight`
-	 * 6. `complete`
-	 *
-	 * @param {Element} element The element containing the code.
-	 * It must have a class of `language-xxxx` to be processed, where `xxxx` is a valid language identifier.
-	 * @param {boolean} [async=false] Whether the element is to be highlighted asynchronously using Web Workers
-	 * to improve performance and avoid blocking the UI when highlighting very large chunks of code. This option is
-	 * [disabled by default](https://prismjs.com/faq.html#why-is-asynchronous-highlighting-disabled-by-default).
-	 *
-	 * Note: All language definitions required to highlight the code must be included in the main `prism.js` file for
-	 * asynchronous highlighting to work. You can build your own bundle on the
-	 * [Download page](https://prismjs.com/download.html).
-	 * @param {HighlightCallback} [callback] An optional callback to be invoked after the highlighting is done.
-	 * Mostly useful when `async` is `true`, since in that case, the highlighting is done asynchronously.
-	 * @memberof Prism
-	 * @public
-	 */
-	highlightElement: function(element, async, callback) {
-		// Find language
-		var language = _.util.getLanguage(element);
-		var grammar = _.languages[language];
-
-		// Set language on the element, if not present
-		element.className = element.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
-
-		// Set language on the parent, for styling
-		var parent = element.parentElement;
-		if (parent && parent.nodeName.toLowerCase() === 'pre') {
-			parent.className = parent.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
-		}
-
-		var code = element.textContent;
-
-		var env = {
-			element: element,
-			language: language,
-			grammar: grammar,
-			code: code
-		};
-
-		function insertHighlightedCode(highlightedCode) {
-			env.highlightedCode = highlightedCode;
-
-			_.hooks.run('before-insert', env);
-
-			env.element.innerHTML = env.highlightedCode;
-
-			_.hooks.run('after-highlight', env);
-			_.hooks.run('complete', env);
-			callback && callback.call(env.element);
-		}
-
-		_.hooks.run('before-sanity-check', env);
-
-		if (!env.code) {
-			_.hooks.run('complete', env);
-			callback && callback.call(env.element);
-			return;
-		}
-
-		_.hooks.run('before-highlight', env);
-
-		if (!env.grammar) {
-			insertHighlightedCode(_.util.encode(env.code));
-			return;
-		}
-
-		if (async && _self.Worker) {
-			var worker = new Worker(_.filename);
-
-			worker.onmessage = function(evt) {
-				insertHighlightedCode(evt.data);
-			};
-
-			worker.postMessage(JSON.stringify({
-				language: env.language,
-				code: env.code,
-				immediateClose: true
-			}));
-		}
-		else {
-			insertHighlightedCode(_.highlight(env.code, env.grammar, env.language));
-		}
-	},
-
-	/**
-	 * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
-	 * and the language definitions to use, and returns a string with the HTML produced.
-	 *
-	 * The following hooks will be run:
-	 * 1. `before-tokenize`
-	 * 2. `after-tokenize`
-	 * 3. `wrap`: On each {@link Token}.
-	 *
-	 * @param {string} text A string with the code to be highlighted.
-	 * @param {Grammar} grammar An object containing the tokens to use.
-	 *
-	 * Usually a language definition like `Prism.languages.markup`.
-	 * @param {string} language The name of the language definition passed to `grammar`.
-	 * @returns {string} The highlighted HTML.
-	 * @memberof Prism
-	 * @public
-	 * @example
-	 * Prism.highlight('var foo = true;', Prism.languages.javascript, 'javascript');
-	 */
-	highlight: function (text, grammar, language) {
-		var env = {
-			code: text,
-			grammar: grammar,
-			language: language
-		};
-		_.hooks.run('before-tokenize', env);
-		env.tokens = _.tokenize(env.code, env.grammar);
-		_.hooks.run('after-tokenize', env);
-		return Token.stringify(_.util.encode(env.tokens), env.language);
-	},
-
-	/**
-	 * This is the heart of Prism, and the most low-level function you can use. It accepts a string of text as input
-	 * and the language definitions to use, and returns an array with the tokenized code.
-	 *
-	 * When the language definition includes nested tokens, the function is called recursively on each of these tokens.
-	 *
-	 * This method could be useful in other contexts as well, as a very crude parser.
-	 *
-	 * @param {string} text A string with the code to be highlighted.
-	 * @param {Grammar} grammar An object containing the tokens to use.
-	 *
-	 * Usually a language definition like `Prism.languages.markup`.
-	 * @returns {TokenStream} An array of strings and tokens, a token stream.
-	 * @memberof Prism
-	 * @public
-	 * @example
-	 * let code = `var foo = 0;`;
-	 * let tokens = Prism.tokenize(code, Prism.languages.javascript);
-	 * tokens.forEach(token => {
-	 *     if (token instanceof Prism.Token && token.type === 'number') {
-	 *         console.log(`Found numeric literal: ${token.content}`);
-	 *     }
-	 * });
-	 */
-	tokenize: function(text, grammar) {
-		var rest = grammar.rest;
-		if (rest) {
-			for (var token in rest) {
-				grammar[token] = rest[token];
-			}
-
-			delete grammar.rest;
-		}
-
-		var tokenList = new LinkedList();
-		addAfter(tokenList, tokenList.head, text);
-
-		matchGrammar(text, tokenList, grammar, tokenList.head, 0);
-
-		return toArray(tokenList);
-	},
-
-	/**
-	 * @namespace
-	 * @memberof Prism
-	 * @public
-	 */
-	hooks: {
-		all: {},
-
-		/**
-		 * Adds the given callback to the list of callbacks for the given hook.
-		 *
-		 * The callback will be invoked when the hook it is registered for is run.
-		 * Hooks are usually directly run by a highlight function but you can also run hooks yourself.
-		 *
-		 * One callback function can be registered to multiple hooks and the same hook multiple times.
-		 *
-		 * @param {string} name The name of the hook.
-		 * @param {HookCallback} callback The callback function which is given environment variables.
-		 * @public
-		 */
-		add: function (name, callback) {
-			var hooks = _.hooks.all;
-
-			hooks[name] = hooks[name] || [];
-
-			hooks[name].push(callback);
-		},
-
-		/**
-		 * Runs a hook invoking all registered callbacks with the given environment variables.
-		 *
-		 * Callbacks will be invoked synchronously and in the order in which they were registered.
-		 *
-		 * @param {string} name The name of the hook.
-		 * @param {Object<string, any>} env The environment variables of the hook passed to all callbacks registered.
-		 * @public
-		 */
-		run: function (name, env) {
-			var callbacks = _.hooks.all[name];
-
-			if (!callbacks || !callbacks.length) {
-				return;
-			}
-
-			for (var i=0, callback; callback = callbacks[i++];) {
-				callback(env);
-			}
-		}
-	},
-
-	Token: Token
-};
-_self.Prism = _;
-
-
-// Typescript note:
-// The following can be used to import the Token type in JSDoc:
-//
-//   @typedef {InstanceType<import("./prism-core")["Token"]>} Token
-
-/**
- * Creates a new token.
- *
- * @param {string} type See {@link Token#type type}
- * @param {string | TokenStream} content See {@link Token#content content}
- * @param {string|string[]} [alias] The alias(es) of the token.
- * @param {string} [matchedStr=""] A copy of the full string this token was created from.
- * @class
- * @global
- * @public
- */
-function Token(type, content, alias, matchedStr) {
-	/**
-	 * The type of the token.
-	 *
-	 * This is usually the key of a pattern in a {@link Grammar}.
-	 *
-	 * @type {string}
-	 * @see GrammarToken
-	 * @public
-	 */
-	this.type = type;
-	/**
-	 * The strings or tokens contained by this token.
-	 *
-	 * This will be a token stream if the pattern matched also defined an `inside` grammar.
-	 *
-	 * @type {string | TokenStream}
-	 * @public
-	 */
-	this.content = content;
-	/**
-	 * The alias(es) of the token.
-	 *
-	 * @type {string|string[]}
-	 * @see GrammarToken
-	 * @public
-	 */
-	this.alias = alias;
-	// Copy of the full string this token was created from
-	this.length = (matchedStr || '').length | 0;
-}
-
-/**
- * A token stream is an array of strings and {@link Token Token} objects.
- *
- * Token streams have to fulfill a few properties that are assumed by most functions (mostly internal ones) that process
- * them.
- *
- * 1. No adjacent strings.
- * 2. No empty strings.
- *
- *    The only exception here is the token stream that only contains the empty string and nothing else.
- *
- * @typedef {Array<string | Token>} TokenStream
- * @global
- * @public
- */
-
-/**
- * Converts the given token or token stream to an HTML representation.
- *
- * The following hooks will be run:
- * 1. `wrap`: On each {@link Token}.
- *
- * @param {string | Token | TokenStream} o The token or token stream to be converted.
- * @param {string} language The name of current language.
- * @returns {string} The HTML representation of the token or token stream.
- * @memberof Token
- * @static
- */
-Token.stringify = function stringify(o, language) {
-	if (typeof o == 'string') {
-		return o;
-	}
-	if (Array.isArray(o)) {
-		var s = '';
-		o.forEach(function (e) {
-			s += stringify(e, language);
-		});
-		return s;
-	}
-
-	var env = {
-		type: o.type,
-		content: stringify(o.content, language),
-		tag: 'span',
-		classes: ['token', o.type],
-		attributes: {},
-		language: language
-	};
-
-	var aliases = o.alias;
-	if (aliases) {
-		if (Array.isArray(aliases)) {
-			Array.prototype.push.apply(env.classes, aliases);
-		} else {
-			env.classes.push(aliases);
-		}
-	}
-
-	_.hooks.run('wrap', env);
-
-	var attributes = '';
-	for (var name in env.attributes) {
-		attributes += ' ' + name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
-	}
-
-	return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + attributes + '>' + env.content + '</' + env.tag + '>';
-};
-
-/**
- * @param {string} text
- * @param {LinkedList<string | Token>} tokenList
- * @param {any} grammar
- * @param {LinkedListNode<string | Token>} startNode
- * @param {number} startPos
- * @param {RematchOptions} [rematch]
- * @returns {void}
- * @private
- *
- * @typedef RematchOptions
- * @property {string} cause
- * @property {number} reach
- */
-function matchGrammar(text, tokenList, grammar, startNode, startPos, rematch) {
-	for (var token in grammar) {
-		if (!grammar.hasOwnProperty(token) || !grammar[token]) {
-			continue;
-		}
-
-		var patterns = grammar[token];
-		patterns = Array.isArray(patterns) ? patterns : [patterns];
-
-		for (var j = 0; j < patterns.length; ++j) {
-			if (rematch && rematch.cause == token + ',' + j) {
-				return;
-			}
-
-			var patternObj = patterns[j],
-				inside = patternObj.inside,
-				lookbehind = !!patternObj.lookbehind,
-				greedy = !!patternObj.greedy,
-				lookbehindLength = 0,
-				alias = patternObj.alias;
-
-			if (greedy && !patternObj.pattern.global) {
-				// Without the global flag, lastIndex won't work
-				var flags = patternObj.pattern.toString().match(/[imsuy]*$/)[0];
-				patternObj.pattern = RegExp(patternObj.pattern.source, flags + 'g');
-			}
-
-			/** @type {RegExp} */
-			var pattern = patternObj.pattern || patternObj;
-
-			for ( // iterate the token list and keep track of the current token/string position
-				var currentNode = startNode.next, pos = startPos;
-				currentNode !== tokenList.tail;
-				pos += currentNode.value.length, currentNode = currentNode.next
-			) {
-
-				if (rematch && pos >= rematch.reach) {
-					break;
-				}
-
-				var str = currentNode.value;
-
-				if (tokenList.length > text.length) {
-					// Something went terribly wrong, ABORT, ABORT!
-					return;
-				}
-
-				if (str instanceof Token) {
-					continue;
-				}
-
-				var removeCount = 1; // this is the to parameter of removeBetween
-
-				if (greedy && currentNode != tokenList.tail.prev) {
-					pattern.lastIndex = pos;
-					var match = pattern.exec(text);
-					if (!match) {
-						break;
-					}
-
-					var from = match.index + (lookbehind && match[1] ? match[1].length : 0);
-					var to = match.index + match[0].length;
-					var p = pos;
-
-					// find the node that contains the match
-					p += currentNode.value.length;
-					while (from >= p) {
-						currentNode = currentNode.next;
-						p += currentNode.value.length;
-					}
-					// adjust pos (and p)
-					p -= currentNode.value.length;
-					pos = p;
-
-					// the current node is a Token, then the match starts inside another Token, which is invalid
-					if (currentNode.value instanceof Token) {
-						continue;
-					}
-
-					// find the last node which is affected by this match
-					for (
-						var k = currentNode;
-						k !== tokenList.tail && (p < to || typeof k.value === 'string');
-						k = k.next
-					) {
-						removeCount++;
-						p += k.value.length;
-					}
-					removeCount--;
-
-					// replace with the new match
-					str = text.slice(pos, p);
-					match.index -= pos;
-				} else {
-					pattern.lastIndex = 0;
-
-					var match = pattern.exec(str);
-				}
-
-				if (!match) {
-					continue;
-				}
-
-				if (lookbehind) {
-					lookbehindLength = match[1] ? match[1].length : 0;
-				}
-
-				var from = match.index + lookbehindLength,
-					matchStr = match[0].slice(lookbehindLength),
-					to = from + matchStr.length,
-					before = str.slice(0, from),
-					after = str.slice(to);
-
-				var reach = pos + str.length;
-				if (rematch && reach > rematch.reach) {
-					rematch.reach = reach;
-				}
-
-				var removeFrom = currentNode.prev;
-
-				if (before) {
-					removeFrom = addAfter(tokenList, removeFrom, before);
-					pos += before.length;
-				}
-
-				removeRange(tokenList, removeFrom, removeCount);
-
-				var wrapped = new Token(token, inside ? _.tokenize(matchStr, inside) : matchStr, alias, matchStr);
-				currentNode = addAfter(tokenList, removeFrom, wrapped);
-
-				if (after) {
-					addAfter(tokenList, currentNode, after);
-				}
-
-				if (removeCount > 1) {
-					// at least one Token object was removed, so we have to do some rematching
-					// this can only happen if the current pattern is greedy
-					matchGrammar(text, tokenList, grammar, currentNode.prev, pos, {
-						cause: token + ',' + j,
-						reach: reach
-					});
-				}
-			}
-		}
-	}
-}
-
-/**
- * @typedef LinkedListNode
- * @property {T} value
- * @property {LinkedListNode<T> | null} prev The previous node.
- * @property {LinkedListNode<T> | null} next The next node.
- * @template T
- * @private
- */
-
-/**
- * @template T
- * @private
- */
-function LinkedList() {
-	/** @type {LinkedListNode<T>} */
-	var head = { value: null, prev: null, next: null };
-	/** @type {LinkedListNode<T>} */
-	var tail = { value: null, prev: head, next: null };
-	head.next = tail;
-
-	/** @type {LinkedListNode<T>} */
-	this.head = head;
-	/** @type {LinkedListNode<T>} */
-	this.tail = tail;
-	this.length = 0;
-}
-
-/**
- * Adds a new node with the given value to the list.
- * @param {LinkedList<T>} list
- * @param {LinkedListNode<T>} node
- * @param {T} value
- * @returns {LinkedListNode<T>} The added node.
- * @template T
- */
-function addAfter(list, node, value) {
-	// assumes that node != list.tail && values.length >= 0
-	var next = node.next;
-
-	var newNode = { value: value, prev: node, next: next };
-	node.next = newNode;
-	next.prev = newNode;
-	list.length++;
-
-	return newNode;
-}
-/**
- * Removes `count` nodes after the given node. The given node will not be removed.
- * @param {LinkedList<T>} list
- * @param {LinkedListNode<T>} node
- * @param {number} count
- * @template T
- */
-function removeRange(list, node, count) {
-	var next = node.next;
-	for (var i = 0; i < count && next !== list.tail; i++) {
-		next = next.next;
-	}
-	node.next = next;
-	next.prev = node;
-	list.length -= i;
-}
-/**
- * @param {LinkedList<T>} list
- * @returns {T[]}
- * @template T
- */
-function toArray(list) {
-	var array = [];
-	var node = list.head.next;
-	while (node !== list.tail) {
-		array.push(node.value);
-		node = node.next;
-	}
-	return array;
-}
-
-
-if (!_self.document) {
-	if (!_self.addEventListener) {
-		// in Node.js
-		return _;
-	}
-
-	if (!_.disableWorkerMessageHandler) {
-		// In worker
-		_self.addEventListener('message', function (evt) {
-			var message = JSON.parse(evt.data),
-				lang = message.language,
-				code = message.code,
-				immediateClose = message.immediateClose;
-
-			_self.postMessage(_.highlight(code, _.languages[lang], lang));
-			if (immediateClose) {
-				_self.close();
-			}
-		}, false);
-	}
-
-	return _;
-}
-
-// Get current script and highlight
-var script = _.util.currentScript();
-
-if (script) {
-	_.filename = script.src;
-
-	if (script.hasAttribute('data-manual')) {
-		_.manual = true;
-	}
-}
-
-function highlightAutomaticallyCallback() {
-	if (!_.manual) {
-		_.highlightAll();
-	}
-}
-
-if (!_.manual) {
-	// If the document state is "loading", then we'll use DOMContentLoaded.
-	// If the document state is "interactive" and the prism.js script is deferred, then we'll also use the
-	// DOMContentLoaded event because there might be some plugins or languages which have also been deferred and they
-	// might take longer one animation frame to execute which can create a race condition where only some plugins have
-	// been loaded when Prism.highlightAll() is executed, depending on how fast resources are loaded.
-	// See https://github.com/PrismJS/prism/issues/2102
-	var readyState = document.readyState;
-	if (readyState === 'loading' || readyState === 'interactive' && script && script.defer) {
-		document.addEventListener('DOMContentLoaded', highlightAutomaticallyCallback);
-	} else {
-		if (window.requestAnimationFrame) {
-			window.requestAnimationFrame(highlightAutomaticallyCallback);
-		} else {
-			window.setTimeout(highlightAutomaticallyCallback, 16);
-		}
-	}
-}
-
-return _;
-
-})(_self);
-
-if ( true && module.exports) {
-	module.exports = Prism;
-}
-
-// hack for components to work correctly in node.js
-if (typeof global !== 'undefined') {
-	global.Prism = Prism;
-}
-
-// some additional documentation/types
-
-/**
- * The expansion of a simple `RegExp` literal to support additional properties.
- *
- * @typedef GrammarToken
- * @property {RegExp} pattern The regular expression of the token.
- * @property {boolean} [lookbehind=false] If `true`, then the first capturing group of `pattern` will (effectively)
- * behave as a lookbehind group meaning that the captured text will not be part of the matched text of the new token.
- * @property {boolean} [greedy=false] Whether the token is greedy.
- * @property {string|string[]} [alias] An optional alias or list of aliases.
- * @property {Grammar} [inside] The nested grammar of this token.
- *
- * The `inside` grammar will be used to tokenize the text value of each token of this kind.
- *
- * This can be used to make nested and even recursive language definitions.
- *
- * Note: This can cause infinite recursion. Be careful when you embed different languages or even the same language into
- * each another.
- * @global
- * @public
-*/
-
-/**
- * @typedef Grammar
- * @type {Object<string, RegExp | GrammarToken | Array<RegExp | GrammarToken>>}
- * @property {Grammar} [rest] An optional grammar object that will be appended to this grammar.
- * @global
- * @public
- */
-
-/**
- * A function which will invoked after an element was successfully highlighted.
- *
- * @callback HighlightCallback
- * @param {Element} element The element successfully highlighted.
- * @returns {void}
- * @global
- * @public
-*/
-
-/**
- * @callback HookCallback
- * @param {Object<string, any>} env The environment variables of the hook.
- * @returns {void}
- * @global
- * @public
- */
-
-
-/* **********************************************
-     Begin prism-markup.js
-********************************************** */
-
-Prism.languages.markup = {
-	'comment': /<!--[\s\S]*?-->/,
-	'prolog': /<\?[\s\S]+?\?>/,
-	'doctype': {
-		// https://www.w3.org/TR/xml/#NT-doctypedecl
-		pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,
-		greedy: true,
-		inside: {
-			'internal-subset': {
-				pattern: /(\[)[\s\S]+(?=\]>$)/,
-				lookbehind: true,
-				greedy: true,
-				inside: null // see below
-			},
-			'string': {
-				pattern: /"[^"]*"|'[^']*'/,
-				greedy: true
-			},
-			'punctuation': /^<!|>$|[[\]]/,
-			'doctype-tag': /^DOCTYPE/,
-			'name': /[^\s<>'"]+/
-		}
-	},
-	'cdata': /<!\[CDATA\[[\s\S]*?]]>/i,
-	'tag': {
-		pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
-		greedy: true,
-		inside: {
-			'tag': {
-				pattern: /^<\/?[^\s>\/]+/,
-				inside: {
-					'punctuation': /^<\/?/,
-					'namespace': /^[^\s>\/:]+:/
-				}
-			},
-			'attr-value': {
-				pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
-				inside: {
-					'punctuation': [
-						{
-							pattern: /^=/,
-							alias: 'attr-equals'
-						},
-						/"|'/
-					]
-				}
-			},
-			'punctuation': /\/?>/,
-			'attr-name': {
-				pattern: /[^\s>\/]+/,
-				inside: {
-					'namespace': /^[^\s>\/:]+:/
-				}
-			}
-
-		}
-	},
-	'entity': [
-		{
-			pattern: /&[\da-z]{1,8};/i,
-			alias: 'named-entity'
-		},
-		/&#x?[\da-f]{1,8};/i
-	]
-};
-
-Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
-	Prism.languages.markup['entity'];
-Prism.languages.markup['doctype'].inside['internal-subset'].inside = Prism.languages.markup;
-
-// Plugin to make entity title show the real entity, idea by Roman Komarov
-Prism.hooks.add('wrap', function (env) {
-
-	if (env.type === 'entity') {
-		env.attributes['title'] = env.content.replace(/&amp;/, '&');
-	}
-});
-
-Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
-	/**
-	 * Adds an inlined language to markup.
-	 *
-	 * An example of an inlined language is CSS with `<style>` tags.
-	 *
-	 * @param {string} tagName The name of the tag that contains the inlined language. This name will be treated as
-	 * case insensitive.
-	 * @param {string} lang The language key.
-	 * @example
-	 * addInlined('style', 'css');
-	 */
-	value: function addInlined(tagName, lang) {
-		var includedCdataInside = {};
-		includedCdataInside['language-' + lang] = {
-			pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,
-			lookbehind: true,
-			inside: Prism.languages[lang]
-		};
-		includedCdataInside['cdata'] = /^<!\[CDATA\[|\]\]>$/i;
-
-		var inside = {
-			'included-cdata': {
-				pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
-				inside: includedCdataInside
-			}
-		};
-		inside['language-' + lang] = {
-			pattern: /[\s\S]+/,
-			inside: Prism.languages[lang]
-		};
-
-		var def = {};
-		def[tagName] = {
-			pattern: RegExp(/(<__[\s\S]*?>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function () { return tagName; }), 'i'),
-			lookbehind: true,
-			greedy: true,
-			inside: inside
-		};
-
-		Prism.languages.insertBefore('markup', 'cdata', def);
-	}
-});
-
-Prism.languages.html = Prism.languages.markup;
-Prism.languages.mathml = Prism.languages.markup;
-Prism.languages.svg = Prism.languages.markup;
-
-Prism.languages.xml = Prism.languages.extend('markup', {});
-Prism.languages.ssml = Prism.languages.xml;
-Prism.languages.atom = Prism.languages.xml;
-Prism.languages.rss = Prism.languages.xml;
-
-
-/* **********************************************
-     Begin prism-css.js
-********************************************** */
-
-(function (Prism) {
-
-	var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;
-
-	Prism.languages.css = {
-		'comment': /\/\*[\s\S]*?\*\//,
-		'atrule': {
-			pattern: /@[\w-]+[\s\S]*?(?:;|(?=\s*\{))/,
-			inside: {
-				'rule': /^@[\w-]+/,
-				'selector-function-argument': {
-					pattern: /(\bselector\s*\((?!\s*\))\s*)(?:[^()]|\((?:[^()]|\([^()]*\))*\))+?(?=\s*\))/,
-					lookbehind: true,
-					alias: 'selector'
-				},
-				'keyword': {
-					pattern: /(^|[^\w-])(?:and|not|only|or)(?![\w-])/,
-					lookbehind: true
-				}
-				// See rest below
-			}
-		},
-		'url': {
-			// https://drafts.csswg.org/css-values-3/#urls
-			pattern: RegExp('\\burl\\((?:' + string.source + '|' + /(?:[^\\\r\n()"']|\\[\s\S])*/.source + ')\\)', 'i'),
-			greedy: true,
-			inside: {
-				'function': /^url/i,
-				'punctuation': /^\(|\)$/,
-				'string': {
-					pattern: RegExp('^' + string.source + '$'),
-					alias: 'url'
-				}
-			}
-		},
-		'selector': RegExp('[^{}\\s](?:[^{};"\']|' + string.source + ')*?(?=\\s*\\{)'),
-		'string': {
-			pattern: string,
-			greedy: true
-		},
-		'property': /[-_a-z\xA0-\uFFFF][-\w\xA0-\uFFFF]*(?=\s*:)/i,
-		'important': /!important\b/i,
-		'function': /[-a-z0-9]+(?=\()/i,
-		'punctuation': /[(){};:,]/
-	};
-
-	Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
-
-	var markup = Prism.languages.markup;
-	if (markup) {
-		markup.tag.addInlined('style', 'css');
-
-		Prism.languages.insertBefore('inside', 'attr-value', {
-			'style-attr': {
-				pattern: /\s*style=("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/i,
-				inside: {
-					'attr-name': {
-						pattern: /^\s*style/i,
-						inside: markup.tag.inside
-					},
-					'punctuation': /^\s*=\s*['"]|['"]\s*$/,
-					'attr-value': {
-						pattern: /.+/i,
-						inside: Prism.languages.css
-					}
-				},
-				alias: 'language-css'
-			}
-		}, markup.tag);
-	}
-
-}(Prism));
-
-
-/* **********************************************
-     Begin prism-clike.js
-********************************************** */
-
-Prism.languages.clike = {
-	'comment': [
-		{
-			pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
-			lookbehind: true
-		},
-		{
-			pattern: /(^|[^\\:])\/\/.*/,
-			lookbehind: true,
-			greedy: true
-		}
-	],
-	'string': {
-		pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
-		greedy: true
-	},
-	'class-name': {
-		pattern: /(\b(?:class|interface|extends|implements|trait|instanceof|new)\s+|\bcatch\s+\()[\w.\\]+/i,
-		lookbehind: true,
-		inside: {
-			'punctuation': /[.\\]/
-		}
-	},
-	'keyword': /\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
-	'boolean': /\b(?:true|false)\b/,
-	'function': /\w+(?=\()/,
-	'number': /\b0x[\da-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:e[+-]?\d+)?/i,
-	'operator': /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
-	'punctuation': /[{}[\];(),.:]/
-};
-
-
-/* **********************************************
-     Begin prism-javascript.js
-********************************************** */
-
-Prism.languages.javascript = Prism.languages.extend('clike', {
-	'class-name': [
-		Prism.languages.clike['class-name'],
-		{
-			pattern: /(^|[^$\w\xA0-\uFFFF])[_$A-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\.(?:prototype|constructor))/,
-			lookbehind: true
-		}
-	],
-	'keyword': [
-		{
-			pattern: /((?:^|})\s*)(?:catch|finally)\b/,
-			lookbehind: true
-		},
-		{
-			pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|for|from|function|(?:get|set)(?=\s*[\[$\w\xA0-\uFFFF])|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
-			lookbehind: true
-		},
-	],
-	'number': /\b(?:(?:0[xX](?:[\dA-Fa-f](?:_[\dA-Fa-f])?)+|0[bB](?:[01](?:_[01])?)+|0[oO](?:[0-7](?:_[0-7])?)+)n?|(?:\d(?:_\d)?)+n|NaN|Infinity)\b|(?:\b(?:\d(?:_\d)?)+\.?(?:\d(?:_\d)?)*|\B\.(?:\d(?:_\d)?)+)(?:[Ee][+-]?(?:\d(?:_\d)?)+)?/,
-	// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
-	'function': /#?[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,
-	'operator': /--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/
-});
-
-Prism.languages.javascript['class-name'][0].pattern = /(\b(?:class|interface|extends|implements|instanceof|new)\s+)[\w.\\]+/;
-
-Prism.languages.insertBefore('javascript', 'keyword', {
-	'regex': {
-		pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[gimyus]{0,6}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
-		lookbehind: true,
-		greedy: true
-	},
-	// This must be declared before keyword because we use "function" inside the look-forward
-	'function-variable': {
-		pattern: /#?[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/,
-		alias: 'function'
-	},
-	'parameter': [
-		{
-			pattern: /(function(?:\s+[_$A-Za-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)?\s*\(\s*)(?!\s)(?:[^()]|\([^()]*\))+?(?=\s*\))/,
-			lookbehind: true,
-			inside: Prism.languages.javascript
-		},
-		{
-			pattern: /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*=>)/i,
-			inside: Prism.languages.javascript
-		},
-		{
-			pattern: /(\(\s*)(?!\s)(?:[^()]|\([^()]*\))+?(?=\s*\)\s*=>)/,
-			lookbehind: true,
-			inside: Prism.languages.javascript
-		},
-		{
-			pattern: /((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:[_$A-Za-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()]|\([^()]*\))+?(?=\s*\)\s*\{)/,
-			lookbehind: true,
-			inside: Prism.languages.javascript
-		}
-	],
-	'constant': /\b[A-Z](?:[A-Z_]|\dx?)*\b/
-});
-
-Prism.languages.insertBefore('javascript', 'string', {
-	'template-string': {
-		pattern: /`(?:\\[\s\S]|\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}|(?!\${)[^\\`])*`/,
-		greedy: true,
-		inside: {
-			'template-punctuation': {
-				pattern: /^`|`$/,
-				alias: 'string'
-			},
-			'interpolation': {
-				pattern: /((?:^|[^\\])(?:\\{2})*)\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}/,
-				lookbehind: true,
-				inside: {
-					'interpolation-punctuation': {
-						pattern: /^\${|}$/,
-						alias: 'punctuation'
-					},
-					rest: Prism.languages.javascript
-				}
-			},
-			'string': /[\s\S]+/
-		}
-	}
-});
-
-if (Prism.languages.markup) {
-	Prism.languages.markup.tag.addInlined('script', 'javascript');
-}
-
-Prism.languages.js = Prism.languages.javascript;
-
-
-/* **********************************************
-     Begin prism-file-highlight.js
-********************************************** */
-
-(function () {
-	if (typeof self === 'undefined' || !self.Prism || !self.document) {
-		return;
-	}
-
-	var Prism = window.Prism;
-
-	var LOADING_MESSAGE = 'Loading…';
-	var FAILURE_MESSAGE = function (status, message) {
-		return '✖ Error ' + status + ' while fetching file: ' + message;
-	};
-	var FAILURE_EMPTY_MESSAGE = '✖ Error: File does not exist or is empty';
-
-	var EXTENSIONS = {
-		'js': 'javascript',
-		'py': 'python',
-		'rb': 'ruby',
-		'ps1': 'powershell',
-		'psm1': 'powershell',
-		'sh': 'bash',
-		'bat': 'batch',
-		'h': 'c',
-		'tex': 'latex'
-	};
-
-	var STATUS_ATTR = 'data-src-status';
-	var STATUS_LOADING = 'loading';
-	var STATUS_LOADED = 'loaded';
-	var STATUS_FAILED = 'failed';
-
-	var SELECTOR = 'pre[data-src]:not([' + STATUS_ATTR + '="' + STATUS_LOADED + '"])'
-		+ ':not([' + STATUS_ATTR + '="' + STATUS_LOADING + '"])';
-
-	var lang = /\blang(?:uage)?-([\w-]+)\b/i;
-
-	/**
-	 * Sets the Prism `language-xxxx` or `lang-xxxx` class to the given language.
-	 *
-	 * @param {HTMLElement} element
-	 * @param {string} language
-	 * @returns {void}
-	 */
-	function setLanguageClass(element, language) {
-		var className = element.className;
-		className = className.replace(lang, ' ') + ' language-' + language;
-		element.className = className.replace(/\s+/g, ' ').trim();
-	}
-
-
-	Prism.hooks.add('before-highlightall', function (env) {
-		env.selector += ', ' + SELECTOR;
-	});
-
-	Prism.hooks.add('before-sanity-check', function (env) {
-		var pre = /** @type {HTMLPreElement} */ (env.element);
-		if (pre.matches(SELECTOR)) {
-			env.code = ''; // fast-path the whole thing and go to complete
-
-			pre.setAttribute(STATUS_ATTR, STATUS_LOADING); // mark as loading
-
-			// add code element with loading message
-			var code = pre.appendChild(document.createElement('CODE'));
-			code.textContent = LOADING_MESSAGE;
-
-			var src = pre.getAttribute('data-src');
-
-			var language = env.language;
-			if (language === 'none') {
-				// the language might be 'none' because there is no language set;
-				// in this case, we want to use the extension as the language
-				var extension = (/\.(\w+)$/.exec(src) || [, 'none'])[1];
-				language = EXTENSIONS[extension] || extension;
-			}
-
-			// set language classes
-			setLanguageClass(code, language);
-			setLanguageClass(pre, language);
-
-			// preload the language
-			var autoloader = Prism.plugins.autoloader;
-			if (autoloader) {
-				autoloader.loadLanguages(language);
-			}
-
-			// load file
-			var xhr = new XMLHttpRequest();
-			xhr.open('GET', src, true);
-			xhr.onreadystatechange = function () {
-				if (xhr.readyState == 4) {
-					if (xhr.status < 400 && xhr.responseText) {
-						// mark as loaded
-						pre.setAttribute(STATUS_ATTR, STATUS_LOADED);
-
-						// highlight code
-						code.textContent = xhr.responseText;
-						Prism.highlightElement(code);
-
-					} else {
-						// mark as failed
-						pre.setAttribute(STATUS_ATTR, STATUS_FAILED);
-
-						if (xhr.status >= 400) {
-							code.textContent = FAILURE_MESSAGE(xhr.status, xhr.statusText);
-						} else {
-							code.textContent = FAILURE_EMPTY_MESSAGE;
-						}
-					}
-				}
-			};
-			xhr.send(null);
-		}
-	});
-
-	Prism.plugins.fileHighlight = {
-		/**
-		 * Executes the File Highlight plugin for all matching `pre` elements under the given container.
-		 *
-		 * Note: Elements which are already loaded or currently loading will not be touched by this method.
-		 *
-		 * @param {ParentNode} [container=document]
-		 */
-		highlight: function highlight(container) {
-			var elements = (container || document).querySelectorAll(SELECTOR);
-
-			for (var i = 0, element; element = elements[i++];) {
-				Prism.highlightElement(element);
-			}
-		}
-	};
-
-	var logged = false;
-	/** @deprecated Use `Prism.plugins.fileHighlight.highlight` instead. */
-	Prism.fileHighlight = function () {
-		if (!logged) {
-			console.warn('Prism.fileHighlight is deprecated. Use `Prism.plugins.fileHighlight.highlight` instead.');
-			logged = true;
-		}
-		Prism.plugins.fileHighlight.highlight.apply(this, arguments);
-	}
-
-})();
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
-
-/***/ }),
-
 /***/ "c1da":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -34406,6 +34072,50 @@ $({ target: 'Array', proto: true, forced: !USES_TO_LENGTH }, {
 
 // https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables('includes');
+
+
+/***/ }),
+
+/***/ "cabf":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "cb55":
+/***/ (function(module, exports) {
+
+Prism.languages.clike = {
+	'comment': [
+		{
+			pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+			lookbehind: true
+		},
+		{
+			pattern: /(^|[^\\:])\/\/.*/,
+			lookbehind: true,
+			greedy: true
+		}
+	],
+	'string': {
+		pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		greedy: true
+	},
+	'class-name': {
+		pattern: /(\b(?:class|interface|extends|implements|trait|instanceof|new)\s+|\bcatch\s+\()[\w.\\]+/i,
+		lookbehind: true,
+		inside: {
+			'punctuation': /[.\\]/
+		}
+	},
+	'keyword': /\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
+	'boolean': /\b(?:true|false)\b/,
+	'function': /\w+(?=\()/,
+	'number': /\b0x[\da-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:e[+-]?\d+)?/i,
+	'operator': /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
+	'punctuation': /[{}[\];(),.:]/
+};
 
 
 /***/ }),
@@ -45668,6 +45378,586 @@ exports.f = wellKnownSymbol;
 
 /***/ }),
 
+/***/ "e57a":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PrismEditor; });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("8bbf");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var KEYCODE_ENTER = 13;
+var KEYCODE_TAB = 9;
+var KEYCODE_BACKSPACE = 8;
+var KEYCODE_Y = 89;
+var KEYCODE_Z = 90;
+var KEYCODE_M = 77;
+var KEYCODE_PARENS = 57;
+var KEYCODE_BRACKETS = 219;
+var KEYCODE_QUOTE = 222;
+var KEYCODE_BACK_QUOTE = 192;
+var KEYCODE_ESCAPE = 27;
+var HISTORY_LIMIT = 100;
+var HISTORY_TIME_GAP = 3000;
+var isWindows = 'navigator' in global && /*#__PURE__*/ /Win/i.test(navigator.platform);
+var isMacLike = 'navigator' in global && /*#__PURE__*/ /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
+var PrismEditor = /*#__PURE__*/vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
+  props: {
+    lineNumbers: {
+      type: Boolean,
+      "default": false
+    },
+    autoStyleLineNumbers: {
+      type: Boolean,
+      "default": true
+    },
+    readonly: {
+      type: Boolean,
+      "default": false
+    },
+    value: {
+      type: String,
+      "default": ''
+    },
+    highlight: {
+      type: Function,
+      required: true
+    },
+    tabSize: {
+      type: Number,
+      "default": 2
+    },
+    insertSpaces: {
+      type: Boolean,
+      "default": true
+    },
+    ignoreTabKey: {
+      type: Boolean,
+      "default": false
+    },
+    placeholder: {
+      type: String,
+      "default": ''
+    }
+  },
+  data: function data() {
+    return {
+      capture: true,
+      history: {
+        stack: [],
+        offset: -1
+      },
+      lineNumbersHeight: '20px',
+      codeData: ''
+    };
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler: function handler(newVal) {
+        if (!newVal) {
+          this.codeData = '';
+        } else {
+          this.codeData = newVal;
+        }
+      }
+    },
+    content: {
+      immediate: true,
+      handler: function handler() {
+        var _this = this;
+
+        if (this.lineNumbers) {
+          this.$nextTick(function () {
+            _this.setLineNumbersHeight();
+          });
+        }
+      }
+    },
+    lineNumbers: function lineNumbers() {
+      var _this2 = this;
+
+      this.$nextTick(function () {
+        _this2.styleLineNumbers();
+
+        _this2.setLineNumbersHeight();
+      });
+    }
+  },
+  computed: {
+    isEmpty: function isEmpty() {
+      return this.codeData.length === 0;
+    },
+    content: function content() {
+      var result = this.highlight(this.codeData) + '<br />'; // todo: VNode support?
+
+      return result;
+    },
+    lineNumbersCount: function lineNumbersCount() {
+      var totalLines = this.codeData.split(/\r\n|\n/).length;
+      return totalLines;
+    }
+  },
+  mounted: function mounted() {
+    this._recordCurrentState();
+
+    this.styleLineNumbers();
+  },
+  methods: {
+    setLineNumbersHeight: function setLineNumbersHeight() {
+      this.lineNumbersHeight = getComputedStyle(this.$refs.pre).height;
+    },
+    styleLineNumbers: function styleLineNumbers() {
+      if (!this.lineNumbers || !this.autoStyleLineNumbers) return;
+      var $editor = this.$refs.pre;
+      var $lineNumbers = this.$el.querySelector('.prism-editor__line-numbers');
+      var editorStyles = window.getComputedStyle($editor);
+      this.$nextTick(function () {
+        var btlr = 'border-top-left-radius';
+        var bblr = 'border-bottom-left-radius';
+        if (!$lineNumbers) return;
+        $lineNumbers.style[btlr] = editorStyles[btlr];
+        $lineNumbers.style[bblr] = editorStyles[bblr];
+        $editor.style[btlr] = '0';
+        $editor.style[bblr] = '0';
+        var stylesList = ['background-color', 'margin-top', 'padding-top', 'font-family', 'font-size', 'line-height'];
+        stylesList.forEach(function (style) {
+          $lineNumbers.style[style] = editorStyles[style];
+        });
+        $lineNumbers.style['margin-bottom'] = '-' + editorStyles['padding-top'];
+      });
+    },
+    _recordCurrentState: function _recordCurrentState() {
+      var input = this.$refs.textarea;
+      if (!input) return; // Save current state of the input
+
+      var value = input.value,
+          selectionStart = input.selectionStart,
+          selectionEnd = input.selectionEnd;
+
+      this._recordChange({
+        value: value,
+        selectionStart: selectionStart,
+        selectionEnd: selectionEnd
+      });
+    },
+    _getLines: function _getLines(text, position) {
+      return text.substring(0, position).split('\n');
+    },
+    _applyEdits: function _applyEdits(record) {
+      // Save last selection state
+      var input = this.$refs.textarea;
+      var last = this.history.stack[this.history.offset];
+
+      if (last && input) {
+        this.history.stack[this.history.offset] = _extends({}, last, {
+          selectionStart: input.selectionStart,
+          selectionEnd: input.selectionEnd
+        });
+      } // Save the changes
+
+
+      this._recordChange(record);
+
+      this._updateInput(record);
+    },
+    _recordChange: function _recordChange(record, overwrite) {
+      if (overwrite === void 0) {
+        overwrite = false;
+      }
+
+      var _this$history = this.history,
+          stack = _this$history.stack,
+          offset = _this$history.offset;
+
+      if (stack.length && offset > -1) {
+        // When something updates, drop the redo operations
+        this.history.stack = stack.slice(0, offset + 1); // Limit the number of operations to 100
+
+        var count = this.history.stack.length;
+
+        if (count > HISTORY_LIMIT) {
+          var extras = count - HISTORY_LIMIT;
+          this.history.stack = stack.slice(extras, count);
+          this.history.offset = Math.max(this.history.offset - extras, 0);
+        }
+      }
+
+      var timestamp = Date.now();
+
+      if (overwrite) {
+        var last = this.history.stack[this.history.offset];
+
+        if (last && timestamp - last.timestamp < HISTORY_TIME_GAP) {
+          var _this$_getLines$pop, _this$_getLines$pop2;
+
+          // A previous entry exists and was in short interval
+          // Match the last word in the line
+          var re = /[^a-z0-9]([a-z0-9]+)$/i; // Get the previous line
+
+          var previous = (_this$_getLines$pop = this._getLines(last.value, last.selectionStart).pop()) === null || _this$_getLines$pop === void 0 ? void 0 : _this$_getLines$pop.match(re); // Get the current line
+
+          var current = (_this$_getLines$pop2 = this._getLines(record.value, record.selectionStart).pop()) === null || _this$_getLines$pop2 === void 0 ? void 0 : _this$_getLines$pop2.match(re);
+
+          if (previous && current && current[1].startsWith(previous[1])) {
+            // The last word of the previous line and current line match
+            // Overwrite previous entry so that undo will remove whole word
+            this.history.stack[this.history.offset] = _extends({}, record, {
+              timestamp: timestamp
+            });
+            return;
+          }
+        }
+      } // Add the new operation to the stack
+
+
+      this.history.stack.push(_extends({}, record, {
+        timestamp: timestamp
+      }));
+      this.history.offset++;
+    },
+    _updateInput: function _updateInput(record) {
+      var input = this.$refs.textarea;
+      if (!input) return; // Update values and selection state
+
+      input.value = record.value;
+      input.selectionStart = record.selectionStart;
+      input.selectionEnd = record.selectionEnd;
+      this.$emit('input', record.value); // this.props.onValueChange(record.value);
+    },
+    handleChange: function handleChange(e) {
+      var _e$target = e.target,
+          value = _e$target.value,
+          selectionStart = _e$target.selectionStart,
+          selectionEnd = _e$target.selectionEnd;
+
+      this._recordChange({
+        value: value,
+        selectionStart: selectionStart,
+        selectionEnd: selectionEnd
+      }, true);
+
+      this.$emit('input', value); // this.props.onValueChange(value);
+    },
+    _undoEdit: function _undoEdit() {
+      var _this$history2 = this.history,
+          stack = _this$history2.stack,
+          offset = _this$history2.offset; // Get the previous edit
+
+      var record = stack[offset - 1];
+
+      if (record) {
+        // Apply the changes and update the offset
+        this._updateInput(record);
+
+        this.history.offset = Math.max(offset - 1, 0);
+      }
+    },
+    _redoEdit: function _redoEdit() {
+      var _this$history3 = this.history,
+          stack = _this$history3.stack,
+          offset = _this$history3.offset; // Get the next edit
+
+      var record = stack[offset + 1];
+
+      if (record) {
+        // Apply the changes and update the offset
+        this._updateInput(record);
+
+        this.history.offset = Math.min(offset + 1, stack.length - 1);
+      }
+    },
+    handleKeyDown: function handleKeyDown(e) {
+      // console.log(navigator.platform);
+      var tabSize = this.tabSize,
+          insertSpaces = this.insertSpaces,
+          ignoreTabKey = this.ignoreTabKey;
+
+      if (this.$listeners.keydown) {
+        // onKeyDown(e);
+        this.$emit('keydown', e);
+
+        if (e.defaultPrevented) {
+          return;
+        }
+      }
+
+      if (e.keyCode === KEYCODE_ESCAPE) {
+        e.target.blur();
+        this.$emit('blur', e);
+      }
+
+      var _e$target2 = e.target,
+          value = _e$target2.value,
+          selectionStart = _e$target2.selectionStart,
+          selectionEnd = _e$target2.selectionEnd;
+      var tabCharacter = (insertSpaces ? ' ' : '\t').repeat(tabSize);
+
+      if (e.keyCode === KEYCODE_TAB && !ignoreTabKey && this.capture) {
+        // Prevent focus change
+        e.preventDefault();
+
+        if (e.shiftKey) {
+          // Unindent selected lines
+          var linesBeforeCaret = this._getLines(value, selectionStart);
+
+          var startLine = linesBeforeCaret.length - 1;
+          var endLine = this._getLines(value, selectionEnd).length - 1;
+          var nextValue = value.split('\n').map(function (line, i) {
+            if (i >= startLine && i <= endLine && line.startsWith(tabCharacter)) {
+              return line.substring(tabCharacter.length);
+            }
+
+            return line;
+          }).join('\n');
+
+          if (value !== nextValue) {
+            var startLineText = linesBeforeCaret[startLine];
+
+            this._applyEdits({
+              value: nextValue,
+              // Move the start cursor if first line in selection was modified
+              // It was modified only if it started with a tab
+              selectionStart: startLineText.startsWith(tabCharacter) ? selectionStart - tabCharacter.length : selectionStart,
+              // Move the end cursor by total number of characters removed
+              selectionEnd: selectionEnd - (value.length - nextValue.length)
+            });
+          }
+        } else if (selectionStart !== selectionEnd) {
+          // Indent selected lines
+          var _linesBeforeCaret = this._getLines(value, selectionStart);
+
+          var _startLine = _linesBeforeCaret.length - 1;
+
+          var _endLine = this._getLines(value, selectionEnd).length - 1;
+
+          var _startLineText = _linesBeforeCaret[_startLine];
+
+          this._applyEdits({
+            value: value.split('\n').map(function (line, i) {
+              if (i >= _startLine && i <= _endLine) {
+                return tabCharacter + line;
+              }
+
+              return line;
+            }).join('\n'),
+            // Move the start cursor by number of characters added in first line of selection
+            // Don't move it if it there was no text before cursor
+            selectionStart: /\S/.test(_startLineText) ? selectionStart + tabCharacter.length : selectionStart,
+            // Move the end cursor by total number of characters added
+            selectionEnd: selectionEnd + tabCharacter.length * (_endLine - _startLine + 1)
+          });
+        } else {
+          var updatedSelection = selectionStart + tabCharacter.length;
+
+          this._applyEdits({
+            // Insert tab character at caret
+            value: value.substring(0, selectionStart) + tabCharacter + value.substring(selectionEnd),
+            // Update caret position
+            selectionStart: updatedSelection,
+            selectionEnd: updatedSelection
+          });
+        }
+      } else if (e.keyCode === KEYCODE_BACKSPACE) {
+        var hasSelection = selectionStart !== selectionEnd;
+        var textBeforeCaret = value.substring(0, selectionStart);
+
+        if (textBeforeCaret.endsWith(tabCharacter) && !hasSelection) {
+          // Prevent default delete behaviour
+          e.preventDefault();
+
+          var _updatedSelection = selectionStart - tabCharacter.length;
+
+          this._applyEdits({
+            // Remove tab character at caret
+            value: value.substring(0, selectionStart - tabCharacter.length) + value.substring(selectionEnd),
+            // Update caret position
+            selectionStart: _updatedSelection,
+            selectionEnd: _updatedSelection
+          });
+        }
+      } else if (e.keyCode === KEYCODE_ENTER) {
+        // Ignore selections
+        if (selectionStart === selectionEnd) {
+          // Get the current line
+          var line = this._getLines(value, selectionStart).pop();
+
+          var matches = line === null || line === void 0 ? void 0 : line.match(/^\s+/);
+
+          if (matches && matches[0]) {
+            e.preventDefault(); // Preserve indentation on inserting a new line
+
+            var indent = '\n' + matches[0];
+
+            var _updatedSelection2 = selectionStart + indent.length;
+
+            this._applyEdits({
+              // Insert indentation character at caret
+              value: value.substring(0, selectionStart) + indent + value.substring(selectionEnd),
+              // Update caret position
+              selectionStart: _updatedSelection2,
+              selectionEnd: _updatedSelection2
+            });
+          }
+        }
+      } else if (e.keyCode === KEYCODE_PARENS || e.keyCode === KEYCODE_BRACKETS || e.keyCode === KEYCODE_QUOTE || e.keyCode === KEYCODE_BACK_QUOTE) {
+        var chars;
+
+        if (e.keyCode === KEYCODE_PARENS && e.shiftKey) {
+          chars = ['(', ')'];
+        } else if (e.keyCode === KEYCODE_BRACKETS) {
+          if (e.shiftKey) {
+            chars = ['{', '}'];
+          } else {
+            chars = ['[', ']'];
+          }
+        } else if (e.keyCode === KEYCODE_QUOTE) {
+          if (e.shiftKey) {
+            chars = ['"', '"'];
+          } else {
+            chars = ["'", "'"];
+          }
+        } else if (e.keyCode === KEYCODE_BACK_QUOTE && !e.shiftKey) {
+          chars = ['`', '`'];
+        } // console.log(isMacLike, "navigator" in global && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform));
+        // If text is selected, wrap them in the characters
+
+
+        if (selectionStart !== selectionEnd && chars) {
+          e.preventDefault();
+
+          this._applyEdits({
+            value: value.substring(0, selectionStart) + chars[0] + value.substring(selectionStart, selectionEnd) + chars[1] + value.substring(selectionEnd),
+            // Update caret position
+            selectionStart: selectionStart,
+            selectionEnd: selectionEnd + 2
+          });
+        }
+      } else if ((isMacLike ? // Trigger undo with ⌘+Z on Mac
+      e.metaKey && e.keyCode === KEYCODE_Z : // Trigger undo with Ctrl+Z on other platforms
+      e.ctrlKey && e.keyCode === KEYCODE_Z) && !e.shiftKey && !e.altKey) {
+        e.preventDefault();
+
+        this._undoEdit();
+      } else if ((isMacLike ? // Trigger redo with ⌘+Shift+Z on Mac
+      e.metaKey && e.keyCode === KEYCODE_Z && e.shiftKey : isWindows ? // Trigger redo with Ctrl+Y on Windows
+      e.ctrlKey && e.keyCode === KEYCODE_Y : // Trigger redo with Ctrl+Shift+Z on other platforms
+      e.ctrlKey && e.keyCode === KEYCODE_Z && e.shiftKey) && !e.altKey) {
+        e.preventDefault();
+
+        this._redoEdit();
+      } else if (e.keyCode === KEYCODE_M && e.ctrlKey && (isMacLike ? e.shiftKey : true)) {
+        e.preventDefault(); // Toggle capturing tab key so users can focus away
+
+        this.capture = !this.capture;
+      }
+    }
+  },
+  render: function render(h) {
+    var _this3 = this;
+
+    var lineNumberWidthCalculator = h('div', {
+      attrs: {
+        "class": 'prism-editor__line-width-calc',
+        style: 'height: 0px; visibility: hidden; pointer-events: none;'
+      }
+    }, '999');
+    var lineNumbers = h('div', {
+      staticClass: 'prism-editor__line-numbers',
+      style: {
+        'min-height': this.lineNumbersHeight
+      },
+      attrs: {
+        'aria-hidden': 'true'
+      }
+    }, [lineNumberWidthCalculator, Array.from(Array(this.lineNumbersCount).keys()).map(function (_, index) {
+      return h('div', {
+        attrs: {
+          "class": 'prism-editor__line-number token comment'
+        }
+      }, "" + ++index);
+    })]);
+    var textarea = h('textarea', {
+      ref: 'textarea',
+      on: {
+        input: this.handleChange,
+        keydown: this.handleKeyDown,
+        click: function click($event) {
+          _this3.$emit('click', $event);
+        },
+        keyup: function keyup($event) {
+          _this3.$emit('keyup', $event);
+        },
+        focus: function focus($event) {
+          _this3.$emit('focus', $event);
+        },
+        blur: function blur($event) {
+          _this3.$emit('blur', $event);
+        }
+      },
+      staticClass: 'prism-editor__textarea',
+      "class": {
+        'prism-editor__textarea--empty': this.isEmpty
+      },
+      attrs: {
+        spellCheck: 'false',
+        autocapitalize: 'off',
+        autocomplete: 'off',
+        autocorrect: 'off',
+        'data-gramm': 'false',
+        placeholder: this.placeholder,
+        'data-testid': 'textarea',
+        readonly: this.readonly
+      },
+      domProps: {
+        value: this.codeData
+      }
+    });
+    var preview = h('pre', {
+      ref: 'pre',
+      staticClass: 'prism-editor__editor',
+      attrs: {
+        'data-testid': 'preview'
+      },
+      domProps: {
+        innerHTML: this.content
+      }
+    });
+    var editorContainer = h('div', {
+      staticClass: 'prism-editor__container'
+    }, [textarea, preview]);
+    return h('div', {
+      staticClass: 'prism-editor-wrapper'
+    }, [this.lineNumbers && lineNumbers, editorContainer]);
+  }
+});
+
+
+//# sourceMappingURL=prismeditor.esm.js.map
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
+
+/***/ }),
+
 /***/ "e667":
 /***/ (function(module, exports) {
 
@@ -49408,14 +49698,14 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChangeLog.vue?vue&type=template&id=2381f182&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChangeLog.vue?vue&type=template&id=2381f182&
 var ChangeLogvue_type_template_id_2381f182_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"update-group"},[_c('ChecDivider',{staticClass:"update-group__divider"},[_vm._v(" "+_vm._s(_vm.updateDate)+" ")]),_c('div',{staticClass:"update-section"},_vm._l((_vm.updates),function(update,key){return _c('div',{key:key,staticClass:"update"},[_c('ChecDataPill',{staticClass:"update__pill",attrs:{"color":_vm.pillColor(update)}},[_vm._v(" "+_vm._s(update.type)+" ")]),_c('p',[_vm._v(" "+_vm._s(update.details)+" "),(update.moreInfoLink)?_c('a',{staticClass:"update__link",attrs:{"href":update.moreInfoLink,"target":"_blank","rel":"noopener nofollow"}},[_vm._v(" Learn more. ")]):_vm._e()])],1)}),0)],1)}
 var staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ChangeLog.vue?vue&type=template&id=2381f182&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPill.vue?vue&type=template&id=515bc3e8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPill.vue?vue&type=template&id=515bc3e8&
 var ChecDataPillvue_type_template_id_515bc3e8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"data-pill",class:_vm.classObject},[_vm._t("default")],2)}
 var ChecDataPillvue_type_template_id_515bc3e8_staticRenderFns = []
 
@@ -49611,7 +49901,7 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecDataPill = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDivider.vue?vue&type=template&id=cdcfc7b0&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDivider.vue?vue&type=template&id=cdcfc7b0&
 var ChecDividervue_type_template_id_cdcfc7b0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"divider"},[_vm._t("default")],2)}
 var ChecDividervue_type_template_id_cdcfc7b0_staticRenderFns = []
 
@@ -49745,7 +50035,7 @@ var ChangeLog_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChangeLog = (ChangeLog_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=template&id=6ef3d83c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=template&id=6ef3d83c&
 var ChecAccordionvue_type_template_id_6ef3d83c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"accordion",staticClass:"accordion",class:{'accordion--active': _vm.isOpen}},[_c('div',{staticClass:"accordion__heading"},[_c('div',[_c('div',{staticClass:"accordion__title",domProps:{"innerHTML":_vm._s(_vm.title)}}),(_vm.subtitle)?_c('div',{staticClass:"accordion__subtitle",domProps:{"innerHTML":_vm._s(_vm.subtitle)}}):_vm._e()]),(_vm.variant === 'switch')?_c('ChecSwitch',{attrs:{"prefix-label":""},on:{"input":_vm.emitToggle},model:{value:(_vm.isOpen),callback:function ($$v) {_vm.isOpen=$$v},expression:"isOpen"}},[_vm._v(" "+_vm._s(_vm.resolvedButtonLabel)+" ")]):_c('div',{staticClass:"accordion__toggle",attrs:{"title":_vm.resolvedButtonLabel},on:{"click":function($event){_vm.isOpen = !_vm.isOpen}}},[_c('ChecIcon',{attrs:{"icon":"down"}})],1)],1),_c('div',{staticClass:"accordion__body-container",style:(_vm.bodyStyle)},[_c('div',{ref:"body",staticClass:"accordion__body"},[_vm._t("default")],2)])])}
 var ChecAccordionvue_type_template_id_6ef3d83c_staticRenderFns = []
 
@@ -50370,7 +50660,7 @@ var ChecIcon_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecIcon = (ChecIcon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSwitch.vue?vue&type=template&id=485ac2f4&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSwitch.vue?vue&type=template&id=485ac2f4&scoped=true&
 var ChecSwitchvue_type_template_id_485ac2f4_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-switch",class:{ 'chec-switch--toggled' : _vm.toggled }},[(_vm.$slots.default && _vm.prefixLabel)?_c('label',{staticClass:"chec-switch__label chec-switch__label--prefixed",attrs:{"for":_vm.id},on:{"click":function($event){$event.preventDefault();return _vm.handleToggle($event)}}},[_vm._t("default")],2):_vm._e(),_c('div',{staticClass:"chec-switch__container",on:{"click":function($event){$event.stopPropagation();return _vm.handleToggle($event)}}},[_c('div',{staticClass:"chec-switch__thumb"},[_c('input',_vm._b({staticClass:"chec-switch__input",attrs:{"type":"checkbox"}},'input',{ id: _vm.id, name: _vm.name, disabled: _vm.disabled, checked: _vm.toggled, required: _vm.required },false))])]),(_vm.$slots.default && !_vm.prefixLabel)?_c('label',{staticClass:"chec-switch__label",attrs:{"for":_vm.id},on:{"click":function($event){$event.preventDefault();return _vm.handleToggle($event)}}},[_vm._t("default")],2):_vm._e()])}
 var ChecSwitchvue_type_template_id_485ac2f4_scoped_true_staticRenderFns = []
 
@@ -50677,7 +50967,7 @@ var ChecAccordion_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecAccordion = (ChecAccordion_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAlert.vue?vue&type=template&id=2b29714c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAlert.vue?vue&type=template&id=2b29714c&
 var ChecAlertvue_type_template_id_2b29714c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"fade"}},[_c('div',{staticClass:"alert",class:_vm.classObject},[_c('div',{staticClass:"alert__content-container"},[_c('span',{staticClass:"alert__text"},[(_vm.showIcon)?_c('ChecIcon',{attrs:{"icon":_vm.icon}}):_vm._e(),_vm._t("default")],2)]),(!_vm.disableClose)?_c('button',{staticClass:"alert__close-icon",attrs:{"type":"button"}},[_c('SvgCloseIcon',{on:{"click":_vm.onClose}})],1):_vm._e()])])}
 var ChecAlertvue_type_template_id_2b29714c_staticRenderFns = []
 
@@ -50808,7 +51098,7 @@ var ChecAlert_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecAlert = (ChecAlert_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAvatar.vue?vue&type=template&id=6d1fcd42&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAvatar.vue?vue&type=template&id=6d1fcd42&
 var ChecAvatarvue_type_template_id_6d1fcd42_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"avatar",class:_vm.classObject,style:(_vm.styleObject)},[(!_vm.image)?_c('UserIcon',{staticClass:"avatar__icon"}):_vm._e()],1)}
 var ChecAvatarvue_type_template_id_6d1fcd42_staticRenderFns = []
 
@@ -50896,7 +51186,7 @@ var ChecAvatar_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecAvatar = (ChecAvatar_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecBreadcrumbs.vue?vue&type=template&id=88129c9e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecBreadcrumbs.vue?vue&type=template&id=88129c9e&scoped=true&
 var ChecBreadcrumbsvue_type_template_id_88129c9e_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',[(_vm.crumbs.length)?_c('ul',{staticClass:"breadcrumb"},_vm._l((_vm.crumbs),function(crumb,i){return _c('li',{key:i},[_c('router-link',{attrs:{"to":crumb.path}},[_vm._v(" "+_vm._s(crumb.meta.breadcrumb)+" "),((i + 1) !== _vm.crumbs.length)?_c('div',{staticClass:"breadcrumb__right-arrow"},[_c('SvgRightArrow')],1):_vm._e()])],1)}),0):_vm._e()])}
 var ChecBreadcrumbsvue_type_template_id_88129c9e_scoped_true_staticRenderFns = []
 
@@ -51183,7 +51473,7 @@ var ChecButton_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecButton = (ChecButton_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard.vue?vue&type=template&id=0edd2b23&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard.vue?vue&type=template&id=0edd2b23&
 var ChecCardvue_type_template_id_0edd2b23_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card",class:_vm.classObject},[_c('div',{staticClass:"card__inner-wrapper",class:[_vm.tailwindClasses, _vm.innerClass]},[_vm._t("default")],2)])}
 var ChecCardvue_type_template_id_0edd2b23_staticRenderFns = []
 
@@ -51532,7 +51822,7 @@ var ChecCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecCard = (ChecCard_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCheckbox.vue?vue&type=template&id=21b09919&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCheckbox.vue?vue&type=template&id=21b09919&
 var ChecCheckboxvue_type_template_id_21b09919_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"chec-checkbox",class:_vm.labelClasses,attrs:{"for":_vm.id}},[_c('input',{staticClass:"chec-checkbox__input",attrs:{"id":_vm.id,"type":"checkbox","name":_vm.name,"disabled":_vm.disabled},domProps:{"value":_vm.value,"checked":_vm.checked,"indeterminate":_vm.indeterminate},on:{"input":_vm.handleInput}}),_c('span',{directives:[{name:"show",rawName:"v-show",value:(!_vm.indeterminate && _vm.checked),expression:"!indeterminate && checked"}],staticClass:"chec-checkbox__check"},[_c('ChecIcon',{attrs:{"icon":"check"}})],1),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.indeterminate),expression:"indeterminate"}],staticClass:"chec-checkbox__minus"},[_c('ChecIcon',{attrs:{"icon":"minus"}})],1),(_vm.label)?_c('span',{staticClass:"chec-checkbox__label",class:{ disabled: _vm.disabled }},[_vm._t("default",[_vm._v(" "+_vm._s(_vm.label)+" ")],null,{ label: _vm.label, checked: _vm.checked, disabled: _vm.disabled })],2):_vm._e()])}
 var ChecCheckboxvue_type_template_id_21b09919_staticRenderFns = []
 
@@ -51678,7 +51968,7 @@ var ChecCheckbox_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecCheckbox = (ChecCheckbox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPillGroup.vue?vue&type=template&id=2e71b4d5&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDataPillGroup.vue?vue&type=template&id=2e71b4d5&
 var ChecDataPillGroupvue_type_template_id_2e71b4d5_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"data-pill-group"},[_vm._t("default")],2)}
 var ChecDataPillGroupvue_type_template_id_2e71b4d5_staticRenderFns = []
 
@@ -51820,7 +52110,7 @@ var vue_flatpickr_min_default = /*#__PURE__*/__webpack_require__.n(vue_flatpickr
 var flatpickr = __webpack_require__("cf06");
 var flatpickr_default = /*#__PURE__*/__webpack_require__.n(flatpickr);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=7957a0e4&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=7957a0e4&
 var TextFieldvue_type_template_id_7957a0e4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-field",class:_vm.classNames},[(_vm.isScrollable)?_c('div',{staticClass:"text-field__label-underlay",class:{ 'text-field__label-underlay--scrolled-to-top': _vm.isScrolledToTop }}):_vm._e(),(_vm.multiline)?_c('textarea',_vm._g(_vm._b({on:{"input":_vm.handleInput}},'textarea',_vm.sharedInputProps,false),_vm.nonInputListeners)):_c('input',_vm._g(_vm._b({style:({ 'padding-right': _vm.hasSlot && (_vm.slotWidth + "px") }),attrs:{"type":_vm.$attrs.type || 'text'},on:{"input":_vm.handleInput}},'input',_vm.sharedInputProps,false),_vm.nonInputListeners)),(_vm.label)?_c('label',{staticClass:"text-field__label",attrs:{"data-content":_vm.label,"for":_vm.id}},[_vm._v(" "+_vm._s(_vm.label)+" "),(_vm.required)?_c('span',{staticClass:"text-field__required-text"},[_vm._v(" "+_vm._s(_vm.$t('general.requiredInline'))+" ")]):_vm._e()]):_vm._e(),_c('div',{ref:"currency",staticClass:"text-field__currency"},[_vm._v(" "+_vm._s(_vm.currencySymbol)+" ")]),(_vm.$slots.default)?_c('div',{ref:"rightContentSlot",staticClass:"text-field__right-content"},[_vm._t("default")],2):_vm._e()])}
 var TextFieldvue_type_template_id_7957a0e4_staticRenderFns = []
 
@@ -52153,7 +52443,7 @@ var TextField_component = normalizeComponent(
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDatepicker/NavBar.vue?vue&type=template&id=a6e072fe&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDatepicker/NavBar.vue?vue&type=template&id=a6e072fe&
 var NavBarvue_type_template_id_a6e072fe_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"date-picker-navigation"},[_c('ChecHorizontalSpinner',{staticClass:"date-picker-navigation__spinner",attrs:{"options":_vm.months,"value":_vm.monthName,"value-width":"1.7rem"},on:{"input":_vm.chooseMonth}}),_c('ChecHorizontalSpinner',{staticClass:"date-picker-navigation__spinner",attrs:{"options":_vm.years,"value":("" + _vm.year),"value-width":"2.2rem"},on:{"input":_vm.chooseYear}})],1)}
 var NavBarvue_type_template_id_a6e072fe_staticRenderFns = []
 
@@ -52163,7 +52453,7 @@ var NavBarvue_type_template_id_a6e072fe_staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find-index.js
 var es_array_find_index = __webpack_require__("c740");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHorizontalSpinner.vue?vue&type=template&id=cc8c470c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHorizontalSpinner.vue?vue&type=template&id=cc8c470c&
 var ChecHorizontalSpinnervue_type_template_id_cc8c470c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-horizontal-spinner"},[_c('button',{staticClass:"chec-horizontal-spinner__button",on:{"click":_vm.handlePrevious}},[_c('ChecIcon',{attrs:{"icon":"left"}})],1),_c('span',{staticClass:"chec-horizontal-spinner__value",style:(_vm.computedStyle)},[_vm._v(_vm._s(_vm.value))]),_c('button',{staticClass:"chec-horizontal-spinner__button",on:{"click":_vm.handleNext}},[_c('ChecIcon',{attrs:{"icon":"right"}})],1)])}
 var ChecHorizontalSpinnervue_type_template_id_cc8c470c_staticRenderFns = []
 
@@ -52523,7 +52813,7 @@ flatpickr_default.a.l10ns.default.weekdays.shorthand = ['S', 'M', 'T', 'W', 'TH'
     })]);
   }
 }));
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDropdown.vue?vue&type=template&id=53f404c0&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecDropdown.vue?vue&type=template&id=53f404c0&
 var ChecDropdownvue_type_template_id_53f404c0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"container",staticClass:"dropdown",class:_vm.classNames,on:{"click":_vm.toggleDropdown,"keyup":_vm.onKeyPress}},[(!_vm.multiselect)?_c('input',{attrs:{"type":"hidden","name":_vm.name},domProps:{"value":_vm.value}}):_vm._l((_vm.value),function(optionValue){return _c('input',{key:optionValue,attrs:{"type":"hidden","name":(_vm.name + "[]")},domProps:{"value":optionValue}})}),_c('div',[(_vm.label)?_c('label',{staticClass:"dropdown__label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e(),_c('div',{staticClass:"dropdown__value"},[_vm._v(" "+_vm._s(_vm.shownValue)+" ")])]),_c('ChecIcon',{staticClass:"dropdown__down-arrow",attrs:{"icon":"down"}}),_c('ChecPopover',{attrs:{"target-ref":"container","open":_vm.showDropdown,"placement":"bottom-end","popper-options":_vm.popoverOptions}},[_c('div',{ref:"popper",staticClass:"dropdown__popover",style:({
         width: (_vm.dropdownElWidth + "px"),
       })},[(_vm.showSearch)?_c('div',{staticClass:"dropdown__option-search"},[_c('TextField',{ref:"search",attrs:{"label":_vm.$t('general.search'),"icon":"search","value":_vm.searchValue},on:{"input":_vm.handleSearch,"focusin":_vm.handleSearchFocusIn,"focusout":_vm.handleSearchFocusOut}})],1):_vm._e(),_c('div',{ref:"options",staticClass:"dropdown__options"},[_vm._l((_vm.renderableOptions),function(option){return _c('ChecOption',{key:option.value,class:_vm.checOptionClass,attrs:{"option":option,"show-checkbox":_vm.multiselect,"checked":_vm.multiselect && !_vm.isIndeterminate(option) && _vm.isChecked(option),"indeterminate":_vm.multiselect && _vm.isIndeterminate(option)},on:{"option-selected":_vm.onChecOptionSelect}},[_vm._v(" "+_vm._s(option.label)+" ")])}),(_vm.loading)?_c('ChecOption',{attrs:{"loading":""}}):_vm._e()],2)])])],2)}
@@ -52550,14 +52840,14 @@ var es_string_search = __webpack_require__("841c");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
 var es_string_trim = __webpack_require__("498a");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOption.vue?vue&type=template&id=7dff7cac&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOption.vue?vue&type=template&id=7dff7cac&scoped=true&
 var ChecOptionvue_type_template_id_7dff7cac_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"option",class:_vm.classNames,attrs:{"tabindex":"0","role":!_vm.showCheckbox && 'button'},on:{"click":_vm.emitOptionsSelectedEvent,"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.emitOptionsSelectedEvent($event)}}},[(_vm.loading)?_c('div',{staticClass:"option__loading-container"},[_c('ChecLoading')],1):[(_vm.showCheckbox)?_c('ChecCheckbox',{staticClass:"mr-3",attrs:{"id":_vm.option.value,"type":"checkbox","checked":_vm.checked,"disabled":_vm.option.disabled,"indeterminate":_vm.indeterminate}}):_vm._e(),_vm._t("default")]],2)}
 var ChecOptionvue_type_template_id_7dff7cac_scoped_true_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ChecOption.vue?vue&type=template&id=7dff7cac&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecLoading.vue?vue&type=template&id=76153738&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecLoading.vue?vue&type=template&id=76153738&scoped=true&
 var ChecLoadingvue_type_template_id_76153738_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"loading",class:_vm.classObject},[_c('svg',{staticClass:"loading__animation",attrs:{"viewBox":"0 0 32 32","fill":"none"}},[_c('path',{staticClass:"loading__spinner-background",attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28C22.6274 28 28 22.6274 28 16C28\n      9.37258 22.6274 4 16 4ZM0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366\n      24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z"}}),_c('ellipse',{staticClass:"loading__animation-spinner",attrs:{"rx":"14","ry":"14","stroke-width":"4","stroke-dashoffset":"100","stroke-dasharray":"100","transform":"translate(16,16)"}})]),(_vm.message)?_c('div',{staticClass:"loading__message"},[_vm._v(" "+_vm._s(_vm.message)+" ")]):_vm._e()])}
 var ChecLoadingvue_type_template_id_76153738_scoped_true_staticRenderFns = []
 
@@ -52778,7 +53068,7 @@ var ChecOption_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecOption = (ChecOption_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPopover.vue?vue&type=template&id=25a92121&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPopover.vue?vue&type=template&id=25a92121&
 var ChecPopovervue_type_template_id_25a92121_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('MountingPortal',{attrs:{"mount-to":_vm.mountTarget,"name":_vm.name,"append":""}},[_c('div',{ref:"popperRef",class:_vm.classNames},[_vm._t("default")],2)])}
 var ChecPopovervue_type_template_id_25a92121_staticRenderFns = []
 
@@ -55368,7 +55658,7 @@ var ChecDropdown_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecDropdown = (ChecDropdown_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFileUploader.vue?vue&type=template&id=2ba4166b&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFileUploader.vue?vue&type=template&id=2ba4166b&
 var ChecFileUploadervue_type_template_id_2ba4166b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',{staticClass:"chec-file-uploader",attrs:{"method":"post","enctype":"multipart/form-data"}},[_c('div',{staticClass:"chec-file-uploader__inner"},[(_vm.allFiles.length)?_c('div',{staticClass:"file-rows-container space-y-2",on:{"click":function($event){$event.stopPropagation();}}},_vm._l((_vm.allFiles),function(file){return _c('FileRow',{key:file.upload.uuid,attrs:{"error":file.status === 'error',"loading":['added', 'queued', 'uploading'].includes(file.status),"file-name":file.name,"file-size":file.size,"mime-type":file.type,"progress":file.upload.progress},on:{"remove":function () { return _vm.removeFile(file); }}})}),1):_vm._e(),_c('ChecButton',{on:{"click":_vm.openDialog}},[_vm._v(" "+_vm._s(_vm.$t('fileManager.chooseFiles'))+" ")]),_c('input',{staticClass:"chec-file-uploader__input",attrs:{"type":"file"}})],1)])}
 var ChecFileUploadervue_type_template_id_2ba4166b_staticRenderFns = []
 
@@ -55726,7 +56016,7 @@ Dropzone.autoDiscover = false;
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFileUploader/FileRow.vue?vue&type=template&id=5e789e73&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFileUploader/FileRow.vue?vue&type=template&id=5e789e73&
 var FileRowvue_type_template_id_5e789e73_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-file-row",class:{ 'chec-file-row--error': _vm.error }},[_c('div',{staticClass:"chec-file-row__left"},[(_vm.loading && !_vm.error)?_c('div',{staticClass:"chec-file-row__loading-icon"},[_c('ChecLoading',{attrs:{"without-background":"","variant":"dark"}})],1):_c('div',{staticClass:"chec-file-row__icon"},[(_vm.error)?_c('ChecIcon',{attrs:{"icon":"close"}}):_c('ChecIcon',{attrs:{"icon":"check"}})],1),(!_vm.error)?_c('p',{staticClass:"chec-file-row__label"},[_vm._v(" "+_vm._s(_vm.fileName || '--')+" ")]):_c('p',{staticClass:"chec-file-row__label"},[_vm._v(" "+_vm._s(((_vm.fileName || '') + " - " + (_vm.errorMessage || 'Failed')))+" ")])]),_c('div',{staticClass:"chec-file-row__right"},[(_vm.loading)?_c('p',{staticClass:"chec-file-row__progress"},[_vm._v(" "+_vm._s(_vm.progressPercent)+" ")]):[(!_vm.error)?_c('p',{staticClass:"chec-file-row__type"},[_vm._v(" "+_vm._s(_vm.mimeType)+" ")]):_vm._e(),(!_vm.error)?_c('p',{staticClass:"chec-file-row__size"},[_vm._v(" "+_vm._s(_vm.size)+" ")]):_vm._e()],(!_vm.loading)?_c('button',{staticClass:"chec-file-row__remove-button",attrs:{"type":"button","title":_vm.$t('fileManager.deleteFile')},on:{"click":function () { return _vm.$emit('remove'); }}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1):_vm._e()],2)])}
 var FileRowvue_type_template_id_5e789e73_staticRenderFns = []
 
@@ -55947,14 +56237,14 @@ var ChecFileUploader_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecFileUploader = (ChecFileUploader_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFormField.vue?vue&type=template&id=0b15b3f0&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFormField.vue?vue&type=template&id=0b15b3f0&
 var ChecFormFieldvue_type_template_id_0b15b3f0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-field",class:_vm.classNames},[_c('div',{staticClass:"relative"},[_vm._t("default"),(_vm.icon)?_c('div',{staticClass:"form-field__icon"},[_c('ChecIcon',{attrs:{"icon":_vm.icon,"size":"base"}})],1):_vm._e()],2),_c('ChecFormFieldActionAppend',{attrs:{"label":_vm.appendLabel,"tooltip":_vm.tooltip,"clickable":_vm.hasClickEvent},on:{"append-click":_vm.onActionClick}})],1)}
 var ChecFormFieldvue_type_template_id_0b15b3f0_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ChecFormField.vue?vue&type=template&id=0b15b3f0&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFormFieldActionAppend.vue?vue&type=template&id=2c540e04&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFormFieldActionAppend.vue?vue&type=template&id=2c540e04&
 var ChecFormFieldActionAppendvue_type_template_id_2c540e04_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-field-action-append"},[_c(_vm.clickable ? 'a' : 'span',{directives:[{name:"tooltip",rawName:"v-tooltip",value:(_vm.tooltip),expression:"tooltip"}],tag:"component",class:[ _vm.clickable ? 'form-field-action-append__action' : 'form-field-action-append__helper' ],on:{"click":function($event){return _vm.$emit('append-click')}}},[_vm._v(" "+_vm._s(_vm.label)+" "),_c('transition',{attrs:{"name":"fade"}},[(_vm.tooltip)?_c('ChecIcon',{staticClass:"form-field-action-append__icon",attrs:{"icon":"question-mark-square","size":"xs"}}):_vm._e()],1)],1)],1)}
 var ChecFormFieldActionAppendvue_type_template_id_2c540e04_staticRenderFns = []
 
@@ -56142,7 +56432,7 @@ var ChecFormField_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecFormField = (ChecFormField_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHeader.vue?vue&type=template&id=f3c449c8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecHeader.vue?vue&type=template&id=f3c449c8&
 var ChecHeadervue_type_template_id_f3c449c8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('header',{staticClass:"chec-header",class:("chec-header--" + _vm.variant)},[_c(_vm.actualHeaderTag,{tag:"component",staticClass:"chec-header__title"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.label || _vm.$slots.default)?_c('div',{staticClass:"chec-header-inner"},[(_vm.label)?_c('label',{staticClass:"chec-header-inner__label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e(),_vm._t("default")],2):_vm._e()],1)}
 var ChecHeadervue_type_template_id_f3c449c8_staticRenderFns = []
 
@@ -56236,7 +56526,7 @@ var ChecHeader_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecHeader = (ChecHeader_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecImageManager.vue?vue&type=template&id=01bd8144&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecImageManager.vue?vue&type=template&id=01bd8144&
 var ChecImageManagervue_type_template_id_01bd8144_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-image-manager"},[_c('div',{staticClass:"chec-image-manager__inner"},[(_vm.allFiles.length)?_c('Draggable',{staticClass:"image-rows-container",class:{ 'image-rows-container--dragging': _vm.dragging },attrs:{"value":_vm.allFiles,"filter":".chec-image-item--loading"},on:{"input":_vm.reorder,"click":function($event){$event.stopPropagation();},"start":function($event){_vm.dragging = true},"end":function($event){_vm.dragging = false}}},_vm._l((_vm.allFiles),function(file,index){return _c('ImageBlock',{directives:[{name:"tooltip",rawName:"v-tooltip",value:(file.name),expression:"file.name"}],key:file.upload.uuid,attrs:{"index":index + 1,"error":file.status === 'error',"loading":file.upload.progress !== null && file.upload.progress < 100,"thumbnail":file.thumb,"progress":file.upload.progress},on:{"remove":function () { return _vm.removeFile(file); }}})}),1):_vm._e(),_c('ChecButton',{on:{"click":_vm.openDialog}},[_c('ChecIcon',{staticClass:"chec-image-manager__icon",attrs:{"icon":"image","size":"base"}}),_vm._v(" "+_vm._s(_vm.$t('imageManager.chooseImages'))+" ")],1),(_vm.footnote)?_c('div',{staticClass:"chec-image-manager__helper"},[_vm._v(" "+_vm._s(_vm.footnote)+" ")]):_vm._e(),_c('input',{staticClass:"chec-image-manager__input",attrs:{"type":"file","name":"file"}})],1)])}
 var ChecImageManagervue_type_template_id_01bd8144_staticRenderFns = []
 
@@ -56247,7 +56537,7 @@ var ChecImageManagervue_type_template_id_01bd8144_staticRenderFns = []
 var vuedraggable_common = __webpack_require__("310e");
 var vuedraggable_common_default = /*#__PURE__*/__webpack_require__.n(vuedraggable_common);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecImageManager/ImageBlock.vue?vue&type=template&id=2e437953&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecImageManager/ImageBlock.vue?vue&type=template&id=2e437953&
 var ImageBlockvue_type_template_id_2e437953_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-image-item",class:{ 'chec-image-item--error': _vm.error, 'chec-image-item--loading': _vm.loading && !_vm.error }},[_c('div',{staticClass:"chec-image-item__index"},[_vm._v(" "+_vm._s(_vm.index)+" ")]),_c('div',{staticClass:"chec-image-item__thumbnail",class:{ 'chec-image-item__thumbnail--placeholder': !_vm.thumbnail }},[(_vm.thumbnail)?_c('img',{attrs:{"src":_vm.thumbnail}}):_c('ChecIcon',{attrs:{"icon":"chec"}})],1),(_vm.loading && !_vm.error)?_c('div',{staticClass:"chec-image-item__loading-icon"},[_c('div',{staticClass:"chec-image-item__progress"},[_c('ChecLoading',{attrs:{"without-background":"","variant":"dark"}}),_c('p',{staticClass:"chec-image-item__percentage"},[_vm._v(" "+_vm._s(_vm.progressPercent)+" ")])],1)]):_vm._e(),(_vm.error)?_c('div',{staticClass:"chec-image-item__label space-y-2"},[_c('ChecIcon',{attrs:{"size":"base","icon":"exclamation-square"}}),_c('p',[_vm._v(_vm._s(("" + (_vm.errorMessage || 'Failed'))))])],1):_vm._e(),_c('div',{staticClass:"chec-image-item__actions",on:{"click":_vm.handleClick}},[(!_vm.loading && !_vm.error)?_c('div',{staticClass:"chec-image-item__drag"},[_c('ChecIcon',{attrs:{"icon":"drag"}})],1):_vm._e(),(!_vm.loading)?_c('button',{staticClass:"chec-image-item__remove-button",attrs:{"title":_vm.$t('imageManager.deleteImage'),"type":"button"},on:{"click":function($event){$event.stopPropagation();return _vm.handleRemove($event)}}},[_c('ChecIcon',{attrs:{"icon":"trash"}})],1):_vm._e()])])}
 var ImageBlockvue_type_template_id_2e437953_staticRenderFns = []
 
@@ -56565,14 +56855,14 @@ var ChecMarketingIcon_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecMarketingIcon = (ChecMarketingIcon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecModal.vue?vue&type=template&id=35d132c9&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecModal.vue?vue&type=template&id=35d132c9&
 var ChecModalvue_type_template_id_35d132c9_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.form ? 'form' : 'div',{tag:"component",class:("modal__overlay modal__overlay--" + _vm.overlay)},[_c('ChecCard',{staticClass:"modal__card",class:("max-w-" + _vm.width),attrs:{"tailwind":"bg-gray-100"}},[(_vm.header)?_c('ChecModalHeader',{attrs:{"undismissible":_vm.undismissible},on:{"close":_vm.emitClose}},[_vm._v(" "+_vm._s(_vm.header)+" ")]):_vm._e(),_vm._t("default"),(_vm.$slots.toolbar)?_c('div',{staticClass:"modal__toolbar"},[_vm._t("toolbar")],2):_vm._e()],2)],1)}
 var ChecModalvue_type_template_id_35d132c9_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ChecModal.vue?vue&type=template&id=35d132c9&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecModal/ChecModalHeader.vue?vue&type=template&id=6cc02e1c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecModal/ChecModalHeader.vue?vue&type=template&id=6cc02e1c&
 var ChecModalHeadervue_type_template_id_6cc02e1c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-modal-header"},[_c(_vm.tag,{tag:"component"},[_vm._t("default")],2),(!_vm.undismissible)?_c('ChecButton',{staticClass:"chec-modal-header__dismiss-button",attrs:{"variant":"small"},on:{"click":_vm.emitClose},scopedSlots:_vm._u([{key:"icon",fn:function(){return [_c('ChecIcon',{attrs:{"icon":"close"}})]},proxy:true}],null,false,3510134292)}):_vm._e()],1)}
 var ChecModalHeadervue_type_template_id_6cc02e1c_staticRenderFns = []
 
@@ -56763,7 +57053,7 @@ var ChecModal_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecModal = (ChecModal_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=8d979f36&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=8d979f36&
 var ChecNavigationvue_type_template_id_8d979f36_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"chec-navigation",on:{"focusout":_vm.handleLoseFocus}},[_c('a',{staticClass:"chec-navigation__skip",attrs:{"href":"#main"}},[_vm._v(" "+_vm._s(_vm.$t('navigation.skip'))+" ")]),_c('div',{staticClass:"chec-navigation__drawer",class:_vm.deepNavClasses,attrs:{"tabindex":"-1"},on:{"mouseleave":_vm.handleCloseDrawer}},[_c('div',{staticClass:"chec-navigation__section-navigation"},[_c('header',{staticClass:"chec-navigation__section-title"},[_vm._v(" "+_vm._s(_vm.activeSection.label)+" ")]),_c('ul',{ref:"sectionList",staticClass:"chec-navigation__section-links"},_vm._l((_vm.activeSection.links),function(ref){
 var component = ref.component;
 var bind = ref.bind;
@@ -57294,7 +57584,7 @@ var ChecNavigation_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecNavigation = (ChecNavigation_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNotification.vue?vue&type=template&id=e64d68bc&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNotification.vue?vue&type=template&id=e64d68bc&scoped=true&
 var ChecNotificationvue_type_template_id_e64d68bc_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"notif",class:_vm.classObject},[_c('div',{staticClass:"notif__content-container"},[_c('span',{staticClass:"notif__text"},[_vm._t("default")],2)]),_c('button',{staticClass:"notif__close-icon",attrs:{"type":"button"},on:{"click":_vm.onClose}},[_c('SvgCloseIcon')],1)])}
 var ChecNotificationvue_type_template_id_e64d68bc_scoped_true_staticRenderFns = []
 
@@ -57411,7 +57701,7 @@ var ChecNotification_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecNotification = (ChecNotification_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=36364fd4&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=36364fd4&
 var ChecOptionsMenuvue_type_template_id_36364fd4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"container"},[_c('ChecButton',_vm._b({ref:"button",attrs:{"slot":"reference","variant":"small","icon":"more"},on:{"click":_vm.toggleMenu},slot:"reference"},'ChecButton',_vm.$attrs,false)),_c('ChecPopover',{attrs:{"target-ref":"button","open":_vm.isOpen,"placement":_vm.menuPlacement}},[_c('div',{ref:"menu",staticClass:"options-menu"},[_vm._t("default")],2)])],1)}
 var ChecOptionsMenuvue_type_template_id_36364fd4_staticRenderFns = []
 
@@ -57547,7 +57837,7 @@ var ChecOptionsMenu_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecOptionsMenu = (ChecOptionsMenu_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPaginate.vue?vue&type=template&id=42a2dd02&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPaginate.vue?vue&type=template&id=42a2dd02&
 var ChecPaginatevue_type_template_id_42a2dd02_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-paginate"},[_c('div',{staticClass:"chec-page-selector"},[_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToFirst'),"disabled":_vm.page === 1},on:{"click":function($event){return _vm.choosePage('first')}}},[_c('ChecIcon',{attrs:{"icon":"double-left"}})],1),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToPrevious'),"disabled":_vm.page === 1},on:{"click":function($event){return _vm.choosePage('previous')}}},[_c('ChecIcon',{attrs:{"icon":"left"}})],1),_c('span',{staticClass:"chec-page-selector__page-reference"},[_vm._v(_vm._s(_vm.$t('paginate.of', { x: _vm.page, y: _vm.pageCount })))]),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToNext'),"disabled":_vm.page === _vm.pageCount},on:{"click":function($event){return _vm.choosePage('next')}}},[_c('ChecIcon',{attrs:{"icon":"right"}})],1),_c('button',{staticClass:"chec-page-selector__control",attrs:{"title":_vm.$t('paginate.goToLast'),"disabled":_vm.page === _vm.pageCount},on:{"click":function($event){return _vm.choosePage('last')}}},[_c('ChecIcon',{attrs:{"icon":"double-right"}})],1)]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.limitOptions.length > 1),expression:"limitOptions.length > 1"}],staticClass:"chec-per-page-control"},[_c('span',{staticClass:"chec-per-page-control__label"},[_vm._v(_vm._s(_vm.$t('paginate.showing')))]),_vm._l((_vm.limitOptions),function(option){return _c('button',{key:option,staticClass:"chec-per-page-control__option",class:{'chec-per-page-control__option--active': option === _vm.pageSize},attrs:{"title":("Show " + option + " items per page")},on:{"click":function($event){return _vm.choosePageSize(option)}}},[_vm._v(" "+_vm._s(option)+" ")])})],2)])}
 var ChecPaginatevue_type_template_id_42a2dd02_staticRenderFns = []
 
@@ -57779,7 +58069,7 @@ var ChecPaginate_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecPaginate = (ChecPaginate_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecProgressBar.vue?vue&type=template&id=6b98a2f8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecProgressBar.vue?vue&type=template&id=6b98a2f8&
 var ChecProgressBarvue_type_template_id_6b98a2f8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"progress"},[_c('div',{staticClass:"progress__bar",style:({width: (_vm.percentage + "%")}),attrs:{"role":"progressbar","aria-valuenow":_vm.percentage,"aria-valuemin":"0","aria-valuemax":"100"}})])}
 var ChecProgressBarvue_type_template_id_6b98a2f8_staticRenderFns = []
 
@@ -57842,7 +58132,7 @@ var ChecProgressBar_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecProgressBar = (ChecProgressBar_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecRadio.vue?vue&type=template&id=739874dd&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecRadio.vue?vue&type=template&id=739874dd&
 var ChecRadiovue_type_template_id_739874dd_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"radio-btn",class:{ 'active' : _vm.isChecked, disabled: _vm.disabled },attrs:{"for":_vm.id}},[_c('input',{staticClass:"radio-btn__input",attrs:{"id":_vm.id,"type":"radio","name":_vm.name,"disabled":_vm.disabled},domProps:{"value":_vm.value,"checked":_vm.isChecked},on:{"input":_vm.handleInput}}),_c('span',{staticClass:"radio-btn__fill"}),_vm._t("label",[(_vm.label)?_c('div',{staticClass:"radio-btn__label"},[_vm._v(_vm._s(_vm.label))]):_vm._e()],null,{ label: _vm.label, isChecked: _vm.isChecked, disabled: _vm.disabled })],2)}
 var ChecRadiovue_type_template_id_739874dd_staticRenderFns = []
 
@@ -57966,7 +58256,7 @@ var ChecRadio_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecRadio = (ChecRadio_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=3cf826de&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=3cf826de&
 var ChecSegmentedButtonsGroupvue_type_template_id_3cf826de_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"segmented-btns-group"},_vm._l((_vm.resolvedOptions),function(ref){
 var label = ref.label;
 var optionValue = ref.value;
@@ -57976,7 +58266,7 @@ var ChecSegmentedButtonsGroupvue_type_template_id_3cf826de_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/ChecSegmentedButtonsGroup.vue?vue&type=template&id=3cf826de&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButton.vue?vue&type=template&id=33242543&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSegmentedButton.vue?vue&type=template&id=33242543&
 var ChecSegmentedButtonvue_type_template_id_33242543_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"segmented-btn",class:{ 'segmented-btn--active': _vm.active },attrs:{"type":"button","value":_vm.value},on:{"click":_vm.handleClick,"keydown":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"right",39,$event.key,["Right","ArrowRight"])){ return null; }if('button' in $event && $event.button !== 2){ return null; }return _vm.onKeyDownRight($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"left",37,$event.key,["Left","ArrowLeft"])){ return null; }if('button' in $event && $event.button !== 0){ return null; }return _vm.onKeyDownLeft($event)}]}},[_vm._t("default")],2)}
 var ChecSegmentedButtonvue_type_template_id_33242543_staticRenderFns = []
 
@@ -58190,7 +58480,7 @@ var ChecSegmentedButtonsGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecSegmentedButtonsGroup = (ChecSegmentedButtonsGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=template&id=c9ad10d4&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=template&id=c9ad10d4&
 var ChecTabvue_type_template_id_c9ad10d4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"chec-tab",class:{ 'chec-tab--active': _vm.active, 'chec-tab--dark': _vm.dark },attrs:{"disabled":_vm.disabled},on:{"click":_vm.handleClick}},[_vm._t("default",null,null,{ active: _vm.active, disabled: _vm.disabled })],2)}
 var ChecTabvue_type_template_id_c9ad10d4_staticRenderFns = []
 
@@ -58269,7 +58559,7 @@ var ChecTab_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTab = (ChecTab_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTable.vue?vue&type=template&id=dab670fe&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTable.vue?vue&type=template&id=dab670fe&
 var ChecTablevue_type_template_id_dab670fe_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-table",class:_vm.classNames},[(_vm.$slots.prepend)?_c('div',{staticClass:"chec-table__prepend"},[_c('div',{staticClass:"chec-table__inner-wrapper"},[_vm._t("prepend")],2)]):_vm._e(),_c('table',{staticClass:"chec-table__table",class:_vm.innerClass},[_vm._t("default")],2)])}
 var ChecTablevue_type_template_id_dab670fe_staticRenderFns = []
 
@@ -58342,7 +58632,7 @@ var ChecTable_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTable = (ChecTable_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=template&id=7d522662&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=template&id=7d522662&
 var ChecTagvue_type_template_id_7d522662_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"chec-tag",class:_vm.classObject},[_vm._t("default"),(!_vm.undismissible)?_c('button',{staticClass:"chec-tag__dismiss",attrs:{"type":"button","disabled":_vm.disabled,"title":_vm.$t('tag.dismiss')},on:{"click":_vm.handleDismiss}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1):_vm._e()],2)}
 var ChecTagvue_type_template_id_7d522662_staticRenderFns = []
 
@@ -58448,7 +58738,7 @@ var ChecTag_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTag = (ChecTag_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagGroup.vue?vue&type=template&id=10ecd98e&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagGroup.vue?vue&type=template&id=10ecd98e&
 var ChecTagGroupvue_type_template_id_10ecd98e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-tag-group"},[_vm._t("default"),(!_vm.hideReset)?_c('ChecButton',{attrs:{"color":"primary","variant":"tag"},on:{"click":_vm.handleReset}},[_vm._v(" "+_vm._s(_vm.$t('tag.reset'))+" ")]):_vm._e()],2)}
 var ChecTagGroupvue_type_template_id_10ecd98e_staticRenderFns = []
 
@@ -58529,7 +58819,7 @@ var v_tooltip_esm = __webpack_require__("e37d");
   VClosePopover: v_tooltip_esm["a" /* VClosePopover */],
   VTooltip: v_tooltip_esm["c" /* VTooltip */]
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavigation.vue?vue&type=template&id=054015ca&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavigation.vue?vue&type=template&id=054015ca&
 var ChecVerticalNavigationvue_type_template_id_054015ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"vertical-navigation"},[_c('ul',{staticClass:"vertical-navigation__list"},[_vm._t("default")],2)])}
 var ChecVerticalNavigationvue_type_template_id_054015ca_staticRenderFns = []
 
@@ -58579,7 +58869,7 @@ var ChecVerticalNavigation_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecVerticalNavigation = (ChecVerticalNavigation_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavItem.vue?vue&type=template&id=3ae5da98&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavItem.vue?vue&type=template&id=3ae5da98&
 var ChecVerticalNavItemvue_type_template_id_3ae5da98_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"vertical-navigation__item"},[_c('router-link',{staticClass:"vertical-navigation__link",attrs:{"to":_vm.to,"disabled":_vm.disabled}},[_vm._t("default")],2)],1)}
 var ChecVerticalNavItemvue_type_template_id_3ae5da98_staticRenderFns = []
 
@@ -58642,7 +58932,7 @@ var ChecVerticalNavItem_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecVerticalNavItem = (ChecVerticalNavItem_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecWysiwyg.vue?vue&type=template&id=9a043226&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecWysiwyg.vue?vue&type=template&id=9a043226&
 var ChecWysiwygvue_type_template_id_9a043226_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-wysiwyg",class:_vm.classNames,on:{"click":_vm.giveFocus}},[(_vm.isScrollable)?_c('div',{staticClass:"chec-wysiwyg__label-underlay",class:{ 'chec-wysiwyg__label-underlay--scrolled-to-top': _vm.isScrolledToTop }}):_vm._e(),_c('EditorContent',_vm._g(_vm._b({ref:"input",attrs:{"editor":_vm.editor},on:{"input":_vm.handleInput}},'EditorContent',_vm.sharedInputProps,false),_vm.nonInputListeners)),(_vm.label)?_c('label',{staticClass:"chec-wysiwyg__label",attrs:{"data-content":_vm.label,"for":_vm.id}},[_vm._v(" "+_vm._s(_vm.label)+" "),(_vm.required)?_c('span',{staticClass:"chec-wysiwyg__required-text"},[_vm._v(" "+_vm._s(_vm.$t('general.requiredInline'))+" ")]):_vm._e()]):_vm._e(),_c('EditorMenuBar',{attrs:{"editor":_vm.editor},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var commands = ref.commands;
 var isActive = ref.isActive;
@@ -70844,36 +71134,48 @@ var ChecWysiwyg_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecWysiwyg = (ChecWysiwyg_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CodeBlock.vue?vue&type=template&id=e83f4fbe&
-var CodeBlockvue_type_template_id_e83f4fbe_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Prism',{staticClass:"code-example",class:{ 'language-none': _vm.language === 'none' ? 'language-none' : '' },attrs:{"language":_vm.language !== 'none' ? _vm.language : 'javascript'}},[_vm._t("default")],2)}
-var CodeBlockvue_type_template_id_e83f4fbe_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CodeBlock.vue?vue&type=template&id=886f47de&
+var CodeBlockvue_type_template_id_886f47de_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('PrismEditor',{staticClass:"code-example",class:_vm.classNames,attrs:{"highlight":_vm.highlighter,"line-numbers":_vm.lineNumbers,"readonly":!_vm.editable},model:{value:(_vm.code),callback:function ($$v) {_vm.code=$$v},expression:"code"}},[_vm._t("default")],2)}
+var CodeBlockvue_type_template_id_886f47de_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/CodeBlock.vue?vue&type=template&id=e83f4fbe&
+// CONCATENATED MODULE: ./src/components/CodeBlock.vue?vue&type=template&id=886f47de&
 
-// EXTERNAL MODULE: ./node_modules/prismjs/prism.js
-var prism = __webpack_require__("c197");
+// EXTERNAL MODULE: ./node_modules/vue-prism-editor/dist/prismeditor.esm.js
+var prismeditor_esm = __webpack_require__("e57a");
+
+// EXTERNAL MODULE: ./node_modules/vue-prism-editor/dist/prismeditor.min.css
+var prismeditor_min = __webpack_require__("cabf");
+
+// EXTERNAL MODULE: ./node_modules/prismjs/components/prism-core.js
+var prism_core = __webpack_require__("8c7a");
+
+// EXTERNAL MODULE: ./node_modules/prismjs/components/prism-clike.js
+var prism_clike = __webpack_require__("cb55");
 
 // EXTERNAL MODULE: ./node_modules/prismjs/components/prism-markup-templating.js
 var prism_markup_templating = __webpack_require__("6217");
 
-// EXTERNAL MODULE: ./node_modules/prismjs/components/prism-jsx.js
-var prism_jsx = __webpack_require__("0a31");
+// EXTERNAL MODULE: ./node_modules/prismjs/components/prism-javascript.js
+var prism_javascript = __webpack_require__("416b");
 
 // EXTERNAL MODULE: ./node_modules/prismjs/components/prism-json.js
 var prism_json = __webpack_require__("f393");
 
+// EXTERNAL MODULE: ./node_modules/prismjs/components/prism-markup.js
+var prism_markup = __webpack_require__("6cf3");
+
+// EXTERNAL MODULE: ./node_modules/prismjs/components/prism-jsx.js
+var prism_jsx = __webpack_require__("0a31");
+
 // EXTERNAL MODULE: ./node_modules/prismjs/components/prism-php.js
 var prism_php = __webpack_require__("8e9b");
 
-// EXTERNAL MODULE: ./node_modules/vue-prism-component/dist/vue-prism-component.common.js
-var vue_prism_component_common = __webpack_require__("8d51");
-var vue_prism_component_common_default = /*#__PURE__*/__webpack_require__.n(vue_prism_component_common);
-
 // EXTERNAL MODULE: ./node_modules/prismjs/themes/prism.css
-var themes_prism = __webpack_require__("a878");
+var prism = __webpack_require__("a878");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CodeBlock.vue?vue&type=script&lang=js&
+
 //
 //
 //
@@ -70884,25 +71186,88 @@ var themes_prism = __webpack_require__("a878");
 //
 //
 //
-// Base Prism import
- // Extra language configuration
+//
+//
+//
+//
+//
+//
+// Vue component for Prism
+
+ // Prism core
+
+ // Used as a basis for langauge packs.
+
+ // Import supported languages
 
 
 
 
- // Vue component for Prism
+
 
 
 
 /* harmony default export */ var CodeBlockvue_type_script_lang_js_ = ({
   name: 'CodeComponent',
   components: {
-    Prism: vue_prism_component_common_default.a
+    PrismEditor: prismeditor_esm["a" /* PrismEditor */]
   },
   props: {
+    /**
+     * The language for syntax highlighting.
+     *  Accepts either none, javascript, json, jsx or php.
+     */
     language: {
       type: String,
+      validate: function validate(type) {
+        return ['none', 'javascript', 'json', 'jsx', 'php'].includes(type);
+      },
       default: 'none'
+    },
+
+    /**
+     * Display codeblock line numbers.
+     */
+    lineNumbers: Boolean,
+
+    /**
+     * Allow the codeblock to grow or shrink with the content
+     */
+    grow: Boolean,
+
+    /**
+     * Toggles on the editable mode.
+     */
+    editable: Boolean
+  },
+  data: function data() {
+    return {
+      code: ''
+    };
+  },
+  computed: {
+    classNames: function classNames() {
+      var language = this.language,
+          lineNumbers = this.lineNumbers;
+      var classes = {
+        'code-example--line-numbered': lineNumbers,
+        'code-example--fixed': !this.grow,
+        'language-none': language === 'none'
+      };
+      return classes;
+    }
+  },
+  mounted: function mounted() {
+    // On mount, add the slot data to the data object.
+    this.code = this.$slots.default[0].text;
+  },
+  methods: {
+    highlighter: function highlighter(code) {
+      if (this.language === 'none') {
+        return Object(prism_core["highlight"])(code, prism_core["languages"].markup);
+      }
+
+      return Object(prism_core["highlight"])(code, prism_core["languages"][this.language]);
     }
   }
 });
@@ -70922,8 +71287,8 @@ var CodeBlockvue_type_style_index_0_lang_scss_ = __webpack_require__("a824");
 
 var CodeBlock_component = normalizeComponent(
   components_CodeBlockvue_type_script_lang_js_,
-  CodeBlockvue_type_template_id_e83f4fbe_render,
-  CodeBlockvue_type_template_id_e83f4fbe_staticRenderFns,
+  CodeBlockvue_type_template_id_886f47de_render,
+  CodeBlockvue_type_template_id_886f47de_staticRenderFns,
   false,
   null,
   null,
@@ -70932,7 +71297,7 @@ var CodeBlock_component = normalizeComponent(
 )
 
 /* harmony default export */ var components_CodeBlock = (CodeBlock_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard/InnerBlock.vue?vue&type=template&id=69d7907c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard/InnerBlock.vue?vue&type=template&id=69d7907c&
 var InnerBlockvue_type_template_id_69d7907c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card-inner-block"},[_c('div',{staticClass:"card-inner-block__container"},[(_vm.title)?_c(_vm.titleTag,{tag:"component",staticClass:"card-inner-block__title"},[_vm._v(" "+_vm._s(_vm.title)+" ")]):_vm._e(),_vm._t("default")],2),(_vm.actionText || _vm.$slots.action)?_c('div',[_vm._t("action"),(!_vm.$slots.action)?_c('ChecButton',{staticClass:"card-inner-block__action",attrs:{"variant":"round","color":_vm.actionColor},on:{"click":_vm.emitAction},scopedSlots:_vm._u([(_vm.$slots.actionIcon)?{key:"icon",fn:function(){return [_vm._t("actionIcon")]},proxy:true}:null],null,true)},[_vm._v(" "+_vm._s(_vm.actionText)+" ")]):_vm._e()],2):_vm._e()])}
 var InnerBlockvue_type_template_id_69d7907c_staticRenderFns = []
 
@@ -71114,7 +71479,7 @@ var InnerBlock_component = normalizeComponent(
 
 
 /* harmony default export */ var lang = (_objectSpread2(_objectSpread2({}, en), pt));
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5b6d304b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=template&id=39ccbab2&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=template&id=39ccbab2&
 var PasswordFieldvue_type_template_id_39ccbab2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"password-field"},[_c('ChecFormField',{attrs:{"append-label":_vm.showHideText},on:{"action-click":_vm.toggleShowPassword}},[_c('TextField',_vm._b({attrs:{"type":_vm.fieldType},on:{"input":function (e) { return _vm.$emit('input', e); }}},'TextField',Object.assign({}, _vm.$attrs, _vm.textFieldProps),false)),(_vm.showPasswordStrength)?_c('div',{staticClass:"password-field__strength",class:_vm.strengthClass}):_vm._e()],1)],1)}
 var PasswordFieldvue_type_template_id_39ccbab2_staticRenderFns = []
 
