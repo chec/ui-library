@@ -69,6 +69,10 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    /**
+     * Whether to show the "hide/show password" action button
+     */
+    hideShowButton: Boolean,
   },
   data() {
     return {
@@ -80,6 +84,9 @@ export default {
      * @returns {string}
      */
     showHideText() {
+      if (this.hideShowButton) {
+        return '';
+      }
       return `${this.showPassword ? 'hide' : 'show'} password`;
     },
     /**
