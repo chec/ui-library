@@ -71479,12 +71479,12 @@ var InnerBlock_component = normalizeComponent(
 
 
 /* harmony default export */ var lang = (_objectSpread2(_objectSpread2({}, en), pt));
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=template&id=39ccbab2&
-var PasswordFieldvue_type_template_id_39ccbab2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"password-field"},[_c('ChecFormField',{attrs:{"append-label":_vm.showHideText},on:{"action-click":_vm.toggleShowPassword}},[_c('TextField',_vm._b({attrs:{"type":_vm.fieldType},on:{"input":function (e) { return _vm.$emit('input', e); }}},'TextField',Object.assign({}, _vm.$attrs, _vm.textFieldProps),false)),(_vm.showPasswordStrength)?_c('div',{staticClass:"password-field__strength",class:_vm.strengthClass}):_vm._e()],1)],1)}
-var PasswordFieldvue_type_template_id_39ccbab2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=template&id=d5ecdd20&
+var PasswordFieldvue_type_template_id_d5ecdd20_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"password-field"},[_c('ChecFormField',{attrs:{"append-label":_vm.showHideText},on:{"action-click":_vm.toggleShowPassword}},[_c('TextField',_vm._b({attrs:{"type":_vm.fieldType},on:{"input":function (e) { return _vm.$emit('input', e); }}},'TextField',Object.assign({}, _vm.$attrs, _vm.textFieldProps),false)),(_vm.showPasswordStrength)?_c('div',{staticClass:"password-field__strength",class:_vm.strengthClass}):_vm._e()],1)],1)}
+var PasswordFieldvue_type_template_id_d5ecdd20_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PasswordField.vue?vue&type=template&id=39ccbab2&
+// CONCATENATED MODULE: ./src/components/PasswordField.vue?vue&type=template&id=d5ecdd20&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PasswordField.vue?vue&type=script&lang=js&
 
@@ -71565,7 +71565,12 @@ var PasswordFieldvue_type_template_id_39ccbab2_staticRenderFns = []
       default: function _default() {
         return {};
       }
-    }
+    },
+
+    /**
+     * Whether to show the "hide/show password" action button
+     */
+    hideShowButton: Boolean
   },
   data: function data() {
     return {
@@ -71577,6 +71582,10 @@ var PasswordFieldvue_type_template_id_39ccbab2_staticRenderFns = []
      * @returns {string}
      */
     showHideText: function showHideText() {
+      if (this.hideShowButton) {
+        return '';
+      }
+
       return "".concat(this.showPassword ? 'hide' : 'show', " password");
     },
 
@@ -71655,8 +71664,8 @@ var PasswordFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("6a04")
 
 var PasswordField_component = normalizeComponent(
   components_PasswordFieldvue_type_script_lang_js_,
-  PasswordFieldvue_type_template_id_39ccbab2_render,
-  PasswordFieldvue_type_template_id_39ccbab2_staticRenderFns,
+  PasswordFieldvue_type_template_id_d5ecdd20_render,
+  PasswordFieldvue_type_template_id_d5ecdd20_staticRenderFns,
   false,
   null,
   null,
