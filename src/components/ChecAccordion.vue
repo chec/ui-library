@@ -17,14 +17,18 @@
       >
         {{ resolvedButtonLabel }}
       </ChecSwitch>
-      <div
+      <ChecButton
         v-else
         class="accordion__toggle"
+        color="secondary"
+        variant="small"
         :title="resolvedButtonLabel"
         @click="isOpen = !isOpen"
       >
-        <ChecIcon icon="down" />
-      </div>
+        <template #icon>
+          <ChecIcon icon="down" />
+        </template>
+      </ChecButton>
     </div>
     <div class="accordion__body-container" :style="bodyStyle">
       <div ref="body" class="accordion__body">
@@ -36,12 +40,14 @@
 
 <script>
 import ResizeObserver from 'resize-observer-polyfill';
+import ChecButton from './ChecButton.vue';
 import ChecIcon from './ChecIcon.vue';
 import ChecSwitch from './ChecSwitch.vue';
 
 export default {
   name: 'ChecAccordion',
   components: {
+    ChecButton,
     ChecIcon,
     ChecSwitch,
   },
