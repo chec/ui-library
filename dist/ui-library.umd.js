@@ -50044,18 +50044,24 @@ var ChangeLog_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChangeLog = (ChangeLog_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=template&id=6ef3d83c&
-var ChecAccordionvue_type_template_id_6ef3d83c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"accordion",staticClass:"accordion",class:{'accordion--active': _vm.isOpen}},[_c('div',{staticClass:"accordion__heading"},[_c('div',[_c('div',{staticClass:"accordion__title",domProps:{"innerHTML":_vm._s(_vm.title)}}),(_vm.subtitle)?_c('div',{staticClass:"accordion__subtitle",domProps:{"innerHTML":_vm._s(_vm.subtitle)}}):_vm._e()]),(_vm.variant === 'switch')?_c('ChecSwitch',{attrs:{"prefix-label":""},on:{"input":_vm.emitToggle},model:{value:(_vm.isOpen),callback:function ($$v) {_vm.isOpen=$$v},expression:"isOpen"}},[_vm._v(" "+_vm._s(_vm.resolvedButtonLabel)+" ")]):_c('div',{staticClass:"accordion__toggle",attrs:{"title":_vm.resolvedButtonLabel},on:{"click":function($event){_vm.isOpen = !_vm.isOpen}}},[_c('ChecIcon',{attrs:{"icon":"down"}})],1)],1),_c('div',{staticClass:"accordion__body-container",style:(_vm.bodyStyle)},[_c('div',{ref:"body",staticClass:"accordion__body"},[_vm._t("default")],2)])])}
-var ChecAccordionvue_type_template_id_6ef3d83c_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAccordion.vue?vue&type=template&id=268915e4&
+var ChecAccordionvue_type_template_id_268915e4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"accordion",staticClass:"accordion",class:{'accordion--active': _vm.isOpen}},[_c('div',{staticClass:"accordion__heading"},[_c('div',[_c('div',{staticClass:"accordion__title",domProps:{"innerHTML":_vm._s(_vm.title)}}),(_vm.subtitle)?_c('div',{staticClass:"accordion__subtitle",domProps:{"innerHTML":_vm._s(_vm.subtitle)}}):_vm._e()]),(_vm.variant === 'switch')?_c('ChecSwitch',{attrs:{"prefix-label":""},on:{"input":_vm.emitToggle},model:{value:(_vm.isOpen),callback:function ($$v) {_vm.isOpen=$$v},expression:"isOpen"}},[_vm._v(" "+_vm._s(_vm.resolvedButtonLabel)+" ")]):_c('ChecButton',{staticClass:"accordion__toggle",attrs:{"color":"secondary","variant":"small","title":_vm.resolvedButtonLabel},on:{"click":function($event){_vm.isOpen = !_vm.isOpen}},scopedSlots:_vm._u([{key:"icon",fn:function(){return [_c('ChecIcon',{attrs:{"icon":"down"}})]},proxy:true}])})],1),_c('div',{staticClass:"accordion__body-container",style:(_vm.bodyStyle)},[_c('div',{ref:"body",staticClass:"accordion__body"},[_vm._t("default")],2)])])}
+var ChecAccordionvue_type_template_id_268915e4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecAccordion.vue?vue&type=template&id=6ef3d83c&
+// CONCATENATED MODULE: ./src/components/ChecAccordion.vue?vue&type=template&id=268915e4&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
 
 // EXTERNAL MODULE: ./node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js
 var ResizeObserver_es = __webpack_require__("6dd8");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
+var es_object_keys = __webpack_require__("b64b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
+var es_string_includes = __webpack_require__("2532");
 
 // EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-left.svg
 var ic_left = __webpack_require__("025b");
@@ -50669,6 +50675,203 @@ var ChecIcon_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecIcon = (ChecIcon_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecButton.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+/* harmony default export */ var ChecButtonvue_type_script_lang_js_ = ({
+  name: 'ChecButton',
+  props: {
+    /**
+     * The type of HTML tag or Vue component to use for the button. One of "link", "button", or "route".
+     */
+    tagType: {
+      type: String,
+      validate: function validate(type) {
+        return ['link', 'button', 'route'].includes(type);
+      },
+      default: 'button'
+    },
+
+    /**
+     * The HTML `type` of button to use, when `tagType` is "button". If the `tagType` is not "button" then
+     * `null` will be the `buttonType`.
+     */
+    buttonType: {
+      type: String,
+      validate: function validate(type) {
+        return ['button', 'reset', 'submit'].includes(type);
+      },
+      default: 'button'
+    },
+
+    /**
+     * The name of the color variant to be used. One of 'brand', 'primary', 'secondary', 'blue', 'green', or 'red'
+     */
+    color: {
+      type: String,
+      validate: function validate(color) {
+        return ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange', 'white', 'gray'].includes(color);
+      },
+      default: 'secondary'
+    },
+
+    /**
+     * The style variant of the button. Includes size, border radius, etc. One of 'regular', 'small', 'round', 'tag'
+     */
+    variant: {
+      type: String,
+      validate: function validate(variant) {
+        return ['regular', 'small', 'round', 'text', 'tag'].includes(variant);
+      },
+      default: 'regular'
+    },
+
+    /**
+     * Indicates the position where an icon should show (if any). Defaults to 'before' but it is optional.
+     * Accepts 'before' or 'after'.
+     */
+    iconPosition: {
+      type: String,
+      validate: function validate(position) {
+        return ['before', 'after'].includes(position);
+      },
+      default: 'before'
+    },
+
+    /**
+     * Changes the button to a transparent button with coloured text that matches the chosen colour.
+     */
+    textOnly: Boolean,
+
+    /**
+     * Disables the button
+     */
+    disabled: Boolean,
+
+    /**
+     * An icon (from the available ui icons) to display
+     */
+    icon: {
+      type: String,
+      default: null,
+      validate: function validate(icon) {
+        return Object.keys(uiIcons).includes(icon);
+      }
+    }
+  },
+  computed: {
+    classNames: function classNames() {
+      return ['button', "button--color-".concat(this.color), "button--variant-".concat(this.variant), _defineProperty({
+        'button--text-only': this.textOnly,
+        'button--disabled': this.disabled,
+        'button--has-icon': this.hasIcon
+      }, "button--has-icon-".concat(this.iconPosition), this.hasIcon)];
+    },
+    hasIcon: function hasIcon() {
+      return this.icon || this.$slots.icon && Boolean(this.$slots.icon.length);
+    },
+    tag: function tag() {
+      if (this.tagType === 'link') {
+        return 'a';
+      }
+
+      if (this.tagType === 'route') {
+        return 'router-link';
+      }
+
+      return 'button';
+    }
+  },
+  methods: {
+    handleClick: function handleClick(event) {
+      /**
+       * Triggered on a click event on the button
+       * @type {Event}
+       */
+      this.$emit('click', event);
+    }
+  },
+  render: function render(createElement) {
+    // Get the children. For an "icon" variant, if an icon slot is specified, use that instead of the default slot
+    // Note that this would not be ideal usage. Just providing the icon to the default slot is preferred.
+    var children = [createElement('span', {
+      class: ['button__content']
+    }, this.$slots.default)];
+
+    if (this.hasIcon) {
+      var icon = this.$slots.icon ? createElement('i', {
+        class: ['button__icon']
+      }, this.$slots.icon) : createElement(ChecIcon, {
+        class: ['button__icon'],
+        props: {
+          icon: this.icon
+        }
+      });
+
+      if (this.iconPosition === 'before') {
+        children.unshift(icon);
+      } else {
+        children.push(icon);
+      }
+    }
+
+    var domProps = {
+      disabled: this.disabled
+    };
+
+    if (this.tagType === 'button') {
+      domProps.type = this.buttonType;
+    }
+
+    var props = {};
+
+    if (this.tagType === 'route') {
+      props.to = this.$attrs.to;
+    }
+
+    return createElement(this.tag, {
+      class: this.classNames,
+      domProps: {
+        disabled: this.disabled,
+        type: this.tagType === 'button' ? this.buttonType : null
+      },
+      on: {
+        click: this.handleClick
+      },
+      props: props
+    }, children);
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecButton.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecButtonvue_type_script_lang_js_ = (ChecButtonvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecButton.vue?vue&type=style&index=0&lang=scss&
+var ChecButtonvue_type_style_index_0_lang_scss_ = __webpack_require__("4d22");
+
+// CONCATENATED MODULE: ./src/components/ChecButton.vue
+var ChecButton_render, ChecButton_staticRenderFns
+
+
+
+
+
+/* normalize component */
+
+var ChecButton_component = normalizeComponent(
+  components_ChecButtonvue_type_script_lang_js_,
+  ChecButton_render,
+  ChecButton_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChecButton = (ChecButton_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSwitch.vue?vue&type=template&id=485ac2f4&scoped=true&
 var ChecSwitchvue_type_template_id_485ac2f4_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-switch",class:{ 'chec-switch--toggled' : _vm.toggled }},[(_vm.$slots.default && _vm.prefixLabel)?_c('label',{staticClass:"chec-switch__label chec-switch__label--prefixed",attrs:{"for":_vm.id},on:{"click":function($event){$event.preventDefault();return _vm.handleToggle($event)}}},[_vm._t("default")],2):_vm._e(),_c('div',{staticClass:"chec-switch__container",on:{"click":function($event){$event.stopPropagation();return _vm.handleToggle($event)}}},[_c('div',{staticClass:"chec-switch__thumb"},[_c('input',_vm._b({staticClass:"chec-switch__input",attrs:{"type":"checkbox"}},'input',{ id: _vm.id, name: _vm.name, disabled: _vm.disabled, checked: _vm.toggled, required: _vm.required },false))])]),(_vm.$slots.default && !_vm.prefixLabel)?_c('label',{staticClass:"chec-switch__label",attrs:{"for":_vm.id},on:{"click":function($event){$event.preventDefault();return _vm.handleToggle($event)}}},[_vm._t("default")],2):_vm._e()])}
 var ChecSwitchvue_type_template_id_485ac2f4_scoped_true_staticRenderFns = []
@@ -50845,12 +51048,18 @@ var ChecSwitch_component = normalizeComponent(
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ var ChecAccordionvue_type_script_lang_js_ = ({
   name: 'ChecAccordion',
   components: {
+    ChecButton: ChecButton,
     ChecIcon: ChecIcon,
     ChecSwitch: ChecSwitch
   },
@@ -50966,8 +51175,8 @@ var ChecAccordionvue_type_style_index_0_lang_scss_ = __webpack_require__("bc8e")
 
 var ChecAccordion_component = normalizeComponent(
   components_ChecAccordionvue_type_script_lang_js_,
-  ChecAccordionvue_type_template_id_6ef3d83c_render,
-  ChecAccordionvue_type_template_id_6ef3d83c_staticRenderFns,
+  ChecAccordionvue_type_template_id_268915e4_render,
+  ChecAccordionvue_type_template_id_268915e4_staticRenderFns,
   false,
   null,
   null,
@@ -51279,209 +51488,6 @@ var ChecBreadcrumbs_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecBreadcrumbs = (ChecBreadcrumbs_component.exports);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
-var es_object_keys = __webpack_require__("b64b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
-var es_string_includes = __webpack_require__("2532");
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecButton.vue?vue&type=script&lang=js&
-
-
-
-
-
-
-/* harmony default export */ var ChecButtonvue_type_script_lang_js_ = ({
-  name: 'ChecButton',
-  props: {
-    /**
-     * The type of HTML tag or Vue component to use for the button. One of "link", "button", or "route".
-     */
-    tagType: {
-      type: String,
-      validate: function validate(type) {
-        return ['link', 'button', 'route'].includes(type);
-      },
-      default: 'button'
-    },
-
-    /**
-     * The HTML `type` of button to use, when `tagType` is "button". If the `tagType` is not "button" then
-     * `null` will be the `buttonType`.
-     */
-    buttonType: {
-      type: String,
-      validate: function validate(type) {
-        return ['button', 'reset', 'submit'].includes(type);
-      },
-      default: 'button'
-    },
-
-    /**
-     * The name of the color variant to be used. One of 'brand', 'primary', 'secondary', 'blue', 'green', or 'red'
-     */
-    color: {
-      type: String,
-      validate: function validate(color) {
-        return ['brand', 'primary', 'secondary', 'blue', 'green', 'red', 'purple', 'orange', 'white', 'gray'].includes(color);
-      },
-      default: 'secondary'
-    },
-
-    /**
-     * The style variant of the button. Includes size, border radius, etc. One of 'regular', 'small', 'round', 'tag'
-     */
-    variant: {
-      type: String,
-      validate: function validate(variant) {
-        return ['regular', 'small', 'round', 'text', 'tag'].includes(variant);
-      },
-      default: 'regular'
-    },
-
-    /**
-     * Indicates the position where an icon should show (if any). Defaults to 'before' but it is optional.
-     * Accepts 'before' or 'after'.
-     */
-    iconPosition: {
-      type: String,
-      validate: function validate(position) {
-        return ['before', 'after'].includes(position);
-      },
-      default: 'before'
-    },
-
-    /**
-     * Changes the button to a transparent button with coloured text that matches the chosen colour.
-     */
-    textOnly: Boolean,
-
-    /**
-     * Disables the button
-     */
-    disabled: Boolean,
-
-    /**
-     * An icon (from the available ui icons) to display
-     */
-    icon: {
-      type: String,
-      default: null,
-      validate: function validate(icon) {
-        return Object.keys(uiIcons).includes(icon);
-      }
-    }
-  },
-  computed: {
-    classNames: function classNames() {
-      return ['button', "button--color-".concat(this.color), "button--variant-".concat(this.variant), _defineProperty({
-        'button--text-only': this.textOnly,
-        'button--disabled': this.disabled,
-        'button--has-icon': this.hasIcon
-      }, "button--has-icon-".concat(this.iconPosition), this.hasIcon)];
-    },
-    hasIcon: function hasIcon() {
-      return this.icon || this.$slots.icon && Boolean(this.$slots.icon.length);
-    },
-    tag: function tag() {
-      if (this.tagType === 'link') {
-        return 'a';
-      }
-
-      if (this.tagType === 'route') {
-        return 'router-link';
-      }
-
-      return 'button';
-    }
-  },
-  methods: {
-    handleClick: function handleClick(event) {
-      /**
-       * Triggered on a click event on the button
-       * @type {Event}
-       */
-      this.$emit('click', event);
-    }
-  },
-  render: function render(createElement) {
-    // Get the children. For an "icon" variant, if an icon slot is specified, use that instead of the default slot
-    // Note that this would not be ideal usage. Just providing the icon to the default slot is preferred.
-    var children = [createElement('span', {
-      class: ['button__content']
-    }, this.$slots.default)];
-
-    if (this.hasIcon) {
-      var icon = this.$slots.icon ? createElement('i', {
-        class: ['button__icon']
-      }, this.$slots.icon) : createElement(ChecIcon, {
-        class: ['button__icon'],
-        props: {
-          icon: this.icon
-        }
-      });
-
-      if (this.iconPosition === 'before') {
-        children.unshift(icon);
-      } else {
-        children.push(icon);
-      }
-    }
-
-    var domProps = {
-      disabled: this.disabled
-    };
-
-    if (this.tagType === 'button') {
-      domProps.type = this.buttonType;
-    }
-
-    var props = {};
-
-    if (this.tagType === 'route') {
-      props.to = this.$attrs.to;
-    }
-
-    return createElement(this.tag, {
-      class: this.classNames,
-      domProps: {
-        disabled: this.disabled,
-        type: this.tagType === 'button' ? this.buttonType : null
-      },
-      on: {
-        click: this.handleClick
-      },
-      props: props
-    }, children);
-  }
-});
-// CONCATENATED MODULE: ./src/components/ChecButton.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_ChecButtonvue_type_script_lang_js_ = (ChecButtonvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/ChecButton.vue?vue&type=style&index=0&lang=scss&
-var ChecButtonvue_type_style_index_0_lang_scss_ = __webpack_require__("4d22");
-
-// CONCATENATED MODULE: ./src/components/ChecButton.vue
-var ChecButton_render, ChecButton_staticRenderFns
-
-
-
-
-
-/* normalize component */
-
-var ChecButton_component = normalizeComponent(
-  components_ChecButtonvue_type_script_lang_js_,
-  ChecButton_render,
-  ChecButton_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var ChecButton = (ChecButton_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecCard.vue?vue&type=template&id=0edd2b23&
 var ChecCardvue_type_template_id_0edd2b23_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card",class:_vm.classObject},[_c('div',{staticClass:"card__inner-wrapper",class:[_vm.tailwindClasses, _vm.innerClass]},[_vm._t("default")],2)])}
 var ChecCardvue_type_template_id_0edd2b23_staticRenderFns = []
