@@ -11,6 +11,7 @@
     <ChecPopover
       target-ref="button"
       :open="isOpen"
+      :name="menuName"
       :placement="menuPlacement"
     >
       <div ref="menu" class="options-menu">
@@ -44,7 +45,7 @@ export default {
      */
     menuPlacement: {
       type: String,
-      default: 'bottom',
+      default: 'bottom-end',
       validate(placement) {
         return [
           'auto',
@@ -63,6 +64,14 @@ export default {
           'left-start',
           'left-end'].includes(placement);
       },
+    },
+    /**
+     * Used with ChecPopover to prevent multiple options menu from rendering in the dom. This prop can be set to change
+     * the identifier that's used to prevent more than one options menu from rendering
+     */
+    menuName: {
+      type: String,
+      default: 'chec-options-menu',
     },
     /**
      * Whether choosing an option in the menu should toggle the menu
