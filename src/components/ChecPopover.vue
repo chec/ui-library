@@ -1,5 +1,10 @@
 <template>
-  <MountingPortal :mount-to="mountTarget" :name="name" append>
+  <MountingPortal
+    v-if="open"
+    :mount-to="mountTarget"
+    :name="name"
+    append
+  >
     <div ref="popperRef" :class="classNames">
       <!--
         @slot Content to display in the popover
@@ -10,7 +15,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import { MountingPortal } from 'portal-vue';
 import { createPopper } from '@popperjs/core';
 
@@ -79,18 +83,23 @@ export default {
   watch: {
     open(open) {
       if (open) {
-        this.$nextTick(() => this.createPopper());
+        this.$nextTick(this.createPopper);
         return;
       }
 
-      this.$nextTick(() => this.destroyPopper());
+      this.$nextTick(this.destroyPopper);
     },
   },
   methods: {
     createPopper() {
+      if (!this.$refs.popperRef) {
+        this.$nextTick(this.createPopper);
+        return;
+      }
+
       const { targetRef, placement, popperOptions } = this;
       const targetNode = this.$parent.$refs[targetRef];
-      const targetEl = targetNode instanceof Vue ? targetNode.$el : targetNode;
+      const targetEl = Object.hasOwnProperty.call(targetNode, '$el') ? targetNode.$el : targetNode;
 
       this.popper = createPopper(targetEl, this.$refs.popperRef, {
         modifiers: [
