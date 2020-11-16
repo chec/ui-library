@@ -53074,12 +53074,12 @@ var ChecOption_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecOption = (ChecOption_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPopover.vue?vue&type=template&id=25a92121&
-var ChecPopovervue_type_template_id_25a92121_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('MountingPortal',{attrs:{"mount-to":_vm.mountTarget,"name":_vm.name,"append":""}},[_c('div',{ref:"popperRef",class:_vm.classNames},[_vm._t("default")],2)])}
-var ChecPopovervue_type_template_id_25a92121_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecPopover.vue?vue&type=template&id=151b0843&
+var ChecPopovervue_type_template_id_151b0843_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.open)?_c('MountingPortal',{attrs:{"mount-to":_vm.mountTarget,"name":_vm.name,"append":""}},[_c('div',{ref:"popperRef",class:_vm.classNames},[_vm._t("default")],2)]):_vm._e()}
+var ChecPopovervue_type_template_id_151b0843_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecPopover.vue?vue&type=template&id=25a92121&
+// CONCATENATED MODULE: ./src/components/ChecPopover.vue?vue&type=template&id=151b0843&
 
 // EXTERNAL MODULE: ./node_modules/portal-vue/dist/portal-vue.common.js
 var portal_vue_common = __webpack_require__("2b88");
@@ -54914,7 +54914,11 @@ var popper_createPopper = /*#__PURE__*/popperGenerator({
 //
 //
 //
-
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ var ChecPopovervue_type_script_lang_js_ = ({
@@ -54987,27 +54991,26 @@ var popper_createPopper = /*#__PURE__*/popperGenerator({
   },
   watch: {
     open: function open(_open) {
-      var _this = this;
-
       if (_open) {
-        this.$nextTick(function () {
-          return _this.createPopper();
-        });
+        this.$nextTick(this.createPopper);
         return;
       }
 
-      this.$nextTick(function () {
-        return _this.destroyPopper();
-      });
+      this.$nextTick(this.destroyPopper);
     }
   },
   methods: {
     createPopper: function createPopper() {
+      if (!this.$refs.popperRef) {
+        this.$nextTick(this.createPopper);
+        return;
+      }
+
       var targetRef = this.targetRef,
           placement = this.placement,
           popperOptions = this.popperOptions;
       var targetNode = this.$parent.$refs[targetRef];
-      var targetEl = targetNode instanceof external_commonjs_vue_commonjs2_vue_root_Vue_default.a ? targetNode.$el : targetNode;
+      var targetEl = Object.hasOwnProperty.call(targetNode, '$el') ? targetNode.$el : targetNode;
       this.popper = popper_createPopper(targetEl, this.$refs.popperRef, _objectSpread2(_objectSpread2({
         modifiers: [{
           name: 'flip',
@@ -55051,8 +55054,8 @@ var ChecPopovervue_type_style_index_0_lang_scss_ = __webpack_require__("04cf");
 
 var ChecPopover_component = normalizeComponent(
   components_ChecPopovervue_type_script_lang_js_,
-  ChecPopovervue_type_template_id_25a92121_render,
-  ChecPopovervue_type_template_id_25a92121_staticRenderFns,
+  ChecPopovervue_type_template_id_151b0843_render,
+  ChecPopovervue_type_template_id_151b0843_staticRenderFns,
   false,
   null,
   null,
@@ -57707,15 +57710,16 @@ var ChecNotification_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecNotification = (ChecNotification_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=36364fd4&
-var ChecOptionsMenuvue_type_template_id_36364fd4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"container"},[_c('ChecButton',_vm._b({ref:"button",attrs:{"slot":"reference","variant":"small","icon":"more"},on:{"click":_vm.toggleMenu},slot:"reference"},'ChecButton',_vm.$attrs,false)),_c('ChecPopover',{attrs:{"target-ref":"button","open":_vm.isOpen,"placement":_vm.menuPlacement}},[_c('div',{ref:"menu",staticClass:"options-menu"},[_vm._t("default")],2)])],1)}
-var ChecOptionsMenuvue_type_template_id_36364fd4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"569182b5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=5207b6fc&
+var ChecOptionsMenuvue_type_template_id_5207b6fc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"container"},[_c('ChecButton',_vm._b({ref:"button",attrs:{"slot":"reference","variant":"small","icon":"more"},on:{"click":_vm.toggleMenu},slot:"reference"},'ChecButton',_vm.$attrs,false)),_c('ChecPopover',{attrs:{"target-ref":"button","open":_vm.isOpen,"name":_vm.menuName,"placement":_vm.menuPlacement}},[_c('div',{ref:"menu",staticClass:"options-menu"},[_vm._t("default")],2)])],1)}
+var ChecOptionsMenuvue_type_template_id_5207b6fc_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=36364fd4&
+// CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=5207b6fc&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=script&lang=js&
 
+//
 //
 //
 //
@@ -57761,10 +57765,19 @@ var ChecOptionsMenuvue_type_template_id_36364fd4_staticRenderFns = []
      */
     menuPlacement: {
       type: String,
-      default: 'bottom',
+      default: 'bottom-end',
       validate: function validate(placement) {
         return ['auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end', 'left', 'left-start', 'left-end'].includes(placement);
       }
+    },
+
+    /**
+     * Used with ChecPopover to prevent multiple options menu from rendering in the dom. This prop can be set to change
+     * the identifier that's used to prevent more than one options menu from rendering
+     */
+    menuName: {
+      type: String,
+      default: 'chec-options-menu'
     },
 
     /**
@@ -57833,8 +57846,8 @@ var ChecOptionsMenuvue_type_style_index_0_lang_scss_ = __webpack_require__("a4fe
 
 var ChecOptionsMenu_component = normalizeComponent(
   components_ChecOptionsMenuvue_type_script_lang_js_,
-  ChecOptionsMenuvue_type_template_id_36364fd4_render,
-  ChecOptionsMenuvue_type_template_id_36364fd4_staticRenderFns,
+  ChecOptionsMenuvue_type_template_id_5207b6fc_render,
+  ChecOptionsMenuvue_type_template_id_5207b6fc_staticRenderFns,
   false,
   null,
   null,
