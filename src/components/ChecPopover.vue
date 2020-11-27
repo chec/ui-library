@@ -17,6 +17,7 @@
 <script>
 import { MountingPortal } from 'portal-vue';
 import { createPopper } from '@popperjs/core';
+import get from 'lodash.get';
 
 export default {
   name: 'ChecPopover',
@@ -98,7 +99,7 @@ export default {
       }
 
       const { targetRef, placement, popperOptions } = this;
-      const targetNode = this.$parent.$refs[targetRef];
+      const targetNode = get(this.$parent.$refs, targetRef);
       const targetEl = Object.hasOwnProperty.call(targetNode, '$el') ? targetNode.$el : targetNode;
 
       this.popper = createPopper(targetEl, this.$refs.popperRef, {
