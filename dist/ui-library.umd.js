@@ -51715,10 +51715,18 @@ var ChecIcon_component = normalizeComponent(
     },
     tag: function tag() {
       if (this.tagType === 'link') {
+        if (this.disabled) {
+          return 'span';
+        }
+
         return 'a';
       }
 
       if (this.tagType === 'route') {
+        if (this.disabled) {
+          return 'span';
+        }
+
         return 'router-link';
       }
 
