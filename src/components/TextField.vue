@@ -174,6 +174,7 @@ export default {
       } = this;
 
       const classes = {
+        'text-field--color': this.$attrs.type === 'color',
         'text-field--currency': currency,
         'text-field--disabled': variant === 'disabled',
         'text-field--error': variant === 'error',
@@ -388,6 +389,13 @@ export default {
 
     &--scrolled-to-top {
       @apply opacity-0;
+    }
+  }
+
+  &--color {
+    .text-field__input {
+      // Override height to show color selected
+      height: 3.5rem;
     }
   }
 
