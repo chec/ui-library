@@ -111,6 +111,7 @@ export default {
       ...this.additionalDropzoneOptions,
 
       acceptedFiles: this.fileTypes,
+      maxFiles: (this.maxFiles) ? this.maxFiles - this.allFiles.length : null,
       hiddenInputContainer: this.$el,
       url: typeof this.endpoint === 'string' ? this.endpoint : '-',
       // Allows asynchronous processing of added files for the purpose of "accepting" them as valid files
@@ -198,6 +199,11 @@ export default {
       return this.incompleteFiles.findIndex((candidate) => candidate.upload.uuid === uuid);
     },
     addIncompleteFile(file) {
+      // If we have a max amount and have reached it, we dont want to add incomplete files.
+      if (this.maxFiles !== null && this.allFiles.length >= this.maxFiles) {
+        return;
+      }
+
       this.incompleteFiles.push(file);
     },
     updateIncompleteFile(file) {
@@ -215,6 +221,10 @@ export default {
         const fileId = typeof file.id !== 'undefined' ? file.id : file.upload.uuid;
         return candidate.id === fileId;
       });
+
+      // Removes the file from the dropzone instance
+      this.dropzone.files.splice(realIndex, 1);
+
       this.handleFilesChange([
         ...this.files.slice(0, realIndex),
         ...this.files.slice(realIndex + 1),

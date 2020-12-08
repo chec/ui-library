@@ -1,6 +1,6 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
-import { text, number } from '@storybook/addon-knobs';
+import { text, number, select } from '@storybook/addon-knobs';
 import ChecImageManager from '../../components/ChecImageManager.vue';
 import ImageBlock from '@/components/ChecImageManager/ImageBlock';
 
@@ -22,12 +22,16 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
       },
       data() {
         return {
-          files: [],
+          files: [
+          ],
         };
       },
       props: {
         endpoint: {
           default: text('endpoint', 'https://httpbin.org/post'),
+        },
+        columns: {
+          default: select('Columns', [2, 4, 6]),
         },
       },
       methods: {
@@ -53,6 +57,7 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
             @dropzone-event="dropzoneEvent"
             @change="change"
             :endpoint="endpoint"
+            :columns="columns"
           />
         </div>`
     }}
