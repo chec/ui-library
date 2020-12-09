@@ -56824,6 +56824,7 @@ Dropzone.autoDiscover = false;
       createImageThumbnails: true
     }, this.additionalDropzoneOptions), {}, {
       acceptedFiles: this.fileTypes,
+      maxFiles: this.maxFiles ? this.maxFiles - this.allFiles.length : null,
       hiddenInputContainer: this.$el,
       url: typeof this.endpoint === 'string' ? this.endpoint : '-',
       // Allows asynchronous processing of added files for the purpose of "accepting" them as valid files
@@ -56954,6 +56955,11 @@ Dropzone.autoDiscover = false;
       });
     },
     addIncompleteFile: function addIncompleteFile(file) {
+      // If we have a max amount and have reached it, we dont want to add incomplete files.
+      if (this.maxFiles !== null && this.allFiles.length >= this.maxFiles) {
+        return;
+      }
+
       this.incompleteFiles.push(file);
     },
     updateIncompleteFile: function updateIncompleteFile(file) {
@@ -56971,7 +56977,9 @@ Dropzone.autoDiscover = false;
         // Saved files will have an ID, unsaved files will not
         var fileId = typeof file.id !== 'undefined' ? file.id : file.upload.uuid;
         return candidate.id === fileId;
-      });
+      }); // Removes the file from the dropzone instance
+
+      this.dropzone.files.splice(realIndex, 1);
       this.handleFilesChange([].concat(_toConsumableArray(this.files.slice(0, realIndex)), _toConsumableArray(this.files.slice(realIndex + 1))));
     },
     handleFilesChange: function handleFilesChange(newFiles) {
@@ -57497,12 +57505,12 @@ var ChecHeader_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecHeader = (ChecHeader_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"118def0a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecImageManager.vue?vue&type=template&id=01bd8144&
-var ChecImageManagervue_type_template_id_01bd8144_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-image-manager"},[_c('div',{staticClass:"chec-image-manager__inner"},[(_vm.allFiles.length)?_c('Draggable',{staticClass:"image-rows-container",class:{ 'image-rows-container--dragging': _vm.dragging },attrs:{"value":_vm.allFiles,"filter":".chec-image-item--loading"},on:{"input":_vm.reorder,"click":function($event){$event.stopPropagation();},"start":function($event){_vm.dragging = true},"end":function($event){_vm.dragging = false}}},_vm._l((_vm.allFiles),function(file,index){return _c('ImageBlock',{directives:[{name:"tooltip",rawName:"v-tooltip",value:(file.name),expression:"file.name"}],key:file.upload.uuid,attrs:{"index":index + 1,"error":file.status === 'error',"loading":file.upload.progress !== null && file.upload.progress < 100,"thumbnail":file.thumb,"progress":file.upload.progress},on:{"remove":function () { return _vm.removeFile(file); }}})}),1):_vm._e(),_c('ChecButton',{on:{"click":_vm.openDialog}},[_c('ChecIcon',{staticClass:"chec-image-manager__icon",attrs:{"icon":"image","size":"base"}}),_vm._v(" "+_vm._s(_vm.$t('imageManager.chooseImages'))+" ")],1),(_vm.footnote)?_c('div',{staticClass:"chec-image-manager__helper"},[_vm._v(" "+_vm._s(_vm.footnote)+" ")]):_vm._e(),_c('input',{staticClass:"chec-image-manager__input",attrs:{"type":"file","name":"file"}})],1)])}
-var ChecImageManagervue_type_template_id_01bd8144_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"118def0a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecImageManager.vue?vue&type=template&id=273b5e58&
+var ChecImageManagervue_type_template_id_273b5e58_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-image-manager"},[_c('div',{staticClass:"chec-image-manager__inner"},[(_vm.allFiles.length)?_c('Draggable',{staticClass:"image-rows-container",class:_vm.classNames,attrs:{"value":_vm.allFiles,"filter":".chec-image-item--loading"},on:{"input":_vm.reorder,"click":function($event){$event.stopPropagation();},"start":function($event){_vm.dragging = true},"end":function($event){_vm.dragging = false}}},_vm._l((_vm.allFiles),function(file,index){return _c('ImageBlock',{directives:[{name:"tooltip",rawName:"v-tooltip",value:(file.name),expression:"file.name"}],key:file.upload.uuid,attrs:{"index":index + 1,"error":file.status === 'error',"loading":file.upload.progress !== null && file.upload.progress < 100,"thumbnail":file.thumb,"progress":file.upload.progress},on:{"remove":function () { return _vm.removeFile(file); }}})}),1):_vm._e(),(_vm.maxFiles === null || _vm.maxFiles > _vm.allFiles.length)?[_c('ChecButton',{on:{"click":_vm.openDialog}},[_c('ChecIcon',{staticClass:"chec-image-manager__icon",attrs:{"icon":"image","size":"base"}}),_vm._v(" "+_vm._s(_vm.$t('imageManager.chooseImages'))+" ")],1),(_vm.footnote)?_c('div',{staticClass:"chec-image-manager__helper"},[_vm._v(" "+_vm._s(_vm.footnote)+" ")]):_vm._e()]:_vm._e(),_c('input',{staticClass:"chec-image-manager__input",attrs:{"type":"file","name":"file"}})],2)])}
+var ChecImageManagervue_type_template_id_273b5e58_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecImageManager.vue?vue&type=template&id=01bd8144&
+// CONCATENATED MODULE: ./src/components/ChecImageManager.vue?vue&type=template&id=273b5e58&
 
 // EXTERNAL MODULE: ./node_modules/vuedraggable/dist/vuedraggable.common.js
 var vuedraggable_common = __webpack_require__("310e");
@@ -57675,6 +57683,12 @@ var ImageBlock_component = normalizeComponent(
 
 
 
+
+
+//
+//
+//
+//
 //
 //
 //
@@ -57727,8 +57741,27 @@ var ImageBlock_component = normalizeComponent(
   },
   mixins: [dropzone],
   props: {
+    /**
+     * Foot note to be displayed under the button. eg: PNG, JPG, & GIFS accepted.
+     */
     footnote: {
       type: String,
+      default: null
+    },
+
+    /**
+     * Number of columns to be displayed. either 2, 4 or 6.
+     */
+    columns: {
+      type: Number,
+      default: 4
+    },
+
+    /**
+     * Maximum amount of files accepted.
+     */
+    maxFiles: {
+      type: Number,
       default: null
     }
   },
@@ -57736,6 +57769,16 @@ var ImageBlock_component = normalizeComponent(
     return {
       dragging: false
     };
+  },
+  computed: {
+    classNames: function classNames() {
+      var _classes;
+
+      var dragging = this.dragging,
+          columns = this.columns;
+      var classes = (_classes = {}, _defineProperty(_classes, "image-rows-container--column-".concat(columns), columns !== ''), _defineProperty(_classes, 'image-rows-container--dragging', dragging), _defineProperty(_classes, 'image-rows-container--max-files', this.maxFiles !== null && this.maxFiles <= this.allFiles.length), _classes);
+      return classes;
+    }
   },
   methods: {
     /**
@@ -57773,8 +57816,8 @@ var ChecImageManagervue_type_style_index_0_lang_scss_ = __webpack_require__("363
 
 var ChecImageManager_component = normalizeComponent(
   components_ChecImageManagervue_type_script_lang_js_,
-  ChecImageManagervue_type_template_id_01bd8144_render,
-  ChecImageManagervue_type_template_id_01bd8144_staticRenderFns,
+  ChecImageManagervue_type_template_id_273b5e58_render,
+  ChecImageManagervue_type_template_id_273b5e58_staticRenderFns,
   false,
   null,
   null,
