@@ -180,6 +180,7 @@ export default {
         'text-field--error': variant === 'error',
         'text-field--empty': value === '',
         'text-field--inline-label': label,
+        'text-field--labelless': label.length === 0,
         'text-field--multiline': multiline,
         'text-field--minimized-label': minimizedLabel,
         [`text-field--${styleVariant}`]: styleVariant !== '',
@@ -459,6 +460,12 @@ export default {
         @apply opacity-50 transition-opacity duration-150;
       }
     }
+
+    &.text-field--labelless {
+      .text-field__input {
+        @apply py-4;
+      }
+    }
   }
 
   &--minimized-label {
@@ -478,6 +485,12 @@ export default {
       .text-field__label {
         @apply opacity-100;
       }
+    }
+  }
+
+  &--labelless {
+    .text-field__input {
+      @apply py-4;
     }
   }
 
