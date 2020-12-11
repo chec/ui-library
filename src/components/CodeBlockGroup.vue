@@ -98,7 +98,7 @@ export default {
   }
 
   &__logo {
-    @apply w-8 h-8;
+    @apply w-8 h-8 text-gray-300;
 
     &:not(:last-child) {
       @apply mr-3;
