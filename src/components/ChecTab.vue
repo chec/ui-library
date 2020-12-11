@@ -1,7 +1,11 @@
 <template>
   <button
     class="chec-tab"
-    :class="{ 'chec-tab--active': active, 'chec-tab--dark': dark }"
+    :class="{
+      'chec-tab--active': active,
+      'chec-tab--dark': dark,
+      'chec-tab--round': round,
+    }"
     :disabled="disabled"
     @click="handleClick"
   >
@@ -27,9 +31,9 @@ export default {
      */
     disabled: Boolean,
     /**
-     * Show the dark-mode variant of a tab
+     * Whether the tab should be dark and round, as seen in code block groups
      */
-    dark: Boolean,
+    round: Boolean,
   },
   methods: {
     handleClick() {
@@ -65,18 +69,14 @@ export default {
     }
   }
 
-  &--dark {
-    @apply border-gray-500 bg-gray-500 text-gray-300;
-
-    &:hover:enabled {
-      @apply border-gray-400 bg-gray-600 text-white;
-    }
+  &--round {
+    @apply rounded-full bg-transparent text-white border-0 py-2 px-3;
 
     &.chec-tab--active,
     &:active,
     &:focus {
       &:enabled {
-        @apply border-white text-white;
+        @apply bg-gray-600 text-white;
       }
     }
   }
