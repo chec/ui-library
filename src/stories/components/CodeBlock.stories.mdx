@@ -73,11 +73,14 @@ import CodeBlockGroup from '../../components/CodeBlockGroup.vue';
         background: {
           default: select('Background color', ['light', 'dark']),
         },
+        showLogos: {
+          default: boolean('Show logos', true),
+        },
       },
       template: `
         <div class="p-16 flex justify-center w-1/2 m-auto" :class="{'bg-gray-500': background === 'dark'}">
-          <CodeBlockGroup>
-            <CodeBlock title="Option 1" key="1" language="javascript" line-numbers>// Option 1 - Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);</CodeBlock>
+          <CodeBlockGroup :show-logos="showLogos">
+            <CodeBlock title="Option 1" key="1" language="javascript" line-numbers>// Option 1 - Render your payment form\n\nconst elements = stripe.elements().longExample().then(() => { const foo = 'bar'; });\n\nconst card = elements.create(1234);</CodeBlock>
             <CodeBlock title="Option 2" key="2" language="javascript" line-numbers>// Option 2 - Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);</CodeBlock>
             <CodeBlock title="Option 3" key="3" language="javascript" line-numbers>// Option 3 - Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);</CodeBlock>
           </CodeBlockGroup>
