@@ -59505,14 +59505,22 @@ var ChecSegmentedButtonsGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecSegmentedButtonsGroup = (ChecSegmentedButtonsGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"118def0a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=template&id=c9ad10d4&
-var ChecTabvue_type_template_id_c9ad10d4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"chec-tab",class:{ 'chec-tab--active': _vm.active, 'chec-tab--dark': _vm.dark },attrs:{"disabled":_vm.disabled},on:{"click":_vm.handleClick}},[_vm._t("default",null,null,{ active: _vm.active, disabled: _vm.disabled })],2)}
-var ChecTabvue_type_template_id_c9ad10d4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"118def0a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=template&id=000f7f10&
+var ChecTabvue_type_template_id_000f7f10_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"chec-tab",class:{
+    'chec-tab--active': _vm.active,
+    'chec-tab--dark': _vm.dark,
+    'chec-tab--round': _vm.round,
+  },attrs:{"disabled":_vm.disabled},on:{"click":_vm.handleClick}},[_vm._t("default",null,null,{ active: _vm.active, disabled: _vm.disabled })],2)}
+var ChecTabvue_type_template_id_000f7f10_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecTab.vue?vue&type=template&id=c9ad10d4&
+// CONCATENATED MODULE: ./src/components/ChecTab.vue?vue&type=template&id=000f7f10&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=script&lang=js&
+//
+//
+//
+//
 //
 //
 //
@@ -59543,9 +59551,9 @@ var ChecTabvue_type_template_id_c9ad10d4_staticRenderFns = []
     disabled: Boolean,
 
     /**
-     * Show the dark-mode variant of a tab
+     * Whether the tab should be dark and round, as seen in code block groups
      */
-    dark: Boolean
+    round: Boolean
   },
   methods: {
     handleClick: function handleClick() {
@@ -59574,8 +59582,8 @@ var ChecTabvue_type_style_index_0_lang_scss_ = __webpack_require__("df30");
 
 var ChecTab_component = normalizeComponent(
   components_ChecTabvue_type_script_lang_js_,
-  ChecTabvue_type_template_id_c9ad10d4_render,
-  ChecTabvue_type_template_id_c9ad10d4_staticRenderFns,
+  ChecTabvue_type_template_id_000f7f10_render,
+  ChecTabvue_type_template_id_000f7f10_staticRenderFns,
   false,
   null,
   null,
