@@ -144,11 +144,10 @@ export default {
 
 <style lang="scss">
 .accordion {
-  @apply rounded bg-gray-100;
+  @apply bg-white rounded-md shadow-sm mb-2;
 
   // Ensure margins don't collapse when put into containers with padding:
   // https://medium.com/fed-or-dead/margin-collapse-or-why-your-child-element-is-moving-the-parent-b199a0b60497
-  margin-bottom: -1px;
   padding-bottom: 1px;
 
   &__heading {
