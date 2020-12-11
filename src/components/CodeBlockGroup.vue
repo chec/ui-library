@@ -24,11 +24,11 @@
 </template>
 
 <script>
-import AngularLogo from '@/assets/svgs/frameworks/angular.svg';
-import GatsbyLogo from '@/assets/svgs/frameworks/gatsby.svg';
-import NextLogo from '@/assets/svgs/frameworks/next.svg';
-import ReactLogo from '@/assets/svgs/frameworks/react.svg';
-import VueLogo from '@/assets/svgs/frameworks/vue.svg';
+import AngularLogo from '../assets/svgs/frameworks/angular.svg';
+import GatsbyLogo from '../assets/svgs/frameworks/gatsby.svg';
+import NextLogo from '../assets/svgs/frameworks/next.svg';
+import ReactLogo from '../assets/svgs/frameworks/react.svg';
+import VueLogo from '../assets/svgs/frameworks/vue.svg';
 import ChecTab from './ChecTab';
 
 export default {
