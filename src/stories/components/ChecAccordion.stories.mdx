@@ -46,39 +46,6 @@ import TextField from '../../components/TextField.vue';
 </Preview>
 
 <Preview>
-  <Story name="Within a card">
-    {{
-      components: {
-        ChecAccordion,
-        ChecCard,
-      },
-      props: {
-        title: {
-          default: text('Title', 'Accordion Title'),
-        },
-        subtitle: {
-          default: text('Subtitle', 'Accordion Subtitle'),
-        },
-        variant: {
-          default: select('Variant', ['button', 'switch'], 'button'),
-        },
-      },
-      template: `
-        <ChecCard class="mx-auto max-w-xl mt-8" tailwind="p-4" borders="none">
-          <ChecAccordion
-            :title="title"
-            :subtitle="subtitle"
-            :variant="variant"
-          >
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor imperdiet pellentesque. Mauris quam enim, vehicula ac felis vel, tempus tincidunt massa.</p>
-            <p>Mauris eget mi neque. Nullam eu est a velit mattis cursus vel nec purus. Pellentesque tincidunt ornare auctor.</p>
-          </ChecAccordion>
-        </div>`
-    }}
-  </Story>
-</Preview>
-
-<Preview>
   <Story name="With Form">
     {{
       components: {
