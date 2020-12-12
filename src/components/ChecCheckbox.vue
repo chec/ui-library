@@ -69,6 +69,13 @@ export default {
       default: '',
     },
     /**
+     * Variant style
+     */
+    variant: {
+      type: String,
+      default: 'default',
+    },
+    /**
      * Puts checkbox into an indeterminate state
      */
     indeterminate: Boolean,
@@ -80,18 +87,30 @@ export default {
      * Check if checkbox is checked.
      */
     checked: Boolean,
+    /**
+     * Check if dark-mode enabled
+     */
+    darkMode: Boolean,
   },
   computed: {
     id() {
       return this.$attrs.id || uniqueId(this.name, this.value, 'checkbox')();
     },
     labelClasses() {
-      const { checked, disabled, indeterminate } = this;
+      const {
+        checked,
+        darkMode,
+        disabled,
+        indeterminate,
+        variant,
+      } = this;
 
       return {
         'chec-checkbox--active': checked,
+        'chec-checkbox--dark-mode': darkMode,
         'chec-checkbox--disabled': disabled,
         'chec-checkbox--indeterminate': indeterminate,
+        'chec-checkbox--rounded': variant === 'round',
       };
     },
   },
@@ -173,6 +192,40 @@ export default {
 
     svg {
       @apply text-white h-3 w-3;
+    }
+  }
+
+  &--rounded {
+    .chec-checkbox__input {
+      @apply h-6 w-6 rounded-full shadow-none
+        border-gray-400;
+
+      &:checked {
+        @apply bg-green-500 border-none;
+      }
+    }
+
+    .chec-checkbox__check,
+    .chec-checkbox__minus {
+      @apply h-6 w-6;
+    }
+
+    .chec-checkbox__label {
+      @apply caps-xxs;
+    }
+  }
+
+  &--dark-mode {
+    .chec-checkbox__input {
+      @apply bg-gray-600 border-gray-600;
+
+      &:checked {
+        @apply bg-green-500 border-none;
+      }
+    }
+
+    .chec-checkbox__label {
+      @apply text-white;
     }
   }
 

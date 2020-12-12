@@ -25,8 +25,14 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
         label: {
           default: text("Label", "Apple", "Props")
         },
+        darkMode: {
+          default: boolean("Dark Mode", false, "Props")
+        },
         disabled: {
           default: boolean("Disable", false, "Props")
+        },
+        variant: {
+          default: select('Variant', ['default', 'round'], 'default', "Props"),
         },
       },
       data() {
@@ -39,13 +45,15 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
         } };
       },
       template: `
-        <div class="py-16 flex justify-center bg-gray-100 font-lato">
+        <div class="py-16 flex justify-center font-lato" :class="{'bg-gray-500': darkMode}">
           <ChecCheckbox
             class="p-3"
             name="apple"
             :label="label"
             value="apple"
             :checked="values.apple"
+            :variant="variant"
+            :dark-mode="darkMode"
             @input="values.apple = !values.apple"
             :disabled="disabled"
           />
@@ -55,6 +63,8 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
             label="Orange"
             value="orange"
             v-model="values.orange"
+            :variant="variant"
+            :dark-mode="darkMode"
             :disabled="disabled"
           />
           <ChecCheckbox
@@ -63,6 +73,8 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
             label="Pear"
             value="pear"
             v-model="values.pear"
+            :variant="variant"
+            :dark-mode="darkMode"
             :disabled="disabled"
           />
           <ChecCheckbox
@@ -71,6 +83,8 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
             label="Disabled"
             value="disabled"
             v-model="values.disabled"
+            :variant="variant"
+            :dark-mode="darkMode"
             disabled="disabled"
           />
           <ChecCheckbox
@@ -80,6 +94,8 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
             value="indeterminate"
             :disabled="disabled"
             v-model="values.indeterminate"
+            :variant="variant"
+            :dark-mode="darkMode"
             indeterminate
           />
         </div>`,
