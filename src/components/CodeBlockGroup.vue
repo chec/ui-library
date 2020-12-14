@@ -1,5 +1,8 @@
 <template>
-  <div class="code-example-group">
+  <div
+    :class="{'code-example-group--with-logos': showLogos }"
+    class="code-example-group"
+  >
     <div class="code-example-group__tabs">
       <ChecTab
         v-for="(tab, index) in tabs"
@@ -107,6 +110,12 @@ export default {
 
   .code-example {
     @apply pt-20;
+  }
+
+  &--with-logos {
+    .code-example {
+      @apply pb-24;
+    }
   }
 }
 </style>
