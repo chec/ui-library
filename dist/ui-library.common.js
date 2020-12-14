@@ -72510,12 +72510,12 @@ var CodeBlock_component = normalizeComponent(
 )
 
 /* harmony default export */ var components_CodeBlock = (CodeBlock_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"118def0a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CodeBlockGroup.vue?vue&type=template&id=2d623820&
-var CodeBlockGroupvue_type_template_id_2d623820_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"code-example-group"},[_c('div',{staticClass:"code-example-group__tabs"},_vm._l((_vm.tabs),function(tab,index){return _c('ChecTab',{key:index,attrs:{"active":_vm.activeBlock === index,"round":""},on:{"click":function($event){_vm.activeBlock = index}}},[_vm._v(" "+_vm._s(tab)+" ")])}),1),_c('ActiveTab',{attrs:{"vnode":_vm.activeVnode}}),(_vm.showLogos)?_c('div',{staticClass:"code-example-group__logos"},[_c('ReactLogo',{staticClass:"code-example-group__logo"}),_c('GatsbyLogo',{staticClass:"code-example-group__logo"}),_c('NextLogo',{staticClass:"code-example-group__logo"}),_c('VueLogo',{staticClass:"code-example-group__logo"}),_c('AngularLogo',{staticClass:"code-example-group__logo"})],1):_vm._e()],1)}
-var CodeBlockGroupvue_type_template_id_2d623820_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"118def0a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CodeBlockGroup.vue?vue&type=template&id=70159074&
+var CodeBlockGroupvue_type_template_id_70159074_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"code-example-group",class:{'code-example-group--with-logos': _vm.showLogos }},[_c('div',{staticClass:"code-example-group__tabs"},_vm._l((_vm.tabs),function(tab,index){return _c('ChecTab',{key:index,attrs:{"active":_vm.activeBlock === index,"round":""},on:{"click":function($event){_vm.activeBlock = index}}},[_vm._v(" "+_vm._s(tab)+" ")])}),1),_c('ActiveTab',{attrs:{"vnode":_vm.activeVnode}}),(_vm.showLogos)?_c('div',{staticClass:"code-example-group__logos"},[_c('ReactLogo',{staticClass:"code-example-group__logo"}),_c('GatsbyLogo',{staticClass:"code-example-group__logo"}),_c('NextLogo',{staticClass:"code-example-group__logo"}),_c('VueLogo',{staticClass:"code-example-group__logo"}),_c('AngularLogo',{staticClass:"code-example-group__logo"})],1):_vm._e()],1)}
+var CodeBlockGroupvue_type_template_id_70159074_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/CodeBlockGroup.vue?vue&type=template&id=2d623820&
+// CONCATENATED MODULE: ./src/components/CodeBlockGroup.vue?vue&type=template&id=70159074&
 
 // EXTERNAL MODULE: ./src/assets/svgs/frameworks/angular.svg
 var angular = __webpack_require__("c1db");
@@ -72540,6 +72540,9 @@ var vue_default = /*#__PURE__*/__webpack_require__.n(vue);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CodeBlockGroup.vue?vue&type=script&lang=js&
 
 
+//
+//
+//
 //
 //
 //
@@ -72642,8 +72645,8 @@ var CodeBlockGroupvue_type_style_index_0_lang_scss_ = __webpack_require__("6183"
 
 var CodeBlockGroup_component = normalizeComponent(
   components_CodeBlockGroupvue_type_script_lang_js_,
-  CodeBlockGroupvue_type_template_id_2d623820_render,
-  CodeBlockGroupvue_type_template_id_2d623820_staticRenderFns,
+  CodeBlockGroupvue_type_template_id_70159074_render,
+  CodeBlockGroupvue_type_template_id_70159074_staticRenderFns,
   false,
   null,
   null,
