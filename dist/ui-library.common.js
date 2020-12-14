@@ -33220,6 +33220,17 @@ module.exports = function () {
 
 /***/ }),
 
+/***/ "ad77":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecThumbnailCard_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("b9e0");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecThumbnailCard_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecThumbnailCard_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecThumbnailCard_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "ae40":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -33857,6 +33868,13 @@ module.exports = {
   findIndex: createMethod(6)
 };
 
+
+/***/ }),
+
+/***/ "b9e0":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -50790,6 +50808,7 @@ __webpack_require__.d(__webpack_exports__, "ChecTab", function() { return /* ree
 __webpack_require__.d(__webpack_exports__, "ChecTable", function() { return /* reexport */ ChecTable; });
 __webpack_require__.d(__webpack_exports__, "ChecTag", function() { return /* reexport */ ChecTag; });
 __webpack_require__.d(__webpack_exports__, "ChecTagGroup", function() { return /* reexport */ ChecTagGroup; });
+__webpack_require__.d(__webpack_exports__, "ChecThumbnailCard", function() { return /* reexport */ ChecThumbnailCard; });
 __webpack_require__.d(__webpack_exports__, "ChecTooltip", function() { return /* reexport */ ChecTooltip; });
 __webpack_require__.d(__webpack_exports__, "ChecVerticalNavigation", function() { return /* reexport */ ChecVerticalNavigation; });
 __webpack_require__.d(__webpack_exports__, "ChecVerticalNavItem", function() { return /* reexport */ ChecVerticalNavItem; });
@@ -60018,6 +60037,118 @@ var ChecTagGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTagGroup = (ChecTagGroup_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"118def0a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecThumbnailCard.vue?vue&type=template&id=7f0d88fa&
+var ChecThumbnailCardvue_type_template_id_7f0d88fa_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"thumbnail-card",class:_vm.classObject},[(_vm.thumbnail)?_c('div',{staticClass:"thumbnail-card__thumbnail"},[_c('img',{attrs:{"src":_vm.thumbnail,"alt":_vm.altText}})]):_c('div',{staticClass:"thumbnail-card__placeholder"},[_c('ChecIcon',{staticClass:"thumbnail-card__logo",attrs:{"icon":"chec"}})],1),_c('div',{staticClass:"thumbnail-card__inner-wrapper",class:_vm.innerClass},[_vm._t("default")],2)])}
+var ChecThumbnailCardvue_type_template_id_7f0d88fa_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecThumbnailCard.vue?vue&type=template&id=7f0d88fa&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecThumbnailCard.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var ChecThumbnailCardvue_type_script_lang_js_ = ({
+  name: 'ChecThumbnailCard',
+  components: {
+    ChecIcon: ChecIcon
+  },
+  props: {
+    /**
+     * Class to pass to inner container
+     */
+    innerClass: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * allows card to apply the css class '.thumbnail-card--active' on pointer hovers
+     */
+    hoverable: Boolean,
+
+    /**
+     * sets card to active, applying the css class '.thumbnail-card--active' by default
+     */
+    active: Boolean,
+
+    /**
+     * Use dark variation
+     */
+    darkMode: Boolean,
+
+    /**
+     * Image for the thumbnail, if none is provided defaults to logo
+     */
+    thumbnail: {
+      type: String,
+      default: null
+    },
+
+    /**
+     * Alt text for the thumbnail image
+     */
+    altText: String
+  },
+  computed: {
+    /**
+     * Returns the computed class name for the variant type, e.g. `thumbnail-card--dark-mode`
+     *
+     * @returns {string}
+     */
+    classObject: function classObject() {
+      var darkMode = this.darkMode,
+          hoverable = this.hoverable,
+          active = this.active;
+      return [{
+        'thumbnail-card--dark-mode': darkMode,
+        'thumbnail-card--hoverable': hoverable,
+        'thumbnail-card--active': active
+      }];
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecThumbnailCard.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecThumbnailCardvue_type_script_lang_js_ = (ChecThumbnailCardvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecThumbnailCard.vue?vue&type=style&index=0&lang=scss&
+var ChecThumbnailCardvue_type_style_index_0_lang_scss_ = __webpack_require__("ad77");
+
+// CONCATENATED MODULE: ./src/components/ChecThumbnailCard.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ChecThumbnailCard_component = normalizeComponent(
+  components_ChecThumbnailCardvue_type_script_lang_js_,
+  ChecThumbnailCardvue_type_template_id_7f0d88fa_render,
+  ChecThumbnailCardvue_type_template_id_7f0d88fa_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChecThumbnailCard = (ChecThumbnailCard_component.exports);
 // EXTERNAL MODULE: ./src/assets/tooltips.scss
 var tooltips = __webpack_require__("5f09");
 
@@ -73048,6 +73179,7 @@ var down_arrow_default = /*#__PURE__*/__webpack_require__.n(down_arrow);
   checLogo: chec_logo_default.a
 });
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
