@@ -1,0 +1,167 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { boolean, text } from '@storybook/addon-knobs';
+import ChecThumbnailCard from '../../components/ChecThumbnailCard.vue';
+import TextField from '../../components/TextField.vue';
+import ChecButton from '../../components/ChecButton.vue';
+import ChecSwitch from '../../components/ChecSwitch.vue';
+
+<Meta title="Components/Thumbnail Card" component={ChecThumbnailCard} />
+
+# Card Component
+
+<Props of={ChecThumbnailCard} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecThumbnailCard
+      },
+      props: {
+        active: {
+          default: boolean('Active', false)
+        },
+        hoverable: {
+          default: boolean('Hoverable', true)
+        },
+        darkMode: {
+          default: boolean('Dark mode', false)
+        },
+        thumbnail: {
+          default: text('Image url', 'https://www.fillmurray.com/650/450')
+        },
+        altText: {
+          default: text('Image alt text', 'Some alt text')
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <ChecThumbnailCard
+            :active="active"
+            :hoverable="hoverable"
+            :thumbnail="thumbnail"
+            :alt-text="altText"
+            :dark-mode="darkMode"
+            class="w-1/2"
+          >
+            <p class="self-center mx-auto">Nothing here</p>
+          </ChecThumbnailCard>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="With form">
+    {{
+      components: {
+        ChecThumbnailCard,
+        TextField
+      },
+      props: {
+        active: {
+          default: boolean('Active', false)
+        },
+        hoverable: {
+          default: boolean('Hoverable', true)
+        },
+        darkMode: {
+          default: boolean('Dark mode', false)
+        },
+        thumbnail: {
+          default: text('Image url', 'https://www.fillmurray.com/650/450')
+        },
+        altText: {
+          default: text('Image alt text', 'Some alt text')
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <ChecThumbnailCard
+            :active="active"
+            :hoverable="hoverable"
+            :thumbnail="thumbnail"
+            :alt-text="altText"
+            :dark-mode="darkMode"
+            class="w-1/2"
+          >
+            <span class="block text-lg font-bold mb-4">
+              Update payment method
+            </span>
+            <!-- flex grid -->
+            <div class="flex -mx-2">
+              <div class="w-1/2 px-2">
+                <TextField
+                  class="w-full"
+                  placeholder="First Name"
+                  :style-variant="darkMode ? 'dark' : 'light'"
+                />
+              </div>
+              <div class="w-1/2 px-2">
+                <TextField
+                  class="w-full"
+                  placeholder="Last Name"
+                  :style-variant="darkMode ? 'dark' : 'light'"
+                />
+              </div>
+            </div>
+          </ChecThumbnailCard>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="With switch">
+    {{
+      components: {
+        ChecThumbnailCard,
+        ChecButton,
+        ChecSwitch,
+      },
+      props: {
+        darkMode: {
+          default: boolean('Dark mode', false)
+        },
+        thumbnail: {
+          default: text('Image url', 'https://www.fillmurray.com/650/450')
+        },
+        altText: {
+          default: text('Image alt text', 'Some alt text')
+        },
+      },
+      data() {
+        return {
+          toggled: false,
+        };
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <ChecThumbnailCard
+            :active="toggled"
+            :hoverable="hoverable"
+            :thumbnail="thumbnail"
+            :alt-text="altText"
+            :dark-mode="darkMode"
+            inner-class="flex flex-grow justify-between"
+            class="w-1/2"
+          >
+            <ChecSwitch
+              name="Theme Name"
+              v-model="toggled"
+              :dark-mode="darkMode"
+              variant="round"
+            >
+              Label
+            </ChecSwitch>
+            <ChecButton
+              color="green"
+              icon="chec"
+              tag-type="link"
+            />
+          </ChecThumbnailCard>
+        </div>`
+    }}
+  </Story>
+</Preview>
