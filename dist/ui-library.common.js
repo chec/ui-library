@@ -38501,6 +38501,40 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGT
 
 /***/ }),
 
+/***/ "d826":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M8.01 4.333c3.167 0 5.375 2.008 6.336 3.091C13.412 8.649 11.204 11 8.01 11c-2.947 0-5.287-2.357-6.319-3.605.996-1.098 3.212-3.062 6.319-3.062zM8.01 3C2.964 3 0 7.367 0 7.367s3.223 4.966 8.01 4.966c5.155 0 7.99-4.966 7.99-4.966S13.14 3 8.01 3zM8 5a2.666 2.666 0 100 5.333A2.666 2.666 0 008 5zm-.003 2.666a.964.964 0 11-1.362-1.364.964.964 0 011.362 1.364z","fill":"currentColor"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "d978":
 /***/ (function(module, exports) {
 
@@ -51285,6 +51319,10 @@ var ic_check_square_default = /*#__PURE__*/__webpack_require__.n(ic_check_square
 var ic_exclamation_square = __webpack_require__("515a");
 var ic_exclamation_square_default = /*#__PURE__*/__webpack_require__.n(ic_exclamation_square);
 
+// EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-eye.svg
+var ic_eye = __webpack_require__("d826");
+var ic_eye_default = /*#__PURE__*/__webpack_require__.n(ic_eye);
+
 // EXTERNAL MODULE: ./src/assets/svgs/UiIcons/ic-question-mark-square.svg
 var ic_question_mark_square = __webpack_require__("9265");
 var ic_question_mark_square_default = /*#__PURE__*/__webpack_require__.n(ic_question_mark_square);
@@ -51607,6 +51645,7 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
 
+
  // Nav icons imports
 
 
@@ -51684,6 +51723,7 @@ var uiIcons = {
   'close-square': ic_close_square_default.a,
   'check-square': ic_check_square_default.a,
   'exclamation-square': ic_exclamation_square_default.a,
+  eye: ic_eye_default.a,
   'question-mark-square': ic_question_mark_square_default.a,
   'info-square': ic_info_square_default.a,
   delete: ic_delete_default.a,
