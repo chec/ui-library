@@ -64,6 +64,9 @@ Todo list
         background: {
           default: select('Background', ['light', 'dark'], 'light'),
         },
+        outline: {
+          default: boolean('Outlined button', false),
+        },
       },
       computed: {
         bgClass() {
@@ -77,6 +80,7 @@ Todo list
             :variant="variant"
             :icon-position="iconPosition"
             :disabled="disabled"
+            :outline="outline"
             :icon="hasIcon ? icon : null"
             :tag-type="tagType"
             :text-only="textOnly"
@@ -97,6 +101,14 @@ This is a button modified using the Color and Variant props.
 <Preview>
   <Story name="States and sizes" decorators={[withKnobs()]}>
     {{
+      props: {
+        outline: {
+          default: boolean('Outlined button', false),
+        },
+        background: {
+          default: select('Background', ['light', 'dark'], 'light'),
+        },
+      },
       computed: {
         possibilities() {
           return makeVariants({
@@ -106,15 +118,18 @@ This is a button modified using the Color and Variant props.
             ...possibility,
             label: `${possibility.color} - ${possibility.variant}`,
           }));
-        }
+        },
+        bgClass() {
+          return this.background === 'dark' ? 'bg-gray-600' : 'bg-white'
+        },
       },
       components: {
         ChecButton
       },
       template: `
-        <div class="py-16 grid grid-cols-4 gap-4 justify-center mx-20">
+        <div class="py-16 px-20 grid grid-cols-4 gap-4 justify-center" :class="bgClass">
           <div v-for="{ color, variant, label } in possibilities">
-            <chec-button class="mx-auto capitalize" :color="color" :variant="variant">
+            <chec-button :outline="outline" class="mx-auto capitalize" :color="color" :variant="variant">
               {{ label }}
             </chec-button>
           </div>
