@@ -28,9 +28,15 @@ import ChecTab from '../../components/ChecTab.vue';
         round: {
           default: boolean('Round', false),
         },
+        dark: {
+          default: boolean('Dark', false)
+        }
       },
       computed: {
         background() {
+          if (this.dark) {
+            return 'bg-gray-600';
+          }
           return `bg-gray-${this.round ? '500' : '100'}`;
         }
       },
@@ -45,7 +51,8 @@ import ChecTab from '../../components/ChecTab.vue';
             :disabled="disabled"
             :active="active"
             :round="round"
-            @click="click('Tab clicked')""
+            :color="dark ? 'dark' : 'light'"
+            @click="click('Tab clicked')"
           >
             {{ label }}
           </ChecTab>
@@ -64,10 +71,19 @@ import ChecTab from '../../components/ChecTab.vue';
         round: {
           default: boolean('Round', false),
         },
+        dark: {
+          default: boolean('Dark', false),
+        },
       },
       computed: {
         background() {
-          return `bg-gray-${this.round ? '500' : '100'}`;
+          return `bg-gray-${this.dark ? '600' : '100'}`;
+        },
+        wrapperClasses() {
+          if (!this.round) {
+            return '';
+          }
+          return `bg-${this.dark ? 'gray-700': 'white'} rounded-full p-1`;
         }
       },
       data() {
@@ -75,10 +91,38 @@ import ChecTab from '../../components/ChecTab.vue';
       },
       template: `
         <div class="flex justify-center font-lato mx-auto p-16" :class="background">
-          <ChecTab @click="active = 1" :round="round" :active="active === 1">Tab one</ChecTab>
-          <ChecTab @click="active = 2" :round="round" :active="active === 2">Tab two</ChecTab>
-          <ChecTab @click="active = 3" :round="round" disabled :active="active === 3">Tab three</ChecTab>
-          <ChecTab @click="active = 4" :round="round" :active="active === 4">Tab four</ChecTab>
+          <div :class="wrapperClasses">
+            <ChecTab
+              @click="active = 1"
+              :round="round"
+              :active="active === 1"
+              :color="dark ? 'dark' : 'light'"
+            >
+              Tab one
+            </ChecTab><ChecTab
+              @click="active = 2"
+              :round="round"
+              :active="active === 2"
+              :color="dark ? 'dark' : 'light'"
+            >
+              Tab two
+            </ChecTab><ChecTab
+              @click="active = 3"
+              :round="round"
+              disabled
+              :active="active === 3"
+              :color="dark ? 'dark' : 'light'"
+            >
+              Tab three
+            </ChecTab><ChecTab
+              @click="active = 4"
+              :round="round"
+              :active="active === 4"
+              :color="dark ? 'dark' : 'light'"
+            >
+              Tab four
+            </ChecTab>
+          </div>
         </div>`
     }}
   </Story>
