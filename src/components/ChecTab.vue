@@ -40,7 +40,7 @@ export default {
      */
     color: {
       type: String,
-      validator: (candidate) => ['light', 'dark'].includes(candidate),
+      validator: (candidate) => ['light', 'dark', ''].includes(candidate),
       default: '',
     },
   },
