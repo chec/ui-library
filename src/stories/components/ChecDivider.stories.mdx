@@ -1,5 +1,5 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
-import { text } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
 import ChecDivider from '../../components/ChecDivider.vue';
 
 <Meta title="Components" component={ChecDivider} />
@@ -18,13 +18,18 @@ import ChecDivider from '../../components/ChecDivider.vue';
         label: {
           default: text('Label', 'message')
         },
-        containerClasses: {
-          default: text('Container classes', 'mx-20 bg-gray-100 py-10')
+        dark: {
+          default: boolean('Dark', false)
+        },
+      },
+      computed: {
+        containerClasses() {
+          return `mx-20 py-10 bg-gray-${this.dark ? '700' : '100'}`;
         },
       },
       template: `
       <div :class="containerClasses">
-        <ChecDivider>
+        <ChecDivider :color="dark ? 'dark' : 'light'">
           {{ label }}
         </ChecDivider>
       </div>`

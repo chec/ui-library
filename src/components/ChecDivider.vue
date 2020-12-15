@@ -1,5 +1,5 @@
 <template>
-  <div class="divider">
+  <div class="divider" :class="{ 'divider--dark': color === 'dark' }">
     <slot />
   </div>
 </template>
@@ -7,6 +7,13 @@
 <script>
 export default {
   name: 'ChecDivider',
+  props: {
+    color: {
+      type: String,
+      validator: (candidate) => ['dark', 'light'].includes(candidate),
+      default: 'light',
+    },
+  },
 };
 </script>
 
@@ -27,6 +34,15 @@ export default {
 
   &::after {
     @apply ml-8;
+  }
+
+  &--dark {
+    @apply text-gray-300;
+
+    &::before,
+    &::after {
+      @apply border-gray-500;
+    }
   }
 }
 </style>
