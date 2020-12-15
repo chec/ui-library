@@ -3,7 +3,8 @@
     class="chec-tab"
     :class="{
       'chec-tab--active': active,
-      'chec-tab--dark': dark,
+      // Default the color to light, unless it's round, when the default is dark (for BC)
+      'chec-tab--dark': color === 'dark' || (color === '' && round),
       'chec-tab--round': round,
     }"
     :disabled="disabled"
@@ -34,6 +35,14 @@ export default {
      * Whether the tab should be dark and round, as seen in code block groups
      */
     round: Boolean,
+    /**
+     * The "style" of the tab. Either "light" or "dark"
+     */
+    color: {
+      type: String,
+      validator: (candidate) => ['light', 'dark'].includes(candidate),
+      default: '',
+    },
   },
   methods: {
     handleClick() {
@@ -69,14 +78,50 @@ export default {
     }
   }
 
-  &--round {
-    @apply rounded-full bg-transparent text-white border-0 py-2 px-3;
+  &--dark {
+    @apply bg-gray-500 text-gray-300 border-gray-500;
+
+    &:hover:enabled {
+      @apply bg-gray-600 border-gray-400 text-white;
+    }
 
     &.chec-tab--active,
     &:active,
     &:focus {
       &:enabled {
-        @apply bg-gray-600 text-white;
+        @apply bg-gray-500 text-white border-white;
+      }
+    }
+  }
+
+  &--round {
+    @apply rounded-full bg-white text-gray-500 border border-transparent py-2 px-3 box-border;
+
+    &:hover:enabled {
+      @apply border-gray-200 text-gray-600;
+    }
+
+    &.chec-tab--active,
+    &:active,
+    &:focus {
+      &:enabled {
+        @apply border-transparent bg-gray-200 text-gray-600;
+      }
+    }
+
+    &.chec-tab--dark {
+      @apply text-gray-300 bg-gray-700;
+
+      &:hover:enabled {
+        @apply border-gray-400 text-white;
+      }
+
+      &.chec-tab--active,
+      &:active,
+      &:focus {
+        &:enabled {
+          @apply border-transparent bg-gray-600 text-white;
+        }
       }
     }
   }
