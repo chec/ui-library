@@ -73,6 +73,10 @@ export default {
      */
     textOnly: Boolean,
     /**
+     * Changes the button to an outline only button.
+     */
+    outline: Boolean,
+    /**
      * Disables the button
      */
     disabled: Boolean,
@@ -87,15 +91,25 @@ export default {
   },
   computed: {
     classNames() {
+      const {
+        color,
+        variant,
+        textOnly,
+        outline,
+        disabled,
+        hasIcon,
+        iconPosition,
+      } = this;
       return [
         'button',
-        `button--color-${this.color}`,
-        `button--variant-${this.variant}`,
+        `button--color-${color}`,
+        `button--variant-${variant}`,
         {
-          'button--text-only': this.textOnly,
-          'button--disabled': this.disabled,
-          'button--has-icon': this.hasIcon,
-          [`button--has-icon-${this.iconPosition}`]: this.hasIcon,
+          'button--text-only': textOnly,
+          'button--outline': outline,
+          'button--disabled': disabled,
+          'button--has-icon': hasIcon,
+          [`button--has-icon-${iconPosition}`]: hasIcon,
         },
       ];
     },
@@ -320,6 +334,17 @@ export default {
           &:not(:disabled):active {
             @apply bg-transparent text-#{map.get($config, 'active')};
           }
+        }
+
+        &.button--outline {
+          // Handle the one gradient that can't be text or a border
+          $default-color: #{map.get($config, 'default')};
+          @if ($default-color == 'primary-gradient') {
+            $default-color: 'dark-blue';
+          }
+
+          background-image: none;
+          @apply bg-transparent text-#{$default-color} border border-#{$default-color};
         }
       }
     }
