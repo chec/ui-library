@@ -88,7 +88,11 @@ export default {
   @apply relative;
 
   &__tabs {
-    @apply absolute m-6 rounded-full overflow-hidden inline-block shadow-sm bg-gray-700 p-1 z-10;
+    @apply absolute m-2 mt-6 rounded-full overflow-hidden inline-block shadow-sm bg-gray-700 p-1 z-10;
+
+    @media (min-width: 470px) {
+      @apply m-6;
+    }
   }
 
   .chec-tab:not(:last-child) {
