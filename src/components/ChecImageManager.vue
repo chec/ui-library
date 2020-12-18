@@ -18,7 +18,7 @@
           v-tooltip="file.name"
           :index="index + 1"
           :error="file.status === 'error'"
-          :loading="file.upload.progress !== null && file.upload.progress < 100"
+          :loading="['added', 'queued', 'uploading'].includes(file.status)"
           :thumbnail="file.thumb"
           :progress="file.upload.progress"
           @remove="() => removeFile(file)"
