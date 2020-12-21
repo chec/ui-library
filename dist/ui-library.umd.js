@@ -21085,6 +21085,40 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "63f5":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M20.183 17.75a10.053 10.053 0 01-1.296 1.5H5.112c-.479-.455-.913-.958-1.295-1.5h16.366zm.872-1.5c.225-.48.414-.982.562-1.5H2.383a9.93 9.93 0 00.562 1.5h18.11zM22 12c0 .423-.026.84-.077 1.25h-5.08a5 5 0 10-9.685 0h-5.08C2.025 12.84 2 12.423 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10zM12 22a9.954 9.954 0 01-4.845-1.25h9.69A9.954 9.954 0 0112 22z","fill":"#41546C"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "6547":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -51470,6 +51504,10 @@ var ic_categories_default = /*#__PURE__*/__webpack_require__.n(ic_categories);
 var ic_spaces = __webpack_require__("3496");
 var ic_spaces_default = /*#__PURE__*/__webpack_require__.n(ic_spaces);
 
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-rays.svg
+var ic_rays = __webpack_require__("63f5");
+var ic_rays_default = /*#__PURE__*/__webpack_require__.n(ic_rays);
+
 // EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-standard.svg
 var ic_standard = __webpack_require__("2bd0");
 var ic_standard_default = /*#__PURE__*/__webpack_require__.n(ic_standard);
@@ -51674,6 +51712,7 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
 
+
  // Marketing icons imports
 
 
@@ -51770,7 +51809,8 @@ var navIcons = {
   logs: ic_logs_default.a,
   settings: ic_settings_default.a,
   categories: ic_categories_default.a,
-  spaces: ic_spaces_default.a
+  spaces: ic_spaces_default.a,
+  rays: ic_rays_default.a
 };
 var mIcons = {
   standard: ic_standard_default.a,
