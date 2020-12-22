@@ -39005,6 +39005,40 @@ module.exports = !fails(function () {
 
 /***/ }),
 
+/***/ "e1e1":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 80 80","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('rect',{attrs:{"width":"80","height":"80","rx":"40","fill":"url(#paint0_linear)"}}),_c('rect',{attrs:{"width":"80","height":"80","rx":"40","fill":"url(#paint1_linear)"}}),_c('rect',{attrs:{"width":"80","height":"80","rx":"40","fill":"#fff","fill-opacity":".9"}}),_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M50.047 49.75a14.076 14.076 0 01-1.713 1.5H31.666a14.076 14.076 0 01-1.713-1.5h20.094zm1.265-1.5H28.688a14.02 14.02 0 01-.956-1.5h24.536a13.989 13.989 0 01-.956 1.5zm-24.804-4.5c.142.512.313 1.013.51 1.5h25.964c.197-.487.368-.988.51-1.5H26.508zM40 54a13.95 13.95 0 01-5.79-1.25h11.58A13.95 13.95 0 0140 54z","fill":"#7187A5"}}),_c('mask',{attrs:{"id":"a","fill":"#fff"}},[_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M26.18 42.25A14.105 14.105 0 0126 40c0-7.732 6.268-14 14-14s14 6.268 14 14c0 .766-.062 1.517-.18 2.25h-7.19a7 7 0 10-13.261 0h-7.19z"}})]),_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M26.18 42.25A14.105 14.105 0 0126 40c0-7.732 6.268-14 14-14s14 6.268 14 14c0 .766-.062 1.517-.18 2.25h-7.19a7 7 0 10-13.261 0h-7.19z","fill":"#D6E4F7"}}),_c('path',{attrs:{"d":"M26.18 42.25l-.987.16a1 1 0 00.987.84v-1zm27.64 0v1a1 1 0 00.987-.84l-.987-.16zm-7.19 0l-.946-.321a1 1 0 00.947 1.321v-1zm-13.26 0v1a1 1 0 00.946-1.321l-.947.321zM25 40c0 .82.066 1.624.193 2.41l1.974-.32C27.057 41.41 27 40.712 27 40h-2zm15-15c-8.284 0-15 6.716-15 15h2c0-7.18 5.82-13 13-13v-2zm15 15c0-8.284-6.716-15-15-15v2c7.18 0 13 5.82 13 13h2zm-.193 2.41c.127-.786.193-1.59.193-2.41h-2c0 .712-.057 1.41-.167 2.09l1.974.32zm-8.176.84h7.19v-2h-7.19v2zM46 40c0 .676-.111 1.325-.316 1.929l1.894.642A7.993 7.993 0 0048 40h-2zm-6-6a6 6 0 016 6h2a8 8 0 00-8-8v2zm-6 6a6 6 0 016-6v-2a8 8 0 00-8 8h2zm.316 1.929A5.992 5.992 0 0134 40h-2c0 .898.148 1.763.422 2.571l1.894-.642zM26.18 43.25h7.19v-2h-7.19v2z","fill":"#151B23","mask":"url(#a)"}}),_c('mask',{attrs:{"id":"b","maskUnits":"userSpaceOnUse","x":"32","y":"32","width":"16","height":"11","fill":"#000"}},[_c('path',{attrs:{"fill":"#fff","d":"M32 32h16v11H32z"}}),_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M46.889 41.25a7 7 0 10-13.777 0h13.777z"}})]),_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M46.889 41.25a7 7 0 10-13.777 0h13.777z","fill":"#fff"}}),_c('path',{attrs:{"d":"M46.889 41.25v1h.836l.148-.823-.984-.177zm-13.778 0l-.984.177.148.823h.836v-1zM46 40c0 .367-.033.725-.095 1.073l1.968.354c.084-.463.127-.94.127-1.427h-2zm-6-6a6 6 0 016 6h2a8 8 0 00-8-8v2zm-6 6a6 6 0 016-6v-2a8 8 0 00-8 8h2zm.095 1.073A6.042 6.042 0 0134 40h-2c0 .486.044.964.127 1.427l1.968-.354zm-.984 1.177H46.89v-2H33.11v2z","fill":"#151B23","mask":"url(#b)"}}),_c('defs',[_c('linearGradient',{attrs:{"id":"paint0_linear","x1":"0","y1":"0","x2":"80","y2":"80","gradientUnits":"userSpaceOnUse"}},[_c('stop',{attrs:{"offset":".104","stop-color":"#ACC9DA"}}),_c('stop',{attrs:{"offset":".203","stop-color":"#E7AED2"}}),_c('stop',{attrs:{"offset":".318","stop-color":"#FF9ECA"}}),_c('stop',{attrs:{"offset":".479","stop-color":"#6EFFFB"}}),_c('stop',{attrs:{"offset":".536","stop-color":"#BCFFDF"}}),_c('stop',{attrs:{"offset":".693","stop-color":"#FF9FB4"}}),_c('stop',{attrs:{"offset":".919","stop-color":"#ACB8DA"}})]),_c('linearGradient',{attrs:{"id":"paint1_linear","x1":"11.25","y1":"10.75","x2":"71","y2":"65.25","gradientUnits":"userSpaceOnUse"}},[_c('stop',{attrs:{"stop-color":"#D6E4F7","stop-opacity":".83"}}),_c('stop',{attrs:{"offset":"1","stop-color":"#D6E4F7","stop-opacity":".46"}})])])])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "e1ee":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -51647,6 +51681,10 @@ var ic_lrg_storefront_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_storef
 var ic_lrg_testing = __webpack_require__("005c");
 var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-rays.svg
+var ic_lrg_rays = __webpack_require__("e1e1");
+var ic_lrg_rays_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_rays);
+
 // CONCATENATED MODULE: ./src/lib/icons.js
 // UI icons imports
 
@@ -51721,6 +51759,7 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 
 
  // Circle marketing icons imports
+
 
 
 
@@ -51838,6 +51877,7 @@ var mIcons = {
   scale: ic_lrg_scale_default.a,
   storefront: ic_lrg_storefront_default.a,
   testing: ic_lrg_testing_default.a,
+  rays: ic_lrg_rays_default.a,
   'code-flat': ic_code_flat_default.a,
   'checkout-flat': ic_checkout_flat_default.a,
   'hosted-flat': ic_hosted_flat_default.a
