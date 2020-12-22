@@ -111,7 +111,7 @@ export default {
       ...this.additionalDropzoneOptions,
 
       acceptedFiles: this.fileTypes,
-      maxFiles: (this.maxFiles) ? this.maxFiles - this.allFiles.length : null,
+      maxFiles: (this.maxFiles) ? this.maxFiles : null,
       hiddenInputContainer: this.$el,
       url: typeof this.endpoint === 'string' ? this.endpoint : '-',
       // Allows asynchronous processing of added files for the purpose of "accepting" them as valid files
