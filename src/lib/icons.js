@@ -96,6 +96,7 @@ import IcLrgPlatforms from '../assets/svgs/MIcons/ic-lrg-platforms.svg';
 import IcLrgScale from '../assets/svgs/MIcons/ic-lrg-scale.svg';
 import IcLrgStorefront from '../assets/svgs/MIcons/ic-lrg-storefront.svg';
 import IcLrgTesting from '../assets/svgs/MIcons/ic-lrg-testing.svg';
+import IcLrgRays from '../assets/svgs/MIcons/ic-lrg-rays.svg';
 
 export const uiIcons = {
   left: IcLeft,
@@ -193,6 +194,7 @@ export const mIcons = {
   scale: IcLrgScale,
   storefront: IcLrgStorefront,
   testing: IcLrgTesting,
+  rays: IcLrgRays,
   'code-flat': IcColorCodeFlat,
   'checkout-flat': IcColorCheckoutFlat,
   'hosted-flat': IcColorHostedFlat,
