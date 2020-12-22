@@ -82,7 +82,7 @@ export default {
 
 <style lang="scss">
 .thumbnail-card {
-  @apply relative shadow-sm rounded-lg overflow-hidden;
+  @apply relative shadow-sm rounded-lg overflow-hidden flex flex-col h-full;
 
   &--dark-mode {
     .thumbnail-card__inner-wrapper {
