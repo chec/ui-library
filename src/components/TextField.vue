@@ -246,8 +246,8 @@ export default {
       this.$emit('input', $event.target.value, $event);
     },
     adjustSlotWidth() {
-      this.hasSlot = this.$refs.rightContentSlot.clientWidth > 0;
-      this.slotWidth = this.$refs.rightContentSlot.scrollWidth;
+      this.hasSlot = this.$refs.rightContentSlot && this.$refs.rightContentSlot.clientWidth > 0;
+      this.slotWidth = this.$refs.rightContentSlot && this.$refs.rightContentSlot.scrollWidth;
     },
     /**
      * Allows the input padding to grow to match the width of the currency symbol container.
