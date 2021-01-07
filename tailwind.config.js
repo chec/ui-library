@@ -183,11 +183,36 @@ module.exports = {
     plugin(({ addUtilities }) => addUtilities({
       '.bg-hologram': {
         backgroundImage: `
-          linear-gradient(132.37deg,
+          linear-gradient(
+            132.37deg,
             rgba(214, 228, 247, 0.83) 13.76%,
             rgba(214, 228, 247, 0.46) 85.32%
           ),
-          linear-gradient(135deg,
+          linear-gradient(
+            135deg,
+            #ACC9DA 10.42%,
+            #E7AED2 20.31%,
+            #FF9ECA 31.77%,
+            #6EFFFB 47.92%,
+            #BCFFDF 53.65%,
+            #FF9FB4 69.27%,
+            #ACB8DA 91.86%
+          )`,
+      },
+      '.bg-hologram-light': {
+        backgroundImage: `
+          linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.9)
+          ),
+          linear-gradient(
+            132.37deg,
+            rgba(214, 228, 247, 0.83) 13.76%,
+            rgba(214, 228, 247, 0.46) 85.32%
+          ),
+          linear-gradient(
+            135deg,
             #ACC9DA 10.42%,
             #E7AED2 20.31%,
             #FF9ECA 31.77%,
