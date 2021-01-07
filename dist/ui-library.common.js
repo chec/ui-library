@@ -2195,6 +2195,40 @@ function coveredDepths($from, $to) {
 
 /***/ }),
 
+/***/ "0b9a":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 48 48","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M40.365 35.5a20.105 20.105 0 01-2.59 3h-27.55a20.107 20.107 0 01-2.59-3h32.73zm1.744-3c.452-.96.83-1.963 1.125-3H4.766c.296 1.037.673 2.04 1.125 3h36.218zM44 24c0 .847-.053 1.681-.155 2.5h-10.16A10.02 10.02 0 0034 24c0-5.523-4.477-10-10-10s-10 4.477-10 10c0 .863.11 1.701.315 2.5H4.155A20.198 20.198 0 014 24C4 12.954 12.954 4 24 4s20 8.954 20 20zM24 44a19.91 19.91 0 01-9.69-2.5h19.38A19.91 19.91 0 0124 44z","fill":"#fff"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "0c68":
 /***/ (function(module, exports) {
 
@@ -51685,6 +51719,10 @@ var ic_lrg_testing_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_testing);
 var ic_lrg_rays = __webpack_require__("e1e1");
 var ic_lrg_rays_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_rays);
 
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-rays-mono.svg
+var ic_rays_mono = __webpack_require__("0b9a");
+var ic_rays_mono_default = /*#__PURE__*/__webpack_require__.n(ic_rays_mono);
+
 // CONCATENATED MODULE: ./src/lib/icons.js
 // UI icons imports
 
@@ -51759,6 +51797,7 @@ var ic_lrg_rays_default = /*#__PURE__*/__webpack_require__.n(ic_lrg_rays);
 
 
  // Circle marketing icons imports
+
 
 
 
@@ -51878,6 +51917,7 @@ var mIcons = {
   storefront: ic_lrg_storefront_default.a,
   testing: ic_lrg_testing_default.a,
   rays: ic_lrg_rays_default.a,
+  'rays-mono': ic_rays_mono_default.a,
   'code-flat': ic_code_flat_default.a,
   'checkout-flat': ic_checkout_flat_default.a,
   'hosted-flat': ic_hosted_flat_default.a
