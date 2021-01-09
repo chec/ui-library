@@ -15347,6 +15347,40 @@ function tableEditing(ref) {
 
 /***/ }),
 
+/***/ "55ec":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 32 32","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M1 6a2 2 0 012-2h26a2 2 0 012 2v20a2 2 0 01-2 2H3a2 2 0 01-2-2V6z","fill":"#7187A5","stroke":"#151B23","stroke-miterlimit":"10","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('path',{attrs:{"d":"M1 6a2 2 0 012-2h26a2 2 0 012 2v4H1V6z","fill":"#fff","stroke":"#151B23","stroke-miterlimit":"10","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('circle',{attrs:{"cx":"4","cy":"7","r":".5","stroke":"#7187A5"}}),_c('circle',{attrs:{"cx":"7","cy":"7","r":".5","stroke":"#7187A5"}}),_c('circle',{attrs:{"cx":"10","cy":"7","r":".5","stroke":"#7187A5"}}),_c('path',{attrs:{"d":"M11 15l-5 4 5 4M21 23l5-4-5-4","stroke":"#151B23","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('path',{attrs:{"d":"M14 25l4-12","stroke":"#151B23","stroke-linecap":"round"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "5692":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20851,6 +20885,40 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 
+/***/ "5eae":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 32 32","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M29.188 16.938H19.75a2.816 2.816 0 00-2.813 2.812 2.816 2.816 0 002.813 2.813h9.438A2.816 2.816 0 0032 19.75a2.816 2.816 0 00-2.813-2.813z","fill":"#ECB22E"}}),_c('path',{attrs:{"d":"M12.25 9.438H2.812A2.816 2.816 0 000 12.25a2.816 2.816 0 002.813 2.813h9.437a2.816 2.816 0 002.813-2.813 2.816 2.816 0 00-2.813-2.813z","fill":"#36C5F0"}}),_c('path',{attrs:{"d":"M19.75 15.063a2.816 2.816 0 002.813-2.813V2.812A2.816 2.816 0 0019.75 0a2.816 2.816 0 00-2.813 2.813v9.437a2.816 2.816 0 002.813 2.813z","fill":"#2EB67D"}}),_c('path',{attrs:{"d":"M12.25 16.938a2.816 2.816 0 00-2.813 2.812v9.438A2.816 2.816 0 0012.25 32a2.816 2.816 0 002.813-2.813V19.75a2.816 2.816 0 00-2.813-2.813z","fill":"#E01E5A"}}),_c('path',{attrs:{"d":"M25.438 15.063h2.812a3.754 3.754 0 003.75-3.75 3.754 3.754 0 00-3.75-3.75 3.754 3.754 0 00-3.75 3.75v2.812c0 .518.42.938.938.938z","fill":"#2EB67D"}}),_c('path',{attrs:{"d":"M6.563 16.938H3.75A3.754 3.754 0 000 20.688a3.754 3.754 0 003.75 3.75 3.754 3.754 0 003.75-3.75v-2.813a.937.937 0 00-.938-.938z","fill":"#E01E5A"}}),_c('path',{attrs:{"d":"M11.313 0a3.754 3.754 0 00-3.75 3.75 3.754 3.754 0 003.75 3.75h2.812c.518 0 .938-.42.938-.938V3.75A3.754 3.754 0 0011.313 0z","fill":"#36C5F0"}}),_c('path',{attrs:{"d":"M20.688 24.5h-2.813a.937.937 0 00-.938.938v2.812a3.754 3.754 0 003.75 3.75 3.754 3.754 0 003.75-3.75 3.754 3.754 0 00-3.75-3.75z","fill":"#ECB22E"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "5f09":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21277,6 +21345,40 @@ module.exports = function (originalArray, length) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "687a":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 32 32","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M1 6a2 2 0 012-2h26a2 2 0 012 2v20a2 2 0 01-2 2H3a2 2 0 01-2-2V6z","fill":"#7187A5","stroke":"#151B23","stroke-miterlimit":"10","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('path',{attrs:{"d":"M1 6a2 2 0 012-2h26a2 2 0 012 2v4H1V6z","fill":"#fff","stroke":"#151B23","stroke-miterlimit":"10","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('path',{attrs:{"d":"M4 13h3M4 15h3M4 17h3M4 19h3M10 10v18","stroke":"#151B23","stroke-linecap":"round"}}),_c('circle',{attrs:{"cx":"4","cy":"7","r":".5","stroke":"#7187A5"}}),_c('circle',{attrs:{"cx":"7","cy":"7","r":".5","stroke":"#7187A5"}}),_c('circle',{attrs:{"cx":"10","cy":"7","r":".5","stroke":"#7187A5"}}),_c('path',{attrs:{"d":"M10 10h21v16a2 2 0 01-2 2H10V10z","fill":"#D6E4F7","stroke":"#151B23"}}),_c('path',{attrs:{"d":"M13 17a1 1 0 011-1h13a1 1 0 011 1v1a1 1 0 01-1 1H14a1 1 0 01-1-1v-1zM13 23a1 1 0 011-1h13a1 1 0 011 1v1a1 1 0 01-1 1H14a1 1 0 01-1-1v-1z","fill":"#fff","stroke":"#151B23"}}),_c('path',{attrs:{"d":"M13 13h3","stroke":"#151B23","stroke-linecap":"round"}})])
+          )
+        }
+      }
+    
 
 /***/ }),
 
@@ -47748,6 +47850,40 @@ module.exports = function (it) {
 
 /***/ }),
 
+/***/ "ed97":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 32 32","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M3 7a2 2 0 012-2h22a2 2 0 012 2v17H3V7z","fill":"#7187A5","stroke":"#151B23"}}),_c('rect',{attrs:{"x":"1","y":"24","width":"30","height":"4","rx":"2","fill":"#fff","stroke":"#151B23"}}),_c('path',{attrs:{"d":"M7 15c0-2.118 2.67-5.133 3.75-6 1.108.985 3.75 4.116 3.75 6 0 1.884-.75 2.823-2.25 3.882V21h-3v-2.118C7.75 18.176 7 16.5 7 15z","fill":"#fff"}}),_c('path',{attrs:{"d":"M10.75 9C9.67 9.867 7 12.882 7 15c0 1.5.75 3.177 2.25 3.882V21h3v-2.118c1.5-1.059 2.25-1.998 2.25-3.882 0-1.884-2.642-5.015-3.75-6zm0 0v6.429","stroke":"#151B23","stroke-linecap":"round","stroke-linejoin":"round"}}),_c('circle',{attrs:{"cx":"10.75","cy":"15","r":".75","fill":"#fff","stroke":"#151B23"}}),_c('path',{attrs:{"d":"M19 20V9","stroke":"#151B23","stroke-linecap":"round"}}),_c('mask',{attrs:{"id":"a","fill":"#fff"}},[_c('circle',{attrs:{"cx":"19","cy":"13","transform":"rotate(-90 19 13)","r":"2"}})]),_c('path',{attrs:{"d":"M19 13.5a.5.5 0 01-.5-.5h5A4.5 4.5 0 0019 8.5v5zm-.5-.5a.5.5 0 01.5-.5v5a4.5 4.5 0 004.5-4.5h-5zm.5-.5a.5.5 0 01.5.5h-5a4.5 4.5 0 004.5 4.5v-5zm.5.5a.5.5 0 01-.5.5v-5a4.5 4.5 0 00-4.5 4.5h5z","fill":"#151B23","mask":"url(#a)"}}),_c('path',{attrs:{"d":"M24 20V9","stroke":"#151B23","stroke-linecap":"round"}}),_c('mask',{attrs:{"id":"b","fill":"#fff"}},[_c('circle',{attrs:{"cx":"24","cy":"16","transform":"rotate(-90 24 16)","r":"2"}})]),_c('path',{attrs:{"d":"M24 16.5a.5.5 0 01-.5-.5h5a4.5 4.5 0 00-4.5-4.5v5zm-.5-.5a.5.5 0 01.5-.5v5a4.5 4.5 0 004.5-4.5h-5zm.5-.5a.5.5 0 01.5.5h-5a4.5 4.5 0 004.5 4.5v-5zm.5.5a.5.5 0 01-.5.5v-5a4.5 4.5 0 00-4.5 4.5h5z","fill":"#151B23","mask":"url(#b)"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "eee6":
 /***/ (function(module, exports) {
 
@@ -51467,6 +51603,10 @@ var ic_github_default = /*#__PURE__*/__webpack_require__.n(ic_github);
 var ic_slack = __webpack_require__("ccf8");
 var ic_slack_default = /*#__PURE__*/__webpack_require__.n(ic_slack);
 
+// EXTERNAL MODULE: ./src/assets/svgs/ic-slack-color.svg
+var ic_slack_color = __webpack_require__("5eae");
+var ic_slack_color_default = /*#__PURE__*/__webpack_require__.n(ic_slack_color);
+
 // EXTERNAL MODULE: ./src/assets/svgs/ic-youtube.svg
 var ic_youtube = __webpack_require__("6c08");
 var ic_youtube_default = /*#__PURE__*/__webpack_require__.n(ic_youtube);
@@ -51591,6 +51731,14 @@ var ic_growth_default = /*#__PURE__*/__webpack_require__.n(ic_growth);
 var ic_enterprise = __webpack_require__("b245");
 var ic_enterprise_default = /*#__PURE__*/__webpack_require__.n(ic_enterprise);
 
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-code-gray.svg
+var ic_code_gray = __webpack_require__("55ec");
+var ic_code_gray_default = /*#__PURE__*/__webpack_require__.n(ic_code_gray);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-controls.svg
+var ic_controls = __webpack_require__("ed97");
+var ic_controls_default = /*#__PURE__*/__webpack_require__.n(ic_controls);
+
 // EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-start.svg
 var ic_start = __webpack_require__("9701");
 var ic_start_default = /*#__PURE__*/__webpack_require__.n(ic_start);
@@ -51626,6 +51774,10 @@ var ic_checkout_flat_default = /*#__PURE__*/__webpack_require__.n(ic_checkout_fl
 // EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-hosted-flat.svg
 var ic_hosted_flat = __webpack_require__("7f3e");
 var ic_hosted_flat_default = /*#__PURE__*/__webpack_require__.n(ic_hosted_flat);
+
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-dashboard.svg
+var ic_dashboard = __webpack_require__("687a");
+var ic_dashboard_default = /*#__PURE__*/__webpack_require__.n(ic_dashboard);
 
 // EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-lrg-standard.svg
 var ic_lrg_standard = __webpack_require__("74ec");
@@ -51770,6 +51922,7 @@ var ic_rays_mono_default = /*#__PURE__*/__webpack_require__.n(ic_rays_mono);
 
 
 
+
  // Nav icons imports
 
 
@@ -51781,6 +51934,9 @@ var ic_rays_mono_default = /*#__PURE__*/__webpack_require__.n(ic_rays_mono);
 
 
  // Marketing icons imports
+
+
+
 
 
 
@@ -51861,6 +52017,7 @@ var uiIcons = {
   twitter: ic_twitter_default.a,
   github: ic_github_default.a,
   slack: ic_slack_default.a,
+  'slack-color': ic_slack_color_default.a,
   youtube: ic_youtube_default.a,
   image: ic_image_default.a,
   trash: ic_trash_default.a,
@@ -51894,12 +52051,15 @@ var mIcons = {
   risecircle: ic_lrg_rise_default.a,
   growthcircle: ic_lrg_growth_default.a,
   enterprisecircle: ic_lrg_enterprise_default.a,
+  'code-gray': ic_code_gray_default.a,
   start: ic_start_default.a,
   cart: ic_cart_default.a,
   checkout: ic_checkout_default.a,
   orders: MIcons_ic_orders_default.a,
   products: MIcons_ic_products_default.a,
   categories: MIcons_ic_categories_default.a,
+  controls: ic_controls_default.a,
+  dashboard: ic_dashboard_default.a,
   backend: ic_lrg_backend_default.a,
   business: ic_lrg_business_default.a,
   'checkout-lg': ic_lrg_checkout_default.a,
