@@ -38789,6 +38789,40 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGT
 
 /***/ }),
 
+/***/ "da75":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M11.122 3.66a1 1 0 011.756 0L15.2 7.918a1 1 0 00.694.505l4.766.892a1 1 0 01.542 1.67l-3.331 3.523a1 1 0 00-.265.816l.624 4.809a1 1 0 01-1.42 1.032l-4.381-2.08a1 1 0 00-.858 0l-4.38 2.08a1 1 0 01-1.42-1.032l.623-4.809a1 1 0 00-.265-.816L2.8 10.984a1 1 0 01.542-1.67l4.766-.892a1 1 0 00.694-.505l2.321-4.256z","fill":"#41546C"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "da84":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -51712,6 +51746,10 @@ var ic_categories_default = /*#__PURE__*/__webpack_require__.n(ic_categories);
 var ic_spaces = __webpack_require__("3496");
 var ic_spaces_default = /*#__PURE__*/__webpack_require__.n(ic_spaces);
 
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-star.svg
+var ic_star = __webpack_require__("da75");
+var ic_star_default = /*#__PURE__*/__webpack_require__.n(ic_star);
+
 // EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-rays.svg
 var ic_rays = __webpack_require__("63f5");
 var ic_rays_default = /*#__PURE__*/__webpack_require__.n(ic_rays);
@@ -51942,6 +51980,7 @@ var ic_rays_mono_default = /*#__PURE__*/__webpack_require__.n(ic_rays_mono);
 
 
 
+
  // Marketing icons imports
 
 
@@ -52045,6 +52084,7 @@ var navIcons = {
   settings: ic_settings_default.a,
   categories: ic_categories_default.a,
   spaces: ic_spaces_default.a,
+  star: ic_star_default.a,
   rays: ic_rays_default.a
 };
 var mIcons = {
