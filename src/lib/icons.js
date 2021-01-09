@@ -56,6 +56,7 @@ import IcLogs from '../assets/svgs/NavIcons/ic-logs.svg';
 import IcSettings from '../assets/svgs/NavIcons/ic-settings.svg';
 import IcCategories from '../assets/svgs/NavIcons/ic-categories.svg';
 import IcSpaces from '../assets/svgs/NavIcons/ic-spaces.svg';
+import IcStar from '../assets/svgs/NavIcons/ic-star.svg';
 import IcRays from '../assets/svgs/NavIcons/ic-rays.svg';
 
 // Marketing icons imports
@@ -162,6 +163,7 @@ export const navIcons = {
   settings: IcSettings,
   categories: IcCategories,
   spaces: IcSpaces,
+  star: IcStar,
   rays: IcRays,
 };
 
