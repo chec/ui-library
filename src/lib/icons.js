@@ -29,6 +29,7 @@ import IcFacebook from '../assets/svgs/ic-fb.svg';
 import IcTwitter from '../assets/svgs/ic-twitter.svg';
 import IcGithub from '../assets/svgs/ic-github.svg';
 import IcSlack from '../assets/svgs/ic-slack.svg';
+import IcSlackColor from '../assets/svgs/ic-slack-color.svg';
 import IcYouTube from '../assets/svgs/ic-youtube.svg';
 import IcLink from '../assets/svgs/UiIcons/ic-link.svg';
 import IcRightArrow from '../assets/svgs/UiIcons/ic-right-arrow.svg';
@@ -64,6 +65,8 @@ import IcPro from '../assets/svgs/MIcons/ic-pro.svg';
 import IcRise from '../assets/svgs/MIcons/ic-rise.svg';
 import IcGrowth from '../assets/svgs/MIcons/ic-growth.svg';
 import IcEnterprise from '../assets/svgs/MIcons/ic-enterprise.svg';
+import IcCodeGray from '../assets/svgs/MIcons/ic-code-gray.svg';
+import IcControls from '../assets/svgs/MIcons/ic-controls.svg';
 import IcColorStart from '../assets/svgs/MIcons/ic-start.svg';
 import IcColorCart from '../assets/svgs/MIcons/ic-cart.svg';
 import IcColorCheckout from '../assets/svgs/MIcons/ic-checkout.svg';
@@ -73,6 +76,7 @@ import IcColorCategories from '../assets/svgs/MIcons/ic-categories.svg';
 import IcColorCodeFlat from '../assets/svgs/MIcons/ic-code-flat.svg';
 import IcColorCheckoutFlat from '../assets/svgs/MIcons/ic-checkout-flat.svg';
 import IcColorHostedFlat from '../assets/svgs/MIcons/ic-hosted-flat.svg';
+import IcDashboard from '../assets/svgs/MIcons/ic-dashboard.svg';
 // Circle marketing icons imports
 import IcLrgStandard from '../assets/svgs/MIcons/ic-lrg-standard.svg';
 import IcLrgPlus from '../assets/svgs/MIcons/ic-lrg-plus.svg';
@@ -138,6 +142,7 @@ export const uiIcons = {
   twitter: IcTwitter,
   github: IcGithub,
   slack: IcSlack,
+  'slack-color': IcSlackColor,
   youtube: IcYouTube,
   image: IcImage,
   trash: IcTrash,
@@ -173,12 +178,15 @@ export const mIcons = {
   risecircle: IcLrgRise,
   growthcircle: IcLrgGrowth,
   enterprisecircle: IcLrgEnterprise,
+  'code-gray': IcCodeGray,
   start: IcColorStart,
   cart: IcColorCart,
   checkout: IcColorCheckout,
   orders: IcColorOrders,
   products: IcColorProducts,
   categories: IcColorCategories,
+  controls: IcControls,
+  dashboard: IcDashboard,
   backend: IcLrgBackend,
   business: IcLrgBusiness,
   'checkout-lg': IcLrgCheckout,
