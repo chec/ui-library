@@ -75,6 +75,7 @@
           >
             <ChecNavIcon :icon="section.icon" />
           </ChecButton>
+          <Ping v-if="section.ping" />
         </li>
       </ul>
       <div @mouseover="() => handleOpenSection(user)">
@@ -101,6 +102,7 @@ import ChecLogo from '@/assets/svgs/chec-logo.svg';
 import ChecNavIcon from '@/components/ChecNavIcon';
 import ChecButton from '@/components/ChecButton';
 import ChecIcon from '@/components/ChecIcon';
+import Ping from './ChecNavigation/Ping.vue';
 
 export default {
   name: 'ChecNavigation',
@@ -110,6 +112,7 @@ export default {
     ChecAvatar,
     ChecLogo,
     ChecNavIcon,
+    Ping,
   },
   props: {
     /**
