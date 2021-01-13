@@ -13,7 +13,7 @@ export default {
 
 <style lang="scss">
 .chec-navigation__ping {
-  @apply flex h-3 w-3 relative -ml-5 -mt-5;
+  @apply flex h-3 w-3 relative -ml-5 -mt-5 pointer-events-none;
 
   &-inner {
     @apply relative inline-flex rounded-full h-3 w-3 bg-green-400;
