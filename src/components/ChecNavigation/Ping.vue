@@ -21,6 +21,7 @@ export default {
 
   &-outer {
     @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75;
+    animation-duration: 3s;
   }
 }
 </style>
