@@ -3,7 +3,7 @@
     :is="form ? 'form' : 'div'"
     :class="`modal__overlay modal__overlay--${overlay}`"
   >
-    <ChecCard class="modal__card" :class="`max-w-${width}`" tailwind="bg-gray-100">
+    <ChecCard class="modal__card" :class="`max-w-${width}`">
       <ChecModalHeader v-if="header" :undismissible="undismissible" @close="emitClose">
         {{ header }}
       </ChecModalHeader>
@@ -93,11 +93,22 @@ export default {
   }
 
   &__card {
-    @apply w-full shadow-lg;
+    @apply w-full shadow-holo-light p-1;
 
-    > .card__inner-wrapper {
-      padding-bottom: 2.375rem;
-      padding-top: 2.375rem;
+    p {
+      @apply text-sm leading-5 mb-2;
+
+      &:last-child {
+        @apply mb-0;
+      }
+    }
+
+    .card__inner-wrapper {
+      @apply bg-gray-100;
+    }
+
+    .loading {
+      @apply rounded-lg;
     }
   }
 

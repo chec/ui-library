@@ -1,6 +1,6 @@
 <template>
   <div class="chec-modal-header">
-    <component :is="tag">
+    <component :is="tag" class="chec-modal-header__text">
       <!--
         @slot The title of the header
       -->
@@ -51,5 +51,9 @@ export default {
 <style lang="scss">
 .chec-modal-header {
   @apply flex justify-between text-gray-500 font-lato mb-8;
+
+  &__text {
+    @apply text-lg font-bold;
+  }
 }
 </style>
