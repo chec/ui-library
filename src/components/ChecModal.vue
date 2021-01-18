@@ -93,7 +93,7 @@ export default {
   }
 
   &__card {
-    @apply w-full shadow-holo-light p-1;
+    @apply w-full shadow-holo-light p-1 text-gray-600;
 
     p {
       @apply text-sm leading-5 mb-2;
