@@ -122,7 +122,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
             <label class="block mb-4">
               <TextField label="Email address" value="lezlie@example.com" class="w-full" />
             </label>
-            <ChecButton color="red" class="mt-8" @click="hideModal">Close</ChecButton>
+            <ChecButton color="primary" class="mt-8 p-0" @click="hideModal" text-only>Close</ChecButton>
           </ChecModal>
           <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
           <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
@@ -178,10 +178,10 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
               <TextField label="Email address" value="lezlie@example.com" class="w-full" />
             </label>
             <template v-slot:toolbar>
-              <ChecButton color="red">
+              <ChecButton color="primary" text-only class="p-0">
                 Cancel
               </ChecButton>
-              <ChecButton color="green">
+              <ChecButton color="primary">
                 Save
               </ChecButton>
             </template>
