@@ -487,6 +487,10 @@ export default {
     svg {
       @apply ml-1;
     }
+
+    &.router-link-exact-active {
+      @apply font-bold;
+    }
   }
 }
 </style>
