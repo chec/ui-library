@@ -1,10 +1,17 @@
 <template>
   <div class="thumbnail-card" :class="classObject">
-    <div v-if="thumbnail" class="thumbnail-card__thumbnail">
-      <img :src="thumbnail" :alt="altText">
-    </div>
-    <div v-else class="thumbnail-card__placeholder">
-      <ChecIcon class="thumbnail-card__logo" icon="chec" />
+    <div class="thumbnail-card__content">
+      <div v-if="hasHoverContent" class="thumbnail-card__hover-content">
+        <slot
+          name="hover-content"
+        />
+      </div>
+      <div v-if="thumbnail" class="thumbnail-card__thumbnail">
+        <img :src="thumbnail" :alt="altText">
+      </div>
+      <div v-else class="thumbnail-card__placeholder">
+        <ChecIcon class="thumbnail-card__logo" icon="chec" />
+      </div>
     </div>
     <div class="thumbnail-card__inner-wrapper" :class="innerClass">
       <!--
@@ -76,6 +83,14 @@ export default {
         },
       ];
     },
+    /**
+     * Whether a hover-content slot was provided by the client
+     *
+     * @returns {boolean}
+     */
+    hasHoverContent() {
+      return !!this.$slots['hover-content'];
+    },
   },
 };
 </script>
@@ -112,6 +127,36 @@ export default {
 
   &--active {
     @apply shadow-holo;
+  }
+
+  &__content {
+    @apply relative;
+  }
+
+  &__hover-content {
+    @apply absolute hidden flex-col justify-center h-full w-full p-4 text-white;
+    // Snowflake colour, or maybe gray-500 with 90% opacity, but whatever
+    background: rgba(65, 84, 108, 0.9);
+
+    // Content styling
+    p {
+      @apply font-bold mb-1;
+    }
+
+    ul {
+      @apply list-disc;
+    }
+
+    li {
+      @apply ml-4;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    .thumbnail-card__hover-content {
+      @apply flex;
+    }
   }
 }
 </style>

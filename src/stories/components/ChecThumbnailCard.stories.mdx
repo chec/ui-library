@@ -12,6 +12,8 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
 
 <Props of={ChecThumbnailCard} />
 
+## Default
+
 <Preview>
   <Story name="Default">
     {{
@@ -51,6 +53,8 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
     }}
   </Story>
 </Preview>
+
+## With form
 
 <Preview>
   <Story name="With form">
@@ -112,6 +116,8 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
   </Story>
 </Preview>
 
+## With switch
+
 <Preview>
   <Story name="With switch">
     {{
@@ -160,6 +166,56 @@ import ChecSwitch from '../../components/ChecSwitch.vue';
               icon="chec"
               tag-type="link"
             />
+          </ChecThumbnailCard>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+## With content on hover
+
+<Preview>
+  <Story name="With content on hover">
+    {{
+      components: {
+        ChecThumbnailCard,
+      },
+      props: {
+        darkMode: {
+          default: boolean('Dark mode', false)
+        },
+        thumbnail: {
+          default: text('Image url', 'https://www.fillmurray.com/650/450')
+        },
+        altText: {
+          default: text('Image alt text', 'Some alt text')
+        },
+      },
+      data() {
+        return {
+          toggled: false,
+        };
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-100">
+          <ChecThumbnailCard
+            :active="toggled"
+            :thumbnail="thumbnail"
+            :alt-text="altText"
+            :dark-mode="darkMode"
+            inner-class="flex flex-grow justify-between"
+            class="w-1/2"
+            hoverable
+          >
+            <template v-slot:hover-content>
+              <p>A single page theme for selling a single product.</p>
+              <ul>
+                <li>Option 1</li>
+                <li>Option 2</li>
+                <li>Option 3</li>
+              </ul>
+            </template>
+            <p>Nothing here</p>
           </ChecThumbnailCard>
         </div>`
     }}
