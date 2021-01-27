@@ -60754,15 +60754,15 @@ var ChecVerticalNavItem_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecVerticalNavItem = (ChecVerticalNavItem_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44bea430-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecWysiwyg.vue?vue&type=template&id=9a043226&
-var ChecWysiwygvue_type_template_id_9a043226_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-wysiwyg",class:_vm.classNames,on:{"click":_vm.giveFocus}},[(_vm.isScrollable)?_c('div',{staticClass:"chec-wysiwyg__label-underlay",class:{ 'chec-wysiwyg__label-underlay--scrolled-to-top': _vm.isScrolledToTop }}):_vm._e(),_c('EditorContent',_vm._g(_vm._b({ref:"input",attrs:{"editor":_vm.editor},on:{"input":_vm.handleInput}},'EditorContent',_vm.sharedInputProps,false),_vm.nonInputListeners)),(_vm.label)?_c('label',{staticClass:"chec-wysiwyg__label",attrs:{"data-content":_vm.label,"for":_vm.id}},[_vm._v(" "+_vm._s(_vm.label)+" "),(_vm.required)?_c('span',{staticClass:"chec-wysiwyg__required-text"},[_vm._v(" "+_vm._s(_vm.$t('general.requiredInline'))+" ")]):_vm._e()]):_vm._e(),_c('EditorMenuBar',{attrs:{"editor":_vm.editor},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44bea430-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecWysiwyg.vue?vue&type=template&id=32ea3034&
+var ChecWysiwygvue_type_template_id_32ea3034_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-wysiwyg",class:_vm.classNames,on:{"click":_vm.giveFocus}},[(_vm.isScrollable)?_c('div',{staticClass:"chec-wysiwyg__label-underlay",class:{ 'chec-wysiwyg__label-underlay--scrolled-to-top': _vm.isScrolledToTop }}):_vm._e(),_c('EditorContent',_vm._g(_vm._b({ref:"input",attrs:{"editor":_vm.editor},on:{"input":_vm.handleInput}},'EditorContent',_vm.sharedInputProps,false),_vm.nonInputListeners)),(_vm.label)?_c('label',{staticClass:"chec-wysiwyg__label",attrs:{"data-content":_vm.label,"for":_vm.id}},[_vm._v(" "+_vm._s(_vm.label)+" "),(_vm.required)?_c('span',{staticClass:"chec-wysiwyg__required-text"},[_vm._v(" "+_vm._s(_vm.$t('general.requiredInline'))+" ")]):_vm._e()]):_vm._e(),_c('EditorMenuBar',{attrs:{"editor":_vm.editor},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var commands = ref.commands;
 var isActive = ref.isActive;
 return [_c('div',{staticClass:"chec-wysiwyg__menubar"},[_c('button',{staticClass:"chec-wysiwyg__menubar--button",class:{ 'chec-wysiwyg__menubar--button-is-active': isActive.bold() },attrs:{"type":"button","title":_vm.$t('wysiwyg.bold'),"disabled":_vm.disabled},on:{"click":commands.bold}},[_c('ChecIcon',{attrs:{"icon":"bold","size":"base"}})],1),_c('button',{staticClass:"chec-wysiwyg__menubar--button",class:{ 'chec-wysiwyg__menubar--button-is-active': isActive.italic() },attrs:{"type":"button","title":_vm.$t('wysiwyg.italic'),"disabled":_vm.disabled},on:{"click":commands.italic}},[_c('ChecIcon',{attrs:{"icon":"italic","size":"base"}})],1),_c('button',{staticClass:"chec-wysiwyg__menubar--button",class:{ 'chec-wysiwyg__menubar--button-is-active': isActive.heading({ level: 1 }) },attrs:{"type":"button","title":_vm.$t('wysiwyg.h1'),"disabled":_vm.disabled},on:{"click":function($event){return commands.heading({ level: 1 })}}},[_vm._v(" H1 ")]),_c('button',{staticClass:"chec-wysiwyg__menubar--button",class:{ 'is-active': isActive.heading({ level: 2 }) },attrs:{"type":"button","title":_vm.$t('wysiwyg.h2'),"disabled":_vm.disabled},on:{"click":function($event){return commands.heading({ level: 2 })}}},[_vm._v(" H2 ")]),_c('button',{staticClass:"chec-wysiwyg__menubar--button",class:{ 'chec-wysiwyg__menubar--button-is-active': isActive.heading({ level: 3 }) },attrs:{"type":"button","title":_vm.$t('wysiwyg.h3'),"disabled":_vm.disabled},on:{"click":function($event){return commands.heading({ level: 3 })}}},[_vm._v(" H3 ")]),_c('button',{staticClass:"chec-wysiwyg__menubar--button",class:{ 'menubar__button--is-active': isActive.bullet_list() },attrs:{"type":"button","title":_vm.$t('wysiwyg.bulletlist'),"disabled":_vm.disabled},on:{"click":commands.bullet_list}},[_c('ChecIcon',{attrs:{"icon":"bullet-list","size":"base"}})],1),_c('button',{staticClass:"chec-wysiwyg__menubar--button",class:{ 'chec-wysiwyg__menubar--button-is-active': isActive.blockquote() },attrs:{"type":"button","title":_vm.$t('wysiwyg.blockquote'),"disabled":_vm.disabled},on:{"click":commands.blockquote}},[_c('ChecIcon',{attrs:{"icon":"quote","size":"base"}})],1)])]}}])})],1)}
-var ChecWysiwygvue_type_template_id_9a043226_staticRenderFns = []
+var ChecWysiwygvue_type_template_id_32ea3034_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecWysiwyg.vue?vue&type=template&id=9a043226&
+// CONCATENATED MODULE: ./src/components/ChecWysiwyg.vue?vue&type=template&id=32ea3034&
 
 // EXTERNAL MODULE: ./node_modules/prosemirror-state/dist/index.es.js
 var index_es = __webpack_require__("5313");
@@ -72783,7 +72783,8 @@ class extensions_esm_TrailingNode extends Extension {
       hasFocus: false,
       id: createUniqueId(this.name || 'chec', 'wysiwyg')(),
       editor: null,
-      nonInputListeners: nonInputListeners
+      nonInputListeners: nonInputListeners,
+      trackedValue: this.value
     };
   },
   computed: {
@@ -72829,11 +72830,16 @@ class extensions_esm_TrailingNode extends Extension {
     }
   },
   watch: {
-    value: function value() {
+    value: function value(newValue) {
       var _this = this;
 
+      // Handle external updates of the text value. We do this by tracking the current value of the editor in a data
+      // attribute, and then comparing watched changes to the `value` prop to the value we're tracking with the editor.
+      // If it changes, then we have an external change that wasn't prompted by changes within the editor.
       this.$nextTick(function () {
-        _this.autoGrow();
+        if (newValue !== _this.trackedValue) {
+          _this.editor.setContent(newValue);
+        }
       });
     },
     disabled: function disabled(_disabled) {
@@ -72874,7 +72880,12 @@ class extensions_esm_TrailingNode extends Extension {
       editable: !this.disabled,
       onUpdate: function onUpdate(_ref2) {
         var getHTML = _ref2.getHTML;
-        return _this2.$emit('input', getHTML());
+        var value = getHTML();
+        _this2.trackedValue = value;
+
+        _this2.$emit('input', value);
+
+        _this2.autoGrow();
       },
       onFocus: function onFocus() {
         _this2.hasFocus = true;
@@ -72946,8 +72957,8 @@ var ChecWysiwygvue_type_style_index_0_lang_scss_ = __webpack_require__("9586");
 
 var ChecWysiwyg_component = normalizeComponent(
   components_ChecWysiwygvue_type_script_lang_js_,
-  ChecWysiwygvue_type_template_id_9a043226_render,
-  ChecWysiwygvue_type_template_id_9a043226_staticRenderFns,
+  ChecWysiwygvue_type_template_id_32ea3034_render,
+  ChecWysiwygvue_type_template_id_32ea3034_staticRenderFns,
   false,
   null,
   null,
