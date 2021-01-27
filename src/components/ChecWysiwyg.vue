@@ -198,6 +198,7 @@ export default {
       id: uniqueId(this.name || 'chec', 'wysiwyg')(),
       editor: null,
       nonInputListeners,
+      trackedValue: this.value,
     };
   },
   computed: {
@@ -249,9 +250,14 @@ export default {
     },
   },
   watch: {
-    value() {
+    value(newValue) {
+      // Handle external updates of the text value. We do this by tracking the current value of the editor in a data
+      // attribute, and then comparing watched changes to the `value` prop to the value we're tracking with the editor.
+      // If it changes, then we have an external change that wasn't prompted by changes within the editor.
       this.$nextTick(() => {
-        this.autoGrow();
+        if (newValue !== this.trackedValue) {
+          this.editor.setContent(newValue);
+        }
       });
     },
     disabled(disabled) {
@@ -293,7 +299,12 @@ export default {
       ],
       content: this.value,
       editable: !this.disabled,
-      onUpdate: ({ getHTML }) => this.$emit('input', getHTML()),
+      onUpdate: ({ getHTML }) => {
+        const value = getHTML();
+        this.trackedValue = value;
+        this.$emit('input', value);
+        this.autoGrow();
+      },
       onFocus: () => { this.hasFocus = true; },
       onBlur: () => { this.hasFocus = false; },
     });

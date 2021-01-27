@@ -1,10 +1,9 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
-import { withKnobs, object, boolean, text, select } from '@storybook/addon-knobs';
-import { withInfo } from 'storybook-addon-vue-info'
+import { boolean, text, select } from '@storybook/addon-knobs';
 import ChecWysiwyg from '../../components/ChecWysiwyg.vue';
 import ChecFormField from '../../components/ChecFormField.vue';
-import { uiIcons } from '../../lib/icons';
+import ChecButton from '../../components/ChecButton.vue';
 
 <Meta title="Form fields/WYSIWYG" component={ChecWysiwyg} />
 
@@ -18,6 +17,7 @@ import { uiIcons } from '../../lib/icons';
   <Story name="Defaults">
     {{
       components: {
+        ChecButton,
         ChecFormField,
         ChecWysiwyg,
       },
@@ -64,27 +64,33 @@ import { uiIcons } from '../../lib/icons';
       methods: {
         handleClick(e, value) {
           return action(`Text field action button was clicked with: ${value}`)();
+        },
+        newContent() {
+          this.inputValue = 'wow';
         }
       },
       template: `
-        <div class="py-16 w-full flex justify-around" :class="{'bg-gray-700': background === 'dark'}">
-          <ChecFormField
-            :appendLabel="appendLabel"
-            :tooltip="tooltip"
-            @action-click="handleClick"
-            class="w-full max-w-sm"
-          >
-            <ChecWysiwyg
-              name="input-name"
-              :label="label"
-              v-model="inputValue"
-              :variant="variant"
-              :style-variant="styleVariant"
-              :placeholder="placeholder"
-              :required="required"
-              :size="wysiwygRows"
-            />
-          </ChecFormField>
+        <div>
+          <div class="py-16 w-full flex justify-around" :class="{'bg-gray-700': background === 'dark'}">
+            <ChecFormField
+              :appendLabel="appendLabel"
+              :tooltip="tooltip"
+              @action-click="handleClick"
+              class="w-full max-w-sm"
+            >
+              <ChecWysiwyg
+                name="input-name"
+                :label="label"
+                v-model="inputValue"
+                :variant="variant"
+                :style-variant="styleVariant"
+                :placeholder="placeholder"
+                :required="required"
+                :size="wysiwygRows"
+              />
+            </ChecFormField>
+          </div>
+          <ChecButton class="mx-auto" @click="newContent">Change content</ChecButton>
         </div>`,
     }}
   </Story>
