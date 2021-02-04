@@ -101,7 +101,7 @@ export default {
 
   &--dark-mode {
     .thumbnail-card__inner-wrapper {
-      @apply bg-gray-500 text-white;
+      @apply bg-gray-600 text-white;
     }
   }
 
