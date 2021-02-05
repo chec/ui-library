@@ -155,15 +155,19 @@ export default {
     controlled: Boolean,
   },
   data() {
-    const compiledTree = this.tree.map(this.parseSection);
     return {
       showDeepNav: false,
-      compiledTree,
-      activeSection: compiledTree[0],
+      currentActiveSection: null,
       listItemFocus: null,
     };
   },
   computed: {
+    compiledTree() {
+      return this.tree.map(this.parseSection);
+    },
+    activeSection() {
+      return this.currentActiveSection || this.compiledTree[0];
+    },
     deepNavClasses() {
       return {
         'chec-navigation__drawer--open': this.open || (!this.controlled && this.showDeepNav),
