@@ -45,14 +45,18 @@ the order of the "tree" that it is given
           type: Boolean,
           default: boolean('"Controlled" mode', false),
         },
+        pingOnOrders: {
+          type: Boolean,
+          default: boolean('Ping on orders', true),
+        },
         activeSection: {
           type: String,
           default: select('Active section', ['Orders', 'Products', 'Spaces storefront'], 'Orders'),
         }
       },
-      data() {
-        return {
-          tree: [
+      computed: {
+        tree() {
+          return [
             {
               label: 'Orders',
               icon: 'orders',
@@ -66,7 +70,7 @@ the order of the "tree" that it is given
             {
               label: 'Products',
               icon: 'products',
-              ping: true,
+              ping: this.pingOnOrders,
               links: [
                 {
                   label: 'Products',
@@ -89,7 +93,11 @@ the order of the "tree" that it is given
                 }
               ]
             }
-          ],
+          ];
+        },
+      },
+      data() {
+        return {
           user: {
             label: 'Account',
             divider: true,
