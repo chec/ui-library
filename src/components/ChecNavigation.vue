@@ -262,7 +262,7 @@ export default {
      */
     handleOpenSection(section) {
       this.showDeepNav = true;
-      this.activeSection = section;
+      this.currentActiveSection = section;
       this.listItemFocus = null;
     },
     /**
