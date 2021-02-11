@@ -60654,12 +60654,12 @@ var v_tooltip_esm = __webpack_require__("e37d");
   VClosePopover: v_tooltip_esm["a" /* VClosePopover */],
   VTooltip: v_tooltip_esm["c" /* VTooltip */]
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44bea430-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavigation.vue?vue&type=template&id=054015ca&
-var ChecVerticalNavigationvue_type_template_id_054015ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"vertical-navigation"},[_c('ul',{staticClass:"vertical-navigation__list"},[_vm._t("default")],2)])}
-var ChecVerticalNavigationvue_type_template_id_054015ca_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44bea430-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavigation.vue?vue&type=template&id=58be482a&
+var ChecVerticalNavigationvue_type_template_id_58be482a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"vertical-navigation"},[_c('ul',{staticClass:"vertical-navigation__list"},[_vm._t("default")],2)])}
+var ChecVerticalNavigationvue_type_template_id_58be482a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecVerticalNavigation.vue?vue&type=template&id=054015ca&
+// CONCATENATED MODULE: ./src/components/ChecVerticalNavigation.vue?vue&type=template&id=58be482a&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavigation.vue?vue&type=script&lang=js&
 //
@@ -60694,8 +60694,8 @@ var ChecVerticalNavigationvue_type_style_index_0_lang_scss_ = __webpack_require_
 
 var ChecVerticalNavigation_component = normalizeComponent(
   components_ChecVerticalNavigationvue_type_script_lang_js_,
-  ChecVerticalNavigationvue_type_template_id_054015ca_render,
-  ChecVerticalNavigationvue_type_template_id_054015ca_staticRenderFns,
+  ChecVerticalNavigationvue_type_template_id_58be482a_render,
+  ChecVerticalNavigationvue_type_template_id_58be482a_staticRenderFns,
   false,
   null,
   null,
