@@ -6,16 +6,14 @@
   >
     <div class="slideout-panel">
       <Overlay
-        v-if="renderOverlay"
         :overlay="overlay"
-        :close-on-overlay-click="closeOnOverlayClick"
-        @close="emitClose"
+        @close="onOverlayDismiss"
       />
       <Panel
         v-if="panelOpen"
+        :panel-open="panelOpen"
         :title="title"
         :title-tag="titleTag"
-        :width="width"
         :size="size"
         :depth="depth"
         @close="emitClose"
@@ -33,6 +31,11 @@
 import Panel from './ChecSlideoutPanel/Panel';
 import Overlay from './ChecSlideoutPanel/Overlay';
 
+// Declaring panels as an external variable to reference
+// the shared component -> `ChecSlideoutPanel`
+// This allows us to tack on a `depth` property to determine
+// the depth of each component being added
+// See `depth` data property and `mounted/beforeDestroy` hook below
 const panels = [];
 
 export default {
@@ -43,32 +46,24 @@ export default {
   },
   props: {
     /**
-     * The size of the panel width. One of "half", "third", "threeQuarters", "full".
+     * The size of the panel width. Use one of the tailwind sizes, eg.
+     * 1/2 is 50% of viewport, 1/3 is 33.33333% of viewport,
+     * 3/4 is 75% of viewport, screen is 100% of viewport
      */
     size: {
       type: String,
-      default: 'half',
+      default: '1/2',
     },
     /**
      * The title of the panel slideout in the header
      */
-    title: {
-      type: String,
-      required: true,
-    },
+    title: String,
     /**
      * The HTML tag to use for the title of the panel header
      */
     titleTag: {
       type: String,
       default: () => 'h2',
-    },
-    /**
-     * Controls the max width of the content in the panel. Use one of the tailwind sizes, e.g. md, xl, 2xl.
-     */
-    width: {
-      type: String,
-      default: '2xl',
     },
     /**
      * The overlay backdrop when the panel is opened. One of "light" and "dark".
@@ -81,32 +76,32 @@ export default {
       },
     },
     /**
-     * Whether to close panel on overlay click. Default is true.
+     * Whether to close panel on overlay click. If not included, defaults to false.
      */
     closeOnOverlayClick: Boolean,
   },
   data() {
     return {
       panelOpen: true,
-      renderOverlay: true,
       // eslint-disable-next-line vue/no-unused-properties
       depth: 0,
     };
   },
   mounted() {
+    // Check that there are panel components
+    // Add depth property value by 1 for each panel
     if (panels.length) {
-      this.renderOverlay = false;
       panels.forEach((panel) => {
         // eslint-disable-next-line no-param-reassign
         panel.depth += 1;
       });
     }
+    // Push a new panel component to the panels array
     panels.push(this);
-    console.log('Added', panels);
   },
   beforeDestroy() {
+    // Delete component from the panels array
     panels.splice(-1, 1);
-    console.log(panels);
   },
   methods: {
     emitAction() {
@@ -127,7 +122,7 @@ export default {
     },
     onOverlayDismiss() {
       if (this.closeOnOverlayClick) {
-        this.$emit('close');
+        this.emitClose('close');
       }
     },
   },
@@ -136,35 +131,34 @@ export default {
 
 <style lang="scss">
 .slideout-panel {
-  @apply block flow-root;
-  transition: opacity 0.15s;
+  @apply block flow-root transition duration-150 transition-opacity;
 }
 
 .panel-enter,
 .panel-leave-to {
   .slideout-panel__overlay {
-    opacity: 0;
+    @apply opacity-0;
   }
 
   .slideout-panel__element {
-    transform: translateX(100%);
+    @apply transform translate-x-full;
   }
 }
 
 .panel-enter-to,
 .panel-leave {
   .slideout-panel__overlay {
-    opacity: 1;
+    @apply opacity-100;
   }
 
   .slideout-panel__element {
-    transform: translateX(0);
+    @apply transform translate-x-0;
   }
 }
 
 .panel-leave-active {
   .slideout-panel__overlay {
-    transition-delay: 400ms;
+    @apply transition delay-400;
   }
 }
 </style>

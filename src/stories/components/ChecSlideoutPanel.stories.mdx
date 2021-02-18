@@ -6,7 +6,6 @@ import ChecButton from '../../components/ChecButton.vue';
 import ChecTable from '../../components/ChecTable.vue'
 import ChecIcon from '../../components/ChecIcon.vue';
 import TextField from '../../components/TextField.vue';
-const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', 'full', 'screen-sm', 'screen-md', 'screen-lg', 'screen-xl', 'none'];
 
 <Meta title="Components/Slideout panel" component={ChecSlideoutPanel} />
 
@@ -23,19 +22,19 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
       },
       props: {
         size: {
-          default: select('Panel size', ['half', 'third', 'threeQuarters', 'full']),
+          default: select('Panel size', ['1/3', '1/2', '3/4', 'screen']),
         },
         overlay: {
           default: select('Overlay', ['light', 'dark']),
+        },
+        closeOnOverlayClick: {
+          default: boolean('Close panel on overlay click', true),
         },
         title: {
           default: text('Header title', 'Panel with content')
         },
         titleTag: {
           default: select('Title tag', [undefined, 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'], undefined)
-        },
-        width: {
-          default: select('Content width', widths, '2xl'),
         },
       },
       data() {
@@ -57,9 +56,8 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
             :overlay="overlay"
             :title="title"
             :titleTag="titleTag"
-            :width="width"
             @close="close"
-            closeOnOverlayClick
+            :closeOnOverlayClick="closeOnOverlayClick"
           >
             <p class="self-center mx-auto">Nothing here</p>
             <template v-slot:toolbar>
@@ -107,19 +105,19 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
       },
       props: {
         size: {
-          default: select('Width size', ['half', 'third', 'threeQuarters', 'full']),
+          default: select('Panel size', ['1/3', '1/2', '3/4', 'screen']),
         },
         overlay: {
           default: select('Overlay', ['light', 'dark']),
+        },
+        closeOnOverlayClick: {
+          default: boolean('Close panel on overlay click', true),
         },
         title: {
           default: text('Header title', 'Panel with table')
         },
         titleTag: {
           default: select('Title tag', [undefined, 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'], undefined)
-        },
-        width: {
-          default: select('Content width', widths, '2xl'),
         },
       },
       data() {
@@ -141,9 +139,8 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
             :overlay="overlay"
             :title="title"
             :titleTag="titleTag"
-            :width="width"
             @close="close"
-            closeOnOverlayClick
+            :closeOnOverlayClick="closeOnOverlayClick"
           >
             <span class="block text-lg text-gray-500 font-bold mb-4">
               Form title
@@ -240,6 +237,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
           open: false,
           openSecond: false,
           openThird: false,
+          openFourth: false,
         };
       },
       methods: {
@@ -252,11 +250,10 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
         <div>
           <ChecSlideoutPanel
             v-if="open"
-            size="half"
+            size="3/4"
             overlay="light"
             title="First panel"
             titleTag="h2"
-            width="2xl"
             @close="close"
             closeOnOverlayClick
           >
@@ -264,39 +261,69 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
             <ChecSlideoutPanel
               v-if="openSecond"
               title="Second panel"
-              size="half"
+              size="3/4"
               overlay="light"
               titleTag="h2"
-              width="2xl"
+              closeOnOverlayClick
               @close="openSecond = false"
             >
               Hello, I'm the second panel!
               <ChecSlideoutPanel
                 v-if="openThird"
                 title="Third panel"
-                size="half"
+                size="3/4"
                 overlay="light"
                 titleTag="h2"
-                width="2xl"
+                closeOnOverlayClick
                 @close="openThird = false"
               >
                 Hello, I'm the third panel!
+                <ChecSlideoutPanel
+                  v-if="openFourth"
+                  title="Limbo panel"
+                  size="3/4"
+                  overlay="light"
+                  titleTag="h2"
+                  closeOnOverlayClick
+                  @close="openFourth = false"
+                >
+                Hello, I'm the limbo inception layer!
                 <template v-slot:toolbar>
-                  <ChecButton @click="close" color="primary" text-only class="p-0">
+                  <ChecButton @click="openFourth = false" color="primary" text-only class="p-0">
                     Cancel
                   </ChecButton>
+                </template>
+              </ChecSlideoutPanel>
+                <template v-slot:toolbar>
+                  <ChecButton
+                    variant="small"
+                    outline
+                    color="primary"
+                    @click="openFourth = true"
+                  >
+                    Open the fourth panel
+                  </ChecButton>
+                  <div class="flex">
+                    <ChecButton @click="openThird = false" color="primary" text-only class="p-0">
+                      Cancel
+                    </ChecButton>
+                    <ChecButton class="ml-5" color="primary">
+                      Save
+                    </ChecButton>
+                  </div>
                 </template>
               </ChecSlideoutPanel>
               <template v-slot:toolbar>
                 <ChecButton
                   variant="small"
+                  outline
                   color="primary"
                   @click="openThird = true"
                 >
                   Open the third panel
                 </ChecButton>
                 <div class="flex">
-                  <ChecButton @click="close" color="primary" text-only class="p-0">
+                  <ChecButton @click="openSecond = false" color="primary" text-only class="p-0">
                     Cancel
                   </ChecButton>
                   <ChecButton class="ml-5" color="primary">
@@ -309,6 +336,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
             <ChecButton
               variant="small"
               color="primary"
+              outline
               @click="openSecond = true"
             >
               Open the second panel
@@ -323,7 +351,11 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
             </div>
           </template>
         </ChecSlideoutPanel>
-        <ChecButton @click="open = !open" color="primary" class="m-20">
+        <ChecButton
+          @click="open = !open"
+          color="primary"
+          class="m-20"
+        >
           Open the first panel
         </ChecButton>
         <h1 class="m-20 font-bold">I am a bunch of content that the panel will slide out on to.</h1>

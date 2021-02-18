@@ -4,35 +4,42 @@
     mode="out-in"
   >
     <div
+      ref="panelContainer"
       class="slideout-panel__element"
-      :class="classNames"
+      :class="[classNames, `sm:w-${size}`]"
+      @keydown="onEscapeKeypress"
     >
       <div class="slideout-panel__header">
-        <component :is="titleTag" v-if="title" class="slideout-panel__title">
-          {{ title }}
-        </component>
-        <ChecButton
-          class="slide-panel__close"
-          color="secondary"
-          variant="small"
-          @click="emitClose"
-        >
-          <template #icon>
-            <ChecIcon icon="close" />
-          </template>
-        </ChecButton>
+        <div class="slideout-panel__header-inner">
+          <component :is="titleTag" v-if="title" class="slideout-panel__title">
+            {{ title }}
+          </component>
+          <ChecButton
+            v-focus
+            class="slideout-panel__close"
+            color="secondary"
+            variant="small"
+            @click="emitClose"
+          >
+            <template #icon>
+              <ChecIcon icon="close" />
+            </template>
+          </ChecButton>
+        </div>
       </div>
-      <div class="slideout-panel__content" :class="`max-w-${width}`">
+      <div class="slideout-panel__content">
         <!--
           @slot Panel content
         -->
         <slot />
       </div>
       <div v-if="$slots.toolbar" class="slideout-panel__footer">
-        <!--
-          @slot Toolbar actions, buttons, etc
-        -->
-        <slot name="toolbar" />
+        <div class="slideout-panel__footer-inner">
+          <!--
+            @slot Toolbar actions, buttons, etc
+          -->
+          <slot name="toolbar" />
+        </div>
       </div>
     </div>
   </transition>
@@ -50,11 +57,13 @@ export default {
   },
   props: {
     /**
-     * The size of the panel width. One of "half", "third", "threeQuarters", "full".
+     * The size of the panel width. Use one of the tailwind sizes, eg.
+     * 1/2 is 50% of viewport, 1/3 is 33.33333% of viewport,
+     * 3/4 is 75% of viewport, screen is 100% of viewport
      */
     size: {
       type: String,
-      default: 'half',
+      default: '1/2',
     },
     /**
      * The title of the panel slideout in the header
@@ -70,24 +79,21 @@ export default {
       type: String,
       default: () => 'h2',
     },
-    /**
-     * Controls the max width of the content in the panel. Use one of the tailwind sizes, e.g. md, xl, 2xl.
-     */
-    width: {
-      type: String,
-      default: '2xl',
-    },
     depth: Number,
   },
   computed: {
     classNames() {
-      const { size } = this;
       const { depth } = this;
       return {
-        [`slideout-panel__element--size-${size}`]: size !== '',
         [`slideout-panel__element--depth-${depth}`]: depth !== '',
       };
     },
+  },
+  created() {
+    document.addEventListener('keydown', this.onEscapeKeypress);
+  },
+  destroyed() {
+    document.removeEventListener('keydown', this.onEscapeKeypress);
   },
   methods: {
     emitClose($event) {
@@ -98,11 +104,17 @@ export default {
        */
       this.$emit('close', $event);
     },
+    onEscapeKeypress(e) {
+      if (e.key === 'Escape') {
+        this.emitClose('close');
+      }
+    },
   },
 };
 </script>
 
 <style lang="scss">
+
 .slideout-panel {
   &__wrapper {
     @apply static;
@@ -110,53 +122,57 @@ export default {
 
   &__element {
     @apply
-      top-0 shadow-holo-light bg-gray-100 h-full flex flex-col fixed right-0 overflow-y-auto transition-transform;
-    transition-duration: 0.6s;
-    width: 100vw;
-    z-index: 1000;
+      top-0
+      shadow-holo-light
+      bg-gray-100
+      h-full
+      flex
+      flex-col
+      fixed
+      right-0
+      overflow-y-auto
+      transition-transform
+      z-100
+      duration-600
+      w-screen;
 
-    @screen sm {
-      &--size-half {
-        width: 50vw // Panel width is half of viewport
+      @screen sm {
+        min-width: 600px; // Set min width when viewport larger than 640px
       }
-
-      &--size-third {
-        width: 33.33%; // Fallback for non-supported browsers
-        width: calc(100% / 3); // Panel width is 1/3 of viewport
-      }
-
-      &--size-threeQuarters {
-        width: 75vw;
-      }
-
-      &--size-full {
-        width: 100vw;
-      }
-    }
 
     &--depth-1 {
-      right: 2.5rem;
+      width: calc(75% + 2.5rem) !important;
     }
 
     &--depth-2 {
-      right: 5rem;
+      width: calc(75% + 5rem) !important;
     }
 
     &--depth-3 {
-      right: 7.5rem;
+      width: calc(75% + 7.5em) !important;
     }
 
-    &--depth-3 {
-      right: 10rem;
+    &--depth-4 {
+      width: calc(75% + 10rem) !important;
     }
   }
 
   &__header {
-    @apply flex justify-between bg-white shadow-sm px-6 py-5;
+    @apply flex bg-white shadow-sm px-6 h-24;
+  }
+
+  &__header-inner {
+    @apply justify-between items-center w-full flex;
   }
 
   &__title {
     @apply font-bold text-gray-600;
+  }
+
+  &__close {
+    &:only-child {
+      @apply ml-auto;
+    }
   }
 
   &__content {
@@ -164,7 +180,11 @@ export default {
   }
 
   &__footer {
-    @apply flex justify-between bg-white px-6 py-5 mt-auto;
+    @apply bg-white px-6 mt-auto h-24 flex;
+  }
+
+  &__footer-inner {
+    @apply flex justify-between items-center w-full;
   }
 }
 </style>

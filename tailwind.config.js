@@ -154,6 +154,8 @@ module.exports = {
       },
       zIndex: {
         '-1': '-1',
+        75: 75,
+        100: 100,
       },
       opacity: {
         20: '0.2',
@@ -171,6 +173,16 @@ module.exports = {
         '9/11': '81.8181818%',
         '10/11': '90.9090909%',
         '11/11': '100%',
+      },
+      transitionDuration: {
+        600: '600ms',
+      },
+      transitionDelay: {
+        400: '400ms',
+      },
+      backgroundOpacity: {
+        75: '0.75',
+        80: '0.80',
       },
     },
   },

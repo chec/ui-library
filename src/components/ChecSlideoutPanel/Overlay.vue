@@ -19,16 +19,10 @@ export default {
         return ['light', 'dark'].includes(value);
       },
     },
-    /**
-     * Whether to close panel on overlay click. Default is true.
-     */
-    closeOnOverlayClick: Boolean,
   },
   methods: {
     onOverlayDismiss() {
-      if (this.closeOnOverlayClick) {
-        this.$emit('close');
-      }
+      this.$emit('close');
     },
   },
 };
@@ -37,13 +31,23 @@ export default {
 <style lang="scss">
 .slideout-panel {
   &__overlay {
-    @apply fixed top-0 left-0 w-full h-full flex z-50 overflow-scroll transition-opacity ease-in-out duration-300;
-    // Special / overlay
-    background-color: rgba(255, 255, 255, 0.95);
+    @apply
+      fixed
+      top-0
+      left-0
+      w-full
+      h-full
+      flex
+      z-50
+      overflow-scroll
+      transition-opacity
+      ease-in-out
+      duration-300
+      bg-white
+      bg-opacity-80;
 
     &--dark {
-      // Special / overlay
-      background-color: rgba(65, 85, 108, 0.9);
+      @apply bg-gray-400 bg-opacity-75;
     }
   }
 }
