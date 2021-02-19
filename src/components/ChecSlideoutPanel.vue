@@ -11,12 +11,13 @@
       />
       <Panel
         v-if="panelOpen"
-        :panel-open="panelOpen"
+        tabindex="0"
         :title="title"
         :title-tag="titleTag"
         :size="size"
         :depth="depth"
         @close="emitClose"
+        @keydown.esc="emitClose"
       >
         <slot />
         <template #toolbar>
@@ -98,10 +99,36 @@ export default {
     }
     // Push a new panel component to the panels array
     panels.push(this);
+
+    // Overflow hidden on body when panel is opened
+    document.body.style.overflow = 'hidden';
   },
   beforeDestroy() {
     // Delete component from the panels array
     panels.splice(-1, 1);
+  },
+  destroyed() {
+    document.body.style.overflow = 'initial';
+  },
+  created() {
+    const onEscape = (e) => {
+      if (this.panelOpen && e.keyCode === 27) {
+        this.emitClose('close');
+      }
+    };
+    document.addEventListener('keydown', onEscape);
+    this.$once('hook:destroyed', () => {
+      document.removeEventListener('keydown', onEscape);
+    });
+    // After a button click is tracked, shift focus away from
+    // clicks open the panel. Generally not advisable to force
+    // focus from buttons unless there is a modal or
+    // that opens as a result of a button click
+    document.addEventListener('click', () => {
+      if (document.activeElement.toString() === '[object HTMLButtonElement]') {
+        document.activeElement.blur();
+      }
+    });
   },
   methods: {
     emitAction() {

@@ -4,10 +4,11 @@
     mode="out-in"
   >
     <div
-      ref="panelContainer"
+      v-focus
+      role="dialog"
+      aria-modal="true"
       class="slideout-panel__element"
       :class="[classNames, `sm:w-${size}`]"
-      @keydown="onEscapeKeypress"
     >
       <div class="slideout-panel__header">
         <div class="slideout-panel__header-inner">
@@ -20,6 +21,7 @@
             color="secondary"
             variant="small"
             @click="emitClose"
+            @keydown.esc="emitClose"
           >
             <template #icon>
               <ChecIcon icon="close" />
@@ -89,12 +91,6 @@ export default {
       };
     },
   },
-  created() {
-    document.addEventListener('keydown', this.onEscapeKeypress);
-  },
-  destroyed() {
-    document.removeEventListener('keydown', this.onEscapeKeypress);
-  },
   methods: {
     emitClose($event) {
       /**
@@ -103,11 +99,6 @@ export default {
        * @type {$event}
        */
       this.$emit('close', $event);
-    },
-    onEscapeKeypress(e) {
-      if (e.key === 'Escape') {
-        this.emitClose('close');
-      }
     },
   },
 };
@@ -136,9 +127,9 @@ export default {
       duration-600
       w-screen;
 
-      @screen sm {
-        min-width: 600px; // Set min width when viewport larger than 640px
-      }
+    @screen sm {
+      min-width: 600px; // Set min width when viewport larger than 640px
+    }
 
     &--depth-1 {
       width: calc(75% + 2.5rem) !important;
