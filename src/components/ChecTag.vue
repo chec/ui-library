@@ -101,6 +101,10 @@ export default {
     }
   }
 
+  &--white {
+    @apply bg-white;
+  }
+
   &--dark-grey {
     @apply bg-gray-600 text-white border-gray-600;
 

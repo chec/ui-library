@@ -53,7 +53,7 @@ export default {
     variant: {
       type: String,
       validate(variant) {
-        return ['regular', 'small', 'round', 'text', 'tag'].includes(variant);
+        return ['regular', 'small', 'round', 'text', 'tag', 'input'].includes(variant);
       },
       default: 'regular',
     },
@@ -100,11 +100,12 @@ export default {
         hasIcon,
         iconPosition,
       } = this;
+
       return [
         'button',
-        `button--color-${color}`,
         `button--variant-${variant}`,
         {
+          [`button--color-${color}`]: variant !== 'input',
           'button--text-only': textOnly,
           'button--outline': outline,
           'button--disabled': disabled,
@@ -254,6 +255,25 @@ export default {
 
       .button__icon {
         @apply w-xxs;
+      }
+    }
+
+    &-input {
+      @apply
+        font-normal border border-gray-200 shadow-sm p-4 rounded text-sm leading-tight text-gray-500 items-center
+        outline-none justify-between bg-white;
+
+      .button__icon {
+        @apply w-xs ml-4;
+      }
+
+      &:focus,
+      &:active {
+        @apply transition duration-150 border-gray-500 shadow-light-focus;
+      }
+
+      &:hover {
+        @apply transition duration-150 border-gray-400;
       }
     }
   }
