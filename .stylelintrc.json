@@ -3,5 +3,8 @@
   "ignoreFiles": [
     "node_modules",
     "src/components/CodeBlock.vue"
-  ]
+  ],
+  "rules": {
+    "scss/at-rule-no-unknown": null
+  }
 }
