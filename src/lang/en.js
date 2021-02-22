@@ -14,6 +14,7 @@ export default {
       search: 'Search',
       // Appended to required form field labels
       requiredInline: '(required)',
+      // Used after other statements, like in the case of filters: "Refunded: yes"
       yes: 'yes',
     },
     fileManager: {
