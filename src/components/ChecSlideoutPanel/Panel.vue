@@ -4,7 +4,6 @@
     mode="out-in"
   >
     <div
-      v-focus
       role="dialog"
       aria-modal="true"
       class="slideout-panel__element"
@@ -16,7 +15,6 @@
             {{ title }}
           </component>
           <ChecButton
-            v-focus
             class="slideout-panel__close"
             color="secondary"
             variant="small"
@@ -132,19 +130,19 @@ export default {
     }
 
     &--depth-1 {
-      width: calc(75% + 2.5rem) !important;
+      @apply -ml-10;
     }
 
     &--depth-2 {
-      width: calc(75% + 5rem) !important;
+      @apply -ml-20;
     }
 
     &--depth-3 {
-      width: calc(75% + 7.5em) !important;
+      @apply -ml-30;
     }
 
     &--depth-4 {
-      width: calc(75% + 10rem) !important;
+      @apply -ml-40;
     }
   }
 

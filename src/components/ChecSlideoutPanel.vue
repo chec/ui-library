@@ -47,13 +47,13 @@ export default {
   },
   props: {
     /**
-     * The size of the panel width. Use one of the tailwind sizes, eg.
-     * 1/2 is 50% of viewport, 1/3 is 33.33333% of viewport,
-     * 3/4 is 75% of viewport, screen is 100% of viewport
+     * The size of the panel width. Custom tailwind viewport widths
+     * 50 is 50 viewport width, 33 is 33.333333 viewport width,
+     * 75 is 75 viewport width, screen is 100 viewport width
      */
     size: {
       type: String,
-      default: '1/2',
+      default: '50',
     },
     /**
      * The title of the panel slideout in the header

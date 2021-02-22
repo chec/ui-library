@@ -22,7 +22,7 @@ import TextField from '../../components/TextField.vue';
       },
       props: {
         size: {
-          default: select('Panel size', ['1/3', '1/2', '3/4', 'screen']),
+          default: select('Panel size', ['33', '50', '75', 'screen']),
         },
         overlay: {
           default: select('Overlay', ['light', 'dark']),
@@ -105,7 +105,7 @@ import TextField from '../../components/TextField.vue';
       },
       props: {
         size: {
-          default: select('Panel size', ['1/3', '1/2', '3/4', 'screen']),
+          default: select('Panel size', ['33', '50', '75', 'screen']),
         },
         overlay: {
           default: select('Overlay', ['light', 'dark']),
@@ -250,7 +250,7 @@ import TextField from '../../components/TextField.vue';
         <div>
           <ChecSlideoutPanel
             v-if="open"
-            size="3/4"
+            size="75"
             overlay="light"
             title="First panel"
             titleTag="h2"
@@ -261,7 +261,7 @@ import TextField from '../../components/TextField.vue';
             <ChecSlideoutPanel
               v-if="openSecond"
               title="Second panel"
-              size="3/4"
+              size="75"
               overlay="light"
               titleTag="h2"
               closeOnOverlayClick
@@ -271,7 +271,7 @@ import TextField from '../../components/TextField.vue';
               <ChecSlideoutPanel
                 v-if="openThird"
                 title="Third panel"
-                size="3/4"
+                size="75"
                 overlay="light"
                 titleTag="h2"
                 closeOnOverlayClick
@@ -281,7 +281,7 @@ import TextField from '../../components/TextField.vue';
                 <ChecSlideoutPanel
                   v-if="openFourth"
                   title="Limbo panel"
-                  size="3/4"
+                  size="75"
                   overlay="light"
                   titleTag="h2"
                   closeOnOverlayClick
