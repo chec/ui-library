@@ -12,7 +12,6 @@
       <Panel
         :title="title"
         :title-tag="titleTag"
-        :size="size"
         :depth="depth"
         @close="emitClose"
         @keydown.esc="emitClose"
@@ -42,15 +41,6 @@ export default {
     Panel,
   },
   props: {
-    /**
-     * The size of the panel width. Custom tailwind viewport widths
-     * 50 is 50 viewport width, 33 is 33.333333 viewport width,
-     * 75 is 75 viewport width, screen is 100 viewport width
-     */
-    size: {
-      type: String,
-      default: '50',
-    },
     /**
      * The title of the panel slideout in the header
      */
@@ -98,9 +88,11 @@ export default {
   beforeDestroy() {
     // Delete component from the panels array
     panels.splice(-1, 1);
-  },
-  destroyed() {
-    document.body.style.overflow = 'initial';
+
+    // Remove the scroll limitation on the body if there's no more panels visible
+    if (panels.length === 0) {
+      document.body.style.overflow = 'initial';
+    }
   },
   created() {
     const onEscape = (e) => {
@@ -150,7 +142,7 @@ export default {
 
 <style lang="scss">
 .slideout-panel {
-  @apply block flow-root transition duration-150 transition-opacity;
+  @apply absolute block transition duration-150 transition-opacity;
 }
 
 .panel-enter,

@@ -50,6 +50,9 @@ import TextField from '../../components/TextField.vue';
       },
       template: `
         <div>
+          <ChecButton @click="open = !open" color="primary" class="m-20">
+            Toggle panel
+          </ChecButton>
           <ChecSlideoutPanel
             v-if="open"
             :size="size"
@@ -78,9 +81,6 @@ import TextField from '../../components/TextField.vue';
               </div>
             </template>
           </ChecSlideoutPanel>
-          <ChecButton @click="open = !open" color="primary" class="m-20">
-            Toggle panel
-          </ChecButton>
           <h1 class="m-20 font-bold">I am a bunch of content that the panel will slide out on to.</h1>
           <h2 class="m-20">I am a bunch of content that the panel will slide out on to.</h2>
           <h3 class="m-20">I am a bunch of content that the panel will slide out on to.</h3>
@@ -133,6 +133,9 @@ import TextField from '../../components/TextField.vue';
       },
       template: `
         <div>
+          <ChecButton @click="open = !open" color="primary" class="m-20">
+            Toggle panel
+          </ChecButton>
           <ChecSlideoutPanel
             v-if="open"
             :size="size"
@@ -208,9 +211,6 @@ import TextField from '../../components/TextField.vue';
             </div>
           </template>
         </ChecSlideoutPanel>
-        <ChecButton @click="open = !open" color="primary" class="m-20">
-          Toggle panel
-        </ChecButton>
         <h1 class="m-20 font-bold">I am a bunch of content that the panel will slide out on to.</h1>
         <h2 class="m-20">I am a bunch of content that the panel will slide out on to.</h2>
         <h3 class="m-20">I am a bunch of content that the panel will slide out on to.</h3>
@@ -248,6 +248,13 @@ import TextField from '../../components/TextField.vue';
       },
       template: `
         <div>
+          <ChecButton
+            @click="open = !open"
+            color="primary"
+            class="m-20"
+          >
+            Open the first panel
+          </ChecButton>
           <ChecSlideoutPanel
             v-if="open"
             size="75"
@@ -351,13 +358,6 @@ import TextField from '../../components/TextField.vue';
             </div>
           </template>
         </ChecSlideoutPanel>
-        <ChecButton
-          @click="open = !open"
-          color="primary"
-          class="m-20"
-        >
-          Open the first panel
-        </ChecButton>
         <h1 class="m-20 font-bold">I am a bunch of content that the panel will slide out on to.</h1>
         <h2 class="m-20">I am a bunch of content that the panel will slide out on to.</h2>
         <h3 class="m-20">I am a bunch of content that the panel will slide out on to.</h3>

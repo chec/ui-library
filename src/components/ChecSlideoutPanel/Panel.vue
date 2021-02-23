@@ -3,7 +3,6 @@
     role="dialog"
     aria-modal="true"
     class="slideout-panel__element"
-    :class="[classNames, `sm:w-${size}`]"
     :style="{ right: `${depth * 2}rem` }"
   >
     <div class="slideout-panel__header">
@@ -54,15 +53,6 @@ export default {
   },
   props: {
     /**
-     * The size of the panel width. Use one of the tailwind sizes, eg.
-     * 1/2 is 50% of viewport, 1/3 is 33.33333% of viewport,
-     * 3/4 is 75% of viewport, screen is 100% of viewport
-     */
-    size: {
-      type: String,
-      default: '1/2',
-    },
-    /**
      * The title of the panel slideout in the header
      */
     title: {
@@ -78,14 +68,6 @@ export default {
     },
     depth: Number,
   },
-  computed: {
-    classNames() {
-      const { depth } = this;
-      return {
-        [`slideout-panel__element--depth-${depth}`]: depth !== '',
-      };
-    },
-  },
   methods: {
     emitClose($event) {
       /**
@@ -100,7 +82,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .slideout-panel {
   &__wrapper {
     @apply static;
@@ -121,9 +102,8 @@ export default {
       z-100
       w-screen;
 
-    @screen sm {
-      min-width: 600px; // Set min width when viewport larger than 640px
-    }
+    // The designed maximum width for panels
+    max-width: 1040px;
   }
 
   &__header {
