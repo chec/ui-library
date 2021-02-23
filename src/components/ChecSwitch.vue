@@ -2,7 +2,7 @@
   <div class="chec-switch" :class="{ 'chec-switch--toggled' : toggled }">
     <label
       v-if="$slots.default && prefixLabel"
-      :for="id"
+      :for="resolvedId"
       class="chec-switch__label chec-switch__label--prefixed"
       @click.prevent="handleToggle"
     >
@@ -13,13 +13,13 @@
         <input
           class="chec-switch__input"
           type="checkbox"
-          v-bind="{ id, name, disabled, checked: toggled, required }"
+          v-bind="{ id: resolvedId, name, disabled, checked: toggled, required }"
         >
       </div>
     </div>
     <label
       v-if="$slots.default && !prefixLabel"
-      :for="id"
+      :for="resolvedId"
       class="chec-switch__label"
       @click.prevent="handleToggle"
     >
@@ -68,10 +68,11 @@ export default {
      * Whether to prefix the label (rather than display it after the switch)
      */
     prefixLabel: Boolean,
+    id: String,
   },
   computed: {
-    id() {
-      return uniqueId(this.name, this.value, 'chec-switch')();
+    resolvedId() {
+      return this.id || uniqueId(this.name, this.value, 'chec-switch')();
     },
   },
   methods: {

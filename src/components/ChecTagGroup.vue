@@ -8,7 +8,7 @@
       variant="tag"
       @click="handleReset"
     >
-      {{ $t('tag.reset') }}
+      {{ resetText || $t('tag.reset') }}
     </ChecButton>
   </div>
 </template>
@@ -26,6 +26,7 @@ export default {
      * Whether to hide the "Reset" button on the right hand side of the tag list
      */
     hideReset: Boolean,
+    resetText: String,
   },
   methods: {
     handleReset() {

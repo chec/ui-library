@@ -366,6 +366,9 @@ export default {
       // set ChecPopover width to match root's width since this component is has a 'static' position by default to
       // allow for popping out of scrollable overflow
       const dropdownEl = this.$refs.container;
+      if (!dropdownEl) {
+        return;
+      }
       this.dropdownElWidth = dropdownEl.clientWidth;
     },
     /**

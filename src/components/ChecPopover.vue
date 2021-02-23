@@ -30,7 +30,7 @@ export default {
      * The ref within the current component to where the popover should be placed
      */
     targetRef: {
-      type: String,
+      type: [String, Object],
       required: true,
     },
     /**
@@ -80,6 +80,22 @@ export default {
         { 'chec-popover--open': this.open },
       ];
     },
+    targetEl() {
+      const { targetRef } = this;
+      let targetNode = targetRef;
+
+      if (typeof targetRef === 'string') {
+        targetNode = get(this.$parent.$refs, targetRef);
+      }
+
+      if (!targetNode) {
+        // We couldn't find the target node from the given ref
+        // TODO should this error?
+        return null;
+      }
+
+      return Object.hasOwnProperty.call(targetNode, '$el') ? targetNode.$el : targetNode;
+    },
   },
   watch: {
     open(open) {
@@ -91,6 +107,11 @@ export default {
       this.$nextTick(this.destroyPopper);
     },
   },
+  mounted() {
+    if (this.open) {
+      this.createPopper();
+    }
+  },
   methods: {
     createPopper() {
       if (!this.$refs.popperRef) {
@@ -98,9 +119,7 @@ export default {
         return;
       }
 
-      const { targetRef, placement, popperOptions } = this;
-      const targetNode = get(this.$parent.$refs, targetRef);
-      const targetEl = Object.hasOwnProperty.call(targetNode, '$el') ? targetNode.$el : targetNode;
+      const { targetEl, placement, popperOptions } = this;
 
       this.popper = createPopper(targetEl, this.$refs.popperRef, {
         modifiers: [

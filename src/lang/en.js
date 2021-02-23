@@ -12,11 +12,20 @@ export default {
     },
     general: {
       search: 'Search',
-      requiredInline: '(required)', // Appended to required form field labels
+      // Appended to required form field labels
+      requiredInline: '(required)',
+      // Used after other statements, like in the case of filters: "Refunded: yes"
+      yes: 'yes',
     },
     fileManager: {
       chooseFiles: 'Choose file(s)',
       deleteFile: 'Delete file',
+    },
+    filters: {
+      apply: 'Apply filters',
+      clear: 'Clear',
+      filters: 'Filters',
+      textSearch: 'Text search',
     },
     imageManager: {
       chooseImages: 'Choose image(s)',

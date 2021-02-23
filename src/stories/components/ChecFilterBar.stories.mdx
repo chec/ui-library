@@ -1,0 +1,108 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { withInfo } from 'storybook-addon-vue-info';
+import ChecFilterBar from '@/components/ChecFilterBar.vue';
+
+<Meta title="Components/Filter Bar" component={ ChecFilterBar } />
+
+# Filter Bar
+
+The filter bar component allows you to specify a list of filters, that can be one of a few types, and then allows the
+user to navigate the available filters to choose values to filter by. The component supports:
+
+- Generic text search
+- Filtering by specific labels from a list (eg. a "Red" label from a "Color" list)
+- "Yes/No" toggles
+
+Filters should be passed as a prop, which is an array of objects with the following schema:
+
+- `name` - A required label for the filter eg. "Size"
+- `type` - The type of filter which affects how it is presented. Currently supports "in", and "boolean"
+- `values` - Required for the "in" filter. An array that specifies the options the user has to choose from
+- `default` - Used by some (future) filters to indicate which value should be considered default
+- `valueLabel` - Used by the "boolean" type to indicate what "true" should be displayed as. Defaults to "yes".
+
+The selected filters should be provided as the `active-filters` prop, and will be updated with the `change-filters`
+event. The current search term is the model prop of the component.
+
+<Props of={ ChecFilterBar } />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecFilterBar,
+      },
+      props: {
+        allowMultiple: {
+          default: boolean('Allow multiple', false)
+        },
+        disableTextSearch: {
+          default: boolean('Disable text search option', false)
+        },
+        withoutPanelFilters: {
+          default: boolean('Disable filter dropdown', false),
+        }
+      },
+      data() {
+        return {
+          search: '',
+          activeFilters: [],
+        };
+      },
+      computed: {
+        filters() {
+          return [
+            {
+              name: 'Group 1',
+              type: 'in',
+              values: ['Foo', 'Bar'],
+            },
+            {
+              name: 'Group 2',
+              type: 'in',
+              values: ['Foo', 'Bin'],
+            },
+            {
+              name: 'Group 3',
+              type: 'in',
+              values: ['Foo', 'Baz'],
+            },
+            {
+              name: 'Group 4',
+              type: 'in',
+              values: ['Bar', 'Bin', 'Baz'],
+            },
+          ].concat(this.withoutPanelFilters ? [] : [
+            {
+              name: 'Boolean filter',
+              type: 'boolean',
+            },
+            {
+              name: 'Other boolean filter',
+              type: 'boolean',
+            }
+          ])
+        }
+      },
+      methods: {
+        setActiveFilters(filters) {
+          this.activeFilters = filters;
+        },
+      },
+      template: `
+        <div class="py-16 px-4 max-w-6xl mx-auto font-lato bg-gray-200">
+          <ChecFilterBar
+            v-model="search"
+            :filters="filters"
+            :active-filters="activeFilters"
+            :allow-multiple="allowMultiple"
+            :disable-text-search="disableTextSearch"
+            @change-filters="setActiveFilters"
+          />
+          <div class="text-center mt-8">Foo, bar, bin, and baz are all example search terms</div>
+        </div>`,
+    }}
+  </Story>
+</Preview>
