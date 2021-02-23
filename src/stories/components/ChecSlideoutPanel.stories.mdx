@@ -1,0 +1,370 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import ChecSlideoutPanel from '../../components/ChecSlideoutPanel.vue';
+import ChecButton from '../../components/ChecButton.vue';
+import ChecTable from '../../components/ChecTable.vue'
+import ChecIcon from '../../components/ChecIcon.vue';
+import TextField from '../../components/TextField.vue';
+
+<Meta title="Components/Slideout panel" component={ChecSlideoutPanel} />
+
+# Slideout panel component
+
+<Props of={ChecSlideoutPanel} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecSlideoutPanel,
+        ChecButton,
+      },
+      props: {
+        size: {
+          default: select('Panel size', ['33', '50', '75', 'screen']),
+        },
+        overlay: {
+          default: select('Overlay', ['light', 'dark']),
+        },
+        closeOnOverlayClick: {
+          default: boolean('Close panel on overlay click', true),
+        },
+        title: {
+          default: text('Header title', 'Panel with content')
+        },
+        titleTag: {
+          default: select('Title tag', [undefined, 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'], undefined)
+        },
+      },
+      data() {
+        return {
+          open: false,
+        };
+      },
+      methods: {
+        close() {
+          this.open = false;
+          return action('Panel closed!')();
+        }
+      },
+      template: `
+        <div>
+          <ChecButton @click="open = !open" color="primary" class="m-20">
+            Toggle panel
+          </ChecButton>
+          <ChecSlideoutPanel
+            v-if="open"
+            :size="size"
+            :overlay="overlay"
+            :title="title"
+            :titleTag="titleTag"
+            @close="close"
+            :closeOnOverlayClick="closeOnOverlayClick"
+          >
+            <p class="self-center mx-auto">Nothing here</p>
+            <template v-slot:toolbar>
+              <ChecButton
+                variant="small"
+                outline
+                color="red"
+              >
+                Some action
+              </ChecButton>
+              <div class="flex">
+                <ChecButton @click="close" color="primary" text-only class="p-0">
+                  Cancel
+                </ChecButton>
+                <ChecButton class="ml-5" color="primary">
+                  Save
+                </ChecButton>
+              </div>
+            </template>
+          </ChecSlideoutPanel>
+          <h1 class="m-20 font-bold">I am a bunch of content that the panel will slide out on to.</h1>
+          <h2 class="m-20">I am a bunch of content that the panel will slide out on to.</h2>
+          <h3 class="m-20">I am a bunch of content that the panel will slide out on to.</h3>
+          <h4 class="m-20">I am a bunch of content that the panel will slide out on to.</h4>
+          <p class="m-20">I am a bunch of content that the panel will slide out on to.</p>
+          <p class="m-20">I am a bunch of content that the panel will slide out on to.</p>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+## With content (table)
+
+<Preview>
+  <Story name="With content">
+    {{
+      components: {
+        ChecSlideoutPanel,
+        ChecTable,
+        ChecButton,
+        TextField,
+      },
+      props: {
+        size: {
+          default: select('Panel size', ['33', '50', '75', 'screen']),
+        },
+        overlay: {
+          default: select('Overlay', ['light', 'dark']),
+        },
+        closeOnOverlayClick: {
+          default: boolean('Close panel on overlay click', true),
+        },
+        title: {
+          default: text('Header title', 'Panel with table')
+        },
+        titleTag: {
+          default: select('Title tag', [undefined, 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'], undefined)
+        },
+      },
+      data() {
+        return {
+          open: false,
+        };
+      },
+      methods: {
+        close() {
+          this.open = false;
+          return action('Panel closed!')();
+        }
+      },
+      template: `
+        <div>
+          <ChecButton @click="open = !open" color="primary" class="m-20">
+            Toggle panel
+          </ChecButton>
+          <ChecSlideoutPanel
+            v-if="open"
+            :size="size"
+            :overlay="overlay"
+            :title="title"
+            :titleTag="titleTag"
+            @close="close"
+            :closeOnOverlayClick="closeOnOverlayClick"
+          >
+            <span class="block text-lg text-gray-500 font-bold mb-4">
+              Form title
+            </span>
+            <!-- flex grid -->
+            <div class="flex -mx-2 mb-6">
+              <div class="w-1/2 px-2">
+                <TextField
+                  class="w-full"
+                  placeholder="First Name"
+                />
+              </div>
+              <div class="w-1/2 px-2">
+                <TextField
+                  class="w-full"
+                  placeholder="Last Name"
+                />
+              </div>
+            </div>
+            <span class="block text-lg text-gray-500 font-bold mb-4">
+              Table title
+            </span>
+            <!-- flex grid -->
+            <ChecTable table-class="table-fixed">
+              <thead>
+                <tr>
+                  <th class="w-1/2">Title</th>
+                  <th class="w-1/2">Author</th>
+                  <th class="w-1/2">Views</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+                  <td>Adam</td>
+                  <td>858</td>
+                </tr>
+                <tr>
+                  <td>Intro to CSS</td>
+                  <td>Adam</td>
+                  <td>858</td>
+                </tr>
+                <tr>
+                  <td>Intro to CSS</td>
+                  <td>Adam</td>
+                  <td>858</td>
+                </tr>
+              </tbody>
+          </ChecTable>
+          <template v-slot:toolbar>
+            <ChecButton
+              variant="small"
+              outline
+              color="red"
+            >
+              Some action
+            </ChecButton>
+            <div class="flex">
+              <ChecButton @click="close" color="primary" text-only class="p-0">
+                Cancel
+              </ChecButton>
+              <ChecButton class="ml-5" color="primary">
+                Save
+              </ChecButton>
+            </div>
+          </template>
+        </ChecSlideoutPanel>
+        <h1 class="m-20 font-bold">I am a bunch of content that the panel will slide out on to.</h1>
+        <h2 class="m-20">I am a bunch of content that the panel will slide out on to.</h2>
+        <h3 class="m-20">I am a bunch of content that the panel will slide out on to.</h3>
+        <h4 class="m-20">I am a bunch of content that the panel will slide out on to.</h4>
+        <p class="m-20">I am a bunch of content that the panel will slide out on to.</p>
+        <p class="m-20">I am a bunch of content that the panel will slide out on to.</p>
+      </div>`
+    }}
+  </Story>
+</Preview>
+
+## With stacking panels
+
+<Preview>
+  <Story name="With stacking panels">
+    {{
+      components: {
+        ChecSlideoutPanel,
+        ChecTable,
+        ChecButton,
+      },
+      data() {
+        return {
+          open: false,
+          openSecond: false,
+          openThird: false,
+          openFourth: false,
+        };
+      },
+      methods: {
+        close() {
+          this.open = false;
+          return action('Panel closed!')();
+        }
+      },
+      template: `
+        <div>
+          <ChecButton
+            @click="open = !open"
+            color="primary"
+            class="m-20"
+          >
+            Open the first panel
+          </ChecButton>
+          <ChecSlideoutPanel
+            v-if="open"
+            size="75"
+            overlay="light"
+            title="First panel"
+            titleTag="h2"
+            @close="close"
+            closeOnOverlayClick
+          >
+            Hello, I'm the first panel!
+            <ChecSlideoutPanel
+              v-if="openSecond"
+              title="Second panel"
+              size="75"
+              overlay="light"
+              titleTag="h2"
+              closeOnOverlayClick
+              @close="openSecond = false"
+            >
+              Hello, I'm the second panel!
+              <ChecSlideoutPanel
+                v-if="openThird"
+                title="Third panel"
+                size="75"
+                overlay="light"
+                titleTag="h2"
+                closeOnOverlayClick
+                @close="openThird = false"
+              >
+                Hello, I'm the third panel!
+                <ChecSlideoutPanel
+                  v-if="openFourth"
+                  title="Limbo panel"
+                  size="75"
+                  overlay="light"
+                  titleTag="h2"
+                  closeOnOverlayClick
+                  @close="openFourth = false"
+                >
+                Hello, I'm the limbo inception layer!
+                <template v-slot:toolbar>
+                  <ChecButton @click="openFourth = false" color="primary" text-only class="p-0">
+                    Cancel
+                  </ChecButton>
+                </template>
+              </ChecSlideoutPanel>
+                <template v-slot:toolbar>
+                  <ChecButton
+                    variant="small"
+                    outline
+                    color="primary"
+                    @click="openFourth = true"
+                  >
+                    Open the fourth panel
+                  </ChecButton>
+                  <div class="flex">
+                    <ChecButton @click="openThird = false" color="primary" text-only class="p-0">
+                      Cancel
+                    </ChecButton>
+                    <ChecButton class="ml-5" color="primary">
+                      Save
+                    </ChecButton>
+                  </div>
+                </template>
+              </ChecSlideoutPanel>
+              <template v-slot:toolbar>
+                <ChecButton
+                  variant="small"
+                  outline
+                  color="primary"
+                  @click="openThird = true"
+                >
+                  Open the third panel
+                </ChecButton>
+                <div class="flex">
+                  <ChecButton @click="openSecond = false" color="primary" text-only class="p-0">
+                    Cancel
+                  </ChecButton>
+                  <ChecButton class="ml-5" color="primary">
+                    Save
+                  </ChecButton>
+                </div>
+              </template>
+            </ChecSlideoutPanel>
+          <template v-slot:toolbar>
+            <ChecButton
+              variant="small"
+              color="primary"
+              outline
+              @click="openSecond = true"
+            >
+              Open the second panel
+            </ChecButton>
+            <div class="flex">
+              <ChecButton @click="close" color="primary" text-only class="p-0">
+                Cancel
+              </ChecButton>
+              <ChecButton class="ml-5" color="primary">
+                Save
+              </ChecButton>
+            </div>
+          </template>
+        </ChecSlideoutPanel>
+        <h1 class="m-20 font-bold">I am a bunch of content that the panel will slide out on to.</h1>
+        <h2 class="m-20">I am a bunch of content that the panel will slide out on to.</h2>
+        <h3 class="m-20">I am a bunch of content that the panel will slide out on to.</h3>
+        <h4 class="m-20">I am a bunch of content that the panel will slide out on to.</h4>
+        <p class="m-20">I am a bunch of content that the panel will slide out on to.</p>
+        <p class="m-20">I am a bunch of content that the panel will slide out on to.</p>
+      </div>`
+    }}
+  </Story>
+</Preview>
