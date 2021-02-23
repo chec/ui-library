@@ -1,48 +1,45 @@
 <template>
-  <transition
-    name="slide"
-    mode="out-in"
+  <div
+    role="dialog"
+    aria-modal="true"
+    class="slideout-panel__element"
+    :class="[classNames, `sm:w-${size}`]"
+    :style="{ right: `${depth * 2}rem` }"
   >
-    <div
-      role="dialog"
-      aria-modal="true"
-      class="slideout-panel__element"
-      :class="[classNames, `sm:w-${size}`]"
-    >
-      <div class="slideout-panel__header">
-        <div class="slideout-panel__header-inner">
-          <component :is="titleTag" v-if="title" class="slideout-panel__title">
-            {{ title }}
-          </component>
-          <ChecButton
-            class="slideout-panel__close"
-            color="secondary"
-            variant="small"
-            @click="emitClose"
-            @keydown.esc="emitClose"
-          >
-            <template #icon>
-              <ChecIcon icon="close" />
-            </template>
-          </ChecButton>
-        </div>
-      </div>
-      <div class="slideout-panel__content">
-        <!--
-          @slot Panel content
-        -->
-        <slot />
-      </div>
-      <div v-if="$slots.toolbar" class="slideout-panel__footer">
-        <div class="slideout-panel__footer-inner">
-          <!--
-            @slot Toolbar actions, buttons, etc
-          -->
-          <slot name="toolbar" />
-        </div>
+    <div class="slideout-panel__header">
+      <div class="slideout-panel__header-inner">
+        <component :is="titleTag" v-if="title" class="slideout-panel__title">
+          {{ title }}
+        </component>
+        <ChecButton
+          tabindex="0"
+          class="slideout-panel__close"
+          color="secondary"
+          variant="small"
+          @click="emitClose"
+          @keydown.esc="emitClose"
+        >
+          <template #icon>
+            <ChecIcon icon="close" />
+          </template>
+        </ChecButton>
       </div>
     </div>
-  </transition>
+    <div class="slideout-panel__content">
+      <!--
+        @slot Panel content
+      -->
+      <slot />
+    </div>
+    <div v-if="$slots.toolbar" class="slideout-panel__footer">
+      <div class="slideout-panel__footer-inner">
+        <!--
+          @slot Toolbar actions, buttons, etc
+        -->
+        <slot name="toolbar" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -120,29 +117,12 @@ export default {
       fixed
       right-0
       overflow-y-auto
-      transition-transform
+      duration-500
       z-100
-      duration-600
       w-screen;
 
     @screen sm {
       min-width: 600px; // Set min width when viewport larger than 640px
-    }
-
-    &--depth-1 {
-      @apply -ml-10;
-    }
-
-    &--depth-2 {
-      @apply -ml-20;
-    }
-
-    &--depth-3 {
-      @apply -ml-30;
-    }
-
-    &--depth-4 {
-      @apply -ml-40;
     }
   }
 

@@ -10,8 +10,6 @@
         @close="onOverlayDismiss"
       />
       <Panel
-        v-if="panelOpen"
-        tabindex="0"
         :title="title"
         :title-tag="titleTag"
         :size="size"
@@ -32,18 +30,16 @@
 import Panel from './ChecSlideoutPanel/Panel';
 import Overlay from './ChecSlideoutPanel/Overlay';
 
-// Declaring panels as an external variable to reference
-// the shared component -> `ChecSlideoutPanel`
-// This allows us to tack on a `depth` property to determine
-// the depth of each component being added
+// Declaring panels as an external variable to reference the shared component -> `ChecSlideoutPanel`
+// This allows us to tack on a `depth` property to determine the depth of each component being added
 // See `depth` data property and `mounted/beforeDestroy` hook below
 const panels = [];
 
 export default {
   name: 'ChecSlideoutPanel',
   components: {
-    Panel,
     Overlay,
+    Panel,
   },
   props: {
     /**
@@ -83,20 +79,16 @@ export default {
   },
   data() {
     return {
-      panelOpen: true,
-      // eslint-disable-next-line vue/no-unused-properties
-      depth: 0,
+      panels,
     };
   },
+  computed: {
+    depth() {
+      // The depth can be calculated from where this panel appears within the array of all known panels
+      return this.panels.length - (this.panels.findIndex((candidatePanel) => candidatePanel === this) + 1);
+    },
+  },
   mounted() {
-    // Check that there are panel components
-    // Add depth property value by 1 for each panel
-    if (panels.length) {
-      panels.forEach((panel) => {
-        // eslint-disable-next-line no-param-reassign
-        panel.depth += 1;
-      });
-    }
     // Push a new panel component to the panels array
     panels.push(this);
 
@@ -112,7 +104,7 @@ export default {
   },
   created() {
     const onEscape = (e) => {
-      if (this.panelOpen && e.keyCode === 27) {
+      if (e.keyCode === 27) {
         this.emitClose('close');
       }
     };
@@ -168,7 +160,7 @@ export default {
   }
 
   .slideout-panel__element {
-    @apply transform translate-x-full;
+    @apply transform transition-transform translate-x-full;
   }
 }
 
@@ -179,7 +171,7 @@ export default {
   }
 
   .slideout-panel__element {
-    @apply transform translate-x-0;
+    @apply transform transition-transform translate-x-0;
   }
 }
 
