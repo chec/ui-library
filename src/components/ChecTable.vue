@@ -64,7 +64,8 @@ export default {
   }
 
   &--snug {
-    th, td {
+    th,
+    td {
       @apply px-1 py-3;
 
       &:first-child {
