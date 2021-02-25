@@ -38,7 +38,6 @@ export default {
       w-full
       h-full
       flex
-      z-50
       overflow-scroll
       transition-opacity
       ease-in-out
