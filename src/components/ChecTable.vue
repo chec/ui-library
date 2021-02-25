@@ -28,14 +28,14 @@ export default {
       type: String,
       default: '',
     },
+    snug: Boolean,
   },
   computed: {
     classNames() {
-      const classes = {
+      return {
         'chec-table--prepended': !!this.$slots.prepend,
+        'chec-table--snug': this.snug,
       };
-
-      return classes;
     },
   },
 };
@@ -60,6 +60,21 @@ export default {
 
     .chec-table__table {
       @apply shadow-none rounded-t-none;
+    }
+  }
+
+  &--snug {
+    th,
+    td {
+      @apply px-1 py-3;
+
+      &:first-child {
+        @apply pl-4;
+      }
+
+      &:last-child {
+        @apply pr-4;
+      }
     }
   }
 }

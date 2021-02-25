@@ -401,8 +401,11 @@ export default {
   }
 
   &__currency {
-    @apply hidden absolute text-sm text-gray-500 top-0 pl-4 opacity-0 transition-opacity duration-150;
-    padding-top: 1.45rem;
+    @apply hidden absolute text-sm text-gray-500 top-0 pl-4 opacity-0 transition-opacity duration-150 leading-snug pt-6;
+
+    .text-field--labelless & {
+      @apply pt-4;
+    }
   }
 
   &--disabled {

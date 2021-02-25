@@ -99,7 +99,6 @@ export default {
       right-0
       overflow-y-auto
       duration-500
-      z-100
       w-screen;
 
     // The designed maximum width for panels
