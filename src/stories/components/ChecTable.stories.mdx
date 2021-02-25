@@ -1,6 +1,5 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
-import { action } from "@storybook/addon-actions";
-import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
+import { select, boolean } from '@storybook/addon-knobs';
 import ChecTable from '../../components/ChecTable.vue';
 import TextField from '../../components/TextField.vue';
 import ChecButton from '../../components/ChecButton.vue';
@@ -18,16 +17,20 @@ import ChecButton from '../../components/ChecButton.vue';
     {{
       components: {
         ChecTable,
+        TextField,
       },
       props: {
         background: {
           default: select('Background Color', ['light', 'dark']),
         },
+        snug: {
+          default: boolean('Snug', false),
+        },
       },
       template: `
       <div class="flex justify-center items-center h-screen font-lato" :class="{'bg-gray-600': background === 'dark'}">
         <div>
-          <ChecTable table-class="table-fixed">
+          <ChecTable table-class="table-fixed" :snug="snug">
             <thead>
               <tr>
                 <th class="w-1/2">Title</th>
@@ -39,17 +42,17 @@ import ChecButton from '../../components/ChecButton.vue';
               <tr>
                 <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
                 <td>Adam</td>
-                <td>858</td>
+                <td class="text-right">858</td>
               </tr>
               <tr>
                 <td>Intro to CSS</td>
                 <td>Adam</td>
-                <td>858</td>
+                <td class="text-right">858</td>
               </tr>
               <tr>
-                <td>Intro to CSS</td>
-                <td>Adam</td>
-                <td>858</td>
+                <td><TextField label="A text input" /></td>
+                <td><TextField label="And another one" /></td>
+                <td class="text-right">858</td>
               </tr>
             </tbody>
           </ChecTable>
