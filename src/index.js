@@ -12,6 +12,7 @@ import ChecDatepicker from './components/ChecDatepicker';
 import ChecDivider from './components/ChecDivider.vue';
 import ChecDropdown from './components/ChecDropdown.vue';
 import ChecFileUploader from './components/ChecFileUploader.vue';
+import ChecFilterBar from './components/ChecFilterBar.vue';
 import ChecFormField from './components/ChecFormField.vue';
 import ChecHeader from './components/ChecHeader.vue';
 import ChecIcon from './components/ChecIcon.vue';
@@ -33,6 +34,7 @@ import ChecSwitch from './components/ChecSwitch.vue';
 import ChecTab from './components/ChecTab.vue';
 import ChecTable from './components/ChecTable.vue';
 import ChecTag from './components/ChecTag.vue';
+import ChecTagsField from './components/ChecTagsField.vue';
 import ChecTagGroup from './components/ChecTagGroup.vue';
 import ChecThumbnailCard from './components/ChecThumbnailCard.vue';
 import ChecTooltip from './directives/ChecTooltip';
@@ -62,6 +64,7 @@ export {
   ChecDivider,
   ChecDropdown,
   ChecFileUploader,
+  ChecFilterBar,
   ChecFormField,
   ChecHeader,
   ChecIcon,
@@ -83,6 +86,7 @@ export {
   ChecTab,
   ChecTable,
   ChecTag,
+  ChecTagsField,
   ChecTagGroup,
   ChecThumbnailCard,
   ChecTooltip,

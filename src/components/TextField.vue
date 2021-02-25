@@ -68,7 +68,7 @@ export default {
      * Class to pass to inner input element
      */
     innerInputClass: {
-      type: String,
+      type: [String, Array],
       default: '',
     },
     /**

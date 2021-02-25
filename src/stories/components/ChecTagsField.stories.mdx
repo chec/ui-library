@@ -1,0 +1,82 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { boolean, select, text, number } from '@storybook/addon-knobs';
+import ChecTagsField from '../../components/ChecTagsField.vue';
+
+<Meta title="Form fields/Tags field" component={ChecTagsField} />
+
+# Tags input field
+
+<Props of={ChecTagsField} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecTagsField,
+      },
+      props: {
+        placeholder: {
+          default: text('Label for the tags field', 'Add option'),
+        },
+        addOnBlur: {
+          default: boolean('Add tag when input is unfocused', true),
+        },
+        allowDuplicates: {
+          default: boolean('Allow duplicate tags', false),
+        },
+        maxLength: {
+          default: number('Max length of tag character', 20),
+        }
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-200">
+          <ChecTagsField
+            :placeholder="placeholder"
+            :addOnBlur="addOnBlur"
+            :allowDuplicates="allowDuplicates"
+            :maxLength="maxLength"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="With added options">
+    {{
+      components: {
+        ChecTagsField,
+      },
+      props: {
+        placeholder: {
+          default: text('Label for the tags field', 'Add option'),
+        },
+        addOnBlur: {
+          default: boolean('Add tag when input is unfocused', true),
+        },
+        allowDuplicates: {
+          default: boolean('Allow duplicate tags', false),
+        },
+        maxLength: {
+          default: number('Max length of tag character', 20),
+        }
+      },
+      data() {
+        return {
+          options: ['extra-small', 'small', 'medium', 'large', 'extra-large'],
+        }
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-200">
+          <ChecTagsField
+            :optionsList="options"
+            :placeholder="placeholder"
+            :addOnBlur="addOnBlur"
+            :allowDuplicates="allowDuplicates"
+            :maxLength="maxLength"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
