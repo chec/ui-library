@@ -162,6 +162,7 @@ module.exports = {
         40: '0.4',
       },
       margin: {
+        1.5: '0.375rem',
         '-30': '-7.5rem',
       },
       width: {

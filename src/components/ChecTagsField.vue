@@ -1,84 +1,53 @@
 <template>
-  <div class="tags-field">
-    <div
-      v-if="options.length > 0"
-      ref="tagsField"
-      class="tags-field__tags-wrapper"
-      @click="toggleDropdown"
-    >
-      <template v-for="(tag, index) in options">
+  <div
+    ref="wrapper"
+    :class="classNames"
+    tabindex="0"
+    @focus="tagsFieldFocused = true"
+    @click="handleActiveField"
+    @blur="handleInputBlur"
+  >
+    <ul class="tags-field__list-wrapper">
+      <li
+        v-for="(tag, index) in options"
+        ref="list"
+        :key="index"
+        class="tags-field__tag"
+      >
         <ChecTag
-          :key="index"
-          class="tags-field__tag"
           :active="activeTag"
           @dismiss="handleRemoveTag"
         >
           {{ tag }}
         </ChecTag>
-      </template>
-    </div>
-    <TextField
-      v-show="!showDropdown && options.length === 0"
-      v-model="newTag"
-      :placeholder="placeholder"
-      :additional-input-attributes="{ activeInput, maxLength }"
-      inner-input-class="tags-field__tags-input"
-      @input="emitTagChange"
-      @keydown.delete.stop="handleRemoveLastTag"
-      @keydown="handleAddNewTag"
-      @focus="handleInputFocus"
-      @blur="handleInputBlur"
-    />
-    <div
-      v-if="showDropdown"
-      ref="dropdown"
-      class="tags-field__dropdown"
-    >
-      <div v-if="showDropdown || options.length" class="tags-field__add-option">
-        <TextField
-          ref="addOption"
+      </li>
+      <li class="tags-field__input-wrapper">
+        <input
+          v-show="isInputVisible"
+          ref="input"
           v-model="newTag"
           :placeholder="placeholder"
-          :additional-input-attributes="{ activeInput, maxLength }"
-          inner-input-class="tags-field__option-input"
+          :active="activeInput"
+          :max-length="maxLength"
+          class="tags-field__input"
           @input="emitTagChange"
           @keydown.delete.stop="handleRemoveLastTag"
           @keydown="handleAddNewTag"
-          @focus="handleInputFocus"
+          @focus="activeInput = true"
           @blur="handleInputBlur"
-        />
-      </div>
-      <ul class="tags-field__options">
-        <li
-          v-for="(option, index) in options"
-          :key="index"
-          class="tags-field__option"
         >
-          <span class="tags-field__option-text">{{ option }}</span>
-          <ChecButton
-            color="red"
-            text-only
-            @click="handleRemoveTag"
-          >
-            Remove
-          </ChecButton>
-        </li>
-      </ul>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import ChecButton from './ChecButton';
 import ChecTag from './ChecTag';
-import TextField from './TextField';
 
 export default {
   name: 'ChecTagsField',
   components: {
-    ChecButton,
     ChecTag,
-    TextField,
   },
   props: {
     /**
@@ -104,6 +73,7 @@ export default {
     allowDuplicates: Boolean,
     /**
      * Function to pass before an option is added
+     * Ie. Validation rules
      */
     beforeAdding: {
       type: Function,
@@ -123,9 +93,19 @@ export default {
       type: String,
       default: '',
     },
+    /**
+     * Options list for the tags added
+     */
     optionsList: {
       type: Array,
       default: () => [],
+    },
+    /**
+     * Controls the width of the tags field. Use one of the tailwind sizes, e.g. 64, 72, 80, 88, 96.
+     */
+    width: {
+      type: String,
+      default: '88',
     },
   },
   data() {
@@ -134,8 +114,23 @@ export default {
       options: [...this.optionsList],
       activeInput: false,
       activeTag: false,
-      showDropdown: false,
+      isInputVisible: true,
+      tagsFieldFocused: false,
     };
+  },
+  computed: {
+    classNames() {
+      const { tagsFieldFocused, width } = this;
+      // Bind an active modifier to the tags field element
+      return [
+        'tags-field',
+        `w-${width}`,
+        `min-w-${width}`,
+        {
+          'tags-field--active': tagsFieldFocused,
+        },
+      ];
+    },
   },
   watch: {
     /**
@@ -146,12 +141,21 @@ export default {
     },
   },
   created() {
-    // add event listener to listen to outside click events
+    // Add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
 
+    // When 'Escape' key is pressed
     const onEscape = (e) => {
       if (e.key === 'Escape') {
-        this.showDropdown = false;
+        // Blur the tags field element
+        this.tagsFieldFocused = false;
+        // Set input to not visible
+        this.handleInputVisibility();
+        // Ensure that if tags field is not focused
+        // the input is not active
+        if (!this.tagsFieldFocused) {
+          this.activeInput = false;
+        }
       }
     };
     document.addEventListener('keydown', onEscape);
@@ -160,8 +164,25 @@ export default {
     });
   },
   beforeDestroy() {
-    // remove event listeners
+    // Remove event listeners
     window.removeEventListener('click', this.onOutsideClick);
+  },
+  mounted() {
+    // If tags field is clicked and is set to focused,
+    if (this.tagsFieldFocused) {
+      // set input to visible if it wasn't already and
+      this.isInputVisible = true;
+      // set input to active
+      this.activeInput = true;
+    }
+    // If input is active
+    if (this.activeInput) {
+      // Defer the focus on the input until
+      // the input is mounted
+      this.$nextTick(() => {
+        this.$refs.input.focus();
+      });
+    }
   },
   methods: {
     /**
@@ -171,6 +192,7 @@ export default {
       // Check if tags are to be added with keys determined in key props
       const keyAddTag = e ? this.addOnKeys.indexOf(e.keyCode) !== -1 : true;
 
+      // Ensure event type is focusin and not blur
       const typeIsNotBlur = e && e.type !== 'blur';
 
       // If false, do not add new tags with listed keypresses
@@ -179,11 +201,11 @@ export default {
       }
 
       // Check to see if there is any callback function being passed
-      // before newTag is added other add newTag entered
+      // before newTag is added or add 'newTag' entered
       const tag = this.beforeAdding ? await this.beforeAdding(this.newTag) : this.newTag;
 
       // If duplicates are allowed or if tag does not exist yet
-      if (tag && (this.allowDuplicates || this.options.indexOf(tag) === -1)) {
+      if (tag && (this.allowDuplicates || this.options.includes(tag))) {
         // Add the new tag into the options array
         this.options.push(tag);
         this.newTag = '';
@@ -193,24 +215,50 @@ export default {
         e && e.preventDefault();
       }
     },
-    /**
-     * Determine is input is active
-     */
-    handleInputFocus() {
-      this.activeInput = true;
+    toggleInput() {
+      this.isInputVisible = !this.isInputVisible;
     },
     /**
-     * If text field is not active, input value is
-     * automatically added as a new tag.
+     * Determine the visibility of the inner input element
+     */
+    handleInputVisibility() {
+      // Ensure that input is always visible when no tags have been added
+      if (!this.options.length) {
+        this.isInputVisible = true;
+      }
+      // If tags field is blur and options have length
+      if (!this.tagsFieldFocused && this.options.length) {
+        // Set input visibility to false
+        this.isInputVisible = false;
+      }
+    },
+    /**
+     * Handle input focus
+     */
+    handleInputFocus() {
+      // If input is visible
+      if (this.isInputVisible) {
+        // Defer focus until input is mounted
+        this.$nextTick(() => {
+          // then set input to focused
+          this.$refs.input.focus();
+        });
+      }
+    },
+    /**
+     * Handler to detect when input is not active
      */
     handleInputBlur(e) {
+      // If text field is not active or is blur,
       this.activeInput = false;
+      // input value is automatically added as a new tag.
       this.handleAddNewTag(e);
     },
     /**
      * Remove tag from options list
      */
     handleRemoveTag(index) {
+      // Remove tag from options array
       this.options.splice(index, 1);
       this.emitTagChange();
     },
@@ -218,9 +266,11 @@ export default {
      * Remove last tag with keypress event
      */
     handleRemoveLastTag() {
+      // If there is a value in newTag, cancel the function
       if (this.newTag) {
         return;
       }
+      // Remove the last tag in the array
       this.options.pop();
       this.emitTagChange();
     },
@@ -236,10 +286,23 @@ export default {
       this.$emit('update:tags', this.options);
     },
     /**
-     * Toggles visibility of the dropdown
+     * A click handler to make the input active when field is clicked
+     *
+     * @param {Event} event
      */
-    toggleDropdown() {
-      this.showDropdown = !this.showDropdown;
+    handleActiveField() {
+      this.tagsFieldFocused = true;
+      // If tags field focused is true
+      if (this.tagsFieldFocused) {
+        // Set the element to focused
+        this.$refs.wrapper.focus();
+        // Set input to visible
+        this.isInputVisible = true;
+        // Set input to active
+        this.activeInput = true;
+      }
+      // Set focus on input
+      this.handleInputFocus();
     },
     /**
      * A handler bound on the window while the component is mounted that closes the dropdown when clicked away
@@ -247,17 +310,16 @@ export default {
      * @param {Event} event
      */
     onOutsideClick(e) {
-      if (!this.showDropdown) {
-        return;
-      }
-
-      if (this.$refs.tagsField.contains(e.target)
-        || this.$refs.dropdown.contains(e.target)
+      // Prevent running of function if clicks are
+      // defected in the tags field element or the input
+      if (this.$refs.wrapper.contains(e.target)
+        || this.$refs.input.contains(e.target)
       ) {
         return;
       }
-
-      this.toggleDropdown();
+      // Set tags field focus to false
+      this.tagsFieldFocused = false;
+      this.handleInputVisibility();
     },
   },
 };
@@ -265,73 +327,42 @@ export default {
 
 <style lang="scss">
 .tags-field {
-  @apply w-88;
-  min-width: 22.25rem;
+  @apply
+    p-4
+    bg-white
+    rounded
+    border
+    border-gray-200
+    duration-150
+    transition
+    shadow-sm
+    cursor-pointer
+    z-50;
 
-  &__tags-wrapper {
-    @apply
-      w-88
-      px-4
-      bg-white
-      rounded
-      border
-      border-gray-200
-      duration-150
-      transition
-      shadow-sm
-      cursor-pointer
-      z-50
-      pt-4
-      pb-2;
-    min-width: 22.25rem; // Specific to design
+  &:focus,
+  &:active,
+  &--active {
+    @apply transition duration-150 border-gray-500 shadow-light-focus;
+  }
 
-    &:focus,
-    &:active {
-      @apply transition duration-150 border-gray-500 shadow-light-focus;
-    }
-
-    &:hover {
-      @apply transition duration-150 border-gray-400;
-    }
+  &:hover {
+    @apply transition duration-150 border-gray-400;
   }
 
   &__tag {
-    @apply mr-2 mb-2 inline-block;
+    @apply mr-2 mb-1.5 inline-block;
   }
 
-  &__dropdown {
-    @apply static bg-white items-center rounded-md shadow-md overflow-hidden z-30;
+  &__input-wrapper {
+    @apply inline-block;
   }
 
-  &__options {
-    @apply overflow-y-auto overflow-x-hidden;
-    max-height: 20vh;
-  }
+  &__input {
+    @apply border-none; // Override input style
 
-  &__option {
-    @apply flex justify-between w-full items-center text-sm px-4 py-3 outline-none cursor-pointer bg-white;
-
-    &:hover,
-    &:focus,
-    &:active {
-      @apply bg-gray-100;
+    &:focus {
+      @apply outline-none;
     }
-
-    .button__content { // Target button span tag
-      @apply text-xs font-bold uppercase;
-    }
-  }
-
-  &__option-input {
-    @apply rounded-none border-none shadow-none; // Override TextField style
-  }
-
-  &__option-text {
-    @apply text-gray-500;
-  }
-
-  .button--variant-regular {
-    @apply p-0;
   }
 }
 </style>
