@@ -19,7 +19,7 @@
       >
         <ChecTag
           :active="activeTag"
-          @dismiss="handleRemoveTag"
+          @dismiss="handleRemoveTag(tag)"
         >
           {{ tag }}
         </ChecTag>
@@ -271,7 +271,8 @@ export default {
     /**
      * Remove tag from tags list
      */
-    handleRemoveTag(index) {
+    handleRemoveTag(removedTag) {
+      const index = this.tags.findIndex((candidate) => candidate === removedTag);
       // Remove tag from tags array
       const tag = this.tags.splice(index, 1);
       this.emitTagChange();
