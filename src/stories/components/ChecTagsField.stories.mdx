@@ -32,11 +32,8 @@ const keys = [13, 188, 9]
           default: boolean('Allow duplicate tags', false),
         },
         maxLength: {
-          default: number('Max length of tag character', 20),
+          default: number('Max length of tag character', undefined),
         },
-        width: {
-          default: text('Width of tags field', '88'),
-        }
       },
       data() {
         return {
@@ -47,12 +44,12 @@ const keys = [13, 188, 9]
         <div class="py-16 flex justify-center bg-gray-200">
           <ChecTagsField
             v-model="tags"
+            class="max-w-xl"
             :placeholder="placeholder"
             :addOnBlur="addOnBlur"
             :addOnKeys="addOnKeys"
             :allowDuplicates="allowDuplicates"
             :maxLength="maxLength"
-            :width="width"
           />
           <TextField
             placeholder="This is here for comparison"

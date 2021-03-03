@@ -4,7 +4,6 @@
     :class="classNames"
     role="textbox"
     tabindex="0"
-    :tagsList="tagsList"
     :disabled="disabled"
     @focus="tagsFieldFocused = true"
     @click="handleActiveField"
@@ -37,8 +36,6 @@
           :active="activeInput"
           :max-length="maxLength"
           class="tags-field__input"
-          @input="emitTagChange"
-          @value="tags"
           @keydown.delete.stop="handleRemoveLastTag"
           @keydown="handleAddNewTag"
           @focus="activeInput = true"
@@ -61,6 +58,10 @@ export default {
   name: 'ChecTagsField',
   components: {
     ChecTag,
+  },
+  model: {
+    prop: 'tags',
+    event: 'change',
   },
   props: {
     /**
@@ -111,25 +112,17 @@ export default {
       default: '',
     },
     /**
-     * Tags list for the tags added
-     */
-    tagsList: {
-      type: Array,
-      default: () => [],
-    },
-    /**
      * The value the v-model directive utilizes
      * @see https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
      */
-    value: {
-      type: [Array, String, Number],
-      default: '',
+    tags: {
+      type: Array,
+      default: () => ([]),
     },
   },
   data() {
     return {
       newTag: '',
-      tags: Array.isArray(this.value) ? this.value.slice() : (this.value || []),
       activeInput: false,
       activeTag: false,
       isInputVisible: true,
@@ -150,19 +143,6 @@ export default {
     // list() {
     //   return Array.isArray(this.value);
     // },
-  },
-  watch: {
-    tagsList() {
-      // Handle external updates of the tag value. We do this by tracking the
-      // current value of the tags field in a data attribute, and then comparing
-      // watched changes of the `value` prop to the value we're tracking with
-      // the tags field input. If it changes, then we have an external change
-      // that wasn't prompted by changes within the component.
-      this.tags = [...this.tagsList];
-    },
-    value(value) {
-      this.tags = value;
-    },
   },
   created() {
     // Add event listener to listen to outside click events
@@ -212,15 +192,13 @@ export default {
 
       // If duplicates are allowed or if tag does not exist yet
       if (tag && (this.allowDuplicates || !this.tags.includes(tag))) {
-        // Add the new tag into the tags array
-        // and emit tag input
-        this.tags.push(tag);
         // Set newTag back to empty string
         this.newTag = '';
-        this.emitTagChange();
+        this.emitTagChange([...this.tags, tag]);
 
-        // eslint-disable-next-line no-unused-expressions
-        $event && $event.preventDefault();
+        if ($event) {
+          $event.preventDefault();
+        }
       }
     },
     /**
@@ -263,12 +241,9 @@ export default {
      * Remove tag from tags list
      */
     handleRemoveTag(removedTag) {
-      const index = this.tags.findIndex((candidate) => candidate === removedTag);
       // Remove tag from tags array
-      const tag = this.tags.splice(index, 1);
-      this.emitTagChange();
-      this.$emit('remove', tag);
-      return tag;
+      this.emitTagChange(this.tags.filter((candidate) => candidate !== removedTag));
+      this.$emit('remove', removedTag);
     },
     /**
      * Remove last tag with keypress event
@@ -279,19 +254,20 @@ export default {
         return;
       }
       // Remove the last tag in the array
-      this.tags.pop();
-      this.emitTagChange();
+      const tags = [...this.tags];
+      tags.pop();
+      this.emitTagChange(tags);
     },
     /**
      * Emits tag/option input event
      */
-    emitTagChange() {
+    emitTagChange(tags) {
       /**
        * Emitted the tag is input
        * @event input
        * @type {$event}
        */
-      this.$emit('input', this.tags);
+      this.$emit('change', tags);
     },
     /**
      * A click handler to make the input active when field is clicked
@@ -361,7 +337,7 @@ export default {
     duration-150
     transition
     shadow-sm
-    cursor-pointer
+    cursor-text
     z-50;
 
   &:focus,
@@ -380,7 +356,7 @@ export default {
 
   &__tag,
   &__input-wrapper {
-    @apply whitespace-no-wrap pl-1 mt-1;
+    @apply whitespace-no-wrap pl-2 mt-2;
   }
 
   &__tag {
@@ -393,7 +369,7 @@ export default {
     @apply relative;
 
     input {
-      @apply absolute top-0 bg-transparent w-48 pl-2;
+      @apply absolute top-0 bg-transparent w-48 pl-0;
     }
   }
 
@@ -405,7 +381,7 @@ export default {
   }
 
   &__list-wrapper {
-    @apply flex items-center justify-start px-2 pt-2 pb-3 flex-wrap;
+    @apply flex items-center justify-start pl-1 pr-2 pt-1 pb-3 flex-wrap;
   }
 
   &__input {
