@@ -25,6 +25,10 @@
         </ChecTag>
       </li>
       <li class="tags-field__input-wrapper">
+        <!--
+          This section does some auto-grow input magic - where we have an input with a large width, and a
+          transparent background
+        -->
         <input
           v-show="isInputVisible"
           ref="input"
@@ -40,6 +44,11 @@
           @focus="activeInput = true"
           @blur="handleInputBlur"
         >
+        <!-- eslint-disable-next-line vue/no-useless-mustaches -->
+        {{ '\xa0' }}
+        <span class="tags-field__input-autogrow">
+          {{ newTag }}
+        </span>
       </li>
     </ul>
   </div>
@@ -92,7 +101,7 @@ export default {
      */
     maxLength: {
       type: Number,
-      default: 20,
+      default: null,
     },
     /**
      * The label for the tags field input
@@ -353,8 +362,6 @@ export default {
 <style lang="scss">
 .tags-field {
   @apply
-    px-4
-    py-3.5
     bg-white
     rounded
     border
@@ -379,16 +386,34 @@ export default {
     @apply opacity-50 transition-opacity duration-150;
   }
 
-  &__tag {
-    @apply mr-2 mb-2 inline-block;
+  &__tag,
+  &__input-wrapper {
+    @apply whitespace-no-wrap pl-1 mt-1;
   }
 
-  &__list-wrapper {
-    @apply leading-tight align-middle;
+  &__tag {
+    > * {
+      @apply block mt-px;
+    }
   }
 
   &__input-wrapper {
-    @apply inline-block;
+    @apply relative;
+
+    input {
+      @apply absolute top-0 bg-transparent w-48 pl-2;
+    }
+  }
+
+  &__input-autogrow {
+    @apply invisible inline-block;
+
+    // Give a reasonable amount of max-width so the placeholder doesn't look squished up against the edge
+    min-width: 6rem;
+  }
+
+  &__list-wrapper {
+    @apply flex items-center justify-start px-2 pt-2 pb-3 flex-wrap;
   }
 
   &__input {
