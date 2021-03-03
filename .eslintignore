@@ -1,2 +1,6 @@
 dist/*
 src/stories/index.stories.js
+/src/lang/*.js
+!/src/lang/en.js
+!/src/lang/index.js
+!/src/lang/langs.js
