@@ -148,6 +148,9 @@ module.exports = {
       full: '100%',
       'full-px': '9999px',
     },
+    minWidth: {
+      88: '22rem',
+    },
     extend: {
       spacing: {
         ...fontSizes,
@@ -164,6 +167,9 @@ module.exports = {
       margin: {
         1.5: '0.375rem',
         '-30': '-7.5rem',
+      },
+      padding: {
+        3.5: '0.875rem',
       },
       width: {
         '1/11': '9.090909%',

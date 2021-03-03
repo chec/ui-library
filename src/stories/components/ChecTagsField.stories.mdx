@@ -2,6 +2,7 @@ import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text, number, array } from '@storybook/addon-knobs';
 import ChecTagsField from '../../components/ChecTagsField.vue';
+import TextField from '../../components/TextField.vue';
 const keys = [13, 188, 9]
 
 <Meta title="Form fields/Tags field" component={ChecTagsField} />
@@ -15,6 +16,7 @@ const keys = [13, 188, 9]
     {{
       components: {
         ChecTagsField,
+        TextField,
       },
       props: {
         placeholder: {
@@ -36,15 +38,25 @@ const keys = [13, 188, 9]
           default: text('Width of tags field', '88'),
         }
       },
+      data() {
+        return {
+           tags: ["flamingo pink", "burgandy", "aquamarine"],
+        };
+      },
       template: `
         <div class="py-16 flex justify-center bg-gray-200">
           <ChecTagsField
+            v-model="tags"
             :placeholder="placeholder"
             :addOnBlur="addOnBlur"
             :addOnKeys="addOnKeys"
             :allowDuplicates="allowDuplicates"
             :maxLength="maxLength"
             :width="width"
+          />
+          <TextField
+            placeholder="This is here for comparison"
+            class="ml-6"
           />
         </div>`
     }}
@@ -69,23 +81,27 @@ const keys = [13, 188, 9]
         },
         maxLength: {
           default: number('Max length of tag character', 20),
+        },
+        width: {
+          default: text('Width of tags field', '96'),
         }
       },
       data() {
         return {
-          options: ['extra-small', 'small', 'medium', 'large', 'extra-large'],
-        }
+          tags: ["flamingo pink", "burgandy", "aquamarine", "mustard yellow", "seafoam green", "sunset orange"],
+        };
       },
       template: `
-        <div class="py-16 flex justify-center bg-gray-200">
+        <div class="py-16 justify-center bg-gray-200">
           <ChecTagsField
-            :optionsList="options"
+            v-model="tags"
             :placeholder="placeholder"
             :addOnBlur="addOnBlur"
             :allowDuplicates="allowDuplicates"
             :maxLength="maxLength"
-            width="96"
+            :width="width"
           />
+          <p class="pt-8">{{ tags }}</p>
         </div>`
     }}
   </Story>
