@@ -118,13 +118,6 @@ export default {
       default: () => [],
     },
     /**
-     * Controls the width of the tags field. Use one of the tailwind sizes, e.g. 64, 72, 80, 88, 96.
-     */
-    width: {
-      type: String,
-      default: '88',
-    },
-    /**
      * The value the v-model directive utilizes
      * @see https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
      */
@@ -145,12 +138,10 @@ export default {
   },
   computed: {
     classNames() {
-      const { tagsFieldFocused, width } = this;
+      const { tagsFieldFocused } = this;
       // Bind an active modifier to the tags field element
       return [
         'tags-field',
-        `w-${width}`,
-        `min-w-${width}`,
         {
           'tags-field--active': tagsFieldFocused,
         },
