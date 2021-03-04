@@ -1,0 +1,105 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { boolean, select, text, number, array } from '@storybook/addon-knobs';
+import ChecTagsField from '../../components/ChecTagsField.vue';
+import TextField from '../../components/TextField.vue';
+const keys = [13, 188, 9]
+
+<Meta title="Form fields/Tags field" component={ChecTagsField} />
+
+# Tags input field
+
+<Props of={ChecTagsField} />
+
+<Preview>
+  <Story name="Default">
+    {{
+      components: {
+        ChecTagsField,
+        TextField,
+      },
+      props: {
+        placeholder: {
+          default: text('Label for the tags field', 'Add option'),
+        },
+        addOnBlur: {
+          default: boolean('Add tag when input is unfocused', true),
+        },
+        addOnKeys: {
+          default: array('Keys to add tags', keys)
+        },
+        allowDuplicates: {
+          default: boolean('Allow duplicate tags', false),
+        },
+        maxLength: {
+          default: number('Max length of tag character', undefined),
+        },
+      },
+      data() {
+        return {
+           tags: ["flamingo pink", "burgandy", "aquamarine"],
+        };
+      },
+      template: `
+        <div class="py-16 flex justify-center bg-gray-200">
+          <ChecTagsField
+            v-model="tags"
+            class="max-w-xl"
+            :placeholder="placeholder"
+            :addOnBlur="addOnBlur"
+            :addOnKeys="addOnKeys"
+            :allowDuplicates="allowDuplicates"
+            :maxLength="maxLength"
+          />
+          <TextField
+            placeholder="This is here for comparison"
+            class="ml-6"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="With added options">
+    {{
+      components: {
+        ChecTagsField,
+      },
+      props: {
+        placeholder: {
+          default: text('Label for the tags field', 'Add option'),
+        },
+        addOnBlur: {
+          default: boolean('Add tag when input is unfocused', true),
+        },
+        allowDuplicates: {
+          default: boolean('Allow duplicate tags', false),
+        },
+        maxLength: {
+          default: number('Max length of tag character', 20),
+        },
+        width: {
+          default: text('Width of tags field', '96'),
+        }
+      },
+      data() {
+        return {
+          tags: ["flamingo pink", "burgandy", "aquamarine", "mustard yellow", "seafoam green", "sunset orange"],
+        };
+      },
+      template: `
+        <div class="py-16 justify-center bg-gray-200">
+          <ChecTagsField
+            v-model="tags"
+            :placeholder="placeholder"
+            :addOnBlur="addOnBlur"
+            :allowDuplicates="allowDuplicates"
+            :maxLength="maxLength"
+            :width="width"
+          />
+          <p class="pt-8">{{ tags }}</p>
+        </div>`
+    }}
+  </Story>
+</Preview>

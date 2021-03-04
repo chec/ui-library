@@ -34,6 +34,7 @@ import ChecSwitch from './components/ChecSwitch.vue';
 import ChecTab from './components/ChecTab.vue';
 import ChecTable from './components/ChecTable.vue';
 import ChecTag from './components/ChecTag.vue';
+import ChecTagsField from './components/ChecTagsField.vue';
 import ChecTagGroup from './components/ChecTagGroup.vue';
 import ChecThumbnailCard from './components/ChecThumbnailCard.vue';
 import ChecTooltip from './directives/ChecTooltip';
@@ -85,6 +86,7 @@ export {
   ChecTab,
   ChecTable,
   ChecTag,
+  ChecTagsField,
   ChecTagGroup,
   ChecThumbnailCard,
   ChecTooltip,
