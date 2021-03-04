@@ -39206,6 +39206,17 @@ for (var COLLECTION_NAME in DOMIterables) {
 
 /***/ }),
 
+/***/ "df1d":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecTagsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("e2d4");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecTagsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecTagsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecTagsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "df30":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -41720,6 +41731,13 @@ module.exports = function (target, src, options) {
   return target;
 };
 
+
+/***/ }),
+
+/***/ "e2d4":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -51350,6 +51368,7 @@ __webpack_require__.d(__webpack_exports__, "ChecSwitch", function() { return /* 
 __webpack_require__.d(__webpack_exports__, "ChecTab", function() { return /* reexport */ ChecTab; });
 __webpack_require__.d(__webpack_exports__, "ChecTable", function() { return /* reexport */ ChecTable; });
 __webpack_require__.d(__webpack_exports__, "ChecTag", function() { return /* reexport */ ChecTag; });
+__webpack_require__.d(__webpack_exports__, "ChecTagsField", function() { return /* reexport */ ChecTagsField; });
 __webpack_require__.d(__webpack_exports__, "ChecTagGroup", function() { return /* reexport */ ChecTagGroup; });
 __webpack_require__.d(__webpack_exports__, "ChecThumbnailCard", function() { return /* reexport */ ChecThumbnailCard; });
 __webpack_require__.d(__webpack_exports__, "ChecTooltip", function() { return /* reexport */ ChecTooltip; });
@@ -53889,12 +53908,12 @@ var vue_flatpickr_min_default = /*#__PURE__*/__webpack_require__.n(vue_flatpickr
 var flatpickr = __webpack_require__("cf06");
 var flatpickr_default = /*#__PURE__*/__webpack_require__.n(flatpickr);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44bea430-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=7d620735&
-var TextFieldvue_type_template_id_7d620735_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-field",class:_vm.classNames},[(_vm.isScrollable)?_c('div',{staticClass:"text-field__label-underlay",class:{ 'text-field__label-underlay--scrolled-to-top': _vm.isScrolledToTop }}):_vm._e(),(_vm.multiline)?_c('textarea',_vm._g(_vm._b({on:{"input":_vm.handleInput}},'textarea',_vm.sharedInputProps,false),_vm.nonInputListeners)):_c('input',_vm._g(_vm._b({style:({ 'padding-right': _vm.hasSlot && (_vm.slotWidth + "px") }),attrs:{"type":_vm.$attrs.type || 'text'},on:{"input":_vm.handleInput}},'input',_vm.sharedInputProps,false),_vm.nonInputListeners)),(_vm.label)?_c('label',{staticClass:"text-field__label",attrs:{"data-content":_vm.label,"for":_vm.id}},[_vm._v(" "+_vm._s(_vm.label)+" "),(_vm.required)?_c('span',{staticClass:"text-field__required-text"},[_vm._v(" "+_vm._s(_vm.$t('general.requiredInline'))+" ")]):_vm._e()]):_vm._e(),_c('div',{ref:"currency",staticClass:"text-field__currency"},[_vm._v(" "+_vm._s(_vm.currencySymbol)+" ")]),(_vm.$slots.default)?_c('div',{ref:"rightContentSlot",staticClass:"text-field__right-content"},[_vm._t("default")],2):_vm._e()])}
-var TextFieldvue_type_template_id_7d620735_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44bea430-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TextField.vue?vue&type=template&id=04f5ae38&
+var TextFieldvue_type_template_id_04f5ae38_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-field",class:_vm.classNames},[(_vm.isScrollable)?_c('div',{staticClass:"text-field__label-underlay",class:{ 'text-field__label-underlay--scrolled-to-top': _vm.isScrolledToTop }}):_vm._e(),(_vm.multiline)?_c('textarea',_vm._g(_vm._b({on:{"input":_vm.handleInput}},'textarea',_vm.sharedInputProps,false),_vm.nonInputListeners)):_c('input',_vm._g(_vm._b({style:({ 'padding-right': _vm.hasSlot && (_vm.slotWidth + "px") }),attrs:{"type":_vm.$attrs.type || 'text'},on:{"input":_vm.handleInput}},'input',_vm.sharedInputProps,false),_vm.nonInputListeners)),(_vm.label)?_c('label',{staticClass:"text-field__label",attrs:{"data-content":_vm.label,"for":_vm.id}},[_vm._v(" "+_vm._s(_vm.label)+" "),(_vm.required)?_c('span',{staticClass:"text-field__required-text"},[_vm._v(" "+_vm._s(_vm.$t('general.requiredInline'))+" ")]):_vm._e()]):_vm._e(),_c('div',{ref:"currency",staticClass:"text-field__currency"},[_vm._v(" "+_vm._s(_vm.currencySymbol)+" ")]),(_vm.$slots.default)?_c('div',{ref:"rightContentSlot",staticClass:"text-field__right-content"},[_vm._t("default")],2):_vm._e()])}
+var TextFieldvue_type_template_id_04f5ae38_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/TextField.vue?vue&type=template&id=7d620735&
+// CONCATENATED MODULE: ./src/components/TextField.vue?vue&type=template&id=04f5ae38&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -53976,7 +53995,7 @@ var es_number_constructor = __webpack_require__("a9e3");
      * Class to pass to inner input element
      */
     innerInputClass: {
-      type: String,
+      type: [String, Array],
       default: ''
     },
 
@@ -54210,8 +54229,8 @@ var TextFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("2b23");
 
 var TextField_component = normalizeComponent(
   components_TextFieldvue_type_script_lang_js_,
-  TextFieldvue_type_template_id_7d620735_render,
-  TextFieldvue_type_template_id_7d620735_staticRenderFns,
+  TextFieldvue_type_template_id_04f5ae38_render,
+  TextFieldvue_type_template_id_04f5ae38_staticRenderFns,
   false,
   null,
   null,
@@ -61885,6 +61904,437 @@ var ChecTable_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTable = (ChecTable_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44bea430-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagsField.vue?vue&type=template&id=2d42a92d&
+var ChecTagsFieldvue_type_template_id_2d42a92d_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"wrapper",class:_vm.classNames,attrs:{"role":"textbox","tabindex":"0","disabled":_vm.disabled},on:{"focus":function($event){_vm.tagsFieldFocused = true},"click":_vm.handleActiveField,"blur":_vm.handleInputBlur}},[_c('ul',{staticClass:"tags-field__list-wrapper"},[_vm._l((_vm.tags),function(tag){return _c('li',{key:tag.id,ref:"list",refInFor:true,staticClass:"tags-field__tag"},[_c('ChecTag',{attrs:{"active":_vm.activeTag},on:{"dismiss":function($event){return _vm.handleRemoveTag(tag)}}},[_vm._v(" "+_vm._s(tag)+" ")])],1)}),_c('li',{staticClass:"tags-field__input-wrapper"},[_c('input',{directives:[{name:"show",rawName:"v-show",value:(_vm.isInputVisible),expression:"isInputVisible"},{name:"model",rawName:"v-model",value:(_vm.newTag),expression:"newTag"}],ref:"input",staticClass:"tags-field__input",attrs:{"placeholder":_vm.placeholder,"active":_vm.activeInput,"max-length":_vm.maxLength},domProps:{"value":(_vm.newTag)},on:{"keydown":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"delete",[8,46],$event.key,["Backspace","Delete","Del"])){ return null; }$event.stopPropagation();return _vm.handleRemoveLastTag($event)},_vm.handleAddNewTag],"focus":function($event){_vm.activeInput = true},"blur":_vm.handleInputBlur,"input":function($event){if($event.target.composing){ return; }_vm.newTag=$event.target.value}}}),_vm._v(" "+_vm._s('\xa0')+" "),_c('span',{staticClass:"tags-field__input-autogrow"},[_vm._v(" "+_vm._s(_vm.newTag)+" ")])])],2)])}
+var ChecTagsFieldvue_type_template_id_2d42a92d_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ChecTagsField.vue?vue&type=template&id=2d42a92d&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagsField.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var ChecTagsFieldvue_type_script_lang_js_ = ({
+  name: 'ChecTagsField',
+  components: {
+    ChecTag: ChecTag
+  },
+  model: {
+    prop: 'tags',
+    event: 'change'
+  },
+  props: {
+    /**
+     * If the textfield holds a value and loses focus,
+     * a tag will be added out of the value
+     */
+    addOnBlur: Boolean,
+
+    /**
+     * Add a tag when listed keys are pressed
+     * 13 (return), 188 (comma), 9(tab)
+     */
+    addOnKeys: {
+      type: Array,
+      default: function _default() {
+        return [13, // Return
+        188, // Comma ','
+        9 // Tab
+        ];
+      }
+    },
+
+    /**
+     * Allow same tags to be added more than once
+     */
+    allowDuplicates: Boolean,
+
+    /**
+     * Function to pass before an option is added
+     * Ie. Validation rules
+     */
+    beforeAdding: {
+      type: Function,
+      default: function _default(tag) {
+        return tag;
+      }
+    },
+
+    /**
+     * If this tags field component should appear disabled
+     */
+    disabled: Boolean,
+
+    /**
+     * The maximum amount of characters the input/tags is allowed to have
+     */
+    maxLength: {
+      type: Number,
+      default: null
+    },
+
+    /**
+     * The label for the tags field input
+     */
+    placeholder: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * The value the v-model directive utilizes
+     * @see https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
+     */
+    tags: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    }
+  },
+  data: function data() {
+    return {
+      newTag: '',
+      activeInput: false,
+      activeTag: false,
+      isInputVisible: true,
+      tagsFieldFocused: false
+    };
+  },
+  computed: {
+    classNames: function classNames() {
+      var tagsFieldFocused = this.tagsFieldFocused; // Bind an active modifier to the tags field element
+
+      return ['tags-field', {
+        'tags-field--active': tagsFieldFocused
+      }];
+    } // list() {
+    //   return Array.isArray(this.value);
+    // },
+
+  },
+  created: function created() {
+    // Add event listener to listen to outside click events
+    window.addEventListener('click', this.onOutsideClick);
+    document.addEventListener('keydown', this.onEscape);
+  },
+  beforeDestroy: function beforeDestroy() {
+    // Remove event listeners
+    window.removeEventListener('click', this.onOutsideClick);
+    document.removeEventListener('keydown', this.onEscape);
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // If tags field is clicked and is set to focused,
+    if (this.tagsFieldFocused) {
+      // set input to visible if it wasn't already and
+      this.isInputVisible = true; // set input to active
+
+      this.activeInput = true;
+    } // If input is active
+
+
+    if (this.activeInput) {
+      // Defer the focus on the input until
+      // the input is mounted
+      this.$nextTick(function () {
+        _this.$refs.input.focus();
+      });
+    }
+  },
+  methods: {
+    /**
+     * Add new tags
+     */
+    handleAddNewTag: function handleAddNewTag($event) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var keyAddTag, typeIsNotBlur, tag;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                // Check if tags are to be added with keys determined in key props
+                keyAddTag = $event ? _this2.addOnKeys.indexOf($event.keyCode) !== -1 : true; // Ensure event type is focusin and not blur
+
+                typeIsNotBlur = $event && $event.type !== 'blur'; // If false, do not add new tags with listed keypresses
+
+                if (!(!keyAddTag && (!_this2.addOnBlur || typeIsNotBlur))) {
+                  _context.next = 4;
+                  break;
+                }
+
+                return _context.abrupt("return");
+
+              case 4:
+                if (!_this2.beforeAdding) {
+                  _context.next = 10;
+                  break;
+                }
+
+                _context.next = 7;
+                return _this2.beforeAdding(_this2.newTag);
+
+              case 7:
+                _context.t0 = _context.sent;
+                _context.next = 11;
+                break;
+
+              case 10:
+                _context.t0 = _this2.newTag;
+
+              case 11:
+                tag = _context.t0;
+
+                // If duplicates are allowed or if tag does not exist yet
+                if (tag && (_this2.allowDuplicates || !_this2.tags.includes(tag))) {
+                  // Set newTag back to empty string
+                  _this2.newTag = '';
+
+                  _this2.emitTagChange([].concat(_toConsumableArray(_this2.tags), [tag]));
+
+                  if ($event) {
+                    $event.preventDefault();
+                  }
+                }
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+
+    /**
+     * Determine the visibility of the inner input element
+     */
+    handleInputVisibility: function handleInputVisibility() {
+      // Ensure that input is always visible when no tags have been added
+      if (!this.tags.length) {
+        this.isInputVisible = true;
+      } // If tags field is blur and tags have length
+
+
+      if (!this.tagsFieldFocused && this.tags.length) {
+        // Set input visibility to false
+        this.isInputVisible = false;
+      }
+    },
+
+    /**
+     * Handle input focus
+     */
+    handleInputFocus: function handleInputFocus() {
+      var _this3 = this;
+
+      // If input is visible
+      if (this.isInputVisible) {
+        // Defer focus until input is mounted
+        this.$nextTick(function () {
+          // then set input to focused
+          _this3.$refs.input.focus();
+        });
+      }
+    },
+
+    /**
+     * Handler to detect when input is not active
+     */
+    handleInputBlur: function handleInputBlur(e) {
+      // If text field is not active or is blur,
+      this.activeInput = false; // input value is automatically added as a new tag.
+
+      this.handleAddNewTag(e);
+    },
+
+    /**
+     * Remove tag from tags list
+     */
+    handleRemoveTag: function handleRemoveTag(removedTag) {
+      // Remove tag from tags array
+      this.emitTagChange(this.tags.filter(function (candidate) {
+        return candidate !== removedTag;
+      }));
+      this.$emit('remove', removedTag);
+    },
+
+    /**
+     * Remove last tag with keypress event
+     */
+    handleRemoveLastTag: function handleRemoveLastTag() {
+      // If there is a value in newTag, cancel the function
+      if (this.newTag) {
+        return;
+      } // Remove the last tag in the array
+
+
+      var tags = _toConsumableArray(this.tags);
+
+      tags.pop();
+      this.emitTagChange(tags);
+    },
+
+    /**
+     * Emits tag/option input event
+     */
+    emitTagChange: function emitTagChange(tags) {
+      /**
+       * Emitted the tag is input
+       * @event input
+       * @type {$event}
+       */
+      this.$emit('change', tags);
+    },
+
+    /**
+     * A click handler to make the input active when field is clicked
+     *
+     * @param {Event} event
+     */
+    handleActiveField: function handleActiveField() {
+      this.tagsFieldFocused = true; // If tags field focused is true
+
+      if (this.tagsFieldFocused) {
+        // Set the element to focused
+        this.$refs.wrapper.focus(); // Set input to visible
+
+        this.isInputVisible = true; // Set input to active
+
+        this.activeInput = true;
+      } // Set focus on input
+
+
+      this.handleInputFocus();
+    },
+
+    /**
+     * A handler bound on the window while the component is mounted that closes the dropdown when clicked away
+     *
+     * @param {Event} e
+     */
+    onOutsideClick: function onOutsideClick(e) {
+      // Prevent running of function if clicks are
+      // defected in the tags field element or the input
+      if (this.$refs.wrapper.contains(e.target) || this.$refs.input.contains(e.target)) {
+        return;
+      } // Set tags field focus to false
+
+
+      this.tagsFieldFocused = false;
+      this.handleInputVisibility();
+    },
+
+    /**
+     * To handle on escape keydown event
+     *
+     * @param {Event} e
+     */
+    onEscape: function onEscape(e) {
+      if (e.key === 'Escape') {
+        // Blur the tags field element
+        this.tagsFieldFocused = false; // Set input to not visible
+
+        this.handleInputVisibility(); // Ensure that if tags field is not focused
+        // the input is not active
+
+        if (!this.tagsFieldFocused) {
+          this.activeInput = false;
+        }
+      }
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ChecTagsField.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ChecTagsFieldvue_type_script_lang_js_ = (ChecTagsFieldvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ChecTagsField.vue?vue&type=style&index=0&lang=scss&
+var ChecTagsFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("df1d");
+
+// CONCATENATED MODULE: ./src/components/ChecTagsField.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ChecTagsField_component = normalizeComponent(
+  components_ChecTagsFieldvue_type_script_lang_js_,
+  ChecTagsFieldvue_type_template_id_2d42a92d_render,
+  ChecTagsFieldvue_type_template_id_2d42a92d_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChecTagsField = (ChecTagsField_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"44bea430-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecThumbnailCard.vue?vue&type=template&id=8c6182ac&
 var ChecThumbnailCardvue_type_template_id_8c6182ac_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"thumbnail-card",class:_vm.classObject},[_c('div',{staticClass:"thumbnail-card__content"},[(_vm.hasHoverContent)?_c('div',{staticClass:"thumbnail-card__hover-content"},[_vm._t("hover-content")],2):_vm._e(),(_vm.thumbnail)?_c('div',{staticClass:"thumbnail-card__thumbnail"},[_c('img',{attrs:{"src":_vm.thumbnail,"alt":_vm.altText}})]):_c('div',{staticClass:"thumbnail-card__placeholder"},[_c('ChecIcon',{staticClass:"thumbnail-card__logo",attrs:{"icon":"chec"}})],1)]),_c('div',{staticClass:"thumbnail-card__inner-wrapper",class:_vm.innerClass},[_vm._t("default")],2)])}
 var ChecThumbnailCardvue_type_template_id_8c6182ac_staticRenderFns = []
@@ -75062,6 +75512,7 @@ var down_arrow_default = /*#__PURE__*/__webpack_require__.n(down_arrow);
   checLogo: chec_logo_default.a
 });
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
