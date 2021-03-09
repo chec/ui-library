@@ -1,0 +1,19 @@
+name: Upload translations
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'src/lang/en.js'
+
+jobs:
+  upload:
+    name: Upload strings to Localazy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: localazy/upload@v1
+        with:
+          read_key: ${{ secrets.LOCALAZY_READ_KEY }}
+          write_key: ${{ secrets.LOCALAZY_WRITE_KEY }}

@@ -1,0 +1,13 @@
+{
+  "upload": {
+    "type": "js",
+    "files": {
+      "pattern": "src/lang/*.js",
+      "lang": "${autodetectLang}"
+    }
+  },
+  "download": {
+    "files": "src/lang/${lang}.js",
+    "metadataFileJs": "src/lang/meta.js"
+  }
+}

@@ -1,7 +1,5 @@
-import en from './en';
-import pt from './pt';
+import langs from './langs';
 
 export default {
-  ...en,
-  ...pt,
+  ...langs,
 };
