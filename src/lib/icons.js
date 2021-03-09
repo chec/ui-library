@@ -78,6 +78,15 @@ import IcColorCodeFlat from '../assets/svgs/MIcons/ic-code-flat.svg';
 import IcColorCheckoutFlat from '../assets/svgs/MIcons/ic-checkout-flat.svg';
 import IcColorHostedFlat from '../assets/svgs/MIcons/ic-hosted-flat.svg';
 import IcDashboard from '../assets/svgs/MIcons/ic-dashboard.svg';
+import IcAngular from '../assets/svgs/MIcons/ic-angular.svg';
+import IcGatsby from '../assets/svgs/MIcons/ic-gatsby.svg';
+import IcJavascript from '../assets/svgs/MIcons/ic-javascript.svg';
+import IcNextJs from '../assets/svgs/MIcons/ic-nextjs.svg';
+import IcNuxt from '../assets/svgs/MIcons/ic-nuxt.svg';
+import IcReact from '../assets/svgs/MIcons/ic-react.svg';
+import IcSvelte from '../assets/svgs/MIcons/ic-svelte.svg';
+import IcVue from '../assets/svgs/MIcons/ic-vue.svg';
+
 // Circle marketing icons imports
 import IcLrgStandard from '../assets/svgs/MIcons/ic-lrg-standard.svg';
 import IcLrgPlus from '../assets/svgs/MIcons/ic-lrg-plus.svg';
@@ -210,4 +219,13 @@ export const mIcons = {
   'code-flat': IcColorCodeFlat,
   'checkout-flat': IcColorCheckoutFlat,
   'hosted-flat': IcColorHostedFlat,
+  // Framework logos that are used in the marketing site
+  angular: IcAngular,
+  gatsby: IcGatsby,
+  javascript: IcJavascript,
+  nextjs: IcNextJs,
+  nuxt: IcNuxt,
+  react: IcReact,
+  svelte: IcSvelte,
+  vue: IcVue,
 };
