@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss">
 .vertical-navigation {
-  @apply rounded-md shadow-sm bg-white px-3;
+  @apply rounded-md shadow-sm bg-white px-3 py-3;
 
   &__list {
     @apply text-gray-500;
