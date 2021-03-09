@@ -24,12 +24,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.3.0
         name: Install
         with:
           cmd: install
 
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.3.0
         name: Build
         with:
           cmd: build-lib
