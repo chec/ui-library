@@ -16,12 +16,15 @@
           v-for="(file, index) in allFiles"
           :key="file.upload.uuid"
           v-tooltip="file.name"
+          :image-options="imageOptions"
           :index="index + 1"
           :error="file.status === 'error'"
           :loading="['added', 'queued', 'uploading'].includes(file.status)"
           :thumbnail="file.thumb"
           :progress="file.upload.progress"
-          @remove="() => removeFile(file)"
+          @remove="(event) => removeFile(file, event)"
+          @click="(event) => handleClick(file, event)"
+          @option-selected="(option, event) => handleOption(file, option, event)"
         />
       </Draggable>
       <template v-if="maxFiles === null || maxFiles > allFiles.length">
@@ -43,19 +46,24 @@
 import Draggable from 'vuedraggable';
 import dropzone from '../mixins/dropzone.js';
 import ChecButton from './ChecButton';
-import ChecIcon from './ChecIcon';
 import ImageBlock from './ChecImageManager/ImageBlock.vue';
 
 export default {
   name: 'ChecImageManager',
   components: {
     ChecButton,
-    ChecIcon,
     Draggable,
     ImageBlock,
   },
   mixins: [dropzone],
   props: {
+    /**
+     * Number of columns to be displayed. either 2, 4 or 6.
+     */
+    columns: {
+      type: Number,
+      default: 4,
+    },
     /**
      * Foot note to be displayed under the button. eg: PNG, JPG, & GIFS accepted.
      */
@@ -64,11 +72,12 @@ export default {
       default: null,
     },
     /**
-     * Number of columns to be displayed. either 2, 4 or 6.
+     * Extra options that should appear on each image (in an options menu). This should be provided as an array of
+     * objects that has a "key", and a "name". Eg. { key: 'edit', name: 'Edit image metadata' }
      */
-    columns: {
-      type: Number,
-      default: 4,
+    imageOptions: {
+      type: Array,
+      default: () => [],
     },
     /**
      * Maximum amount of files accepted.
@@ -100,6 +109,12 @@ export default {
     },
   },
   methods: {
+    handleClick(...args) {
+      this.$emit('click-image', ...args);
+    },
+    handleOption(...args) {
+      this.$emit('option-selected', ...args);
+    },
     /**
      * Set a new sort order for the files
      *
