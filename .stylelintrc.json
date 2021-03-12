@@ -5,6 +5,7 @@
     "src/components/CodeBlock.vue"
   ],
   "rules": {
-    "scss/at-rule-no-unknown": null
+    "scss/at-rule-no-unknown": null,
+    "order/properties-alphabetical-order": null
   }
 }

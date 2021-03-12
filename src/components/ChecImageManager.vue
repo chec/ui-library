@@ -28,17 +28,35 @@
         />
       </Draggable>
       <template v-if="maxFiles === null || maxFiles > allFiles.length">
-        <ChecButton
-          @click="openDialog"
-        >
-          <ChecIcon class="chec-image-manager__icon" icon="image" size="base" /> {{ $t('imageManager.chooseImages') }}
-        </ChecButton>
+        <div class="chec-image-manager__actions space-x-4">
+          <ChecButton
+            icon="image"
+            @click="openDialog"
+          >
+            {{ $t('imageManager.uploadImages') }}
+          </ChecButton>
+          <template v-if="availableImageGallery.length > 0">
+            <div>{{ $t('imageManager.or') }}</div>
+            <ChecButton
+              icon="copy"
+              @click="showGallery = true"
+            >
+              {{ linkExistingText || $t('imageManager.chooseExisting') }}
+            </ChecButton>
+          </template>
+        </div>
         <div v-if="footnote" class="chec-image-manager__helper">
           {{ footnote }}
         </div>
       </template>
       <input class="chec-image-manager__input" type="file" name="file">
     </div>
+    <GalleryModal
+      v-if="showGallery"
+      :images="availableImageGallery"
+      @close="showGallery = false"
+      @choose-images="addImages"
+    />
   </div>
 </template>
 
@@ -47,10 +65,12 @@ import Draggable from 'vuedraggable';
 import dropzone from '../mixins/dropzone.js';
 import ChecButton from './ChecButton';
 import ImageBlock from './ChecImageManager/ImageBlock.vue';
+import GalleryModal from './ChecImageManager/GalleryModal';
 
 export default {
   name: 'ChecImageManager',
   components: {
+    GalleryModal,
     ChecButton,
     Draggable,
     ImageBlock,
@@ -72,6 +92,13 @@ export default {
       default: null,
     },
     /**
+     * An array of existing images that can be chosen instead of uploading new ones
+     */
+    imageGallery: {
+      type: Array,
+      default: () => [],
+    },
+    /**
      * Extra options that should appear on each image (in an options menu). This should be provided as an array of
      * objects that has a "key", and a "name". Eg. { key: 'edit', name: 'Edit image metadata' }
      */
@@ -79,6 +106,11 @@ export default {
       type: Array,
       default: () => [],
     },
+    /**
+     * Text to use in place of "Choose existing" when displaying a button to choose from the provided "image gallery"
+     */
+    linkExistingText: String,
+
     /**
      * Maximum amount of files accepted.
      */
@@ -90,9 +122,17 @@ export default {
   data() {
     return {
       dragging: false,
+      showGallery: false,
     };
   },
   computed: {
+    /**
+     * Take the provided list of images and filter out any that are already within the "value" of this field
+     */
+    availableImageGallery() {
+      const existingIds = this.files.map(({ id }) => id);
+      return this.imageGallery.filter(({ id }) => !existingIds.includes(id));
+    },
     classNames() {
       const {
         dragging,
@@ -109,6 +149,10 @@ export default {
     },
   },
   methods: {
+    addImages(newImages) {
+      this.handleFilesChange(this.files.concat(newImages));
+      this.showGallery = false;
+    },
     handleClick(...args) {
       this.$emit('click-image', ...args);
     },
@@ -138,12 +182,12 @@ export default {
     @apply relative border border-dashed border-gray-400 rounded m-2 p-8;
   }
 
-  .button {
-    @apply mx-auto;
+  &__actions {
+    @apply flex justify-center items-center font-bold;
   }
 
   &__input {
-    display: none;
+    @apply hidden;
   }
 
   &__helper {

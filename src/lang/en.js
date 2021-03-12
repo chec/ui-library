@@ -10,9 +10,11 @@ export default {
     },
   },
   general: {
-    search: 'Search',
+    // Used in a button (as an action)
+    cancel: 'Cancel',
     // Appended to required form field labels
     requiredInline: '(required)',
+    search: 'Search',
     // Used after other statements, like in the case of filters: "Refunded: yes"
     yes: 'yes',
   },
@@ -27,8 +29,14 @@ export default {
     textSearch: 'Text search',
   },
   imageManager: {
-    chooseImages: 'Choose image(s)',
+    chooseExisting: 'Choose existing',
     deleteImage: 'Delete image',
+    // Separates the actions ("upload images" and "use existing")
+    or: 'or',
+    // Used in a button (as an action)
+    select: 'Select',
+    selectImages: 'Select image(s)',
+    uploadImages: 'Upload image(s)',
   },
   navigation: {
     returnToHome: 'Return to the home page',

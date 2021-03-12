@@ -8,10 +8,6 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
 
 # Image manager
 
-<details>
-
-</details>
-
 <Props of={ChecImageManager} />
 
 <Preview>
@@ -46,6 +42,24 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
           default: select('Columns', [2, 4, 6], 4),
         },
       },
+      computed: {
+        existingImages() {
+          return [
+            {
+              id: 'ast_789',
+              name: 'Wide Murray',
+              thumb: 'https://www.fillmurray.com/1200/500',
+              size: 12000,
+            },
+            {
+              id: 'ast_0ab',
+              name: 'Thin Murray',
+              thumb: 'https://www.fillmurray.com/400/1155',
+              size: 7902,
+            }
+          ]
+        }
+      },
       methods: {
         change(files) {
           action('change')(files);
@@ -64,12 +78,13 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
         <div class="p-16 flex justify-center max-w-6xl mx-auto w-full h-full bg-white py-20">
           <ChecImageManager
             footnote="PNG, JPG, & GIFS accepted"
-            @reorder="reorder"
             v-model="files"
+            :columns="columns"
+            :image-gallery="existingImages"
+            :endpoint="endpoint"
+            @reorder="reorder"
             @dropzone-event="dropzoneEvent"
             @change="change"
-            :endpoint="endpoint"
-            :columns="columns"
           />
         </div>`
     }}
