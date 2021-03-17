@@ -3,7 +3,7 @@
     :is="form ? 'form' : 'div'"
     :class="`modal__overlay modal__overlay--${overlay}`"
   >
-    <ChecCard class="modal__card" :class="`max-w-${width}`">
+    <ChecCard class="modal__card" tailwind="bg-gray-100" :class="`max-w-${width}`">
       <ChecModalHeader v-if="header" :undismissible="undismissible" @close="emitClose">
         {{ header }}
       </ChecModalHeader>
@@ -101,10 +101,6 @@ export default {
       &:last-child {
         @apply mb-0;
       }
-    }
-
-    .card__inner-wrapper {
-      @apply bg-gray-100;
     }
 
     .loading {

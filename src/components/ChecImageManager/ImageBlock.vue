@@ -37,17 +37,32 @@
           icon="drag"
         />
       </div>
-      <button
-        v-if="!loading"
-        :title="$t('imageManager.deleteImage')"
-        type="button"
-        class="chec-image-item__remove-button"
-        @click.stop="handleRemove"
-      >
-        <ChecIcon
+      <template v-if="!loading">
+        <ChecButton
+          v-if="allOptions.length === 1"
+          :title="$t('imageManager.deleteImage')"
+          type="button"
+          text-only
+          variant="small"
           icon="trash"
+          class="chec-image-item__action-button"
+          @click.stop="handleRemove"
         />
-      </button>
+        <ChecOptionsMenu
+          v-else
+          invert
+          class="chec-image-item__action-button"
+        >
+          <ChecOption
+            v-for="{ name, key, destructive } in allOptions"
+            :key="key"
+            :destructive="destructive"
+            @option-selected="(event) => emitOptionClick(key, event)"
+          >
+            {{ name }}
+          </ChecOption>
+        </ChecOptionsMenu>
+      </template>
     </div>
   </div>
 </template>
@@ -55,10 +70,16 @@
 <script>
 import ChecIcon from '../ChecIcon';
 import ChecLoading from '../ChecLoading';
+import ChecOptionsMenu from '../ChecOptionsMenu';
+import ChecOption from '../ChecOption';
+import ChecButton from '../ChecButton';
 
 export default {
   name: 'ImageItem',
   components: {
+    ChecButton,
+    ChecOption,
+    ChecOptionsMenu,
     ChecIcon,
     ChecLoading,
   },
@@ -73,6 +94,10 @@ export default {
     errorMessage: {
       type: String,
       default: null,
+    },
+    imageOptions: {
+      type: Array,
+      default: () => [],
     },
     /**
      * The number that this image appears in the order of all image
@@ -101,11 +126,28 @@ export default {
     },
   },
   computed: {
+    allOptions() {
+      return [
+        ...this.imageOptions,
+        {
+          name: this.$t('imageManager.deleteImage'),
+          key: 'remove',
+          destructive: true,
+        },
+      ];
+    },
     progressPercent() {
       return `${(this.progress).toFixed()}%`;
     },
   },
   methods: {
+    emitOptionClick(option, event) {
+      if (option === 'remove') {
+        this.handleRemove(event);
+        return;
+      }
+      this.$emit('option-selected', option, event);
+    },
     handleClick(event) {
       /**
        * Triggered when this element is clicked
@@ -171,9 +213,8 @@ export default {
       w-4 h-4 text-white;
   }
 
-  &__remove-button {
-    @apply absolute top-0 right-0 w-4 h-4 m-2
-      text-white;
+  &__action-button {
+    @apply absolute top-0 right-0 text-white;
 
     &:focus,
     :hover {

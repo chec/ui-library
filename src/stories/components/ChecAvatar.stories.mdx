@@ -1,8 +1,6 @@
-import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
-import { action } from '@storybook/addon-actions';
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
 import { select, text } from '@storybook/addon-knobs';
 import ChecAvatar from '../../components/ChecAvatar.vue';
-import TextField from '../../components/TextField.vue';
 
 <Meta title="Components/Avatar" component={ChecAvatar} />
 
@@ -48,7 +46,7 @@ import TextField from '../../components/TextField.vue';
           default: select('Size', ['sm', 'md', 'lg'], 'lg'),
         },
         image: {
-          default: text('Image URL', 'http://lorempixel.com/400/400/people/'),
+          default: text('Image URL', 'https://www.fillmurray.com/400/400'),
         },
       },
       template: `
@@ -70,7 +68,7 @@ import TextField from '../../components/TextField.vue';
       },
       props: {
         image: {
-          default: text('Image URL', 'http://lorempixel.com/400/400/people/'),
+          default: text('Image URL', 'https://www.fillmurray.com/400/400'),
         },
       },
       template: `

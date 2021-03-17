@@ -5,8 +5,9 @@
       ref="button"
       variant="small"
       icon="more"
+      :text-only="invert"
       v-bind="$attrs"
-      @click="toggleMenu"
+      @click.stop="toggleMenu"
     />
     <ChecPopover
       target-ref="button"
@@ -36,6 +37,10 @@ export default {
   },
   inheritAttrs: false,
   props: {
+    /**
+     * Use a "text only" button instead to show white text on a transparent background
+     */
+    invert: Boolean,
     /**
      * Whether the menu should initially be open or not
      */

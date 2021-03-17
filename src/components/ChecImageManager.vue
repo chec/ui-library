@@ -16,26 +16,47 @@
           v-for="(file, index) in allFiles"
           :key="file.upload.uuid"
           v-tooltip="file.name"
+          :image-options="imageOptions"
           :index="index + 1"
           :error="file.status === 'error'"
           :loading="['added', 'queued', 'uploading'].includes(file.status)"
           :thumbnail="file.thumb"
           :progress="file.upload.progress"
-          @remove="() => removeFile(file)"
+          @remove="(event) => removeFile(file, event)"
+          @click="(event) => handleClick(file, event)"
+          @option-selected="(option, event) => handleOption(file, option, event)"
         />
       </Draggable>
       <template v-if="maxFiles === null || maxFiles > allFiles.length">
-        <ChecButton
-          @click="openDialog"
-        >
-          <ChecIcon class="chec-image-manager__icon" icon="image" size="base" /> {{ $t('imageManager.chooseImages') }}
-        </ChecButton>
+        <div class="chec-image-manager__actions space-x-4">
+          <ChecButton
+            icon="image"
+            @click="openDialog"
+          >
+            {{ $t('imageManager.uploadImages') }}
+          </ChecButton>
+          <template v-if="availableImageGallery.length > 0">
+            <div>{{ $t('imageManager.or') }}</div>
+            <ChecButton
+              icon="copy"
+              @click="showGallery = true"
+            >
+              {{ linkExistingText || $t('imageManager.chooseExisting') }}
+            </ChecButton>
+          </template>
+        </div>
         <div v-if="footnote" class="chec-image-manager__helper">
           {{ footnote }}
         </div>
       </template>
       <input class="chec-image-manager__input" type="file" name="file">
     </div>
+    <GalleryModal
+      v-if="showGallery"
+      :images="availableImageGallery"
+      @close="showGallery = false"
+      @choose-images="addImages"
+    />
   </div>
 </template>
 
@@ -43,19 +64,26 @@
 import Draggable from 'vuedraggable';
 import dropzone from '../mixins/dropzone.js';
 import ChecButton from './ChecButton';
-import ChecIcon from './ChecIcon';
 import ImageBlock from './ChecImageManager/ImageBlock.vue';
+import GalleryModal from './ChecImageManager/GalleryModal';
 
 export default {
   name: 'ChecImageManager',
   components: {
+    GalleryModal,
     ChecButton,
-    ChecIcon,
     Draggable,
     ImageBlock,
   },
   mixins: [dropzone],
   props: {
+    /**
+     * Number of columns to be displayed. either 2, 4 or 6.
+     */
+    columns: {
+      type: Number,
+      default: 4,
+    },
     /**
      * Foot note to be displayed under the button. eg: PNG, JPG, & GIFS accepted.
      */
@@ -64,12 +92,25 @@ export default {
       default: null,
     },
     /**
-     * Number of columns to be displayed. either 2, 4 or 6.
+     * An array of existing images that can be chosen instead of uploading new ones
      */
-    columns: {
-      type: Number,
-      default: 4,
+    imageGallery: {
+      type: Array,
+      default: () => [],
     },
+    /**
+     * Extra options that should appear on each image (in an options menu). This should be provided as an array of
+     * objects that has a "key", and a "name". Eg. { key: 'edit', name: 'Edit image metadata' }
+     */
+    imageOptions: {
+      type: Array,
+      default: () => [],
+    },
+    /**
+     * Text to use in place of "Choose existing" when displaying a button to choose from the provided "image gallery"
+     */
+    linkExistingText: String,
+
     /**
      * Maximum amount of files accepted.
      */
@@ -81,9 +122,17 @@ export default {
   data() {
     return {
       dragging: false,
+      showGallery: false,
     };
   },
   computed: {
+    /**
+     * Take the provided list of images and filter out any that are already within the "value" of this field
+     */
+    availableImageGallery() {
+      const existingIds = this.files.map(({ id }) => id);
+      return this.imageGallery.filter(({ id }) => !existingIds.includes(id));
+    },
     classNames() {
       const {
         dragging,
@@ -100,6 +149,16 @@ export default {
     },
   },
   methods: {
+    addImages(newImages) {
+      this.handleFilesChange(this.files.concat(newImages));
+      this.showGallery = false;
+    },
+    handleClick(...args) {
+      this.$emit('click-image', ...args);
+    },
+    handleOption(...args) {
+      this.$emit('option-selected', ...args);
+    },
     /**
      * Set a new sort order for the files
      *
@@ -123,12 +182,12 @@ export default {
     @apply relative border border-dashed border-gray-400 rounded m-2 p-8;
   }
 
-  .button {
-    @apply mx-auto;
+  &__actions {
+    @apply flex justify-center items-center font-bold;
   }
 
   &__input {
-    display: none;
+    @apply hidden;
   }
 
   &__helper {

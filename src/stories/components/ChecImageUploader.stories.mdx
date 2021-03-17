@@ -1,16 +1,12 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
-import { text, number, select } from '@storybook/addon-knobs';
+import { boolean, text, number, select } from '@storybook/addon-knobs';
 import ChecImageManager from '../../components/ChecImageManager.vue';
 import ImageBlock from '@/components/ChecImageManager/ImageBlock';
 
 <Meta title="Form fields/Image manager" component={ChecImageManager} />
 
 # Image manager
-
-<details>
-
-</details>
 
 <Props of={ChecImageManager} />
 
@@ -23,6 +19,18 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
       data() {
         return {
           files: [
+            {
+              id: 'ast_123',
+              name: 'Big Murray',
+              thumb: 'https://www.fillmurray.com/640/640',
+              size: 12000,
+            },
+            {
+              id: 'ast_456',
+              name: 'Smol Murray',
+              thumb: 'https://www.fillmurray.com/640/480',
+              size: 7902,
+            }
           ],
         };
       },
@@ -33,6 +41,24 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
         columns: {
           default: select('Columns', [2, 4, 6], 4),
         },
+      },
+      computed: {
+        existingImages() {
+          return [
+            {
+              id: 'ast_789',
+              name: 'Wide Murray',
+              thumb: 'https://www.fillmurray.com/1200/500',
+              size: 12000,
+            },
+            {
+              id: 'ast_0ab',
+              name: 'Thin Murray',
+              thumb: 'https://www.fillmurray.com/400/1155',
+              size: 7902,
+            }
+          ]
+        }
       },
       methods: {
         change(files) {
@@ -52,12 +78,13 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
         <div class="p-16 flex justify-center max-w-6xl mx-auto w-full h-full bg-white py-20">
           <ChecImageManager
             footnote="PNG, JPG, & GIFS accepted"
-            @reorder="reorder"
             v-model="files"
+            :columns="columns"
+            :image-gallery="existingImages"
+            :endpoint="endpoint"
+            @reorder="reorder"
             @dropzone-event="dropzoneEvent"
             @change="change"
-            :endpoint="endpoint"
-            :columns="columns"
           />
         </div>`
     }}
@@ -87,15 +114,34 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
         error: {
           default: text('Error message', ''),
         },
+        addAdditionalOptions: {
+          default: boolean('Add more options', false),
+        },
+      },
+      data() {
+        return {
+          moreOptions: [
+            {
+              key: 'edit',
+              name: 'Edit',
+            },
+            {
+              key: 'link-variant',
+              name: 'Link to variant',
+            },
+          ],
+        };
       },
       methods: {
         handleClick: action('click'),
         handleDelete: action('delete'),
+        handleOption: action('option-clicked'),
       },
       template: `
         <ImageBlock
           class="mx-auto w-1/4 mt-2"
           :index="index"
+          :image-options="addAdditionalOptions ? moreOptions : []"
           :thumbnail="thumb"
           :loading="progress < 100"
           :progress="progress"
@@ -103,6 +149,7 @@ import ImageBlock from '@/components/ChecImageManager/ImageBlock';
           :error-message="error"
           @click="handleClick"
           @remove="handleDelete"
+          @option-selected="handleOption"
         />
       `,
     }}
