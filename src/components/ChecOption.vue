@@ -92,7 +92,9 @@ export default {
       if (!this.option.disabled) {
         this.$emit('option-selected', this.option);
         // When used in slots, parent components can attach handlers to this
-        this.$parent.$emit('option-selected', this.option);
+        if (this.$parent) {
+          this.$parent.$emit('option-selected', this.option);
+        }
       }
     },
   },

@@ -131,7 +131,7 @@ export default {
      */
     availableImageGallery() {
       const existingIds = this.files.map(({ id }) => id);
-      return this.imageGallery.filter(({ id }) => !existingIds.includes(id));
+      return this.imageGallery.filter(({ id }) => !existingIds.includes(id)).map(this.normaliseFile);
     },
     classNames() {
       const {
@@ -150,7 +150,10 @@ export default {
   },
   methods: {
     addImages(newImages) {
-      this.handleFilesChange(this.files.concat(newImages));
+      // Find the actual file object for the images chosen
+      const newIds = newImages.map(({ id }) => id);
+      const newItems = this.imageGallery.filter((candidate) => newIds.includes(candidate.id));
+      this.handleFilesChange(this.files.concat(newItems));
       this.showGallery = false;
     },
     handleClick(...args) {
