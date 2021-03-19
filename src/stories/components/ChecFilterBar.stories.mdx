@@ -1,7 +1,5 @@
-import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
-import { action } from "@storybook/addon-actions";
-import { withKnobs, boolean } from '@storybook/addon-knobs';
-import { withInfo } from 'storybook-addon-vue-info';
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+import { boolean } from '@storybook/addon-knobs';
 import ChecFilterBar from '@/components/ChecFilterBar.vue';
 
 <Meta title="Components/Filter Bar" component={ ChecFilterBar } />
@@ -48,6 +46,7 @@ event. The current search term is the model prop of the component.
       data() {
         return {
           search: '',
+          activeSearch: '',
           activeFilters: [],
         };
       },
@@ -90,6 +89,10 @@ event. The current search term is the model prop of the component.
         setActiveFilters(filters) {
           this.activeFilters = filters;
         },
+        doSearch() {
+          this.activeSearch = this.search;
+          this.search = '';
+        }
       },
       template: `
         <div class="py-16 px-4 max-w-6xl mx-auto font-lato bg-gray-200">
@@ -97,9 +100,12 @@ event. The current search term is the model prop of the component.
             v-model="search"
             :filters="filters"
             :active-filters="activeFilters"
+            :active-search="activeSearch"
             :allow-multiple="allowMultiple"
             :disable-text-search="disableTextSearch"
             @change-filters="setActiveFilters"
+            @clear-search="activeSearch = ''"
+            @search="doSearch"
           />
           <div class="text-center mt-8">Foo, bar, bin, and baz are all example search terms</div>
         </div>`,

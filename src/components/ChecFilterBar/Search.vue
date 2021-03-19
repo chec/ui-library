@@ -11,7 +11,7 @@
       @blur="focused = false"
       @keyup.down.prevent="moveHighlight(highlightedOption + 1)"
       @keyup.up.prevent="moveHighlight(highlightedOption - 1)"
-      @keyup.enter="chooseAutocomplete"
+      @keydown.enter="chooseAutocomplete"
     />
     <ChecPopover
       v-if="$refs.input"
@@ -60,6 +60,7 @@ export default {
       required: true,
     },
     disableTextSearch: Boolean,
+    textSearchLabel: String,
   },
   data() {
     return {
@@ -78,7 +79,7 @@ export default {
     autocompleteOptions() {
       return (this.disableTextSearch ? [] : [
         {
-          filter: this.$t('filters.textSearch'),
+          filter: this.textSearchLabel || this.$t('filters.textSearch'),
           value: this.search,
         },
       ])
