@@ -1,12 +1,13 @@
 <template>
   <div class="filter-bar">
     <Search
+      ref="search"
       :filters="searchableFilters"
       :search="search"
       :disable-text-search="disableTextSearch"
+      :text-search-label="textSearchLabel"
       @add-filter="(filter) => addFilter(filter)"
       @search="setSearch"
-      @keydown.enter="doSearch"
       @do-search="doSearch"
     />
     <ChecButton
@@ -22,7 +23,10 @@
     </ChecButton>
     <FilterList
       :active-filters="activeFilters"
+      :active-search="activeSearch"
+      :text-search-label="textSearchLabel"
       @change-filters="changeFilters"
+      @clear-search="clearSearch"
     />
     <ChecPopover
       target-ref="button"
@@ -82,6 +86,13 @@ export default {
       required: true,
     },
     /**
+     * The currently active search, to be displayed as a filter
+     */
+    activeSearch: {
+      type: String,
+      default: '',
+    },
+    /**
      * Whether to allow a filter to be applied more than once. This option is only applicable to some filter types.
      */
     allowMultiple: Boolean,
@@ -89,6 +100,10 @@ export default {
      * Whether a simple "text search" option should be provided by the auto complete
      */
     disableTextSearch: Boolean,
+    /**
+     * A label to use as a prompt for "text search". Uses "Text search" by default
+     */
+    textSearchLabel: String,
   },
   data() {
     return {
@@ -164,12 +179,24 @@ export default {
        * Indicates that the user has requested the filters be changed
        */
       this.$emit('change-filters', filters);
+      if (filters.length === 0 && this.activeSearch.length > 0) {
+        this.clearSearch();
+      }
+    },
+    clearSearch() {
+      /**
+       * Indicates that the user has requested the search (that has been performed) should be cleared
+       */
+      this.$emit('clear-search');
     },
     doSearch() {
       /**
        * Indicates that the user has requested a search should be performed with the current search term
        */
       this.$emit('search');
+
+      // Blur the search field to hide the popover
+      this.$refs.search.$el.querySelector('input').blur();
     },
     onWindowClick(event) {
       // Ignore the click if the panel doesn't exist or isn't open

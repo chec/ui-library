@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="activeFilters.length > 0"
+    v-if="activeFilters.length > 0 || activeSearch.length > 0"
     class="filter-bar-filter-list"
   >
     <span class="filter-bar-filter-list__label">
@@ -10,6 +10,13 @@
       :reset-text="$t('filters.clear')"
       @reset="setFilters([])"
     >
+      <ChecTag
+        v-if="activeSearch.length > 0"
+        color="white"
+        @dismiss="$emit('clear-search')"
+      >
+        {{ textSearchLabel || $t('filters.textSearch') }}: {{ activeSearch }}
+      </ChecTag>
       <ChecTag
         v-for="({ filter, value }, index) in activeFilters"
         :key="`${filter}-${value}`"
@@ -37,6 +44,11 @@ export default {
       type: Array,
       required: true,
     },
+    activeSearch: {
+      type: String,
+      default: '',
+    },
+    textSearchLabel: String,
   },
   methods: {
     setFilters(filters) {
