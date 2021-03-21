@@ -6,6 +6,13 @@
         <span class="chec-chart__tick">{{ tick }}</span>
       </div>
     </div>
+    <!-- Mostly transparent divs that appear on the right of the graph to appear as a "forecast" -->
+    <div
+      v-for="(yHeight, index) in yHeights"
+      :key="index"
+      class="chec-chart__forecast"
+      :style="forecastStyle(yHeight)"
+    />
     <!-- vue-chartjs wrapper with rendering options specific for our use case -->
     <LineWrapper
       :points="points"
@@ -22,13 +29,6 @@
       v-tooltip="tooltipConfig"
       class="chec-chart__tooltip-overlay"
       :style="tooltipOverlayPosition"
-    />
-    <!-- Mostly transparent divs that appear on the right of the graph to appear as a "forecast" -->
-    <div
-      v-for="(yHeight, index) in yHeights"
-      :key="index"
-      class="chec-chart__forecast"
-      :style="forecastStyle(yHeight)"
     />
     <!-- Optionally fade out the edges of the graph when the width needs to be limited -->
     <template v-if="fadeEdges">
@@ -159,8 +159,9 @@ export default {
   &__ticks {
     @apply flex justify-between caps-xxs text-gray-200 mb-16 w-full;
 
+    // This offsets the size of the point in the graph. Without it the label is 5px offset to the right
     padding: 0 5px;
-    margin-left: -10%;
+
     > * {
       @apply relative;
     }
@@ -168,7 +169,6 @@ export default {
 
   &__canvas {
     @apply w-full;
-    margin-left: -10%;
   }
 
   &__tick {
@@ -188,13 +188,15 @@ export default {
   &__fade {
     @apply absolute h-full pointer-events-none top-0;
 
+    // Custom gradients from gray-500 to transparent
+    // TODO replace with tailwind gradient tooling when supported in SCSS
     &--left {
-      background: linear-gradient(90deg, rgba(65, 84, 108, 1) 0%,  rgba(65, 84, 108, 0) 100%);
+      background: linear-gradient(90deg, rgba(65, 84, 108, 1) 0%, rgba(65, 84, 108, 0) 100%);
       left: 0;
     }
 
     &--right {
-      background: linear-gradient(270deg, rgba(65, 84, 108, 1) 0%,  rgba(65, 84, 108, 0) 100%);
+      background: linear-gradient(270deg, rgba(65, 84, 108, 1) 0%, rgba(65, 84, 108, 0) 100%);
       right: 0;
     }
   }

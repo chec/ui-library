@@ -129,6 +129,8 @@ export default {
         },
       ];
 
+      let upperBound = 0;
+      let lowerBound = 0;
       if (secondSet) {
         datasets.push({
           label: 'Data Two',
@@ -138,6 +140,17 @@ export default {
           backgroundColor: 'rgba(255, 255, 255, 0.1)',
           yAxisID: 'b',
           ...pointStyles,
+        });
+
+        lowerBound = Infinity;
+        // Calculate largest "tick" for the second dataset
+        secondSet.forEach((n) => {
+          if (n > upperBound) {
+            upperBound = n;
+          }
+          if (n < lowerBound) {
+            lowerBound = n;
+          }
         });
       }
 
@@ -154,8 +167,9 @@ export default {
           },
           maintainAspectRatio: false,
           layout: {
-            // Add padding to prevent the points from clipping at the top. 5px is the maximum radius of a point
-            padding: { top: 5 },
+            // Add padding to prevent the points from clipping at the top and right. 5px is the maximum radius of a
+            // point. We don't worry about the left as it's moved off-screen anyway
+            padding: { top: 5, right: 5 },
           },
           legend: {
             display: false,
@@ -174,7 +188,11 @@ export default {
               {
                 display: false,
                 id: 'b',
-                ticks: { min: 0, max: 50 },
+                ticks: {
+                  // Calculate a lower bound that's 5% less than the range between min and max
+                  min: lowerBound - Math.ceil((upperBound - lowerBound) * 0.05),
+                  max: upperBound,
+                },
               },
             ],
           },
