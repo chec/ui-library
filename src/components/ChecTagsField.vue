@@ -4,7 +4,6 @@
     :class="classNames"
     role="textbox"
     tabindex="0"
-    :disabled="disabled"
     @focus="tagsFieldFocused = true"
     @click="handleActiveField"
     @blur="handleInputBlur"
@@ -18,6 +17,7 @@
       >
         <ChecTag
           :active="activeTag"
+          :disabled="disabled"
           @dismiss="handleRemoveTag(tag)"
         >
           {{ tag }}
@@ -32,7 +32,8 @@
           v-show="isInputVisible"
           ref="input"
           v-model="newTag"
-          :placeholder="placeholder"
+          :placeholder="disabled ? '' : placeholder"
+          :disabled="disabled"
           :active="activeInput"
           :max-length="maxLength"
           class="tags-field__input"
@@ -131,12 +132,13 @@ export default {
   },
   computed: {
     classNames() {
-      const { tagsFieldFocused } = this;
+      const { disabled, tagsFieldFocused } = this;
       // Bind an active modifier to the tags field element
       return [
         'tags-field',
         {
           'tags-field--active': tagsFieldFocused,
+          'tags-field--disabled': disabled,
         },
       ];
     },
@@ -336,22 +338,28 @@ export default {
     border-gray-200
     duration-150
     transition
-    shadow-sm
-    cursor-text
-    z-50;
+    shadow-sm;
 
   &:focus,
   &:active,
   &--active {
-    @apply transition duration-150 border-gray-500 shadow-light-focus;
+    &:not(.tags-field--disabled) {
+      @apply transition duration-150 border-gray-500 shadow-light-focus;
+    }
   }
 
   &:hover {
-    @apply transition duration-150 border-gray-400;
+    &:not(.tags-field--disabled) {
+      @apply transition duration-150 border-gray-400;
+    }
   }
 
-  &:disabled {
-    @apply opacity-50 transition-opacity duration-150;
+  &--disabled {
+    @apply opacity-50 transition-opacity duration-150 outline-none;
+  }
+
+  &:not(&--disabled) {
+    @apply cursor-text;
   }
 
   &__tag,

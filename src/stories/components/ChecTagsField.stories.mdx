@@ -31,6 +31,9 @@ const keys = [13, 188, 9]
         allowDuplicates: {
           default: boolean('Allow duplicate tags', false),
         },
+        disabled: {
+          default: boolean('Disabled', false),
+        },
         maxLength: {
           default: number('Max length of tag character', undefined),
         },
@@ -46,6 +49,7 @@ const keys = [13, 188, 9]
             v-model="tags"
             class="max-w-xl"
             :placeholder="placeholder"
+            :disabled="disabled"
             :addOnBlur="addOnBlur"
             :addOnKeys="addOnKeys"
             :allowDuplicates="allowDuplicates"
@@ -53,6 +57,7 @@ const keys = [13, 188, 9]
           />
           <TextField
             placeholder="This is here for comparison"
+            :variant="disabled ? 'disabled' : ''"
             class="ml-6"
           />
         </div>`
