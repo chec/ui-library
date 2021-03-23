@@ -2,6 +2,7 @@ import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { select, text, boolean } from '@storybook/addon-knobs';
 import CodeBlock from '../../components/CodeBlock.vue';
 import CodeBlockGroup from '../../components/CodeBlockGroup.vue';
+import CodeBlockGroupIcon from '../../components/CodeBlockGroupIcon.vue';
 
 <Meta title="Components/Code Block" component={CodeBlock} />
 
@@ -68,21 +69,24 @@ import CodeBlockGroup from '../../components/CodeBlockGroup.vue';
       components: {
         CodeBlock,
         CodeBlockGroup,
+        CodeBlockGroupIcon,
       },
       props: {
         background: {
           default: select('Background color', ['light', 'dark']),
         },
-        showLogos: {
-          default: boolean('Show logos', true),
-        },
       },
       template: `
         <div class="p-16 flex justify-center w-1/2 m-auto" :class="{'bg-gray-500': background === 'dark'}">
-          <CodeBlockGroup :show-logos="showLogos">
+          <CodeBlockGroup>
             <CodeBlock title="Option 1" key="1" language="javascript" line-numbers>// Option 1 - Render your payment form\n\nconst elements = stripe.elements().longExample().then(() => { const foo = 'bar'; });\n\nconst card = elements.create(1234);</CodeBlock>
             <CodeBlock title="Option 2" key="2" language="javascript" line-numbers>// Option 2 - Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);</CodeBlock>
             <CodeBlock title="Option 3" key="3" language="javascript" line-numbers>// Option 3 - Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);</CodeBlock>
+            <template #icons>
+              <CodeBlockGroupIcon icon="javascript"/>
+              <CodeBlockGroupIcon icon="angular" link="https://commercejs.com/"/>
+              <CodeBlockGroupIcon icon="custom" image="http://www.fillmurray.com/100/100" link="https://commercejs.com/"/>
+            </template>
           </CodeBlockGroup>
         </div>`
     }}
