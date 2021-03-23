@@ -43,6 +43,7 @@ import ChecVerticalNavItem from './components/ChecVerticalNavItem';
 import ChecWysiwyg from './components/ChecWysiwyg';
 import CodeBlock from './components/CodeBlock.vue';
 import CodeBlockGroup from './components/CodeBlockGroup.vue';
+import CodeBlockGroupIcon from './components/CodeBlockGroupIcon.vue';
 import InnerBlock from './components/ChecCard/InnerBlock.vue';
 import Lang from './lang/index';
 import PasswordField from './components/PasswordField.vue';
@@ -95,6 +96,7 @@ export {
   ChecWysiwyg,
   CodeBlock,
   CodeBlockGroup,
+  CodeBlockGroupIcon,
   InnerBlock,
   Lang,
   PasswordField,

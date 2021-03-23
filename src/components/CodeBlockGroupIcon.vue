@@ -31,6 +31,7 @@
     <img
       v-if="icon === 'custom'"
       class="code-example-group__logo"
+      alt=""
       :src="image"
     >
   </a>
