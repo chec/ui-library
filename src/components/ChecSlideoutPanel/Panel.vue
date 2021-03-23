@@ -106,7 +106,7 @@ export default {
   }
 
   &__header {
-    @apply flex bg-white shadow-sm px-6 h-24;
+    @apply flex bg-white shadow-sm px-6 h-24 z-50;
   }
 
   &__header-inner {
@@ -124,11 +124,11 @@ export default {
   }
 
   &__content {
-    @apply p-6;
+    @apply p-6 overflow-scroll;
   }
 
   &__footer {
-    @apply bg-white px-6 mt-auto h-24 flex;
+    @apply bg-white px-6 mt-auto h-24 flex shadow-sm z-50;
   }
 
   &__footer-inner {
