@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="{'code-example-group--with-logos': showLogos }"
+    :class="{'code-example-group--with-logos': hasIcons }"
     class="code-example-group"
   >
     <div class="code-example-group__tabs">
@@ -15,45 +15,24 @@
       </ChecTab>
     </div>
     <ActiveTab :vnode="activeVnode" />
-
-    <div v-if="showLogos" class="code-example-group__logos">
-      <ReactLogo class="code-example-group__logo" />
-      <GatsbyLogo class="code-example-group__logo" />
-      <NextLogo class="code-example-group__logo" />
-      <VueLogo class="code-example-group__logo" />
-      <AngularLogo class="code-example-group__logo" />
+    <div v-if="hasIcons" class="code-example-group__logos">
+      <slot name="icons" />
     </div>
   </div>
 </template>
 
 <script>
-import AngularLogo from '../assets/svgs/frameworks/angular.svg';
-import GatsbyLogo from '../assets/svgs/frameworks/gatsby.svg';
-import NextLogo from '../assets/svgs/frameworks/next.svg';
-import ReactLogo from '../assets/svgs/frameworks/react.svg';
-import VueLogo from '../assets/svgs/frameworks/vue.svg';
 import ChecTab from './ChecTab';
 
 export default {
   name: 'CodeBlockGroup',
   components: {
     ChecTab,
-    AngularLogo,
-    GatsbyLogo,
-    NextLogo,
-    ReactLogo,
-    VueLogo,
     // Allows us to render a single vnode from the slot programatically.
     ActiveTab: {
       functional: true,
       render: (h, ctx) => ctx.props.vnode,
     },
-  },
-  props: {
-    /**
-     * If true, five frontend JS framework logos will be rendered in the bottom right corner
-     */
-    showLogos: Boolean,
   },
   data() {
     return {
@@ -73,6 +52,9 @@ export default {
      */
     activeVnode() {
       return this.$slots.default.filter((slot) => typeof slot.data !== 'undefined')[this.activeBlock];
+    },
+    hasIcons() {
+      return !!this.$slots.icons;
     },
   },
   watch: {
@@ -100,7 +82,7 @@ export default {
   }
 
   &__logos {
-    @apply relative inline-flex justify-end bg-gray-700 rounded-full shadow-sm p-3 float-right mr-6;
+    @apply relative inline-flex justify-end bg-gray-700 rounded-full shadow-sm p-3 float-right mr-6 gap-2;
     top: -80px; // 24px margin plus eyeballed container position
   }
 
