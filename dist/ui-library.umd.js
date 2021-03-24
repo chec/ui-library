@@ -62306,12 +62306,12 @@ var ChecSlideoutPanelvue_type_template_id_1e3700c6_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/ChecSlideoutPanel.vue?vue&type=template&id=1e3700c6&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4969ec09-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSlideoutPanel/Panel.vue?vue&type=template&id=246023fb&
-var Panelvue_type_template_id_246023fb_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"slideout-panel__element",style:({ right: ((_vm.depth * 2) + "rem") }),attrs:{"role":"dialog","aria-modal":"true"}},[_c('div',{staticClass:"slideout-panel__header"},[_c('div',{staticClass:"slideout-panel__header-inner"},[(_vm.title)?_c(_vm.titleTag,{tag:"component",staticClass:"slideout-panel__title"},[_vm._v(" "+_vm._s(_vm.title)+" ")]):_vm._e(),_c('ChecButton',{staticClass:"slideout-panel__close",attrs:{"tabindex":"0","color":"secondary","variant":"small"},on:{"click":_vm.emitClose,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"esc",27,$event.key,["Esc","Escape"])){ return null; }return _vm.emitClose($event)}},scopedSlots:_vm._u([{key:"icon",fn:function(){return [_c('ChecIcon',{attrs:{"icon":"close"}})]},proxy:true}])})],1)]),_c('div',{staticClass:"slideout-panel__content"},[_vm._t("default")],2),(_vm.$slots.toolbar)?_c('div',{staticClass:"slideout-panel__footer"},[_c('div',{staticClass:"slideout-panel__footer-inner"},[_vm._t("toolbar")],2)]):_vm._e()])}
-var Panelvue_type_template_id_246023fb_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4969ec09-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSlideoutPanel/Panel.vue?vue&type=template&id=fe8bb7f2&
+var Panelvue_type_template_id_fe8bb7f2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"slideout-panel__element",style:({ right: ((_vm.depth * 2) + "rem") }),attrs:{"role":"dialog","aria-modal":"true"}},[_c('div',{staticClass:"slideout-panel__header"},[_c('div',{staticClass:"slideout-panel__header-inner"},[(_vm.title)?_c(_vm.titleTag,{tag:"component",staticClass:"slideout-panel__title"},[_vm._v(" "+_vm._s(_vm.title)+" ")]):_vm._e(),_c('ChecButton',{staticClass:"slideout-panel__close",attrs:{"tabindex":"0","color":"secondary","variant":"small"},on:{"click":_vm.emitClose,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"esc",27,$event.key,["Esc","Escape"])){ return null; }return _vm.emitClose($event)}},scopedSlots:_vm._u([{key:"icon",fn:function(){return [_c('ChecIcon',{attrs:{"icon":"close"}})]},proxy:true}])})],1)]),_c('div',{staticClass:"slideout-panel__content"},[_vm._t("default")],2),(_vm.$slots.toolbar)?_c('div',{staticClass:"slideout-panel__footer"},[_c('div',{staticClass:"slideout-panel__footer-inner"},[_vm._t("toolbar")],2)]):_vm._e()])}
+var Panelvue_type_template_id_fe8bb7f2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecSlideoutPanel/Panel.vue?vue&type=template&id=246023fb&
+// CONCATENATED MODULE: ./src/components/ChecSlideoutPanel/Panel.vue?vue&type=template&id=fe8bb7f2&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecSlideoutPanel/Panel.vue?vue&type=script&lang=js&
 
@@ -62413,8 +62413,8 @@ var Panelvue_type_style_index_0_lang_scss_ = __webpack_require__("a156");
 
 var Panel_component = normalizeComponent(
   ChecSlideoutPanel_Panelvue_type_script_lang_js_,
-  Panelvue_type_template_id_246023fb_render,
-  Panelvue_type_template_id_246023fb_staticRenderFns,
+  Panelvue_type_template_id_fe8bb7f2_render,
+  Panelvue_type_template_id_fe8bb7f2_staticRenderFns,
   false,
   null,
   null,
