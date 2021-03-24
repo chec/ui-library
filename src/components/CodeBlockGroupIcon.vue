@@ -1,8 +1,7 @@
 <template>
-  <a
-    :href="link"
-    target="_blank"
-    rel="noopener nofollow"
+  <component
+    :is="tag"
+    v-bind="tagProps"
   >
     <ReactLogo
       v-if="icon === 'react'"
@@ -34,7 +33,7 @@
       alt=""
       :src="image"
     >
-  </a>
+  </component>
 </template>
 
 <script>
@@ -81,6 +80,43 @@ export default {
      * Custom Icon Image
      */
     image: String,
+  },
+  computed: {
+    /**
+     * Returns the appropriate tag depending on the link provided.
+     * either span, router-link or a.
+     *
+     * @returns {string}
+     */
+    tag() {
+      if (!this.link) {
+        return 'span';
+      }
+      if (this.link?.startsWith('/')) {
+        return 'router-link';
+      }
+      return 'a';
+    },
+    /**
+     * Returns the appropriate tag properties for the link.
+     *
+     * @returns {object}
+     */
+    tagProps() {
+      if (!this.link) {
+        return {};
+      }
+      if (this.link?.startsWith('/')) {
+        return {
+          to: this.link,
+        };
+      }
+      return {
+        href: this.link,
+        rel: 'noopener nofollow',
+        target: '_blank',
+      };
+    },
   },
 };
 </script>
