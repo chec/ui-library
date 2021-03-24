@@ -2,8 +2,6 @@
   <div
     ref="wrapper"
     :class="classNames"
-    role="textbox"
-    tabindex="0"
     @focus="tagsFieldFocused = true"
     @click="handleActiveField"
     @blur="handleInputBlur"
