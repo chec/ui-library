@@ -106,7 +106,7 @@ export default {
   }
 
   &__header {
-    @apply flex bg-white shadow-sm px-6 h-24 z-50;
+    @apply flex bg-white shadow-sm px-6 h-24;
   }
 
   &__header-inner {
@@ -128,7 +128,7 @@ export default {
   }
 
   &__footer {
-    @apply bg-white px-6 mt-auto h-24 flex shadow-sm z-50;
+    @apply bg-white px-6 mt-auto h-24 flex shadow-sm;
   }
 
   &__footer-inner {
