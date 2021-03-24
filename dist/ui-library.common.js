@@ -4360,6 +4360,46 @@ exports.Wormhole = wormhole;
 
 /***/ }),
 
+/***/ "2ca0":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var getOwnPropertyDescriptor = __webpack_require__("06cf").f;
+var toLength = __webpack_require__("50c4");
+var notARegExp = __webpack_require__("5a34");
+var requireObjectCoercible = __webpack_require__("1d80");
+var correctIsRegExpLogic = __webpack_require__("ab13");
+var IS_PURE = __webpack_require__("c430");
+
+var nativeStartsWith = ''.startsWith;
+var min = Math.min;
+
+var CORRECT_IS_REGEXP_LOGIC = correctIsRegExpLogic('startsWith');
+// https://github.com/zloirock/core-js/pull/702
+var MDN_POLYFILL_BUG = !IS_PURE && !CORRECT_IS_REGEXP_LOGIC && !!function () {
+  var descriptor = getOwnPropertyDescriptor(String.prototype, 'startsWith');
+  return descriptor && !descriptor.writable;
+}();
+
+// `String.prototype.startsWith` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.startswith
+$({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGEXP_LOGIC }, {
+  startsWith: function startsWith(searchString /* , position = 0 */) {
+    var that = String(requireObjectCoercible(this));
+    notARegExp(searchString);
+    var index = toLength(min(arguments.length > 1 ? arguments[1] : undefined, that.length));
+    var search = String(searchString);
+    return nativeStartsWith
+      ? nativeStartsWith.call(that, search, index)
+      : that.slice(index, index + search.length) === search;
+  }
+});
+
+
+/***/ }),
+
 /***/ "2cf4":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27666,6 +27706,25 @@ fixRegExpWellKnownSymbolLogic('search', 1, function (SEARCH, nativeSearch, maybe
 
 /***/ }),
 
+/***/ "857a":
+/***/ (function(module, exports, __webpack_require__) {
+
+var requireObjectCoercible = __webpack_require__("1d80");
+
+var quot = /"/g;
+
+// B.2.3.2.1 CreateHTML(string, tag, attribute, value)
+// https://tc39.github.io/ecma262/#sec-createhtml
+module.exports = function (string, tag, attribute, value) {
+  var S = String(requireObjectCoercible(string));
+  var p1 = '<' + tag;
+  if (attribute !== '') p1 += ' ' + attribute + '="' + String(value).replace(quot, '&quot;') + '"';
+  return p1 + '>' + S + '</' + tag + '>';
+};
+
+
+/***/ }),
+
 /***/ "861d":
 /***/ (function(module, exports) {
 
@@ -32792,6 +32851,26 @@ exports.removeNodeBefore = removeNodeBefore;
 
 /***/ }),
 
+/***/ "9911":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var createHTML = __webpack_require__("857a");
+var forcedStringHTMLMethod = __webpack_require__("af03");
+
+// `String.prototype.link` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.link
+$({ target: 'String', proto: true, forced: forcedStringHTMLMethod('link') }, {
+  link: function link(url) {
+    return createHTML(this, 'a', 'href', url);
+  }
+});
+
+
+/***/ }),
+
 /***/ "9923":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -34090,6 +34169,23 @@ if (!IS_PURE && !has(IteratorPrototype, ITERATOR)) {
 module.exports = {
   IteratorPrototype: IteratorPrototype,
   BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS
+};
+
+
+/***/ }),
+
+/***/ "af03":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+
+// check the existence of a method, lowercase
+// of a tag and escaping quotes in arguments
+module.exports = function (METHOD_NAME) {
+  return fails(function () {
+    var test = ''[METHOD_NAME]('"');
+    return test !== test.toLowerCase() || test.split('"').length > 3;
+  });
 };
 
 
@@ -76002,12 +76098,18 @@ var CodeBlockGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var CodeBlockGroup = (CodeBlockGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4969ec09-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CodeBlockGroupIcon.vue?vue&type=template&id=21d567f4&
-var CodeBlockGroupIconvue_type_template_id_21d567f4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('a',{attrs:{"href":_vm.link,"target":"_blank","rel":"noopener nofollow"}},[(_vm.icon === 'react')?_c('ReactLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'gatsby')?_c('GatsbyLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'javascript')?_c('JavascriptLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'next')?_c('NextLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'vue')?_c('VueLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'angular')?_c('AngularLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'custom')?_c('img',{staticClass:"code-example-group__logo",attrs:{"alt":"","src":_vm.image}}):_vm._e()],1)}
-var CodeBlockGroupIconvue_type_template_id_21d567f4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4969ec09-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CodeBlockGroupIcon.vue?vue&type=template&id=38ed8806&
+var CodeBlockGroupIconvue_type_template_id_38ed8806_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.tag,_vm._b({tag:"component"},'component',_vm.tagProps,false),[(_vm.icon === 'react')?_c('ReactLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'gatsby')?_c('GatsbyLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'javascript')?_c('JavascriptLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'next')?_c('NextLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'vue')?_c('VueLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'angular')?_c('AngularLogo',{staticClass:"code-example-group__logo"}):_vm._e(),(_vm.icon === 'custom')?_c('img',{staticClass:"code-example-group__logo",attrs:{"alt":"","src":_vm.image}}):_vm._e()],1)}
+var CodeBlockGroupIconvue_type_template_id_38ed8806_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/CodeBlockGroupIcon.vue?vue&type=template&id=21d567f4&
+// CONCATENATED MODULE: ./src/components/CodeBlockGroupIcon.vue?vue&type=template&id=38ed8806&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.starts-with.js
+var es_string_starts_with = __webpack_require__("2ca0");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.link.js
+var es_string_link = __webpack_require__("9911");
 
 // EXTERNAL MODULE: ./src/assets/svgs/frameworks/angular.svg
 var angular = __webpack_require__("c1db");
@@ -76035,7 +76137,8 @@ var vue_default = /*#__PURE__*/__webpack_require__.n(vue);
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CodeBlockGroupIcon.vue?vue&type=script&lang=js&
 
-//
+
+
 //
 //
 //
@@ -76110,6 +76213,52 @@ var vue_default = /*#__PURE__*/__webpack_require__.n(vue);
      * Custom Icon Image
      */
     image: String
+  },
+  computed: {
+    /**
+     * Returns the appropriate tag depending on the link provided.
+     * either span, router-link or a.
+     *
+     * @returns {string}
+     */
+    tag: function tag() {
+      var _this$link;
+
+      if (!this.link) {
+        return 'span';
+      }
+
+      if ((_this$link = this.link) === null || _this$link === void 0 ? void 0 : _this$link.startsWith('/')) {
+        return 'router-link';
+      }
+
+      return 'a';
+    },
+
+    /**
+     * Returns the appropriate tag properties for the link.
+     *
+     * @returns {object}
+     */
+    tagProps: function tagProps() {
+      var _this$link2;
+
+      if (!this.link) {
+        return {};
+      }
+
+      if ((_this$link2 = this.link) === null || _this$link2 === void 0 ? void 0 : _this$link2.startsWith('/')) {
+        return {
+          to: this.link
+        };
+      }
+
+      return {
+        href: this.link,
+        rel: 'noopener nofollow',
+        target: '_blank'
+      };
+    }
   }
 });
 // CONCATENATED MODULE: ./src/components/CodeBlockGroupIcon.vue?vue&type=script&lang=js&
@@ -76124,8 +76273,8 @@ var vue_default = /*#__PURE__*/__webpack_require__.n(vue);
 
 var CodeBlockGroupIcon_component = normalizeComponent(
   components_CodeBlockGroupIconvue_type_script_lang_js_,
-  CodeBlockGroupIconvue_type_template_id_21d567f4_render,
-  CodeBlockGroupIconvue_type_template_id_21d567f4_staticRenderFns,
+  CodeBlockGroupIconvue_type_template_id_38ed8806_render,
+  CodeBlockGroupIconvue_type_template_id_38ed8806_staticRenderFns,
   false,
   null,
   null,
