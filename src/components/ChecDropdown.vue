@@ -323,7 +323,7 @@ export default {
       }
 
       const values = Array.isArray(this.value) ? this.value : [this.value];
-      const optionValues = this.options.map((option) => option.value);
+      const optionValues = this.renderableOptions.map((option) => option.value);
 
       values.forEach((value) => {
         if (!optionValues.includes(value)) {
