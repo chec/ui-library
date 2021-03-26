@@ -1,5 +1,5 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
-import { boolean, text, select } from '@storybook/addon-knobs';
+import { boolean, text, select, number } from '@storybook/addon-knobs';
 import ChecDataPill from '../../components/ChecDataPill';
 import ChecDataPillGroup from '../../components/ChecDataPillGroup';
 
@@ -20,15 +20,23 @@ import ChecDataPillGroup from '../../components/ChecDataPillGroup';
         content: { default: text('Label', 'Label') },
         filled: { default: boolean('Filled', false) },
         background: { default: select('Background', ['light', 'dark'], 'dark') },
+        number: { default: number('Number of labels', 1) },
       },
       computed: {
         bg() {
           return `bg-gray-${this.background === 'dark' ? '400' : '100'}`;
-        }
+        },
+        labels() {
+          return new Array(this.number).fill(this.content);
+        },
       },
       template: `
         <div class="py-6 text-center" :class="bg">
-          <ChecDataPill :color="color" :filled="filled">{{ content }}</ChecDataPill>
+          <div class="space-x-2">
+            <ChecDataPill v-for="(label, index) in labels" :key="index" :color="color" :filled="filled">
+              {{ label }}
+            </ChecDataPill>
+          </div>
         </div>`
     }}
   </Story>
