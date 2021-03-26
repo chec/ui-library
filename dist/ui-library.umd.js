@@ -63503,7 +63503,10 @@ var v_tooltip_esm = __webpack_require__("e37d");
 
 // CONCATENATED MODULE: ./src/directives/ChecTooltip.js
 
+ // Remove unused "theme" classes from the tooltips
 
+v_tooltip_esm["c" /* VTooltip */].options.defaultClass = '';
+v_tooltip_esm["c" /* VTooltip */].options.popover.defaultClass = '';
 /* harmony default export */ var ChecTooltip = ({
   VPopover: v_tooltip_esm["b" /* VPopover */],
   VClosePopover: v_tooltip_esm["a" /* VClosePopover */],
