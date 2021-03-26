@@ -19,10 +19,10 @@ export default {
   }
 
   > .data-pill {
-    @apply rounded-r-none;
+    @apply rounded-r-none flex items-center text-right;
 
     + .data-pill {
-      @apply rounded-l-none rounded-r-full;
+      @apply rounded-l-none rounded-r-full text-left;
     }
   }
 }
