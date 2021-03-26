@@ -124,7 +124,7 @@ $alert-inline-colors: (
   }
 
   &__text {
-    @apply flex-grow font-normal text-white text-sm text-center;
+    @apply flex-grow font-normal text-white text-sm text-center items-center;
 
     svg {
       @apply inline h-4 w-4 relative;
@@ -153,10 +153,14 @@ $alert-inline-colors: (
     }
 
     .alert__text {
-      @apply text-gray-600 text-left;
+      @apply text-gray-600 text-left flex items-start leading-normal;
 
       svg {
         @apply h-3 w-3 mr-2;
+
+        // "Magic". I'm not sure why .5rem isn't right here, but it looks strange as 0.5rem. Also `items-baseline` is
+        // off by 1px too, and margin doesn't fix it. :shrug:
+        margin-top: 0.4rem;
       }
     }
     @each $name, $color in $alert-inline-colors {
