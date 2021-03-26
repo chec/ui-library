@@ -10758,7 +10758,7 @@ if (typeof window !== "undefined" && "Vue" in window) {
               attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
               ...rest,
             },
-            children.concat([_c('g',{attrs:{"clip-path":"url(#clip0)"}},[_c('path',{attrs:{"d":"M10.222 7.47A3.202 3.202 0 008 2H3.638a.638.638 0 100 1.276h.517a.128.128 0 01.128.128v9.192a.128.128 0 01-.128.127h-.517a.639.639 0 000 1.277h5.087a3.442 3.442 0 001.496-6.528V7.47zM8 3.277a1.92 1.92 0 010 3.842H5.687a.128.128 0 01-.127-.128V3.405a.128.128 0 01.127-.127l2.314-.002zm.725 9.447H5.687a.128.128 0 01-.127-.128V8.522a.128.128 0 01.127-.128H8.726a2.164 2.164 0 010 4.329z","fill":"currentColor"}})]),_c('defs',[_c('clipPath',{attrs:{"id":"clip0"}},[_c('path',{attrs:{"fill":"#fff","transform":"translate(3 2)","d":"M0 0h9.139v12H0z"}})])])])
+            children.concat([_c('path',{attrs:{"d":"M10.222 7.47A3.202 3.202 0 008 2H3.638a.638.638 0 100 1.276h.517a.128.128 0 01.128.128v9.192a.128.128 0 01-.128.127h-.517a.639.639 0 000 1.277h5.087a3.442 3.442 0 001.496-6.528V7.47zM8 3.277a1.92 1.92 0 010 3.842H5.687a.128.128 0 01-.127-.128V3.405a.128.128 0 01.127-.127l2.314-.002zm.725 9.447H5.687a.128.128 0 01-.127-.128V8.522a.128.128 0 01.127-.128H8.726a2.164 2.164 0 010 4.329z","fill":"currentColor"}})])
           )
         }
       }
@@ -27606,7 +27606,7 @@ module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSour
               attrs: Object.assign({"viewBox":"0 0 16 16","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
               ...rest,
             },
-            children.concat([_c('g',{attrs:{"clip-path":"url(#clip0)","stroke":"currentColor","stroke-width":"2"}},[_c('circle',{attrs:{"cx":"5.879","cy":"5.879","r":"4","transform":"rotate(45 5.879 5.879)"}}),_c('path',{attrs:{"d":"M8.707 8.707l4.243 4.243","stroke-linecap":"round"}})]),_c('defs',[_c('clipPath',{attrs:{"id":"clip0"}},[_c('path',{attrs:{"fill":"#fff","d":"M0 0h16v16H0z"}})])])])
+            children.concat([_c('g',{attrs:{"stroke":"currentColor","stroke-width":"2"}},[_c('circle',{attrs:{"cx":"5.879","cy":"5.879","r":"4","transform":"rotate(45 5.879 5.879)"}}),_c('path',{attrs:{"d":"M8.707 8.707l4.243 4.243","stroke-linecap":"round"}})])])
           )
         }
       }
