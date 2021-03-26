@@ -14,6 +14,10 @@ export default {
 .data-pill-group {
   @apply flex;
 
+  .data-pill {
+    @apply inline-block;
+  }
+
   > .data-pill {
     @apply rounded-r-none;
 
