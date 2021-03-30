@@ -1,0 +1,22 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+
+<Meta title="Styles/Misc" />
+
+# Miscellaneous additions
+
+## Border styles
+
+<Preview>
+  <Story name="Border styles">
+    {{
+      template: `
+        <div class="py-16 flex justify-center space-x-2 bg-gray-100">
+          <div
+            v-tooltip.bottom="'border-hazard-gray'"
+            class="w-16 h-12 rounded border-l-4 border-hazard-gray bg-white"
+          />
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
