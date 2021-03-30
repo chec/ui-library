@@ -33910,6 +33910,40 @@ module.exports = function (argument) {
 
 /***/ }),
 
+/***/ "a847":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 80 80","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M40 23.133c-9.293 0-16.867 7.56-16.867 16.867 0 9.293 7.56 16.867 16.867 16.867 9.308 0 16.867-7.574 16.867-16.867 0-9.293-7.574-16.867-16.867-16.867zM64.209 24.636a7.689 7.689 0 100-15.378 7.689 7.689 0 000 15.378z","fill":"#3880FF"}}),_c('path',{attrs:{"d":"M73.676 24.665l-.318-.708-.52.578a11.594 11.594 0 01-4.64 3.194l-.491.188.202.477a30.058 30.058 0 012.313 11.592c0 16.664-13.557 30.236-30.236 30.236-16.68 0-30.222-13.557-30.222-30.222S23.336 9.764 40 9.764c4.524 0 8.889.983 12.95 2.92l.477.23.202-.476a11.638 11.638 0 013.411-4.48l.607-.492-.694-.361A36.695 36.695 0 0040 3C19.592 3 3 19.592 3 40s16.592 37 37 37 37-16.592 37-37a36.655 36.655 0 00-3.324-15.335z","fill":"#3880FF"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "a878":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52786,6 +52820,10 @@ var ic_gatsby_default = /*#__PURE__*/__webpack_require__.n(ic_gatsby);
 var ic_gridsome = __webpack_require__("5a37");
 var ic_gridsome_default = /*#__PURE__*/__webpack_require__.n(ic_gridsome);
 
+// EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-ionic.svg
+var ic_ionic = __webpack_require__("a847");
+var ic_ionic_default = /*#__PURE__*/__webpack_require__.n(ic_ionic);
+
 // EXTERNAL MODULE: ./src/assets/svgs/MIcons/ic-javascript.svg
 var ic_javascript = __webpack_require__("7ec9");
 var ic_javascript_default = /*#__PURE__*/__webpack_require__.n(ic_javascript);
@@ -52993,6 +53031,7 @@ var ic_rays_mono_default = /*#__PURE__*/__webpack_require__.n(ic_rays_mono);
 
 
 
+
  // Circle marketing icons imports
 
 
@@ -53127,6 +53166,7 @@ var mIcons = {
   angular: ic_angular_default.a,
   gatsby: ic_gatsby_default.a,
   gridsome: ic_gridsome_default.a,
+  ionic: ic_ionic_default.a,
   javascript: ic_javascript_default.a,
   nextjs: ic_nextjs_default.a,
   nuxt: ic_nuxt_default.a,
