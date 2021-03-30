@@ -81,6 +81,7 @@ import IcDashboard from '../assets/svgs/MIcons/ic-dashboard.svg';
 import IcAngular from '../assets/svgs/MIcons/ic-angular.svg';
 import IcGatsby from '../assets/svgs/MIcons/ic-gatsby.svg';
 import IcGridsome from '../assets/svgs/MIcons/ic-gridsome.svg';
+import IcIonic from '../assets/svgs/MIcons/ic-ionic.svg';
 import IcJavascript from '../assets/svgs/MIcons/ic-javascript.svg';
 import IcNextJs from '../assets/svgs/MIcons/ic-nextjs.svg';
 import IcNuxt from '../assets/svgs/MIcons/ic-nuxt.svg';
@@ -224,6 +225,7 @@ export const mIcons = {
   angular: IcAngular,
   gatsby: IcGatsby,
   gridsome: IcGridsome,
+  ionic: IcIonic,
   javascript: IcJavascript,
   nextjs: IcNextJs,
   nuxt: IcNuxt,
