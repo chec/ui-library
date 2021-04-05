@@ -29,13 +29,13 @@ export default {
   },
   props: {
     /**
-     * The style variant for the alert. One of "success", "error", "warning", "info". Default is "success"
+     * The style variant for the alert. One of "success", "error", "warning", "info", "message". Default is "success"
      */
     variant: {
       type: String,
       default: 'success',
       validator(value) {
-        return ['success', 'error', 'warning', 'info'].includes(value);
+        return ['success', 'error', 'warning', 'info', 'message'].includes(value);
       },
     },
     /**
@@ -91,10 +91,11 @@ export default {
 @use 'sass:map';
 
 $alert-colors: (
-  'success': 'green',
-  'error': 'red',
-  'warning': 'orange',
-  'info': 'blue',
+  'success': 'green-500',
+  'error': 'red-500',
+  'warning': 'orange-500',
+  'info': 'blue-500',
+  'message': 'gray-600',
 );
 
 $alert-inline-colors: (
@@ -113,6 +114,10 @@ $alert-inline-colors: (
   'info': (
     'background': 'blue',
     'border': 'blue-500',
+  ),
+  'message': (
+    'background': 'gray',
+    'border': 'gray-300',
   ),
 );
 
@@ -141,7 +146,7 @@ $alert-inline-colors: (
   }
   @each $name, $color in $alert-colors {
     &--#{$name} {
-      @apply bg-#{$color}-500 border border-#{$color}-400;
+      @apply bg-#{$color} border border-#{$color};
     }
   }
 
