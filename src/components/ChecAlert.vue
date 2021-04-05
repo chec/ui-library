@@ -111,8 +111,8 @@ $alert-inline-colors: (
     'border': 'orange-400',
   ),
   'info': (
-    'background': 'gray',
-    'border': 'gray-300',
+    'background': 'blue',
+    'border': 'blue-500',
   ),
 );
 
