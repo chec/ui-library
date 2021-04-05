@@ -17,6 +17,7 @@
     <LineWrapper
       :points="points"
       :labels="xLabels"
+      :minimums="minimums"
       :height="height"
       css-classes="chec-chart__canvas"
       :styles="leftOffset"
@@ -93,6 +94,9 @@ export default {
     },
     points() {
       return this.datasets.map(({ points }) => points);
+    },
+    minimums() {
+      return this.datasets.map(({ min }) => min);
     },
     tooltipConfig() {
       return {

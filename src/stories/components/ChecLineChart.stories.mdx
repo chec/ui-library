@@ -45,6 +45,7 @@ the trend.
             },
             ...( this.twoDatasets ? [{
               label: 'Orders',
+              min: 0,
               points: new Array(7).fill().map(() => Math.floor(Math.random() * (50 - 5 + 1)) + 5),
             }] : []),
           ];

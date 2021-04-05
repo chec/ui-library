@@ -2,11 +2,12 @@
 import { Line } from 'vue-chartjs';
 
 export default {
-  name: 'ChecLineChart',
+  name: 'LineWrapper',
   extends: Line,
   props: {
     points: Array,
     labels: Array,
+    minimums: Array,
   },
   watch: {
     points() {
@@ -112,7 +113,6 @@ export default {
 
       const datasets = [
         {
-          label: 'Data One',
           backgroundColor: this.makeHoloGradient(0.1),
           borderColor: this.makeHoloGradient(1),
           data: firstSet,
@@ -121,7 +121,6 @@ export default {
           yAxisID: 'a',
         },
         {
-          label: 'Data One',
           backgroundColor: this.makeOverlayGradient(),
           borderColor: 'rgba(0, 0, 0, 0)',
           data: firstSet,
@@ -131,9 +130,12 @@ export default {
 
       let upperBound = 0;
       let lowerBound = 0;
+
+      // TODO support more than just 2 lines
+      const setLowerBound = this.minimums[1];
+
       if (secondSet) {
         datasets.push({
-          label: 'Data Two',
           data: secondSet,
           borderWidth: 0,
           borderColor: 'rgba(255, 255, 255, 0.01)',
@@ -148,7 +150,7 @@ export default {
           if (n > upperBound) {
             upperBound = n;
           }
-          if (n < lowerBound) {
+          if (setLowerBound === undefined && n < lowerBound) {
             lowerBound = n;
           }
         });
@@ -184,13 +186,18 @@ export default {
               {
                 display: false,
                 id: 'a',
+                ticks: {
+                  min: this.minimums[0],
+                },
               },
               {
                 display: false,
                 id: 'b',
                 ticks: {
                   // Calculate a lower bound that's 5% less than the range between min and max
-                  min: lowerBound - Math.ceil((upperBound - lowerBound) * 0.05),
+                  min: setLowerBound === undefined
+                    ? lowerBound - Math.ceil((upperBound - lowerBound) * 0.05)
+                    : setLowerBound,
                   max: upperBound,
                 },
               },
