@@ -31,7 +31,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
       },
       props: {
         variant: {
-          default: select('Variant', ['success', 'error', 'warning', 'info']),
+          default: select('Variant', ['success', 'error', 'warning', 'info', 'message']),
         },
         text: {
           default: text('Text to Alert', 'Text to alert!'),
@@ -77,7 +77,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
       },
       data() {
         return {
-          variants: ['success', 'error', 'warning', 'info'],
+          variants: ['success', 'error', 'warning', 'info', 'message'],
           closed: [],
         };
       },
@@ -123,7 +123,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
       },
       data() {
         return {
-          variants: ['success', 'error', 'warning', 'info'],
+          variants: ['success', 'error', 'warning', 'info', 'message'],
           closed: [],
         };
       },
