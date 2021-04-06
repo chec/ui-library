@@ -1,0 +1,77 @@
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+import ChecLineChart from '@/components/ChecLineChart';
+import ChecButton from '@/components/ChecButton';
+import { boolean } from '@storybook/addon-knobs';
+
+<Meta title="Components/Charts" component={ChecLineChart} />
+
+# Line chart
+
+The line chart displays one or two datasets. Note that the first value in the dataset is shifted off the screen showing
+the trend.
+
+<Props of={ChecLineChart} />
+
+<Preview>
+  <Story name="Line">
+    {{
+      components: {
+        ChecButton,
+        ChecLineChart,
+      },
+      props: {
+        twoDatasets: {
+          type: Boolean,
+          default: boolean('Two datasets', true),
+        },
+        fadeEdges: {
+          type: Boolean,
+          default: boolean('Fade edges', true),
+        },
+      },
+      data() {
+        return {
+          datasets: [],
+          labels: ['March', 'April', 'May', 'June', 'July', 'August', 'September'],
+        }
+      },
+      methods: {
+        createDatasets() {
+          this.datasets = [
+            {
+              label: 'Sales',
+              points: new Array(7).fill().map(() => ((Math.random() * (500000)) + 7000).toFixed(2)),
+              format: (n) => `$${new Intl.NumberFormat().format(parseFloat(n).toFixed(2))}`,
+            },
+            ...( this.twoDatasets ? [{
+              label: 'Orders',
+              min: 0,
+              points: new Array(7).fill().map(() => Math.floor(Math.random() * (50 - 5 + 1)) + 5),
+            }] : []),
+          ];
+        },
+      },
+      watch: {
+        twoDatasets() {
+          this.createDatasets();
+        },
+      },
+      mounted() {
+        this.createDatasets();
+      },
+      template: `
+        <div>
+          <div class="flex flex-col font-lato bg-gray-500 w-full p-24">
+            <ChecLineChart
+              :datasets="datasets"
+              :x-labels="labels"
+              :fade-edges="fadeEdges"
+            />
+          </div>
+          <div class="mt-12">
+            <ChecButton class="mx-auto" @click="createDatasets">Generate new points</ChecButton>
+          </div>
+        </div>`,
+    }}
+  </Story>
+</Preview>

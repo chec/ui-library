@@ -30,6 +30,7 @@
     "@popperjs/core": "^2.1.1",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "autoprefixer": "^9.7.4",
+    "chart.js": "^2.9.4",
     "core-js": "^3.4.4",
     "dropzone": "^5.7.2",
     "eslint-plugin-vue": "^7.0.0-alpha.6",
@@ -47,6 +48,7 @@
     "tiptap-extensions": "^1.33.1",
     "v-tooltip": "akryum/v-tooltip",
     "vue": "^2.6.10",
+    "vue-chartjs": "^3.5.1",
     "vue-flatpickr-component": "^8.1.5",
     "vue-prism-editor": "^1.2.2",
     "vuedraggable": "^2.24.1"
