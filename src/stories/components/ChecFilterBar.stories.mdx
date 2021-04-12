@@ -12,12 +12,13 @@ user to navigate the available filters to choose values to filter by. The compon
 - Generic text search
 - Filtering by specific labels from a list (eg. a "Red" label from a "Color" list)
 - "Yes/No" toggles
+- A dropdown in the filter panel, for selecting specific options from a set
 
 Filters should be passed as a prop, which is an array of objects with the following schema:
 
 - `name` - A required label for the filter eg. "Size"
 - `type` - The type of filter which affects how it is presented. Currently supports "in", and "boolean"
-- `values` - Required for the "in" filter. An array that specifies the options the user has to choose from
+- `values` - Required for the "in" or "option" filter. An array that specifies the options the user has to choose from
 - `default` - Used by some (future) filters to indicate which value should be considered default
 - `valueLabel` - Used by the "boolean" type to indicate what "true" should be displayed as. Defaults to "yes".
 
@@ -81,9 +82,24 @@ event. The current search term is the model prop of the component.
             {
               name: 'Other boolean filter',
               type: 'boolean',
-            }
-          ])
-        }
+            },
+            {
+              name: 'Begins with',
+              type: 'option',
+              values: [{
+                value: 'f',
+                label: 'F',
+              }, {
+                value: 'b',
+                label: 'B',
+              }],
+            },
+            {
+              name: 'Order date',
+              type: 'date-range',
+            },
+          ]);
+        },
       },
       methods: {
         setActiveFilters(filters) {

@@ -306,7 +306,9 @@ export default {
     window.addEventListener('resize', this.setDropdownElWidth);
   },
   mounted() {
-    this.setDropdownElWidth();
+    if (window) {
+      window.requestAnimationFrame(() => this.setDropdownElWidth());
+    }
   },
   beforeDestroy() {
     // remove event listeners
