@@ -23,9 +23,14 @@ export default {
     deleteFile: 'Delete file',
   },
   filters: {
+    afterDate: 'After {date}',
     apply: 'Apply filters',
+    beforeDate: 'Before {date}',
+    betweenDate: 'Between {start} and {end}',
     clear: 'Clear',
+    endDate: 'End date',
     filters: 'Filters',
+    startDate: 'Start date',
     textSearch: 'Text search',
   },
   imageManager: {

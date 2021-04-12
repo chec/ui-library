@@ -18,12 +18,12 @@
         {{ textSearchLabel || $t('filters.textSearch') }}: {{ activeSearch }}
       </ChecTag>
       <ChecTag
-        v-for="({ filter, value }, index) in activeFilters"
+        v-for="({ filter, value, label }, index) in activeFilters"
         :key="`${filter}-${value}`"
         color="white"
         @dismiss="removeFilter(index)"
       >
-        {{ filter }}: {{ value }}
+        {{ filter }}: {{ label || value }}
       </ChecTag>
     </ChecTagGroup>
   </div>
