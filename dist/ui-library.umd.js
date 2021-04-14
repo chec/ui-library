@@ -98282,12 +98282,12 @@ var ChecImageManager_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecImageManager = (ChecImageManager_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecLineChart.vue?vue&type=template&id=95baf5c2&
-var ChecLineChartvue_type_template_id_95baf5c2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-chart"},[_c('div',{staticClass:"chec-chart__ticks",style:(_vm.leftOffset)},_vm._l((_vm.xLabels),function(tick){return _c('div',{key:tick},[_c('span',{staticClass:"chec-chart__tick"},[_vm._v(_vm._s(tick))])])}),0),_vm._l((_vm.yHeights),function(yHeight,index){return _c('div',{key:index,staticClass:"chec-chart__forecast",style:(_vm.forecastStyle(yHeight))})}),_c('LineWrapper',{attrs:{"points":_vm.points,"labels":_vm.xLabels,"minimums":_vm.minimums,"height":_vm.height,"css-classes":"chec-chart__canvas","styles":_vm.leftOffset},on:{"tooltip":_vm.handleTooltip,"drawn":_vm.handleDraw}}),(_vm.tooltipOverlayPosition)?_c('div',{directives:[{name:"tooltip",rawName:"v-tooltip",value:(_vm.tooltipConfig),expression:"tooltipConfig"}],staticClass:"chec-chart__tooltip-overlay",style:(_vm.tooltipOverlayPosition)}):_vm._e(),(_vm.fadeEdges)?[_c('div',{staticClass:"chec-chart__fade chec-chart__fade--left",style:({ width: _vm.forecastWidth })}),_c('div',{staticClass:"chec-chart__fade chec-chart__fade--right",style:({ width: _vm.forecastWidth })})]:_vm._e()],2)}
-var ChecLineChartvue_type_template_id_95baf5c2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecLineChart.vue?vue&type=template&id=b327de6a&
+var ChecLineChartvue_type_template_id_b327de6a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-chart"},[_c('div',{staticClass:"chec-chart__ticks",style:(_vm.leftOffset)},_vm._l((_vm.xLabels),function(tick){return _c('div',{key:tick},[_c('span',{staticClass:"chec-chart__tick"},[_vm._v(_vm._s(tick))])])}),0),_vm._l((_vm.yHeights),function(yHeight,index){return _c('div',{key:index,staticClass:"chec-chart__forecast",style:(_vm.forecastStyle(yHeight))})}),_c('LineWrapper',{attrs:{"points":_vm.points,"labels":_vm.xLabels,"minimums":_vm.minimums,"height":_vm.height,"css-classes":"chec-chart__canvas","styles":_vm.leftOffset},on:{"tooltip":_vm.handleTooltip,"drawn":_vm.handleDraw}}),(_vm.tooltipOverlayPosition)?_c('div',{directives:[{name:"tooltip",rawName:"v-tooltip",value:(_vm.tooltipConfig),expression:"tooltipConfig"}],staticClass:"chec-chart__tooltip-overlay",style:(_vm.tooltipOverlayPosition)}):_vm._e(),(_vm.fadeEdges)?[_c('div',{staticClass:"chec-chart__fade chec-chart__fade--left",style:({ width: _vm.forecastWidth })}),_c('div',{staticClass:"chec-chart__fade chec-chart__fade--right",style:({ width: _vm.forecastWidth })})]:_vm._e()],2)}
+var ChecLineChartvue_type_template_id_b327de6a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecLineChart.vue?vue&type=template&id=95baf5c2&
+// CONCATENATED MODULE: ./src/components/ChecLineChart.vue?vue&type=template&id=b327de6a&
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toArray.js
 
@@ -98908,15 +98908,23 @@ var LineWrapper_component = normalizeComponent(
 
       if (!tooltipModel) {
         return;
+      } // Don't worry about tooltips in serverless environments
+
+
+      if (!window) {
+        return;
       }
 
+      var _window = window,
+          scrollY = _window.scrollY,
+          scrollX = _window.scrollX;
       var x = position.x,
           y = position.y,
           padding = position.padding;
       var bounds = this.$el.getBoundingClientRect();
       this.tooltipOverlayPosition = {
-        left: "calc(".concat(x, " - ").concat(padding, " - ").concat(bounds.x, "px)"),
-        top: "calc(".concat(y, " - ").concat(padding, " - ").concat(bounds.y, "px)")
+        left: "calc(".concat(x, " - ").concat(padding, " - ").concat(bounds.x + scrollX, "px)"),
+        top: "calc(".concat(y, " - ").concat(padding, " - ").concat(bounds.y + scrollY, "px)")
       }; // Figure out what index is being hovered over
 
       var index = tooltipModel.dataPoints[0].index;
@@ -98948,8 +98956,8 @@ var ChecLineChartvue_type_style_index_0_lang_scss_ = __webpack_require__("8509")
 
 var ChecLineChart_component = normalizeComponent(
   components_ChecLineChartvue_type_script_lang_js_,
-  ChecLineChartvue_type_template_id_95baf5c2_render,
-  ChecLineChartvue_type_template_id_95baf5c2_staticRenderFns,
+  ChecLineChartvue_type_template_id_b327de6a_render,
+  ChecLineChartvue_type_template_id_b327de6a_staticRenderFns,
   false,
   null,
   null,
