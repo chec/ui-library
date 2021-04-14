@@ -8,7 +8,7 @@
     </span>
     <ChecTagGroup
       :reset-text="$t('filters.clear')"
-      @reset="setFilters([])"
+      @reset="clearFilters"
     >
       <ChecTag
         v-if="activeSearch.length > 0"
@@ -53,6 +53,10 @@ export default {
   methods: {
     setFilters(filters) {
       this.$emit('change-filters', filters);
+    },
+    clearFilters() {
+      this.setFilters([]);
+      this.$emit('clear-search');
     },
     removeFilter(index) {
       const filters = [...this.activeFilters];

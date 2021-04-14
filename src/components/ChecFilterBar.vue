@@ -186,9 +186,6 @@ export default {
        * Indicates that the user has requested the filters be changed
        */
       this.$emit('change-filters', filters);
-      if (filters.length === 0 && this.activeSearch.length > 0) {
-        this.clearSearch();
-      }
     },
     clearSearch() {
       /**
