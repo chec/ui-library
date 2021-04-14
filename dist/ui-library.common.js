@@ -95891,12 +95891,12 @@ var ChecFileUploader_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecFileUploader = (ChecFileUploader_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFilterBar.vue?vue&type=template&id=0e6d1d4a&
-var ChecFilterBarvue_type_template_id_0e6d1d4a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"filter-bar"},[_c('Search',{ref:"search",attrs:{"filters":_vm.searchableFilters,"search":_vm.search,"disable-text-search":_vm.disableTextSearch,"text-search-label":_vm.textSearchLabel},on:{"add-filter":function (filter) { return _vm.addFilter(filter); },"search":_vm.setSearch,"do-search":_vm.doSearch}}),(_vm.panelFilters.length > 0)?_c('ChecButton',{ref:"button",staticClass:"filter-bar__panel-button",attrs:{"variant":"input","icon":"down","icon-position":"after"},on:{"click":function($event){_vm.panelOpen = !_vm.panelOpen}}},[_vm._v(" "+_vm._s(_vm.$t('filters.filters'))+" ")]):_vm._e(),_c('FilterList',{attrs:{"active-filters":_vm.activeFilters,"active-search":_vm.activeSearch,"text-search-label":_vm.textSearchLabel},on:{"change-filters":_vm.changeFilters,"clear-search":_vm.clearSearch}}),_c('ChecPopover',{attrs:{"target-ref":"button","open":_vm.panelOpen,"placement":"bottom-end"}},[_c('FilterPanel',{ref:"panel",attrs:{"filters":_vm.panelFilters,"active-filters":_vm.panelActiveFilters},on:{"change-filters":_vm.updatePanelFilters},scopedSlots:_vm._u([{key:"filters",fn:function(){return [_vm._t("filters")]},proxy:true}],null,true)})],1)],1)}
-var ChecFilterBarvue_type_template_id_0e6d1d4a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFilterBar.vue?vue&type=template&id=8db5ec3e&
+var ChecFilterBarvue_type_template_id_8db5ec3e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"filter-bar"},[_c('Search',{ref:"search",attrs:{"filters":_vm.searchableFilters,"search":_vm.search,"disable-text-search":_vm.disableTextSearch,"text-search-label":_vm.textSearchLabel},on:{"add-filter":function (filter) { return _vm.addFilter(filter); },"search":_vm.setSearch,"do-search":_vm.doSearch}}),(_vm.panelFilters.length > 0)?_c('ChecButton',{ref:"button",staticClass:"filter-bar__panel-button",attrs:{"variant":"input","icon":"down","icon-position":"after"},on:{"click":function($event){_vm.panelOpen = !_vm.panelOpen}}},[_vm._v(" "+_vm._s(_vm.$t('filters.filters'))+" ")]):_vm._e(),_c('FilterList',{attrs:{"active-filters":_vm.activeFilters,"active-search":_vm.activeSearch,"text-search-label":_vm.textSearchLabel},on:{"change-filters":_vm.changeFilters,"clear-search":_vm.clearSearch}}),_c('ChecPopover',{attrs:{"target-ref":"button","open":_vm.panelOpen,"placement":"bottom-end"}},[_c('FilterPanel',{ref:"panel",attrs:{"filters":_vm.panelFilters,"active-filters":_vm.panelActiveFilters},on:{"change-filters":_vm.updatePanelFilters},scopedSlots:_vm._u([{key:"filters",fn:function(){return [_vm._t("filters")]},proxy:true}],null,true)})],1)],1)}
+var ChecFilterBarvue_type_template_id_8db5ec3e_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecFilterBar.vue?vue&type=template&id=0e6d1d4a&
+// CONCATENATED MODULE: ./src/components/ChecFilterBar.vue?vue&type=template&id=8db5ec3e&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFilterBar/FilterPanel.vue?vue&type=template&id=363441a5&
 var FilterPanelvue_type_template_id_363441a5_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"filter-bar-dropdown-panel"},[_vm._l((_vm.filters),function(ref){
@@ -96223,16 +96223,16 @@ var FilterPanel_component = normalizeComponent(
 )
 
 /* harmony default export */ var FilterPanel = (FilterPanel_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFilterBar/FilterList.vue?vue&type=template&id=0303264c&
-var FilterListvue_type_template_id_0303264c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.activeFilters.length > 0 || _vm.activeSearch.length > 0)?_c('div',{staticClass:"filter-bar-filter-list"},[_c('span',{staticClass:"filter-bar-filter-list__label"},[_vm._v(" "+_vm._s(_vm.$t('filters.filters'))+" ")]),_c('ChecTagGroup',{attrs:{"reset-text":_vm.$t('filters.clear')},on:{"reset":function($event){return _vm.setFilters([])}}},[(_vm.activeSearch.length > 0)?_c('ChecTag',{attrs:{"color":"white"},on:{"dismiss":function($event){return _vm.$emit('clear-search')}}},[_vm._v(" "+_vm._s(_vm.textSearchLabel || _vm.$t('filters.textSearch'))+": "+_vm._s(_vm.activeSearch)+" ")]):_vm._e(),_vm._l((_vm.activeFilters),function(ref,index){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFilterBar/FilterList.vue?vue&type=template&id=707524c2&
+var FilterListvue_type_template_id_707524c2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.activeFilters.length > 0 || _vm.activeSearch.length > 0)?_c('div',{staticClass:"filter-bar-filter-list"},[_c('span',{staticClass:"filter-bar-filter-list__label"},[_vm._v(" "+_vm._s(_vm.$t('filters.filters'))+" ")]),_c('ChecTagGroup',{attrs:{"reset-text":_vm.$t('filters.clear')},on:{"reset":_vm.clearFilters}},[(_vm.activeSearch.length > 0)?_c('ChecTag',{attrs:{"color":"white"},on:{"dismiss":function($event){return _vm.$emit('clear-search')}}},[_vm._v(" "+_vm._s(_vm.textSearchLabel || _vm.$t('filters.textSearch'))+": "+_vm._s(_vm.activeSearch)+" ")]):_vm._e(),_vm._l((_vm.activeFilters),function(ref,index){
 var filter = ref.filter;
 var value = ref.value;
 var label = ref.label;
 return _c('ChecTag',{key:(filter + "-" + value),attrs:{"color":"white"},on:{"dismiss":function($event){return _vm.removeFilter(index)}}},[_vm._v(" "+_vm._s(filter)+": "+_vm._s(label || value)+" ")])})],2)],1):_vm._e()}
-var FilterListvue_type_template_id_0303264c_staticRenderFns = []
+var FilterListvue_type_template_id_707524c2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecFilterBar/FilterList.vue?vue&type=template&id=0303264c&
+// CONCATENATED MODULE: ./src/components/ChecFilterBar/FilterList.vue?vue&type=template&id=707524c2&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagGroup.vue?vue&type=template&id=1fccbad0&
 var ChecTagGroupvue_type_template_id_1fccbad0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"chec-tag-group"},[_vm._t("default"),(!_vm.hideReset)?_c('ChecButton',{attrs:{"color":"primary","variant":"tag"},on:{"click":_vm.handleReset}},[_vm._v(" "+_vm._s(_vm.resetText || _vm.$t('tag.reset'))+" ")]):_vm._e()],2)}
@@ -96465,6 +96465,10 @@ var ChecTag_component = normalizeComponent(
     setFilters: function setFilters(filters) {
       this.$emit('change-filters', filters);
     },
+    clearFilters: function clearFilters() {
+      this.setFilters([]);
+      this.$emit('clear-search');
+    },
     removeFilter: function removeFilter(index) {
       var filters = _toConsumableArray(this.activeFilters);
 
@@ -96489,8 +96493,8 @@ var FilterListvue_type_style_index_0_lang_scss_ = __webpack_require__("def9");
 
 var FilterList_component = normalizeComponent(
   ChecFilterBar_FilterListvue_type_script_lang_js_,
-  FilterListvue_type_template_id_0303264c_render,
-  FilterListvue_type_template_id_0303264c_staticRenderFns,
+  FilterListvue_type_template_id_707524c2_render,
+  FilterListvue_type_template_id_707524c2_staticRenderFns,
   false,
   null,
   null,
@@ -97137,10 +97141,6 @@ var Search_component = normalizeComponent(
        * Indicates that the user has requested the filters be changed
        */
       this.$emit('change-filters', filters);
-
-      if (filters.length === 0 && this.activeSearch.length > 0) {
-        this.clearSearch();
-      }
     },
     clearSearch: function clearSearch() {
       /**
@@ -97229,8 +97229,8 @@ var ChecFilterBarvue_type_style_index_0_lang_scss_ = __webpack_require__("0fa8")
 
 var ChecFilterBar_component = normalizeComponent(
   components_ChecFilterBarvue_type_script_lang_js_,
-  ChecFilterBarvue_type_template_id_0e6d1d4a_render,
-  ChecFilterBarvue_type_template_id_0e6d1d4a_staticRenderFns,
+  ChecFilterBarvue_type_template_id_8db5ec3e_render,
+  ChecFilterBarvue_type_template_id_8db5ec3e_staticRenderFns,
   false,
   null,
   null,
