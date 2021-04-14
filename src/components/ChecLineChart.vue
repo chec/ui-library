@@ -127,11 +127,17 @@ export default {
         return;
       }
 
+      // Don't worry about tooltips in serverless environments
+      if (!window) {
+        return;
+      }
+
+      const { scrollY, scrollX } = window;
       const { x, y, padding } = position;
       const bounds = this.$el.getBoundingClientRect();
       this.tooltipOverlayPosition = {
-        left: `calc(${x} - ${padding} - ${bounds.x}px)`,
-        top: `calc(${y} - ${padding} - ${bounds.y}px)`,
+        left: `calc(${x} - ${padding} - ${bounds.x + scrollX}px)`,
+        top: `calc(${y} - ${padding} - ${bounds.y + scrollY}px)`,
       };
 
       // Figure out what index is being hovered over
