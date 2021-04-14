@@ -1,8 +1,15 @@
 <template>
   <div class="filter-bar-dropdown-panel">
     <template v-for="{ name, type, values } in filters">
+      <h4
+        v-if="type === 'header'"
+        :key="name"
+        class="filter-bar-dropdown-panel__header"
+      >
+        {{ name }}
+      </h4>
       <div
-        v-if="type === 'boolean'"
+        v-else-if="type === 'boolean'"
         :key="name"
         class="filter-bar-dropdown-panel__filter filter-bar-dropdown-panel__switch-filter"
       >
@@ -58,8 +65,11 @@
     </template>
     <slot name="filters" />
     <div class="filter-bar-dropdown-panel__actions">
-      <ChecButton variant="round" color="green" @click="submitChoice">
-        Apply
+      <ChecButton color="primary" text-only @click="() => $emit('close')">
+        {{ $t('general.cancel') }}
+      </ChecButton>
+      <ChecButton color="primary" @click="submitChoice">
+        {{ $t('filters.apply') }}
       </ChecButton>
     </div>
   </div>
@@ -245,17 +255,21 @@ export default {
 
 <style lang="scss">
 .filter-bar-dropdown-panel {
-  @apply bg-white border border-gray-200 shadow-sm rounded mt-2 w-full px-4 pb-4;
+  @apply bg-white border border-gray-200 shadow-sm rounded mt-2 w-full px-4 bg-gray-100 py-2;
 
   // A reasonable min width loosely based on Figma designs
   min-width: 20rem;
 
-  &__filter {
-    @apply py-4;
-
-    & + & {
-      @apply border-t border-gray-300;
+  &__header {
+    &:not(:first-child) {
+      @apply pt-6;
     }
+
+    @apply caps-xxs;
+  }
+
+  &__filter {
+    @apply py-2;
   }
 
   &__switch-filter {
@@ -263,7 +277,7 @@ export default {
   }
 
   &__actions {
-    @apply pt-2 flex justify-end;
+    @apply pt-6 pb-2 flex justify-between;
   }
 }
 
