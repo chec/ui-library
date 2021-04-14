@@ -38,6 +38,7 @@
         :filters="panelFilters"
         :active-filters="panelActiveFilters"
         @change-filters="updatePanelFilters"
+        @close="panelOpen = false"
       >
         <template #filters>
           <!--
@@ -122,7 +123,12 @@ export default {
       return this.activeFilters.filter(({ filter }) => this.panelFilters.find(({ name }) => name === filter));
     },
     panelFilters() {
-      return this.filters.filter(({ type }) => ['boolean', 'date-range', 'option'].includes(type));
+      return this.filters.filter(({ type }) => [
+        'boolean',
+        'date-range',
+        'header',
+        'option',
+      ].includes(type));
     },
     // Reduces the set of all filters down to a set that can be used with the search bar, removing those that should
     // appear in the filters dropdown, or those that are already in use

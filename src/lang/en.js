@@ -24,7 +24,7 @@ export default {
   },
   filters: {
     afterDate: 'After {date}',
-    apply: 'Apply filters',
+    apply: 'Apply',
     beforeDate: 'Before {date}',
     betweenDate: 'Between {start} and {end}',
     clear: 'Clear',
