@@ -58,6 +58,8 @@ import IcCategories from '../assets/svgs/NavIcons/ic-categories.svg';
 import IcSpaces from '../assets/svgs/NavIcons/ic-spaces.svg';
 import IcStar from '../assets/svgs/NavIcons/ic-star.svg';
 import IcRays from '../assets/svgs/NavIcons/ic-rays.svg';
+import IcCustomers from '../assets/svgs/NavIcons/ic-customers.svg';
+import IcAccount from '../assets/svgs/NavIcons/ic-account.svg';
 
 // Marketing icons imports
 import IcStandard from '../assets/svgs/MIcons/ic-standard.svg';
@@ -176,6 +178,8 @@ export const navIcons = {
   spaces: IcSpaces,
   star: IcStar,
   rays: IcRays,
+  customers: IcCustomers,
+  account: IcAccount,
 };
 
 export const mIcons = {
