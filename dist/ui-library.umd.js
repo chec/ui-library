@@ -4003,13 +4003,6 @@ module.exports = ''.repeat || function repeat(count) {
 
 /***/ }),
 
-/***/ "116a":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "11c4":
 /***/ (function(module, exports) {
 
@@ -31376,17 +31369,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "3c3d":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("f4e2");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecNavigation_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
 /***/ "3ca3":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45599,17 +45581,6 @@ module.exports = {
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecAvatar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecAvatar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ChecAvatar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "6bb3":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ping_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("116a");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ping_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ping_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ping_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -88623,13 +88594,6 @@ Prism.languages.webmanifest = Prism.languages.json;
 
 /***/ }),
 
-/***/ "f4e2":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "f505":
 /***/ (function(module, exports) {
 
@@ -89233,7 +89197,7 @@ __webpack_require__.d(__webpack_exports__, "ChecLineChart", function() { return 
 __webpack_require__.d(__webpack_exports__, "ChecLoading", function() { return /* reexport */ ChecLoading; });
 __webpack_require__.d(__webpack_exports__, "ChecMarketingIcon", function() { return /* reexport */ ChecMarketingIcon; });
 __webpack_require__.d(__webpack_exports__, "ChecModal", function() { return /* reexport */ ChecModal; });
-__webpack_require__.d(__webpack_exports__, "ChecNavigation", function() { return /* reexport */ ChecNavigation; });
+__webpack_require__.d(__webpack_exports__, "ChecNavIcon", function() { return /* reexport */ ChecNavIcon; });
 __webpack_require__.d(__webpack_exports__, "ChecNotification", function() { return /* reexport */ ChecNotification; });
 __webpack_require__.d(__webpack_exports__, "ChecOption", function() { return /* reexport */ ChecOption; });
 __webpack_require__.d(__webpack_exports__, "ChecOptionsMenu", function() { return /* reexport */ ChecOptionsMenu; });
@@ -97455,15 +97419,21 @@ var ImageBlockvue_type_template_id_2a1dc737_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/ChecImageManager/ImageBlock.vue?vue&type=template&id=2a1dc737&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=6b44278a&
-var ChecOptionsMenuvue_type_template_id_6b44278a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"container"},[_c('ChecButton',_vm._b({ref:"button",attrs:{"slot":"reference","variant":"small","icon":"more","text-only":_vm.invert},on:{"click":function($event){$event.stopPropagation();return _vm.toggleMenu($event)}},slot:"reference"},'ChecButton',_vm.$attrs,false)),_c('ChecPopover',{attrs:{"target-ref":"button","open":_vm.isOpen,"name":_vm.menuName,"placement":_vm.menuPlacement}},[_c('div',{ref:"menu",staticClass:"options-menu"},[_vm._t("default")],2)])],1)}
-var ChecOptionsMenuvue_type_template_id_6b44278a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=128853c2&
+var ChecOptionsMenuvue_type_template_id_128853c2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"container"},[_c('ChecButton',_vm._b({ref:"button",attrs:{"slot":"reference","variant":"small","icon":_vm.hasContent ? undefined : 'more',"text-only":_vm.invert},on:{"click":function($event){$event.stopPropagation();return _vm.toggleMenu($event)}},slot:"reference"},'ChecButton',_vm.$attrs,false),[_vm._t("button-content")],2),_c('ChecPopover',{attrs:{"target-ref":"button","open":_vm.isOpen,"name":_vm.menuName,"placement":_vm.menuPlacement,"popper-options":_vm.combinedPopperOptions}},[_c('div',{ref:"menu",staticClass:"options-menu",class:_vm.menuClass},[_vm._t("default")],2)])],1)}
+var ChecOptionsMenuvue_type_template_id_128853c2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=6b44278a&
+// CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=128853c2&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=script&lang=js&
 
+
+
+
+//
+//
+//
 //
 //
 //
@@ -97512,6 +97482,11 @@ var ChecOptionsMenuvue_type_template_id_6b44278a_staticRenderFns = []
     open: Boolean,
 
     /**
+     * Optional class (or classes) to give to the menu popover
+     */
+    menuClass: [String, Array, Object],
+
+    /**
      * Describes the preferred placement of the options menu.
      */
     menuPlacement: {
@@ -97532,14 +97507,49 @@ var ChecOptionsMenuvue_type_template_id_6b44278a_staticRenderFns = []
     },
 
     /**
+     * Options to pass through to `popper.js`
+     */
+    popperOptions: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+
+    /**
      * Whether choosing an option in the menu should toggle the menu
      */
     preventToggle: Boolean
   },
   data: function data() {
-    return {
-      isOpen: this.open
+    var offsetOption = {
+      name: 'offset',
+      options: {
+        offset: [0, 8]
+      }
     };
+
+    var combinedPopperOptions = Object(objectSpread2["a" /* default */])({}, this.popperOptions);
+
+    if (combinedPopperOptions.modifiers) {
+      combinedPopperOptions.modifiers = [offsetOption].concat(_toConsumableArray(combinedPopperOptions.modifiers));
+    } else {
+      combinedPopperOptions.modifiers = [offsetOption];
+    }
+
+    return {
+      isOpen: this.open,
+      // We set an offset for the popper to provide the designed spacing for the menu. This is 0.5rem (8px), but we
+      // can't use "rem" with this option - it only supports pixels. We can't use margins on the menu itself, because
+      // the margin depends on the position of the menu - right position requires left margin and bottom position
+      // requires top margin etc.
+      combinedPopperOptions: combinedPopperOptions
+    };
+  },
+  computed: {
+    hasContent: function hasContent() {
+      return Boolean(this.$slots['button-content']);
+    }
   },
   created: function created() {
     // add event listener to listen to outside click events
@@ -97597,8 +97607,8 @@ var ChecOptionsMenuvue_type_style_index_0_lang_scss_ = __webpack_require__("a4fe
 
 var ChecOptionsMenu_component = normalizeComponent(
   components_ChecOptionsMenuvue_type_script_lang_js_,
-  ChecOptionsMenuvue_type_template_id_6b44278a_render,
-  ChecOptionsMenuvue_type_template_id_6b44278a_staticRenderFns,
+  ChecOptionsMenuvue_type_template_id_128853c2_render,
+  ChecOptionsMenuvue_type_template_id_128853c2_staticRenderFns,
   false,
   null,
   null,
@@ -99100,19 +99110,6 @@ var ChecMarketingIcon_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecMarketingIcon = (ChecMarketingIcon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=template&id=67190b86&
-var ChecNavigationvue_type_template_id_67190b86_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"chec-navigation",on:{"focusout":_vm.handleLoseFocus}},[_c('a',{staticClass:"chec-navigation__skip",attrs:{"href":"#main"}},[_vm._v(" "+_vm._s(_vm.$t('navigation.skip'))+" ")]),_c('div',{staticClass:"chec-navigation__drawer",class:_vm.deepNavClasses,attrs:{"tabindex":"-1"},on:{"mouseleave":_vm.handleCloseDrawer}},[_c('div',{staticClass:"chec-navigation__section-navigation"},[_c('header',{staticClass:"chec-navigation__section-title"},[_vm._v(" "+_vm._s(_vm.activeSection.label)+" ")]),_c('ul',{ref:"sectionList",staticClass:"chec-navigation__section-links"},_vm._l((_vm.activeSection.links),function(ref){
-var component = ref.component;
-var bind = ref.bind;
-var external = ref.external;
-var label = ref.label;
-var on = ref.on;
-return _c('li',{key:label,on:{"keydown":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }return _vm.focusNextLink($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }return _vm.focusPreviousLink($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"tab",9,$event.key,"Tab")){ return null; }if($event.ctrlKey||$event.shiftKey||$event.altKey||$event.metaKey){ return null; }$event.preventDefault();return _vm.focusNextSection($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"tab",9,$event.key,"Tab")){ return null; }if(!$event.shiftKey){ return null; }$event.preventDefault();return _vm.focusPreviousSection($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"left",37,$event.key,["Left","ArrowLeft"])){ return null; }if('button' in $event && $event.button !== 0){ return null; }return _vm.focusCurrentSection($event)}]}},[_c(component,_vm._g(_vm._b({ref:"listItem",refInFor:true,tag:"component",staticClass:"chec-navigation__section-link",attrs:{"tabindex":"-1"}},'component',bind,false),on),[_vm._v(" "+_vm._s(label)+" "),(external)?_c('ChecIcon',{attrs:{"size":"base","icon":"link"}}):_vm._e()],1)],1)}),0),(_vm.user && _vm.$slots.default)?_c('div',{on:{"mouseenter":function($event){return _vm.handleOpenSection(_vm.user)}}},[_vm._t("default")],2):_vm._e()])]),_c('div',{staticClass:"chec-navigation__top-navigation",on:{"keyup":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }return _vm.focusNextSection($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }return _vm.focusPreviousSection($event)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"right",39,$event.key,["Right","ArrowRight"])){ return null; }if('button' in $event && $event.button !== 2){ return null; }return _vm.focusList($event)}]}},[_c(_vm.homeLink ? 'router-link' : 'div',_vm._b({ref:"logo",tag:"component"},'component',_vm.homeLinkAttrs,false),[_c('ChecLogo',{staticClass:"chec-navigation__logo"})],1),_c('ul',{staticClass:"chec-navigation__links-list"},_vm._l((_vm.compiledTree),function(section){return _c('li',{key:section.icon,staticClass:"chec-navigation__section",class:[section.classes, { 'chec-navigation__section--active': section.label === _vm.activeLabel }],on:{"mouseover":function () { return _vm.handleOpenSection(section); }}},[_c('ChecButton',_vm._b({ref:"sectionButton",refInFor:true,attrs:{"tag-type":section.buttonTag,"variant":"small"},on:{"touchstart":function($event){$event.preventDefault();return (function () { return _vm.handleOpenSection(section); })($event)}},nativeOn:{"focus":function($event){return (function () { return _vm.handleOpenSection(section); })($event)}}},'ChecButton',section.bind,false),[_c('ChecNavIcon',{attrs:{"icon":section.icon}})],1),(section.ping)?_c('Ping'):_vm._e()],1)}),0),_c('div',{on:{"mouseover":function () { return _vm.handleOpenSection(_vm.user); }}},[(_vm.user)?_c(_vm.user.component,_vm._b({ref:"user",tag:"component",nativeOn:{"focus":function($event){return (function () { return _vm.handleOpenSection(_vm.user); })($event)}}},'component',_vm.user.bind,false),[_c('ChecAvatar',{staticClass:"chec-navigation__avatar",attrs:{"image":_vm.user.avatar}})],1):_vm._e()],1)],1)])}
-var ChecNavigationvue_type_template_id_67190b86_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=template&id=67190b86&
-
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavIcon.vue?vue&type=script&lang=js&
 
 /* harmony default export */ var ChecNavIconvue_type_script_lang_js_ = ({
@@ -99156,529 +99153,6 @@ var ChecNavIcon_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecNavIcon = (ChecNavIcon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation/Ping.vue?vue&type=template&id=8adf36b8&
-var Pingvue_type_template_id_8adf36b8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
-var Pingvue_type_template_id_8adf36b8_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"chec-navigation__ping"},[_c('span',{staticClass:"chec-navigation__ping-outer"}),_c('span',{staticClass:"chec-navigation__ping-inner"})])}]
-
-
-// CONCATENATED MODULE: ./src/components/ChecNavigation/Ping.vue?vue&type=template&id=8adf36b8&
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation/Ping.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ var Pingvue_type_script_lang_js_ = ({
-  name: 'Ping'
-});
-// CONCATENATED MODULE: ./src/components/ChecNavigation/Ping.vue?vue&type=script&lang=js&
- /* harmony default export */ var ChecNavigation_Pingvue_type_script_lang_js_ = (Pingvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/ChecNavigation/Ping.vue?vue&type=style&index=0&lang=scss&
-var Pingvue_type_style_index_0_lang_scss_ = __webpack_require__("6bb3");
-
-// CONCATENATED MODULE: ./src/components/ChecNavigation/Ping.vue
-
-
-
-
-
-
-/* normalize component */
-
-var Ping_component = normalizeComponent(
-  ChecNavigation_Pingvue_type_script_lang_js_,
-  Pingvue_type_template_id_8adf36b8_render,
-  Pingvue_type_template_id_8adf36b8_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var Ping = (Ping_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNavigation.vue?vue&type=script&lang=js&
-
-
-
-
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-/* harmony default export */ var ChecNavigationvue_type_script_lang_js_ = ({
-  name: 'ChecNavigation',
-  components: {
-    ChecIcon: ChecIcon,
-    ChecButton: ChecButton,
-    ChecAvatar: ChecAvatar,
-    ChecLogo: chec_logo_default.a,
-    ChecNavIcon: ChecNavIcon,
-    Ping: Ping
-  },
-  props: {
-    /**
-     * The label of the section that is currently considered "active"
-     */
-    activeLabel: {
-      type: String,
-      default: null
-    },
-
-    /**
-     * A path to be used as a "home" link for the navigation.
-     */
-    homeLink: {
-      type: String,
-      default: null
-    },
-
-    /**
-     * The navigation tree. This should be an array of objects with keys for "label", "icon", and "links". "links" must
-     * be an array of objects with links to appear as sub-navigation items.
-     */
-    tree: {
-      type: Array,
-      required: true
-    },
-
-    /**
-     * A separate section of the "tree" that applies to the user. Also accepts an "avatar" key for an image to show
-     */
-    userSection: {
-      type: Object,
-      default: null
-    },
-
-    /**
-     * Force the drawer to remain open
-     */
-    open: Boolean,
-
-    /**
-     * Indicates that when the `open` prop is not true that the drawer should _never_ be open. This puts the nav drawer
-     * into a "controlled" state, where visibility is entirely controlled through props
-     */
-    controlled: Boolean
-  },
-  data: function data() {
-    return {
-      showDeepNav: false,
-      currentActiveSection: null,
-      listItemFocus: null
-    };
-  },
-  computed: {
-    compiledTree: function compiledTree() {
-      return this.tree.map(this.parseSection);
-    },
-    activeSection: function activeSection() {
-      return this.currentActiveSection || this.compiledTree[0];
-    },
-    deepNavClasses: function deepNavClasses() {
-      return {
-        'chec-navigation__drawer--open': this.open || !this.controlled && this.showDeepNav
-      };
-    },
-    homeLinkAttrs: function homeLinkAttrs() {
-      if (!this.homeLink) {
-        return {};
-      }
-
-      return {
-        to: this.homeLink,
-        title: this.$t('navigation.returnToHome')
-      };
-    },
-    user: function user() {
-      return this.userSection && this.parseSection(this.userSection);
-    }
-  },
-  methods: {
-    /**
-     * Parse the sections of the given tree and add resolved details used to render the tree.
-     *
-     * @param {Object} section
-     * @return {Object}
-     */
-    parseSection: function parseSection(section) {
-      var _this = this;
-
-      // Run through links within the section
-      var compiledLinks = section.links.map(function (link) {
-        return Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, link), {}, {
-          external: _this.isExternal(link)
-        }, _this.resolveComponentAndBind(link));
-      }); // Use the first link in the section as the action for clicking the section button
-
-      return Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, section), {}, {
-        links: compiledLinks,
-        buttonTag: compiledLinks[0].external ? 'link' : 'route'
-      }, this.resolveComponentAndBind(compiledLinks[0])), {}, {
-        classes: {
-          'chec-navigation__section--divided': section.divider
-        }
-      });
-    },
-
-    /**
-     * Determine if the given link object describes an external link
-     *
-     * @param {Object} candidateLink
-     * @returns {Boolean}
-     */
-    isExternal: function isExternal(candidateLink) {
-      if (candidateLink.external !== undefined) {
-        return Boolean(candidateLink.external);
-      }
-
-      return candidateLink.to && candidateLink.to.match(/^https?:\/\//);
-    },
-
-    /**
-     * Given an object that represents a link somewhere, resolve the component (a, button, etc) that should be used and
-     * any `v-bind` and `v-on` attributes that should be applied
-     *
-     * @param {Object} link
-     * @returns {Object}
-     */
-    resolveComponentAndBind: function resolveComponentAndBind(link) {
-      var to = link.to;
-
-      if (to) {
-        if (this.isExternal(link)) {
-          return {
-            component: 'a',
-            bind: {
-              href: to,
-              target: '_blank',
-              rel: 'noopener'
-            }
-          };
-        }
-
-        return {
-          component: 'router-link',
-          bind: {
-            to: to
-          }
-        };
-      }
-
-      return {
-        component: 'button',
-        on: {
-          click: link.handle
-        }
-      };
-    },
-
-    /**
-     * Handle tracking state updates when the user prompts a section to open
-     *
-     * @param {Object} section
-     */
-    handleOpenSection: function handleOpenSection(section) {
-      this.showDeepNav = true;
-      this.currentActiveSection = section;
-      this.listItemFocus = null;
-    },
-
-    /**
-     * Handle the user prompting the drawer (with sub-navigation) to hide
-     */
-    handleCloseDrawer: function handleCloseDrawer() {
-      this.showDeepNav = false;
-    },
-
-    /**
-     * Handle an event that triggers a specific list to be focused
-     *
-     * @param event
-     */
-    focusList: function focusList(event) {
-      // Special case for ignoring this event when focused on the logo
-      if (event.target === this.$refs.logo.$el) {
-        return;
-      }
-
-      this.listItemFocus = 0;
-      this.focusLink(0);
-    },
-
-    /**
-     * Handle an event that should highlight a link in the navigation, based off the "listItemFocus" state that's stored
-     */
-    focusLink: function focusLink() {
-      var _this2 = this;
-
-      this.$nextTick(function () {
-        var ref = _this2.$refs.listItem[_this2.listItemFocus];
-
-        if (!ref) {
-          return;
-        }
-
-        if (!ref.focus) {
-          ref.$el.focus();
-          return;
-        }
-
-        ref.focus();
-      });
-    },
-
-    /**
-     * Handle an event that should focus the next link in the active section
-     */
-    focusNextLink: function focusNextLink() {
-      var linkCount = this.$refs.listItem.length;
-
-      if (this.listItemFocus === linkCount - 1) {
-        this.listItemFocus = 0;
-      } else {
-        this.listItemFocus += 1;
-      }
-
-      this.focusLink();
-    },
-
-    /**
-     * Handle an event that should focus the previous link in the active section
-     */
-    focusPreviousLink: function focusPreviousLink() {
-      var linkCount = this.$refs.listItem.length;
-
-      if (this.listItemFocus === 0) {
-        this.listItemFocus = linkCount - 1;
-      } else {
-        this.listItemFocus -= 1;
-      }
-
-      this.focusLink();
-    },
-
-    /**
-     * Handle an event that should focus the next section in the nav
-     */
-    focusNextSection: function focusNextSection(event) {
-      var _this3 = this;
-
-      // Special case for focusing next element when the logo is active
-      if (event.target === this.$refs.logo.$el) {
-        this.$refs.sectionButton[0].$el.focus();
-        return;
-      }
-
-      var currentIndex = this.compiledTree.findIndex(function (section) {
-        return section.label === _this3.activeSection.label;
-      }); // No current section means that we must be on the user section, so we'll just focus the current section - there's
-      // no easy way to tell JS to just "tab to the next thing"
-
-      if (currentIndex < 0) {
-        this.focusCurrentSection();
-        return;
-      } // If we're already on the last section, the next section to focus will be the user
-
-
-      if (currentIndex === this.compiledTree.length - 1) {
-        if (!this.user) {
-          this.focusCurrentSection();
-          return;
-        }
-
-        this.$refs.user.$el.focus();
-        return;
-      }
-
-      this.$refs.sectionButton[currentIndex + 1].$el.focus();
-    },
-
-    /**
-     * Handle an event that should focus the previous section in the nav
-     */
-    focusPreviousSection: function focusPreviousSection() {
-      var _this4 = this;
-
-      var currentIndex = this.compiledTree.findIndex(function (section) {
-        return section.label === _this4.activeSection.label;
-      }); // No current section means that we must be on the user section
-
-      if (currentIndex < 0) {
-        this.$refs.sectionButton[this.compiledTree.length - 1].$el.focus();
-        return;
-      }
-
-      if (currentIndex === 0) {
-        this.$refs.logo.$el.focus();
-        return;
-      }
-
-      this.$refs.sectionButton[currentIndex - 1].$el.focus();
-    },
-
-    /**
-     * Handle an event that should focus the current section in the nav (eg. for taking away focus from links within a
-     * section)
-     */
-    focusCurrentSection: function focusCurrentSection() {
-      var _this5 = this;
-
-      var currentIndex = this.compiledTree.findIndex(function (section) {
-        return section.label === _this5.activeSection.label;
-      });
-
-      if (currentIndex < 0) {
-        this.$refs.user.$el.focus();
-        return;
-      }
-
-      this.$refs.sectionButton[currentIndex].$el.focus();
-    },
-
-    /**
-     * Handle an event which might cause the nav to lose focus.
-     */
-    handleLoseFocus: function handleLoseFocus(event) {
-      // Assert the focus is actually lost from this component
-      if (this.$el.contains(event.relatedTarget)) {
-        return;
-      }
-
-      this.handleCloseDrawer();
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/components/ChecNavigation.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_ChecNavigationvue_type_script_lang_js_ = (ChecNavigationvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/ChecNavigation.vue?vue&type=style&index=0&lang=scss&
-var ChecNavigationvue_type_style_index_0_lang_scss_ = __webpack_require__("3c3d");
-
-// CONCATENATED MODULE: ./src/components/ChecNavigation.vue
-
-
-
-
-
-
-/* normalize component */
-
-var ChecNavigation_component = normalizeComponent(
-  components_ChecNavigationvue_type_script_lang_js_,
-  ChecNavigationvue_type_template_id_67190b86_render,
-  ChecNavigationvue_type_template_id_67190b86_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var ChecNavigation = (ChecNavigation_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecNotification.vue?vue&type=template&id=e64d68bc&scoped=true&
 var ChecNotificationvue_type_template_id_e64d68bc_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"notif",class:_vm.classObject},[_c('div',{staticClass:"notif__content-container"},[_c('span',{staticClass:"notif__text"},[_vm._t("default")],2)]),_c('button',{staticClass:"notif__close-icon",attrs:{"type":"button"},on:{"click":_vm.onClose}},[_c('SvgCloseIcon')],1)])}
 var ChecNotificationvue_type_template_id_e64d68bc_scoped_true_staticRenderFns = []
