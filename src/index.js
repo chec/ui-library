@@ -21,7 +21,7 @@ import ChecLineChart from './components/ChecLineChart';
 import ChecLoading from './components/ChecLoading.vue';
 import ChecMarketingIcon from './components/ChecMarketingIcon.vue';
 import ChecModal from './components/ChecModal.vue';
-import ChecNavigation from './components/ChecNavigation.vue';
+import ChecNavIcon from './components/ChecNavIcon.vue';
 import ChecNotification from './components/ChecNotification.vue';
 import ChecOption from './components/ChecOption.vue';
 import ChecOptionsMenu from './components/ChecOptionsMenu.vue';
@@ -75,7 +75,7 @@ export {
   ChecLoading,
   ChecMarketingIcon,
   ChecModal,
-  ChecNavigation,
+  ChecNavIcon,
   ChecNotification,
   ChecOption,
   ChecOptionsMenu,

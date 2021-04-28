@@ -4,18 +4,21 @@
       slot="reference"
       ref="button"
       variant="small"
-      icon="more"
+      :icon="hasContent ? undefined : 'more'"
       :text-only="invert"
       v-bind="$attrs"
       @click.stop="toggleMenu"
-    />
+    >
+      <slot name="button-content" />
+    </ChecButton>
     <ChecPopover
       target-ref="button"
       :open="isOpen"
       :name="menuName"
       :placement="menuPlacement"
+      :popper-options="combinedPopperOptions"
     >
-      <div ref="menu" class="options-menu">
+      <div ref="menu" class="options-menu" :class="menuClass">
         <!--
           @slot Provide ChecOption instances here
         -->
@@ -45,6 +48,10 @@ export default {
      * Whether the menu should initially be open or not
      */
     open: Boolean,
+    /**
+     * Optional class (or classes) to give to the menu popover
+     */
+    menuClass: [String, Array, Object],
     /**
      * Describes the preferred placement of the options menu.
      */
@@ -79,14 +86,40 @@ export default {
       default: 'chec-options-menu',
     },
     /**
+     * Options to pass through to `popper.js`
+     */
+    popperOptions: {
+      type: Object,
+      default: () => ({}),
+    },
+    /**
      * Whether choosing an option in the menu should toggle the menu
      */
     preventToggle: Boolean,
   },
   data() {
+    const offsetOption = { name: 'offset', options: { offset: [0, 8] } };
+    const combinedPopperOptions = { ...this.popperOptions };
+
+    if (combinedPopperOptions.modifiers) {
+      combinedPopperOptions.modifiers = [offsetOption, ...combinedPopperOptions.modifiers];
+    } else {
+      combinedPopperOptions.modifiers = [offsetOption];
+    }
+
     return {
       isOpen: this.open,
+      // We set an offset for the popper to provide the designed spacing for the menu. This is 0.5rem (8px), but we
+      // can't use "rem" with this option - it only supports pixels. We can't use margins on the menu itself, because
+      // the margin depends on the position of the menu - right position requires left margin and bottom position
+      // requires top margin etc.
+      combinedPopperOptions,
     };
+  },
+  computed: {
+    hasContent() {
+      return Boolean(this.$slots['button-content']);
+    },
   },
   created() {
     // add event listener to listen to outside click events
@@ -131,7 +164,7 @@ export default {
 
 <style lang="scss">
 .options-menu {
-  @apply bg-white border border-gray-300 rounded z-50 shadow-md mt-2;
+  @apply bg-white border border-gray-300 rounded z-50 shadow-md;
   min-width: 10rem;
 }
 </style>
