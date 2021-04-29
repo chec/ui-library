@@ -29,13 +29,14 @@ export default {
   },
   props: {
     /**
-     * The style variant for the alert. One of "success", "error", "warning", "info", "message". Default is "success"
+     * The style variant for the alert. One of "success", "error",
+     * "warning", "info", "message", "news". Default is "success"
      */
     variant: {
       type: String,
       default: 'success',
       validator(value) {
-        return ['success', 'error', 'warning', 'info', 'message'].includes(value);
+        return ['success', 'error', 'warning', 'info', 'message', 'news'].includes(value);
       },
     },
     /**
@@ -96,6 +97,7 @@ $alert-colors: (
   'warning': 'orange-500',
   'info': 'blue-500',
   'message': 'gray-600',
+  'news': 'purple-500',
 );
 
 $alert-inline-colors: (
@@ -117,7 +119,11 @@ $alert-inline-colors: (
   ),
   'message': (
     'background': 'gray',
-    'border': 'gray-300',
+    'border': 'gray-400',
+  ),
+  'news': (
+    'background': 'purple',
+    'border': 'purple-300',
   ),
 );
 
