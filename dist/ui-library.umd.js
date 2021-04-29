@@ -90873,12 +90873,12 @@ var ChecAccordion_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecAccordion = (ChecAccordion_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAlert.vue?vue&type=template&id=cfbd8af8&
-var ChecAlertvue_type_template_id_cfbd8af8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"fade"}},[_c('div',{staticClass:"alert",class:_vm.classObject},[_c('div',{staticClass:"alert__content-container"},[_c('span',{staticClass:"alert__text"},[(_vm.showIcon)?_c('ChecIcon',{attrs:{"icon":_vm.icon}}):_vm._e(),_vm._t("default")],2)]),(!_vm.disableClose)?_c('button',{staticClass:"alert__close-icon",attrs:{"type":"button"}},[_c('SvgCloseIcon',{on:{"click":_vm.onClose}})],1):_vm._e()])])}
-var ChecAlertvue_type_template_id_cfbd8af8_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecAlert.vue?vue&type=template&id=55cd90d4&
+var ChecAlertvue_type_template_id_55cd90d4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"fade"}},[_c('div',{staticClass:"alert",class:_vm.classObject},[_c('div',{staticClass:"alert__content-container"},[_c('span',{staticClass:"alert__text"},[(_vm.showIcon)?_c('ChecIcon',{attrs:{"icon":_vm.icon}}):_vm._e(),_vm._t("default")],2)]),(!_vm.disableClose)?_c('button',{staticClass:"alert__close-icon",attrs:{"type":"button"}},[_c('SvgCloseIcon',{on:{"click":_vm.onClose}})],1):_vm._e()])])}
+var ChecAlertvue_type_template_id_55cd90d4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecAlert.vue?vue&type=template&id=cfbd8af8&
+// CONCATENATED MODULE: ./src/components/ChecAlert.vue?vue&type=template&id=55cd90d4&
 
 // EXTERNAL MODULE: ./src/assets/svgs/close-icon.svg
 var close_icon = __webpack_require__("3baf");
@@ -90915,13 +90915,14 @@ var close_icon_default = /*#__PURE__*/__webpack_require__.n(close_icon);
   },
   props: {
     /**
-     * The style variant for the alert. One of "success", "error", "warning", "info", "message". Default is "success"
+     * The style variant for the alert. One of "success", "error",
+     * "warning", "info", "message", "news". Default is "success"
      */
     variant: {
       type: String,
       default: 'success',
       validator: function validator(value) {
-        return ['success', 'error', 'warning', 'info', 'message'].includes(value);
+        return ['success', 'error', 'warning', 'info', 'message', 'news'].includes(value);
       }
     },
 
@@ -90994,8 +90995,8 @@ var ChecAlertvue_type_style_index_0_lang_scss_ = __webpack_require__("e844");
 
 var ChecAlert_component = normalizeComponent(
   components_ChecAlertvue_type_script_lang_js_,
-  ChecAlertvue_type_template_id_cfbd8af8_render,
-  ChecAlertvue_type_template_id_cfbd8af8_staticRenderFns,
+  ChecAlertvue_type_template_id_55cd90d4_render,
+  ChecAlertvue_type_template_id_55cd90d4_staticRenderFns,
   false,
   null,
   null,
