@@ -295,7 +295,7 @@ export default {
     },
   },
   created() {
-    if (this.value !== '' && this.value.length !== 0) {
+    if (this.value && this.value !== '' && this.value.length !== 0) {
       this.isFocus = true;
     }
     this.validateValue();
@@ -320,7 +320,7 @@ export default {
      * Ensures the provided value attribute is acceptable, given the options provided
      */
     validateValue() {
-      if (this.value === '' || this.value.length === 0) {
+      if (!this.value || this.value === '' || this.value.length === 0) {
         return;
       }
 
