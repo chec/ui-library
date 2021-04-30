@@ -100279,17 +100279,17 @@ var ChecSlideoutPanel_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecSlideoutPanel = (ChecSlideoutPanel_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=template&id=067df272&
-var ChecTabvue_type_template_id_067df272_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"chec-tab",class:{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=template&id=9f6fc882&
+var ChecTabvue_type_template_id_9f6fc882_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"chec-tab",class:{
     'chec-tab--active': _vm.active,
     // Default the color to light, unless it's round, when the default is dark (for BC)
     'chec-tab--dark': _vm.color === 'dark' || (_vm.color === '' && _vm.round),
     'chec-tab--round': _vm.round,
   },attrs:{"disabled":_vm.disabled,"type":"button"},on:{"click":_vm.handleClick}},[_vm._t("default",null,null,{ active: _vm.active, disabled: _vm.disabled })],2)}
-var ChecTabvue_type_template_id_067df272_staticRenderFns = []
+var ChecTabvue_type_template_id_9f6fc882_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecTab.vue?vue&type=template&id=067df272&
+// CONCATENATED MODULE: ./src/components/ChecTab.vue?vue&type=template&id=9f6fc882&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTab.vue?vue&type=script&lang=js&
 
@@ -100371,8 +100371,8 @@ var ChecTabvue_type_style_index_0_lang_scss_ = __webpack_require__("df30");
 
 var ChecTab_component = normalizeComponent(
   components_ChecTabvue_type_script_lang_js_,
-  ChecTabvue_type_template_id_067df272_render,
-  ChecTabvue_type_template_id_067df272_staticRenderFns,
+  ChecTabvue_type_template_id_9f6fc882_render,
+  ChecTabvue_type_template_id_9f6fc882_staticRenderFns,
   false,
   null,
   null,
