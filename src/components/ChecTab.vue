@@ -8,6 +8,7 @@
       'chec-tab--round': round,
     }"
     :disabled="disabled"
+    type="button"
     @click="handleClick"
   >
     <!--
