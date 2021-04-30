@@ -124,7 +124,7 @@ export default {
   }
 
   &__content {
-    @apply p-6 overflow-scroll;
+    @apply p-6 overflow-auto;
   }
 
   &__footer {
