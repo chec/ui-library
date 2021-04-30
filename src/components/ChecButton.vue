@@ -323,14 +323,14 @@ export default {
         @apply bg-#{map.get($config, 'default')} #{map.get($config, 'text')};
 
         &:not(.button--disabled):hover,
-        &:not(:disabled):hover {
+        &:not(:disabled):hover:enabled {
           // Override any gradient background
           background-image: none;
           @apply bg-#{map.get($config, 'hover')} #{map.get($config, 'text')};
         }
 
         &:not(.button--disabled):active,
-        &:not(:disabled):active {
+        &:not(:disabled):active:enabled {
           @apply bg-#{map.get($config, 'active')};
         }
 
@@ -346,12 +346,12 @@ export default {
           @apply bg-transparent text-#{$default-color};
 
           &:not(.button--disabled):hover,
-          &:not(:disabled):hover {
+          &:not(:disabled):hover:enabled {
             @apply bg-transparent text-#{map.get($config, 'hover')};
           }
 
           &:not(.button--disabled):active,
-          &:not(:disabled):active {
+          &:not(:disabled):active:enabled {
             @apply bg-transparent text-#{map.get($config, 'active')};
           }
         }
