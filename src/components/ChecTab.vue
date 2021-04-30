@@ -72,11 +72,14 @@ export default {
   }
 
   &--active,
-  &:active,
-  &:focus {
+  &:active {
     &:enabled {
       @apply outline-none border-gray-500 text-gray-600;
     }
+  }
+
+  &:focus:enabled {
+    @apply outline-none border-gray-400 text-gray-600 bg-gray-200;
   }
 
   &--dark {
@@ -87,11 +90,14 @@ export default {
     }
 
     &.chec-tab--active,
-    &:active,
-    &:focus {
+    &:active {
       &:enabled {
         @apply bg-gray-500 text-white border-white;
       }
+    }
+
+    &:focus:enabled {
+      @apply bg-gray-600 text-white border-gray-300;
     }
   }
 
@@ -103,11 +109,14 @@ export default {
     }
 
     &.chec-tab--active,
-    &:active,
-    &:focus {
+    &:active {
       &:enabled {
         @apply border-transparent bg-gray-200 text-gray-600;
       }
+    }
+
+    &:focus:enabled {
+      @apply border-gray-300 text-gray-600;
     }
 
     &.chec-tab--dark {
@@ -118,11 +127,14 @@ export default {
       }
 
       &.chec-tab--active,
-      &:active,
-      &:focus {
+      &:active {
         &:enabled {
           @apply border-transparent bg-gray-600 text-white;
         }
+      }
+
+      &:focus:enabled {
+        @apply border-gray-300 text-white;
       }
     }
   }
