@@ -85,14 +85,14 @@ export default {
   min-width: 7.25rem;
 
   &__content-container {
-    @apply flex items-center;
+    @apply flex items-center max-w-full;
     // Manual tweaks to keep single line text vertically centered with the close button
     padding-bottom: 0.3rem;
     padding-top: 0.3rem;
   }
 
   &__text {
-    @apply text-primary-blue text-sm;
+    @apply text-primary-blue text-sm break-words max-w-full;
 
     .button {
       @apply mt-2;
