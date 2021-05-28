@@ -61,7 +61,7 @@ export default {
   @apply flex justify-between items-center w-full;
 
   &--section &__title {
-    @apply text-2xl;
+    @apply text-2xl font-bold text-gray-600;
   }
 
   &--card &__title {
