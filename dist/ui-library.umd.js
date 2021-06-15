@@ -97420,12 +97420,12 @@ var ImageBlockvue_type_template_id_2a1dc737_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/ChecImageManager/ImageBlock.vue?vue&type=template&id=2a1dc737&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=128853c2&
-var ChecOptionsMenuvue_type_template_id_128853c2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"container"},[_c('ChecButton',_vm._b({ref:"button",attrs:{"slot":"reference","variant":"small","icon":_vm.hasContent ? undefined : 'more',"text-only":_vm.invert},on:{"click":function($event){$event.stopPropagation();return _vm.toggleMenu($event)}},slot:"reference"},'ChecButton',_vm.$attrs,false),[_vm._t("button-content")],2),_c('ChecPopover',{attrs:{"target-ref":"button","open":_vm.isOpen,"name":_vm.menuName,"placement":_vm.menuPlacement,"popper-options":_vm.combinedPopperOptions}},[_c('div',{ref:"menu",staticClass:"options-menu",class:_vm.menuClass},[_vm._t("default")],2)])],1)}
-var ChecOptionsMenuvue_type_template_id_128853c2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=template&id=6e9db666&
+var ChecOptionsMenuvue_type_template_id_6e9db666_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"container"},[_c('ChecButton',_vm._b({ref:"button",attrs:{"slot":"reference","variant":"small","icon":_vm.hasContent ? undefined : 'more',"text-only":_vm.invert},on:{"click":function($event){$event.stopPropagation();return _vm.toggleMenu($event)}},slot:"reference"},'ChecButton',_vm.$attrs,false),[_vm._t("button-content")],2),_c('ChecPopover',{attrs:{"target-ref":"button","open":_vm.isOpen,"name":_vm.menuName,"placement":_vm.menuPlacement,"popper-options":_vm.combinedPopperOptions}},[_c('div',{ref:"menu",staticClass:"options-menu",class:_vm.menuClass},[_vm._t("default")],2)])],1)}
+var ChecOptionsMenuvue_type_template_id_6e9db666_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=128853c2&
+// CONCATENATED MODULE: ./src/components/ChecOptionsMenu.vue?vue&type=template&id=6e9db666&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecOptionsMenu.vue?vue&type=script&lang=js&
 
@@ -97565,6 +97565,7 @@ var ChecOptionsMenuvue_type_template_id_128853c2_staticRenderFns = []
      */
     toggleMenu: function toggleMenu() {
       this.isOpen = !this.isOpen;
+      this.$emit('click');
     },
 
     /**
@@ -97608,8 +97609,8 @@ var ChecOptionsMenuvue_type_style_index_0_lang_scss_ = __webpack_require__("a4fe
 
 var ChecOptionsMenu_component = normalizeComponent(
   components_ChecOptionsMenuvue_type_script_lang_js_,
-  ChecOptionsMenuvue_type_template_id_128853c2_render,
-  ChecOptionsMenuvue_type_template_id_128853c2_staticRenderFns,
+  ChecOptionsMenuvue_type_template_id_6e9db666_render,
+  ChecOptionsMenuvue_type_template_id_6e9db666_staticRenderFns,
   false,
   null,
   null,
