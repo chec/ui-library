@@ -134,6 +134,7 @@ export default {
      */
     toggleMenu() {
       this.isOpen = !this.isOpen;
+      this.$emit('click');
     },
     /**
      * A handler bound on the window while the component is mounted that closes the menu when clicked away
