@@ -523,7 +523,7 @@ export default {
   }
 
   &__value {
-    @apply leading-tight py-4 text-sm text-gray-600;
+    @apply leading-tight py-4 text-sm text-gray-600 pr-2;
   }
 
   &:hover {
@@ -549,7 +549,7 @@ export default {
   }
 
   &__down-arrow {
-    @apply flex flex-col justify-center w-4 h-4 transform transition-transform duration-200;
+    @apply flex flex-col flex-shrink-0 justify-center w-4 h-4 transform transition-transform duration-200;
   }
 
   &__option-search {
