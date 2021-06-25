@@ -1,11 +1,10 @@
-import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import { uiIcons } from '@/lib/icons';
 import ChecDropdown from '../../components/ChecDropdown.vue';
 import ChecFormField from '../../components/ChecFormField.vue';
-import ChecOption from '../../components/ChecOption.vue';
 import ChecModal from '../../components/ChecModal.vue';
-import { uiIcons } from '../../lib/icons';
 const onClick = action('option selected');
 
 <Meta title="Form fields/Dropdown" component={ChecDropdown} />
@@ -254,31 +253,50 @@ Todo list
       },
       data() {
         return {
-          options: [
-            {
-              value: 'meats',
-              label: 'Meat',
-              group: [
-                { value: 'steak', label: 'Steak (Sold Out)', disabled: true },
-                { value: 'chicken', label: 'Chicken' },
-                { value: 'fish', label: 'Fish' },
-              ],
-            },
-            { label: 'Fruit', group: [
-              { value: 'apple', label: 'Apple' },
-              { value: 'pear', label: 'Pear' },
-              { value: 'kiwi', label: 'Kiwis' },
-              { value: 'blueberry', label: 'Blueberries' }
-            ]},
-            { value: 'bread', label: 'Bread' },
-          ],
+          optionGroups: {
+            default: [
+              {
+                value: 'meats',
+                label: 'Meat',
+                group: [
+                  { value: 'steak', label: 'Steak (Sold Out)', disabled: true },
+                  { value: 'chicken', label: 'Chicken' },
+                  { value: 'fish', label: 'Fish' },
+                ],
+              },
+              { label: 'Fruit', group: [
+                { value: 'apple', label: 'Apple' },
+                { value: 'pear', label: 'Pear' },
+                { value: 'kiwi', label: 'Kiwis' },
+                { value: 'blueberry', label: 'Blueberries' }
+              ]},
+              { value: 'bread', label: 'Bread' },
+            ],
+            longnames: [
+              { value: 'steak', label: 'Beautiful succulent steak from massaged cows', disabled: true },
+              { value: 'chicken', label: 'Completely free run chicken, with 1000 hectares of field per chicken' },
+              { value: 'fish', label: 'Sustainably farmed fish from the icy blue waters of the Foveaux Strait' },
+            ],
+          },
           selected: ['chicken'],
           onClick,
-        }
+        };
       },
       props: {
         label: {
           default: text('Label', 'Label'),
+        },
+        optionSet: {
+          default: select('Option set', ['Default', 'Long names'], 'Default'),
+        },
+      },
+      computed: {
+        options() {
+          const key = this.optionSet
+            ? this.optionSet.toLowerCase().replace(' ', '')
+            : 'default';
+          console.log(key);
+          return this.optionGroups[key];
         },
       },
       template: `
