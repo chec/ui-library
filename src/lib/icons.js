@@ -91,6 +91,16 @@ import IcReact from '../assets/svgs/MIcons/ic-react.svg';
 import IcSvelte from '../assets/svgs/MIcons/ic-svelte.svg';
 import IcVue from '../assets/svgs/MIcons/ic-vue.svg';
 
+// Integration icons
+import IcBraintree from '../assets/svgs/integrations/ic-braintree.svg';
+import IcPaymill from '../assets/svgs/integrations/ic-paymill.svg';
+import IcPaypal from '../assets/svgs/integrations/ic-paypal.svg';
+import IcRazorpay from '../assets/svgs/integrations/ic-razorpay.svg';
+import IcSanity from '../assets/svgs/integrations/ic-sanity.svg';
+import IcShippo from '../assets/svgs/integrations/ic-shippo.svg';
+import IcStripe from '../assets/svgs/integrations/ic-stripe.svg';
+import IcTaxjar from '../assets/svgs/integrations/ic-taxjar.svg';
+
 // Circle marketing icons imports
 import IcLrgStandard from '../assets/svgs/MIcons/ic-lrg-standard.svg';
 import IcLrgPlus from '../assets/svgs/MIcons/ic-lrg-plus.svg';
@@ -236,4 +246,13 @@ export const mIcons = {
   react: IcReact,
   svelte: IcSvelte,
   vue: IcVue,
+  // Integration logos used in docs index
+  sanity: IcSanity,
+  braintree: IcBraintree,
+  paymill: IcPaymill,
+  paypal: IcPaypal,
+  razorpay: IcRazorpay,
+  shippo: IcShippo,
+  stripe: IcStripe,
+  taxjar: IcTaxjar,
 };
