@@ -92,14 +92,14 @@ import IcSvelte from '../assets/svgs/MIcons/ic-svelte.svg';
 import IcVue from '../assets/svgs/MIcons/ic-vue.svg';
 
 // Integration icons
-import IcBraintree from '../assets/svgs/integrations/ic-braintree.svg';
-import IcPaymill from '../assets/svgs/integrations/ic-paymill.svg';
-import IcPaypal from '../assets/svgs/integrations/ic-paypal.svg';
-import IcRazorpay from '../assets/svgs/integrations/ic-razorpay.svg';
-import IcSanity from '../assets/svgs/integrations/ic-sanity.svg';
-import IcShippo from '../assets/svgs/integrations/ic-shippo.svg';
-import IcStripe from '../assets/svgs/integrations/ic-stripe.svg';
-import IcTaxjar from '../assets/svgs/integrations/ic-taxjar.svg';
+import IcBraintree from '../assets/svgs/MIcons/ic-braintree.svg';
+import IcPaymill from '../assets/svgs/MIcons/ic-paymill.svg';
+import IcPaypal from '../assets/svgs/MIcons/ic-paypal.svg';
+import IcRazorpay from '../assets/svgs/MIcons/ic-razorpay.svg';
+import IcSanity from '../assets/svgs/MIcons/ic-sanity.svg';
+import IcShippo from '../assets/svgs/MIcons/ic-shippo.svg';
+import IcStripe from '../assets/svgs/MIcons/ic-stripe.svg';
+import IcTaxjar from '../assets/svgs/MIcons/ic-taxjar.svg';
 
 // Circle marketing icons imports
 import IcLrgStandard from '../assets/svgs/MIcons/ic-lrg-standard.svg';
