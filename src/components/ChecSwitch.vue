@@ -1,5 +1,11 @@
 <template>
-  <div class="chec-switch" :class="{ 'chec-switch--toggled' : toggled }">
+  <div
+    class="chec-switch"
+    :class="{
+      'chec-switch--toggled' : toggled,
+      'chec-switch--disabled': disabled,
+    }"
+  >
     <label
       v-if="$slots.default && prefixLabel"
       :for="resolvedId"
@@ -11,9 +17,12 @@
     <div class="chec-switch__container" @click.stop="handleToggle">
       <div class="chec-switch__thumb">
         <input
+          :id="resolvedId"
           class="chec-switch__input"
           type="checkbox"
-          v-bind="{ id: resolvedId, name, disabled, checked: toggled, required }"
+          :disabled="disabled"
+          :checked="toggled"
+          v-bind="{ name, required }"
         >
       </div>
     </div>
@@ -77,6 +86,9 @@ export default {
   },
   methods: {
     handleToggle() {
+      if (this.disabled) {
+        return;
+      }
       this.$emit('input', !this.toggled);
     },
   },
@@ -115,6 +127,25 @@ export default {
 
     .chec-switch__thumb {
       transform: translate3d(20px, 0, 0);
+    }
+  }
+
+  &--disabled {
+    @apply cursor-not-allowed;
+
+    .chec-switch__label,
+    .chec-switch__thumb {
+      @apply cursor-not-allowed;
+    }
+
+    &.chec-switch--toggled {
+      .chec-switch__container {
+        @apply bg-green-200;
+      }
+    }
+
+    .chec-switch__label {
+      @apply text-gray-400;
     }
   }
 }

@@ -14,7 +14,18 @@ import ChecSwitch from '@/components/ChecSwitch.vue';
   <Story name="Switch">
     {{
       components: {
-        ChecSwitch
+        ChecSwitch,
+      },
+      props: {
+        disabled: {
+          default: () => boolean('Disabled', false),
+        },
+        prefixLabel: {
+          default: () => boolean('Prefix label', false),
+        },
+        label: {
+          default: () => text('Label', 'Switch label here'),
+        },
       },
       data() {
         return {
@@ -26,9 +37,11 @@ import ChecSwitch from '@/components/ChecSwitch.vue';
           <ChecSwitch
             name="testing"
             v-model="toggled"
+            :disabled="disabled"
+            :prefix-label="prefixLabel"
           >
-            Label
-          </ ChecSwitch>
+            {{ label }}
+          </ChecSwitch>
         </div>`,
     }}
   </Story>
