@@ -142,7 +142,7 @@ export default {
 
 <style lang="scss">
 .slideout-panel {
-  @apply absolute block transition duration-150 transition-opacity z-30;
+  @apply absolute block transition duration-150 transition-opacity z-60;
 }
 
 .panel-enter,
