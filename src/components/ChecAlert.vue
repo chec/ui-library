@@ -141,6 +141,16 @@ $alert-inline-colors: (
       @apply inline h-4 w-4 relative;
       top: -1px;
     }
+
+    a {
+      @apply text-white font-bold;
+
+      &:hover,
+      &:focus,
+      &:active {
+        @apply text-white font-bold;
+      }
+    }
   }
 
   &__close-icon {
@@ -172,6 +182,16 @@ $alert-inline-colors: (
         // "Magic". I'm not sure why .5rem isn't right here, but it looks strange as 0.5rem. Also `items-baseline` is
         // off by 1px too, and margin doesn't fix it. :shrug:
         margin-top: 0.4rem;
+      }
+
+      a {
+        @apply text-gray-600 font-bold;
+
+        &:hover,
+        &:focus,
+        &:active {
+          @apply text-gray-600 font-bold;
+        }
       }
     }
     @each $name, $color in $alert-inline-colors {
