@@ -148,7 +148,7 @@ $alert-inline-colors: (
       &:hover,
       &:focus,
       &:active {
-        @apply text-white font-bold;
+        @apply text-white font-bold underline;
       }
     }
   }
@@ -185,7 +185,7 @@ $alert-inline-colors: (
       }
 
       a {
-        @apply text-gray-600 font-bold;
+        @apply text-gray-600;
 
         &:hover,
         &:focus,
