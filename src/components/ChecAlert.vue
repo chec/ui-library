@@ -137,7 +137,7 @@ $alert-inline-colors: (
   &__text {
     @apply flex-grow font-normal text-white text-sm text-center items-center;
 
-    svg {
+    > svg {
       @apply inline h-4 w-4 relative;
       top: -1px;
     }
@@ -176,7 +176,7 @@ $alert-inline-colors: (
     .alert__text {
       @apply text-gray-600 text-left flex items-start leading-normal;
 
-      svg {
+      > svg {
         @apply h-3 w-3 mr-2;
 
         // "Magic". I'm not sure why .5rem isn't right here, but it looks strange as 0.5rem. Also `items-baseline` is
@@ -199,7 +199,7 @@ $alert-inline-colors: (
         @apply bg-#{map.get($color, 'background')}-100 border-#{map.get($color, 'border')};
 
         .alert__text {
-          svg {
+          > svg {
             @apply text-#{map.get($color, 'background')}-500;
           }
         }

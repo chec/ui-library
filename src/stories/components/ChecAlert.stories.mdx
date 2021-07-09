@@ -2,6 +2,7 @@ import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
 import { text, select, boolean, withKnobs } from '@storybook/addon-knobs';
 import ChecAlert from '../../components/ChecAlert.vue';
+import ChecButton from '../../components/ChecButton.vue';
 import ChecIcon from '../../components/ChecIcon.vue';
 
 <Meta title="Components/Alert" component={ChecAlert} />
@@ -67,7 +68,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
   </Story>
 </Preview>
 
-# Variants
+## Variants
 
 <Preview>
   <Story name="Variants">
@@ -113,7 +114,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
   </Story>
 </Preview>
 
-# Inline Variants
+## Inline Variants
 
 <Preview>
   <Story name="Inline Variants">
@@ -167,6 +168,38 @@ import ChecIcon from '../../components/ChecIcon.vue';
             @close="close(variant)"
           >
             {{content(variant)}}
+          </ChecAlert>
+        </div>`
+    }}
+  </Story>
+</Preview>
+
+## Inline with nested buttons
+
+<Preview>
+  <Story name="Inline with nested buttons">
+    {{
+      components: {
+        ChecAlert,
+        ChecButton,
+        ChecIcon,
+      },
+      template: `
+        <div class="mx-auto px-16 pt-6">
+          <ChecAlert
+            class="my-6"
+            variant="info"
+            inline
+          >
+            <ChecIcon icon="info-square" />
+            Hello world, I am some text.
+            <ChecButton
+              color="primary"
+              variant="round"
+              icon="info-square"
+            >
+              Click me
+            </ChecButton>
           </ChecAlert>
         </div>`
     }}
