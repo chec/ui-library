@@ -375,7 +375,7 @@ export default {
     @apply relative;
 
     input {
-      @apply top-0 bg-transparent w-48 pl-0;
+      @apply top-0 bg-transparent w-full pl-0;
     }
   }
 
