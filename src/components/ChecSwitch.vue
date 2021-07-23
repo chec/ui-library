@@ -55,13 +55,6 @@ export default {
       default: '',
     },
     /**
-     * Used to determine if the switch is toggled
-     */
-    value: {
-      type: String,
-      default: '',
-    },
-    /**
      * States whether element is required
      */
     required: Boolean,
@@ -81,7 +74,7 @@ export default {
   },
   computed: {
     resolvedId() {
-      return this.id || uniqueId(this.name, this.value, 'chec-switch')();
+      return this.id || uniqueId(this.name, this.toggled ? '1' : '0', 'chec-switch')();
     },
   },
   methods: {
