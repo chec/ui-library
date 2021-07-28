@@ -106,7 +106,8 @@ export default {
   }
 
   &__header {
-    @apply flex bg-white shadow-sm px-6 h-24;
+    @apply flex bg-white shadow-sm px-6 border-b-2 border-gray-100;
+    min-height: 6rem;
   }
 
   &__header-inner {
@@ -128,7 +129,8 @@ export default {
   }
 
   &__footer {
-    @apply bg-white px-6 mt-auto h-24 flex shadow-sm;
+    @apply bg-white px-6 mt-auto flex shadow-sm border-t-2 border-gray-100;
+    min-height: 6rem;
   }
 
   &__footer-inner {
