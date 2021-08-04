@@ -34,10 +34,13 @@ import CodeBlockGroupIcon from '../../components/CodeBlockGroupIcon.vue';
         grow: {
           default: boolean('Allow Grow', false),
         },
+        code: {
+          default: text('Code', '// Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);'),
+        },
       },
       template: `
         <div class="p-16 flex justify-center w-1/2 m-auto" :class="{'bg-gray-500': background === 'dark'}">
-          <CodeBlock :grow="grow" :language="language" :editable="editable" :line-numbers="lineNumbers">// Render your payment form\n\nconst elements = stripe.elements();\n\nconst card = elements.create(1234);</CodeBlock>
+          <CodeBlock :grow="grow" :language="language" :editable="editable" :line-numbers="lineNumbers">{{ code }}</CodeBlock>
         </div>`
     }}
   </Story>
