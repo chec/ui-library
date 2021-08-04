@@ -74,17 +74,19 @@ export default {
         lineNumbers,
       } = this;
 
-      const classes = {
+      return {
         'code-example--line-numbered': lineNumbers,
         'code-example--fixed': !this.grow,
         'language-none': language === 'none',
       };
-
-      return classes;
     },
   },
   mounted() {
     // On mount, add the slot data to the data object.
+    this.code = this.$slots.default[0].text;
+  },
+  updated() {
+    // On update, add the slot data to the data object.
     this.code = this.$slots.default[0].text;
   },
   methods: {
