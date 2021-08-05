@@ -205,3 +205,27 @@ import ChecIcon from '../../components/ChecIcon.vue';
     }}
   </Story>
 </Preview>
+
+## Inline with route link buttons
+
+<Preview>
+  <Story name="Inline with route link buttons">
+    {{
+      components: {
+        ChecAlert,
+        ChecButton,
+      },
+      template: `
+        <div class="mx-auto px-16 pt-6">
+          <ChecAlert
+            class="my-6"
+            variant="info"
+            inline
+          >
+            Hello world, I am <a href="#">a link</a>.
+            <a href="/settings/billing/" class="gateways__alert-button button button--variant-round button--color-red"><span class="button__content"> Add payment method </span></a>
+          </ChecAlert>
+        </div>`
+    }}
+  </Story>
+</Preview>
