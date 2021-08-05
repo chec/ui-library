@@ -184,7 +184,7 @@ $alert-inline-colors: (
         margin-top: 0.4rem;
       }
 
-      a {
+      a:not(.button) {
         @apply text-gray-600;
 
         &:hover,
