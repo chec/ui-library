@@ -238,11 +238,12 @@ export default {
       // input value is automatically added as a new tag.
       this.handleAddNewTag(e);
     },
+    /**
+     * Handler to set tags field and input to true when the dismiss button is focused
+     */
     handleDismissFocused() {
       this.tagsFieldFocused = true;
-      if (this.tagsFieldFocused) {
-        this.isInputVisible = true;
-      }
+      this.isInputVisible = true;
     },
     /**
      * Remove tag from tags list
