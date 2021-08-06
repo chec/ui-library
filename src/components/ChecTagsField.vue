@@ -16,7 +16,6 @@
         <ChecTag
           :active="activeTag"
           :disabled="disabled"
-          @focused="handleDismissFocused"
           @dismiss="handleRemoveTag(tag)"
         >
           {{ tag }}
@@ -125,7 +124,6 @@ export default {
       newTag: '',
       activeInput: false,
       activeTag: false,
-      isInputVisible: true,
       tagsFieldFocused: false,
     };
   },
@@ -141,25 +139,36 @@ export default {
         },
       ];
     },
-    // list() {
-    //   return Array.isArray(this.value);
-    // },
+    isInputVisible() {
+      // Ensure that input is always visible when no tags have been added
+      if (!this.tags.length) {
+        return true;
+      }
+      // If the tags field is blurred,
+      if (!this.tagsFieldFocused) {
+        // Set input visibility to false
+        return false;
+      }
+      return true;
+    },
   },
   created() {
     // Add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
-    document.addEventListener('keydown', this.onEscape);
+    window.addEventListener('keydown', this.onEscape);
+    window.addEventListener('keyup', this.handleFocusChange);
+    window.addEventListener('click', this.handleFocusChange);
   },
   beforeDestroy() {
     // Remove event listeners
     window.removeEventListener('click', this.onOutsideClick);
-    document.removeEventListener('keydown', this.onEscape);
+    window.removeEventListener('keydown', this.onEscape);
+    window.removeEventListener('keyup', this.handleFocusChange);
+    window.removeEventListener('click', this.handleFocusChange);
   },
   mounted() {
     // If tags field is clicked and is set to focused,
     if (this.tagsFieldFocused) {
-      // set input to visible if it wasn't already and
-      this.isInputVisible = true;
       // set input to active
       this.activeInput = true;
     }
@@ -203,20 +212,6 @@ export default {
       }
     },
     /**
-     * Determine the visibility of the inner input element
-     */
-    handleInputVisibility() {
-      // Ensure that input is always visible when no tags have been added
-      if (!this.tags.length) {
-        this.isInputVisible = true;
-      }
-      // If tags field is blur and tags have length
-      if (!this.tagsFieldFocused && this.tags.length) {
-        // Set input visibility to false
-        this.isInputVisible = false;
-      }
-    },
-    /**
      * Handle input focus
      */
     handleInputFocus() {
@@ -239,11 +234,10 @@ export default {
       this.handleAddNewTag(e);
     },
     /**
-     * Handler to set tags field and input to true when the dismiss button is focused
+     * Set tags field focus state to check if there is an active child element
      */
-    handleDismissFocused() {
-      this.tagsFieldFocused = true;
-      this.isInputVisible = true;
+    handleFocusChange() {
+      this.tagsFieldFocused = this.$refs.wrapper.contains(document.activeElement);
     },
     /**
      * Remove tag from tags list
@@ -252,6 +246,7 @@ export default {
       // Remove tag from tags array
       this.emitTagChange(this.tags.filter((candidate) => candidate !== removedTag));
       this.$emit('remove', removedTag);
+      this.$refs.input.focus();
     },
     /**
      * Remove last tag with keypress event
@@ -288,8 +283,6 @@ export default {
       if (this.tagsFieldFocused) {
         // Set the element to focused
         this.$refs.wrapper.focus();
-        // Set input to visible
-        this.isInputVisible = true;
         // Set input to active
         this.activeInput = true;
       }
@@ -311,7 +304,6 @@ export default {
       }
       // Set tags field focus to false
       this.tagsFieldFocused = false;
-      this.handleInputVisibility();
     },
     /**
      * To handle on escape keydown event
@@ -322,8 +314,6 @@ export default {
       if (e.key === 'Escape') {
         // Blur the tags field element
         this.tagsFieldFocused = false;
-        // Set input to not visible
-        this.handleInputVisibility();
         // Ensure that if tags field is not focused
         // the input is not active
         if (!this.tagsFieldFocused) {

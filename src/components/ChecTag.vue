@@ -72,7 +72,7 @@ export default {
      * Emit focus event on dismiss button
      */
     handleFocus() {
-      this.$emit('focused');
+      this.$emit('focus');
     },
   },
 };
