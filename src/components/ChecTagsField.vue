@@ -16,6 +16,7 @@
         <ChecTag
           :active="activeTag"
           :disabled="disabled"
+          @focused="handleDismissFocused"
           @dismiss="handleRemoveTag(tag)"
         >
           {{ tag }}
@@ -236,6 +237,12 @@ export default {
       this.activeInput = false;
       // input value is automatically added as a new tag.
       this.handleAddNewTag(e);
+    },
+    handleDismissFocused() {
+      this.tagsFieldFocused = true;
+      if (this.tagsFieldFocused) {
+        this.isInputVisible = true;
+      }
     },
     /**
      * Remove tag from tags list
