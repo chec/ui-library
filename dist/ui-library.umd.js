@@ -96696,16 +96696,17 @@ var ChecTagGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTagGroup = (ChecTagGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=template&id=107db008&
-var ChecTagvue_type_template_id_107db008_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"chec-tag",class:_vm.classObject},[_vm._t("default"),(!_vm.undismissible)?_c('button',{staticClass:"chec-tag__dismiss",attrs:{"type":"button","disabled":_vm.disabled,"title":_vm.$t('tag.dismiss')},on:{"click":_vm.handleDismiss}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1):_vm._e()],2)}
-var ChecTagvue_type_template_id_107db008_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=template&id=2209d99f&
+var ChecTagvue_type_template_id_2209d99f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"chec-tag",class:_vm.classObject},[_vm._t("default"),(!_vm.undismissible)?_c('button',{staticClass:"chec-tag__dismiss",attrs:{"type":"button","disabled":_vm.disabled,"title":_vm.$t('tag.dismiss')},on:{"focus":_vm.handleFocus,"click":_vm.handleDismiss}},[_c('ChecIcon',{attrs:{"icon":"close"}})],1):_vm._e()],2)}
+var ChecTagvue_type_template_id_2209d99f_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecTag.vue?vue&type=template&id=107db008&
+// CONCATENATED MODULE: ./src/components/ChecTag.vue?vue&type=template&id=2209d99f&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTag.vue?vue&type=script&lang=js&
 
 
+//
 //
 //
 //
@@ -96773,6 +96774,13 @@ var ChecTagvue_type_template_id_107db008_staticRenderFns = []
   methods: {
     handleDismiss: function handleDismiss() {
       this.$emit('dismiss');
+    },
+
+    /**
+     * Emit focus event on dismiss button
+     */
+    handleFocus: function handleFocus() {
+      this.$emit('focus');
     }
   }
 });
@@ -96792,8 +96800,8 @@ var ChecTagvue_type_style_index_0_lang_scss_ = __webpack_require__("2dfe");
 
 var ChecTag_component = normalizeComponent(
   components_ChecTagvue_type_script_lang_js_,
-  ChecTagvue_type_template_id_107db008_render,
-  ChecTagvue_type_template_id_107db008_staticRenderFns,
+  ChecTagvue_type_template_id_2209d99f_render,
+  ChecTagvue_type_template_id_2209d99f_staticRenderFns,
   false,
   null,
   null,
@@ -100786,12 +100794,12 @@ var ChecTable_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTable = (ChecTable_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagsField.vue?vue&type=template&id=4cf9bede&
-var ChecTagsFieldvue_type_template_id_4cf9bede_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"wrapper",class:_vm.classNames,on:{"focus":function($event){_vm.tagsFieldFocused = true},"click":_vm.handleActiveField,"blur":_vm.handleInputBlur}},[_c('ul',{staticClass:"tags-field__list-wrapper"},[_vm._l((_vm.tags),function(tag){return _c('li',{key:tag.id,ref:"list",refInFor:true,staticClass:"tags-field__tag"},[_c('ChecTag',{attrs:{"active":_vm.activeTag,"disabled":_vm.disabled},on:{"dismiss":function($event){return _vm.handleRemoveTag(tag)}}},[_vm._v(" "+_vm._s(tag)+" ")])],1)}),_c('li',{staticClass:"tags-field__input-wrapper"},[_c('input',{directives:[{name:"show",rawName:"v-show",value:(_vm.isInputVisible),expression:"isInputVisible"},{name:"model",rawName:"v-model",value:(_vm.newTag),expression:"newTag"}],ref:"input",staticClass:"tags-field__input",attrs:{"placeholder":_vm.disabled ? '' : _vm.placeholder,"disabled":_vm.disabled,"active":_vm.activeInput,"max-length":_vm.maxLength},domProps:{"value":(_vm.newTag)},on:{"keydown":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"delete",[8,46],$event.key,["Backspace","Delete","Del"])){ return null; }$event.stopPropagation();return _vm.handleRemoveLastTag($event)},_vm.handleAddNewTag],"focus":function($event){_vm.activeInput = true},"blur":_vm.handleInputBlur,"input":function($event){if($event.target.composing){ return; }_vm.newTag=$event.target.value}}}),_vm._v(" "+_vm._s('\xa0')+" "),_c('span',{staticClass:"tags-field__input-autogrow"},[_vm._v(" "+_vm._s(_vm.newTag)+" ")])])],2)])}
-var ChecTagsFieldvue_type_template_id_4cf9bede_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagsField.vue?vue&type=template&id=43935525&
+var ChecTagsFieldvue_type_template_id_43935525_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"wrapper",class:_vm.classNames,on:{"focus":function($event){_vm.tagsFieldFocused = true},"click":_vm.handleActiveField,"blur":_vm.handleInputBlur}},[_c('ul',{staticClass:"tags-field__list-wrapper"},[_vm._l((_vm.tags),function(tag){return _c('li',{key:tag.id,ref:"list",refInFor:true,staticClass:"tags-field__tag"},[_c('ChecTag',{attrs:{"active":_vm.activeTag,"disabled":_vm.disabled},on:{"dismiss":function($event){return _vm.handleRemoveTag(tag)}}},[_vm._v(" "+_vm._s(tag)+" ")])],1)}),_c('li',{staticClass:"tags-field__input-wrapper"},[_c('input',{directives:[{name:"show",rawName:"v-show",value:(_vm.isInputVisible),expression:"isInputVisible"},{name:"model",rawName:"v-model",value:(_vm.newTag),expression:"newTag"}],ref:"input",staticClass:"tags-field__input",attrs:{"placeholder":_vm.disabled ? '' : _vm.placeholder,"disabled":_vm.disabled,"active":_vm.activeInput,"max-length":_vm.maxLength},domProps:{"value":(_vm.newTag)},on:{"keydown":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"delete",[8,46],$event.key,["Backspace","Delete","Del"])){ return null; }$event.stopPropagation();return _vm.handleRemoveLastTag($event)},_vm.handleAddNewTag],"focus":function($event){_vm.activeInput = true},"blur":_vm.handleInputBlur,"input":function($event){if($event.target.composing){ return; }_vm.newTag=$event.target.value}}}),_vm._v(" "+_vm._s('\xa0')+" "),_c('span',{staticClass:"tags-field__input-autogrow"},[_vm._v(" "+_vm._s(_vm.newTag)+" ")])])],2)])}
+var ChecTagsFieldvue_type_template_id_43935525_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecTagsField.vue?vue&type=template&id=4cf9bede&
+// CONCATENATED MODULE: ./src/components/ChecTagsField.vue?vue&type=template&id=43935525&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagsField.vue?vue&type=script&lang=js&
 
@@ -100939,7 +100947,6 @@ var ChecTagsFieldvue_type_template_id_4cf9bede_staticRenderFns = []
       newTag: '',
       activeInput: false,
       activeTag: false,
-      isInputVisible: true,
       tagsFieldFocused: false
     };
   },
@@ -100952,29 +100959,42 @@ var ChecTagsFieldvue_type_template_id_4cf9bede_staticRenderFns = []
         'tags-field--active': tagsFieldFocused,
         'tags-field--disabled': disabled
       }];
-    } // list() {
-    //   return Array.isArray(this.value);
-    // },
+    },
+    isInputVisible: function isInputVisible() {
+      // Ensure that input is always visible when no tags have been added
+      if (!this.tags.length) {
+        return true;
+      } // If the tags field is blurred,
 
+
+      if (!this.tagsFieldFocused) {
+        // Set input visibility to false
+        return false;
+      }
+
+      return true;
+    }
   },
   created: function created() {
     // Add event listener to listen to outside click events
     window.addEventListener('click', this.onOutsideClick);
-    document.addEventListener('keydown', this.onEscape);
+    window.addEventListener('keydown', this.onEscape);
+    window.addEventListener('keyup', this.handleFocusChange);
+    window.addEventListener('click', this.handleFocusChange);
   },
   beforeDestroy: function beforeDestroy() {
     // Remove event listeners
     window.removeEventListener('click', this.onOutsideClick);
-    document.removeEventListener('keydown', this.onEscape);
+    window.removeEventListener('keydown', this.onEscape);
+    window.removeEventListener('keyup', this.handleFocusChange);
+    window.removeEventListener('click', this.handleFocusChange);
   },
   mounted: function mounted() {
     var _this = this;
 
     // If tags field is clicked and is set to focused,
     if (this.tagsFieldFocused) {
-      // set input to visible if it wasn't already and
-      this.isInputVisible = true; // set input to active
-
+      // set input to active
       this.activeInput = true;
     } // If input is active
 
@@ -101054,22 +101074,6 @@ var ChecTagsFieldvue_type_template_id_4cf9bede_staticRenderFns = []
     },
 
     /**
-     * Determine the visibility of the inner input element
-     */
-    handleInputVisibility: function handleInputVisibility() {
-      // Ensure that input is always visible when no tags have been added
-      if (!this.tags.length) {
-        this.isInputVisible = true;
-      } // If tags field is blur and tags have length
-
-
-      if (!this.tagsFieldFocused && this.tags.length) {
-        // Set input visibility to false
-        this.isInputVisible = false;
-      }
-    },
-
-    /**
      * Handle input focus
      */
     handleInputFocus: function handleInputFocus() {
@@ -101096,6 +101100,13 @@ var ChecTagsFieldvue_type_template_id_4cf9bede_staticRenderFns = []
     },
 
     /**
+     * Set tags field focus state to check if there is an active child element
+     */
+    handleFocusChange: function handleFocusChange() {
+      this.tagsFieldFocused = this.$refs.wrapper.contains(document.activeElement);
+    },
+
+    /**
      * Remove tag from tags list
      */
     handleRemoveTag: function handleRemoveTag(removedTag) {
@@ -101104,6 +101115,7 @@ var ChecTagsFieldvue_type_template_id_4cf9bede_staticRenderFns = []
         return candidate !== removedTag;
       }));
       this.$emit('remove', removedTag);
+      this.$refs.input.focus();
     },
 
     /**
@@ -101144,9 +101156,7 @@ var ChecTagsFieldvue_type_template_id_4cf9bede_staticRenderFns = []
 
       if (this.tagsFieldFocused) {
         // Set the element to focused
-        this.$refs.wrapper.focus(); // Set input to visible
-
-        this.isInputVisible = true; // Set input to active
+        this.$refs.wrapper.focus(); // Set input to active
 
         this.activeInput = true;
       } // Set focus on input
@@ -101169,7 +101179,6 @@ var ChecTagsFieldvue_type_template_id_4cf9bede_staticRenderFns = []
 
 
       this.tagsFieldFocused = false;
-      this.handleInputVisibility();
     },
 
     /**
@@ -101180,9 +101189,7 @@ var ChecTagsFieldvue_type_template_id_4cf9bede_staticRenderFns = []
     onEscape: function onEscape(e) {
       if (e.key === 'Escape') {
         // Blur the tags field element
-        this.tagsFieldFocused = false; // Set input to not visible
-
-        this.handleInputVisibility(); // Ensure that if tags field is not focused
+        this.tagsFieldFocused = false; // Ensure that if tags field is not focused
         // the input is not active
 
         if (!this.tagsFieldFocused) {
@@ -101208,8 +101215,8 @@ var ChecTagsFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("df1d")
 
 var ChecTagsField_component = normalizeComponent(
   components_ChecTagsFieldvue_type_script_lang_js_,
-  ChecTagsFieldvue_type_template_id_4cf9bede_render,
-  ChecTagsFieldvue_type_template_id_4cf9bede_staticRenderFns,
+  ChecTagsFieldvue_type_template_id_43935525_render,
+  ChecTagsFieldvue_type_template_id_43935525_staticRenderFns,
   false,
   null,
   null,
