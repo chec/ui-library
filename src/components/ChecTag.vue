@@ -8,6 +8,7 @@
       class="chec-tag__dismiss"
       :disabled="disabled"
       :title="$t('tag.dismiss')"
+      @focus="handleFocus"
       @click="handleDismiss"
     >
       <ChecIcon icon="close" />
@@ -66,6 +67,12 @@ export default {
   methods: {
     handleDismiss() {
       this.$emit('dismiss');
+    },
+    /**
+     * Emit focus event on dismiss button
+     */
+    handleFocus() {
+      this.$emit('focus');
     },
   },
 };
