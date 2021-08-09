@@ -4,7 +4,6 @@
     :class="classNames"
     @focus="tagsFieldFocused = true"
     @click="handleActiveField"
-    @blur="handleInputBlur"
   >
     <ul class="tags-field__list-wrapper">
       <li
@@ -38,7 +37,6 @@
           @keydown.delete.stop="handleRemoveLastTag"
           @keydown="handleAddNewTag"
           @focus="activeInput = true"
-          @blur="handleInputBlur"
         >
         <!-- eslint-disable-next-line vue/no-useless-mustaches -->
         {{ '\xa0' }}
@@ -225,15 +223,6 @@ export default {
       }
     },
     /**
-     * Handler to detect when input is not active
-     */
-    handleInputBlur(e) {
-      // If text field is not active or is blur,
-      this.activeInput = false;
-      // input value is automatically added as a new tag.
-      this.handleAddNewTag(e);
-    },
-    /**
      * Set tags field focus state to check if there is an active child element
      */
     handleFocusChange() {
@@ -290,7 +279,7 @@ export default {
       this.handleInputFocus();
     },
     /**
-     * A handler bound on the window while the component is mounted that closes the dropdown when clicked away
+     * A handler bound on the window while the component is mounted to detect outside click
      *
      * @param {Event} e
      */
@@ -301,6 +290,9 @@ export default {
         || this.$refs.input.contains(e.target)
       ) {
         return;
+      }
+      if (this.newTag && this.addOnBlur) {
+        this.handleAddNewTag();
       }
       // Set tags field focus to false
       this.tagsFieldFocused = false;
