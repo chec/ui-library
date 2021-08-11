@@ -92,14 +92,25 @@ import IcSvelte from '../assets/svgs/MIcons/ic-svelte.svg';
 import IcVue from '../assets/svgs/MIcons/ic-vue.svg';
 
 // Integration icons
+import IcAlgolia from '../assets/svgs/integrations/ic-algolia.svg';
+import IcAlloy from '../assets/svgs/integrations/ic-alloy.svg';
 import IcBraintree from '../assets/svgs/integrations/ic-braintree.svg';
+import IcGraphcms from '../assets/svgs/integrations/ic-graphcms.svg';
+import IcHasura from '../assets/svgs/integrations/ic-hasura.svg';
+import IcKlayvio from '../assets/svgs/integrations/ic-klayvio.svg';
+import IcNetlify from '../assets/svgs/integrations/ic-netlify.svg';
 import IcPaymill from '../assets/svgs/integrations/ic-paymill.svg';
 import IcPaypal from '../assets/svgs/integrations/ic-paypal.svg';
+import IcPrismic from '../assets/svgs/integrations/ic-prismic.svg';
 import IcRazorpay from '../assets/svgs/integrations/ic-razorpay.svg';
 import IcSanity from '../assets/svgs/integrations/ic-sanity.svg';
+import IcSendGrid from '../assets/svgs/integrations/ic-sendgrid.svg';
 import IcShippo from '../assets/svgs/integrations/ic-shippo.svg';
+import IcSquare from '../assets/svgs/integrations/ic-square.svg';
 import IcStripe from '../assets/svgs/integrations/ic-stripe.svg';
 import IcTaxjar from '../assets/svgs/integrations/ic-taxjar.svg';
+import IcTwilio from '../assets/svgs/integrations/ic-twilio.svg';
+import IcVercel from '../assets/svgs/integrations/ic-vercel.svg';
 
 // Circle marketing icons imports
 import IcLrgStandard from '../assets/svgs/MIcons/ic-lrg-standard.svg';
@@ -247,12 +258,23 @@ export const mIcons = {
   svelte: IcSvelte,
   vue: IcVue,
   // Integration logos used in docs index
+  algolia: IcAlgolia,
+  alloy: IcAlloy,
+  graphcms: IcGraphcms,
   sanity: IcSanity,
   braintree: IcBraintree,
+  hasura: IcHasura,
+  klayvio: IcKlayvio,
+  netlify: IcNetlify,
   paymill: IcPaymill,
   paypal: IcPaypal,
+  prismic: IcPrismic,
   razorpay: IcRazorpay,
+  sendgrid: IcSendGrid,
   shippo: IcShippo,
+  square: IcSquare,
   stripe: IcStripe,
   taxjar: IcTaxjar,
+  twilio: IcTwilio,
+  vercel: IcVercel,
 };
