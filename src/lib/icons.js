@@ -106,6 +106,7 @@ import IcRazorpay from '../assets/svgs/integrations/ic-razorpay.svg';
 import IcSanity from '../assets/svgs/integrations/ic-sanity.svg';
 import IcSendGrid from '../assets/svgs/integrations/ic-sendgrid.svg';
 import IcShippo from '../assets/svgs/integrations/ic-shippo.svg';
+import IcSquare from '../assets/svgs/integrations/ic-square.svg';
 import IcStripe from '../assets/svgs/integrations/ic-stripe.svg';
 import IcTaxjar from '../assets/svgs/integrations/ic-taxjar.svg';
 import IcTwilio from '../assets/svgs/integrations/ic-twilio.svg';
@@ -271,6 +272,7 @@ export const mIcons = {
   razorpay: IcRazorpay,
   sendgrid: IcSendGrid,
   shippo: IcShippo,
+  square: IcSquare,
   stripe: IcStripe,
   taxjar: IcTaxjar,
   twilio: IcTwilio,
