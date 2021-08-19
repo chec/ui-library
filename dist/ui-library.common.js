@@ -47622,6 +47622,40 @@ module.exports = {
 
 /***/ }),
 
+/***/ "7014":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 80 80","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M68.257 11.721c-15.6-15.6-40.957-15.6-56.557 0-15.6 15.6-15.6 40.958 0 56.558 15.6 15.6 40.957 15.6 56.557 0 15.6-15.6 15.6-40.958 0-56.558zm-6.24 29.158l-21.16 21.159c-.51.51-1.304.51-1.815 0l-21.158-21.16a1.268 1.268 0 010-1.814l21.158-21.159c.51-.51 1.305-.51 1.816 0l21.16 21.157c.51.51.51 1.306 0 1.816z","fill":"#2176FF"}}),_c('path',{attrs:{"d":"M80 39.915c0-10.607-4.198-20.819-11.688-28.307-6.353-6.354-16.62-6.41-22.974-.057l-6.24 6.184a1.25 1.25 0 01.85-.34c.34 0 .682.17.908.398l27.343 27.4c6.353 6.353 6.353 16.62 0 22.975 7.545-7.5 11.8-17.643 11.8-28.25l.001-.003zM11.644 68.109c6.353 6.354 16.621 6.354 23.031.056l6.184-6.296c-.454.51-1.305.51-1.815.056L17.94 40.823c-.284-.228-.398-.626-.398-.963 0-.337.125-.681.34-.907l-6.125 6.124a16.35 16.35 0 00-.112 23.032h-.001z","fill":"#1A53F0"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "707b":
 /***/ (function(module, exports) {
 
@@ -90614,6 +90648,10 @@ var ic_hasura_default = /*#__PURE__*/__webpack_require__.n(ic_hasura);
 var ic_klayvio = __webpack_require__("763a");
 var ic_klayvio_default = /*#__PURE__*/__webpack_require__.n(ic_klayvio);
 
+// EXTERNAL MODULE: ./src/assets/svgs/integrations/ic-omise.svg
+var ic_omise = __webpack_require__("7014");
+var ic_omise_default = /*#__PURE__*/__webpack_require__.n(ic_omise);
+
 // EXTERNAL MODULE: ./src/assets/svgs/integrations/ic-netlify.svg
 var ic_netlify = __webpack_require__("c6fd");
 var ic_netlify_default = /*#__PURE__*/__webpack_require__.n(ic_netlify);
@@ -90872,6 +90910,7 @@ var ic_rays_mono_default = /*#__PURE__*/__webpack_require__.n(ic_rays_mono);
 
 
 
+
  // Circle marketing icons imports
 
 
@@ -91023,6 +91062,7 @@ var mIcons = {
   braintree: ic_braintree_default.a,
   hasura: ic_hasura_default.a,
   klayvio: ic_klayvio_default.a,
+  omise: ic_omise_default.a,
   netlify: ic_netlify_default.a,
   paymill: ic_paymill_default.a,
   paypal: ic_paypal_default.a,
