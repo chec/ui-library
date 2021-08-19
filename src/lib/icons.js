@@ -98,6 +98,7 @@ import IcBraintree from '../assets/svgs/integrations/ic-braintree.svg';
 import IcGraphcms from '../assets/svgs/integrations/ic-graphcms.svg';
 import IcHasura from '../assets/svgs/integrations/ic-hasura.svg';
 import IcKlayvio from '../assets/svgs/integrations/ic-klayvio.svg';
+import IcOmise from '../assets/svgs/integrations/ic-omise.svg';
 import IcNetlify from '../assets/svgs/integrations/ic-netlify.svg';
 import IcPaymill from '../assets/svgs/integrations/ic-paymill.svg';
 import IcPaypal from '../assets/svgs/integrations/ic-paypal.svg';
@@ -265,6 +266,7 @@ export const mIcons = {
   braintree: IcBraintree,
   hasura: IcHasura,
   klayvio: IcKlayvio,
+  omise: IcOmise,
   netlify: IcNetlify,
   paymill: IcPaymill,
   paypal: IcPaypal,
