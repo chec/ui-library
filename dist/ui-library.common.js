@@ -101892,12 +101892,12 @@ var ChecVerticalNavigation_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecVerticalNavigation = (ChecVerticalNavigation_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavItem.vue?vue&type=template&id=3ae5da98&
-var ChecVerticalNavItemvue_type_template_id_3ae5da98_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"vertical-navigation__item"},[_c('router-link',{staticClass:"vertical-navigation__link",attrs:{"to":_vm.to,"disabled":_vm.disabled}},[_vm._t("default")],2)],1)}
-var ChecVerticalNavItemvue_type_template_id_3ae5da98_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavItem.vue?vue&type=template&id=2902f510&
+var ChecVerticalNavItemvue_type_template_id_2902f510_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"vertical-navigation__item"},[_c('router-link',{staticClass:"vertical-navigation__link",attrs:{"to":_vm.to,"disabled":_vm.disabled}},[_vm._t("default")],2)],1)}
+var ChecVerticalNavItemvue_type_template_id_2902f510_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecVerticalNavItem.vue?vue&type=template&id=3ae5da98&
+// CONCATENATED MODULE: ./src/components/ChecVerticalNavItem.vue?vue&type=template&id=2902f510&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecVerticalNavItem.vue?vue&type=script&lang=js&
 //
@@ -101916,10 +101916,10 @@ var ChecVerticalNavItemvue_type_template_id_3ae5da98_staticRenderFns = []
   name: 'ChecVerticalNavItem',
   props: {
     /**
-     * Determines the path of the route
+     * Determines the path of the route. Matches the "to" param on `router-link`.
      */
     to: {
-      type: String,
+      type: [String, Object],
       required: true
     },
 
@@ -101945,8 +101945,8 @@ var ChecVerticalNavItemvue_type_style_index_0_lang_scss_ = __webpack_require__("
 
 var ChecVerticalNavItem_component = normalizeComponent(
   components_ChecVerticalNavItemvue_type_script_lang_js_,
-  ChecVerticalNavItemvue_type_template_id_3ae5da98_render,
-  ChecVerticalNavItemvue_type_template_id_3ae5da98_staticRenderFns,
+  ChecVerticalNavItemvue_type_template_id_2902f510_render,
+  ChecVerticalNavItemvue_type_template_id_2902f510_staticRenderFns,
   false,
   null,
   null,
