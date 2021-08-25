@@ -15,10 +15,10 @@ export default {
   name: 'ChecVerticalNavItem',
   props: {
     /**
-     * Determines the path of the route
+     * Determines the path of the route. Matches the "to" param on `router-link`.
      */
     to: {
-      type: String,
+      type: [String, Object],
       required: true,
     },
     /**
