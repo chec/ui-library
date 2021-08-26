@@ -45,7 +45,7 @@ export default {
       return this.variant ? `avatar--${this.variant}` : '';
     },
     styleObject() {
-      return this.image ? `background-image: url(${this.image})` : '';
+      return this.image ? `background-image: url('${encodeURI(this.image)}')` : '';
     },
   },
 };
