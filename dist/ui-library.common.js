@@ -101265,12 +101265,12 @@ var ChecTable_component = normalizeComponent(
 )
 
 /* harmony default export */ var ChecTable = (ChecTable_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagsField.vue?vue&type=template&id=e0f4efd4&
-var ChecTagsFieldvue_type_template_id_e0f4efd4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"wrapper",class:_vm.classNames,on:{"focus":function($event){_vm.tagsFieldFocused = true},"click":_vm.handleActiveField}},[_c('ul',{staticClass:"tags-field__list-wrapper"},[_vm._l((_vm.tags),function(tag){return _c('li',{key:tag.id,ref:"list",refInFor:true,staticClass:"tags-field__tag"},[_c('ChecTag',{attrs:{"active":_vm.activeTag,"disabled":_vm.disabled},on:{"dismiss":function($event){return _vm.handleRemoveTag(tag)}}},[_vm._v(" "+_vm._s(tag)+" ")])],1)}),_c('li',{staticClass:"tags-field__input-wrapper"},[_c('input',{directives:[{name:"show",rawName:"v-show",value:(_vm.isInputVisible),expression:"isInputVisible"},{name:"model",rawName:"v-model",value:(_vm.newTag),expression:"newTag"}],ref:"input",staticClass:"tags-field__input",attrs:{"placeholder":_vm.disabled ? '' : _vm.placeholder,"disabled":_vm.disabled,"active":_vm.activeInput,"max-length":_vm.maxLength},domProps:{"value":(_vm.newTag)},on:{"keydown":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"delete",[8,46],$event.key,["Backspace","Delete","Del"])){ return null; }$event.stopPropagation();return _vm.handleRemoveLastTag($event)},_vm.handleAddNewTag],"focus":function($event){_vm.activeInput = true},"input":function($event){if($event.target.composing){ return; }_vm.newTag=$event.target.value}}}),_vm._v(" "+_vm._s('\xa0')+" "),_c('span',{staticClass:"tags-field__input-autogrow"},[_vm._v(" "+_vm._s(_vm.newTag)+" ")])])],2)])}
-var ChecTagsFieldvue_type_template_id_e0f4efd4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagsField.vue?vue&type=template&id=2790963a&
+var ChecTagsFieldvue_type_template_id_2790963a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"wrapper",class:_vm.classNames,on:{"focus":function($event){_vm.tagsFieldFocused = true},"click":_vm.handleActiveField}},[_c('ul',{staticClass:"tags-field__list-wrapper"},[_vm._l((_vm.tags),function(tag){return _c('li',{key:tag.id,ref:"list",refInFor:true,staticClass:"tags-field__tag"},[_c('ChecTag',{attrs:{"active":_vm.activeTag,"disabled":_vm.disabled},on:{"dismiss":function($event){return _vm.handleRemoveTag(tag)}}},[_vm._v(" "+_vm._s(tag)+" ")])],1)}),_c('li',{staticClass:"tags-field__input-wrapper"},[_c('input',{directives:[{name:"show",rawName:"v-show",value:(_vm.isInputVisible),expression:"isInputVisible"},{name:"model",rawName:"v-model",value:(_vm.newTag),expression:"newTag"}],ref:"input",staticClass:"tags-field__input",attrs:{"placeholder":_vm.disabled ? '' : _vm.placeholder,"disabled":_vm.disabled,"active":_vm.activeInput,"max-length":_vm.maxLength},domProps:{"value":(_vm.newTag)},on:{"keydown":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"delete",[8,46],$event.key,["Backspace","Delete","Del"])){ return null; }$event.stopPropagation();return _vm.handleRemoveLastTag($event)},_vm.handleAddNewTag],"focus":function($event){_vm.activeInput = true},"input":function($event){if($event.target.composing){ return; }_vm.newTag=$event.target.value}}}),_vm._v(" "+_vm._s('\xa0')+" "),_c('span',{staticClass:"tags-field__input-autogrow"},[_vm._v(" "+_vm._s(_vm.newTag)+" ")])])],2)])}
+var ChecTagsFieldvue_type_template_id_2790963a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecTagsField.vue?vue&type=template&id=e0f4efd4&
+// CONCATENATED MODULE: ./src/components/ChecTagsField.vue?vue&type=template&id=2790963a&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecTagsField.vue?vue&type=script&lang=js&
 
@@ -101385,6 +101385,14 @@ var ChecTagsFieldvue_type_template_id_e0f4efd4_staticRenderFns = []
     disabled: Boolean,
 
     /**
+     * The state of the text field. One of "error".
+     */
+    variant: {
+      type: String,
+      default: ''
+    },
+
+    /**
      * The maximum amount of characters the input/tags is allowed to have
      */
     maxLength: {
@@ -101422,11 +101430,13 @@ var ChecTagsFieldvue_type_template_id_e0f4efd4_staticRenderFns = []
   computed: {
     classNames: function classNames() {
       var disabled = this.disabled,
-          tagsFieldFocused = this.tagsFieldFocused; // Bind an active modifier to the tags field element
+          tagsFieldFocused = this.tagsFieldFocused,
+          variant = this.variant; // Bind an active modifier to the tags field element
 
       return ['tags-field', {
         'tags-field--active': tagsFieldFocused,
-        'tags-field--disabled': disabled
+        'tags-field--disabled': disabled,
+        'tags-field--error': variant === 'error'
       }];
     },
     isInputVisible: function isInputVisible() {
@@ -101678,8 +101688,8 @@ var ChecTagsFieldvue_type_style_index_0_lang_scss_ = __webpack_require__("df1d")
 
 var ChecTagsField_component = normalizeComponent(
   components_ChecTagsFieldvue_type_script_lang_js_,
-  ChecTagsFieldvue_type_template_id_e0f4efd4_render,
-  ChecTagsFieldvue_type_template_id_e0f4efd4_staticRenderFns,
+  ChecTagsFieldvue_type_template_id_2790963a_render,
+  ChecTagsFieldvue_type_template_id_2790963a_staticRenderFns,
   false,
   null,
   null,
