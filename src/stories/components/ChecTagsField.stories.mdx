@@ -22,6 +22,9 @@ const keys = [13, 188, 9]
         placeholder: {
           default: text('Label for the tags field', 'Add option'),
         },
+        variant: {
+          default: select('Variant', ['', 'error'], ''),
+        },
         addOnBlur: {
           default: boolean('Add tag on outside click or when tags field is unfocused', true),
         },
@@ -48,6 +51,7 @@ const keys = [13, 188, 9]
           <ChecTagsField
             v-model="tags"
             class="max-w-xl"
+            :variant="variant"
             :placeholder="placeholder"
             :disabled="disabled"
             :addOnBlur="addOnBlur"
