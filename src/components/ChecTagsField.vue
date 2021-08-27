@@ -95,6 +95,13 @@ export default {
      */
     disabled: Boolean,
     /**
+     * The state of the text field. One of "error".
+     */
+    variant: {
+      type: String,
+      default: '',
+    },
+    /**
      * The maximum amount of characters the input/tags is allowed to have
      */
     maxLength: {
@@ -127,13 +134,14 @@ export default {
   },
   computed: {
     classNames() {
-      const { disabled, tagsFieldFocused } = this;
+      const { disabled, tagsFieldFocused, variant } = this;
       // Bind an active modifier to the tags field element
       return [
         'tags-field',
         {
           'tags-field--active': tagsFieldFocused,
           'tags-field--disabled': disabled,
+          'tags-field--error': variant === 'error',
         },
       ];
     },
@@ -331,19 +339,34 @@ export default {
   &:focus,
   &:active,
   &--active {
-    &:not(.tags-field--disabled) {
+    &:not(.tags-field--disabled):not(.tags-field--error) {
       @apply transition duration-150 border-gray-500 shadow-light-focus;
     }
   }
 
   &:hover {
-    &:not(.tags-field--disabled) {
+    &:not(.tags-field--disabled):not(.tags-field--error) {
       @apply transition duration-150 border-gray-400;
     }
   }
 
   &--disabled {
     @apply opacity-50 transition-opacity duration-150 outline-none;
+  }
+
+  &--error {
+    @apply border-red-400;
+
+    &:hover,
+    &:focus,
+    &:active {
+      @apply border-red-300;
+    }
+
+    &:focus,
+    &:active {
+      @apply shadow-error-focus;
+    }
   }
 
   &:not(&--disabled) {
