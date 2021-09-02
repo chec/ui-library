@@ -109,7 +109,11 @@ export default {
   }
 
   &__toolbar {
-    @apply flex justify-between mt-8 clear-both;
+    @apply flex justify-end mt-8 clear-both;
+
+    > * + * {
+      @apply ml-2;
+    }
   }
 }
 </style>
