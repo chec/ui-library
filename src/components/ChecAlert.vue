@@ -138,7 +138,7 @@ $alert-inline-colors: (
     @apply flex-grow font-normal text-white text-sm text-center items-center;
 
     > svg {
-      @apply inline h-4 w-4 relative;
+      @apply inline h-4 w-4 relative flex-shrink-0;
       top: -1px;
     }
 
