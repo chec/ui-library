@@ -2,6 +2,7 @@
   <component
     :is="form ? 'form' : 'div'"
     :class="`modal__overlay modal__overlay--${overlay}`"
+    @click="emitClose"
   >
     <ChecCard class="modal__card" tailwind="bg-gray-100" :class="`max-w-${width}`">
       <ChecModalHeader v-if="header" :undismissible="undismissible" @close="emitClose">
@@ -41,7 +42,7 @@ export default {
      */
     width: {
       type: String,
-      default: '2xl',
+      default: 'xl',
     },
     /**
      * Optionally include a modal header by providing a title for the modal. This adds a close button too
@@ -66,14 +67,12 @@ export default {
     document.body.style.overflow = 'initial';
   },
   methods: {
-    /**
-     * Emitted when the modal's background overlay is click.
-     * @event dismiss
-     */
-    emitClose() {
-      if (!this.undismissible) {
-        this.$emit('dismiss');
-      }
+    emitClose(event) {
+      /**
+       * Emitted when the modal's X icon or background overlay is clicked.
+       * @type {Event}
+       */
+      this.$emit('dismiss', event);
     },
   },
 };
