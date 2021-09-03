@@ -18,6 +18,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
     {{
       components: {
         ChecModal,
+        ChecButton,
       },
       props: {
         width: {
@@ -27,11 +28,27 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
           default: select('Overlay', ['light', 'dark']),
         },
       },
+      data() {
+        return {
+          open: true,
+        };
+      },
+      methods: {
+        dismiss() {
+          this.open = false;
+          return action('Modal dismissed!')();
+        },
+      },
       template: `
         <div>
+          <ChecButton @click="open = !open" color="primary" class="m-20">
+            Open modal
+          </ChecButton>
           <ChecModal
+            v-if="open"
             :width="width"
             :overlay="overlay"
+            @dismiss="dismiss"
           >
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor imperdiet pellentesque. Mauris quam enim, vehicula ac felis vel, tempus tincidunt massa.</p>
             <p>Mauris eget mi neque. Nullam eu est a velit mattis cursus vel nec purus. Pellentesque tincidunt ornare auctor.</p>
@@ -52,6 +69,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
     {{
       components: {
         ChecModal,
+        ChecButton,
       },
       props: {
         width: {
@@ -61,9 +79,29 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
           default: select('Overlay', ['light', 'dark']),
         },
       },
+      data() {
+        return {
+          open: true,
+        };
+      },
+      methods: {
+        dismiss() {
+          this.open = false;
+          return action('Modal dismissed!')();
+        },
+      },
       template: `
         <div>
-          <ChecModal :overlay="overlay" :width="width" header="Modal title">
+          <ChecButton @click="open = !open" color="primary" class="m-20">
+            Open modal
+          </ChecButton>
+          <ChecModal
+            v-if="open"
+            :overlay="overlay"
+            :width="width"
+            header="Modal title"
+            @dismiss="dismiss"
+          >
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor imperdiet pellentesque. Mauris quam enim, vehicula ac felis vel, tempus tincidunt massa.</p>
             <p>Mauris eget mi neque. Nullam eu est a velit mattis cursus vel nec purus. Pellentesque tincidunt ornare auctor.</p>
             <p>Mauris vitae lobortis justo. Donec nec nisl condimentum, efficitur tellus vel, lobortis leo. Curabitur volutpat porta sapien, eget sagittis est placerat ac. Cras commodo vehicula arcu, sed tincidunt ligula molestie ac.</p>
@@ -106,13 +144,24 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
         },
       },
       methods: {
-        hideModal() {
+        dismiss() {
           this.showModal = false;
+          return action('Modal dismissed!')();
         },
       },
       template: `
         <div class="font-lato">
-          <ChecModal :overlay="overlay" :form="form" :width="width" header="Set up your account" v-if="showModal">
+          <ChecButton @click="showModal = !showModal" color="primary" class="m-20">
+            Open modal
+          </ChecButton>
+          <ChecModal
+            :overlay="overlay"
+            :form="form"
+            :width="width"
+            header="Set up your account"
+            v-if="showModal"
+            @dismiss="dismiss"
+          >
             <label class="block mb-4">
               <TextField label="First name" value="Leslie" class="w-full" />
             </label>
@@ -122,7 +171,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
             <label class="block mb-4">
               <TextField label="Email address" value="lezlie@example.com" class="w-full" />
             </label>
-            <ChecButton color="primary" class="mt-8 p-0" @click="hideModal" text-only>Close</ChecButton>
+            <ChecButton color="primary" class="mt-8 p-0" @click="dismiss" text-only>Close</ChecButton>
           </ChecModal>
           <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
           <p class="text-center m-40">I am a bunch of content that the modal will be displayed on top of.</p>
@@ -161,13 +210,23 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
         },
       },
       methods: {
-        hideModal() {
+        dismiss() {
           this.showModal = false;
         },
       },
       template: `
         <div class="font-lato">
-          <ChecModal :overlay="overlay" :form="form" :width="width" header="Set up your account" undismissible>
+          <ChecButton @click="showModal = !showModal" color="primary" class="m-20">
+            Open modal
+          </ChecButton>
+          <ChecModal
+            v-if="showModal"
+            :overlay="overlay"
+            :form="form"
+            :width="width"
+            header="Set up your account"
+            @dismiss="dismiss"
+          >
             <label class="block mb-4">
               <TextField label="First name" value="Leslie" class="w-full" />
             </label>
@@ -178,7 +237,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
               <TextField label="Email address" value="lezlie@example.com" class="w-full" />
             </label>
             <template v-slot:toolbar>
-              <ChecButton color="primary" text-only>
+              <ChecButton color="primary" text-only class="p-0" @click="dismiss">
                 Cancel
               </ChecButton>
               <ChecButton color="primary">
@@ -226,7 +285,7 @@ const widths = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl',
       },
       template: `
         <div class="font-lato">
-          <ChecModal :overlay="overlay" :form="form" :width="width" header="Set up your account" undismissible>
+          <ChecModal :overlay="overlay" :form="form" :width="width" header="Set up your account">
             <ChecLoading message="Please wait..." />
           </ChecModal>
           <p class="text-left m-40">I am a bunch of content that the modal will be displayed on top of.</p>
