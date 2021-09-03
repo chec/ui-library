@@ -6566,6 +6566,40 @@ module.exports = function (CONSTRUCTOR_NAME) {
 
 /***/ }),
 
+/***/ "270e":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M12.126 10.328L9.428 8.366a3.256 3.256 0 001.168-1.624l2.708 1.97a6.014 6.014 0 00-1.178 1.616z","fill":"#41546C"}}),_c('rect',{attrs:{"x":"3","y":"2","width":"6.5","height":"6.5","rx":"3.25","fill":"#41546C"}}),_c('rect',{attrs:{"x":"13","y":"8.591","width":"9","height":"9","rx":"4.5","fill":"#41546C"}}),_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M10.216 17.76l2.123-1.062a5.977 5.977 0 01-.861-1.805L9.38 15.942c.44.5.738 1.127.835 1.818z","fill":"#41546C"}}),_c('rect',{attrs:{"x":"3","y":"16","width":"5","height":"5","rx":"2.5","stroke":"#41546C","stroke-width":"2"}})])
+          )
+        }
+      }
+    
+
+/***/ }),
+
 /***/ "2763":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6858,6 +6892,40 @@ module.exports = function (CONSTRUCTOR_NAME) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "2af5":
+/***/ (function(module, exports) {
+
+
+      module.exports = {
+        functional: true,
+        render(_h, _vm) {
+          const { _c, _v, data, children = [] } = _vm;
+
+          const {
+            class: classNames,
+            staticClass,
+            style,
+            staticStyle,
+            attrs = {},
+            ...rest
+          } = data;
+
+          return _c(
+            'svg',
+            {
+              class: [classNames,staticClass],
+              style: [style,staticStyle],
+              attrs: Object.assign({"viewBox":"0 0 24 24","fill":"none","xmlns":"http://www.w3.org/2000/svg"}, attrs),
+              ...rest,
+            },
+            children.concat([_c('path',{attrs:{"d":"M10 17.416a2 2 0 114 0v4h-4v-4z","fill":"#41546C"}}),_c('path',{attrs:{"fill-rule":"evenodd","clip-rule":"evenodd","d":"M2.626 10.085l8.107-6.633a2 2 0 012.534 0l8.107 6.633c.545.447.23 1.33-.475 1.33h-.782L13.142 5.41a1.75 1.75 0 00-2.284 0l-6.975 6.007H3.1c-.705 0-1.02-.884-.475-1.33zM4 13.295v6.12a2 2 0 002 2h2.5V17.05a3 3 0 013-3h1a3 3 0 013 3v4.366H18a2 2 0 002-2v-6.122l-7.837-6.748a.25.25 0 00-.326 0L4 13.294z","fill":"#41546C"}})])
+          )
+        }
+      }
+    
 
 /***/ }),
 
@@ -90473,6 +90541,10 @@ var ic_bullet_list_default = /*#__PURE__*/__webpack_require__.n(ic_bullet_list);
 var ic_quote = __webpack_require__("fce7");
 var ic_quote_default = /*#__PURE__*/__webpack_require__.n(ic_quote);
 
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-home.svg
+var ic_home = __webpack_require__("2af5");
+var ic_home_default = /*#__PURE__*/__webpack_require__.n(ic_home);
+
 // EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-orders.svg
 var ic_orders = __webpack_require__("21ed");
 var ic_orders_default = /*#__PURE__*/__webpack_require__.n(ic_orders);
@@ -90500,6 +90572,10 @@ var ic_settings_default = /*#__PURE__*/__webpack_require__.n(ic_settings);
 // EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-categories.svg
 var ic_categories = __webpack_require__("378b");
 var ic_categories_default = /*#__PURE__*/__webpack_require__.n(ic_categories);
+
+// EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-integrations.svg
+var ic_integrations = __webpack_require__("270e");
+var ic_integrations_default = /*#__PURE__*/__webpack_require__.n(ic_integrations);
 
 // EXTERNAL MODULE: ./src/assets/svgs/NavIcons/ic-spaces.svg
 var ic_spaces = __webpack_require__("3496");
@@ -90870,6 +90946,8 @@ var ic_rays_mono_default = /*#__PURE__*/__webpack_require__.n(ic_rays_mono);
 
 
 
+
+
  // Marketing icons imports
 
 
@@ -90996,11 +91074,13 @@ var uiIcons = {
   quote: ic_quote_default.a
 };
 var navIcons = {
+  home: ic_home_default.a,
   orders: ic_orders_default.a,
   products: ic_products_default.a,
   discounts: ic_discounts_default.a,
   developers: ic_developers_default.a,
   logs: ic_logs_default.a,
+  integrations: ic_integrations_default.a,
   settings: ic_settings_default.a,
   categories: ic_categories_default.a,
   spaces: ic_spaces_default.a,
