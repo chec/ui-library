@@ -1,5 +1,6 @@
 import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
 import { boolean } from '@storybook/addon-knobs';
+import { action } from "@storybook/addon-actions";
 import ChecFilterBar from '@/components/ChecFilterBar.vue';
 
 <Meta title="Components/Filter Bar" component={ ChecFilterBar } />
@@ -68,6 +69,7 @@ event. The current search term is the model prop of the component.
               name: 'Group 3',
               type: 'in',
               values: ['Foo', 'Baz'],
+              id: 'test',
             },
             {
               name: 'Group 4',
@@ -107,6 +109,7 @@ event. The current search term is the model prop of the component.
       },
       methods: {
         setActiveFilters(filters) {
+          action('Filters changed')(filters);
           this.activeFilters = filters;
         },
         doSearch() {

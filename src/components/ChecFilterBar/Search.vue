@@ -80,11 +80,12 @@ export default {
       return (this.disableTextSearch ? [] : [
         {
           filter: this.textSearchLabel || this.$t('filters.textSearch'),
+          id: 'text-search',
           value: this.search,
         },
       ])
         // Add on any filters that match the search term
-        .concat(this.filters.reduce((options, { name, values }) => {
+        .concat(this.filters.reduce((options, { name, values, ...others }) => {
           const regex = new RegExp(this.search, 'i');
           const matchedValues = values.filter((candidate) => candidate.match(regex));
 
@@ -97,6 +98,7 @@ export default {
             ...matchedValues.map((value) => ({
               filter: name,
               value,
+              ...others,
             })),
           ];
         }, []));
