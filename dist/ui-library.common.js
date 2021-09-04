@@ -97456,15 +97456,15 @@ var FilterList_component = normalizeComponent(
 )
 
 /* harmony default export */ var FilterList = (FilterList_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFilterBar/Search.vue?vue&type=template&id=0f9987b7&
-var Searchvue_type_template_id_0f9987b7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ChecFormField',{staticClass:"filter-bar-search",attrs:{"icon":"search"}},[_c('TextField',{ref:"input",attrs:{"placeholder":_vm.$t('general.search')},on:{"focus":function($event){_vm.focused = true},"blur":function($event){_vm.focused = false},"keyup":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }$event.preventDefault();return _vm.moveHighlight(_vm.highlightedOption + 1)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }$event.preventDefault();return _vm.moveHighlight(_vm.highlightedOption - 1)}],"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.chooseAutocomplete($event)}},model:{value:(_vm.searchModel),callback:function ($$v) {_vm.searchModel=$$v},expression:"searchModel"}}),(_vm.$refs.input)?_c('ChecPopover',{attrs:{"target-ref":_vm.$refs.input,"open":_vm.search.length > 0 && _vm.autocompleteOptions.length > 0 && _vm.focused,"placement":"bottom-start"}},[_c('div',{staticClass:"filter-bar-autocomplete",style:({ width: _vm.autocompleteWidth }),on:{"mousedown":_vm.chooseAutocomplete}},_vm._l((_vm.autocompleteOptions),function(ref,index){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFilterBar/Search.vue?vue&type=template&id=a6998b5c&
+var Searchvue_type_template_id_a6998b5c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ChecFormField',{staticClass:"filter-bar-search",attrs:{"icon":"search"}},[_c('TextField',{ref:"input",attrs:{"placeholder":_vm.$t('general.search')},on:{"focus":function($event){_vm.focused = true},"blur":function($event){_vm.focused = false},"keyup":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }$event.preventDefault();return _vm.moveHighlight(_vm.highlightedOption + 1)},function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }$event.preventDefault();return _vm.moveHighlight(_vm.highlightedOption - 1)}],"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.chooseAutocomplete($event)}},model:{value:(_vm.searchModel),callback:function ($$v) {_vm.searchModel=$$v},expression:"searchModel"}}),(_vm.$refs.input)?_c('ChecPopover',{attrs:{"target-ref":_vm.$refs.input,"open":_vm.search.length > 0 && _vm.autocompleteOptions.length > 0 && _vm.focused,"placement":"bottom-start"}},[_c('div',{staticClass:"filter-bar-autocomplete",style:({ width: _vm.autocompleteWidth }),on:{"mousedown":_vm.chooseAutocomplete}},_vm._l((_vm.autocompleteOptions),function(ref,index){
 var filter = ref.filter;
 var value = ref.value;
 return _c('div',{key:index,staticClass:"filter-bar-autocomplete__option",class:{ 'filter-bar-autocomplete__option--highlighted': _vm.highlightedOption === index },on:{"mouseover":function($event){return _vm.moveHighlight(index)}}},[_c('strong',{staticClass:"filter-bar-autocomplete__option-filter"},[_vm._v(_vm._s(filter)+":")]),_vm._v(" "+_vm._s(value)+" ")])}),0)]):_vm._e()],1)}
-var Searchvue_type_template_id_0f9987b7_staticRenderFns = []
+var Searchvue_type_template_id_a6998b5c_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecFilterBar/Search.vue?vue&type=template&id=0f9987b7&
+// CONCATENATED MODULE: ./src/components/ChecFilterBar/Search.vue?vue&type=template&id=a6998b5c&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.constructor.js
 var es_regexp_constructor = __webpack_require__("4d63");
@@ -97682,6 +97682,8 @@ var ChecFormField_component = normalizeComponent(
 
 
 
+
+
 //
 //
 //
@@ -97763,11 +97765,14 @@ var ChecFormField_component = normalizeComponent(
 
       return (this.disableTextSearch ? [] : [{
         filter: this.textSearchLabel || this.$t('filters.textSearch'),
+        id: 'text-search',
         value: this.search
       }]). // Add on any filters that match the search term
       concat(this.filters.reduce(function (options, _ref) {
         var name = _ref.name,
-            values = _ref.values;
+            values = _ref.values,
+            others = _objectWithoutProperties(_ref, ["name", "values"]);
+
         var regex = new RegExp(_this.search, 'i');
         var matchedValues = values.filter(function (candidate) {
           return candidate.match(regex);
@@ -97778,10 +97783,10 @@ var ChecFormField_component = normalizeComponent(
         }
 
         return [].concat(_toConsumableArray(options), _toConsumableArray(matchedValues.map(function (value) {
-          return {
+          return Object(objectSpread2["a" /* default */])({
             filter: name,
             value: value
-          };
+          }, others);
         })));
       }, []));
     },
@@ -97855,8 +97860,8 @@ var Searchvue_type_style_index_0_lang_scss_ = __webpack_require__("3896");
 
 var Search_component = normalizeComponent(
   ChecFilterBar_Searchvue_type_script_lang_js_,
-  Searchvue_type_template_id_0f9987b7_render,
-  Searchvue_type_template_id_0f9987b7_staticRenderFns,
+  Searchvue_type_template_id_a6998b5c_render,
+  Searchvue_type_template_id_a6998b5c_staticRenderFns,
   false,
   null,
   null,
