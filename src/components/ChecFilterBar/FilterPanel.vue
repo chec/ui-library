@@ -64,7 +64,7 @@
       </div>
     </template>
     <slot name="filters" />
-    <div class="filter-bar-dropdown-panel__actions">
+    <div class="filter-bar-dropdown-panel__actions space-x-2">
       <ChecButton color="primary" text-only @click="() => $emit('close')">
         {{ $t('general.cancel') }}
       </ChecButton>
@@ -277,7 +277,7 @@ export default {
   }
 
   &__actions {
-    @apply pt-6 pb-2 flex justify-between;
+    @apply pt-6 pb-2 flex justify-end;
   }
 }
 
