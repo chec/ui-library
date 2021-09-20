@@ -96842,16 +96842,16 @@ var ChecFilterBarvue_type_template_id_676dcbf1_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/ChecFilterBar.vue?vue&type=template&id=676dcbf1&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFilterBar/FilterPanel.vue?vue&type=template&id=236055fd&
-var FilterPanelvue_type_template_id_236055fd_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"filter-bar-dropdown-panel"},[_vm._l((_vm.filters),function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"287ef0fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFilterBar/FilterPanel.vue?vue&type=template&id=0d4b1858&
+var FilterPanelvue_type_template_id_0d4b1858_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"filter-bar-dropdown-panel"},[_vm._l((_vm.filters),function(ref){
 var name = ref.name;
 var type = ref.type;
 var values = ref.values;
-return [(type === 'header')?_c('h4',{key:name,staticClass:"filter-bar-dropdown-panel__header"},[_vm._v(" "+_vm._s(name)+" ")]):(type === 'boolean')?_c('div',{key:name,staticClass:"filter-bar-dropdown-panel__filter filter-bar-dropdown-panel__switch-filter"},[_c('label',{attrs:{"for":("filter-" + name)}},[_vm._v(_vm._s(name))]),_c('ChecSwitch',{attrs:{"id":("filter-" + name),"toggled":!!_vm.choice(name)},on:{"input":function (value) { return _vm.choose(name, value); }}})],1):(type === 'option')?_c('div',{key:name,staticClass:"filter-bar-dropdown-panel__filter"},[_c('ChecDropdown',{attrs:{"options":_vm.prepareOptions(values),"value":_vm.choice(name) || '',"label":name,"required":""},on:{"input":function (value) { return _vm.choose(name, value); }}})],1):(type === 'date-range')?_c('div',{key:name,staticClass:"filter-bar-dropdown-panel__filter filter-bar-date-range"},[_c('label',{staticClass:"filter-bar-date-range__label"},[_vm._v(" "+_vm._s(name)+" ")]),_c('div',{staticClass:"filter-bar-date-range__dates"},[_c('div',[_c('ChecDatepicker',{attrs:{"label":_vm.$t('filters.startDate'),"value":_vm.choice(name).start || null},on:{"input":function (date) { return _vm.setDate('start', name, date); }}})],1),_c('div',{staticClass:"filter-bar-date-range__divider"},[_vm._v(" — ")]),_c('div',[_c('ChecDatepicker',{attrs:{"label":_vm.$t('filters.endDate'),"value":_vm.choice(name).end || null},on:{"input":function (date) { return _vm.setDate('end', name, date); }}})],1)])]):_vm._e()]}),_vm._t("filters"),_c('div',{staticClass:"filter-bar-dropdown-panel__actions"},[_c('ChecButton',{attrs:{"color":"primary","text-only":""},on:{"click":function () { return _vm.$emit('close'); }}},[_vm._v(" "+_vm._s(_vm.$t('general.cancel'))+" ")]),_c('ChecButton',{attrs:{"color":"primary"},on:{"click":_vm.submitChoice}},[_vm._v(" "+_vm._s(_vm.$t('filters.apply'))+" ")])],1)],2)}
-var FilterPanelvue_type_template_id_236055fd_staticRenderFns = []
+return [(type === 'header')?_c('h4',{key:name,staticClass:"filter-bar-dropdown-panel__header"},[_vm._v(" "+_vm._s(name)+" ")]):(type === 'boolean')?_c('div',{key:name,staticClass:"filter-bar-dropdown-panel__filter filter-bar-dropdown-panel__switch-filter"},[_c('label',{attrs:{"for":("filter-" + name)}},[_vm._v(_vm._s(name))]),_c('ChecSwitch',{attrs:{"id":("filter-" + name),"toggled":!!_vm.choice(name)},on:{"input":function (value) { return _vm.choose(name, value); }}})],1):(type === 'option')?_c('div',{key:name,staticClass:"filter-bar-dropdown-panel__filter"},[_c('ChecDropdown',{attrs:{"options":_vm.prepareOptions(values),"value":_vm.choice(name) || '',"label":name,"required":""},on:{"input":function (value) { return _vm.choose(name, value); }}})],1):(type === 'date-range')?_c('div',{key:name,staticClass:"filter-bar-dropdown-panel__filter filter-bar-date-range"},[_c('label',{staticClass:"filter-bar-date-range__label"},[_vm._v(" "+_vm._s(name)+" ")]),_c('div',{staticClass:"filter-bar-date-range__dates"},[_c('div',[_c('ChecDatepicker',{attrs:{"label":_vm.$t('filters.startDate'),"value":_vm.choice(name).start || null},on:{"input":function (date) { return _vm.setDate('start', name, date); }}})],1),_c('div',{staticClass:"filter-bar-date-range__divider"},[_vm._v(" — ")]),_c('div',[_c('ChecDatepicker',{attrs:{"label":_vm.$t('filters.endDate'),"value":_vm.choice(name).end || null},on:{"input":function (date) { return _vm.setDate('end', name, date); }}})],1)])]):_vm._e()]}),_vm._t("filters"),_c('div',{staticClass:"filter-bar-dropdown-panel__actions space-x-2"},[_c('ChecButton',{attrs:{"color":"primary","text-only":""},on:{"click":function () { return _vm.$emit('close'); }}},[_vm._v(" "+_vm._s(_vm.$t('general.cancel'))+" ")]),_c('ChecButton',{attrs:{"color":"primary"},on:{"click":_vm.submitChoice}},[_vm._v(" "+_vm._s(_vm.$t('filters.apply'))+" ")])],1)],2)}
+var FilterPanelvue_type_template_id_0d4b1858_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ChecFilterBar/FilterPanel.vue?vue&type=template&id=236055fd&
+// CONCATENATED MODULE: ./src/components/ChecFilterBar/FilterPanel.vue?vue&type=template&id=0d4b1858&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ChecFilterBar/FilterPanel.vue?vue&type=script&lang=js&
 
@@ -97167,8 +97167,8 @@ var FilterPanelvue_type_style_index_0_lang_scss_ = __webpack_require__("9d79");
 
 var FilterPanel_component = normalizeComponent(
   ChecFilterBar_FilterPanelvue_type_script_lang_js_,
-  FilterPanelvue_type_template_id_236055fd_render,
-  FilterPanelvue_type_template_id_236055fd_staticRenderFns,
+  FilterPanelvue_type_template_id_0d4b1858_render,
+  FilterPanelvue_type_template_id_0d4b1858_staticRenderFns,
   false,
   null,
   null,
