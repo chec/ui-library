@@ -76,9 +76,9 @@
 </template>
 
 <script>
-import ChecSwitch from '@/components/ChecSwitch';
-import ChecButton from '@/components/ChecButton';
-import ChecDropdown from '@/components/ChecDropdown';
+import ChecSwitch from '@/components/ChecSwitch.vue';
+import ChecButton from '@/components/ChecButton.vue';
+import ChecDropdown from '@/components/ChecDropdown.vue';
 import ChecDatepicker from '@/components/ChecDatepicker';
 
 export default {

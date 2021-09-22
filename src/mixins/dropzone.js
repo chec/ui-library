@@ -1,4 +1,4 @@
-const Dropzone = typeof window !== 'undefined' ? require('dropzone') : {};
+import Dropzone from 'dropzone';
 
 Dropzone.autoDiscover = false;
 

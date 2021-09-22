@@ -52,11 +52,11 @@
 </template>
 
 <script>
-import ChecButton from '@/components/ChecButton';
-import ChecPopover from '@/components/ChecPopover';
-import FilterPanel from '@/components/ChecFilterBar/FilterPanel';
-import FilterList from '@/components/ChecFilterBar/FilterList';
-import Search from '@/components/ChecFilterBar/Search';
+import ChecButton from '@/components/ChecButton.vue';
+import ChecPopover from '@/components/ChecPopover.vue';
+import FilterPanel from '@/components/ChecFilterBar/FilterPanel.vue';
+import FilterList from '@/components/ChecFilterBar/FilterList.vue';
+import Search from '@/components/ChecFilterBar/Search.vue';
 
 export default {
   name: 'ChecFilterBar',

@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import LineWrapper from '@/components/ChecChart/LineWrapper';
+import LineWrapper from '@/components/ChecChart/LineWrapper.vue';
 
 export default {
   name: 'ChecLineChart',

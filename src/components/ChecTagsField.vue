@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import ChecTag from './ChecTag';
+import ChecTag from './ChecTag.vue';
 
 export default {
   name: 'ChecTagsField',

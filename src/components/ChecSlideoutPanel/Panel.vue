@@ -43,7 +43,7 @@
 
 <script>
 import ChecButton from '../ChecButton.vue';
-import ChecIcon from '../ChecIcon';
+import ChecIcon from '../ChecIcon.vue';
 
 export default {
   name: 'Panel',

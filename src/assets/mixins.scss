@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* ex:
   1:1 -> aspect-ratio(1, 1),
   3:4 -> aspect-ratio(3, 4),
@@ -10,7 +12,7 @@
     @apply block w-full;
 
     content: '';
-    padding-top: ($width / $height) * 100%;
+    padding-top: math.div($width, $height) * 100%;
   }
 
   @if $affectChildren {

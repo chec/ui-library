@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import TextField from '@/components/TextField';
+import TextField from '@/components/TextField.vue';
 import ChecOption from './ChecOption.vue';
 import ChecPopover from './ChecPopover.vue';
 import ChecIcon from './ChecIcon.vue';

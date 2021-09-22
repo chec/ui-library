@@ -19,18 +19,18 @@
 import { PrismEditor } from 'vue-prism-editor';
 import 'vue-prism-editor/dist/prismeditor.min.css';
 // Prism core
-import { highlight, languages } from 'prismjs/components/prism-core';
+import { highlight, languages } from 'prismjs/components/prism-core.js';
 // Used as a basis for langauge packs.
-import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-clike.js';
 // Import supported languages
-import 'prismjs/components/prism-markup-templating';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-markup';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-php';
+import 'prismjs/components/prism-markup-templating.js';
+import 'prismjs/components/prism-javascript.js';
+import 'prismjs/components/prism-json.js';
+import 'prismjs/components/prism-markup.js';
+import 'prismjs/components/prism-jsx.js';
+import 'prismjs/components/prism-php.js';
 
-import 'prismjs/themes/prism.css';
+// import 'prismjs/themes/prism.css';
 
 export default {
   name: 'CodeComponent',
