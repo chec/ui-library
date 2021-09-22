@@ -1,9 +1,9 @@
 {
   "name": "@chec/ui-library",
-  "version": "0.1.0-alpha2",
+  "version": "0.1.0-alpha3",
   "license": "BSD-3-Clause",
-  "main": "dist/ui-library.common.js",
-  "module": "esm/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "source": "src/index.js",
   "homepage": "https://github.com/chec/ui-library",
   "author": "Chec Platform Inc",
