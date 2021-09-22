@@ -6,7 +6,8 @@ import esbuild from 'rollup-plugin-esbuild';
 import resolve from '@rollup/plugin-node-resolve';
 import filesize from 'rollup-plugin-filesize';
 import alias from '@rollup/plugin-alias';
-import analyzer from 'rollup-plugin-analyzer';
+import { visualizer } from 'rollup-plugin-visualizer';
+import del from 'rollup-plugin-delete';
 
 // PostCSS plugins
 import tailwindcss from 'tailwindcss';
@@ -17,14 +18,18 @@ module.exports = {
   input: {
     index: 'src/index.js',
     ChecLineChart: 'src/components/ChecLineChart.vue',
+    ChecWysiwyg: 'src/components/ChecWysiwyg.vue',
   },
   output: {
-    dir: 'esm',
+    dir: 'dist',
     format: 'esm',
     exports: 'named',
     sourcemap: true,
   },
   plugins: [
+    del({
+      targets: 'dist/*',
+    }),
     alias({
       entries: [
         { find: '@', replacement: `${__dirname}/src` },
@@ -52,11 +57,8 @@ module.exports = {
     }),
     commonjs(),
     resolve(),
-    analyzer({
-      summaryOnly: true,
-      limit: 10,
-    }),
     filesize(),
+    visualizer(),
   ],
   external: [/@babel\/runtime/, 'vue'],
 };

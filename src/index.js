@@ -1,3 +1,5 @@
+import { messages, loadLanguage, languageCodes } from '@/lang';
+
 import ChangeLog from './components/ChangeLog.vue';
 import ChecAccordion from './components/ChecAccordion.vue';
 import ChecAlert from './components/ChecAlert.vue';
@@ -40,12 +42,10 @@ import ChecThumbnailCard from './components/ChecThumbnailCard.vue';
 import ChecTooltip from './directives/ChecTooltip';
 import ChecVerticalNavigation from './components/ChecVerticalNavigation.vue';
 import ChecVerticalNavItem from './components/ChecVerticalNavItem.vue';
-import ChecWysiwyg from './components/ChecWysiwyg.vue';
 import CodeBlock from './components/CodeBlock.vue';
 import CodeBlockGroup from './components/CodeBlockGroup.vue';
 import CodeBlockGroupIcon from './components/CodeBlockGroupIcon.vue';
 import InnerBlock from './components/ChecCard/InnerBlock.vue';
-import Lang from './lang/index';
 import PasswordField from './components/PasswordField.vue';
 import SvgIcons from './assets/svgs';
 import TextField from './components/TextField.vue';
@@ -93,13 +93,13 @@ export {
   ChecTooltip,
   ChecVerticalNavigation,
   ChecVerticalNavItem,
-  ChecWysiwyg,
   CodeBlock,
   CodeBlockGroup,
   CodeBlockGroupIcon,
   InnerBlock,
-  Lang,
   PasswordField,
   SvgIcons,
   TextField,
 };
+
+export const lang = { messages, loadLanguage, languageCodes };
