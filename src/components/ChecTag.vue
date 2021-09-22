@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import ChecIcon from './ChecIcon';
+import ChecIcon from './ChecIcon.vue';
 
 export default {
   name: 'ChecTag',

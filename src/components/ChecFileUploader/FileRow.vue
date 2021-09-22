@@ -50,8 +50,8 @@
 
 <script>
 import filesize from 'filesize';
-import ChecIcon from '../ChecIcon';
-import ChecLoading from '../ChecLoading';
+import ChecIcon from '../ChecIcon.vue';
+import ChecLoading from '../ChecLoading.vue';
 
 export default {
   name: 'FileRow',

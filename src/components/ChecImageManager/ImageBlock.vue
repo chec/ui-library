@@ -68,11 +68,11 @@
 </template>
 
 <script>
-import ChecIcon from '../ChecIcon';
-import ChecLoading from '../ChecLoading';
-import ChecOptionsMenu from '../ChecOptionsMenu';
-import ChecOption from '../ChecOption';
-import ChecButton from '../ChecButton';
+import ChecIcon from '../ChecIcon.vue';
+import ChecLoading from '../ChecLoading.vue';
+import ChecOptionsMenu from '../ChecOptionsMenu.vue';
+import ChecOption from '../ChecOption.vue';
+import ChecButton from '../ChecButton.vue';
 
 export default {
   name: 'ImageItem',

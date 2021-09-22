@@ -17,7 +17,6 @@ import ChecFormField from './components/ChecFormField.vue';
 import ChecHeader from './components/ChecHeader.vue';
 import ChecIcon from './components/ChecIcon.vue';
 import ChecImageManager from './components/ChecImageManager.vue';
-import ChecLineChart from './components/ChecLineChart';
 import ChecLoading from './components/ChecLoading.vue';
 import ChecMarketingIcon from './components/ChecMarketingIcon.vue';
 import ChecModal from './components/ChecModal.vue';
@@ -39,9 +38,9 @@ import ChecTagsField from './components/ChecTagsField.vue';
 import ChecTagGroup from './components/ChecTagGroup.vue';
 import ChecThumbnailCard from './components/ChecThumbnailCard.vue';
 import ChecTooltip from './directives/ChecTooltip';
-import ChecVerticalNavigation from './components/ChecVerticalNavigation';
-import ChecVerticalNavItem from './components/ChecVerticalNavItem';
-import ChecWysiwyg from './components/ChecWysiwyg';
+import ChecVerticalNavigation from './components/ChecVerticalNavigation.vue';
+import ChecVerticalNavItem from './components/ChecVerticalNavItem.vue';
+import ChecWysiwyg from './components/ChecWysiwyg.vue';
 import CodeBlock from './components/CodeBlock.vue';
 import CodeBlockGroup from './components/CodeBlockGroup.vue';
 import CodeBlockGroupIcon from './components/CodeBlockGroupIcon.vue';
@@ -71,7 +70,6 @@ export {
   ChecHeader,
   ChecIcon,
   ChecImageManager,
-  ChecLineChart,
   ChecLoading,
   ChecMarketingIcon,
   ChecModal,

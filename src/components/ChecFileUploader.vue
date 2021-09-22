@@ -24,8 +24,8 @@
 
 <script>
 import dropzone from '../mixins/dropzone.js';
-import ChecButton from './ChecButton';
-import FileRow from './ChecFileUploader/FileRow';
+import ChecButton from './ChecButton.vue';
+import FileRow from './ChecFileUploader/FileRow.vue';
 
 export default {
   name: 'ChecFileUploader',
