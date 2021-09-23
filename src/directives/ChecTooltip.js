@@ -1,4 +1,4 @@
-// import '../assets/tooltips.scss';
+import '../assets/tooltips.scss';
 import { VPopover, VClosePopover, VTooltip } from 'v-tooltip';
 
 // Remove unused "theme" classes from the tooltips
