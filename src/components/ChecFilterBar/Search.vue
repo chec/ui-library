@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import TextField from '@/components/TextField';
-import ChecFormField from '@/components/ChecFormField';
-import ChecPopover from '@/components/ChecPopover';
+import TextField from '@/components/TextField.vue';
+import ChecFormField from '@/components/ChecFormField.vue';
+import ChecPopover from '@/components/ChecPopover.vue';
 
 export default {
   name: 'Search',

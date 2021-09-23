@@ -8,3 +8,6 @@ yarn-error.log*
 
 # local env files
 .env
+
+# Stats file generated when building with rollup
+stats.html

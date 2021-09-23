@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import ChecTab from './ChecTab';
+import ChecTab from './ChecTab.vue';
 
 export default {
   name: 'CodeBlockGroup',

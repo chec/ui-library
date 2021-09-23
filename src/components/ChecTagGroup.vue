@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import ChecButton from './ChecButton';
+import ChecButton from './ChecButton.vue';
 
 export default {
   name: 'ChecTagGroup',

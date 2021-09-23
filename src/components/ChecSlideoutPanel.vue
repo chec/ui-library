@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import Panel from './ChecSlideoutPanel/Panel';
-import Overlay from './ChecSlideoutPanel/Overlay';
+import Panel from './ChecSlideoutPanel/Panel.vue';
+import Overlay from './ChecSlideoutPanel/Overlay.vue';
 
 // Declaring panels as an external variable to reference the shared component -> `ChecSlideoutPanel`
 // This allows us to tack on a `depth` property to determine the depth of each component being added

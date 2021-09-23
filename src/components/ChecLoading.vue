@@ -57,7 +57,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .loading {
   @apply absolute top-0 left-0 w-full h-full z-50 flex justify-center items-center flex-col;
   border-radius: inherit;

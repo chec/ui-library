@@ -32,10 +32,10 @@
 </template>
 
 <script>
-import ChecCard from '@/components/ChecCard';
-import ChecIcon from '@/components/ChecIcon';
-import ChecModal from '@/components/ChecModal';
-import ChecButton from '@/components/ChecButton';
+import ChecCard from '@/components/ChecCard.vue';
+import ChecIcon from '@/components/ChecIcon.vue';
+import ChecModal from '@/components/ChecModal.vue';
+import ChecButton from '@/components/ChecButton.vue';
 
 export default {
   name: 'GalleryModal',

@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import ChecTagGroup from '@/components/ChecTagGroup';
-import ChecTag from '@/components/ChecTag';
+import ChecTagGroup from '@/components/ChecTagGroup.vue';
+import ChecTag from '@/components/ChecTag.vue';
 
 export default {
   name: 'FilterList',

@@ -1,5 +1,5 @@
 module.exports = {
-  stories: ['../../src/**/*.stories.(js|jsx|ts|tsx|mdx)'],
+  stories: ['../../src/**/*.stories.@(js|mdx)'],
   addons: [
     '@storybook/addon-actions',
     {
@@ -19,7 +19,5 @@ module.exports = {
     },
     '@storybook/addon-knobs',
     '@storybook/addon-links',
-    '@storybook/addon-notes',
-    'storybook-addon-vue-info/lib/register'
   ]
 }

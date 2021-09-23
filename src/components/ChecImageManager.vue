@@ -63,9 +63,9 @@
 <script>
 import Draggable from 'vuedraggable';
 import dropzone from '../mixins/dropzone.js';
-import ChecButton from './ChecButton';
+import ChecButton from './ChecButton.vue';
 import ImageBlock from './ChecImageManager/ImageBlock.vue';
-import GalleryModal from './ChecImageManager/GalleryModal';
+import GalleryModal from './ChecImageManager/GalleryModal.vue';
 
 export default {
   name: 'ChecImageManager',
