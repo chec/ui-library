@@ -2,9 +2,14 @@
   <component
     :is="form ? 'form' : 'div'"
     :class="`modal__overlay modal__overlay--${overlay}`"
-    @click="emitClose"
+    @click="handleOverlayClick"
   >
-    <ChecCard class="modal__card" tailwind="bg-gray-100" :class="`max-w-${width}`">
+    <ChecCard
+      ref="card"
+      class="modal__card"
+      tailwind="bg-gray-100"
+      :class="`max-w-${width}`"
+    >
       <ChecModalHeader v-if="header" :undismissible="undismissible" @close="emitClose">
         {{ header }}
       </ChecModalHeader>
@@ -52,6 +57,9 @@ export default {
      * Prevent the close button from rendering when using the "header" prop
      */
     undismissible: Boolean,
+    /**
+     * The overlay colour to use
+     */
     overlay: {
       type: String,
       default: 'light',
@@ -59,6 +67,10 @@ export default {
         return ['light', 'dark'].includes(value);
       },
     },
+    /**
+     * Whether clicking the overlay should _not_ dismiss the modal
+     */
+    disableDismissOnOverlayClick: Boolean,
   },
   mounted() {
     document.body.style.overflow = 'hidden';
@@ -73,6 +85,23 @@ export default {
        * @type {Event}
        */
       this.$emit('dismiss', event);
+    },
+    handleOverlayClick(event) {
+      if (this.disableDismissOnOverlayClick) {
+        return;
+      }
+
+      // Skip clicks that are within the modal "card"
+      if (
+        !event.target
+        // Note the card ref can be missing if the close event has triggered and the card is unmounted first
+        || !this.$refs.card
+        || this.$refs.card.$el.contains(event.target)
+      ) {
+        return;
+      }
+
+      this.emitClose(event);
     },
   },
 };
