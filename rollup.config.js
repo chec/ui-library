@@ -17,6 +17,7 @@ import assets from 'postcss-assets';
 module.exports = {
   input: {
     index: 'src/index.js',
+    // Code split components that rely on larger third party packages to facilitate code chunking in consuming libraries
     ChecLineChart: 'src/components/ChecLineChart.vue',
     ChecWysiwyg: 'src/components/ChecWysiwyg.vue',
   },
