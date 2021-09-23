@@ -30,7 +30,7 @@ import 'prismjs/components/prism-markup.js';
 import 'prismjs/components/prism-jsx.js';
 import 'prismjs/components/prism-php.js';
 
-// import 'prismjs/themes/prism.css';
+import 'prismjs/themes/prism.css';
 
 export default {
   name: 'CodeComponent',
