@@ -4,8 +4,8 @@ import TextField from './TextField.vue';
 import ChecIcon from './ChecIcon.vue';
 import ChecFlatpickrPlugin from '../lib/flatpickr/formattingPlugin';
 
-// import 'flatpickr/dist/flatpickr.css';
-// import '../assets/datepicker.scss';
+import 'flatpickr/dist/flatpickr.css';
+import '../assets/datepicker.scss';
 
 const { config, ...parentProps } = FlatPickr.props;
 
