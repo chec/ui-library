@@ -25,7 +25,7 @@ npm install github:chec/ui-library
 
 ### Setting up Tailwindcss 
 
-1. Create a [`tailwind.config.js`](https://tailwindcss.com/docs/configuration/#app) file at the root of the app exporting the `ui-library`'s custom `tailwind.config.js` from it.
+1. Create a [`tailwind.preview.js`](https://tailwindcss.com/docs/configuration/#app) file at the root of the app exporting the `ui-library`'s custom `tailwind.preview.js` from it.
 
 ```js
 module.exports = require('@chec/ui-library/tailwind.config');
