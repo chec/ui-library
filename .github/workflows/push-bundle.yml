@@ -1,6 +1,9 @@
-name: Assert bundle is buildable
+name: Build library files and push changes
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -32,3 +35,16 @@ jobs:
           cmd: build-lib
         env:
           PURGE_ENABLED: true
+
+      - name: Commit
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git diff --exit-code --quiet || (git commit -am "Build library bundles" && echo "::set-output name=status::built")
+
+      - name: Push
+        if: contains(steps.commit.outputs.status, 'built')
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
