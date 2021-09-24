@@ -1,5 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs';
-import css from 'rollup-plugin-css-only';
+import scss from 'rollup-plugin-scss';
 import vue from 'rollup-plugin-vue';
 import svg from 'rollup-plugin-vue-inline-svg';
 import esbuild from 'rollup-plugin-esbuild';
@@ -8,6 +8,8 @@ import filesize from 'rollup-plugin-filesize';
 import alias from '@rollup/plugin-alias';
 import { visualizer } from 'rollup-plugin-visualizer';
 import del from 'rollup-plugin-delete';
+
+import postcss from 'postcss';
 
 // PostCSS plugins
 import tailwindcss from 'tailwindcss';
@@ -36,7 +38,16 @@ module.exports = {
         { find: '@', replacement: `${__dirname}/src` },
       ],
     }),
-    css(),
+    scss({
+      output: 'dist/bundle.css',
+      sourceMap: true,
+      outputStyle: 'compressed',
+      processor: () => postcss([
+        tailwindcss,
+        autoprefixer,
+        assets,
+      ]),
+    }),
     svg(),
     vue({
       css: false,
