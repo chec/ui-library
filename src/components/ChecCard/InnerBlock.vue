@@ -1,31 +1,36 @@
 <template>
   <div class="card-inner-block">
     <div class="card-inner-block__container">
-      <component :is="titleTag" v-if="title" class="card-inner-block__title">
+      <component :is="titleTag" v-if="title && !actionText" class="card-inner-block__title">
         {{ title }}
       </component>
+      <div v-else class="card-inner-block__title-action">
+        <component :is="titleTag" v-if="title" class="card-inner-block__title">
+          {{ title }}
+        </component>
+        <div v-if="actionText || $slots.action">
+          <slot name="action" />
+          <ChecButton
+            v-if="!$slots.action"
+            class="card-inner-block__action"
+            variant="round"
+            :color="actionColor"
+            @click="emitAction"
+          >
+            {{ actionText }}
+            <!--
+              @slot Passthrough for the icon slot on the button component
+            -->
+            <template v-if="$slots.actionIcon" #icon>
+              <slot name="actionIcon" />
+            </template>
+          </ChecButton>
+        </div>
+      </div>
       <!--
         @slot The content of the block
       -->
       <slot />
-    </div>
-    <div v-if="actionText || $slots.action">
-      <slot name="action" />
-      <ChecButton
-        v-if="!$slots.action"
-        class="card-inner-block__action"
-        variant="round"
-        :color="actionColor"
-        @click="emitAction"
-      >
-        {{ actionText }}
-        <!--
-          @slot Passthrough for the icon slot on the button component
-        -->
-        <template v-if="$slots.actionIcon" #icon>
-          <slot name="actionIcon" />
-        </template>
-      </ChecButton>
     </div>
   </div>
 </template>
@@ -80,6 +85,14 @@ export default {
 
   &__title {
     @apply caps-xs mb-2 text-gray-500;
+  }
+
+  &__title-action {
+    @apply flex justify-between mb-2;
+
+    .card-inner-block__title {
+      @apply mb-0 flex items-center;
+    }
   }
 
   &__action {
