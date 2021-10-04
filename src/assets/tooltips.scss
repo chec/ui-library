@@ -1,7 +1,8 @@
 .tooltip {
   $arrow-size: 6px;
 
-  @apply font-bold text-sm leading-none z-50;
+  @apply font-bold text-sm leading-none z-50 leading-normal;
+  max-width: 20rem;
 
   display: block !important;
 
