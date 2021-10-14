@@ -25,7 +25,7 @@ export default {
      * Class to pass to table
      */
     innerClass: {
-      type: String,
+      type: [String, Array, Object],
       default: '',
     },
     snug: Boolean,
