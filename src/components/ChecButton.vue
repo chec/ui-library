@@ -4,6 +4,7 @@ import ChecIcon from './ChecIcon.vue';
 
 export default {
   name: 'ChecButton',
+  inheritAttrs: false,
   props: {
     /**
      * The type of HTML tag or Vue component to use for the button. One of "link", "button", or "route".
@@ -159,21 +160,26 @@ export default {
       }
     }
 
-    const domProps = { disabled: this.disabled };
-    if (this.tagType === 'button') {
-      domProps.type = this.buttonType;
+    const attrs = {
+      ...this.$attrs,
+      disabled: this.disabled,
+    };
+
+    if (this.tagType === 'button' && this.buttonType) {
+      attrs.type = this.buttonType;
     }
 
     const props = {};
     if (this.tagType === 'route') {
-      props.to = this.$attrs.to;
+      props.to = attrs.to;
+      delete attrs.to;
     }
 
     return createElement(this.tag, {
       class: this.classNames,
+      attrs,
       domProps: {
         disabled: this.disabled,
-        type: this.tagType === 'button' ? this.buttonType : null,
       },
       on: {
         click: this.handleClick,
