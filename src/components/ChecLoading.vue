@@ -76,7 +76,7 @@ export default {
   }
 
   &__message {
-    @apply caps-xs mt-2;
+    @apply caps-xs mt-8;
   }
 
   &--without-background {
