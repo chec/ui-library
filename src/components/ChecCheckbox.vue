@@ -58,7 +58,7 @@ export default {
      * Used to determine if the checkbox is checked
      */
     value: {
-      type: String,
+      type: [String, Boolean],
       default: '',
     },
     /**
