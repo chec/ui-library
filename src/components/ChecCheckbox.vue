@@ -7,6 +7,7 @@
       :value="value"
       :checked="checked"
       :disabled="disabled"
+      :required="required"
       class="chec-checkbox__input"
       :indeterminate.prop="indeterminate"
       @input="handleInput"
@@ -26,7 +27,7 @@
       @bind disabled boolean
     -->
     <span v-if="label" class="chec-checkbox__label" :class="{ disabled: disabled }">
-      <slot v-bind="{ label, checked, disabled }">
+      <slot v-bind="{ label, checked, disabled, required }">
         {{ label }}
       </slot>
     </span>
@@ -80,18 +81,28 @@ export default {
      * Check if checkbox is checked.
      */
     checked: Boolean,
+    /**
+     * Allows for toggling of html attribute of "required" in label
+     */
+    required: Boolean,
   },
   computed: {
     id() {
       return this.$attrs.id || uniqueId(this.name, this.value, 'checkbox')();
     },
     labelClasses() {
-      const { checked, disabled, indeterminate } = this;
+      const {
+        checked,
+        disabled,
+        indeterminate,
+        required,
+      } = this;
 
       return {
         'chec-checkbox--active': checked,
         'chec-checkbox--disabled': disabled,
         'chec-checkbox--indeterminate': indeterminate,
+        'chec-checkbox--required': required,
       };
     },
   },
@@ -139,6 +150,10 @@ export default {
 
     &:disabled {
       @apply bg-white border border-gray-300 cursor-not-allowed;
+    }
+
+    &:required {
+      @apply border border-red-300;
     }
 
     &:checked::after {
