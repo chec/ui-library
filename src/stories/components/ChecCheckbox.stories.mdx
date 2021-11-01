@@ -26,6 +26,9 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
         disabled: {
           default: boolean("Disable", false, "Props")
         },
+        required: {
+          default: boolean("Required", false, "Props")
+        },
       },
       data() {
         return { values: {
@@ -44,6 +47,7 @@ import ChecCheckbox from '../../components/ChecCheckbox.vue';
             :label="label"
             value="apple"
             :checked="values.apple"
+            :required="required"
             @input="values.apple = !values.apple"
             :disabled="disabled"
           />
