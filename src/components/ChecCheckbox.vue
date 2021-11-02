@@ -9,6 +9,7 @@
       :disabled="disabled"
       :required="required"
       class="chec-checkbox__input"
+      :class="{ 'chec-checkbox__input--error': error }"
       :indeterminate.prop="indeterminate"
       @input="handleInput"
     >
@@ -27,7 +28,7 @@
       @bind disabled boolean
     -->
     <span v-if="label" class="chec-checkbox__label" :class="{ disabled: disabled }">
-      <slot v-bind="{ label, checked, disabled, required }">
+      <slot v-bind="{ label, checked, disabled, required, error }">
         {{ label }}
       </slot>
     </span>
@@ -85,6 +86,10 @@ export default {
      * Allows for toggling of html attribute of "required" in label
      */
     required: Boolean,
+    /**
+     * Determines whether checkbox is in error state
+     */
+    error: Boolean,
   },
   computed: {
     id() {
@@ -95,14 +100,14 @@ export default {
         checked,
         disabled,
         indeterminate,
-        required,
+        error,
       } = this;
 
       return {
         'chec-checkbox--active': checked,
         'chec-checkbox--disabled': disabled,
         'chec-checkbox--indeterminate': indeterminate,
-        'chec-checkbox--required': required,
+        'chec-checkbox--error': error,
       };
     },
   },
@@ -136,6 +141,10 @@ export default {
       shadow-inner
       h-4 w-4;
 
+    &--error {
+      @apply border border-red-400;
+    }
+
     &:focus {
       @apply outline-none;
     }
@@ -150,10 +159,6 @@ export default {
 
     &:disabled {
       @apply bg-white border border-gray-300 cursor-not-allowed;
-    }
-
-    &:required {
-      @apply border border-red-300;
     }
 
     &:checked::after {
@@ -173,6 +178,10 @@ export default {
     .chec-checkbox--indeterminate & {
       @apply bg-gray-500 border-none;
     }
+  }
+
+  &--error {
+    @apply text-red-400;
   }
 
   &__check {
