@@ -196,6 +196,10 @@ export default {
 .button {
   @apply font-bold shadow-sm border border-0 flex justify-center items-center text-center cursor-pointer;
 
+  &__icon {
+    @apply pointer-events-none;
+  }
+
   &--has-icon-before {
     .button__content:not(:empty) {
       @apply ml-1;
@@ -229,7 +233,8 @@ export default {
       @apply py-4 px-8 rounded text-lg leading-tight;
 
       .button__icon {
-        @apply w-lg; }
+        @apply w-lg;
+      }
     }
 
     &-small {

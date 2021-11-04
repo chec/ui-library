@@ -84,6 +84,7 @@ Todo list
             :icon="hasIcon ? icon : null"
             :tag-type="tagType"
             :text-only="textOnly"
+            @click="action"
           >
             {{label}}
           </chec-button>
@@ -221,7 +222,7 @@ This is a button modified using the Color and Variant props.
       },
       template: `
         <div class="py-16 justify-center">
-          <chec-button class="mx-auto mb-4" :color="color" variant="small">
+          <chec-button class="mx-auto mb-4" :color="color" variant="small" @click="action">
             <template v-slot:icon>
               <CloseIcon />
             </template>
