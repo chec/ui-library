@@ -30,6 +30,7 @@ import ChecPaginate from './components/ChecPaginate.vue';
 import ChecPopover from './components/ChecPopover.vue';
 import ChecProgressBar from './components/ChecProgressBar.vue';
 import ChecRadio from './components/ChecRadio.vue';
+import ChecRadioGroup from './components/ChecRadioGroup.vue';
 import ChecSegmentedButtonsGroup from './components/ChecSegmentedButtonsGroup.vue';
 import ChecSlideoutPanel from './components/ChecSlideoutPanel.vue';
 import ChecSwitch from './components/ChecSwitch.vue';
@@ -81,6 +82,7 @@ export {
   ChecPopover,
   ChecProgressBar,
   ChecRadio,
+  ChecRadioGroup,
   ChecSegmentedButtonsGroup,
   ChecSlideoutPanel,
   ChecSwitch,

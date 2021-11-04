@@ -1,0 +1,163 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { boolean, text, select } from '@storybook/addon-knobs';
+import ChecRadioGroup from '../../components/ChecRadioGroup.vue';
+
+<Meta title="Form fields/Radio buttons" component={ ChecRadioGroup } />
+
+# Radio button group
+
+#### Radio buttons allow the user to select only one option from a radio group.
+- Use radio buttons when the user needs to see all available options
+- Use radio group when there are 2-4 options to choose from
+- When using the ChecRadioGroup, a name prop is required
+- Use dropdown menu with selects if there are more than 4 options or options do not need to be visible
+
+<Props of={ChecRadioGroup} />
+
+<Preview>
+  <Story name="Radio group">
+    {{
+      components: { ChecRadioGroup },
+      props: {
+        groupLabel: {
+          default: text("Group label", "This is a radio group", "Props")
+        },
+        labelTag: {
+          default: select("Label tag", ["legend", "p", "h1", "h2", "h3", "h4"], "legend", "Props"),
+        },
+        layout: {
+          default: select("Layout alignment", ["block", "flex"], "block", "Props"),
+        },
+        labelFont: {
+          default: select("Label font size in tailwind class", ["caps-xs", "text-xs", "text-sm", "text-md", "text-lg", "text-xl", "text-2xl", "text-3xl"], "caps-xs", "Props"),
+        },
+        name: {
+          default: text("Group name", "group-name", "Props")
+        },
+        required: {
+          default: boolean("Required", false, "Props")
+        },
+      },
+      data() {
+        return {
+          options: [
+            {
+              label: "Red",
+              value: "red",
+            },
+            {
+              label: "Blue",
+              value: "blue",
+            },
+            {
+              label: "Purple",
+              value: "purple",
+            },
+            {
+              label: "Yellow",
+              value: "yellow",
+            },
+            {
+              label: "Green",
+              value: "green",
+            },
+            {
+              label: "Orange",
+              value: "orange",
+            }
+          ],
+          value: "red",
+        }
+      },
+      template: `
+      <div class="py-16 font-lato flex flex-col items-center bg-gray-100">
+        <h1 class="pb-8">The value is <span class="font-bold">{{ value }}</span></h1>
+        <ChecRadioGroup
+          v-model="value"
+          :name="name"
+          :required="required"
+          :options="options"
+          :group-label="groupLabel"
+          :label-font="labelFont"
+          :label-tag="labelTag"
+          :layout="layout"
+        />
+      </div>`,
+    }}
+  </Story>
+</Preview>
+
+# Radio group flex display mode
+
+<Preview>
+  <Story name="Radio group flex display mode">
+    {{
+      components: { ChecRadioGroup },
+      props: {
+        groupLabel: {
+          default: text("Group label", "This is a radio group", "Props")
+        },
+        labelTag: {
+          default: select("Label tag", ["legend", "p", "h1", "h2", "h3", "h4"], "legend", "Props"),
+        },
+        layout: {
+          default: select("Layout alignment", ["block", "flex"], "flex", "Props"),
+        },
+        labelFont: {
+          default: select("Label font size in tailwind class", ["caps-xs", "text-xs", "text-sm", "text-md", "text-lg", "text-xl", "text-2xl", "text-3xl"], "caps-xs", "Props"),
+        },
+        name: {
+          default: text("Group name", "group-name", "Props")
+        },
+        required: {
+          default: boolean("Required", false, "Props")
+        },
+      },
+      data() {
+        return {
+          options: [
+            {
+              label: "Red",
+              value: "red",
+            },
+            {
+              label: "Blue",
+              value: "blue",
+            },
+            {
+              label: "Purple",
+              value: "purple",
+            },
+            {
+              label: "Yellow",
+              value: "yellow",
+            },
+            {
+              label: "Green",
+              value: "green",
+            },
+            {
+              label: "Orange",
+              value: "orange",
+            }
+          ],
+          value: "red",
+        }
+      },
+      template: `
+      <div class="py-16 font-lato flex flex-col items-center bg-gray-100">
+        <h1 class="pb-8">The value is <span class="font-bold">{{ value }}</span></h1>
+        <ChecRadioGroup
+          v-model="value"
+          :name="name"
+          :required="required"
+          :options="options"
+          :group-label="groupLabel"
+          :label-font="labelFont"
+          :label-tag="labelTag"
+          :layout="layout"
+        />
+      </div>`,
+    }}
+  </Story>
+</Preview>

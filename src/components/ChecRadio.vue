@@ -1,16 +1,16 @@
 <template>
-  <label :for="id" class="radio-btn" :class="{ 'active' : isChecked, disabled }">
+  <label :for="id" class="chec-radio" :class="{ 'active' : isChecked, disabled }">
     <input
       :id="id"
       type="radio"
-      :name="name"
       :value="value"
       :checked="isChecked"
       :disabled="disabled"
-      class="radio-btn__input"
+      :name="name"
+      class="chec-radio__input"
       @input="handleInput"
     >
-    <span class="radio-btn__fill" />
+    <span class="chec-radio__fill" />
     <!--
       @slot Custom label slot
       @bind label string
@@ -18,7 +18,7 @@
       @bind disabled boolean
     -->
     <slot name="label" v-bind="{ label, isChecked, disabled }">
-      <div v-if="label" class="radio-btn__label">{{ label }}</div>
+      <div v-if="label" class="chec-radio__label">{{ label }}</div>
     </slot>
   </label>
 </template>
@@ -88,7 +88,7 @@ export default {
 
 <style lang="scss">
 
-.radio-btn {
+.chec-radio {
   @apply cursor-pointer flex text-sm text-gray-600 items-center;
 
   &.disabled {
