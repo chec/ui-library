@@ -11,15 +11,7 @@
       @input="handleInput"
     >
     <span class="chec-radio__fill" />
-    <!--
-      @slot Custom label slot
-      @bind label string
-      @bind isChecked boolean
-      @bind disabled boolean
-    -->
-    <slot name="label" v-bind="{ label, isChecked, disabled }">
-      <div v-if="label" class="chec-radio__label">{{ label }}</div>
-    </slot>
+    <div v-if="label" class="chec-radio__label">{{ label }}</div>
   </label>
 </template>
 
