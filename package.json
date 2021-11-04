@@ -37,7 +37,7 @@
     "lodash.uniqueid": "^4.0.1",
     "portal-vue": "^2.1.7",
     "postcss-assets": "^5.0.0",
-    "prismjs": "^1.21.0",
+    "prismjs": "^1.25.0",
     "resize-observer-polyfill": "^1.5.1",
     "tailwindcss": "1.9.6",
     "tailwindcss-plugins": "^0.3.0",
