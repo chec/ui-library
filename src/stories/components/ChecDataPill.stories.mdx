@@ -92,10 +92,14 @@ import ChecDataPillGroup from '../../components/ChecDataPillGroup';
       },
       template: `
         <div class="pt-4 pb-6" :class="bg">
-          <ChecDataPillGroup class="justify-center mt-2" v-for="color in colors">
+          <ChecDataPillGroup
+            v-for="color in colors"
+            :key="color"
+            class="justify-center mt-2"
+          >
             <ChecDataPill :color="color" filled>{{ color }}-filled</ChecDataPill>
             <ChecDataPill :color="color">{{ color }}</ChecDataPill>
-          </div>
+          </ChecDataPillGroup>
         </div>`
     }}
   </Story>
