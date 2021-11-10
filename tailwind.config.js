@@ -94,7 +94,7 @@ module.exports = {
       'orange-100': '#FEF6F0',
       'green-600': '#0F6150',
       'green-500': '#207D6A',
-      'green-400': '#2ebb9f',
+      'green-400': '#26957e',
       'green-300': '#5CD6BD',
       'green-200': '#AEEADE',
       'green-100': '#F3FCFA',
