@@ -142,7 +142,7 @@ $alert-inline-colors: (
       top: -1px;
     }
 
-    a {
+    a:not(.button) {
       @apply text-white font-bold;
 
       &:hover,
