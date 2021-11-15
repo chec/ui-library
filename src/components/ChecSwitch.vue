@@ -115,7 +115,7 @@ export default {
 
   &--toggled {
     .chec-switch__container {
-      @apply bg-green-400;
+      @apply bg-green-500;
     }
 
     .chec-switch__thumb {
