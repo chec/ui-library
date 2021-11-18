@@ -7,9 +7,9 @@
   >
     <ul class="tags-field__list-wrapper">
       <li
-        v-for="tag in tags"
+        v-for="(tag, index) in tags"
         ref="list"
-        :key="tag.id"
+        :key="index"
         class="tags-field__tag"
       >
         <ChecTag
@@ -118,6 +118,7 @@ export default {
     /**
      * The value the v-model directive utilizes
      * @see https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
+     * @type Array<string>
      */
     tags: {
       type: Array,
