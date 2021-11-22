@@ -124,10 +124,10 @@ export default {
       type: String,
     },
     /**
-     * The current value of selected option for the dropdown. Array for multi-select. String for single select
+     * The current value of selected option for the dropdown. Array for multi-select. String/number for single select
      */
     value: {
-      type: [String, Array],
+      type: [String, Number, Array],
     },
     /**
      * The options for the dropdown
