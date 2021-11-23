@@ -23,6 +23,12 @@
     <div>
       <label v-if="label" class="dropdown__label">
         {{ label }}
+        <span
+          v-if="required"
+          class="dropdown__required-text"
+        >
+          {{ $t('general.requiredInline') }}
+        </span>
       </label>
       <div class="dropdown__value">
         {{ shownValue }}
@@ -554,6 +560,10 @@ export default {
 
   &__option-search {
     @apply px-4 py-3 border-b border-gray-200 w-full bg-white;
+  }
+
+  &__required-text {
+    @apply text-gray-400;
   }
 
   &--open {
