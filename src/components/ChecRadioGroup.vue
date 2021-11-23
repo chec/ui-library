@@ -1,5 +1,5 @@
 <template>
-  <fieldset class="chec-radio-group" :required="required">
+  <fieldset class="chec-radio-group">
     <component
       :is="labelTag"
       v-if="groupLabel"
@@ -7,6 +7,12 @@
       :class="labelFont"
     >
       {{ groupLabel }}
+      <span
+        v-if="required"
+        class="chec-radio-group__required-text"
+      >
+        {{ $t('general.requiredInline') }}
+      </span>
     </component>
     <div :class="classObject">
       <ChecRadio
@@ -18,6 +24,7 @@
         :disabled="option.disabled"
         :radio="option.required"
         :selected="value"
+        :required="required"
         @input="() => $emit('input', option.value)"
       />
     </div>
@@ -87,7 +94,7 @@ export default {
   },
   computed: {
     resolvedOptions() {
-      const options = this.options.map((option) => (typeof option === 'string'
+      return this.options.map((option) => (typeof option === 'string'
         ? {
           label: option,
           value: option,
@@ -96,7 +103,6 @@ export default {
           disabled: option.disabled,
         }
         : option));
-      return options;
     },
     classObject() {
       return ['chec-radio-group__list', {
@@ -136,6 +142,10 @@ export default {
 
   &__label {
     @apply pb-2;
+  }
+
+  &__required-text {
+    @apply text-gray-400;
   }
 }
 
