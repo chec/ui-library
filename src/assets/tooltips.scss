@@ -7,7 +7,7 @@
   display: block !important;
 
   .tooltip-inner {
-    @apply bg-gray-600 text-white p-4 rounded-md;
+    @apply bg-gray-600 text-white p-4 rounded-md whitespace-pre-line;
   }
 
   .tooltip-arrow {
