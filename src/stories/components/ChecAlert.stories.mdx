@@ -5,7 +5,15 @@ import ChecAlert from '../../components/ChecAlert.vue';
 import ChecButton from '../../components/ChecButton.vue';
 import ChecIcon from '../../components/ChecIcon.vue';
 
-<Meta title="Components/Alert" component={ChecAlert} />
+<Meta
+  title="Components/Alert"
+  component={ChecAlert}
+  parameters={{
+    knobs: {
+      escapeHTML: false,
+    },
+  }}
+/>
 
 # Alert
 
@@ -61,7 +69,7 @@ import ChecIcon from '../../components/ChecIcon.vue';
             @close="close()"
           >
             <ChecIcon v-if="showSlotIcon" icon="chec"/>
-              {{ text }}
+            {{ text }}
           </ChecAlert>
         </div>`
     }}
