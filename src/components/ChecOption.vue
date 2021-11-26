@@ -20,7 +20,9 @@
         :disabled="option.disabled"
         :indeterminate="indeterminate"
       />
-      <slot />
+      <span class="option__label">
+        <slot />
+      </span>
     </template>
   </div>
 </template>
@@ -103,7 +105,7 @@ export default {
 
 <style lang="scss" scoped>
 .option {
-  @apply w-full flex items-center text-sm px-4 py-3 outline-none cursor-pointer bg-white;
+  @apply flex items-center text-sm px-4 py-3 outline-none cursor-pointer bg-white;
 
   &:hover:not(.option--loading) {
     @apply bg-gray-100;
@@ -118,6 +120,10 @@ export default {
 
   &:not(:last-child) {
     @apply border-b border-gray-200;
+  }
+
+  &__label {
+    @apply truncate;
   }
 
   &__loading-container {
