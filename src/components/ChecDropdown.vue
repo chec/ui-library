@@ -551,7 +551,9 @@ export default {
 
   &__options {
     @apply overflow-y-auto overflow-x-hidden;
-    max-height: 40vh;
+
+    // 45rem is ~15 rows high as each row is a tiny bit less than 3rem without borders, and the borders add a bit more
+    max-height: min(40vh, 45rem);
   }
 
   &__down-arrow {
