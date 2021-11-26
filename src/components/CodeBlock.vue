@@ -30,8 +30,6 @@ import 'prismjs/components/prism-markup.js';
 import 'prismjs/components/prism-jsx.js';
 import 'prismjs/components/prism-php.js';
 
-import 'prismjs/themes/prism.css';
-
 export default {
   name: 'CodeComponent',
   components: {
@@ -143,14 +141,14 @@ pre.code-example[class*='language-'] {
 
   pre[class*='language-'],
   code[class*='language-'] {
-    @apply text-gray-100;
+    @apply text-gray-100 bg-none text-base text-left
+      whitespace-pre leading-7;
     text-shadow: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     direction: ltr;
-    text-align: left;
-    white-space: pre;
     word-spacing: normal;
     word-break: normal;
-    line-height: 1.75;
+    // line-height: 1.75;
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
@@ -161,9 +159,13 @@ pre.code-example[class*='language-'] {
   }
 
   pre[class*='language-']::selection,
+  pre[class*='language-'] ::selection,
   code[class*='language-']::selection,
+  code[class*='language-'] ::selection,
   pre[class*='language-']::mozselection,
-  code[class*='language-']::mozselection {
+  pre[class*='language-'] ::mozselection,
+  code[class*='language-']::mozselection,
+  code[class*='language-'] ::mozselection {
     @apply bg-purple-100;
     text-shadow: none;
   }
@@ -176,10 +178,14 @@ pre.code-example[class*='language-'] {
   }
 
   pre[class*='language-'] {
-    @apply bg-gray-600;
+    @apply bg-gray-600 overflow-auto;
     padding: 1em;
     margin: 0.5em 0;
-    overflow: auto;
+  }
+
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: #f5f2f0;
   }
 
   :not(pre) > code[class*='language-'] {
@@ -207,11 +213,6 @@ pre.code-example[class*='language-'] {
   .token.punctuation {
     @apply text-blue-300;
   }
-
-  .token.class-name {
-    @apply text-orange-300;
-  }
-
   .token.constant,
   .token.deleted,
   .token.number,
@@ -220,11 +221,11 @@ pre.code-example[class*='language-'] {
     @apply text-purple-300 bg-transparent;
   }
 
-  .token.boolean {
-    @apply text-red-300;
-  }
-
-  .token.boolean {
+  .token.important,
+  .token.regex,
+  .token.variable,
+  .token.boolean,
+  .token.class-name {
     @apply text-orange-300;
   }
 
@@ -256,12 +257,6 @@ pre.code-example[class*='language-'] {
   .token.keyword,
   .token.property {
     @apply text-blue-400;
-  }
-
-  .token.important,
-  .token.regex,
-  .token.variable {
-    @apply text-orange-300;
   }
 
   .token.bold,
