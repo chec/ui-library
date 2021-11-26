@@ -59,7 +59,7 @@ export default {
 
 <style lang="scss">
 .loading {
-  @apply absolute top-0 left-0 w-full h-full z-50 flex justify-center items-center flex-col;
+  @apply absolute top-0 left-0 w-full h-full flex justify-center items-center flex-col;
   border-radius: inherit;
 
   &__animation {
@@ -84,6 +84,7 @@ export default {
   }
 
   &--with-background {
+    @apply z-50;
     background: rgba(255, 255, 255, 0.9);
 
     &.loading--dark,
