@@ -88,10 +88,6 @@ export default {
     top: 2px;
   }
 
-  &--active {
-    @extend %active;
-  }
-
   &--disabled {
     @apply opacity-40 bg-white text-gray-500 cursor-not-allowed;
 
@@ -120,32 +116,8 @@ export default {
     }
   }
 
-  // All colours share the same active, hover/focus, and disabled styles
-  &:not(.chec-tag--disabled) {
-    &:active {
-      @extend %active;
-    }
-
-    &:hover,
-    &:focus {
-      @apply bg-gray-500 text-white border-gray-500;
-
-      .chec-tag__dismiss {
-        @apply bg-white text-gray-500;
-      }
-    }
-  }
-
   &__dismiss {
     @apply ml-1 w-3 h-3 rounded-full;
-  }
-}
-
-%active {
-  @apply bg-gray-400 text-white border-gray-400;
-
-  .chec-tag__dismiss {
-    @apply bg-white text-gray-400;
   }
 }
 </style>
