@@ -20,7 +20,7 @@
       :name="`${name}[]`"
       :value="optionValue"
     >
-    <div>
+    <div class="dropdown__label-value-container">
       <label v-if="label" class="dropdown__label">
         {{ label }}
         <span
@@ -95,52 +95,19 @@ export default {
   },
   props: {
     /**
-     *  When in single select mode, a value must be selected. If false, an empty option will be prepended.
-     */
-    required: Boolean,
-    /**
-     * Indicates that multiple options may be selected. In this case the bound v-model will be an array of values
-     */
-    multiselect: Boolean,
-    /**
-     * The state of the text field. One of "disabled", "error".
-     */
-    variant: {
-      type: String,
-      default: '',
-    },
-    /**
-    * Force label to always be in the minimized position.
-    */
-    minimizedLabel: Boolean,
-    /**
-     * Optional placeholder used when no option has been selected
-     */
-    placeholder: String,
-    /**
-     * Used as name attribute on hidden input
-     */
-    name: {
-      type: String,
-    },
-    /**
      * Class to pass to inner options
      */
     checOptionClass: {
       type: String,
     },
     /**
-     * The current value of selected option for the dropdown. Array for multi-select. String/number for single select
+     * Whether to prevent the dropdown from automatically expanding it's height as options are chosen. This defaults to
+     * "true" for single value selects, and "false" for multiselects
      */
-    value: {
-      type: [String, Number, Array],
-    },
-    /**
-     * The options for the dropdown
-     */
-    options: {
-      type: Array,
-      required: true,
+    forceSingleLine: {
+      type: Boolean,
+      // eslint-disable-next-line vue/no-boolean-default
+      default: null,
     },
     /**
      * The label to use
@@ -150,9 +117,38 @@ export default {
       default: '',
     },
     /**
-     * Whether to show a search box that is fixed above the list of options
+     * Whether to append a loading row to the existing options in the dropdown
      */
-    showSearch: Boolean,
+    loading: Boolean,
+    /**
+     * Force label to always be in the minimized position.
+     */
+    minimizedLabel: Boolean,
+    /**
+     * Indicates that multiple options may be selected. In this case the bound v-model will be an array of values
+     */
+    multiselect: Boolean,
+    /**
+     * Used as name attribute on hidden input
+     */
+    name: {
+      type: String,
+    },
+    /**
+     * The options for the dropdown
+     */
+    options: {
+      type: Array,
+      required: true,
+    },
+    /**
+     * Optional placeholder used when no option has been selected
+     */
+    placeholder: String,
+    /**
+     *  When in single select mode, a value must be selected. If false, an empty option will be prepended.
+     */
+    required: Boolean,
     /**
      * The value within the search field (if shown)
      */
@@ -161,9 +157,22 @@ export default {
       default: '',
     },
     /**
-     * Whether to append a loading row to the existing options in the dropdown
+     * Whether to show a search box that is fixed above the list of options
      */
-    loading: Boolean,
+    showSearch: Boolean,
+    /**
+     * The current value of selected option for the dropdown. Array for multi-select. String/number for single select
+     */
+    value: {
+      type: [String, Number, Array],
+    },
+    /**
+     * The state of the text field. One of "disabled", "error".
+     */
+    variant: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -196,12 +205,15 @@ export default {
   computed: {
     classNames() {
       const {
+        forceSingleLine,
         isFocus,
         label,
+        minimizedLabel,
+        multiselect,
         showDropdown,
         showingPlaceholder,
+        shownValue,
         variant,
-        minimizedLabel,
       } = this;
 
       return {
@@ -210,6 +222,8 @@ export default {
         'dropdown--open': showDropdown,
         'dropdown--labeless': !label,
         'dropdown--minimized-label': minimizedLabel,
+        'dropdown--has-value': shownValue !== '\xa0',
+        'dropdown--force-single-line': forceSingleLine === true || (!multiselect && forceSingleLine === null),
         [`dropdown--${variant}`]: variant !== '',
       };
     },
@@ -512,15 +526,22 @@ export default {
   @apply relative flex items-center w-full text-gray-500 bg-white rounded outline-none cursor-pointer border
     border-gray-200 px-4 flex items-center shadow-sm justify-between text-left;
 
+  &__label-value-container {
+    // 100% of parent minus it's padding on the right (1rem)
+    max-width: calc(100% - 1rem);
+  }
+
   &__label {
-    @apply absolute pointer-events-none ml-5 mt-4 leading-tight text-gray-500
+    @apply absolute pointer-events-none ml-5 mt-4 leading-tight text-gray-500 pr-4
       transition-transform duration-150 origin-top-left truncate w-10/12;
 
-    // Counteract the border width. Text-field doesn't have this problem becuase the label is relative to a parent that
+    // Counteract the border width. Text-field doesn't have this problem because the label is relative to a parent that
     // doesn't have a border
     left: -1px;
     top: -1px;
 
+    // Also specify right padding transition as the padding exists only to give room for the down arrow
+    transition-property: padding-right;
     transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
   }
 
@@ -529,7 +550,7 @@ export default {
   }
 
   &__value {
-    @apply leading-tight py-4 text-sm text-gray-600 pr-2;
+    @apply leading-tight py-4 text-sm text-gray-600 pr-2 break-words;
   }
 
   &:hover {
@@ -557,7 +578,7 @@ export default {
   }
 
   &__down-arrow {
-    @apply flex flex-col flex-shrink-0 justify-center w-4 h-4 transform transition-transform duration-200;
+    @apply flex-shrink-0 w-4 h-4 transform transition-transform duration-200;
   }
 
   &__option-search {
@@ -566,6 +587,12 @@ export default {
 
   &__required-text {
     @apply text-gray-400;
+  }
+
+  &--force-single-line {
+    .dropdown__value {
+      @apply truncate;
+    }
   }
 
   &--open {
@@ -577,8 +604,10 @@ export default {
   }
 
   &--with-inline-label,
+  &--has-value,
   &--showing-placeholder {
     .dropdown__label {
+      @apply pr-0;
       transform: translate(-0.2rem, -0.5rem) scale(0.8, 0.8);
     }
 

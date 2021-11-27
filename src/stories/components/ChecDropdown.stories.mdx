@@ -371,3 +371,62 @@ Todo list
     }}
   </Story>
 </Preview>
+
+# With long labels
+
+<Preview>
+  <Story name="With long labels">
+    {{
+      components: {
+        ChecModal,
+        ChecDropdown,
+      },
+      props: {
+        multiselect: {
+          default: boolean('Multiselect', false),
+        },
+        forceSingleLine: {
+          default: select('Force single line', ['null', 'true', 'false'], 'null'),
+        },
+      },
+      data() {
+        return {
+          chosenValues: [1],
+          options: [
+            'Supercalifragilisticexpialidocious',
+            'Pneumonoultramicroscopicsilicovolcanoconiosis',
+            'Didaskaleinophobia'
+          ].map((label, value) => ({ value, label })),
+        }
+      },
+      computed: {
+        selection: {
+          get() {
+            return this.multiselect ? this.chosenValues : this.chosenValues[0];
+          },
+          set(newVal) {
+            if (this.multiselect) {
+              this.chosenValues = newVal;
+              return;
+            }
+            this.chosenValues = [newVal];
+          },
+        },
+        singleLine() {
+          return this.forceSingleLine === 'null' ? null : (this.forceSingleLine === 'true');
+        }
+      },
+      template: `
+        <div class="w-56 mx-auto bg-gray-100 text-center">
+          <ChecDropdown
+            label="Favourite long words with a long label too"
+            v-model="selection"
+            :multiselect="multiselect"
+            :options="options"
+            :force-single-line="singleLine"
+          />
+        </div>
+      `
+    }}
+  </Story>
+</Preview>
