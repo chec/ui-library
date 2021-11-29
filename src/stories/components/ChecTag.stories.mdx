@@ -23,10 +23,6 @@ import ChecTagGroup from '../../components/ChecTagGroup';
         tagText: {
           default: text('Tag text', 'I am tag')
         },
-        active: {
-          type: Boolean,
-          default: () => boolean('Active', false),
-        },
         background: {
           default: select('Background Color', ['light', 'dark']),
         },
@@ -46,69 +42,12 @@ import ChecTagGroup from '../../components/ChecTagGroup';
         <div class="py-16 w-full flex justify-around" :class="{'bg-gray-600': background === 'dark'}">
           <ChecTag
             :color="color"
-            :active="active"
             :disabled="disabled"
             :undismissible="undismissible"
             @dismiss="handleDismiss"
           >
             {{ tagText }}
           </ChecTag>
-        </div>`
-    }}
-  </Story>
-</Preview>
-
-# Tag
-
-<Props of={ChecTag} />
-
-<Preview>
-  <Story name="States">
-    {{
-      components: {
-        ChecTag,
-      },
-      props: {
-        tagText: {
-          default: text('Tag text', 'I am tag')
-        },
-        active: {
-          type: Boolean,
-          default: () => boolean('Active', false),
-        },
-        disabled: {
-          type: Boolean,
-          default: () => boolean('Disabled', false),
-        },
-        background: {
-          default: select('Background Color', ['light', 'dark']),
-        },
-        undismissible: {
-          type: Boolean,
-          default: () => boolean('Undismissible', false),
-        },
-      },
-      computed: {
-        colors() {
-          return ['dark-grey', 'white'];
-        }
-      },
-      methods: {
-        handleDismiss: action('dismiss'),
-      },
-      template: `
-        <div class="py-16 w-full flex justify-around" :class="{'bg-gray-600': background === 'dark'}">
-          <div v-for="color in colors" class="mb-4">
-            <ChecTag
-              :color="color"
-              :active="active"
-              :disabled="disabled"
-              :undismissible="undismissible"
-              @dismiss="handleDismiss"
-            >
-              {{ tagText }}
-            </ChecTag>
-          </div>
         </div>`
     }}
   </Story>
@@ -146,10 +85,10 @@ import ChecTagGroup from '../../components/ChecTagGroup';
             <ChecTag :color="color" :undismissible="undismissible" @dismiss="handleDismiss">
               Marketing
             </ChecTag>
-            <ChecTag :color="color" :undismissible="undismissible" active @dismiss="handleDismiss">
+            <ChecTag :color="color" :undismissible="undismissible" @dismiss="handleDismiss">
               Developers and designers
             </ChecTag>
-            <ChecTag :color="color" :undismissible="undismissible" active disabled @dismiss="handleDismiss">
+            <ChecTag :color="color" :undismissible="undismissible" disabled @dismiss="handleDismiss">
               Come and talk to us now, we will solve all of your problems!
             </ChecTag>
             <ChecTag :color="color" :undismissible="undismissible" disabled @dismiss="handleDismiss">
