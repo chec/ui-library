@@ -4,26 +4,28 @@
     class="accordion"
     :class="{'accordion--active': isOpen}"
   >
-    <div class="accordion__heading">
+    <div class="accordion__heading" @click="handleHeadingClick">
       <div>
         <div class="accordion__title" v-html="title" />
         <div v-if="subtitle" class="accordion__subtitle" v-html="subtitle" />
       </div>
       <ChecSwitch
         v-if="variant === 'switch'"
-        v-model="isOpen"
+        ref="switch"
         prefix-label
-        @input="emitToggle"
+        :toggled="isOpen"
+        @input="toggle"
       >
         {{ resolvedButtonLabel }}
       </ChecSwitch>
       <ChecButton
         v-else
+        ref="button"
         class="accordion__toggle"
         color="secondary"
         variant="small"
         :title="resolvedButtonLabel"
-        @click="isOpen = !isOpen"
+        @click="toggle"
       >
         <template #icon>
           <ChecIcon icon="down" />
@@ -130,13 +132,25 @@ export default {
     }
   },
   methods: {
-    emitToggle() {
+    toggle() {
+      this.isOpen = !this.isOpen;
       /**
        * Emitted when the accordion is opened or closed. Emits the new state of the accordion - true if it is open
        *
        * @type {Boolean}
        */
       this.$emit('toggled', this.isOpen);
+    },
+    handleHeadingClick(event) {
+      // Prevent clicks on the button or switch triggering the header click event.
+      if (
+        (this.$refs.button && this.$refs.button.$el.contains(event.target))
+        || (this.$refs.switch && this.$refs.switch.$el.contains(event.target))
+      ) {
+        return;
+      }
+
+      this.toggle();
     },
   },
 };
@@ -151,7 +165,7 @@ export default {
   padding-bottom: 1px;
 
   &__heading {
-    @apply text-gray-600 flex justify-between items-center p-4 pb-0;
+    @apply text-gray-600 flex justify-between items-center p-4 pb-0 cursor-pointer;
   }
 
   &__title {
