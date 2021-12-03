@@ -30,7 +30,7 @@
     "autoprefixer": "^9.7.4",
     "chart.js": "^2.9.4",
     "core-js": "^3.4.4",
-    "dropzone": "^5.7.2",
+    "dropzone": "^6.0.0-beta.2",
     "filesize": "^6.1.0",
     "flatpickr": "^4.6.3",
     "lodash.get": "^4.4.2",
