@@ -1,9 +1,8 @@
 <template>
-  <MountingPortal
+  <component
+    :is="mountingComponent"
     v-if="open"
-    :mount-to="mountTarget"
-    :name="name"
-    append
+    v-bind="mountingProps"
   >
     <div ref="popperRef" :class="classNames">
       <!--
@@ -11,11 +10,11 @@
       -->
       <slot />
     </div>
-  </MountingPortal>
+  </component>
 </template>
 
 <script>
-import { MountingPortal } from 'portal-vue';
+import { MountingPortal, Portal } from 'portal-vue';
 import { createPopper } from '@popperjs/core';
 import get from 'lodash.get';
 
@@ -23,6 +22,7 @@ export default {
   name: 'ChecPopover',
   components: {
     MountingPortal,
+    Portal,
   },
   inheritAttrs: false,
   props: {
@@ -33,18 +33,6 @@ export default {
       type: [String, Object],
       required: true,
     },
-    /**
-     * Optionally mount the popover by appending it to the given selector. Defaults to appending it to the body
-     */
-    mountTarget: {
-      type: String,
-      default: 'body',
-    },
-    /**
-     * If a name is given, existing popovers with the same name will be removed and replaced with this popover. This
-     * is passed through to `vue-portal`'s `MountingPortal` component. You can read more in the docs for `vue-portal`
-     */
-    name: String,
     /**
      * Whether the popover is "open" (and shown)
      */
@@ -67,6 +55,10 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    mount: {
+      type: [Boolean, Object],
+      default: false,
+    },
   },
   data() {
     return {
@@ -79,6 +71,30 @@ export default {
         'chec-popover',
         { 'chec-popover--open': this.open },
       ];
+    },
+    mountingComponent() {
+      if (!this.mount) {
+        return 'div';
+      }
+
+      return this.mount.component || 'MountingPortal';
+    },
+    mountingProps() {
+      const { component, ...props } = typeof this.mount === 'object' ? this.mount : {};
+
+      if (this.mountingComponent === 'Portal') {
+        return props;
+      }
+
+      if (this.mountingComponent === 'MountingPortal') {
+        return {
+          mountTo: 'body',
+          append: true,
+          ...props,
+        };
+      }
+
+      return props;
     },
     targetEl() {
       const { targetRef } = this;

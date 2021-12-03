@@ -74,7 +74,7 @@ arbitrary template to pop over existing content on the page using the `popper.js
 </Preview>
 
 <Preview>
-  <Story name="With native element">
+  <Story name="With native element and portal">
     {{
       components: {
         ChecButton,
@@ -118,7 +118,7 @@ arbitrary template to pop over existing content on the page using the `popper.js
           <div class="my-4">Content above</div>
           <button ref="button" @click="popoverOpen = !popoverOpen">Click me</button>
           <div class="my-4">Content below</div>
-          <ChecPopover :target-ref="$refs.button" :open="popoverOpen" :placement="placement">
+          <ChecPopover :target-ref="$refs.button" :open="popoverOpen" :placement="placement" mount>
             <ChecCard borders="full" :class="margin">
               <ChecHeader variant="card" title="A popover card" />
               Woah, some content for this card

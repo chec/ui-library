@@ -40,6 +40,7 @@
       :open="showDropdown"
       placement="bottom-end"
       :popper-options="popoverOptions"
+      mount
     >
       <div
         ref="popper"

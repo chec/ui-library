@@ -32,6 +32,7 @@
       target-ref="button"
       :open="panelOpen"
       placement="bottom-end"
+      mount
     >
       <FilterPanel
         ref="panel"

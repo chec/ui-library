@@ -14,9 +14,9 @@
     <ChecPopover
       target-ref="button"
       :open="isOpen"
-      :name="menuName"
       :placement="menuPlacement"
       :popper-options="combinedPopperOptions"
+      :mount="{ name: menuName }"
     >
       <div ref="menu" class="options-menu" :class="menuClass">
         <!--

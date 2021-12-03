@@ -18,6 +18,7 @@
       :target-ref="$refs.input"
       :open="search.length > 0 && autocompleteOptions.length > 0 && focused"
       placement="bottom-start"
+      mount
     >
       <div
         class="filter-bar-autocomplete"
