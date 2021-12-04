@@ -12,7 +12,7 @@ export default {
     tagType: {
       type: String,
       validate(type) {
-        return ['link', 'button', 'route'].includes(type);
+        return ['link', 'button', 'route', 'nuxt'].includes(type);
       },
       default: 'button',
     },
@@ -54,7 +54,7 @@ export default {
     variant: {
       type: String,
       validate(variant) {
-        return ['regular', 'small', 'round', 'text', 'tag', 'input'].includes(variant);
+        return ['regular', 'small', 'round', 'tag', 'input'].includes(variant);
       },
       default: 'regular',
     },
@@ -119,19 +119,22 @@ export default {
       return this.icon || (this.$slots.icon && Boolean(this.$slots.icon.length));
     },
     tag() {
-      if (this.tagType === 'link') {
-        if (this.disabled) {
-          return 'span';
-        }
-        return 'a';
+      if (this.disabled && this.tagType !== 'button') {
+        return 'span';
       }
-      if (this.tagType === 'route') {
-        if (this.disabled) {
-          return 'span';
-        }
-        return 'router-link';
+
+      /* eslint-disable vue/script-indent */
+      switch (this.tagType) {
+        case 'link':
+          return 'a';
+        case 'route':
+          return 'router-link';
+        case 'nuxt':
+          return 'nuxt-link';
+        default:
+          return 'button';
       }
-      return 'button';
+      /* eslint-enable vue/script-indent */
     },
   },
   methods: {
@@ -170,9 +173,19 @@ export default {
     }
 
     const props = {};
-    if (this.tagType === 'route') {
+    if (['route', 'nuxt'].includes(this.tagType)) {
       props.to = attrs.to;
       delete attrs.to;
+    }
+
+    // Pull relevant nuxt-link props
+    if (this.tagType === 'nuxt') {
+      ['prefetch', 'no-prefetch'].forEach((prop) => {
+        if (attrs[prop]) {
+          props[prop] = attrs[prop];
+          delete attrs[prop];
+        }
+      });
     }
 
     return createElement(this.tag, {
