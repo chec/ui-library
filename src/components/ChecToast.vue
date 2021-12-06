@@ -1,6 +1,15 @@
 <template>
   <div class="notif" :class="classObject">
     <div class="notif__content-container">
+      <div class="notif__icon">
+        <span class="notif__icon-circle">
+          <ChecIcon
+            :icon="icon"
+            class="w-4"
+            color="white"
+          />
+        </span>
+      </div>
       <!--
         @slot You many pass child elements as necessary, e.g. tags, icons, images, etc.
       -->
@@ -16,11 +25,13 @@
 
 <script>
 import SvgCloseIcon from '../assets/svgs/close-icon.svg';
+import ChecIcon from './ChecIcon.vue';
 
 export default {
-  name: 'ChecNotification',
+  name: 'ChecToast',
   components: {
     SvgCloseIcon,
+    ChecIcon,
   },
   props: {
     /**
@@ -48,6 +59,16 @@ export default {
   computed: {
     classObject() {
       return `notif--${this.variant}`;
+    },
+    icon() {
+      const icons = {
+        success: 'check',
+        error: 'close',
+        warning: 'exclamation',
+        info: 'info',
+      };
+
+      return icons[this.variant];
     },
   },
   mounted() {
@@ -80,27 +101,34 @@ export default {
 
 <style lang="scss" scoped>
 .notif {
-  @apply flex justify-between items-start bg-gray-200 rounded-md py-3 px-4 shadow-md;
-
+  @apply flex justify-between items-start rounded bg-gray-200 shadow-md;
   min-width: 7.25rem;
 
   &__content-container {
-    @apply flex items-center max-w-full;
-    // Manual tweaks to keep single line text vertically centered with the close button
-    padding-bottom: 0.3rem;
-    padding-top: 0.3rem;
+    @apply flex max-w-full py-4;
+
+  }
+
+  &__icon {
+    @apply flex items-start px-3;
+  }
+
+  &__icon-circle {
+    @apply bg-blue-500 p-2 rounded-full;
   }
 
   &__text {
-    @apply text-primary-blue text-sm break-words max-w-full;
+    @apply text-primary-blue text-left text-sm break-words max-w-full mt-1;
 
     .button {
-      @apply mt-2;
+      @apply mt-3 -ml-1;
     }
+
   }
 
   &__close-icon {
-    @apply ml-4 p-2 bg-green-600 rounded text-white cursor-pointer;
+    @apply bg-green-600 rounded text-white outline-none cursor-pointer mr-2 mt-4 p-2;
+    transition: all 0.3s ease;
 
     > svg {
       @apply h-4 w-4;
@@ -112,6 +140,10 @@ export default {
 
     .notif__text {
       @apply text-white;
+    }
+
+    .notif__icon-circle {
+      @apply bg-green-400;
     }
 
     .notif__close-icon {
@@ -132,6 +164,10 @@ export default {
       @apply text-white;
     }
 
+    .notif__icon-circle {
+      @apply bg-red-400;
+    }
+
     .notif__close-icon {
       @apply text-white bg-transparent transition-all ease-in-out duration-300;
 
@@ -150,6 +186,10 @@ export default {
       @apply text-white;
     }
 
+    .notif__icon-circle {
+      @apply bg-orange-400;
+    }
+
     .notif__close-icon {
       @apply text-white bg-transparent transition-all ease-in-out duration-300;
 
@@ -166,6 +206,10 @@ export default {
 
     .notif__text {
       @apply text-white;
+    }
+
+    .notif__icon-circle {
+      @apply bg-blue-400;
     }
 
     .notif__close-icon {

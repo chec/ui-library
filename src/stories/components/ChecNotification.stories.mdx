@@ -2,19 +2,19 @@ import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
 import { action } from "@storybook/addon-actions";
 import { text, select } from '@storybook/addon-knobs';
 import ChecButton from '../../components/ChecButton.vue';
-import ChecNotification from '../../components/ChecNotification.vue';
+import ChecToast from '../../components/ChecToast.vue';
 
-<Meta title="Components/Notifications" component={ChecNotification} />
+<Meta title="Components/Toast " component={ChecToast} />
 
 # Notification
 
-<Props of={ChecNotification} />
+<Props of={ChecToast} />
 
 <Preview>
   <Story name="Default">
     {{
       components: {
-        ChecNotification
+        ChecToast
       },
       data() {
         return {
@@ -38,14 +38,14 @@ import ChecNotification from '../../components/ChecNotification.vue';
       },
       template: `
         <div class="w-1/2 mx-auto pt-6 font-lato">
-          <ChecNotification
+          <ChecToast
             v-if="!closed"
             :variant="variant"
             @close="close()"
             persist
           >
             {{text}}
-          </ChecNotification>
+          </ChecToast>
         </div>`
     }}
   </Story>
@@ -57,7 +57,7 @@ import ChecNotification from '../../components/ChecNotification.vue';
   <Story name="Variants">
     {{
       components: {
-        ChecNotification
+        ChecToast
       },
       data() {
         return {
@@ -83,7 +83,7 @@ import ChecNotification from '../../components/ChecNotification.vue';
       },
       template: `
         <div class="w-1/2 mx-auto pt-6 font-lato">
-          <ChecNotification
+          <ChecToast
             v-for="variant in variants"
             v-if="!isClosed(variant)"
             class="mb-2"
@@ -92,7 +92,7 @@ import ChecNotification from '../../components/ChecNotification.vue';
             persist
           >
             {{content(variant)}}
-          </ChecNotification>
+          </ChecToast>
         </div>`
     }}
   </Story>
@@ -104,7 +104,7 @@ import ChecNotification from '../../components/ChecNotification.vue';
   <Story name="Formatted alert text">
     {{
       components: {
-        ChecNotification
+        ChecToast
       },
       data() {
         return {
@@ -125,7 +125,7 @@ import ChecNotification from '../../components/ChecNotification.vue';
       },
       template: `
         <div class="w-1/2 mx-auto pt-6 font-lato">
-          <ChecNotification
+          <ChecToast
             v-if="!closed"
             :variant="variant"
             @close="close()"
@@ -134,7 +134,7 @@ import ChecNotification from '../../components/ChecNotification.vue';
             <p class="font-bold text-red-200 text-xs italic">
               Formatted alert text.
             </p>
-          </ChecNotification>
+          </ChecToast>
         </div>`
     }}
   </Story>
@@ -146,7 +146,7 @@ import ChecNotification from '../../components/ChecNotification.vue';
   <Story name="Hide on timer">
     {{
       components: {
-        ChecNotification
+        ChecToast
       },
       data() {
         return {
@@ -167,14 +167,14 @@ import ChecNotification from '../../components/ChecNotification.vue';
       },
       template: `
         <div class="w-1/2 mx-auto font-lato">
-          <ChecNotification
+          <ChecToast
             v-if="!closed"
             :variant="variant"
             @close="close()"
             :hideTime="3000"
           >
             I will disappear after 3 seconds
-          </ChecNotification>
+          </ChecToast>
         </div>`
     }}
   </Story>
@@ -183,14 +183,14 @@ import ChecNotification from '../../components/ChecNotification.vue';
 
 # Notification With Button
 
-<Props of={ChecNotification} />
+<Props of={ChecToast} />
 
 <Preview>
   <Story name="With Button">
     {{
       components: {
       ChecButton,
-        ChecNotification
+        ChecToast
       },
       data() {
         return {
@@ -217,7 +217,7 @@ import ChecNotification from '../../components/ChecNotification.vue';
       },
       template: `
         <div class="w-1/4 mx-auto pt-6 font-lato">
-          <ChecNotification
+          <ChecToast
             v-if="!closed"
             :variant="variant"
             @close="close()"
@@ -228,7 +228,7 @@ import ChecNotification from '../../components/ChecNotification.vue';
               variant="round"
               v-html="ButtonText"
             />
-          </ChecNotification>
+          </ChecToast>
         </div>`
     }}
   </Story>
