@@ -1,6 +1,9 @@
 <template>
   <div class="card" :class="classObject">
-    <div class="card__inner-wrapper" :class="[tailwindClasses, innerClass]">
+    <div
+      class="card__inner-wrapper"
+      :class="[tailwindClasses, innerClassBackground, innerClass]"
+    >
       <!--
         @slot Card content
       -->
@@ -14,13 +17,13 @@ import TailwindClasses from '../mixins/TailwindClasses';
 
 export default {
   name: 'ChecCard',
-  mixins: [TailwindClasses('p-8 bg-white')],
+  mixins: [TailwindClasses('p-8')],
   props: {
     /**
      * Class to pass to inner container
      */
     innerClass: {
-      type: String,
+      type: [String, Array],
       default: '',
     },
     /**
@@ -28,9 +31,43 @@ export default {
      */
     borders: {
       type: String,
-      default: 'full',
+      default: 'none',
       validator(value) {
-        return ['full', 'none', 'vertical', 'horizontal'].includes(value);
+        return [
+          'none',
+          'full',
+          'vertical',
+          'horizontal',
+        ].includes(value);
+      },
+    },
+    /**
+     * The color of the borders on the card. One of "holo", "dark", "light".
+     */
+    borderStyle: {
+      type: String,
+      default: 'holo',
+      validator(value) {
+        return [
+          'holo',
+          'light',
+          'dark',
+        ].includes(value);
+      },
+    },
+    /**
+     * The background color of the card. One of "white", "dark", "gray", "transparent".
+     */
+    background: {
+      type: String,
+      default: 'white',
+      validator(value) {
+        return [
+          'white',
+          'transparent',
+          'dark',
+          'gray',
+        ].includes(value);
       },
     },
     /**
@@ -41,6 +78,10 @@ export default {
      * allows card to apply the css class '.card--active' on pointer hovers
      */
     hoverable: Boolean,
+    /**
+     * Allows card to have shadow
+     */
+    shadow: Boolean,
     /**
      * sets card to active, applying the css class '.card--active' by default
      */
@@ -54,13 +95,19 @@ export default {
      */
     classObject() {
       return [
+        `card--background-${this.background}`,
         `card--border-${this.borders}`,
+        `card--border-style-${this.borderStyle}`,
         {
           'card--compact': this.compact,
           'card--hoverable': this.hoverable,
+          'card--shadow': this.shadow,
           'card--active': this.active,
         },
       ];
+    },
+    innerClassBackground() {
+      return [`card__inner-wrapper--background-${this.background}`];
     },
   },
 };
@@ -68,7 +115,7 @@ export default {
 
 <style lang="scss">
 .card {
-  @apply relative shadow-sm rounded-lg p-1 bg-hologram;
+  @apply relative rounded-md border-4 p-1;
 
   &--hoverable {
     @apply transition duration-200 ease-in-out;
@@ -80,10 +127,26 @@ export default {
 
   &__inner-wrapper {
     @apply rounded-md h-full;
+
+    &--background-white {
+      @apply bg-white;
+    }
+
+    &--background-gray {
+      @apply bg-gray-300;
+    }
+
+    &--background-dark {
+      @apply bg-gray-600;
+    }
+
+    &--background-transparent {
+      @apply bg-transparent;
+    }
   }
 
   &--compact {
-    @apply rounded;
+    @apply rounded border-2;
 
     padding: 2px;
 
@@ -92,12 +155,44 @@ export default {
     }
   }
 
+  &--shadow {
+    @apply shadow-sm;
+  }
+
+  &--background-white {
+    @apply bg-white;
+  }
+
+  &--background-dark {
+    @apply bg-gray-600;
+  }
+
+  &--background-gray {
+    @apply bg-gray-300;
+  }
+
+  &--background-transparent {
+    @apply bg-transparent;
+  }
+
   &--border-none {
-    @apply p-0 rounded-md;
+    @apply border-0 p-0;
+  }
+
+  &--border-style-holo {
+    @apply bg-hologram border-0;
+  }
+
+  &--border-style-dark {
+    @apply border-gray-500 p-0;
+  }
+
+  &--border-style-light {
+    @apply border-gray-300 p-0;
   }
 
   &--border-vertical {
-    @apply px-0 overflow-hidden;
+    @apply py-0 border-b-0 border-t-0 overflow-hidden;
 
     .card__inner-wrapper {
       @apply rounded-none;
@@ -105,7 +200,7 @@ export default {
   }
 
   &--border-horizontal {
-    @apply py-0 overflow-hidden;
+    @apply px-0 border-r-0 border-l-0 overflow-hidden;
 
     .card__inner-wrapper {
       @apply rounded-none;
