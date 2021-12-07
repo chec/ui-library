@@ -1,6 +1,6 @@
 {
   "name": "@chec/ui-library",
-  "version": "0.1.9",
+  "version": "0.2.1",
   "license": "BSD-3-Clause",
   "main": "dist/index.js",
   "module": "dist/index.js",
