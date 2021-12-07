@@ -79,9 +79,9 @@ export default {
      */
     hoverable: Boolean,
     /**
-     * Allows card to have shadow
+     * Define whether card has shadow (has shadow by default)
      */
-    shadow: Boolean,
+    noShadow: Boolean,
     /**
      * sets card to active, applying the css class '.card--active' by default
      */
@@ -101,7 +101,7 @@ export default {
         {
           'card--compact': this.compact,
           'card--hoverable': this.hoverable,
-          'card--shadow': this.shadow,
+          'card--no-shadow': this.noShadow,
           'card--active': this.active,
         },
       ];
@@ -115,7 +115,7 @@ export default {
 
 <style lang="scss">
 .card {
-  @apply relative rounded-md border-4 p-1;
+  @apply relative shadow-sm rounded-md border-4 p-1;
 
   &--hoverable {
     @apply transition duration-200 ease-in-out;
@@ -155,8 +155,8 @@ export default {
     }
   }
 
-  &--shadow {
-    @apply shadow-sm;
+  &--no-shadow {
+    @apply shadow-none;
   }
 
   &--background-white {
