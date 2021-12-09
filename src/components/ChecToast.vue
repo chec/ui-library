@@ -118,12 +118,11 @@ export default {
   }
 
   &__text {
-    @apply text-primary-blue text-left text-sm break-words max-w-full mt-1;
+    @apply text-primary-blue text-left text-sm break-words max-w-full my-auto;
 
     .button {
       @apply mt-3 -ml-1;
     }
-
   }
 
   &__close-icon {
