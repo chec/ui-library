@@ -5,6 +5,9 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "source": "src/index.js",
+  "files": [
+    "dist"
+  ],
   "homepage": "https://github.com/chec/ui-library",
   "author": "Chec Platform Inc",
   "repository": {
