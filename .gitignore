@@ -11,3 +11,6 @@ yarn-error.log*
 
 # Stats file generated when building with rollup
 stats.html
+
+# Dist files are built during publish, but aren't part of the repository
+dist
