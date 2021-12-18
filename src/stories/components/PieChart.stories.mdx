@@ -1,0 +1,38 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { text, object } from '@storybook/addon-knobs';
+import PieChart from '@/components/PieChart.vue';
+
+<Meta title="Components/Charts" component={PieChart} />
+
+# Pie chart
+
+<Props of={PieChart} />
+
+<Preview>
+  <Story name="Pie">
+    {{
+      components: {
+        PieChart
+      },
+      props: {
+        title: {
+          default: text('Title', 'Customers'),
+        },
+        dataPoints: {
+          default: object('Data points', [
+            { "label": "New", "value": 350 },
+            { "label": "Returning", "value": 1200 }
+          ]),
+        },
+      },
+      template: `
+        <div class="p-16 flex justify-center w-full bg-gray-500 text-white">
+          <PieChart
+            :title="title"
+            :data-points="dataPoints"
+          />
+        </div>`
+    }}
+  </Story>
+</Preview>
