@@ -118,7 +118,8 @@ export default {
   }
 
   &__text {
-    @apply text-primary-blue text-left text-sm break-words max-w-full my-auto;
+    @apply text-primary-blue text-left text-sm max-w-full my-auto;
+    overflow-wrap: anywhere;
 
     .button {
       @apply mt-3 -ml-1;
