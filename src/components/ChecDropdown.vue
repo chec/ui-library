@@ -663,5 +663,11 @@ export default {
       transform: translate(-0.2rem, -0.5rem) scale(0.8, 0.8);
     }
   }
+
+  &--labeless {
+    .dropdown__value {
+      @apply py-4;
+    }
+  }
 }
 </style>
