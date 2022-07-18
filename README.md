@@ -2,13 +2,6 @@
 
 [View the Storybook app](https://chec-ui.netlify.app/)
 
-## Licensing
-
-Note that this project is not licensed intentionally. At the moment you will require explicit permission from Chec 
-Platform Inc. to utilise this repo in your own projects. Please let us know if you're interested. hello@chec.io
-
-In the future we may add a license. 
-
 ## Installation & Usage
 
 You can use either `yarn` or `npm` to install the `ui-library` and it's dependencies from this Github repo.
